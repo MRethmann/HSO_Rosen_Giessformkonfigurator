@@ -1,0 +1,102 @@
+﻿<Window x:Class="Gießformkonfigurator.WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Gießformkonfigurator.WPF"
+        xmlns:viewModel="clr-namespace:Gießformkonfigurator.WPF.MVVM.ViewModel"
+        mc:Ignorable="d"
+        WindowState="Maximized"
+        ResizeMode="NoResize"
+        Background="WhiteSmoke">
+
+    <Window.DataContext>
+        <viewModel:MainViewModel/>
+    </Window.DataContext>
+
+    <Border>
+        
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="400"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="15"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="15"/>
+                <RowDefinition Height="200"/>
+                <RowDefinition/>
+                <RowDefinition Height="15"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Column="2" Grid.Row="1">
+                <TextBlock Text="Gießformkonfigurator"
+                               VerticalAlignment="center" HorizontalAlignment="Center"
+                               Foreground="Gray" FontSize="50" FontWeight="Medium"
+                               Margin="20,0,0,0"/>
+            </Grid>
+
+            <Grid Grid.Column="1" Grid.Row="1" >
+                <Border BorderBrush="#144F9B">
+                    <Image Width="360" Height="200" Source="/Images/rosen.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+            </Grid>
+
+            <Grid Grid.Row="2" Grid.Column="1" Margin="0, 0, 10, 0" Background="White">
+                <Border BorderThickness="1" BorderBrush="#144F9B" CornerRadius="4">
+                    <StackPanel >
+                        <RadioButton Content="Produktsuche"
+                                     Height="50"
+                                     FontSize="20"
+                                     Style="{StaticResource MenuButtonTheme}"
+                                     IsChecked="True"
+                                     Command="{Binding Search_MainViewCmd}" />
+
+                        <Border Margin="0, 30, 0, 30"></Border>
+
+                        <RadioButton Content="Produkt erstellen"
+                                     Height="50" 
+                                     FontSize="20"
+                                     Style="{StaticResource MenuButtonTheme}"
+                                     Command="{Binding Product_MainViewCmd}" />
+
+                        <RadioButton Content="Einteilige Gießform erstellen"
+                                     Height="50"
+                                     FontSize="20"
+                                     Style="{StaticResource MenuButtonTheme}"
+                                     Command="{Binding Mold_MainViewCmd}" />
+
+                        <RadioButton Content="Gießformkomponente erstellen"
+                                     Height="50"
+                                     FontSize="20"
+                                     Style="{StaticResource MenuButtonTheme}"
+                                     Command="{Binding Components_MainViewCmd}"/>
+
+                        <RadioButton Content="Datenbankverwaltung"
+                                     Height="50"
+                                     FontSize="20"
+                                     Style="{StaticResource MenuButtonTheme}"
+                                     Command="{Binding DBManagement_MainViewCmd}"/>
+
+                        <Border Margin="0, 30, 0, 30"></Border>
+
+                        <RadioButton Content="Settings"
+                                     Height="50"
+                                     FontSize="20"
+                                     Style="{StaticResource MenuButtonTheme}"
+                                     Command="{Binding Settings_MainViewCmd}"/>
+
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <Grid Grid.Row="2" Grid.Column="2">
+                <Border>
+                    <ContentControl Content="{Binding CurrentView}"/>
+                </Border>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

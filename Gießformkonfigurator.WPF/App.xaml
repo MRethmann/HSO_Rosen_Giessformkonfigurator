@@ -1,0 +1,101 @@
+﻿<Application x:Class="Gießformkonfigurator.WPF.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Gießformkonfigurator.WPF"
+             xmlns:viewModel="clr-namespace:Gießformkonfigurator.WPF.MVVM.ViewModel"
+             xmlns:view="clr-namespace:Gießformkonfigurator.WPF.MVVM.View"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Theme/MenuButtonTheme.xaml"/>
+                <ResourceDictionary Source="Theme/TextboxTheme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate DataType="{x:Type viewModel:Search_MainViewModel}">
+                <view:Search_MainView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:Product_MainViewModel}">
+                <view:Product_MainView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:Product_DiscViewModel}">
+                <view:Product_DiscView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:Product_CupViewModel}">
+                <view:Product_CupView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:Mold_MainViewModel}">
+                <view:Mold_MainView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:Mold_DiscViewModel}">
+                <view:Mold_DiscView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:Mold_CupViewModel}">
+                <view:Components_CupformView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:Components_MainViewModel}">
+                <view:Components_MainView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:Components_BaseplateViewModel}">
+                <view:Components_BaseplateView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:Components_InsertPlateViewModel}">
+                <view:Components_InsertPlateView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:Components_BoltViewModel}">
+                <view:Components_BoltView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:Components_RingViewModel}">
+                <view:Components_RingView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:Components_CoreViewModel}">
+                <view:Components_CoreView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:Components_CupformViewModel}">
+                <view:Components_CupformView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:Settings_ApplicationSettingsViewModel}">
+                <view:Settings_ApplicationSettingsView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:Settings_CombinationSettingsViewModel}">
+                <view:Settings_CombinationSettingsView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:Settings_CompareSettingsViewModel}">
+                <view:Settings_CompareSettingsView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:Settings_FilterSettingsViewModel}">
+                <view:Settings_FilterSettingsView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:Settings_MainViewModel}">
+                <view:Settings_MainView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:Settings_RankingSettingsViewModel}">
+                <view:Settings_RankingSettingsView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:DBManagement_MainViewModel}">
+                <view:DBManagement_MainView/>
+            </DataTemplate>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
