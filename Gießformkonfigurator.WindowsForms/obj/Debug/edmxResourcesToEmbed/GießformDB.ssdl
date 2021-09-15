@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GießformkonfiguratorModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Bolzen">
+    <Key>
+      <PropertyRef Name="SAP-Nr." />
+    </Key>
+    <Property Name="SAP-Nr." Type="int" Nullable="false" />
+    <Property Name="Bezeichnung_RoCon" Type="varchar" MaxLength="100" />
+    <Property Name="Hoehe" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="Außendurchmesser" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="Gießhoehe_Max" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="mit_Gewinde" Type="bit" Nullable="false" />
+    <Property Name="Gewinde" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="mit_Steckbolzen" Type="bit" Nullable="false" />
+    <Property Name="Hoehe_Fuehrung" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="Außendurchmesser_Fuehrung" Type="decimal" Precision="10" Scale="2" />
+  </EntityType>
+  <EntityType Name="Einlegeplatte">
+    <Key>
+      <PropertyRef Name="SAP-Nr." />
+    </Key>
+    <Property Name="SAP-Nr." Type="int" Nullable="false" />
+    <Property Name="Bezeichnung_RoCon" Type="varchar" MaxLength="100" />
+    <Property Name="Außendurchmesser" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="Toleranz_Außendurchmesser" Type="varchar" MaxLength="5" />
+    <Property Name="Hoehe" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="Konus_Außen_Max" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="Konus_Außen_Min" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="Konus_Außen_Winkel" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="Konus_Hoehe" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="mit_Konusfuehrung" Type="bit" Nullable="false" />
+    <Property Name="Konus_Innen_Max" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="Konus_Innen_Min" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="Konus_Innen_Winkel" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="mit_Lochfuehrung" Type="bit" Nullable="false" />
+    <Property Name="Innendurchmesser" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="Toleranz_Innendurchmesser" Type="varchar" MaxLength="5" />
+    <Property Name="mit_Kern" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Grundplatte">
+    <Key>
+      <PropertyRef Name="SAP-Nr." />
+    </Key>
+    <Property Name="SAP-Nr." Type="int" Nullable="false" />
+    <Property Name="Bezeichnung_RoCon" Type="varchar" MaxLength="255" />
+    <Property Name="Außendurchmesser" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="Hoehe" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="Konus_Außen_Max" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="Konus_Außen_Min" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="Konus_Außen_Winkel" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+    <Property Name="Konus_Hoehe" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="mit_Konusfuehrung" Type="bit" Nullable="false" />
+    <Property Name="Konus_Innen_Max" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="Konus_Innen_Min" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="Konus_Innen_Winkel" Type="decimal" Precision="5" Scale="2" />
+    <Property Name="mit_Lochfuehrung" Type="bit" Nullable="false" />
+    <Property Name="Innendurchmesser" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="Toleranz_Innendurchmesser" Type="varchar" MaxLength="10" />
+    <Property Name="mit_Kern" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Innenkern">
+    <Key>
+      <PropertyRef Name="SAP-Nr." />
+    </Key>
+    <Property Name="SAP-Nr." Type="int" Nullable="false" />
+    <Property Name="Bezeichnung_RoCon" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Außendurchmesser" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="Toleranz_Außendurchmesser" Type="varchar" MaxLength="10" />
+    <Property Name="Hoehe" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="Gießhoehe_Max" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="mit_Konusfuehrung" Type="bit" Nullable="false" />
+    <Property Name="Konus_Außen_Max" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="Konus_Außen_Min" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="Konus_Außen_Winkel" Type="decimal" Precision="5" Scale="2" />
+    <Property Name="Konus_Hoehe" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="mit_Fuehrungsstift" Type="bit" Nullable="false" />
+    <Property Name="Hoehe_Fuehrung" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="Durchmesser_Fuehrung" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="Toleranz_Durchmesser_Fuehrung" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="mit_Lochfuehrung" Type="bit" Nullable="false" />
+    <Property Name="Durchmesser_Adapter" Type="decimal" Precision="10" Scale="2" />
+  </EntityType>
+  <EntityType Name="Lochkreis">
+    <Key>
+      <PropertyRef Name="SAP-Nr." />
+    </Key>
+    <Property Name="SAP-Nr." Type="int" Nullable="false" />
+    <Property Name="LK-Nr." Type="int" Nullable="false" />
+    <Property Name="Anzahl_Bohrungen" Type="int" Nullable="false" />
+    <Property Name="Gewinde" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="Form" Type="decimal" Precision="10" Scale="2" />
+  </EntityType>
+  <EntityType Name="ProduktCup">
+    <Key>
+      <PropertyRef Name="SAP-Nr." />
+    </Key>
+    <Property Name="SAP-Nr." Type="int" Nullable="false" />
+    <Property Name="Grund-Cup" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Innendurchmesser" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="LK" Type="char" MaxLength="5" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProduktDisc">
+    <Key>
+      <PropertyRef Name="SAP-Nr." />
+    </Key>
+    <Property Name="SAP-Nr." Type="int" Nullable="false" />
+    <Property Name="Außendurchmesser" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="Hoehe" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="Innendurchmesser" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="LK" Type="char" MaxLength="4" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ring">
+    <Key>
+      <PropertyRef Name="SAP-Nr." />
+    </Key>
+    <Property Name="SAP-Nr." Type="int" Nullable="false" />
+    <Property Name="Bezeichnung_RoCon" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Außendurchmesser" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="Toleranz_Außendurchmesser" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="Innendurchmesser" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="Toleranz_Innendurchmesser" Type="varchar" MaxLength="10" />
+    <Property Name="Hoehe" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="Gießhoehe_Max" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="mit_Konusfuehrung" Type="bit" Nullable="false" />
+    <Property Name="Konus_Max" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="Konus_Min" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="Konus_Winkel" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="Konus_Hoehe" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="ohne_Konusfuehrung" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_Lochkreis_Einlegeplatte">
+    <End Role="Einlegeplatte" Type="Self.Einlegeplatte" Multiplicity="1" />
+    <End Role="Lochkreis" Type="Self.Lochkreis" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Einlegeplatte">
+        <PropertyRef Name="SAP-Nr." />
+      </Principal>
+      <Dependent Role="Lochkreis">
+        <PropertyRef Name="SAP-Nr." />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Lochkreis_Grundplatte">
+    <End Role="Grundplatte" Type="Self.Grundplatte" Multiplicity="1" />
+    <End Role="Lochkreis" Type="Self.Lochkreis" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Grundplatte">
+        <PropertyRef Name="SAP-Nr." />
+      </Principal>
+      <Dependent Role="Lochkreis">
+        <PropertyRef Name="SAP-Nr." />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="GießformkonfiguratorModelStoreContainer">
+    <EntitySet Name="Bolzen" EntityType="Self.Bolzen" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Einlegeplatte" EntityType="Self.Einlegeplatte" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Grundplatte" EntityType="Self.Grundplatte" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Innenkern" EntityType="Self.Innenkern" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Lochkreis" EntityType="Self.Lochkreis" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProduktCup" EntityType="Self.ProduktCup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProduktDisc" EntityType="Self.ProduktDisc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ring" EntityType="Self.Ring" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Lochkreis_Einlegeplatte" Association="Self.FK_Lochkreis_Einlegeplatte">
+      <End Role="Einlegeplatte" EntitySet="Einlegeplatte" />
+      <End Role="Lochkreis" EntitySet="Lochkreis" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Lochkreis_Grundplatte" Association="Self.FK_Lochkreis_Grundplatte">
+      <End Role="Grundplatte" EntitySet="Grundplatte" />
+      <End Role="Lochkreis" EntitySet="Lochkreis" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

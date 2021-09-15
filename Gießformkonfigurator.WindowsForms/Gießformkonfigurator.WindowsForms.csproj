@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B7AA5BAA-369A-44B8-9696-1809F236A9BA}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Gießformkonfigurator.WindowsForms</RootNamespace>
+    <AssemblyName>Gießformkonfigurator.WindowsForms</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>Gießformkonfigurator.WindowsForms.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>Gießformkonfigurator.WindowsForms.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.0.90\lib\net461\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Common, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.Common.4.3.0\lib\net451\System.Data.Common.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\Db_components\BoltCircleType.cs" />
+    <Compile Include="Main\Db_components\Bolt.cs" />
+    <Compile Include="Main\Db_components\Component.cs" />
+    <Compile Include="Main\Db_components\InsertPlate.cs" />
+    <Compile Include="Main\Db_components\Cupform.cs" />
+    <Compile Include="Main\Db_supportClasses\BoltCircleTypeEntityConfiguration.cs" />
+    <Compile Include="Main\Db_supportClasses\CupformEntityConfiguration.cs" />
+    <Compile Include="Main\Db_supportClasses\BoltEntityConfiguration.cs" />
+    <Compile Include="Main\Db_supportClasses\GießformDBContext.cs" />
+    <Compile Include="Main\Db_components\Baseplate.cs" />
+    <Compile Include="Main\Db_components\Core.cs" />
+    <Compile Include="Main\Db_products\Produkt.cs" />
+    <Compile Include="Main\Db_products\ProduktCup.cs" />
+    <Compile Include="Main\Db_products\ProduktDisc.cs" />
+    <Compile Include="Main\Db_components\Ring.cs" />
+    <Compile Include="Main\Db_supportClasses\InsertPlateEntityConfiguration.cs" />
+    <Compile Include="Main\Db_supportClasses\BaseplateEntityConfiguration.cs" />
+    <Compile Include="Main\Db_supportClasses\CoreEntityConfiguration.cs" />
+    <Compile Include="Main\Db_supportClasses\ProduktCupEntityConfiguration.cs" />
+    <Compile Include="Main\Db_supportClasses\ProduktDiscEntityConfiguration.cs" />
+    <Compile Include="Main\Db_supportClasses\RingEntityConfiguration.cs" />
+    <Compile Include="Main\Db_molds\Mold.cs" />
+    <Compile Include="Main\Db_molds\ModularMold.cs" />
+    <Compile Include="Main\Db_molds\SingleMold.cs" />
+    <Compile Include="Main\Logic\CombinationRule.cs" />
+    <Compile Include="Main\Logic\CombinationRuleset.cs" />
+    <Compile Include="Main\Logic\CompareObject.cs" />
+    <Compile Include="Main\Logic\CompareRule.cs" />
+    <Compile Include="Main\Logic\CompareRuleset.cs" />
+    <Compile Include="Main\Logic\CombinationJob.cs" />
+    <Compile Include="Main\Logic\CompareJob.cs" />
+    <Compile Include="Main\Logic\RankingJob.cs" />
+    <Compile Include="Migrations\202108121423106_initial.cs" />
+    <Compile Include="Migrations\202108121423106_initial.Designer.cs">
+      <DependentUpon>202108121423106_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108231353122_Change Toleranz into varchar.cs" />
+    <Compile Include="Migrations\202108231353122_Change Toleranz into varchar.Designer.cs">
+      <DependentUpon>202108231353122_Change Toleranz into varchar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108231355347_toleranz ring auf varchar geaendert.cs" />
+    <Compile Include="Migrations\202108231355347_toleranz ring auf varchar geaendert.Designer.cs">
+      <DependentUpon>202108231355347_toleranz ring auf varchar geaendert.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108260852367_Removed %27ohne Konusfuehrung%27 from Ring.cs" />
+    <Compile Include="Migrations\202108260852367_Removed %27ohne Konusfuehrung%27 from Ring.Designer.cs">
+      <DependentUpon>202108260852367_Removed %27ohne Konusfuehrung%27 from Ring.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108301321048_renaming.cs" />
+    <Compile Include="Migrations\202108301321048_renaming.Designer.cs">
+      <DependentUpon>202108301321048_renaming.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108301321535_renaming1.cs" />
+    <Compile Include="Migrations\202108301321535_renaming1.Designer.cs">
+      <DependentUpon>202108301321535_renaming1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108301347126_renaming2.cs" />
+    <Compile Include="Migrations\202108301347126_renaming2.Designer.cs">
+      <DependentUpon>202108301347126_renaming2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108301520381_added Lochkreise to insertplates.cs" />
+    <Compile Include="Migrations\202108301520381_added Lochkreise to insertplates.Designer.cs">
+      <DependentUpon>202108301520381_added Lochkreise to insertplates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108311101114_smaller fixes to datatypes.cs" />
+    <Compile Include="Migrations\202108311101114_smaller fixes to datatypes.Designer.cs">
+      <DependentUpon>202108311101114_smaller fixes to datatypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109011701589_renaming product tables.cs" />
+    <Compile Include="Migrations\202109011701589_renaming product tables.Designer.cs">
+      <DependentUpon>202109011701589_renaming product tables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109081003158_fixes.cs" />
+    <Compile Include="Migrations\202109081003158_fixes.Designer.cs">
+      <DependentUpon>202109081003158_fixes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109081005493_adding attributes to cupform.cs" />
+    <Compile Include="Migrations\202109081005493_adding attributes to cupform.Designer.cs">
+      <DependentUpon>202109081005493_adding attributes to cupform.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Migrations\202108121423106_initial.resx">
+      <DependentUpon>202108121423106_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108231353122_Change Toleranz into varchar.resx">
+      <DependentUpon>202108231353122_Change Toleranz into varchar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108231355347_toleranz ring auf varchar geaendert.resx">
+      <DependentUpon>202108231355347_toleranz ring auf varchar geaendert.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108260852367_Removed %27ohne Konusfuehrung%27 from Ring.resx">
+      <DependentUpon>202108260852367_Removed %27ohne Konusfuehrung%27 from Ring.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108301321048_renaming.resx">
+      <DependentUpon>202108301321048_renaming.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108301321535_renaming1.resx">
+      <DependentUpon>202108301321535_renaming1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108301347126_renaming2.resx">
+      <DependentUpon>202108301347126_renaming2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108301520381_added Lochkreise to insertplates.resx">
+      <DependentUpon>202108301520381_added Lochkreise to insertplates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108311101114_smaller fixes to datatypes.resx">
+      <DependentUpon>202108311101114_smaller fixes to datatypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109011701589_renaming product tables.resx">
+      <DependentUpon>202109011701589_renaming product tables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109081003158_fixes.resx">
+      <DependentUpon>202109081003158_fixes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109081005493_adding attributes to cupform.resx">
+      <DependentUpon>202109081005493_adding attributes to cupform.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Gießformkonfigurator.WindowsForms.ruleset" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Settings.StyleCop" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DatabaseManagement\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Ressources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
+    <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Migrations\MigrationsREADME.txt" />
+    <Content Include="README.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
