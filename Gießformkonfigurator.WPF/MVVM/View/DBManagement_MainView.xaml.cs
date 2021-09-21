@@ -17,5 +17,10 @@ namespace Gießformkonfigurator.WPF.MVVM.View
             InitializeComponent();
             DataContext = new DBManagement_MainViewModel();
         }
+
+        private void FilterInput_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

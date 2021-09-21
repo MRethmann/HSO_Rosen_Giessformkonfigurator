@@ -19,9 +19,9 @@
             <ColumnDefinition Width="100"/>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="200"/>
-            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="100"/>
             <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="50"/>
             <ColumnDefinition Width="110"/>
             <ColumnDefinition Width="200"/>
             <ColumnDefinition/>
@@ -273,175 +273,245 @@
                  Visibility="{Binding ElementName=konusfuehrung, Path=IsChecked, Converter={StaticResource BoolToVis}}">
         </TextBox>
 
-        <CheckBox x:Name="lochkreis_eins_CheckBox" Content="Lochkreis"
-                  Grid.Column="6" Grid.Row="0" Grid.ColumnSpan="2"
-                  VerticalAlignment="Center" HorizontalAlignment="Left"
-                  Foreground="Black" FontSize="15"/>
-
-        <CheckBox x:Name="lochkreis_zwei_CheckBox" Content="Weiterer Lochkreis"
-                  Grid.Column="6" Grid.Row="0"  Grid.RowSpan="2" Grid.ColumnSpan="2"
-                  VerticalAlignment="Center" HorizontalAlignment="Left"
-                  Foreground="Black" FontSize="15"
-                  Visibility="{Binding ElementName=lochkreis_eins_CheckBox, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
-
-        <CheckBox x:Name="lochkreis_drei_CheckBox" Content="Weiterer Lochkreis"
-                  Grid.Column="6" Grid.Row="1" Grid.ColumnSpan="2"
-                  VerticalAlignment="Center" HorizontalAlignment="Left"
-                  Foreground="Black" FontSize="15"
-                  Visibility="{Binding ElementName=lochkreis_zwei_CheckBox, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
-
-        <TextBlock Text="Gewinde A"
+        <TextBlock Text="Anzahl Lochkreise"
                    HorizontalAlignment="Left" VerticalAlignment="Center"
                    Foreground="Black" FontSize="15"
-                   Margin="0,0,10,0"
-                   Grid.Column="8"
-                   Visibility="{Binding ElementName=lochkreis_eins_CheckBox, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
+                   Grid.Column="6" Grid.ColumnSpan="2"/>
 
-        <TextBox x:Name="lochkreis_a_gewinde_TextBox"
-                 Text="{Binding Hc1Thread, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-                 Width="200" Height="40"
-                 VerticalAlignment="Center" HorizontalAlignment="left"
-                 VerticalContentAlignment="Center"
-                 Grid.Row="0" Grid.Column="9"
-                 Foreground="Black" FontSize="15"
-                 Visibility="{Binding ElementName=lochkreis_eins_CheckBox, Path=IsChecked, Converter={StaticResource BoolToVis}}">
-        </TextBox>
+        <RadioButton x:Name="lochkreis_stk_keins" GroupName="Lochkreis"  
+                     Grid.Column="6" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="2"
+                     Width="150" Height="30"
+                     VerticalAlignment="Center" HorizontalAlignment="Left"
+                     Foreground="Black" FontSize="15"
+                     VerticalContentAlignment="Center" 
+                     IsChecked="True">
+            0
+        </RadioButton>
 
-        <TextBlock Text="Durchmesser A"
-                   HorizontalAlignment="Left" VerticalAlignment="Center"
-                   Foreground="Black" FontSize="15"
-                   Margin="0,0,10,0"
-                   Grid.Row="1" Grid.Column="8"
-                   Visibility="{Binding ElementName=lochkreis_eins_CheckBox, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
+        <RadioButton x:Name="lochkreis_stk_eins" GroupName="Lochkreis"  
+                     Grid.Column="6" Grid.Row="1" Grid.ColumnSpan="2"
+                     Width="150" Height="30"
+                     VerticalAlignment="Center" HorizontalAlignment="Left"
+                     Foreground="Black" FontSize="15"
+                     VerticalContentAlignment="Center">
+            1
+        </RadioButton>
 
-        <TextBox x:Name="lochkreis_a_durchmesser_TextBox"
-                 Text="{Binding Hc1Diameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-                 Width="200" Height="40"
-                 VerticalAlignment="Center" HorizontalAlignment="left"
-                 VerticalContentAlignment="Center"
-                 Grid.Row="1" Grid.Column="9"
-                 Foreground="Black" FontSize="15"
-                 Visibility="{Binding ElementName=lochkreis_eins_CheckBox, Path=IsChecked, Converter={StaticResource BoolToVis}}">
-        </TextBox>
+        <RadioButton x:Name="lochkreis_stk_zwei" GroupName="Lochkreis"  
+                     Grid.Column="6" Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="2" 
+                     Width="150" Height="30"
+                     VerticalAlignment="Center" HorizontalAlignment="Left"
+                     Foreground="Black" FontSize="15"
+                     VerticalContentAlignment="Center">
+            2
+        </RadioButton>
 
-        <TextBlock Text="Bohrungen A"
-                   HorizontalAlignment="Left" VerticalAlignment="Center"
-                   Foreground="Black" FontSize="15"
-                   Margin="0,0,10,0"
-                   Grid.Row="2" Grid.Column="8"
-                   Visibility="{Binding ElementName=lochkreis_eins_CheckBox, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
+        <RadioButton x:Name="lochkreis_stk_drei" GroupName="Lochkreis"  
+                     Grid.Column="6" Grid.Row="2" Grid.ColumnSpan="2"
+                     Width="150" Height="30"
+                     VerticalAlignment="Center" HorizontalAlignment="Left"
+                     Foreground="Black" FontSize="15"
+                     VerticalContentAlignment="Center">
+            3
+        </RadioButton>
 
-        <TextBox x:Name="lochkreis_a_bohrungen_TextBox"
-                 Text="{Binding Hc1Holes, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-                 Width="200" Height="40"
-                 VerticalAlignment="Center" HorizontalAlignment="left"
-                 VerticalContentAlignment="Center"
-                 Grid.Row="2" Grid.Column="9"
-                 Foreground="Black" FontSize="15"
-                 Visibility="{Binding ElementName=lochkreis_eins_CheckBox, Path=IsChecked, Converter={StaticResource BoolToVis}}">
-        </TextBox>
+        <Grid Grid.Column="8" Grid.Row="0"
+              Grid.ColumnSpan="2" Grid.RowSpan="3">
+            <Grid.Style>
+                <Style TargetType="Grid">
+                    <Setter Property="Visibility" Value="Hidden"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=lochkreis_stk_eins}" Value="True">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=lochkreis_stk_zwei}" Value="True">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=lochkreis_stk_drei}" Value="True">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="110"/>
+                <ColumnDefinition Width="200"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="65"/>
+            </Grid.RowDefinitions>
 
-        <TextBlock Text="Gewinde B"
-                   HorizontalAlignment="Left" VerticalAlignment="Center"
-                   Foreground="Black" FontSize="15"
-                   Margin="0,0,10,0"
-                   Grid.Row="3" Grid.Column="8"
-                   Visibility="{Binding ElementName=lochkreis_zwei_CheckBox, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
+            <TextBlock Text="Gewinde"
+                       HorizontalAlignment="Left" VerticalAlignment="Center"
+                       Foreground="Black" FontSize="15"
+                       Margin="0,0,10,0"/>
 
-        <TextBox x:Name="lochkreis_b_gewinde_TextBox"
-                 Text="{Binding Hc2Thread, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-                 Width="200" Height="40"
-                 VerticalAlignment="Center" HorizontalAlignment="left"
-                 VerticalContentAlignment="Center"
-                 Grid.Row="3" Grid.Column="9"
-                 Foreground="Black" FontSize="15"
-                 Visibility="{Binding ElementName=lochkreis_zwei_CheckBox, Path=IsChecked, Converter={StaticResource BoolToVis}}">
-        </TextBox>
+            <TextBox x:Name="lochkreis_a_gewinde_TextBox"
+                     Text="{Binding Hc1Thread, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                     Width="200" Height="40"
+                     VerticalAlignment="Center" HorizontalAlignment="Left"
+                     VerticalContentAlignment="Center"
+                     Grid.Column="1"
+                     Foreground="Black" FontSize="15"/>
 
-        <TextBlock Text="Durchmesser B"
-                   HorizontalAlignment="Left" VerticalAlignment="Center"
-                   Foreground="Black" FontSize="15"
-                   Margin="0,0,10,0"
-                   Grid.Row="4" Grid.Column="8"
-                  Visibility="{Binding ElementName=lochkreis_zwei_CheckBox, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
+            <TextBlock Text="Durchmesser"
+                       HorizontalAlignment="Left" VerticalAlignment="Center"
+                       Grid.Row="1"
+                       Foreground="Black" FontSize="15"
+                       Margin="0,0,10,0"/>
 
-        <TextBox x:Name="lochkreis_b_durchmesser_TextBox"
-                 Text="{Binding Hc2Diameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-                 Width="200" Height="40"
-                 VerticalAlignment="Center" HorizontalAlignment="left"
-                 VerticalContentAlignment="Center"
-                 Grid.Row="4" Grid.Column="9"
-                 Foreground="Black" FontSize="15"
-                  Visibility="{Binding ElementName=lochkreis_zwei_CheckBox, Path=IsChecked, Converter={StaticResource BoolToVis}}">
-        </TextBox>
+            <TextBox x:Name="lochkreis_a_durchmesser_TextBox"
+                     Text="{Binding Hc1Diameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                     Width="200" Height="40"
+                     VerticalAlignment="Center" HorizontalAlignment="Left"
+                     VerticalContentAlignment="Center"
+                     Grid.Column="1" Grid.Row="1"
+                     Foreground="Black" FontSize="15"/>
 
-        <TextBlock Text="Bohrungen B"
-                   HorizontalAlignment="Left" VerticalAlignment="Center"
-                   Foreground="Black" FontSize="15"
-                   Margin="0,0,10,0"
-                   Grid.Row="5" Grid.Column="8"
-                  Visibility="{Binding ElementName=lochkreis_zwei_CheckBox, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
+            <TextBlock Text="Bohrungen"
+                       HorizontalAlignment="Left" VerticalAlignment="Center"
+                       Grid.Row="2"
+                       Foreground="Black" FontSize="15"
+                       Margin="0,0,10,0"/>
 
-        <TextBox x:Name="lochkreis_b_bohrungen_TextBox"
-                 Text="{Binding Hc2Holes, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-                 Width="200" Height="40"
-                 VerticalAlignment="Center" HorizontalAlignment="left"
-                 VerticalContentAlignment="Center"
-                 Grid.Row="5" Grid.Column="9"
-                 Foreground="Black" FontSize="15"
-                  Visibility="{Binding ElementName=lochkreis_zwei_CheckBox, Path=IsChecked, Converter={StaticResource BoolToVis}}">
-        </TextBox>
+            <TextBox x:Name="lochkreis_a_bohrungen_TextBox"
+                     Text="{Binding Hc1Holes, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                     Width="200" Height="40"
+                     VerticalAlignment="Center" HorizontalAlignment="Left"
+                     VerticalContentAlignment="Center"
+                     Grid.Column="1" Grid.Row="2"
+                     Foreground="Black" FontSize="15"/>
+        </Grid>
 
-        <TextBlock Text="Gewinde C"
-                   HorizontalAlignment="Left" VerticalAlignment="Center"
-                   Foreground="Black" FontSize="15"
-                   Margin="0,0,10,0"
-                   Grid.Row="6" Grid.Column="8"
-                   Visibility="{Binding ElementName=lochkreis_drei_CheckBox, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
+        <Grid Grid.Column="8" Grid.Row="3"
+              Grid.ColumnSpan="2" Grid.RowSpan="3">
+            <Grid.Style>
+                <Style TargetType="Grid">
+                    <Setter Property="Visibility" Value="Hidden"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=lochkreis_stk_zwei}" Value="True">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=lochkreis_stk_drei}" Value="True">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="110"/>
+                <ColumnDefinition Width="200"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="65"/>
+            </Grid.RowDefinitions>
 
-        <TextBox x:Name="lochkreis_c_gewinde_TextBox"
-                 Text="{Binding Hc3Thread, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-                 Width="200" Height="40"
-                 VerticalAlignment="Center" HorizontalAlignment="left"
-                 VerticalContentAlignment="Center"
-                 Grid.Row="6" Grid.Column="9"
-                 Foreground="Black" FontSize="15"
-                  Visibility="{Binding ElementName=lochkreis_drei_CheckBox, Path=IsChecked, Converter={StaticResource BoolToVis}}">
-        </TextBox>
+            <Border BorderThickness="0,1,0,0" BorderBrush="Black" Grid.ColumnSpan="2"
+                    Margin="0,0,0,1" VerticalAlignment="Top"/>
 
-        <TextBlock Text="Durchmesser C"
-                   HorizontalAlignment="Left" VerticalAlignment="Center"
-                   Foreground="Black" FontSize="15"
-                   Margin="0,0,10,0"
-                   Grid.Row="7" Grid.Column="8"
-                  Visibility="{Binding ElementName=lochkreis_drei_CheckBox, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
+            <TextBlock Text="Gewinde "
+                       HorizontalAlignment="Left" VerticalAlignment="Center"
+                       Foreground="Black" FontSize="15"
+                       Margin="0,0,10,0"/>
 
-        <TextBox x:Name="lochkreis_c_durchmesser_TextBox"
-                 Text="{Binding Hc3Diameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-                 Width="200" Height="40"
-                 VerticalAlignment="Center" HorizontalAlignment="left"
-                 VerticalContentAlignment="Center"
-                 Grid.Row="7" Grid.Column="9"
-                 Foreground="Black" FontSize="15"
-                 Visibility="{Binding ElementName=lochkreis_drei_CheckBox, Path=IsChecked, Converter={StaticResource BoolToVis}}">
-        </TextBox>
+            <TextBox x:Name="lochkreis_b_gewinde_TextBox"
+                     Text="{Binding Hc2Thread, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                     Width="200" Height="40"
+                     VerticalAlignment="Center" HorizontalAlignment="Left"
+                     VerticalContentAlignment="Center"
+                     Grid.Column="1"
+                     Foreground="Black" FontSize="15"/>
 
-        <TextBlock Text="Bohrungen C"
-                   HorizontalAlignment="Left" VerticalAlignment="Center"
-                   Foreground="Black" FontSize="15"
-                   Margin="0,0,10,0"
-                   Grid.Row="8" Grid.Column="8"
-                   Visibility="{Binding ElementName=lochkreis_drei_CheckBox, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
+            <TextBlock Text="Durchmesser "
+                       HorizontalAlignment="Left" VerticalAlignment="Center"
+                       Grid.Row="1"
+                       Foreground="Black" FontSize="15"
+                       Margin="0,0,10,0"/>
 
-        <TextBox x:Name="lochkreis_c_bohrungen_TextBox"
-                 Text="{Binding Hc3Holes, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-                 Width="200" Height="40"
-                 VerticalAlignment="Center" HorizontalAlignment="left"
-                 VerticalContentAlignment="Center"
-                 Grid.Row="8" Grid.Column="9"
-                 Foreground="Black" FontSize="15"
-                 Visibility="{Binding ElementName=lochkreis_drei_CheckBox, Path=IsChecked, Converter={StaticResource BoolToVis}}">
-        </TextBox>
+            <TextBox x:Name="lochkreis_b_durchmesser_TextBox"
+                     Text="{Binding Hc2Diameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                     Width="200" Height="40"
+                     VerticalAlignment="Center" HorizontalAlignment="Left"
+                     VerticalContentAlignment="Center"
+                     Grid.Column="1" Grid.Row="1"
+                     Foreground="Black" FontSize="15"/>
+
+            <TextBlock Text="Bohrungen "
+                       HorizontalAlignment="Left" VerticalAlignment="Center"
+                       Grid.Row="2"
+                       Foreground="Black" FontSize="15"
+                       Margin="0,0,10,0"/>
+
+            <TextBox x:Name="lochkreis_b_bohrungen_TextBox"
+                     Text="{Binding Hc2Holes, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                     Width="200" Height="40"
+                     VerticalAlignment="Center" HorizontalAlignment="Left"
+                     VerticalContentAlignment="Center"
+                     Grid.Column="1" Grid.Row="2"
+                     Foreground="Black" FontSize="15"/>
+        </Grid>
+
+        <Grid Grid.Column="8" Grid.Row="6"
+              Grid.ColumnSpan="2" Grid.RowSpan="3"
+              Visibility="{Binding ElementName=lochkreis_stk_drei, Path=IsChecked, Converter={StaticResource BoolToVis}}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="110"/>
+                <ColumnDefinition Width="200"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="65"/>
+            </Grid.RowDefinitions>
+
+            <Border BorderThickness="0,1,0,0" BorderBrush="Black" Grid.ColumnSpan="2"
+                    Margin="0,0,0,1" VerticalAlignment="Top"/>
+
+            <TextBlock Text="Gewinde "
+                       HorizontalAlignment="Left" VerticalAlignment="Center"
+                       Foreground="Black" FontSize="15"
+                       Margin="0,0,10,0"/>
+
+            <TextBox x:Name="lochkreis_c_gewinde_TextBox"
+                     Text="{Binding Hc3Thread, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                     Width="200" Height="40"
+                     VerticalAlignment="Center" HorizontalAlignment="Left"
+                     VerticalContentAlignment="Center"
+                     Grid.Column="1"
+                     Foreground="Black" FontSize="15"/>
+
+            <TextBlock Text="Durchmesser "
+                       HorizontalAlignment="Left" VerticalAlignment="Center"
+                       Grid.Row="1"
+                       Foreground="Black" FontSize="15"
+                       Margin="0,0,10,0"/>
+
+            <TextBox x:Name="lochkreis_c_durchmesser_TextBox"
+                     Text="{Binding Hc3Diameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                     Width="200" Height="40"
+                     VerticalAlignment="Center" HorizontalAlignment="Left"
+                     VerticalContentAlignment="Center"
+                     Grid.Column="1" Grid.Row="1"
+                     Foreground="Black" FontSize="15"/>
+
+            <TextBlock Text="Bohrungen "
+                       HorizontalAlignment="Left" VerticalAlignment="Center"
+                       Grid.Row="2"
+                       Foreground="Black" FontSize="15"
+                       Margin="0,0,10,0"/>
+
+            <TextBox x:Name="lochkreis_c_bohrungen_TextBox"
+                     Text="{Binding Hc3Holes, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                     Width="200" Height="40"
+                     VerticalAlignment="Center" HorizontalAlignment="Left"
+                     VerticalContentAlignment="Center"
+                     Grid.Column="1" Grid.Row="2"
+                     Foreground="Black" FontSize="15"/>
+        </Grid>
 
 
         <Button x:Name="Hinzufuegen" Content="Hinzufügen"

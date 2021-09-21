@@ -5,9 +5,156 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Gießformkonfigurator.WPF.MVVM.View"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800"
-             Background="LightSlateGray">
-    <Grid>
-            
+             d:DesignHeight="1200" d:DesignWidth="1600"
+             Background="White">
+    
+    <Grid HorizontalAlignment="Center">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="65"/>
+            <RowDefinition Height="65"/>
+            <RowDefinition Height="65"/>
+            <RowDefinition Height="65"/>
+            <RowDefinition Height="65"/>
+            <RowDefinition Height="65"/>
+            <RowDefinition Height="65"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Konusabweichungen zwischen Komponenten"
+                   HorizontalAlignment="Left" VerticalAlignment="Center" Grid.ColumnSpan="2"
+                   Foreground="Black" FontSize="18"
+                   Margin="0,0,10,0"
+                   Grid.Row="0" Grid.Column="0"/>
+
+        <TextBlock Text="Grundplatte und Führungsring"
+                   HorizontalAlignment="Left" VerticalAlignment="Center"
+                   Foreground="Black" FontSize="15"
+                   Margin="0,0,10,0"
+                   Grid.Row="1" Grid.Column="0"/>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
+        <TextBox Text="0" Width="75" Height="40"
+                 VerticalAlignment="Center"
+                 VerticalContentAlignment="Center"
+                 Foreground="Black" FontSize="15">
+        </TextBox>
+
+        <TextBlock Text="bis"
+                   VerticalAlignment="Center"
+                   Foreground="Black" FontSize="15"
+                   Margin="10"/>
+
+        <TextBox Text="5" Width="75" Height="40"
+                 VerticalAlignment="Center"
+                 VerticalContentAlignment="Center"
+                 Foreground="Black" FontSize="15">
+        </TextBox>
+
+        <TextBlock Text="mm"
+                   VerticalAlignment="Center"
+                   Foreground="Black" FontSize="15"
+                   Margin="10"/>
+        </StackPanel>
+
+        <TextBlock Text="Grundplatte und Einlegeplatte"
+                   HorizontalAlignment="Left" VerticalAlignment="Center"
+                   Foreground="Black" FontSize="15"
+                   Margin="0,0,10,0"
+                   Grid.Row="2" Grid.Column="0"/>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1">
+            <TextBox Text="0" Width="75" Height="40"
+                 VerticalAlignment="Center"
+                 VerticalContentAlignment="Center"
+                 Foreground="Black" FontSize="15">
+            </TextBox>
+
+            <TextBlock Text="bis"
+                   VerticalAlignment="Center"
+                   Foreground="Black" FontSize="15"
+                   Margin="10"/>
+
+            <TextBox Text="1" Width="75" Height="40"
+                 VerticalAlignment="Center"
+                 VerticalContentAlignment="Center"
+                 Foreground="Black" FontSize="15">
+            </TextBox>
+
+            <TextBlock Text="mm"
+                   VerticalAlignment="Center"
+                   Foreground="Black" FontSize="15"
+                   Margin="10"/>
+        </StackPanel>
+
+        <TextBlock Text="Grundplatte und Kern"
+                   HorizontalAlignment="Left" VerticalAlignment="Center"
+                   Foreground="Black" FontSize="15"
+                   Margin="0,0,10,0"
+                   Grid.Row="3" Grid.Column="0"/>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="1">
+            <TextBox Text="0" Width="75" Height="40"
+                 VerticalAlignment="Center"
+                 VerticalContentAlignment="Center"
+                 Foreground="Black" FontSize="15">
+            </TextBox>
+
+            <TextBlock Text="bis"
+                   VerticalAlignment="Center"
+                   Foreground="Black" FontSize="15"
+                   Margin="10"/>
+
+            <TextBox Text="10" Width="75" Height="40"
+                 VerticalAlignment="Center"
+                 VerticalContentAlignment="Center"
+                 Foreground="Black" FontSize="15">
+            </TextBox>
+
+            <TextBlock Text="mm"
+                   VerticalAlignment="Center"
+                   Foreground="Black" FontSize="15"
+                   Margin="10"/>
+        </StackPanel>
+
+        <TextBlock Text="Einlegeplatte und Kern"
+                   HorizontalAlignment="Left" VerticalAlignment="Center"
+                   Foreground="Black" FontSize="15"
+                   Margin="0,0,10,0"
+                   Grid.Row="5" Grid.Column="0"/>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="1">
+            <TextBox Text="2" Width="75" Height="40"
+                 VerticalAlignment="Center"
+                 VerticalContentAlignment="Center"
+                 Foreground="Black" FontSize="15">
+            </TextBox>
+
+            <TextBlock Text="bis"
+                   VerticalAlignment="Center"
+                   Foreground="Black" FontSize="15"
+                   Margin="10"/>
+
+            <TextBox Text="3" Width="75" Height="40"
+                 VerticalAlignment="Center"
+                 VerticalContentAlignment="Center"
+                 Foreground="Black" FontSize="15">
+            </TextBox>
+
+            <TextBlock Text="mm"
+                   VerticalAlignment="Center"
+                   Foreground="Black" FontSize="15"
+                   Margin="10"/>
+        </StackPanel>
+
+        <Button Content="Speichern"
+                HorizontalAlignment="Right" VerticalAlignment="Center"
+                Width="150" Height="50"
+                Foreground="Black"
+                Background="White"
+                FontSize="15"
+                Grid.Column="1" Grid.Row="6"/>
     </Grid>
 </UserControl>
