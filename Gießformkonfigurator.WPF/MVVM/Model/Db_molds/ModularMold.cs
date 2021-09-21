@@ -29,6 +29,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_molds
             this.guideRing = fr;
             this.insertPlate = el;
             this.core = ik;
+            this.type = "Mehrteilige Gießform";
         }
 
         public ModularMold(Cupform cupform, Core core, InsertPlate insertPlate)

@@ -93,7 +93,7 @@
                         </Expander.Header>
                         -->
                 <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="10">
-                    <DataGrid Name="combinationJobOutput" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding mGießformenFinal, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" 
+                    <DataGrid Name="combinationJobOutput" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding productSearchOutput, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" 
                                 Background="white" 
                                 FontSize="15" 
                                 BorderThickness="0"
@@ -118,7 +118,7 @@
                         </DataGrid.RowStyle>
 
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Nr." Width="*" Binding="{Binding Grundplatte}">
+                            <DataGridTextColumn Header="Nr." Width="*">
                                 <DataGridColumn.HeaderStyle>
                                     <Style TargetType="DataGridColumnHeader">
                                         <Setter Property="Background" Value="White"/>
@@ -133,7 +133,7 @@
                                 </DataGridColumn.HeaderStyle>
                             </DataGridTextColumn>
 
-                            <DataGridTextColumn Header="Typ" Width="*" Binding="{Binding Einlegeplatte}">
+                            <DataGridTextColumn Header="Typ" Width="*" Binding="{Binding Mold.type}">
                                 <DataGridColumn.HeaderStyle>
                                     <Style TargetType="DataGridColumnHeader">
                                         <Setter Property="Background" Value="White"/>
@@ -146,7 +146,7 @@
                                 </DataGridColumn.HeaderStyle>
                             </DataGridTextColumn>
 
-                            <DataGridTextColumn Header="Übereinstimmungsgrad" Width="*" Binding="{Binding Fuehrungsring}">
+                            <DataGridTextColumn Header="Übereinstimmungsgrad" Width="*" Binding="{Binding finalRating}">
                                 <DataGridColumn.HeaderStyle>
                                     <Style TargetType="DataGridColumnHeader">
                                         <Setter Property="Background" Value="White"/>
@@ -159,7 +159,7 @@
                                 </DataGridColumn.HeaderStyle>
                             </DataGridTextColumn>
 
-                            <DataGridTextColumn Header="Nachbearbeitung" Width="*" Binding="{Binding Innenkern}">
+                            <DataGridTextColumn Header="Nachbearbeitung" Width="*" Binding="{Binding Mold.baseplate.Description}">
                                 <DataGridColumn.HeaderStyle>
                                     <Style TargetType="DataGridColumnHeader">
                                         <Setter Property="Background" Value="White"/>
@@ -191,21 +191,21 @@
                                         <RowDefinition Height="30"/>
                                     </Grid.RowDefinitions>
 
-                                    <TextBlock Text="SapNr 420420" Grid.Column="0" Foreground="Black"/>
-                                    <TextBlock Text="Placeholder" Grid.Column="0" Grid.Row="1" Foreground="Black"/>
-                                    <TextBlock Text="Placeholder" Grid.Column="0" Grid.Row="2" Foreground="Black"/>
+                                    <TextBlock Text="" Grid.Column="0" Foreground="Black"/>
+                                    <TextBlock Text="" Grid.Column="0" Grid.Row="1" Foreground="Black"/>
+                                    <TextBlock Text="" Grid.Column="0" Grid.Row="2" Foreground="Black"/>
 
-                                    <TextBlock Text="Einteilige Gießform" Grid.Column="1" Foreground="Black"/>
-                                    <TextBlock Text="Außendurchmesser" Grid.Column="1" Grid.Row="1" Foreground="Black"/>
-                                    <TextBlock Text="Innen durchmesser" Grid.Column="1" Grid.Row="2" Foreground="Black"/>
+                                    <TextBlock Text="" Grid.Column="1" Foreground="Black"/>
+                                    <TextBlock Text="" Grid.Column="1" Grid.Row="1" Foreground="Black"/>
+                                    <TextBlock Text="" Grid.Column="1" Grid.Row="2" Foreground="Black"/>
 
-                                    <TextBlock Text="94%" Grid.Column="2" Foreground="Black"/>
-                                    <TextBlock Text="Placeholder" Grid.Column="2" Grid.Row="1" Foreground="Black"/>
-                                    <TextBlock Text="Placeholder" Grid.Column="2" Grid.Row="2" Foreground="Black"/>
+                                    <TextBlock Text="" Grid.Column="2" Foreground="Black"/>
+                                    <TextBlock Text="" Grid.Column="2" Grid.Row="1" Foreground="Black"/>
+                                    <TextBlock Text="" Grid.Column="2" Grid.Row="2" Foreground="Black"/>
 
-                                    <TextBlock Text="Innerndurchmesser nachbearbeitung" Grid.Column="3" Foreground="Black"/>
-                                    <TextBlock Text="Placeholder" Grid.Column="3" Grid.Row="1" Foreground="Black"/>
-                                    <TextBlock Text="Placeholder" Grid.Column="3" Grid.Row="2" Foreground="Black"/>
+                                    <TextBlock Text="" Grid.Column="3" Foreground="Black"/>
+                                    <TextBlock Text="" Grid.Column="3" Grid.Row="1" Foreground="Black"/>
+                                    <TextBlock Text="" Grid.Column="3" Grid.Row="2" Foreground="Black"/>
 
 
                                 </Grid>
@@ -236,14 +236,14 @@
                         <TextBlock Text="Details"
                                    FontSize="18"/>
 
-                        <TextBlock Text="Placeholder" Grid.Row="1" FontSize="16"/>
-                        <TextBlock Text="Placeholder" Grid.Row="1" Grid.Column="1" FontSize="16"/>
+                        <TextBlock Text="{Binding Mold.baseplate.ID}" Grid.Row="1" FontSize="16"/>
+                        <TextBlock Text="{Binding Mold.baseplate.OuterDiameter}" Grid.Row="1" Grid.Column="1" FontSize="16"/>
 
-                        <TextBlock Text="Placeholder" Grid.Row="2" FontSize="16"/>
-                        <TextBlock Text="Placeholder" Grid.Row="2" Grid.Column="1" FontSize="16"/>
+                        <TextBlock Text="{Binding Mold.baseplate.InnerDiameter}" Grid.Row="2" FontSize="16"/>
+                        <TextBlock Text="{Binding Mold.baseplate.Description}" Grid.Row="2" Grid.Column="1" FontSize="16"/>
 
-                        <TextBlock Text="Placeholder" Grid.Row="3" FontSize="16"/>
-                        <TextBlock Text="Placeholder" Grid.Row="3" Grid.Column="1" FontSize="16"/>
+                        <TextBlock Text="" Grid.Row="3" FontSize="16"/>
+                        <TextBlock Text="" Grid.Row="3" Grid.Column="1" FontSize="16"/>
 
                     </Grid>
                 </Border>

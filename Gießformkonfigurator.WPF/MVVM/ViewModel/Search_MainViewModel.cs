@@ -15,7 +15,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
 
     class Search_MainViewModel : ObservableObject
     {
-        public ObservableCollection<ModularMold> mGießformenFinal { get; } = new ObservableCollection<ModularMold>();
+        public ObservableCollection<CompareObject> productSearchOutput { get; } = new ObservableCollection<CompareObject>();
 
         private ProgramLogic programLogic { get; set; }
 
@@ -65,17 +65,12 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
 
                 programLogic = new ProgramLogic(product);
 
-                this.mGießformenFinal.Clear();
+                this.productSearchOutput.Clear();
 
-                //this.mGießformenFinal.Add(new ModularMold(new Baseplate(), new Ring(), new InsertPlate(), new Core()));
-                //this.mGießformenFinal.Add(new ModularMold(new Baseplate(), new Ring(), new InsertPlate(), new Core()));
-                //this.mGießformenFinal.Add(new ModularMold(new Baseplate(), new Ring(), new InsertPlate(), new Core()));
-                //this.mGießformenFinal.Add(new ModularMold(new Baseplate(), new Ring(), new InsertPlate(), new Core()));
-
-                /*foreach (var mold in programLogic.combinationJob.CombineMoldComponents())
+                foreach (var compareObject in programLogic.finalOutput)
                 {
-                    this.mGießformenFinal.Add(mold);
-                }*/
+                    this.productSearchOutput.Add(compareObject);
+                }
 
                 this.IsLoading = Visibility.Hidden;
                 Mouse.OverrideCursor = System.Windows.Input.Cursors.Arrow;

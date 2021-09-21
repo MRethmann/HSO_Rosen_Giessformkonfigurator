@@ -20,6 +20,8 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 
         public Product product { get; set; }
 
+        public List<CompareObject> finalOutput { get; set; }
+
 
         public ProgramLogic(Product product)
         {
@@ -33,7 +35,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 
             rankingJob = new RankingJob(this.product, this.compareJob);
 
-            List<CompareObject> finalOutput = new List<CompareObject>(this.rankingJob.rankingJobOutput);
+            finalOutput = new List<CompareObject>(this.rankingJob.rankingJobOutput);
         }
     }
 }

@@ -9,6 +9,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_molds
 {
     abstract class Mold : ObservableObject
     {
-        
+        public string type { get; set; }
+
     }
 }
