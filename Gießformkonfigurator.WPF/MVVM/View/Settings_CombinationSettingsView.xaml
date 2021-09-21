@@ -23,7 +23,7 @@
             <RowDefinition Height="65"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Konusabweichungen zwischen Komponenten"
+        <TextBlock Text="Benötigte Konusabweichung zwischen zwei kombinierbaren Komponenten:"
                    HorizontalAlignment="Left" VerticalAlignment="Center" Grid.ColumnSpan="2"
                    Foreground="Black" FontSize="18"
                    Margin="0,0,10,0"
@@ -36,22 +36,13 @@
                    Grid.Row="1" Grid.Column="0"/>
 
         <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
-        <TextBox Text="0" Width="75" Height="40"
+
+            <TextBox Text="{Binding deviationKonusBaseplateGuideRing}" 
+                 Width="75" Height="40"
                  VerticalAlignment="Center"
                  VerticalContentAlignment="Center"
                  Foreground="Black" FontSize="15">
-        </TextBox>
-
-        <TextBlock Text="bis"
-                   VerticalAlignment="Center"
-                   Foreground="Black" FontSize="15"
-                   Margin="10"/>
-
-        <TextBox Text="5" Width="75" Height="40"
-                 VerticalAlignment="Center"
-                 VerticalContentAlignment="Center"
-                 Foreground="Black" FontSize="15">
-        </TextBox>
+            </TextBox>
 
         <TextBlock Text="mm"
                    VerticalAlignment="Center"
@@ -66,18 +57,9 @@
                    Grid.Row="2" Grid.Column="0"/>
 
         <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1">
-            <TextBox Text="0" Width="75" Height="40"
-                 VerticalAlignment="Center"
-                 VerticalContentAlignment="Center"
-                 Foreground="Black" FontSize="15">
-            </TextBox>
 
-            <TextBlock Text="bis"
-                   VerticalAlignment="Center"
-                   Foreground="Black" FontSize="15"
-                   Margin="10"/>
-
-            <TextBox Text="1" Width="75" Height="40"
+            <TextBox Text="{Binding deviationKonusBaseplateInsertPlate}" 
+                 Width="75" Height="40"
                  VerticalAlignment="Center"
                  VerticalContentAlignment="Center"
                  Foreground="Black" FontSize="15">
@@ -96,18 +78,9 @@
                    Grid.Row="3" Grid.Column="0"/>
 
         <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="1">
-            <TextBox Text="0" Width="75" Height="40"
-                 VerticalAlignment="Center"
-                 VerticalContentAlignment="Center"
-                 Foreground="Black" FontSize="15">
-            </TextBox>
 
-            <TextBlock Text="bis"
-                   VerticalAlignment="Center"
-                   Foreground="Black" FontSize="15"
-                   Margin="10"/>
-
-            <TextBox Text="10" Width="75" Height="40"
+            <TextBox Text="{Binding deviationKonusBaseplateCore}" 
+                 Width="75" Height="40"
                  VerticalAlignment="Center"
                  VerticalContentAlignment="Center"
                  Foreground="Black" FontSize="15">
@@ -123,21 +96,12 @@
                    HorizontalAlignment="Left" VerticalAlignment="Center"
                    Foreground="Black" FontSize="15"
                    Margin="0,0,10,0"
-                   Grid.Row="5" Grid.Column="0"/>
+                   Grid.Row="4" Grid.Column="0"/>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="1">
-            <TextBox Text="2" Width="75" Height="40"
-                 VerticalAlignment="Center"
-                 VerticalContentAlignment="Center"
-                 Foreground="Black" FontSize="15">
-            </TextBox>
+        <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="1">
 
-            <TextBlock Text="bis"
-                   VerticalAlignment="Center"
-                   Foreground="Black" FontSize="15"
-                   Margin="10"/>
-
-            <TextBox Text="3" Width="75" Height="40"
+            <TextBox Text="{Binding deviationKonusInsertPlateCore}"
+                 Width="75" Height="40"
                  VerticalAlignment="Center"
                  VerticalContentAlignment="Center"
                  Foreground="Black" FontSize="15">
@@ -155,6 +119,7 @@
                 Foreground="Black"
                 Background="White"
                 FontSize="15"
-                Grid.Column="1" Grid.Row="6"/>
+                Grid.Column="1" Grid.Row="5"
+                Command="{Binding insertIntoDbCmd}"/>
     </Grid>
 </UserControl>

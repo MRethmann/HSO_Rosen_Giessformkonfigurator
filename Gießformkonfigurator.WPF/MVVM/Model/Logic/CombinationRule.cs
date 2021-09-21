@@ -8,10 +8,18 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using Gießformkonfigurator.WPF.Core;
     using Gießformkonfigurator.WPF.MVVM.Model.Db_components;
 
     abstract class CombinationRule
     {
+        public ApplicationSettings applicationSettings { get; set; }
+
+        public CombinationRule()
+        {
+            applicationSettings = new ApplicationSettings();
+        }
+
         protected abstract IEnumerable<Type> Typen { get; }
 
         public virtual bool Akzeptiert(Type teilTyp1, Type teilTyp2)
@@ -43,7 +51,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 
             if (baseplate.HasKonus && core.HasKonus)
             {
-                // TODO: Change area of matching to variable which can be changed in program settings
+                // TODO: Change area of matching to variable which can be changed in application settings
                 return baseplate.InnerKonusMax > core.OuterKonusMax
                         && (baseplate.InnerKonusMax - 2) <= core.OuterKonusMax
                         && baseplate.InnerKonusMin > core.OuterKonusMin

@@ -9,7 +9,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 #pragma warning disable SA1623 // Property summary documentation should match accessors
     using System;
     using System.Collections.Generic;
-    using System.Linq;
+    using Gießformkonfigurator.WPF.Core;
     using Gießformkonfigurator.WPF.MVVM.Model.Db_components;
     using Gießformkonfigurator.WPF.MVVM.Model.Db_molds;
     using Gießformkonfigurator.WPF.MVVM.Model.Db_products;
@@ -30,6 +30,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
         public List<Cupform> listCupforms { get; set; } = new List<Cupform>();
         public List<ModularMold> modularMoldsOutput { get; set; }
         public CombinationRuleset combinationRuleSet { get; set; }
+        public ApplicationSettings applicationSettings { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CombinationJob"/> class.
@@ -48,6 +49,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             listCupforms = new List<Cupform>(filterJob.listCupforms);
 
             combinationRuleSet = new CombinationRuleset();
+            applicationSettings = new ApplicationSettings();
 
             this.CombineDiscMold();
             this.CombineCupMold();
@@ -228,5 +230,6 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                 }
             }
         }
+
     }
 }

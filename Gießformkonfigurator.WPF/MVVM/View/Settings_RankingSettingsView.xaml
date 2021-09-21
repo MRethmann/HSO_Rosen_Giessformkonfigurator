@@ -35,27 +35,13 @@
                    Grid.Row="1" Grid.Column="0"/>
 
         <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
-            <TextBox Text="0" Width="75" Height="40"
+            <TextBox Text="{Binding rankingFactorOuterDiameter}" Width="75" Height="40"
                  VerticalAlignment="Center"
                  VerticalContentAlignment="Center"
+                 HorizontalAlignment="Right"
                  Foreground="Black" FontSize="15">
             </TextBox>
-
-            <TextBlock Text="bis"
-                   VerticalAlignment="Center"
-                   Foreground="Black" FontSize="15"
-                   Margin="10"/>
-
-            <TextBox Text="5" Width="75" Height="40"
-                 VerticalAlignment="Center"
-                 VerticalContentAlignment="Center"
-                 Foreground="Black" FontSize="15">
-            </TextBox>
-
-            <TextBlock Text="mm"
-                   VerticalAlignment="Center"
-                   Foreground="Black" FontSize="15"
-                   Margin="10"/>
+            <TextBlock VerticalAlignment="Center" FontSize="20">%</TextBlock>
         </StackPanel>
 
         <TextBlock Text="Innendurchmesser-Faktor"
@@ -65,27 +51,13 @@
                    Grid.Row="2" Grid.Column="0"/>
 
         <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1">
-            <TextBox Text="2" Width="75" Height="40"
+
+            <TextBox Text="{Binding rankingFactorInnerDiameter}" Width="75" Height="40"
                  VerticalAlignment="Center"
                  VerticalContentAlignment="Center"
                  Foreground="Black" FontSize="15">
             </TextBox>
-
-            <TextBlock Text="bis"
-                   VerticalAlignment="Center"
-                   Foreground="Black" FontSize="15"
-                   Margin="10"/>
-
-            <TextBox Text="3" Width="75" Height="40"
-                 VerticalAlignment="Center"
-                 VerticalContentAlignment="Center"
-                 Foreground="Black" FontSize="15">
-            </TextBox>
-
-            <TextBlock Text="mm"
-                   VerticalAlignment="Center"
-                   Foreground="Black" FontSize="15"
-                   Margin="10"/>
+            <TextBlock VerticalAlignment="Center" FontSize="20">%</TextBlock>
         </StackPanel>
 
         <TextBlock Text="Bolzendurchmesser-Faktor"
@@ -95,27 +67,13 @@
                    Grid.Row="3" Grid.Column="0"/>
 
         <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="1">
-            <TextBox Text="1" Width="75" Height="40"
+
+            <TextBox Text="{Binding rankingFactorBolts}" Width="75" Height="40"
                  VerticalAlignment="Center"
                  VerticalContentAlignment="Center"
                  Foreground="Black" FontSize="15">
             </TextBox>
-
-            <TextBlock Text="bis"
-                   VerticalAlignment="Center"
-                   Foreground="Black" FontSize="15"
-                   Margin="10"/>
-
-            <TextBox Text="6" Width="75" Height="40"
-                 VerticalAlignment="Center"
-                 VerticalContentAlignment="Center"
-                 Foreground="Black" FontSize="15">
-            </TextBox>
-
-            <TextBlock Text="mm"
-                   VerticalAlignment="Center"
-                   Foreground="Black" FontSize="15"
-                   Margin="10"/>
+            <TextBlock VerticalAlignment="Center" FontSize="20">%</TextBlock>
         </StackPanel>
 
         <Button Content="Speichern"
@@ -124,7 +82,8 @@
                 Foreground="Black"
                 Background="White"
                 FontSize="15"
-                Grid.Column="1" Grid.Row="4"/>
+                Grid.Column="1" Grid.Row="4"
+                Command="{Binding insertIntoDbCmd}"/>
 
     </Grid>
 </UserControl>

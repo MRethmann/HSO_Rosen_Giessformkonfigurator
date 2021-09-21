@@ -5,6 +5,7 @@
 //-----------------------------------------------------------------------
 namespace Gießformkonfigurator.WPF.MVVM.View
 {
+    using Gießformkonfigurator.WPF.MVVM.ViewModel;
     using System.Windows.Controls;
     /// <summary>
     /// Interaktionslogik für RankingSettingsView.xaml
@@ -14,6 +15,7 @@ namespace Gießformkonfigurator.WPF.MVVM.View
         public Settings_RankingSettingsView()
         {
             InitializeComponent();
+            DataContext = new Settings_RankingSettingsViewModel();
         }
     }
 }
