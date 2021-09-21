@@ -20,12 +20,12 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
         /// <summary>
         /// Difference between prefered inner Diameter and actual inner Diameter which requires post processing.
         /// </summary>
-        public decimal? differenceInnerDiameter { get; set; }
+        public decimal? differenceInnerDiameter { get; set; } = 0;
 
         /// <summary>
         /// Difference between prefered outer Diameter and actual outer Diameter which requires post processing.
         /// </summary>
-        public decimal? differenceOuterDiameter { get; set; }
+        public decimal? differenceOuterDiameter { get; set; } = 0;
 
         /// <summary>
         /// Difference between prefered hole size and actual hole Size which requires post processing.

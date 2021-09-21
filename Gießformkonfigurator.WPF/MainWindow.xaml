@@ -7,7 +7,6 @@
         xmlns:viewModel="clr-namespace:Gießformkonfigurator.WPF.MVVM.ViewModel"
         mc:Ignorable="d"
         WindowState="Maximized"
-        ResizeMode="NoResize"
         Background="WhiteSmoke">
 
     <Window.DataContext>

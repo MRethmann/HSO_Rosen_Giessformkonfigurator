@@ -12,6 +12,8 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
     class CompareJob
     {
         public ProductDisc productDisc { get; set; }
+
+        public ProductCup productCup { get; set; }
         public List<ModularMold> modularMolds { get; set; }
         public List<SingleMold> singleMolds { get; set; }
         public List<Bolt> bolts { get; set; }
@@ -19,7 +21,14 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 
         public CompareJob(Product product, CombinationJob combinationJob)
         {
-            this.productDisc = (ProductDisc) product;
+            if (product is ProductCup)
+            {
+                this.productCup = (ProductCup) product;
+            }   
+            else if (product is ProductDisc)
+            {
+                this.productDisc = (ProductDisc) product;
+            }
 
             modularMolds = new List<ModularMold>(combinationJob.modularMoldsOutput);
 
@@ -30,8 +39,14 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             // Contains the final Output of Compareobjects with ranking parameters and bolts
             compareJobOutput = new List<CompareObject>();
 
-            this.CompareDiscProduct();
-            this.CompareCupProduct();
+            if (productCup != null)
+            {
+                this.CompareCupProduct();
+            }
+            else if (productDisc != null)
+            {
+                this.CompareDiscProduct();
+            }
         }
 
         public void CompareDiscProduct()
@@ -250,7 +265,22 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 
         public void CompareCupProduct()
         {
+            CompareRuleSet compareRuleSet = new CompareRuleSet();
 
+            // Contains all CompareObjects without any bolts
+            List<CompareObject> compareObjectsTemp01 = new List<CompareObject>();
+
+            // First Step: Compare ModularMolds with Product. Add ranking Information
+            foreach (var modularMold in this.modularMolds)
+            {
+                if (compareRuleSet.Compare(this.productCup, modularMold))
+                {
+                    var compareObject = new CompareObject((ProductCup) this.productCup, (ModularMold) modularMold);
+                    compareObject.differenceInnerDiameter = productCup.InnerDiameter - modularMold.core.OuterDiameter;
+                    //compareObject.differenceHeight = ;
+                    compareObjectsTemp01.Add(compareObject);
+                }
+            }
         }
     }
 }

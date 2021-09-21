@@ -51,7 +51,7 @@
                                Margin="10"
                                FontSize="18"/>
 
-                    <ComboBox Margin="10" HorizontalAlignment="left" VerticalAlignment="Center" MinWidth="225" FontSize="18" Grid.Column="1" x:Name="test" ItemsSource="{Binding dbTableSelection}"  SelectedItem="{Binding selectedTable, UpdateSourceTrigger=PropertyChanged}">
+                    <ComboBox Name="selectedTableComboBox" Margin="10" HorizontalAlignment="left" VerticalAlignment="Center" MinWidth="225" FontSize="18" Grid.Column="1" ItemsSource="{Binding dbTableSelection}"  SelectedItem="{Binding selectedTable, UpdateSourceTrigger=PropertyChanged}">
                         
                     </ComboBox>
 
@@ -62,31 +62,40 @@
                                FontSize="18"
                                Grid.Row="1"/>
 
-                    <ComboBox Margin="10" HorizontalAlignment="left" VerticalAlignment="Center" MinWidth="225" FontSize="18" Grid.Column="1" Grid.Row="1" ItemsSource="{Binding dbAttributeSelection}" SelectedItem="{Binding selectedAttribute, UpdateSourceTrigger=PropertyChanged}">
+                    <ComboBox Name="selectedAttributeComboBox" Margin="10" HorizontalAlignment="left" VerticalAlignment="Center" MinWidth="225" FontSize="18" Grid.Column="1" Grid.Row="1" ItemsSource="{Binding dbAttributeSelection}" SelectedItem="{Binding selectedAttribute, UpdateSourceTrigger=PropertyChanged}">
 
                     </ComboBox>
 
-                    <TextBlock Text="Filter"
-                               HorizontalAlignment="left"
-                               VerticalAlignment="Bottom"
+                    <TextBlock Text="Operator"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
                                Margin="10"
                                FontSize="18"
                                Grid.Row="2"/>
 
-                    <ComboBox Margin="10" HorizontalAlignment="left" VerticalAlignment="Top" MinWidth="150" FontSize="18" Grid.Column="0" Grid.Row="3">
-                        <ComboBoxItem IsSelected="true">Grundplatte</ComboBoxItem>
-                        <ComboBoxItem>Innenring</ComboBoxItem>
-                        <ComboBoxItem>Außenring</ComboBoxItem>
-                        <ComboBoxItem>Bolzen</ComboBoxItem>
+                    <ComboBox Name="selectedOperatorComboBox" Margin="10" HorizontalAlignment="left" VerticalAlignment="Center" MinWidth="225" FontSize="18" Grid.Column="1" Grid.Row="2" SelectedItem="">
+                        <ComboBoxItem Content="=" IsSelected="True"></ComboBoxItem>
+                        <ComboBoxItem Content=">"></ComboBoxItem>
+                        <ComboBoxItem Content="&lt;"></ComboBoxItem>
+                        <ComboBoxItem Content="!="></ComboBoxItem>
                     </ComboBox>
 
-                    <TextBox Grid.Row="3" Grid.Column="1" 
+                    <TextBlock Text="Filterwert"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="10"
+                               FontSize="18"
+                               Grid.Row="3"/>
+
+                    <TextBox Name="attributeValueTextBox"
+                             Grid.Row="3" Grid.Column="1" 
                              Width="200" Height="30"
-                             VerticalAlignment="top" HorizontalAlignment="left"
+                             VerticalAlignment="center" HorizontalAlignment="left"
                              VerticalContentAlignment="Center"
                              Foreground="Black" FontSize="15"
                              Margin="10"
-                             MinWidth="225"/>
+                             MinWidth="225"
+                             Text="{Binding attributeValue, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
 
                     <!--  <TextBox x:Name="TableSelection" 
                              Width="200" Height="40"
@@ -117,7 +126,7 @@
 
                     -->
                     <Button x:Name="ProduktID" Content="Suchen"
-                            HorizontalAlignment="center" VerticalAlignment="top"
+                            HorizontalAlignment="right" VerticalAlignment="top"
                             Width="150" Height="50"
                             Foreground="Black"
                             Background="White"
@@ -126,7 +135,7 @@
                             Grid.Column="0"
                             Grid.ColumnSpan="2"
                             Grid.Row="4"
-                            Command="{Binding searchCommand}">
+                            Click="ProduktID_Click">
                     </Button>
 
                     <Border  Grid.Row="0" Grid.RowSpan="5" Grid.Column="2"  Margin="10" BorderBrush="Black" BorderThickness="1">
@@ -144,21 +153,20 @@
                                    Foreground="Black" FontSize="24"
                                    Margin="10"/>
                             </Border>
-                            
+
                             <DataGrid Grid.Row="1"  Margin="10"
-                                    Name="combinationJobOutput" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding mGießformenFinal, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" 
+                                    Name="dbQueryOutput" AutoGenerateColumns="True" IsReadOnly="True" ItemsSource="{Binding databaseOutput}" 
                                     Background="white" 
                                     FontSize="15" 
                                     BorderThickness="0"
                                     HorizontalGridLinesBrush="LightGray"
                                     VerticalGridLinesBrush="White"
                                     MinRowHeight="20"
-                                    HeadersVisibility="Column"
-                                    >
-
+                                    HeadersVisibility="Column">
+                                
                                 <DataGrid.RowStyle>
                                     <Style TargetType="DataGridRow">
-                                        <Setter Property="Background" Value="white" />
+                                        <Setter Property="Background" Value="WhiteSmoke" />
                                         <Setter Property="MinHeight" Value="50"/>
                                         <Style.Triggers>
                                             <Trigger Property="IsMouseOver" Value="True">
@@ -169,78 +177,6 @@
 
                                     </Style>
                                 </DataGrid.RowStyle>
-
-                                <DataGrid.Columns>
-                                    <DataGridTextColumn Header="Attribute" Width="*" Binding="{Binding Grundplatte}">
-                                        <DataGridColumn.HeaderStyle>
-                                            <Style TargetType="DataGridColumnHeader">
-                                                <Setter Property="Background" Value="White"/>
-                                                <Setter Property="Foreground" Value="Black"/>
-                                                <Setter Property="FontSize" Value="18"/>
-                                                <Setter Property="BorderThickness" Value="0, 0, 0, 1"/>
-                                                <Setter Property="BorderBrush" Value="Gray"/>
-                                                <Setter Property="Margin" Value=" 0, 10, 0, 0"/>
-                                                <Setter Property="Height" Value="40"/>
-                                                <Setter Property="VerticalAlignment" Value="center"/>
-                                            </Style>
-                                        </DataGridColumn.HeaderStyle>
-                                    </DataGridTextColumn>
-                                
-                                    <DataGridTextColumn Header="Attribute" Width="*" Binding="{Binding Grundplatte}">
-                                        <DataGridColumn.HeaderStyle>
-                                            <Style TargetType="DataGridColumnHeader">
-                                                <Setter Property="Background" Value="White"/>
-                                                <Setter Property="Foreground" Value="Black"/>
-                                                <Setter Property="FontSize" Value="18"/>
-                                                <Setter Property="BorderThickness" Value="0, 0, 0, 1"/>
-                                                <Setter Property="BorderBrush" Value="Gray"/>
-                                                <Setter Property="Margin" Value=" 0, 10, 0, 0"/>
-                                                <Setter Property="Height" Value="40"/>
-                                                <Setter Property="VerticalAlignment" Value="center"/>
-                                            </Style>
-                                        </DataGridColumn.HeaderStyle>
-                                    </DataGridTextColumn>
-                                
-                                    <DataGridTextColumn Header="Attribute" Width="*" Binding="{Binding Grundplatte}">
-                                        <DataGridColumn.HeaderStyle>
-                                            <Style TargetType="DataGridColumnHeader">
-                                                <Setter Property="Background" Value="White"/>
-                                                <Setter Property="Foreground" Value="Black"/>
-                                                <Setter Property="FontSize" Value="18"/>
-                                                <Setter Property="BorderThickness" Value="0, 0, 0, 1"/>
-                                                <Setter Property="BorderBrush" Value="Gray"/>
-                                                <Setter Property="Margin" Value=" 0, 10, 0, 0"/>
-                                                <Setter Property="Height" Value="40"/>
-                                                <Setter Property="VerticalAlignment" Value="center"/>
-                                            </Style>
-                                        </DataGridColumn.HeaderStyle>
-                                    </DataGridTextColumn>
-                                
-                                    <DataGridTextColumn Header="Attribute" Width="*" Binding="{Binding Grundplatte}">
-                                        <DataGridColumn.HeaderStyle>
-                                            <Style TargetType="DataGridColumnHeader">
-                                                <Setter Property="Background" Value="White"/>
-                                                <Setter Property="Foreground" Value="Black"/>
-                                                <Setter Property="FontSize" Value="18"/>
-                                                <Setter Property="BorderThickness" Value="0, 0, 0, 1"/>
-                                                <Setter Property="BorderBrush" Value="Gray"/>
-                                                <Setter Property="Margin" Value=" 0, 10, 0, 0"/>
-                                                <Setter Property="Height" Value="40"/>
-                                                <Setter Property="VerticalAlignment" Value="center"/>
-                                            </Style>
-                                        </DataGridColumn.HeaderStyle>
-                                    </DataGridTextColumn>
-
-                                </DataGrid.Columns>
-
-                                <DataGrid.RowDetailsTemplate>
-                                    <DataTemplate>
-                                        <Grid Background="WhiteSmoke" Height="100">
-
-                                        </Grid>
-                                    </DataTemplate>
-                                </DataGrid.RowDetailsTemplate>
-
                             </DataGrid>
                         </Grid>
                     </Border>

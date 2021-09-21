@@ -4,12 +4,17 @@
 // </copyright>
 //-----------------------------------------------------------------------
 using Gießformkonfigurator.WPF.Core;
+using Gießformkonfigurator.WPF.Enums;
 
 namespace Gießformkonfigurator.WPF.MVVM.Model.Db_molds
 {
+    
+    
+
     abstract class Mold : ObservableObject
     {
-        public string type { get; set; }
+        public MoldType moldType { get; set; }
 
+        public ProductType productType { get; set; }
     }
 }

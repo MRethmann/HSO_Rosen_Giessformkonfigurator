@@ -133,7 +133,7 @@
                                 </DataGridColumn.HeaderStyle>
                             </DataGridTextColumn>
 
-                            <DataGridTextColumn Header="Typ" Width="*" Binding="{Binding Mold.type}">
+                            <DataGridTextColumn Header="Typ" Width="*" Binding="{Binding Mold.moldType}">
                                 <DataGridColumn.HeaderStyle>
                                     <Style TargetType="DataGridColumnHeader">
                                         <Setter Property="Background" Value="White"/>

@@ -13,6 +13,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
     using System.Configuration;
     using System.Data;
     using System.Data.SqlClient;
+    using System.Linq;
     using System.Windows;
     using System.Windows.Input;
 
@@ -24,17 +25,36 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
 
         public List<String> dbAttributeSelection { get; set; }
 
+        private string _selectedTable;
         public string selectedTable 
         {
-            get { return selectedTable; }
+            get { return _selectedTable; }
             set 
             {
-                selectedTable = value;
+                _selectedTable = value;
                 this.getTableAttributes();
             }
         }
 
-        public string selectedAttribute { get; set; }
+        private string _selectedAttribute { get; set; }
+        public string selectedAttribute
+        {
+            get { return _selectedAttribute; }
+            set
+            {
+                _selectedAttribute = value;
+            }
+        }
+
+        private string _attributeValue { get; set; }
+        public string attributeValue 
+        {
+            get { return _attributeValue; }
+            set
+            {
+                _attributeValue = value;
+            }
+        }
 
         public Visibility IsLoading { get; set; } = Visibility.Hidden;
 
@@ -43,6 +63,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
         public DBManagement_MainViewModel()
         {
             this.dbTableSelection = new List<String>();
+            this.dbAttributeSelection = new List<String>();
             this.getDbTables();
             searchCommand = new RelayCommand(param => databaseQuery(), param => validateSearch());
         }
@@ -71,6 +92,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
 
         public void getTableAttributes()
         {
+            dbAttributeSelection.Clear();
             string connString = this.connectionString;
             using (SqlConnection connection = new SqlConnection(connString))
             {
@@ -83,7 +105,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                     {
                         while (reader.Read())
                         {
-                            this.dbAttributeSelection.Add(reader["TABLE_NAME"].ToString());
+                            this.dbAttributeSelection.Add(reader["COLUMN_NAME"].ToString());
                         }
                     }
                 }
@@ -92,7 +114,22 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
 
         public void databaseQuery()
         {
-            
+            string connString = this.connectionString;
+
+            using (SqlConnection connection = new SqlConnection(connString))
+            {
+                connection.Open();
+                string table = this.selectedTable;
+                string attribute = this.selectedAttribute;
+                string attributeValue = this.attributeValue;
+                string query = $"SELECT * FROM {table} WHERE {attribute} = '{attributeValue}'";
+                DataTable dataTable = new DataTable();
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
+                    dataAdapter.Fill(dataTable);
+                }
+            }
         }
 
         public bool validateSearch()

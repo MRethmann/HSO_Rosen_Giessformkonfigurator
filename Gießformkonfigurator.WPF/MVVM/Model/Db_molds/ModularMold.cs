@@ -5,6 +5,7 @@
 //-----------------------------------------------------------------------
 namespace Gießformkonfigurator.WPF.MVVM.Model.Db_molds
 {
+    using Gießformkonfigurator.WPF.Enums;
     using Gießformkonfigurator.WPF.MVVM.Model.Db_components;
     using System.Collections.Generic;
     using System.ComponentModel;
@@ -29,7 +30,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_molds
             this.guideRing = fr;
             this.insertPlate = el;
             this.core = ik;
-            this.type = "Mehrteilige Gießform";
+            this.moldType = MoldType.Mehrteilige_Gießform;
         }
 
         public ModularMold(Cupform cupform, Core core, InsertPlate insertPlate)

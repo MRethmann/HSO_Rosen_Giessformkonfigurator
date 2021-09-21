@@ -107,8 +107,8 @@
     </Compile>
     <Compile Include="Core\ObservableObject.cs" />
     <Compile Include="Core\RelayCommand.cs" />
-    <Compile Include="Core\addProductCommand.cs" />
-    <Compile Include="Core\SearchCommand.cs" />
+    <Compile Include="Enums\moldType.cs" />
+    <Compile Include="Enums\productType.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -215,6 +215,8 @@
     <Compile Include="MVVM\Model\Db_molds\ModularMold.cs" />
     <Compile Include="MVVM\Model\Db_molds\Mold.cs" />
     <Compile Include="MVVM\Model\Db_molds\SingleMold.cs" />
+    <Compile Include="MVVM\Model\Db_molds\SingleMoldCup.cs" />
+    <Compile Include="MVVM\Model\Db_molds\SingleMoldDisc.cs" />
     <Compile Include="MVVM\Model\Db_products\Product.cs" />
     <Compile Include="MVVM\Model\Db_products\ProductCup.cs" />
     <Compile Include="MVVM\Model\Db_products\ProductDisc.cs" />

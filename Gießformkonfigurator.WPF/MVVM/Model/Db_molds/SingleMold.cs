@@ -3,13 +3,15 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
+using Gießformkonfigurator.WPF.Enums;
+
 namespace Gießformkonfigurator.WPF.MVVM.Model.Db_molds
 {
     class SingleMold : Mold
     {
         public SingleMold()
         {
-            this.type = "Einteilige Gießform";
+            this.moldType = MoldType.Einteilige_Gießform;
         }
     }
 }
