@@ -21,9 +21,9 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
     {
         public string connectionString { get; set; } = ConfigurationManager.ConnectionStrings["GießformDB"].ToString();
 
-        public List<String> dbTableSelection { get; set; }
+        public ObservableCollection<String> dbTableSelection { get; set; }
 
-        public List<String> dbAttributeSelection { get; set; }
+        public ObservableCollection<String> dbAttributeSelection { get; set; }
 
         private string _selectedTable;
         public string selectedTable 
@@ -63,8 +63,8 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
 
         public DBManagement_MainViewModel()
         {
-            this.dbTableSelection = new List<String>();
-            this.dbAttributeSelection = new List<String>();
+            this.dbTableSelection = new ObservableCollection<String>();
+            this.dbAttributeSelection = new ObservableCollection<String>();
             this.getDbTables();
             searchCommand = new RelayCommand(param => databaseQuery(), param => validateSearch());
         }

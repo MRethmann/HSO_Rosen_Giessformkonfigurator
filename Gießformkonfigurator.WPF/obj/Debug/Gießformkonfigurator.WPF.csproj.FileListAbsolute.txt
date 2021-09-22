@@ -214,3 +214,5 @@ C:\Users\rethm\OneDrive\Dokumente\VisualStudio\Gießformkonfigurator.WPF\obj\Deb
 C:\Users\rethm\OneDrive\Dokumente\VisualStudio\Gießformkonfigurator.WPF\obj\Debug\Gießformkonfigurator.WPF.csproj.CopyComplete
 C:\Users\rethm\OneDrive\Dokumente\VisualStudio\Gießformkonfigurator.WPF\obj\Debug\Gießformkonfigurator.WPF.exe
 C:\Users\rethm\OneDrive\Dokumente\VisualStudio\Gießformkonfigurator.WPF\obj\Debug\Gießformkonfigurator.WPF.pdb
+C:\Users\rethm\OneDrive\Dokumente\VisualStudio\Gießformkonfigurator.WPF\obj\Debug\Gießformkonfigurator.WPF.Migrations.ProductchangesAddedSingleMoldTables.resources
+C:\Users\rethm\OneDrive\Dokumente\VisualStudio\Gießformkonfigurator.WPF\obj\Debug\Gießformkonfigurator.WPF.Migrations.addedSingleMoldDiscSingleMoldCup.resources

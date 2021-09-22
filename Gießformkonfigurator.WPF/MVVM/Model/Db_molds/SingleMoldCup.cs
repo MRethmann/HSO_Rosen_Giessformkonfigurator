@@ -7,13 +7,21 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_molds
 {
     using Gießformkonfigurator.WPF.Enums;
     using Gießformkonfigurator.WPF.MVVM.Model.Db_components;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
-    class SingleMoldCup : Mold
+    [Table("SingleMoldCup")]
+    public partial class SingleMoldCup : Mold
     {
+        [NotMapped]
         public Core core { get; set; }
 
+        [Key]
+        [Column("ID")]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID { get; set; }
 
+        [StringLength(255)]
         public string Description { get; set; }
 
         public decimal? OuterDiameter { get; set; }

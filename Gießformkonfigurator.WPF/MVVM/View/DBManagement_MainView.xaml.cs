@@ -23,7 +23,7 @@ namespace Gießformkonfigurator.WPF.MVVM.View
             DataContext = new DBManagement_MainViewModel();
         }
 
-        private void ProduktID_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void DBQueryBtn_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             string connString = ConfigurationManager.ConnectionStrings["GießformDB"].ToString();
 

@@ -16,15 +16,17 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_products
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID { get; set; }
 
+        public string Description { get; set; }
+
         [Column("BaseCup")]
-        [Required]
         [StringLength(100)]
         public string BaseCup { get; set; }
 
         public decimal InnerDiameter { get; set; }
 
-        [Required]
+        public decimal? FactorPU { get; set; }
+
         [StringLength(5)]
-        public string HoleCircle { get; set; }
+        public string BTC { get; set; }
     }
 }

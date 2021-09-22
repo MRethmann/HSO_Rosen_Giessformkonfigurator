@@ -40,7 +40,7 @@ namespace Gieﬂformkonfigurator.WPF.MVVM.Model.Logic
             var product = compareElements.OfType<ProductCup>().Single();
             var gieﬂform = compareElements.OfType<ModularMold>().Single();
 
-            if (product.HoleCircle != null)
+            if (product.BTC != null)
             {
                 return product.InnerDiameter > gieﬂform.core.OuterDiameter
                     && (product.InnerDiameter + 1) < gieﬂform.core.OuterDiameter

@@ -49,13 +49,13 @@ namespace Gießformkonfigurator.WPF.Core
                         {
                             SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
                             dataAdapter.Fill(dataTable);
-                            this.deviationKonusBaseplateCore = (Decimal)dataTable.Rows[0]["deviationKonusBaseplateCore"];
-                            this.deviationKonusBaseplateInsertPlate = (Decimal)dataTable.Rows[0]["deviationKonusBaseplateInsertPlate"];
-                            this.deviationKonusBaseplateGuideRing = (Decimal)dataTable.Rows[0]["deviationKonusBaseplateGuideRing"];
-                            this.deviationKonusInsertPlateCore = (Decimal)dataTable.Rows[0]["deviationKonusInsertPlateCore"];
-                            this.rankingFactorOuterDiameter = (Decimal)dataTable.Rows[0]["rankingFactorOuterDiameter"];
-                            this.rankingFactorInnerDiameter = (Decimal)dataTable.Rows[0]["rankingFactorInnerDiameter"];
-                            this.rankingFactorBolts = (Decimal)dataTable.Rows[0]["rankingFactorBolts"];
+                            this.deviationKonusBaseplateCore = (Decimal) dataTable.Rows[0]["deviationKonusBaseplateCore"];
+                            this.deviationKonusBaseplateInsertPlate = (Decimal) dataTable.Rows[0]["deviationKonusBaseplateInsertPlate"];
+                            this.deviationKonusBaseplateGuideRing = (Decimal) dataTable.Rows[0]["deviationKonusBaseplateGuideRing"];
+                            this.deviationKonusInsertPlateCore = (Decimal) dataTable.Rows[0]["deviationKonusInsertPlateCore"];
+                            this.rankingFactorOuterDiameter = (Decimal) dataTable.Rows[0]["rankingFactorOuterDiameter"];
+                            this.rankingFactorInnerDiameter = (Decimal) dataTable.Rows[0]["rankingFactorInnerDiameter"];
+                            this.rankingFactorBolts = (Decimal) dataTable.Rows[0]["rankingFactorBolts"];
                         }
                     }
                     catch (Exception ex)

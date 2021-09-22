@@ -16,11 +16,18 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_products
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID { get; set; }
 
+        public string Description { get; set; }
+
         public decimal OuterDiameter { get; set; }
 
         public decimal Height { get; set; }
 
         public decimal InnerDiameter { get; set; }
+
+        public decimal? FactorPU { get; set; }
+
+        [StringLength(5)]
+        public string BTC { get; set; }
 
         public decimal? Hc1Diameter { get; set; }
 

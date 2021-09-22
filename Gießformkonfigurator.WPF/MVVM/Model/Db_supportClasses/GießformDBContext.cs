@@ -7,6 +7,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses
 {
     using System.Data.Entity;
     using Gießformkonfigurator.WPF.MVVM.Model.Db_components;
+    using Gießformkonfigurator.WPF.MVVM.Model.Db_molds;
     using Gießformkonfigurator.WPF.MVVM.Model.Db_products;
 
     /// <summary>
@@ -42,6 +43,10 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses
 
         public virtual DbSet<BoltCircleType> BoltCircleTypes { get; set; }
 
+        public virtual DbSet<SingleMoldDisc> SingleMoldDiscs { get; set; }
+
+        public virtual DbSet<SingleMoldCup> SingleMoldCups { get; set; }
+
         /// <summary>
         /// Initialisiert die EntityConfigurations für alle DB-Objekte.
         /// </summary>
@@ -65,6 +70,10 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses
             modelBuilder.Configurations.Add(new CupformEntityConfiguration());
 
             modelBuilder.Configurations.Add(new BoltCircleTypeEntityConfiguration());
+
+            modelBuilder.Configurations.Add(new SingleMoldDiscEntityConfiguration());
+
+            modelBuilder.Configurations.Add(new SingleMoldCupEntityConfiguration());
         }
     }
 }

@@ -11,7 +11,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_molds
     
     
 
-    abstract class Mold : ObservableObject
+    public abstract class Mold
     {
         public MoldType moldType { get; set; }
 

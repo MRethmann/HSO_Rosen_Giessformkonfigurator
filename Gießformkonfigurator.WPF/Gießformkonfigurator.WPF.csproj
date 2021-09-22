@@ -204,6 +204,14 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\202109220934549_Product changes, Added SingleMold Tables.cs" />
+    <Compile Include="Migrations\202109220934549_Product changes, Added SingleMold Tables.Designer.cs">
+      <DependentUpon>202109220934549_Product changes, Added SingleMold Tables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109220939021_added SingleMoldDisc, SingleMoldCup.cs" />
+    <Compile Include="Migrations\202109220939021_added SingleMoldDisc, SingleMoldCup.Designer.cs">
+      <DependentUpon>202109220939021_added SingleMoldDisc, SingleMoldCup.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MVVM\Model\Db_components\Baseplate.cs" />
     <Compile Include="MVVM\Model\Db_components\Bolt.cs" />
@@ -221,6 +229,8 @@
     <Compile Include="MVVM\Model\Db_products\Product.cs" />
     <Compile Include="MVVM\Model\Db_products\ProductCup.cs" />
     <Compile Include="MVVM\Model\Db_products\ProductDisc.cs" />
+    <Compile Include="MVVM\Model\Db_supportClasses\SingleMoldDiscEntityConfiguration.cs" />
+    <Compile Include="MVVM\Model\Db_supportClasses\SingleMoldCupEntityConfiguration.cs" />
     <Compile Include="MVVM\Model\Db_supportClasses\BaseplateEntityConfiguration.cs" />
     <Compile Include="MVVM\Model\Db_supportClasses\BoltCircleTypeEntityConfiguration.cs" />
     <Compile Include="MVVM\Model\Db_supportClasses\BoltEntityConfiguration.cs" />
@@ -337,6 +347,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Migrations\202109220934549_Product changes, Added SingleMold Tables.resx">
+      <DependentUpon>202109220934549_Product changes, Added SingleMold Tables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109220939021_added SingleMoldDisc, SingleMoldCup.resx">
+      <DependentUpon>202109220939021_added SingleMoldDisc, SingleMoldCup.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

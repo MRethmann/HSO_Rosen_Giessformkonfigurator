@@ -12,13 +12,19 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses
     {
         public ProductCupEntityConfiguration()
         {
-                this.Property(e => e.BaseCup)
+            this.Property(e => e.Description)
                 .IsUnicode(false);
 
-                this.Property(e => e.InnerDiameter)
+            this.Property(e => e.BaseCup)
+                .IsUnicode(false);
+
+            this.Property(e => e.InnerDiameter)
                 .HasPrecision(10, 2);
 
-                this.Property(e => e.HoleCircle)
+            this.Property(e => e.FactorPU)
+                .HasPrecision(10, 2);
+
+            this.Property(e => e.BTC)
                 .IsFixedLength()
                 .IsUnicode(false);
         }

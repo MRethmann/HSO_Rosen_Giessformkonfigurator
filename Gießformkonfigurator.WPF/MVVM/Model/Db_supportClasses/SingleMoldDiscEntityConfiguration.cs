@@ -1,16 +1,17 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="ProductDiscEntityConfiguration.cs" company="PlaceholderCompany">
+// <copyright file="BaseplateEntityConfiguration.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
 namespace Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses
 {
     using System.Data.Entity.ModelConfiguration;
-    using Gießformkonfigurator.WPF.MVVM.Model.Db_products;
+    using Gießformkonfigurator.WPF.MVVM.Model.Db_components;
+    using Gießformkonfigurator.WPF.MVVM.Model.Db_molds;
 
-    class ProductDiscEntityConfiguration : EntityTypeConfiguration<ProductDisc>
+    class SingleMoldDiscEntityConfiguration : EntityTypeConfiguration<SingleMoldDisc>
     {
-        public ProductDiscEntityConfiguration()
+        public SingleMoldDiscEntityConfiguration()
         {
             this.Property(e => e.Description)
             .IsUnicode(false);
@@ -19,26 +20,20 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses
             .HasPrecision(10, 2);
 
             this.Property(e => e.Height)
-                .HasPrecision(10, 2);
-
-            this.Property(e => e.FactorPU)
-                .HasPrecision(10, 2);
-
-            this.Property(e => e.BTC)
-                .IsFixedLength()
-                .IsUnicode(false);
+            .HasPrecision(10, 2);
 
             this.Property(e => e.InnerDiameter)
                 .HasPrecision(10, 2);
 
-            this.Property(e => e.Hc1HoleDiameter)
+            this.Property(e => e.HcHoles)
                 .HasPrecision(10, 2);
 
-            this.Property(e => e.Hc2HoleDiameter)
+            this.Property(e => e.HcDiameter)
                 .HasPrecision(10, 2);
 
-            this.Property(e => e.Hc3HoleDiameter)
+            this.Property(e => e.BoltDiameter)
                 .HasPrecision(10, 2);
         }
     }
+
 }
