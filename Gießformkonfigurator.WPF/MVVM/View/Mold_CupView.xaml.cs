@@ -5,6 +5,7 @@
 //-----------------------------------------------------------------------
 namespace Gießformkonfigurator.WPF.MVVM.View
 {
+    using Gießformkonfigurator.WPF.MVVM.ViewModel;
     using System.Windows;
     using System.Windows.Controls;
     /// <summary>
@@ -15,6 +16,7 @@ namespace Gießformkonfigurator.WPF.MVVM.View
         public Mold_CupView()
         {
             InitializeComponent();
+            DataContext = new Mold_CupViewModel();
         }
     }
 }

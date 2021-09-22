@@ -22,6 +22,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
         /// </summary>
         public decimal? differenceInnerDiameter { get; set; } = 0;
 
+
         /// <summary>
         /// Difference between prefered outer Diameter and actual outer Diameter which requires post processing.
         /// </summary>

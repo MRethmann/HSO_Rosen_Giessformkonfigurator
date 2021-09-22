@@ -9,7 +9,8 @@
              Background="White">
     <Grid HorizontalAlignment="Center">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition/>
@@ -111,7 +112,7 @@
                    HorizontalAlignment="left" VerticalAlignment="Center"
                    Foreground="Black" FontSize="15"
                    Margin="0,0,10,0"
-                   Grid.Row="5" Grid.Column="1"/>
+                   Grid.Row="2" Grid.Column="3"/>
 
         <TextBox x:Name="hcDiameter_textbox"
                  Text="{Binding HcDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
@@ -119,7 +120,7 @@
                  VerticalAlignment="Center" HorizontalAlignment="left"
                  VerticalContentAlignment="Center"
                  Margin="5"
-                 Grid.Row="5" Grid.Column="2"
+                 Grid.Row="2" Grid.Column="4"
                  FontSize="15">
         </TextBox>
 
@@ -127,7 +128,7 @@
                    HorizontalAlignment="left" VerticalAlignment="Center"
                    Foreground="Black" FontSize="15"
                    Margin="0,0,10,0"
-                   Grid.Row="6" Grid.Column="1"/>
+                   Grid.Row="0" Grid.Column="3"/>
 
         <TextBox x:Name="hcHoles_textbox"
                  Text="{Binding HcHoles, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
@@ -135,7 +136,7 @@
                  VerticalAlignment="Center" HorizontalAlignment="left"
                  VerticalContentAlignment="Center"
                  Margin="5"
-                 Grid.Row="6" Grid.Column="2"
+                 Grid.Row="0" Grid.Column="4"
                  FontSize="15">
         </TextBox>
 
@@ -143,7 +144,7 @@
                    HorizontalAlignment="left" VerticalAlignment="Center"
                    Foreground="Black" FontSize="15"
                    Margin="0,0,10,0"
-                   Grid.Row="7" Grid.Column="1"/>
+                   Grid.Row="1" Grid.Column="3"/>
 
         <TextBox x:Name="boltDiameter_textbox"
                  Text="{Binding BoltDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
@@ -151,37 +152,13 @@
                  VerticalAlignment="Center" HorizontalAlignment="left"
                  VerticalContentAlignment="Center"
                  Margin="7"
-                 Grid.Row="7" Grid.Column="2"
+                 Grid.Row="1" Grid.Column="4"
                  FontSize="15">
         </TextBox>
-
-        <Label x:Name="Parameter2Ausgabe" 
-               Grid.Row="1" Grid.Column="3"
-               Width="100" Height="40"
-               VerticalAlignment="Center" HorizontalAlignment="left"
-               VerticalContentAlignment="Center" HorizontalContentAlignment="Left"
-               Margin="5"
-               FontSize="15"/>
 
         <DockPanel Grid.Row="2" Grid.Column="2" 
                    VerticalAlignment="Center" HorizontalAlignment="left"
                    Margin="5" Width="200"/>
-
-        <Label x:Name="SliderAusgabe" 
-               Grid.Row="2" Grid.Column="3"
-               Width="100" Height="40"
-               VerticalAlignment="Center" HorizontalAlignment="left"
-               VerticalContentAlignment="Center" HorizontalContentAlignment="Left"
-               Margin="5"
-               Foreground="Black" FontSize="15"/>
-
-        <Label x:Name="AuswahlAusgabe"
-               Grid.Row="3" Grid.Column="3"
-               Width="100" Height="40"
-               VerticalAlignment="Center" HorizontalAlignment="left"
-               VerticalContentAlignment="Center" HorizontalContentAlignment="Left"
-               Margin="5"
-               Foreground="Black" FontSize="15"/>
 
         <Button x:Name="Hinzufuegen" Content="Hinzufügen"
                 Command="{Binding insertIntoDbCmd}"
@@ -190,7 +167,7 @@
                     Foreground="Black"
                     Background="White"
                     FontSize="15" 
-                Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2">
+                Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="2">
         </Button>
     </Grid>
 </UserControl>

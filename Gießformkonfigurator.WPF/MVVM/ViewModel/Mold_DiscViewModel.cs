@@ -56,7 +56,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                     };
                     db.SingleMoldDiscs.Add(singleMoldDisc);
                     db.SaveChanges();
-                    MessageBox.Show("Produkt erfolgreich hinzugefügt.");
+                    MessageBox.Show("Gießform erfolgreich hinzugefügt.");
                 }
                 catch (Exception e)
                 {

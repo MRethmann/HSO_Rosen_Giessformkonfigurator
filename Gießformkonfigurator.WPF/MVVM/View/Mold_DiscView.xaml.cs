@@ -5,6 +5,7 @@
 //-----------------------------------------------------------------------
 namespace Gießformkonfigurator.WPF.MVVM.View
 {
+    using Gießformkonfigurator.WPF.MVVM.ViewModel;
     using System.Windows;
     using System.Windows.Controls;
     /// <summary>
@@ -12,12 +13,10 @@ namespace Gießformkonfigurator.WPF.MVVM.View
     /// </summary>
     public partial class Mold_DiscView : UserControl
     {
-        private string parameter1 = "";
-        private string parameter2 = "";
-        private string slider = "";
         public Mold_DiscView()
         {
             InitializeComponent();
+            DataContext = new Mold_DiscViewModel();
         }
     }
 }

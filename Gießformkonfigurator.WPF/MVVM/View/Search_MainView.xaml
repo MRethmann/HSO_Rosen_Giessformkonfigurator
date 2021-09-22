@@ -117,7 +117,7 @@
                         </DataGrid.RowStyle>
 
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Nr." Width="*">
+                            <DataGridTextColumn Header="Nr." Width="1*">
                                 <DataGridColumn.HeaderStyle>
                                     <Style TargetType="DataGridColumnHeader">
                                         <Setter Property="Background" Value="White"/>
@@ -132,7 +132,7 @@
                                 </DataGridColumn.HeaderStyle>
                             </DataGridTextColumn>
 
-                            <DataGridTextColumn Header="Typ" Width="*" Binding="{Binding Mold.type}">
+                            <DataGridTextColumn Header="Typ" Width="3*" Binding="{Binding Mold.type}">
                                 <DataGridColumn.HeaderStyle>
                                     <Style TargetType="DataGridColumnHeader">
                                         <Setter Property="Background" Value="White"/>
@@ -145,7 +145,7 @@
                                 </DataGridColumn.HeaderStyle>
                             </DataGridTextColumn>
 
-                            <DataGridTextColumn Header="Übereinstimmungsgrad" Width="*" Binding="{Binding finalRating}">
+                            <DataGridTextColumn Header="Übereinstimmungsgrad" Width="3*" Binding="{Binding finalRating}">
                                 <DataGridColumn.HeaderStyle>
                                     <Style TargetType="DataGridColumnHeader">
                                         <Setter Property="Background" Value="White"/>
@@ -158,7 +158,7 @@
                                 </DataGridColumn.HeaderStyle>
                             </DataGridTextColumn>
 
-                            <DataGridTextColumn Header="Nachbearbeitung" Width="*" Binding="{Binding Mold.baseplate.Description}">
+                            <DataGridTextColumn Header="Nachbearbeitung" Width="3*">
                                 <DataGridColumn.HeaderStyle>
                                     <Style TargetType="DataGridColumnHeader">
                                         <Setter Property="Background" Value="White"/>
@@ -194,7 +194,6 @@
                                             <TextBlock Text="Details" Foreground="Gray" Margin="0, 0, 10, 0"/>
                                         </Border>
 
-
                                         <Grid Grid.Column="1" Margin="10">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="auto"/>
@@ -204,79 +203,9 @@
                                                 <RowDefinition Height="auto"/>
                                             </Grid.RowDefinitions>
 
-
-                                            <TextBlock Text="ID" Grid.Row="0" Foreground="Gray" Margin="5, 0, 0, 0"/>
-                                            <ToggleButton Name="ID" Grid.Column="0" Grid.Row="1" >
-                                                <ToggleButton.Template>
-                                                    <ControlTemplate TargetType="ToggleButton">
-                                                        <TextBlock  Text="{Binding Mold.baseplate.Description}" Margin="5, 0, 0, 0" >
-                                                            <TextBlock.Style>
-                                                                <Style TargetType="TextBlock">
-                                                                    <Setter Property="Foreground" Value="Black"/>
-                                                                    <Style.Triggers>
-                                                                        <Trigger Property="IsMouseOver" Value="True">
-                                                                            <Setter Property="Foreground" Value="LightGray" />
-                                                                        </Trigger>
-                                                                    </Style.Triggers>
-                                                                </Style>
-                                                            </TextBlock.Style>
-                                                        </TextBlock>
-                                                    </ControlTemplate>
-                                                </ToggleButton.Template>
-                                            </ToggleButton>
-
-                                            <Popup IsOpen="{Binding IsChecked, ElementName=ID}" StaysOpen="False" PlacementTarget="{Binding ElementName=ID}" Placement="Bottom">
-                                                <Border Background="#144F9B" BorderBrush="#144F9B" BorderThickness="1">
-                                                    <Grid Margin="5">
-
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition/>
-                                                            <ColumnDefinition/>
-                                                        </Grid.ColumnDefinitions>
-
-                                                        <Grid Grid.Column="0" Margin="2">
-
-                                                            <Grid.RowDefinitions>
-                                                                <RowDefinition/>
-                                                                <RowDefinition/>
-                                                                <RowDefinition/>
-                                                                <RowDefinition/>
-                                                                <RowDefinition/>
-                                                            </Grid.RowDefinitions>
-
-                                                            <Border Grid.Row="0" BorderBrush="White" BorderThickness="0,0,0,1">
-                                                                <TextBlock Text="Detailinfo" Foreground="White" FontSize="14"/>
-                                                            </Border>
-
-                                                            <TextBlock Grid.Row="1" Text="Aussendruchmesser:" Foreground="White" FontSize="14"/>
-                                                            <TextBlock Grid.Row="2" Text="Innendurchmesser:" Foreground="White" FontSize="14"/>
-                                                            <TextBlock Grid.Row="3" Text="KonusInnen:" Foreground="White" FontSize="14"/>
-                                                            <TextBlock Grid.Row="4" Text="KonusAussen:" Foreground="White" FontSize="14"/>
-                                                        </Grid>
-
-                                                        <Grid Grid.Column="1" Margin="2">
-
-                                                            <Grid.RowDefinitions>
-                                                                <RowDefinition/>
-                                                                <RowDefinition/>
-                                                                <RowDefinition/>
-                                                                <RowDefinition/>
-                                                                <RowDefinition/>
-                                                            </Grid.RowDefinitions>
-
-                                                            <TextBlock Grid.Row="1" Text="He" Foreground="White" FontSize="14"/>
-                                                            <TextBlock Grid.Row="2" Text="Na" Foreground="White" FontSize="14"/>
-                                                            <TextBlock Grid.Row="3" Text="hier stehen" Foreground="White" FontSize="14"/>
-                                                            <TextBlock Grid.Row="4" Text="die Werte" Foreground="white" FontSize="14"/>
-                                                        </Grid>
-                                                    </Grid>
-                                                </Border>
-                                            </Popup>
-
-
                                         </Grid>
                                     </Grid>
-                                    <Grid Grid.Column="1" Grid.ColumnSpan="3">
+                                    <Grid Grid.Column="0" Grid.ColumnSpan="3" Margin="100,0,0,0">
 
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*"/>
@@ -297,7 +226,7 @@
                                             <ToggleButton Name="baseplate" Grid.Column="0" Grid.Row="1" >
                                                 <ToggleButton.Template>
                                                     <ControlTemplate TargetType="ToggleButton">
-                                                        <TextBlock  Text="{Binding Mold.baseplate.Description}" Margin="5, 0, 0, 0" >
+                                                        <TextBlock  Text="{Binding Mold.baseplate.Description, FallbackValue=-}" Margin="5, 0, 0, 0" >
                                                             <TextBlock.Style>
                                                                 <Style TargetType="TextBlock">
                                                                     <Setter Property="Foreground" Value="Black"/>
@@ -313,11 +242,12 @@
                                                 </ToggleButton.Template>
                                             </ToggleButton>
 
-                                            <Popup IsOpen="{Binding IsChecked, ElementName=baseplate}" StaysOpen="False" PlacementTarget="{Binding ElementName=baseplate}" Placement="Bottom">
+                                            <Popup IsOpen="{Binding IsChecked, ElementName=baseplate}" StaysOpen="False" PlacementTarget="{Binding ElementName=baseplate}" Placement="Top" IsEnabled="False">
                                                 <Border Background="#144F9B" BorderBrush="#144F9B" BorderThickness="1">
                                                     <Grid Margin="5">
 
                                                         <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition/>
                                                             <ColumnDefinition/>
                                                             <ColumnDefinition/>
                                                         </Grid.ColumnDefinitions>
@@ -330,16 +260,57 @@
                                                                 <RowDefinition/>
                                                                 <RowDefinition/>
                                                                 <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
                                                             </Grid.RowDefinitions>
 
                                                             <Border Grid.Row="0" BorderBrush="White" BorderThickness="0,0,0,1">
                                                                 <TextBlock Text="Detailinfo" Foreground="White" FontSize="14"/>
                                                             </Border>
 
-                                                            <TextBlock Grid.Row="1" Text="Aussendruchmesser:" Foreground="White" FontSize="14"/>
-                                                            <TextBlock Grid.Row="2" Text="Innendurchmesser:" Foreground="White" FontSize="14"/>
-                                                            <TextBlock Grid.Row="3" Text="KonusInnen:" Foreground="White" FontSize="14"/>
-                                                            <TextBlock Grid.Row="4" Text="KonusAussen:" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="1" Text="ID: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="2" Text="Außendurchmesser: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="3" Text="Höhe: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="4" Text="Konus Außen Max: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="5" Text="Konus Außen Min: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="6" Text="Konus Außen Winkel: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="7" Text="Konus Höhe: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="8" Text="Konusführung: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="9" Text="Konus Innen Max: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="10" Text="Konus Innen Min: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="11" Text="Konus Innen Winkel: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="12" Text="Lochführung: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="13" Text="Innendurchmesser: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="14" Text="Toleranz Innendurchmesser: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="15" Text="Kern: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="16" Text="LK1 Durchmesser: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="17" Text="LK1 Bohrungen: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="18" Text="LK1 Gewinde: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="19" Text="LK2 Durchmesser: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="20" Text="LK2 Bohrungen: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="21" Text="LK2 Gewinde: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="22" Text="LK3 Durchmesser: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="23" Text="LK3 Bohrungen: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="24" Text="LK3 Gewinde: " Foreground="White" FontSize="14"/>
                                                         </Grid>
 
                                                         <Grid Grid.Column="1" Margin="2">
@@ -350,22 +321,64 @@
                                                                 <RowDefinition/>
                                                                 <RowDefinition/>
                                                                 <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
                                                             </Grid.RowDefinitions>
 
-                                                            <TextBlock Grid.Row="1" Text="He" Foreground="White" FontSize="14"/>
-                                                            <TextBlock Grid.Row="2" Text="Na" Foreground="White" FontSize="14"/>
-                                                            <TextBlock Grid.Row="3" Text="hier stehen" Foreground="White" FontSize="14"/>
-                                                            <TextBlock Grid.Row="4" Text="die Werte" Foreground="white" FontSize="14"/>
+                                                            <TextBlock Grid.Row="1" Text="{Binding Mold.baseplate.ID}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="2" Text="{Binding Mold.baseplate.OuterDiameter}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="3" Text="{Binding Mold.baseplate.Height}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="4" Text="{Binding Mold.baseplate.OuterKonusMax}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="5" Text="{Binding Mold.baseplate.OuterKonusMin}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="6" Text="{Binding Mold.baseplate.OuterKonusAngle}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="7" Text="{Binding Mold.baseplate.KonusHeight}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="8" Text="{Binding Mold.baseplate.HasKonus}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="9" Text="{Binding Mold.baseplate.InnerKonusMax}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="10" Text="{Binding Mold.baseplate.InnerKonusMin}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="11" Text="{Binding Mold.baseplate.InnerKonusAngle}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="12" Text="{Binding Mold.baseplate.HasHoleguide}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="13" Text="{Binding Mold.baseplate.InnerDiameter}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="14" Text="{Binding Mold.baseplate.ToleranceInnerDiameter}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="15" Text="{Binding Mold.baseplate.HasCore}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="16" Text="{Binding Mold.baseplate.Hc1Diameter}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="17" Text="{Binding Mold.baseplate.Hc1Holes}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="18" Text="{Binding Mold.baseplate.Hc1Thread}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="19" Text="{Binding Mold.baseplate.Hc2Diameter}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="20" Text="{Binding Mold.baseplate.Hc2Holes}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="21" Text="{Binding Mold.baseplate.Hc2Thread}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="22" Text="{Binding Mold.baseplate.Hc3Diameter}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="23" Text="{Binding Mold.baseplate.Hc3Holes}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="24" Text="{Binding Mold.baseplate.Hc3Thread}" Foreground="White" FontSize="14"/>
+
                                                         </Grid>
                                                     </Grid>
                                                 </Border>
                                             </Popup>
 
-                                            <TextBlock Text="Außenring" Grid.Row="3" Foreground="Gray" Margin="5, 0, 0, 0"/>
-                                            <ToggleButton Name="outerRing" Grid.Column="0" Grid.Row="4" >
+                                            <TextBlock Text="Einlegeplatte" Grid.Row="3" Foreground="Gray" Margin="5, 0, 0, 0"/>
+                                            <ToggleButton Name="insertPlate" Grid.Column="0" Grid.Row="4" >
                                                 <ToggleButton.Template>
                                                     <ControlTemplate TargetType="ToggleButton">
-                                                        <TextBlock  Text="{Binding Mold.ring.Description}" Margin="5, 0, 0, 0" >
+                                                        <TextBlock  Text="{Binding Mold.insertPlate.Description, FallbackValue=-}" Margin="5, 0, 0, 0" >
                                                             <TextBlock.Style>
                                                                 <Style TargetType="TextBlock">
                                                                     <Setter Property="Foreground" Value="Black"/>
@@ -381,7 +394,7 @@
                                                 </ToggleButton.Template>
                                             </ToggleButton>
 
-                                            <Popup IsOpen="{Binding IsChecked, ElementName=outerRing}" StaysOpen="False" PlacementTarget="{Binding ElementName=outerRing}" Placement="Bottom">
+                                            <Popup IsOpen="{Binding IsChecked, ElementName=insertPlate}" StaysOpen="False" PlacementTarget="{Binding ElementName=insertPlate}" Placement="Top">
                                                 <Border Background="#144F9B" BorderBrush="#144F9B" BorderThickness="1">
                                                     <Grid Margin="5">
 
@@ -398,16 +411,59 @@
                                                                 <RowDefinition/>
                                                                 <RowDefinition/>
                                                                 <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
                                                             </Grid.RowDefinitions>
 
                                                             <Border Grid.Row="0" BorderBrush="White" BorderThickness="0,0,0,1">
                                                                 <TextBlock Text="Detailinfo" Foreground="White" FontSize="14"/>
                                                             </Border>
 
-                                                            <TextBlock Grid.Row="1" Text="Aussendruchmesser:" Foreground="White" FontSize="14"/>
-                                                            <TextBlock Grid.Row="2" Text="Innendurchmesser:" Foreground="White" FontSize="14"/>
-                                                            <TextBlock Grid.Row="3" Text="KonusInnen:" Foreground="White" FontSize="14"/>
-                                                            <TextBlock Grid.Row="4" Text="KonusAussen:" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="1" Text="ID: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="2" Text="Außendurchmesser: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="3" Text="Toleranz Außendurchmesser: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="4" Text="Höhe: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="5" Text="Konus Außen Max: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="6" Text="Konus Außen Min: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="7" Text="Konus Außen Winkel: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="8" Text="Konus Höhe: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="9" Text="Konusführung: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="10" Text="Konus Innen Max: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="11" Text="Konus Innen Min: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="12" Text="Konus Innen Winkel: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="13" Text="Lochführung: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="14" Text="Innendurchmesser: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="15" Text="Toleranz Innendurchmesser: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="16" Text="Kern: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="17" Text="LK1 Durchmesser: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="18" Text="LK1 Bohrungen: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="19" Text="LK1 Gewinde: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="20" Text="LK2 Durchmesser: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="21" Text="LK2 Bohrungen: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="22" Text="LK2 Gewinde: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="23" Text="LK3 Durchmesser: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="24" Text="LK3 Bohrungen: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="25" Text="LK3 Gewinde: " Foreground="White" FontSize="14"/>
                                                         </Grid>
 
                                                         <Grid Grid.Column="1" Margin="2">
@@ -418,12 +474,55 @@
                                                                 <RowDefinition/>
                                                                 <RowDefinition/>
                                                                 <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
                                                             </Grid.RowDefinitions>
 
-                                                            <TextBlock Grid.Row="1" Text="He" Foreground="White" FontSize="14"/>
-                                                            <TextBlock Grid.Row="2" Text="Na" Foreground="White" FontSize="14"/>
-                                                            <TextBlock Grid.Row="3" Text="hier stehen" Foreground="White" FontSize="14"/>
-                                                            <TextBlock Grid.Row="4" Text="die Werte" Foreground="white" FontSize="14"/>
+                                                            <TextBlock Grid.Row="1" Text="{Binding Mold.insertPlate.ID}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="2" Text="{Binding Mold.insertPlate.OuterDiameter}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="3" Text="{Binding Mold.insertPlate.ToleranceOuterDiameter}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="4" Text="{Binding Mold.insertPlate.Height}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="5" Text="{Binding Mold.insertPlate.OuterKonusMax}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="6" Text="{Binding Mold.insertPlate.OuterKonusMin}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="7" Text="{Binding Mold.insertPlate.OuterKonusAngle}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="8" Text="{Binding Mold.insertPlate.KonusHeight}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="9" Text="{Binding Mold.insertPlate.HasKonus}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="10" Text="{Binding Mold.insertPlate.InnerKonusMax}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="11" Text="{Binding Mold.insertPlate.InnerKonusMin}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="12" Text="{Binding Mold.insertPlate.InnerKonusAngle}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="13" Text="{Binding Mold.insertPlate.HasHoleguide}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="14" Text="{Binding Mold.insertPlate.InnerDiameter}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="15" Text="{Binding Mold.insertPlate.ToleranceInnerDiameter}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="16" Text="{Binding Mold.insertPlate.HasCore}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="17" Text="{Binding Mold.insertPlate.Hc1Diameter}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="18" Text="{Binding Mold.insertPlate.Hc1Holes}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="19" Text="{Binding Mold.insertPlate.Hc1Thread}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="20" Text="{Binding Mold.insertPlate.Hc2Diameter}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="21" Text="{Binding Mold.insertPlate.Hc2Holes}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="22" Text="{Binding Mold.insertPlate.Hc2Thread}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="23" Text="{Binding Mold.insertPlate.Hc3Diameter}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="24" Text="{Binding Mold.insertPlate.Hc3Holes}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="25" Text="{Binding Mold.insertPlate.Hc3Thread}" Foreground="White" FontSize="14"/>
                                                         </Grid>
                                                     </Grid>
                                                 </Border>
@@ -446,7 +545,7 @@
                                             <ToggleButton Name="innerCore" Grid.Column="0" Grid.Row="1" >
                                                 <ToggleButton.Template>
                                                     <ControlTemplate TargetType="ToggleButton">
-                                                        <TextBlock  Text="{Binding Mold.core.Description}" Margin="5, 0, 0, 0" >
+                                                        <TextBlock  Text="{Binding Mold.core.Description, FallbackValue=-}" Margin="5, 0, 0, 0" >
                                                             <TextBlock.Style>
                                                                 <Style TargetType="TextBlock">
                                                                     <Setter Property="Foreground" Value="Black"/>
@@ -462,7 +561,7 @@
                                                 </ToggleButton.Template>
                                             </ToggleButton>
 
-                                            <Popup IsOpen="{Binding IsChecked, ElementName=innerCore}" StaysOpen="False" PlacementTarget="{Binding ElementName=innerCore}" Placement="Bottom">
+                                            <Popup IsOpen="{Binding IsChecked, ElementName=innerCore}" StaysOpen="False" PlacementTarget="{Binding ElementName=innerCore}" Placement="Top">
                                                 <Border Background="#144F9B" BorderBrush="#144F9B" BorderThickness="1">
                                                     <Grid Margin="5">
 
@@ -479,16 +578,38 @@
                                                                 <RowDefinition/>
                                                                 <RowDefinition/>
                                                                 <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
                                                             </Grid.RowDefinitions>
 
                                                             <Border Grid.Row="0" BorderBrush="White" BorderThickness="0,0,0,1">
                                                                 <TextBlock Text="Detailinfo" Foreground="White" FontSize="14"/>
                                                             </Border>
 
-                                                            <TextBlock Grid.Row="1" Text="Aussendruchmesser:" Foreground="White" FontSize="14"/>
-                                                            <TextBlock Grid.Row="2" Text="Innendurchmesser:" Foreground="White" FontSize="14"/>
-                                                            <TextBlock Grid.Row="3" Text="KonusInnen:" Foreground="White" FontSize="14"/>
-                                                            <TextBlock Grid.Row="4" Text="KonusAussen:" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="1" Text="ID: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="2" Text="Außendurchmesser: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="3" Text="Toleranz Außendurchmesser: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="4" Text="Höhe: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="5" Text="Füllhöhe Max: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="6" Text="Konusführung: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="7" Text="Konus Außen Max: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="8" Text="Konus Außen Min: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="9" Text="Konus Außen Winkel: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="10" Text="Führungsstift: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="11" Text="Höhe Führung: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="12" Text="Durchmesser Führung: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="13" Text="Toleranz Durchmesser Führung: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="14" Text="Lochführung: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="15" Text="Durchmesser Adapter: " Foreground="White" FontSize="14"/>
                                                         </Grid>
 
                                                         <Grid Grid.Column="1" Margin="2">
@@ -499,23 +620,45 @@
                                                                 <RowDefinition/>
                                                                 <RowDefinition/>
                                                                 <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
                                                             </Grid.RowDefinitions>
 
-                                                            <TextBlock Grid.Row="1" Text="He" Foreground="White" FontSize="14"/>
-                                                            <TextBlock Grid.Row="2" Text="Na" Foreground="White" FontSize="14"/>
-                                                            <TextBlock Grid.Row="3" Text="hier stehen" Foreground="White" FontSize="14"/>
-                                                            <TextBlock Grid.Row="4" Text="die Werte" Foreground="white" FontSize="14"/>
+                                                            <TextBlock Grid.Row="1" Text="{Binding Mold.core.ID}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="2" Text="{Binding Mold.core.OuterDiameter}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="3" Text="{Binding Mold.core.ToleranceOuterDiameter}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="4" Text="{Binding Mold.core.Height}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="5" Text="{Binding Mold.core.FillHeightMax}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="6" Text="{Binding Mold.core.HasKonus}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="7" Text="{Binding Mold.core.OuterKonusMax}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="8" Text="{Binding Mold.core.OuterKonusMin}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="9" Text="{Binding Mold.core.OuterKonusAngle}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="10" Text="{Binding Mold.core.HasGuideBolt}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="11" Text="{Binding Mold.core.GuideHeight}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="12" Text="{Binding Mold.core.GuideDiameter}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="13" Text="{Binding Mold.core.ToleranceGuideDiameter}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="14" Text="{Binding Mold.core.HasHoleguide}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="15" Text="{Binding Mold.core.AdapterDiameter}" Foreground="White" FontSize="14"/>
                                                         </Grid>
                                                     </Grid>
                                                 </Border>
                                             </Popup>
 
 
-                                            <TextBlock Text="Einlegeplatte" Grid.Row="3" Foreground="Gray" Margin="5, 0, 0, 0"/>
-                                            <ToggleButton Name="insertPlate" Grid.Column="0" Grid.Row="4" >
+                                            <TextBlock Text="Führungsring" Grid.Row="3" Foreground="Gray" Margin="5, 0, 0, 0"/>
+                                            <ToggleButton Name="guideRing" Grid.Column="0" Grid.Row="4" >
                                                 <ToggleButton.Template>
                                                     <ControlTemplate TargetType="ToggleButton">
-                                                        <TextBlock  Text="{Binding Mold.inserPlate.Description}" Margin="5, 0, 0, 0" >
+                                                        <TextBlock  Text="{Binding Mold.guideRing.Description, FallbackValue=-}" Margin="5, 0, 0, 0" >
                                                             <TextBlock.Style>
                                                                 <Style TargetType="TextBlock">
                                                                     <Setter Property="Foreground" Value="Black"/>
@@ -531,7 +674,7 @@
                                                 </ToggleButton.Template>
                                             </ToggleButton>
 
-                                            <Popup IsOpen="{Binding IsChecked, ElementName=insertPlate}" StaysOpen="False" PlacementTarget="{Binding ElementName=insertPlate}" Placement="Bottom">
+                                            <Popup IsOpen="{Binding IsChecked, ElementName=guideRing}" StaysOpen="False" PlacementTarget="{Binding ElementName=guideRing}" Placement="Top">
                                                 <Border Background="#144F9B" BorderBrush="#144F9B" BorderThickness="1">
                                                     <Grid Margin="5">
 
@@ -548,16 +691,31 @@
                                                                 <RowDefinition/>
                                                                 <RowDefinition/>
                                                                 <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
                                                             </Grid.RowDefinitions>
 
                                                             <Border Grid.Row="0" BorderBrush="White" BorderThickness="0,0,0,1">
                                                                 <TextBlock Text="Detailinfo" Foreground="White" FontSize="14"/>
                                                             </Border>
 
-                                                            <TextBlock Grid.Row="1" Text="Aussendruchmesser:" Foreground="White" FontSize="14"/>
-                                                            <TextBlock Grid.Row="2" Text="Innendurchmesser:" Foreground="White" FontSize="14"/>
-                                                            <TextBlock Grid.Row="3" Text="KonusInnen:" Foreground="White" FontSize="14"/>
-                                                            <TextBlock Grid.Row="4" Text="KonusAussen:" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="1" Text="ID: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="2" Text="Außendurchmesser: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="3" Text="Toleranz Außendurchmesser: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="4" Text="Innendurchmesser: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="5" Text="Toleranz Innendurchmesser: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="6" Text="Höhe: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="7" Text="Füllhöhe Max: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="8" Text="Konusführung: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="9" Text="Konus Innen Max: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="10" Text="Konus Innen Min: " Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="11" Text="Konus Innen Winkel: " Foreground="White" FontSize="14"/>
+                                                            
                                                         </Grid>
 
                                                         <Grid Grid.Column="1" Margin="2">
@@ -568,12 +726,29 @@
                                                                 <RowDefinition/>
                                                                 <RowDefinition/>
                                                                 <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
+                                                                <RowDefinition/>
                                                             </Grid.RowDefinitions>
 
-                                                            <TextBlock Grid.Row="1" Text="He" Foreground="White" FontSize="14"/>
-                                                            <TextBlock Grid.Row="2" Text="Na" Foreground="White" FontSize="14"/>
-                                                            <TextBlock Grid.Row="3" Text="hier stehen" Foreground="White" FontSize="14"/>
-                                                            <TextBlock Grid.Row="4" Text="die Werte" Foreground="white" FontSize="14"/>
+                                                            <TextBlock Grid.Row="1" Text="{Binding Mold.guideRing.ID}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="2" Text="{Binding Mold.guideRing.OuterDiameter}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="3" Text="{Binding Mold.guideRing.ToleranceOuterDiameter}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="4" Text="{Binding Mold.guideRing.InnerDiameter}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="5" Text="{Binding Mold.guideRing.ToleranceInnerDiameter}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="6" Text="{Binding Mold.guideRing.Height}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="7" Text="{Binding Mold.guideRing.FillHeightMax}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="8" Text="{Binding Mold.guideRing.HasKonus}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="9" Text="{Binding Mold.guideRing.InnerKonusMax}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="10" Text="{Binding Mold.guideRing.InnerKonusMin}" Foreground="White" FontSize="14"/>
+                                                            <TextBlock Grid.Row="11" Text="{Binding Mold.guideRing.InnerKonusAngle}" Foreground="White" FontSize="14"/>
+                                                            
+                                                            
+
                                                         </Grid>
                                                     </Grid>
                                                 </Border>
@@ -594,7 +769,7 @@
                                             <ToggleButton Name="innerRing" Grid.Column="0" Grid.Row="1" >
                                                 <ToggleButton.Template>
                                                     <ControlTemplate TargetType="ToggleButton">
-                                                        <TextBlock  Text="{Binding Mold.baseplate.Description}" Margin="5, 0, 0, 0" >
+                                                        <TextBlock  Text="{Binding Platzhalter, FallbackValue=-}" Margin="5, 0, 0, 0" >
                                                             <TextBlock.Style>
                                                                 <Style TargetType="TextBlock">
                                                                     <Setter Property="Foreground" Value="Black"/>
@@ -663,7 +838,7 @@
                                             <ToggleButton Name="boltTextBlock" Grid.Column="0" Grid.Row="4" >
                                                 <ToggleButton.Template>
                                                     <ControlTemplate TargetType="ToggleButton">
-                                                        <TextBlock  Text="{Binding Mold.baseplate.Description}" Margin="5, 0, 0, 0" >
+                                                        <TextBlock  Text="{Binding Platzhalter, FallbackValue=-}" Margin="5, 0, 0, 0" >
                                                             <TextBlock.Style>
                                                                 <Style TargetType="TextBlock">
                                                                     <Setter Property="Foreground" Value="Black"/>
