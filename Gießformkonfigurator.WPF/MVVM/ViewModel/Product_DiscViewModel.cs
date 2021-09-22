@@ -25,23 +25,16 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
 
         public decimal InnerDiameter { get; set; }
 
-        public decimal? Hc1Diameter { get; set; }
+        public decimal? FactorPU { get; set; }
 
-        public decimal? Hc1Holes { get; set; }
+        public string BTC { get; set; }
 
-        public decimal? Hc1HoleDiameter { get; set; }
+        public decimal? HcDiameter { get; set; }
 
-        public decimal? Hc2Diameter { get; set; }
+        public int? HcHoles { get; set; }
 
-        public decimal? Hc2Holes { get; set; }
+        public decimal? HcHoleDiameter { get; set; }
 
-        public decimal? Hc2HoleDiameter { get; set; }
-
-        public decimal? Hc3Diameter { get; set; }
-
-        public decimal? Hc3Holes { get; set; }
-
-        public decimal? Hc3HoleDiameter { get; set; }
 
         public ICommand insertIntoDbCmd { get; set; }
 
@@ -78,18 +71,15 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                     ProductDisc productDisc = new ProductDisc()
                     {
                         ID = this.ID,
+                        Description = this.Description,
                         OuterDiameter = this.OuterDiameter,
                         Height = this.Height,
                         InnerDiameter = this.InnerDiameter,
-                        Hc1Holes = this.Hc1Holes,
-                        Hc1Diameter = this.Hc1Diameter,
-                        Hc1HoleDiameter = this.Hc1HoleDiameter,
-                        Hc2Holes = this.Hc2Holes,
-                        Hc2Diameter = this.Hc2Diameter,
-                        Hc2HoleDiameter = this.Hc2HoleDiameter,
-                        Hc3Holes = this.Hc3Holes,
-                        Hc3Diameter = this.Hc3Diameter,
-                        Hc3HoleDiameter = this.Hc3HoleDiameter
+                        FactorPU = this.FactorPU,
+                        BTC = this.BTC,
+                        HcHoles = this.HcHoles,
+                        HcDiameter = this.HcDiameter,
+                        HcHoleDiameter = this.HcHoleDiameter,
                     };
                     db.ProductDiscs.Add(productDisc);
                     db.SaveChanges();

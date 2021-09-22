@@ -19,31 +19,5 @@ namespace Gießformkonfigurator.WPF.MVVM.View
         {
             InitializeComponent();
         }
-
-        private void Hinzufuegen_Click(object sender, RoutedEventArgs e)
-        {
-            parameter1 = Parameter1TextBox.Text;
-            Parameter1Ausgabe.Content = parameter1;
-
-            parameter2 = Parameter2TextBox.Text;
-            Parameter2Ausgabe.Content = parameter2;
-
-            slider = SliderTextBox.Text;
-            int value = int.Parse(slider);
-            SliderAusgabe.Content = value;
-
-            if ((bool)Eins.IsChecked)
-            {
-                AuswahlAusgabe.Content = "A1";
-            }
-            else
-            {
-                AuswahlAusgabe.Content = "A2";
-            }
-
-            Parameter1TextBox.Text = "";
-            Parameter2TextBox.Text = "";
-            SliderTextBox.Text = "0";
-        }
     }
 }

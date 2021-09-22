@@ -11,12 +11,9 @@ namespace Gießformkonfigurator.WPF.MVVM.View
     /// </summary>
     public partial class Product_MainView : UserControl
     {
-        
         public Product_MainView()
         {
             InitializeComponent();
         }
-
-       
     }
 }

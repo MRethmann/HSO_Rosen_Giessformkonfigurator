@@ -29,22 +29,10 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_products
         [StringLength(5)]
         public string BTC { get; set; }
 
-        public decimal? Hc1Diameter { get; set; }
+        public decimal? HcDiameter { get; set; }
 
-        public decimal? Hc1Holes { get; set; }
+        public int? HcHoles { get; set; }
 
-        public decimal? Hc1HoleDiameter { get; set; }
-
-        public decimal? Hc2Diameter { get; set; }
-
-        public decimal? Hc2Holes { get; set; }
-
-        public decimal? Hc2HoleDiameter { get; set; }
-
-        public decimal? Hc3Diameter { get; set; }
-
-        public decimal? Hc3Holes { get; set; }
-
-        public decimal? Hc3HoleDiameter { get; set; }
+        public decimal? HcHoleDiameter { get; set; }
     }
 }

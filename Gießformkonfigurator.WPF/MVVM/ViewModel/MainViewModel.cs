@@ -22,7 +22,6 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
         public Search_MainViewModel Search_MainViewModel { get; set; }
         public Components_MainViewModel Components_MainViewModel { get; set; }
         public Settings_MainViewModel Settings_MainViewModel { get; set; }
-
         public DBManagement_MainViewModel DBManagement_MainViewModel { get; set; }
 
         private object _currentView;

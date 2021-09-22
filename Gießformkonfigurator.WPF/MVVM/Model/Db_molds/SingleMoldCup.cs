@@ -34,7 +34,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_molds
 
         public decimal? BoltDiameter { get; set; }
 
-        public decimal? HcHoles { get; set; }
+        public int? HcHoles { get; set; }
 
 
         public SingleMoldCup()

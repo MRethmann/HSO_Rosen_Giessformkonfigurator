@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="900" d:DesignWidth="1600"
              Background="White">
-    <Grid>
+    <Grid HorizontalAlignment="Center">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100"/>
             <ColumnDefinition Width="auto"/>
@@ -21,15 +21,20 @@
             <RowDefinition Height="100" />
             <RowDefinition Height="100" />
             <RowDefinition Height="100" />
+            <RowDefinition Height="100" />
+            <RowDefinition Height="100" />
+            <RowDefinition Height="100" />
+            <RowDefinition Height="100" />
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Parameter 1"
+        <TextBlock Text="ID"
                    Grid.Column="1"
                    HorizontalAlignment="left" VerticalAlignment="Center"
                    Foreground="Black" FontSize="15"
                    Margin="0,0,10,0"/>
 
-        <TextBox x:Name="Parameter1TextBox" 
+        <TextBox x:Name="Parameter1TextBox"
+                 Text="{Binding ID, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                  Width="200" Height="40"
                  VerticalAlignment="Center" HorizontalAlignment="left"
                  VerticalContentAlignment="Center"
@@ -38,26 +43,115 @@
                  FontSize="15">
         </TextBox>
 
-        <Label x:Name="Parameter1Ausgabe" 
-               Grid.Row="0" Grid.Column="3"
-               Width="100" Height="40"
-               VerticalAlignment="Center" HorizontalAlignment="left"
-               VerticalContentAlignment="Center" HorizontalContentAlignment="Left"
-               Margin="5"
-               Foreground="Black" FontSize="15"/>
-
-        <TextBlock Text="Parameter 2"
+        <TextBlock Text="Description"
                    HorizontalAlignment="left" VerticalAlignment="Center"
                    Foreground="Black" FontSize="15"
                    Margin="0,0,10,0"
                    Grid.Row="1" Grid.Column="1"/>
 
-        <TextBox x:Name="Parameter2TextBox" 
+        <TextBox x:Name="Description_TextBox"
+                 Text="{Binding Description, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                  Width="200" Height="40"
                  VerticalAlignment="Center" HorizontalAlignment="left"
                  VerticalContentAlignment="Center"
                  Margin="5"
                  Grid.Row="1" Grid.Column="2"
+                 FontSize="15">
+        </TextBox>
+
+        <TextBlock Text="Außendurchmesser"
+                   HorizontalAlignment="left" VerticalAlignment="Center"
+                   Foreground="Black" FontSize="15"
+                   Margin="0,0,10,0"
+                   Grid.Row="2" Grid.Column="1"/>
+
+        <TextBox x:Name="Außendurchmesser_textbox"
+                 Text="{Binding OuterDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                 Width="200" Height="40"
+                 VerticalAlignment="Center" HorizontalAlignment="left"
+                 VerticalContentAlignment="Center"
+                 Margin="5"
+                 Grid.Row="2" Grid.Column="2"
+                 FontSize="15">
+        </TextBox>
+
+        <TextBlock Text="Innendurchmesser"
+                   HorizontalAlignment="left" VerticalAlignment="Center"
+                   Foreground="Black" FontSize="15"
+                   Margin="0,0,10,0"
+                   Grid.Row="3" Grid.Column="1"/>
+
+        <TextBox x:Name="Innendurchmesser_textbox"
+                 Text="{Binding InnerDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                 Width="200" Height="40"
+                 VerticalAlignment="Center" HorizontalAlignment="left"
+                 VerticalContentAlignment="Center"
+                 Margin="5"
+                 Grid.Row="3" Grid.Column="2"
+                 FontSize="15">
+        </TextBox>
+
+        <TextBlock Text="Höhe"
+                   HorizontalAlignment="left" VerticalAlignment="Center"
+                   Foreground="Black" FontSize="15"
+                   Margin="0,0,10,0"
+                   Grid.Row="4" Grid.Column="1"/>
+
+        <TextBox x:Name="height_textbox"
+                 Text="{Binding Height, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                 Width="200" Height="40"
+                 VerticalAlignment="Center" HorizontalAlignment="left"
+                 VerticalContentAlignment="Center"
+                 Margin="5"
+                 Grid.Row="4" Grid.Column="2"
+                 FontSize="15">
+        </TextBox>
+
+        <TextBlock Text="Durchmesser Lochkreis"
+                   HorizontalAlignment="left" VerticalAlignment="Center"
+                   Foreground="Black" FontSize="15"
+                   Margin="0,0,10,0"
+                   Grid.Row="5" Grid.Column="1"/>
+
+        <TextBox x:Name="hcDiameter_textbox"
+                 Text="{Binding HcDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                 Width="200" Height="40"
+                 VerticalAlignment="Center" HorizontalAlignment="left"
+                 VerticalContentAlignment="Center"
+                 Margin="5"
+                 Grid.Row="5" Grid.Column="2"
+                 FontSize="15">
+        </TextBox>
+
+        <TextBlock Text="Anzahl Bohrungen"
+                   HorizontalAlignment="left" VerticalAlignment="Center"
+                   Foreground="Black" FontSize="15"
+                   Margin="0,0,10,0"
+                   Grid.Row="6" Grid.Column="1"/>
+
+        <TextBox x:Name="hcHoles_textbox"
+                 Text="{Binding HcHoles, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                 Width="200" Height="40"
+                 VerticalAlignment="Center" HorizontalAlignment="left"
+                 VerticalContentAlignment="Center"
+                 Margin="5"
+                 Grid.Row="6" Grid.Column="2"
+                 FontSize="15">
+        </TextBox>
+
+        <TextBlock Text="Durchmesser Bolzen"
+                   HorizontalAlignment="left" VerticalAlignment="Center"
+                   Foreground="Black" FontSize="15"
+                   Margin="0,0,10,0"
+                   Grid.Row="7" Grid.Column="1"/>
+
+        <TextBox x:Name="boltDiameter_textbox"
+                 Text="{Binding BoltDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                 Width="200" Height="40"
+                 VerticalAlignment="Center" HorizontalAlignment="left"
+                 VerticalContentAlignment="Center"
+                 Margin="7"
+                 Grid.Row="7" Grid.Column="2"
                  FontSize="15">
         </TextBox>
 
@@ -69,25 +163,9 @@
                Margin="5"
                FontSize="15"/>
 
-        <TextBlock Text="Slider 1"
-                   HorizontalAlignment="left" VerticalAlignment="Center"
-                   Foreground="Black" FontSize="15"
-                   Margin="0,0,10,0"
-                   Grid.Row="2" Grid.Column="1"/>
-
         <DockPanel Grid.Row="2" Grid.Column="2" 
                    VerticalAlignment="Center" HorizontalAlignment="left"
-                   Margin="5" Width="200">
-            <TextBox x:Name="SliderTextBox" 
-                     Text="{Binding ElementName=slValue, Path=Value, UpdateSourceTrigger=PropertyChanged}" 
-                     DockPanel.Dock="right" TextAlignment="Right" Width="40"
-                     HorizontalContentAlignment="Left" 
-                     Foreground="Black" FontSize="15">
-            </TextBox>
-            <Slider Name="slValue" 
-                    Maximum="15" Value="0"
-                    TickPlacement="BottomRight" TickFrequency="1" IsSnapToTickEnabled="True"/>
-        </DockPanel>
+                   Margin="5" Width="200"/>
 
         <Label x:Name="SliderAusgabe" 
                Grid.Row="2" Grid.Column="3"
@@ -96,29 +174,6 @@
                VerticalContentAlignment="Center" HorizontalContentAlignment="Left"
                Margin="5"
                Foreground="Black" FontSize="15"/>
-
-        <TextBlock Text="Auswahl 1"
-                   HorizontalAlignment="left" VerticalAlignment="Center"
-                   Foreground="Black" FontSize="15"
-                   Margin="0,0,10,0"
-                   Grid.Row="3" Grid.Column="1"/>
-
-        <RadioButton x:Name="Eins" GroupName="auswahl" Grid.Row="3" Grid.Column="2" 
-                     Width="200" Height="30"
-                     VerticalAlignment="Top" HorizontalAlignment="Left" 
-                     Margin="5" 
-                     Foreground="Black" FontSize="15"
-                     IsChecked="True">
-            A1
-        </RadioButton>
-
-        <RadioButton x:Name="Zwei" GroupName="auswahl" Grid.Row="3" Grid.Column="2" 
-                     Width="200" Height="30"
-                     VerticalAlignment="Bottom" HorizontalAlignment="Left" 
-                     Margin="5" 
-                     Foreground="Black" FontSize="15">
-            A2
-        </RadioButton>
 
         <Label x:Name="AuswahlAusgabe"
                Grid.Row="3" Grid.Column="3"
@@ -129,12 +184,13 @@
                Foreground="Black" FontSize="15"/>
 
         <Button x:Name="Hinzufuegen" Content="Hinzufügen"
+                Command="{Binding insertIntoDbCmd}"
                     HorizontalAlignment="Right" VerticalAlignment="Center"
                     Width="150" Height="50"
                     Foreground="Black"
                     Background="White"
                     FontSize="15" 
-                Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2">
+                Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2">
         </Button>
     </Grid>
 </UserControl>

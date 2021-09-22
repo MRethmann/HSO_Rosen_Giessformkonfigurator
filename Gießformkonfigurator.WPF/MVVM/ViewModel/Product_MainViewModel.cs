@@ -71,7 +71,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
             {
                 try
                 {
-                    ProductDisc pd = new ProductDisc() { OuterDiameter = this.outerDiameter, InnerDiameter = this.innerDiameter, Height = this.height, Hc1HoleDiameter = 0.0m, Hc1Diameter = 0.0m, Hc1Holes = 0.0m, Hc2HoleDiameter = 0.0m, Hc2Diameter = 0.0m, Hc2Holes = 0.0m, Hc3HoleDiameter = 0.0m, Hc3Diameter = 0.0m, Hc3Holes = 0.0m };
+                    ProductDisc pd = new ProductDisc() { OuterDiameter = this.outerDiameter, InnerDiameter = this.innerDiameter, Height = this.height, HcHoleDiameter = 0.0m, HcDiameter = 0.0m, HcHoles = 0 };
                     db.ProductDiscs.Add(pd);
                     db.SaveChanges();
                     MessageBox.Show("Produkt erfolgreich hinzugefügt.");

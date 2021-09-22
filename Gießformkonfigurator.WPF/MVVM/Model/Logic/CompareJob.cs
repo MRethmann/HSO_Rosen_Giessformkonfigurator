@@ -79,118 +79,43 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             foreach (var compareObject in compareObjectsTemp01)
             {
                 // Grundplatten
-                if (this.productDisc.Hc1Diameter > 0)
+                if (this.productDisc.HcDiameter > 0)
                 {
-                    if (this.productDisc.Hc1Diameter == ((ModularMold)compareObject.Mold).baseplate.Hc1Diameter
-                        && this.productDisc.Hc1Holes == ((ModularMold)compareObject.Mold).baseplate.Hc1Holes)
+                    if (this.productDisc.HcDiameter == ((ModularMold)compareObject.Mold).baseplate.Hc1Diameter
+                        && this.productDisc.HcHoles == ((ModularMold)compareObject.Mold).baseplate.Hc1Holes)
                     {
                         compareObject.boltCirclesBaseplate[1] = 1;
                     }
-                    else if (this.productDisc.Hc1Diameter == ((ModularMold)compareObject.Mold).baseplate.Hc2Diameter
-                        && this.productDisc.Hc1Holes == ((ModularMold)compareObject.Mold).baseplate.Hc2Holes)
+                    else if (this.productDisc.HcDiameter == ((ModularMold)compareObject.Mold).baseplate.Hc2Diameter
+                        && this.productDisc.HcHoles == ((ModularMold)compareObject.Mold).baseplate.Hc2Holes)
                     {
                         compareObject.boltCirclesBaseplate[2] = 1;
                     }
-                    else if (this.productDisc.Hc1Diameter == ((ModularMold)compareObject.Mold).baseplate.Hc3Diameter
-                        && this.productDisc.Hc1Holes == ((ModularMold)compareObject.Mold).baseplate.Hc3Holes)
+                    else if (this.productDisc.HcDiameter == ((ModularMold)compareObject.Mold).baseplate.Hc3Diameter
+                        && this.productDisc.HcHoles == ((ModularMold)compareObject.Mold).baseplate.Hc3Holes)
                     {
                         compareObject.boltCirclesBaseplate[3] = 1;
                     }
                 }
-                
-                if (this.productDisc.Hc2Diameter > 0)
-                {
-                    if (this.productDisc.Hc2Diameter == ((ModularMold)compareObject.Mold).baseplate.Hc1Diameter
-                        && this.productDisc.Hc2Holes == ((ModularMold)compareObject.Mold).baseplate.Hc1Holes)
-                    {
-                        compareObject.boltCirclesBaseplate[1] = 2;
-                    }
-                    else if (this.productDisc.Hc2Diameter == ((ModularMold)compareObject.Mold).baseplate.Hc2Diameter
-                        && this.productDisc.Hc2Holes == ((ModularMold)compareObject.Mold).baseplate.Hc2Holes)
-                    {
-                        compareObject.boltCirclesBaseplate[2] = 2;
-                    }
-                    else if (this.productDisc.Hc2Diameter == ((ModularMold)compareObject.Mold).baseplate.Hc3Diameter
-                        && this.productDisc.Hc2Holes == ((ModularMold)compareObject.Mold).baseplate.Hc3Holes)
-                    {
-                        compareObject.boltCirclesBaseplate[3] = 2;
-                    }
-                }
-                
-                if (this.productDisc.Hc3Diameter > 0)
-                {
-                    if (this.productDisc.Hc3Diameter == ((ModularMold)compareObject.Mold).baseplate.Hc1Diameter
-                        && this.productDisc.Hc3Holes == ((ModularMold)compareObject.Mold).baseplate.Hc1Holes)
-                    {
-                        compareObject.boltCirclesBaseplate[1] = 3;
-                    }
-                    else if (this.productDisc.Hc3Diameter == ((ModularMold)compareObject.Mold).baseplate.Hc2Diameter
-                        && this.productDisc.Hc3Holes == ((ModularMold)compareObject.Mold).baseplate.Hc2Holes)
-                    {
-                        compareObject.boltCirclesBaseplate[2] = 3;
-                    }
-                    else if (this.productDisc.Hc3Diameter == ((ModularMold)compareObject.Mold).baseplate.Hc3Diameter
-                        && this.productDisc.Hc3Holes == ((ModularMold)compareObject.Mold).baseplate.Hc3Holes)
-                    {
-                        compareObject.boltCirclesBaseplate[3] = 3;
-                    }
-                }
+
 
                 // Einlegeplatten
-                if (this.productDisc.Hc1Diameter > 0)
+                if (this.productDisc.HcDiameter > 0)
                 {
-                    if (this.productDisc.Hc1Diameter == ((ModularMold)compareObject.Mold).insertPlate?.Hc1Diameter
-                        && this.productDisc.Hc1Holes == ((ModularMold)compareObject.Mold).insertPlate?.Hc1Holes)
+                    if (this.productDisc.HcDiameter == ((ModularMold)compareObject.Mold).insertPlate?.Hc1Diameter
+                        && this.productDisc.HcHoles == ((ModularMold)compareObject.Mold).insertPlate?.Hc1Holes)
                     {
                         compareObject.boltCirclesBaseplate[4] = 1;
                     }
-                    else if (this.productDisc.Hc1Diameter == ((ModularMold)compareObject.Mold).insertPlate?.Hc2Diameter
-                        && this.productDisc.Hc1Holes == ((ModularMold)compareObject.Mold).insertPlate?.Hc2Holes)
+                    else if (this.productDisc.HcDiameter == ((ModularMold)compareObject.Mold).insertPlate?.Hc2Diameter
+                        && this.productDisc.HcHoles == ((ModularMold)compareObject.Mold).insertPlate?.Hc2Holes)
                     {
                         compareObject.boltCirclesBaseplate[5] = 1;
                     }
-                    else if (this.productDisc.Hc1Diameter == ((ModularMold)compareObject.Mold).insertPlate?.Hc3Diameter
-                        && this.productDisc.Hc1Holes == ((ModularMold)compareObject.Mold).insertPlate?.Hc3Holes)
+                    else if (this.productDisc.HcDiameter == ((ModularMold)compareObject.Mold).insertPlate?.Hc3Diameter
+                        && this.productDisc.HcHoles == ((ModularMold)compareObject.Mold).insertPlate?.Hc3Holes)
                     {
                         compareObject.boltCirclesBaseplate[6] = 1;
-                    }
-                }
-                
-                if (this.productDisc.Hc2Diameter > 0)
-                {
-                    if (this.productDisc.Hc2Diameter == ((ModularMold)compareObject.Mold).insertPlate?.Hc1Diameter
-                        && this.productDisc.Hc2Holes == ((ModularMold)compareObject.Mold).insertPlate?.Hc1Holes)
-                    {
-                        compareObject.boltCirclesBaseplate[4] = 2;
-                    }
-                    else if (this.productDisc.Hc2Diameter == ((ModularMold)compareObject.Mold).insertPlate?.Hc2Diameter
-                        && this.productDisc.Hc2Holes == ((ModularMold)compareObject.Mold).insertPlate?.Hc2Holes)
-                    {
-                        compareObject.boltCirclesBaseplate[5] = 2;
-                    }
-                    else if (this.productDisc.Hc2Diameter == ((ModularMold)compareObject.Mold).insertPlate?.Hc3Diameter
-                        && this.productDisc.Hc2Holes == ((ModularMold)compareObject.Mold).insertPlate?.Hc3Holes)
-                    {
-                        compareObject.boltCirclesBaseplate[6] = 2;
-                    }
-                }
-                
-                if (this.productDisc.Hc3Diameter > 0)
-                {
-                    if (this.productDisc.Hc3Diameter == ((ModularMold)compareObject.Mold).insertPlate?.Hc1Diameter
-                        && this.productDisc.Hc3Holes == ((ModularMold)compareObject.Mold).insertPlate?.Hc1Holes)
-                    {
-                        compareObject.boltCirclesBaseplate[4] = 3;
-                    }
-                    else if (this.productDisc.Hc3Diameter == ((ModularMold)compareObject.Mold).insertPlate?.Hc2Diameter
-                        && this.productDisc.Hc3Holes == ((ModularMold)compareObject.Mold).insertPlate?.Hc2Holes)
-                    {
-                        compareObject.boltCirclesBaseplate[5] = 3;
-                    }
-                    else if (this.productDisc.Hc3Diameter == ((ModularMold)compareObject.Mold).insertPlate?.Hc3Diameter
-                        && this.productDisc.Hc3Holes == ((ModularMold)compareObject.Mold).insertPlate?.Hc3Holes)
-                    {
-                        compareObject.boltCirclesBaseplate[6] = 3;
                     }
                 }
             }
@@ -205,56 +130,23 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                         var propGewinde = "Hc" + i + "Thread";
                         if (compareObject.boltCirclesBaseplate[i] == 1)
                         {
-                            if (bolt.OuterDiameter <= this.productDisc.Hc1HoleDiameter
+                            if (bolt.OuterDiameter <= this.productDisc.HcHoleDiameter
                             && bolt.Thread == ((ModularMold)compareObject.Mold).baseplate.GetType().GetProperty(propGewinde).GetValue(((ModularMold)compareObject.Mold).baseplate).ToString())
                             {
-                                compareObject.bolts.Add(new System.Tuple<Bolt, int, decimal?>(bolt, 1, this.productDisc.Hc1HoleDiameter - bolt.OuterDiameter));
-                            }
-                        }
-                        else if (compareObject.boltCirclesBaseplate[i] == 2)
-                        {
-                            if (bolt.OuterDiameter <= this.productDisc.Hc2HoleDiameter
-                            && bolt.Thread == ((ModularMold)compareObject.Mold).baseplate.GetType().GetProperty(propGewinde).GetValue(((ModularMold)compareObject.Mold).baseplate).ToString())
-                            {
-                                compareObject.bolts.Add(new System.Tuple<Bolt, int, decimal?>(bolt, 2, this.productDisc.Hc2HoleDiameter - bolt.OuterDiameter));
-                            }
-                        }
-                        else if (compareObject.boltCirclesBaseplate[i] == 3)
-                        {
-                            if (bolt.OuterDiameter <= this.productDisc.Hc3HoleDiameter
-                            && bolt.Thread == ((ModularMold)compareObject.Mold).baseplate.GetType().GetProperty(propGewinde).GetValue(((ModularMold)compareObject.Mold).baseplate).ToString())
-                            {
-                                compareObject.bolts.Add(new System.Tuple<Bolt, int, decimal?>(bolt, 3, this.productDisc.Hc3HoleDiameter - bolt.OuterDiameter));
+                                compareObject.bolts.Add(new System.Tuple<Bolt, int, decimal?>(bolt, 1, this.productDisc.HcHoleDiameter - bolt.OuterDiameter));
                             }
                         }
                     }
-
 
                     for (int i = 4; i < 7; i++)
                     {
                         var propGewinde = "Hc" + (i - 3) + "Thread";
                         if (compareObject.boltCirclesBaseplate[i] == 1)
                         {
-                            if (bolt.OuterDiameter <= this.productDisc.Hc1HoleDiameter
+                            if (bolt.OuterDiameter <= this.productDisc.HcHoleDiameter
                             && bolt.Thread == ((ModularMold)compareObject.Mold).insertPlate.GetType().GetProperty(propGewinde).GetValue(((ModularMold)compareObject.Mold).insertPlate).ToString())
                             {
-                                compareObject.bolts.Add(new System.Tuple<Bolt, int, decimal?>(bolt, 1, this.productDisc.Hc1HoleDiameter - bolt.OuterDiameter));
-                            }
-                        }
-                        else if (compareObject.boltCirclesBaseplate[i] == 2)
-                        {
-                            if (bolt.OuterDiameter <= this.productDisc.Hc2HoleDiameter
-                            && bolt.Thread == ((ModularMold)compareObject.Mold).insertPlate.GetType().GetProperty(propGewinde).GetValue(((ModularMold)compareObject.Mold).insertPlate).ToString())
-                            {
-                                compareObject.bolts.Add(new System.Tuple<Bolt, int, decimal?>(bolt, 2, this.productDisc.Hc2HoleDiameter - bolt.OuterDiameter));
-                            }
-                        }
-                        else if (compareObject.boltCirclesBaseplate[i] == 3)
-                        {
-                            if (bolt.OuterDiameter <= this.productDisc.Hc3HoleDiameter
-                            && bolt.Thread == ((ModularMold)compareObject.Mold).insertPlate.GetType().GetProperty(propGewinde).GetValue(((ModularMold)compareObject.Mold).insertPlate).ToString())
-                            {
-                                compareObject.bolts.Add(new System.Tuple<Bolt, int, decimal?>(bolt, 3, this.productDisc.Hc3HoleDiameter - bolt.OuterDiameter));
+                                compareObject.bolts.Add(new System.Tuple<Bolt, int, decimal?>(bolt, 1, this.productDisc.HcHoleDiameter - bolt.OuterDiameter));
                             }
                         }
                     }

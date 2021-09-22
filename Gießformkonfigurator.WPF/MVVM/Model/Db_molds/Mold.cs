@@ -5,6 +5,7 @@
 //-----------------------------------------------------------------------
 using Gießformkonfigurator.WPF.Core;
 using Gießformkonfigurator.WPF.Enums;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Gießformkonfigurator.WPF.MVVM.Model.Db_molds
 {
@@ -13,8 +14,10 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_molds
 
     public abstract class Mold
     {
+        [NotMapped]
         public MoldType moldType { get; set; }
 
+        [NotMapped]
         public ProductType productType { get; set; }
     }
 }

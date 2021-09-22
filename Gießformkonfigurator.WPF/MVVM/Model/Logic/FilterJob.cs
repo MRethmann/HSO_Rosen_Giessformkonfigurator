@@ -231,9 +231,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                     foreach (var bolzen in db.Bolts)
                     {
                         // TODO: Abgleich hinzufügen. Produkt besitzt aktuell nur das Attribut Lochkreis, welches keine Vergleichseigenschaft besitzt. Durchmesser der Löcher benötigt.
-                        if (bolzen.OuterDiameter <= this.productDisc.Hc1HoleDiameter
-                            || bolzen.OuterDiameter <= this.productDisc.Hc2HoleDiameter
-                            || bolzen.OuterDiameter <= this.productDisc.Hc3HoleDiameter)
+                        if (bolzen.OuterDiameter <= this.productDisc.HcHoleDiameter)
                         {
                             this.listBolts.Add(bolzen);
                             Console.WriteLine("Bolzen " + bolzen + " added to the filter.");

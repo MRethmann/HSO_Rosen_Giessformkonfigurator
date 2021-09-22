@@ -5,6 +5,7 @@
 //-----------------------------------------------------------------------
 namespace Gießformkonfigurator.WPF.MVVM.View
 {
+    using Gießformkonfigurator.WPF.MVVM.ViewModel;
     using System.Windows.Controls;
     /// <summary>
     /// Interaktionslogik für ProduktCupHinzufuegenView.xaml
@@ -14,6 +15,7 @@ namespace Gießformkonfigurator.WPF.MVVM.View
         public Product_CupView()
         {
             InitializeComponent();
+            DataContext = new Product_CupViewModel();
         }
     }
 }

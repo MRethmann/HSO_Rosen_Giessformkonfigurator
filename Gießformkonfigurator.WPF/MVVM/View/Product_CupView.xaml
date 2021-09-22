@@ -24,43 +24,48 @@
             <RowDefinition Height="65"/>
             <RowDefinition Height="65"/>
             <RowDefinition Height="65"/>
+            <RowDefinition Height="65"/>
+            <RowDefinition Height="65"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="SAP Nummer"
+        <TextBlock Text="ID"
                    HorizontalAlignment="Left" VerticalAlignment="Center"
                    Foreground="Black" FontSize="15"
                    Margin="0,0,10,0"
                    Grid.Row="0" Grid.Column="0"/>
 
-        <TextBox x:Name="sap_nummer_TextBox" 
+        <TextBox x:Name="ID_TextBox"
+                 Text="{Binding ID, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                  Width="200" Height="40"
                  VerticalAlignment="Center" HorizontalAlignment="left"
                  VerticalContentAlignment="Center"
                  Grid.Row="0" Grid.Column="1"
                  Foreground="Black" FontSize="15">
         </TextBox>
-
-        <TextBlock Text="Grund-Cup"
+        
+        <TextBlock Text="Beschreibung"
                    HorizontalAlignment="Left" VerticalAlignment="Center"
                    Foreground="Black" FontSize="15"
                    Margin="0,0,10,0"
                    Grid.Row="1" Grid.Column="0"/>
 
-        <TextBox x:Name="grund_cup_TextBox" 
+        <TextBox x:Name="beschreibung_TextBox"
+                 Text="{Binding Description, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                  Width="200" Height="40"
                  VerticalAlignment="Center" HorizontalAlignment="left"
                  VerticalContentAlignment="Center"
                  Grid.Row="1" Grid.Column="1"
                  Foreground="Black" FontSize="15">
         </TextBox>
-
-        <TextBlock Text="Innendurchmesser"
+        
+        <TextBlock Text="Grund-Cup"
                    HorizontalAlignment="Left" VerticalAlignment="Center"
                    Foreground="Black" FontSize="15"
                    Margin="0,0,10,0"
                    Grid.Row="2" Grid.Column="0"/>
 
-        <TextBox x:Name="innendurchmesser_TextBox" 
+        <TextBox x:Name="grund_cup_TextBox"
+                 Text="{Binding BaseCup, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                  Width="200" Height="40"
                  VerticalAlignment="Center" HorizontalAlignment="left"
                  VerticalContentAlignment="Center"
@@ -68,13 +73,14 @@
                  Foreground="Black" FontSize="15">
         </TextBox>
 
-        <TextBlock Text="Lochkreis"
+        <TextBlock Text="Innendurchmesser"
                    HorizontalAlignment="Left" VerticalAlignment="Center"
                    Foreground="Black" FontSize="15"
                    Margin="0,0,10,0"
                    Grid.Row="3" Grid.Column="0"/>
 
-        <TextBox x:Name="lochkreis_TextBox" 
+        <TextBox x:Name="innendurchmesser_TextBox"
+                 Text="{Binding InnerDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                  Width="200" Height="40"
                  VerticalAlignment="Center" HorizontalAlignment="left"
                  VerticalContentAlignment="Center"
@@ -82,12 +88,43 @@
                  Foreground="Black" FontSize="15">
         </TextBox>
 
+        <TextBlock Text="Faktor PU"
+                   HorizontalAlignment="Left" VerticalAlignment="Center"
+                   Foreground="Black" FontSize="15"
+                   Margin="0,0,10,0"
+                   Grid.Row="4" Grid.Column="0"/>
+
+        <TextBox x:Name="FaktorPU_TextBox"
+                 Text="{Binding FaktorPU, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                 Width="200" Height="40"
+                 VerticalAlignment="Center" HorizontalAlignment="left"
+                 VerticalContentAlignment="Center"
+                 Grid.Row="4" Grid.Column="1"
+                 Foreground="Black" FontSize="15">
+        </TextBox>
+        
+        <TextBlock Text="BTC"
+                   HorizontalAlignment="Left" VerticalAlignment="Center"
+                   Foreground="Black" FontSize="15"
+                   Margin="0,0,10,0"
+                   Grid.Row="5" Grid.Column="0"/>
+
+        <TextBox x:Name="lochkreis_TextBox"
+                 Text="{Binding BTC, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                 Width="200" Height="40"
+                 VerticalAlignment="Center" HorizontalAlignment="left"
+                 VerticalContentAlignment="Center"
+                 Grid.Row="5" Grid.Column="1"
+                 Foreground="Black" FontSize="15">
+        </TextBox>
+
         <Button x:Name="Hinzufuegen" Content="Hinzufügen"
+                Command="{Binding insertIntoDbCmd}"
                 HorizontalAlignment="Right" VerticalAlignment="Center"
                 Width="150" Height="50"
                 Foreground="Black"
                 Background="White"
                 FontSize="15"
-                Grid.Column="1" Grid.Row="4"/>
+                Grid.Column="1" Grid.Row="6"/>
     </Grid>
 </UserControl>

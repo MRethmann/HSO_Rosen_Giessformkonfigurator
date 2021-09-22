@@ -42,15 +42,9 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                 OuterDiameter = 310.00m,
                 InnerDiameter = 275.00m,
                 Height = 20.00m,
-                Hc1Holes = 12,
-                Hc1Diameter = 337.59m,
-                Hc1HoleDiameter = 14,
-                Hc2Holes = 12,
-                Hc2Diameter = 286.44m,
-                Hc2HoleDiameter = 14,
-                Hc3Holes = null,
-                Hc3Diameter = null,
-                Hc3HoleDiameter = null
+                HcHoles = 12,
+                HcDiameter = 337.59m,
+                HcHoleDiameter = 14
             };
 
             //using (var db = new GießformDBContext())

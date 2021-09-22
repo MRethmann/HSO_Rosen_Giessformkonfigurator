@@ -22,7 +22,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses
                 .HasPrecision(10, 2);
 
             this.Property(e => e.FactorPU)
-                .HasPrecision(10, 2);
+                .HasPrecision(10, 5);
 
             this.Property(e => e.BTC)
                 .IsFixedLength()

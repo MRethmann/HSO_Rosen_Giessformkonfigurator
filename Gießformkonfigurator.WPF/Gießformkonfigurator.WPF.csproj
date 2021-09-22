@@ -106,6 +106,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Core\ApplicationSettings.cs" />
+    <Compile Include="Core\ICheckUserInput.cs" />
     <Compile Include="Core\ObservableObject.cs" />
     <Compile Include="Core\RelayCommand.cs" />
     <Compile Include="Enums\moldType.cs" />
@@ -117,6 +118,10 @@
     <Page Include="MVVM\View\DBManagement_MainView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\Mold_CupView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="MVVM\View\Settings_MainView.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -212,12 +217,29 @@
     <Compile Include="Migrations\202109220939021_added SingleMoldDisc, SingleMoldCup.Designer.cs">
       <DependentUpon>202109220939021_added SingleMoldDisc, SingleMoldCup.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202109220948322_changed precision of decimal on products factor PU.cs" />
+    <Compile Include="Migrations\202109220948322_changed precision of decimal on products factor PU.Designer.cs">
+      <DependentUpon>202109220948322_changed precision of decimal on products factor PU.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109221220142_changed datatype of HcHoles to int.cs" />
+    <Compile Include="Migrations\202109221220142_changed datatype of HcHoles to int.Designer.cs">
+      <DependentUpon>202109221220142_changed datatype of HcHoles to int.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109221330481_Added CoreSingleMolds Table.cs" />
+    <Compile Include="Migrations\202109221330481_Added CoreSingleMolds Table.Designer.cs">
+      <DependentUpon>202109221330481_Added CoreSingleMolds Table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109221343189_database changes.cs" />
+    <Compile Include="Migrations\202109221343189_database changes.Designer.cs">
+      <DependentUpon>202109221343189_database changes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MVVM\Model\Db_components\Baseplate.cs" />
     <Compile Include="MVVM\Model\Db_components\Bolt.cs" />
     <Compile Include="MVVM\Model\Db_components\BoltCircleType.cs" />
     <Compile Include="MVVM\Model\Db_components\Component.cs" />
     <Compile Include="MVVM\Model\Db_components\Core.cs" />
+    <Compile Include="MVVM\Model\Db_components\CoreSingleMold.cs" />
     <Compile Include="MVVM\Model\Db_components\Cupform.cs" />
     <Compile Include="MVVM\Model\Db_components\InsertPlate.cs" />
     <Compile Include="MVVM\Model\Db_components\Ring.cs" />
@@ -229,6 +251,7 @@
     <Compile Include="MVVM\Model\Db_products\Product.cs" />
     <Compile Include="MVVM\Model\Db_products\ProductCup.cs" />
     <Compile Include="MVVM\Model\Db_products\ProductDisc.cs" />
+    <Compile Include="MVVM\Model\Db_supportClasses\CoreSingleMoldEntityConfiguration.cs" />
     <Compile Include="MVVM\Model\Db_supportClasses\SingleMoldDiscEntityConfiguration.cs" />
     <Compile Include="MVVM\Model\Db_supportClasses\SingleMoldCupEntityConfiguration.cs" />
     <Compile Include="MVVM\Model\Db_supportClasses\BaseplateEntityConfiguration.cs" />
@@ -275,6 +298,9 @@
     <Compile Include="MVVM\ViewModel\Settings_RankingSettingsViewModel.cs" />
     <Compile Include="MVVM\View\DBManagement_MainView.xaml.cs">
       <DependentUpon>DBManagement_MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\Mold_CupView.xaml.cs">
+      <DependentUpon>Mold_CupView.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\View\Settings_MainView.xaml.cs">
       <DependentUpon>Settings_MainView.xaml</DependentUpon>
@@ -352,6 +378,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202109220939021_added SingleMoldDisc, SingleMoldCup.resx">
       <DependentUpon>202109220939021_added SingleMoldDisc, SingleMoldCup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109220948322_changed precision of decimal on products factor PU.resx">
+      <DependentUpon>202109220948322_changed precision of decimal on products factor PU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109221220142_changed datatype of HcHoles to int.resx">
+      <DependentUpon>202109221220142_changed datatype of HcHoles to int.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109221330481_Added CoreSingleMolds Table.resx">
+      <DependentUpon>202109221330481_Added CoreSingleMolds Table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109221343189_database changes.resx">
+      <DependentUpon>202109221343189_database changes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

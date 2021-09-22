@@ -65,7 +65,7 @@ namespace Gieﬂformkonfigurator.WPF.MVVM.Model.Logic
             var gieﬂform = compareElements.OfType<ModularMold>().Single();
 
             // TODO: Innenring als Attribut hinzuf¸gen
-            if (product.Hc1Diameter != 0.0m)
+            if (product.HcDiameter != 0.0m)
             {
                 return product.OuterDiameter <= gieﬂform.guideRing.InnerDiameter
                     && product.InnerDiameter > gieﬂform.core.OuterDiameter

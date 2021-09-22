@@ -48,19 +48,10 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses
             this.Property(e => e.ToleranceInnerDiameter)
                 .IsUnicode(false);
 
-            this.Property(e => e.Hc1Holes)
-                .HasPrecision(10, 2);
-
             this.Property(e => e.Hc1Diameter)
                 .HasPrecision(10, 2);
 
-            this.Property(e => e.Hc2Holes)
-                .HasPrecision(10, 2);
-
             this.Property(e => e.Hc2Diameter)
-                .HasPrecision(10, 2);
-
-            this.Property(e => e.Hc3Holes)
                 .HasPrecision(10, 2);
 
             this.Property(e => e.Hc3Diameter)

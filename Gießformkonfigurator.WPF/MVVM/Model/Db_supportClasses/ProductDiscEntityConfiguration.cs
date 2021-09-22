@@ -22,7 +22,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses
                 .HasPrecision(10, 2);
 
             this.Property(e => e.FactorPU)
-                .HasPrecision(10, 2);
+                .HasPrecision(10, 5);
 
             this.Property(e => e.BTC)
                 .IsFixedLength()
@@ -31,13 +31,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses
             this.Property(e => e.InnerDiameter)
                 .HasPrecision(10, 2);
 
-            this.Property(e => e.Hc1HoleDiameter)
-                .HasPrecision(10, 2);
-
-            this.Property(e => e.Hc2HoleDiameter)
-                .HasPrecision(10, 2);
-
-            this.Property(e => e.Hc3HoleDiameter)
+            this.Property(e => e.HcHoleDiameter)
                 .HasPrecision(10, 2);
         }
     }

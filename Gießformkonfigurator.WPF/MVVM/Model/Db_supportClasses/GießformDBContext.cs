@@ -47,6 +47,8 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses
 
         public virtual DbSet<SingleMoldCup> SingleMoldCups { get; set; }
 
+        public virtual DbSet<CoreSingleMold> CoreSingleMolds { get; set; }
+
         /// <summary>
         /// Initialisiert die EntityConfigurations für alle DB-Objekte.
         /// </summary>
@@ -60,6 +62,8 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses
             modelBuilder.Configurations.Add(new BoltEntityConfiguration());
 
             modelBuilder.Configurations.Add(new CoreEntityConfiguration());
+
+            modelBuilder.Configurations.Add(new CoreSingleMoldEntityConfiguration());
 
             modelBuilder.Configurations.Add(new ProductCupEntityConfiguration());
 

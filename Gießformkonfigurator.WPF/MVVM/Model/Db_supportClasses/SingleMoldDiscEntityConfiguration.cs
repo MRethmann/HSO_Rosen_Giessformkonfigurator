@@ -25,9 +25,6 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses
             this.Property(e => e.InnerDiameter)
                 .HasPrecision(10, 2);
 
-            this.Property(e => e.HcHoles)
-                .HasPrecision(10, 2);
-
             this.Property(e => e.HcDiameter)
                 .HasPrecision(10, 2);
 

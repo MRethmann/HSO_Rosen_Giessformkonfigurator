@@ -86,21 +86,21 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
             }
         }
 
-        public decimal Hc1Diameter { get; set; }
+        public decimal? Hc1Diameter { get; set; }
 
-        public decimal Hc1Holes { get; set; }
+        public int? Hc1Holes { get; set; }
 
         public string Hc1Thread { get; set; }
 
-        public decimal Hc2Diameter { get; set; }
+        public decimal? Hc2Diameter { get; set; }
 
-        public decimal Hc2Holes { get; set; }
+        public int? Hc2Holes { get; set; }
 
         public string Hc2Thread { get; set; }
 
-        public decimal Hc3Diameter { get; set; }
+        public decimal? Hc3Diameter { get; set; }
 
-        public decimal Hc3Holes { get; set; }
+        public int? Hc3Holes { get; set; }
 
         public string Hc3Thread { get; set; }
 
