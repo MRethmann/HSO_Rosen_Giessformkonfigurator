@@ -7,6 +7,6 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_products
 {
     public abstract class Product
     {
-
+        public decimal? FactorPU { get; set; }
     }
 }

@@ -8,8 +8,11 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
     using Gießformkonfigurator.WPF.Core;
     using Gießformkonfigurator.WPF.MVVM.Model.Db_molds;
     using Gießformkonfigurator.WPF.MVVM.Model.Db_products;
+    using Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses;
     using Gießformkonfigurator.WPF.MVVM.Model.Logic;
+    using System;
     using System.Collections.ObjectModel;
+    using System.Globalization;
     using System.Windows;
     using System.Windows.Input;
 
@@ -24,6 +27,18 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
         public string listSize { get; set; }
 
         public int productId { get; set; }
+
+        private decimal? _FactorPU;
+
+        public decimal? FactorPU 
+        {
+            get { return _FactorPU; } 
+            set
+            {
+                this._FactorPU = value;
+                OnPropertyChanged("FactorPU");
+            }
+        }
 
         public ICommand searchCommand { get; set; }
 
@@ -44,30 +59,49 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                 Height = 20.00m,
                 HcHoles = 12,
                 HcDiameter = 337.59m,
-                HcHoleDiameter = 14
+                HcHoleDiameter = 14,
+                FactorPU = 1.0175m
             };
 
-            //using (var db = new GießformDBContext())
-            //{
-            //    product = db.ProductDiscs.Find(productId);
-            //}
+            /*using (var db = new GießformDBContext())
+            {
+                product = db.ProductDiscs.Find(productId); 
+            }*/
 
             if (product != null)
             {
-                Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
-                this.IsLoading = Visibility.Visible;
-
-                programLogic = new ProgramLogic(product);
-
-                this.productSearchOutput.Clear();
-
-                foreach (var compareObject in programLogic.finalOutput)
+                // Validate if factorPU is filled in GUI or set in database.
+                // ToDo: Make it possible so the user can choose which Value to take.
+                if (product.FactorPU != null && this.FactorPU != null && product.FactorPU != this.FactorPU)
                 {
-                    this.productSearchOutput.Add(compareObject);
+                    MessageBox.Show("Faktor-PU Eingabe stimmt nicht mit dem Produkteintrag in der Datenbank überein. In der Datenbank ist folgender Faktor hinterlegt: " + product.FactorPU);
                 }
+                else if (product.FactorPU == null && this.FactorPU == null)
+                {
+                    MessageBox.Show("Bitte fülle den Faktor-PU aus!");
+                }
+                else
+                {
+                    if (product.FactorPU == null)
+                    {
+                        product.FactorPU = Convert.ToDecimal(this.FactorPU);
+                    }
 
-                this.IsLoading = Visibility.Hidden;
-                Mouse.OverrideCursor = System.Windows.Input.Cursors.Arrow;
+                    Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
+                    this.IsLoading = Visibility.Visible;
+
+                    programLogic = new ProgramLogic(product);
+
+                    this.productSearchOutput.Clear();
+
+                    foreach (var compareObject in programLogic.finalOutput)
+                    {
+                        this.productSearchOutput.Add(compareObject);
+                    }
+
+                    this.IsLoading = Visibility.Hidden;
+                    Mouse.OverrideCursor = System.Windows.Input.Cursors.Arrow;
+                }
             }
             else
                 MessageBox.Show("Es stimmt kein Produkt mit der eingegebenen SAP-Nr. überein. Bitte validiere die Eingabe!");

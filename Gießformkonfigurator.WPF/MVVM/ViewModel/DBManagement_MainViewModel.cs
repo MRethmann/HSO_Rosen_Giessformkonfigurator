@@ -37,7 +37,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
             }
         }
 
-        private string _selectedAttribute { get; set; }
+        private string _selectedAttribute;
         public string selectedAttribute
         {
             get { return _selectedAttribute; }
@@ -47,7 +47,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
             }
         }
 
-        private string _attributeValue { get; set; }
+        private string _attributeValue;
         public string attributeValue 
         {
             get { return _attributeValue; }
