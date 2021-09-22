@@ -60,5 +60,10 @@ namespace Gießformkonfigurator.WPF.MVVM.View
                 MessageBox.Show("Verbindungsfehler!" + ex);
             }
         }
+
+        private void selectedTableComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            selectedAttributeComboBox.SelectedIndex = -1;
+        }
     }
 }

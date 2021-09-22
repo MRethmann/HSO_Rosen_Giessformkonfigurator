@@ -32,6 +32,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
             set 
             {
                 _selectedTable = value;
+                OnPropertyChanged("selectedTable");
                 this.getTableAttributes();
             }
         }
