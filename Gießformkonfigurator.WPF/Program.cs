@@ -46,11 +46,11 @@ namespace Gießformkonfigurator.WPF
                 Console.Write(mGießform.baseplate?.Description + " + ");
                 Console.Write(mGießform.insertPlate?.Description + " + ");
                 Console.Write(mGießform.guideRing?.Description + " + ");
-                if (mGießform.ListInnerRings.Count > 0)
+                if (mGießform.ListOuterRings.Count > 0)
                 {
-                    for (int i = 0; i < mGießform.ListInnerRings.Count; i++)
+                    for (int i = 0; i < mGießform.ListOuterRings.Count; i++)
                     {
-                        Console.Write(mGießform.ListInnerRings[i]?.Description + " + ");
+                        Console.Write(mGießform.ListOuterRings[i]?.Description + " + ");
                     }
                 }
 

@@ -22,7 +22,9 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_molds
 
         public Cupform cupform { get; set; }
 
-        public List<Ring> ListInnerRings = new List<Ring>();
+        public List<Ring> ListOuterRings = new List<Ring>();
+
+        public List<Ring> ListCoreRings = new List<Ring>();
 
         public ModularMold(Baseplate gp, Ring fr, InsertPlate el, Core ik)
         {

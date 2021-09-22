@@ -167,19 +167,37 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
     }
 
     // TODO: Fertigstellen
-    class InnerRingAddition : CombinationRule
+    class RingAddition : CombinationRule
     {
         protected override IEnumerable<Type> Typen => new[] { typeof(Ring), typeof(Ring) };
 
         public override bool Combine(Component a, Component b)
         {
             var components = new[] { a, b };
-            var fuehrungsring = components.OfType<Ring>().ElementAt(0);
-            var innerRing = components.OfType<Ring>().ElementAt(1);
+            var baseRing = components.OfType<Ring>().ElementAt(0);
+            var additionRing = components.OfType<Ring>().ElementAt(1);
 
             // Der Innenring darf nicht zu groß und nicht zu klein sein.
-            return innerRing.OuterDiameter <= fuehrungsring.InnerDiameter - 0.1m
-                && innerRing.OuterDiameter >= fuehrungsring.InnerDiameter - 0.5m;
+            return (additionRing.OuterDiameter <= baseRing.InnerDiameter - 0.1m
+                && additionRing.OuterDiameter >= baseRing.InnerDiameter - 0.5m)
+                || (additionRing.InnerDiameter >= baseRing.OuterDiameter
+                && additionRing.InnerDiameter < baseRing.OuterDiameter - 0.5m);
+        }
+    }
+
+    class CoreRingAddition : CombinationRule
+    {
+        protected override IEnumerable<Type> Typen => new[] { typeof(Core), typeof(Ring) };
+
+        public override bool Combine(Component a, Component b)
+        {
+            var components = new[] { a, b };
+            var core = components.OfType<Core>().ElementAt(0);
+            var additionRing = components.OfType<Ring>().ElementAt(1);
+
+            // Der Innenring darf nicht zu groß und nicht zu klein sein.
+            return additionRing.InnerDiameter >= core.OuterDiameter
+                && additionRing.InnerDiameter < core.OuterDiameter - 0.5m;
         }
     }
 

@@ -196,8 +196,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 
                     foreach (var ring in db.Rings)
                     {
-                        if ((ring.HasKonus == false && this.productDisc.InnerDiameter > ring.OuterDiameter && this.productDisc.OuterDiameter < ring.OuterDiameter)
-                            || (ring.HasKonus && this.productDisc.OuterDiameter < ring.OuterDiameter))
+                        if (this.productDisc.InnerDiameter > ring.OuterDiameter || this.productDisc.OuterDiameter < ring.InnerDiameter)
                         {
                             this.listRings.Add(ring);
                             Console.WriteLine("Ring " + ring + " added to the filter.");

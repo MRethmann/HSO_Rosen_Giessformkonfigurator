@@ -22,7 +22,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                     new BaseplateInsertPlateCombination(),
                     new BaseplateRingCombination(),
                     new InsertPlateCoreCombination(),
-                    new InnerRingAddition(),
+                    new RingAddition(),
                     new CupformCoreCombination()
                     };
         }

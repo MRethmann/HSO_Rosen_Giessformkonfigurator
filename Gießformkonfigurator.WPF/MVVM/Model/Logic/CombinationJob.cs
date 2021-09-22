@@ -69,6 +69,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             // Listen, welche zur Zwischenspeicherung der mehrteiligen Gießformen genutzt werden, bevor sie vervollständigt wurden und ausgegeben werden können.
             List<ModularMold> discMoldsTemp01 = new List<ModularMold>();
             List<ModularMold> discMoldsTemp02 = new List<ModularMold>();
+            List<ModularMold> discMoldsTemp03 = new List<ModularMold>();
 
             // Grundplatten --> Fuehrungsringe
             for (int iGP = 0; iGP < this.listBaseplates.Count; iGP++)
@@ -148,33 +149,30 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             {
                 for (int iTemp = 0; iTemp < this.Index; iTemp++)
                 {
-                    if (discMoldsTemp02[iTemp].guideRing != null)
+                    for (int iRinge = 0; iRinge < this.listRings.Count; iRinge++)
                     {
-                        for (int iRinge = 0; iRinge < this.listRings.Count; iRinge++)
+                        // Betrachtet nur Ringe ohne Konusfuehrung
+                        if (this.listRings[iRinge].HasKonus == false)
                         {
-                            // Betrachtet nur Ringe ohne Konusfuehrung
-                            if (this.listRings[iRinge].HasKonus == false)
+                            // Neuer Ring muss größer als der vorhandene Kern sein
+                            if (this.listRings[iRinge].InnerDiameter > discMoldsTemp02[iTemp].core.OuterDiameter)
                             {
-                                // Neuer Ring muss größer als der vorhandene Kern sein
-                                if (this.listRings[iRinge].InnerDiameter > discMoldsTemp02[iTemp].core.OuterDiameter)
+                                // Bereits Innenringe vorhanden --> Kombination mit letztem Innenring
+                                if (discMoldsTemp02[iTemp].ListOuterRings.Count > 0)
                                 {
-                                    // Bereits Innenringe vorhanden --> Kombination mit letztem Innenring
-                                    if (discMoldsTemp02[iTemp].ListInnerRings.Count > 0)
+                                    int indexer = discMoldsTemp02[iTemp].ListOuterRings.Count - 1;
+                                    if (combinationRuleSet.Combine(discMoldsTemp02[iTemp].ListOuterRings[indexer], this.listRings[iRinge]))
                                     {
-                                        int indexer = discMoldsTemp02[iTemp].ListInnerRings.Count - 1;
-                                        if (combinationRuleSet.Combine(discMoldsTemp02[iTemp].ListInnerRings[indexer], this.listRings[iRinge]))
-                                        {
-                                            discMoldsTemp02[iTemp].ListInnerRings.Add(this.listRings[iRinge]);
-                                        }
+                                        discMoldsTemp02[iTemp].ListOuterRings.Add(this.listRings[iRinge]);
                                     }
+                                }
 
-                                    // Keine Innenringe vorhanden --> Kombination mit Fuehrungsring
-                                    else
+                                // Keine Innenringe vorhanden --> Kombination mit Fuehrungsring
+                                else
+                                {
+                                    if (combinationRuleSet.Combine(discMoldsTemp02[iTemp].guideRing, this.listRings[iRinge]))
                                     {
-                                        if (combinationRuleSet.Combine(discMoldsTemp02[iTemp].guideRing, this.listRings[iRinge]))
-                                        {
-                                            discMoldsTemp02[iTemp].ListInnerRings.Add(this.listRings[iRinge]);
-                                        }
+                                        discMoldsTemp02[iTemp].ListOuterRings.Add(this.listRings[iRinge]);
                                     }
                                 }
                             }
@@ -182,6 +180,57 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                     }
                 }
             }
+
+            foreach (var mold in discMoldsTemp02)
+            {
+                foreach (var ring in listRings)
+                {
+                    // Alle Ringe entfernen, die potentiell außerhalb des Guide Rings liegen könnten
+                    if (ring.InnerDiameter < mold.guideRing.OuterDiameter)
+                    {
+                        if (combinationRuleSet.Combine(mold.guideRing, ring))
+                        {
+                            mold.ListOuterRings.Add(ring);
+                        }
+                        else if (combinationRuleSet.Combine(mold.core, ring))
+                        {
+                            mold.ListCoreRings.Add(ring);
+                        }
+                    }
+                }
+            }
+
+            foreach (var mold in discMoldsTemp02)
+            {
+                foreach (var coreRing in mold.ListCoreRings)
+                {
+                    foreach (var ring in listRings)
+                    {
+                        if (ring.OuterDiameter > mold.core.OuterDiameter)
+                        {
+                            if (combinationRuleSet.Combine(coreRing, ring))
+                            {
+                                mold.ListCoreRings.Add(ring);
+                            }
+                        }
+                    }
+                }
+
+                foreach (var outerRing in mold.ListOuterRings)
+                {
+                    foreach (var ring in listRings)
+                    {
+                        if (ring.InnerDiameter < mold.guideRing.OuterDiameter)
+                        {
+                            if (combinationRuleSet.Combine(outerRing, ring))
+                            {
+                                mold.ListOuterRings.Add(ring);
+                            }
+                        }
+                    }
+                }
+            }
+
 
             this.modularMoldsOutput = new List<ModularMold>(discMoldsTemp02);
         }
