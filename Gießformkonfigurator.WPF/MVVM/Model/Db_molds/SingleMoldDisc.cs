@@ -11,7 +11,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_molds
     using System.ComponentModel.DataAnnotations.Schema;
 
     [Table("SingleMoldDisc")]
-    public partial class SingleMoldDisc : Mold
+    public partial class SingleMoldDisc : SingleMold
     {
         [NotMapped]
         public CoreSingleMold coreSingleMold { get; set; }

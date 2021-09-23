@@ -7,7 +7,7 @@ using Gießformkonfigurator.WPF.Enums;
 
 namespace Gießformkonfigurator.WPF.MVVM.Model.Db_molds
 {
-    class SingleMold : Mold
+    public partial class SingleMold : Mold
     {
         public SingleMold()
         {

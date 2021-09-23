@@ -100,7 +100,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                         var compareObject = new CompareObject((ProductDisc)this.productDisc, (SingleMoldDisc)singleMoldDisc);
                         compareObject.differenceInnerDiameter = productDisc.InnerDiameter - singleMoldDisc.coreSingleMold.OuterDiameter;
                         compareObject.differenceOuterDiameter = singleMoldDisc.OuterDiameter - productDisc.OuterDiameter;
-                        compareObject.differenceBoltDiameter = singleMoldDisc.BoltDiameter - productDisc.HcHoleDiameter;
+                        compareObject.differenceBoltDiameter = productDisc.HcHoleDiameter - singleMoldDisc.BoltDiameter;
                         compareJobOutput.Add(compareObject);
                     }
                 }
@@ -111,7 +111,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                         var compareObject = new CompareObject((ProductDisc)this.productDisc, (SingleMoldDisc)singleMoldDisc);
                         compareObject.differenceInnerDiameter = productDisc.InnerDiameter - singleMoldDisc.InnerDiameter;
                         compareObject.differenceOuterDiameter = singleMoldDisc.OuterDiameter - productDisc.OuterDiameter;
-                        compareObject.differenceBoltDiameter = singleMoldDisc.BoltDiameter - productDisc.HcHoleDiameter;
+                        compareObject.differenceBoltDiameter = productDisc.HcHoleDiameter - singleMoldDisc.BoltDiameter;
                         compareJobOutput.Add(compareObject);
                     }
                 }

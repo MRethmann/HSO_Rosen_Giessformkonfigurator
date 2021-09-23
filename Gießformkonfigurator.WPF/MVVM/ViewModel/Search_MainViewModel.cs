@@ -60,7 +60,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                 Height = 15,
                 HcHoles = 8,
                 HcDiameter = 120,
-                HcHoleDiameter = 9.0m,
+                HcHoleDiameter = 10.0m,
                 FactorPU = 1.0175m,
                 BTC = "06A",
             };
