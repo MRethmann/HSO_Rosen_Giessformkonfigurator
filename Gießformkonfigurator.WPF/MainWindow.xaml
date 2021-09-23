@@ -18,14 +18,14 @@
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="15"/>
-                <ColumnDefinition Width="400"/>
+                <ColumnDefinition Width="300"/>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="15"/>
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="15"/>
-                <RowDefinition Height="200"/>
+                <RowDefinition Height="100"/>
                 <RowDefinition/>
                 <RowDefinition Height="15"/>
             </Grid.RowDefinitions>
@@ -39,7 +39,7 @@
 
             <Grid Grid.Column="1" Grid.Row="1" >
                 <Border BorderBrush="#144F9B">
-                    <Image Width="360" Height="200" Source="/Images/rosen.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <Image Width="180" Height="100" Source="/Images/rosen.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </Border>
             </Grid>
 
