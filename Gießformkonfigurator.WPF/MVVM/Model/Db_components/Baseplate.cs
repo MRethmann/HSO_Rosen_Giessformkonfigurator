@@ -25,13 +25,13 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_components
 
         public decimal Height { get; set; }
 
-        public decimal OuterKonusMax { get; set; }
+        public decimal? OuterKonusMax { get; set; }
 
-        public decimal OuterKonusMin { get; set; }
+        public decimal? OuterKonusMin { get; set; }
 
-        public decimal OuterKonusAngle { get; set; }
+        public decimal? OuterKonusAngle { get; set; }
 
-        public decimal KonusHeight { get; set; }
+        public decimal? KonusHeight { get; set; }
 
         /// <summary>
         /// Konusführung

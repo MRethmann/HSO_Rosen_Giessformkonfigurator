@@ -29,7 +29,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_components
 
         public decimal Height { get; set; }
 
-        public decimal FillHeightMax { get; set; }
+        public decimal? FillHeightMax { get; set; }
 
         /// <summary>
         /// Konusführung

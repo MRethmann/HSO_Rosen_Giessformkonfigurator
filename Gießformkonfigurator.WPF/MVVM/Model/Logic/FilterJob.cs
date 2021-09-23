@@ -32,11 +32,11 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             if (product.GetType() == typeof(ProductDisc))
             {
                 this.productDisc = (ProductDisc) product;
-                productDisc.OuterDiameter = productDisc.OuterDiameter * productDisc.FactorPU.GetValueOrDefault(1m);
-                productDisc.InnerDiameter = productDisc.InnerDiameter * productDisc.FactorPU.GetValueOrDefault(1m);
-                productDisc.Height = productDisc.Height * productDisc.FactorPU.GetValueOrDefault(1m);
-                productDisc.HcDiameter = productDisc.HcDiameter * productDisc.FactorPU.GetValueOrDefault(1m);
-                productDisc.HcHoleDiameter = productDisc.HcHoleDiameter * productDisc.FactorPU.GetValueOrDefault(1m);
+                productDisc.OuterDiameter = Math.Round(productDisc.OuterDiameter * productDisc.FactorPU.GetValueOrDefault(1m), 2);
+                productDisc.InnerDiameter = Math.Round(productDisc.InnerDiameter * productDisc.FactorPU.GetValueOrDefault(1m), 2);
+                productDisc.Height = Math.Round(productDisc.Height * productDisc.FactorPU.GetValueOrDefault(1m), 2);
+                productDisc.HcDiameter = Math.Round((Decimal)productDisc.HcDiameter * productDisc.FactorPU.GetValueOrDefault(1m), 2);
+                productDisc.HcHoleDiameter = Math.Round((Decimal)productDisc.HcHoleDiameter * productDisc.FactorPU.GetValueOrDefault(1m), 2);
             } 
             else if (product.GetType() == typeof(ProductCup))
             {
@@ -44,7 +44,8 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                 productCup.InnerDiameter = productCup.InnerDiameter * productCup.FactorPU.GetValueOrDefault(1m);
             }
 
-            this.ArraysTestData();
+            //this.ArraysTestData();
+            this.GetFilteredDatabase();
         }
 
         public void ArraysTestData()
@@ -233,7 +234,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
         /// <summary>
         /// Stellt eine Verbindung zur Datenbank her und speichert die Komponenten in einer lokalen Objektliste. Die Komponenten werden über die Produktparameter vorgefiltert.
         /// </summary>
-        public void FilterDiscDatabase()
+        public void GetFilteredDatabase()
         {
             if (this.productDisc != null)
             {
@@ -241,7 +242,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                 {
                     foreach (var grundplatte in db.Baseplates)
                     {
-                        if (this.productDisc.OuterDiameter < grundplatte.OuterDiameter)
+                        if (this.productDisc?.OuterDiameter < grundplatte.OuterDiameter)
                         {
                             this.listBaseplates.Add(grundplatte);
                         }
@@ -249,7 +250,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 
                     foreach (var ring in db.Rings)
                     {
-                        if (this.productDisc.InnerDiameter > ring.OuterDiameter || this.productDisc.OuterDiameter < ring.InnerDiameter)
+                        if (this.productDisc?.InnerDiameter > ring.OuterDiameter || this.productDisc?.OuterDiameter < ring.InnerDiameter)
                         {
                             this.listRings.Add(ring);
                         }
@@ -263,7 +264,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 
                     foreach (var innenkern in db.Cores)
                     {
-                        if (this.productDisc.InnerDiameter > innenkern.OuterDiameter)
+                        if (this.productDisc?.InnerDiameter > innenkern.OuterDiameter)
                         {
                             this.listCores.Add(innenkern);
                         }
@@ -272,7 +273,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                     foreach (var bolzen in db.Bolts)
                     {
                         // TODO: Abgleich hinzufügen. Produkt besitzt aktuell nur das Attribut Lochkreis, welches keine Vergleichseigenschaft besitzt. Durchmesser der Löcher benötigt.
-                        if (bolzen.OuterDiameter <= this.productDisc.HcHoleDiameter)
+                        if (bolzen.OuterDiameter <= this.productDisc?.HcHoleDiameter)
                         {
                             this.listBolts.Add(bolzen);
                         }
@@ -281,7 +282,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                     foreach (var cupform in db.Cupforms)
                     {
                         // TODO: Abgleich hinzufügen. Produkt besitzt aktuell nur das Attribut Lochkreis, welches keine Vergleichseigenschaft besitzt. Durchmesser der Löcher benötigt.
-                        if (cupform.InnerDiameter <= this.productCup.InnerDiameter
+                        if (cupform.InnerDiameter <= this.productCup?.InnerDiameter
                             && cupform.CupType == this.productCup.BaseCup)
                         {
                             this.listCupforms.Add(cupform);
@@ -290,8 +291,8 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 
                     foreach (var singleMoldDisc in db.SingleMoldDiscs)
                     {
-                        if (singleMoldDisc.OuterDiameter >= productDisc.OuterDiameter
-                            && singleMoldDisc.InnerDiameter <= productDisc.InnerDiameter)
+                        if (singleMoldDisc.OuterDiameter >= productDisc?.OuterDiameter
+                            && singleMoldDisc.InnerDiameter <= productDisc?.InnerDiameter)
                         {
                             this.listSingleMoldDiscs.Add(singleMoldDisc);
                         }
@@ -300,7 +301,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                     // TODO: GGF. Abfrage für Cups hinzufügen.
                     foreach (var coreSingleMold in db.CoreSingleMolds)
                     {
-                        if (coreSingleMold.OuterDiameter <= productDisc.InnerDiameter)
+                        if (coreSingleMold.OuterDiameter <= productDisc?.InnerDiameter)
                         {
                             this.listCoresSingleMold.Add(coreSingleMold);
                         }

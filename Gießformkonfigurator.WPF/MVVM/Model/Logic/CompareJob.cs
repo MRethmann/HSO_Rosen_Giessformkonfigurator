@@ -35,9 +35,9 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 
             modularMolds = new List<ModularMold>(combinationJob.modularMoldsOutput);
 
-            singleMoldDiscs = new List<SingleMoldDisc>();
+            singleMoldDiscs = new List<SingleMoldDisc>(combinationJob.singleMoldDiscOutput);
 
-            singleMoldCups = new List<SingleMoldCup>();
+            singleMoldCups = new List<SingleMoldCup>(combinationJob.singleMoldCupOutput);
 
             bolts = new List<Bolt>(combinationJob.listBolts);
 
@@ -101,6 +101,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                         compareObject.differenceInnerDiameter = productDisc.InnerDiameter - singleMoldDisc.coreSingleMold.OuterDiameter;
                         compareObject.differenceOuterDiameter = singleMoldDisc.OuterDiameter - productDisc.OuterDiameter;
                         compareObject.differenceBoltDiameter = singleMoldDisc.BoltDiameter - productDisc.HcHoleDiameter;
+                        compareJobOutput.Add(compareObject);
                     }
                 }
                 else
@@ -111,6 +112,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                         compareObject.differenceInnerDiameter = productDisc.InnerDiameter - singleMoldDisc.InnerDiameter;
                         compareObject.differenceOuterDiameter = singleMoldDisc.OuterDiameter - productDisc.OuterDiameter;
                         compareObject.differenceBoltDiameter = singleMoldDisc.BoltDiameter - productDisc.HcHoleDiameter;
+                        compareJobOutput.Add(compareObject);
                     }
                 }
             }

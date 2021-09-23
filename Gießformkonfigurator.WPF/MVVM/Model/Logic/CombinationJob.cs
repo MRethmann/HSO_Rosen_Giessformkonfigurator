@@ -62,6 +62,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             this.CombineModularDiscMold();
             this.CombineModularCupMold();
             this.CombineSingleDiscMold();
+            this.CombineSingleCupMold();
         }
 
         /// <summary>
@@ -277,11 +278,17 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                         && singleMoldDisc.InnerDiameter <= coreSingleMold.InnerDiameter - 2
                         && coreSingleMold.OuterDiameter < (singleMoldDisc.HcDiameter - singleMoldDisc.BoltDiameter/2))
                     {
-                        singleMoldDiscOutput.Add(new SingleMoldDisc(coreSingleMold));
+                        singleMoldDisc.coreSingleMold = coreSingleMold;
+                        singleMoldDiscOutput.Add(singleMoldDisc);
                     }
                 }
-                singleMoldDiscOutput.Add(new SingleMoldDisc());
+                singleMoldDiscOutput.Add(singleMoldDisc);
             }
+        }
+
+        public void CombineSingleCupMold()
+        {
+            singleMoldCupOutput = new List<SingleMoldCup>();
         }
 
     }

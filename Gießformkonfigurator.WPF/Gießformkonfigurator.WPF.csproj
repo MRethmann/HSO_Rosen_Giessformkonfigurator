@@ -241,6 +241,14 @@
     <Compile Include="Migrations\202109231426019_changed precisison on all attributes of singleMolds.Designer.cs">
       <DependentUpon>202109231426019_changed precisison on all attributes of singleMolds.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202109231429416_outerkonus baseplate may be null.cs" />
+    <Compile Include="Migrations\202109231429416_outerkonus baseplate may be null.Designer.cs">
+      <DependentUpon>202109231429416_outerkonus baseplate may be null.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109231430436_fillHeigh on core may be null.cs" />
+    <Compile Include="Migrations\202109231430436_fillHeigh on core may be null.Designer.cs">
+      <DependentUpon>202109231430436_fillHeigh on core may be null.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MVVM\Model\Db_components\Baseplate.cs" />
     <Compile Include="MVVM\Model\Db_components\Bolt.cs" />
@@ -404,6 +412,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202109231426019_changed precisison on all attributes of singleMolds.resx">
       <DependentUpon>202109231426019_changed precisison on all attributes of singleMolds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109231429416_outerkonus baseplate may be null.resx">
+      <DependentUpon>202109231429416_outerkonus baseplate may be null.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109231430436_fillHeigh on core may be null.resx">
+      <DependentUpon>202109231430436_fillHeigh on core may be null.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

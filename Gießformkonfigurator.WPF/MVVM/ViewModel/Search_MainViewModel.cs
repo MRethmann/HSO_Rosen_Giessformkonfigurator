@@ -53,14 +53,14 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
             
             Product product = new ProductDisc()
             {
-                ID = 0001,
-                Description = "Albert du Schwein!",
-                OuterDiameter = 310.00m,
-                InnerDiameter = 275.00m,
-                Height = 20.00m,
-                HcHoles = 12,
-                HcDiameter = 337.59m,
-                HcHoleDiameter = 14,
+                ID = 78700,
+                Description = "10 Seal.disc 273x82x15 65Ana 10A",
+                OuterDiameter = 273,
+                InnerDiameter = 82,
+                Height = 15,
+                HcHoles = 8,
+                HcDiameter = 120,
+                HcHoleDiameter = 9.0m,
                 FactorPU = 1.0175m,
                 BTC = "06A",
             };
