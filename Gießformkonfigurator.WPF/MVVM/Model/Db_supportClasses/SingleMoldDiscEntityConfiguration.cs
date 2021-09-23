@@ -14,22 +14,22 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses
         public SingleMoldDiscEntityConfiguration()
         {
             this.Property(e => e.Description)
-            .IsUnicode(false);
+                .IsUnicode(false);
 
             this.Property(e => e.OuterDiameter)
-            .HasPrecision(10, 2);
+                .HasPrecision(10, 4);
 
             this.Property(e => e.Height)
-            .HasPrecision(10, 2);
+                .HasPrecision(10, 4);
 
             this.Property(e => e.InnerDiameter)
-                .HasPrecision(10, 2);
+                .HasPrecision(10, 4);
 
             this.Property(e => e.HcDiameter)
-                .HasPrecision(10, 2);
+                .HasPrecision(10, 4);
 
             this.Property(e => e.BoltDiameter)
-                .HasPrecision(10, 2);
+                .HasPrecision(10, 4);
         }
     }
 

@@ -6,6 +6,7 @@
 namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 {
     using Gießformkonfigurator.WPF.Core;
+    using Gießformkonfigurator.WPF.MVVM.Model.Db_molds;
     using Gießformkonfigurator.WPF.MVVM.Model.Db_products;
     using System;
     using System.Collections.Generic;
@@ -52,31 +53,36 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                 compareObject.finalRating = this.compare(34.00m - compareObject.differenceOuterDiameter * this.factorOuterDiameter, 0.00m);
                 compareObject.finalRating += this.compare(34.00m - compareObject.differenceInnerDiameter * this.factorInnerDiameter, 0.00m);
 
-                if (compareObject.Product is ProductCup && ((ProductCup)compareObject.Product).BTC != null
-                    || compareObject.Product is ProductDisc && ((ProductDisc)compareObject.Product).BTC != null)
+                if (compareObject.Mold is ModularMold)
                 {
-                    for (int i = 1; i < 3; i++)
+                    if (compareObject.Product is ProductCup && ((ProductCup)compareObject.Product).BTC != null
+                    || compareObject.Product is ProductDisc && ((ProductDisc)compareObject.Product).BTC != null)
                     {
-                        if (compareObject.boltCirclesBaseplate[i] == true)
+                        for (int i = 1; i < 3; i++)
                         {
-                            var minDifference = compareObject.bolts.Min(p => p.Item2);
-                            compareObject.finalRating += this.compare(32.00m - minDifference * this.factorBoltDiameter, 0.00m);
-                            compareObject.differenceBoltDiameter = minDifference;
-                        }
-                        else if (compareObject.boltCirclesInsertPlate[i] == true)
-                        {
-                            var minDifference = compareObject.bolts.Min(p => p.Item2);
-                            compareObject.finalRating += this.compare(32.00m - minDifference * this.factorBoltDiameter, 0.00m);
-                            compareObject.differenceBoltDiameter = minDifference;
+                            if (compareObject.boltCirclesBaseplate[i] == true)
+                            {
+                                var minDifference = compareObject.bolts.Min(p => p.Item2);
+                                compareObject.finalRating += this.compare(32.00m - minDifference * this.factorBoltDiameter, 0.00m);
+                                compareObject.differenceBoltDiameter = minDifference;
+                            }
+                            else if (compareObject.boltCirclesInsertPlate[i] == true)
+                            {
+                                var minDifference = compareObject.bolts.Min(p => p.Item2);
+                                compareObject.finalRating += this.compare(32.00m - minDifference * this.factorBoltDiameter, 0.00m);
+                                compareObject.differenceBoltDiameter = minDifference;
+                            }
                         }
                     }
+                    else
+                    {
+                        compareObject.finalRating += 32.00m;
+                    }
                 }
-                else
+                else if (compareObject.Mold is SingleMold)
                 {
-                    compareObject.finalRating += 32.00m;
+                    compareObject.finalRating += this.compare(32.00m - compareObject.differenceBoltDiameter * this.factorBoltDiameter, 0.00m);
                 }
-
-
             }
         }
     }

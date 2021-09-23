@@ -16,10 +16,10 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses
             .IsUnicode(false);
 
             this.Property(e => e.OuterDiameter)
-                .HasPrecision(10, 2);
+                .HasPrecision(10, 4);
 
             this.Property(e => e.InnerDiameter)
-                .HasPrecision(10, 2);
+                .HasPrecision(10, 4);
 
             this.Property(e => e.Height)
                 .HasPrecision(10, 2);

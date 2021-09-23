@@ -14,7 +14,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_molds
     public partial class SingleMoldDisc : Mold
     {
         [NotMapped]
-        public Core core { get; set; }
+        public CoreSingleMold coreSingleMold { get; set; }
 
         [Key]
         [Column("ID")]
@@ -43,9 +43,9 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_molds
             this.productType = ProductType.Disc;
         }
 
-        public SingleMoldDisc(Core core)
+        public SingleMoldDisc(CoreSingleMold coreSingleMold)
         {
-            this.core = core;
+            this.coreSingleMold = coreSingleMold;
             this.moldType = MoldType.Einteilige_Gießform;
             this.productType = ProductType.Disc;
         }

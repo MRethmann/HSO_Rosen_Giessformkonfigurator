@@ -17,7 +17,8 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 
         public ProductCup productCup { get; set; }
         public List<ModularMold> modularMolds { get; set; }
-        public List<SingleMold> singleMolds { get; set; }
+        public List<SingleMoldDisc> singleMoldDiscs { get; set; }
+        public List<SingleMoldCup> singleMoldCups { get; set; }
         public List<Bolt> bolts { get; set; }
         public List<CompareObject> compareJobOutput { get; set; } = new List<CompareObject>();
 
@@ -34,7 +35,9 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 
             modularMolds = new List<ModularMold>(combinationJob.modularMoldsOutput);
 
-            singleMolds = new List<SingleMold>();
+            singleMoldDiscs = new List<SingleMoldDisc>();
+
+            singleMoldCups = new List<SingleMoldCup>();
 
             bolts = new List<Bolt>(combinationJob.listBolts);
 
@@ -86,10 +89,30 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                 }
             }
 
-            // Second Step: Compare SingleMolds with Product. Add ranking Information
-            foreach (var singleMold in this.singleMolds)
+            // Second Step: Compare SingleMolds with Product.
+            foreach (var singleMoldDisc in this.singleMoldDiscs)
             {
-                // TODO
+                if (singleMoldDisc.coreSingleMold != null)
+                {
+                    if (compareRuleSet.Compare(this.productDisc, singleMoldDisc) 
+                        && singleMoldDisc.coreSingleMold.OuterDiameter <= productDisc.InnerDiameter)
+                    {
+                        var compareObject = new CompareObject((ProductDisc)this.productDisc, (SingleMoldDisc)singleMoldDisc);
+                        compareObject.differenceInnerDiameter = productDisc.InnerDiameter - singleMoldDisc.coreSingleMold.OuterDiameter;
+                        compareObject.differenceOuterDiameter = singleMoldDisc.OuterDiameter - productDisc.OuterDiameter;
+                        compareObject.differenceBoltDiameter = singleMoldDisc.BoltDiameter - productDisc.HcHoleDiameter;
+                    }
+                }
+                else
+                {
+                    if (compareRuleSet.Compare(this.productDisc, singleMoldDisc))
+                    {
+                        var compareObject = new CompareObject((ProductDisc)this.productDisc, (SingleMoldDisc)singleMoldDisc);
+                        compareObject.differenceInnerDiameter = productDisc.InnerDiameter - singleMoldDisc.InnerDiameter;
+                        compareObject.differenceOuterDiameter = singleMoldDisc.OuterDiameter - productDisc.OuterDiameter;
+                        compareObject.differenceBoltDiameter = singleMoldDisc.BoltDiameter - productDisc.HcHoleDiameter;
+                    }
+                }
             }
 
             // Third Step: Compare ModularMolds with HoleCircle

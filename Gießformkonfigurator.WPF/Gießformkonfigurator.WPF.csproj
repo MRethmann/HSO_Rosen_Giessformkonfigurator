@@ -233,6 +233,14 @@
     <Compile Include="Migrations\202109221343189_database changes.Designer.cs">
       <DependentUpon>202109221343189_database changes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202109231424285_changed precision on coreMoldSingle.cs" />
+    <Compile Include="Migrations\202109231424285_changed precision on coreMoldSingle.Designer.cs">
+      <DependentUpon>202109231424285_changed precision on coreMoldSingle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109231426019_changed precisison on all attributes of singleMolds.cs" />
+    <Compile Include="Migrations\202109231426019_changed precisison on all attributes of singleMolds.Designer.cs">
+      <DependentUpon>202109231426019_changed precisison on all attributes of singleMolds.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MVVM\Model\Db_components\Baseplate.cs" />
     <Compile Include="MVVM\Model\Db_components\Bolt.cs" />
@@ -390,6 +398,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202109221343189_database changes.resx">
       <DependentUpon>202109221343189_database changes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109231424285_changed precision on coreMoldSingle.resx">
+      <DependentUpon>202109231424285_changed precision on coreMoldSingle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109231426019_changed precisison on all attributes of singleMolds.resx">
+      <DependentUpon>202109231426019_changed precisison on all attributes of singleMolds.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

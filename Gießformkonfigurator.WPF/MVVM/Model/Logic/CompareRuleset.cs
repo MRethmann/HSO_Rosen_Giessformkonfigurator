@@ -19,8 +19,9 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             // hier müssen alle Regeln registriert werden, damit sie verwendet werden.
             this.CompareRules = new CompareRule[]
                     {
-                    new ProduktCupCompare(),
-                    new ProduktDiscCompare()
+                    new ProductCupModularMoldCompare(),
+                    new ProductDiscModularMoldCompare(),
+                    new ProductSingleDiscCompare()
                     };
         }
 

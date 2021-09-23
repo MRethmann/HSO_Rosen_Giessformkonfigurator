@@ -14,7 +14,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_molds
     public partial class SingleMoldCup : Mold
     {
         [NotMapped]
-        public Core core { get; set; }
+        public CoreSingleMold coreSingleMold { get; set; }
 
         [Key]
         [Column("ID")]
@@ -43,9 +43,9 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_molds
             this.productType = ProductType.Cup;
         }
 
-        public SingleMoldCup(Core core)
+        public SingleMoldCup(CoreSingleMold coreSingleMold)
         {
-            this.core = core;
+            this.coreSingleMold = coreSingleMold;
             this.moldType = MoldType.Einteilige_Gießform;
             this.productType = ProductType.Cup;
         }

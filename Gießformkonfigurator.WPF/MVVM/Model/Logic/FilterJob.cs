@@ -9,6 +9,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
     using System.Collections.Generic;
     using System.Linq;
     using Gießformkonfigurator.WPF.MVVM.Model.Db_components;
+    using Gießformkonfigurator.WPF.MVVM.Model.Db_molds;
     using Gießformkonfigurator.WPF.MVVM.Model.Db_products;
     using Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses;
 
@@ -19,7 +20,9 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
         public List<InsertPlate> listInsertPlates { get; set; } = new List<InsertPlate>();
         public List<Core> listCores { get; set; } = new List<Core>();
         public List<Bolt> listBolts { get; set; } = new List<Bolt>();
-
+        public List<SingleMoldDisc> listSingleMoldDiscs { get; set; } = new List<SingleMoldDisc>();
+        public List<SingleMoldCup> listSingleMoldCups { get; set; } = new List<SingleMoldCup>();
+        public List<CoreSingleMold> listCoresSingleMold { get; set; } = new List<CoreSingleMold>();
         public List<Cupform> listCupforms { get; set; } = new List<Cupform>();
         public ProductDisc productDisc { get; set; }
         public ProductCup productCup { get; set; }
@@ -29,37 +32,23 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             if (product.GetType() == typeof(ProductDisc))
             {
                 this.productDisc = (ProductDisc) product;
+                productDisc.OuterDiameter = productDisc.OuterDiameter * productDisc.FactorPU.GetValueOrDefault(1m);
+                productDisc.InnerDiameter = productDisc.InnerDiameter * productDisc.FactorPU.GetValueOrDefault(1m);
+                productDisc.Height = productDisc.Height * productDisc.FactorPU.GetValueOrDefault(1m);
+                productDisc.HcDiameter = productDisc.HcDiameter * productDisc.FactorPU.GetValueOrDefault(1m);
+                productDisc.HcHoleDiameter = productDisc.HcHoleDiameter * productDisc.FactorPU.GetValueOrDefault(1m);
             } 
             else if (product.GetType() == typeof(ProductCup))
             {
                 this.productCup = (ProductCup) product;
+                productCup.InnerDiameter = productCup.InnerDiameter * productCup.FactorPU.GetValueOrDefault(1m);
             }
+
             this.ArraysTestData();
-            //this.FilterDiscDatabase();
         }
 
         public void ArraysTestData()
         {
-            /*this.listBaseplates.Add(new Baseplate() { Description = "Grundplatte 12", OuterDiameter = 375.00m, Height = 20.00m, OuterKonusMax = 347.89m, OuterKonusMin = 342.00m, OuterKonusAngle = 15.00m, KonusHeight = 11.00m, InnerDiameter = 15.00m, HasHoleguide = true, Hc1Holes = 8, Hc1Diameter = 10, Hc1Thread = "M5", Hc2Holes = 8, Hc2Diameter = 20, Hc2Thread = "M6", Hc3Holes = 8, Hc3Diameter = 30, Hc3Thread = "M7" });
-            //this.listBaseplates.Add(new Baseplate() { Bezeichnung_RoCon = "Grundplatte 22", Außendurchmesser = 700.00m, Hoehe = 20.00m, Konus_Außen_Max = 645.58m, Konus_Außen_Min = 639.31m, Konus_Außen_Winkel = 15.00m, Konus_Hoehe = 11.00m, Innendurchmesser = 225.00m, Konus_Innen_Max = 265.31m, Konus_Innen_Min = 259.42m, Konus_Innen_Winkel = 15.00m, Mit_Konusfuehrung = true });
-            //this.listInsertPlates.Add(new InsertPlate() { Bezeichnung_RoCon = "Einsatz fuer Grundplatte 22in-24in", Außendurchmesser = 265.00m, Hoehe = 20.00m, Konus_Außen_Max = 265.00m, Konus_Außen_Min = 259.11m, Konus_Außen_Winkel = 15.00m, Konus_Hoehe = 11.00m, Innendurchmesser = 30.00m, Mit_Lochfuehrung = true });
-            this.listRings.Add(new Ring() { Description = "Form ring", OuterDiameter = 375.00m, Height = 31.6m, InnerKonusMax = 345.43m, InnerKonusMin = 342.21m, InnerKonusAngle = 15.00m, KonusHeight = 6.00m, InnerDiameter = 315.3m, FillHeightMax = 25.00m, HasKonus = true });
-            //this.listRings.Add(new Ring() { Bezeichnung_RoCon = "Formring Dichtscheibe d 324", Außendurchmesser = 375.00m, Hoehe = 21.6m, Konus_Max = 345.52m, Konus_Min = 342.3m, Konus_Winkel = 15.00m, Konus_Hoehe = 6.00m, Innendurchmesser = 330.6m, Gießhoehe_Max = 15.00m, mit_Konusfuehrung = true });
-            //this.listRings.Add(new Ring() { Bezeichnung_RoCon = "Innenring01", Außendurchmesser = 330.3m, Hoehe = 21.6m, Innendurchmesser = 310.7m, Gießhoehe_Max = 15.00m, mit_Konusfuehrung = false });
-            //this.listRings.Add(new Ring() { Bezeichnung_RoCon = "Innenring02", Außendurchmesser = 310.5m, Hoehe = 21.6m, Innendurchmesser = 250.0m, Gießhoehe_Max = 15.00m, mit_Konusfuehrung = false });
-            this.listCores.Add(new Core() { Description = "Einsatz fuer Innendurchmesser d 40", OuterDiameter = 41.4m, Height = 40.6m, KonusHeight = 15.00m, GuideDiameter = 15.00m, GuideHeight = 20.00m, FillHeightMax = 25.6m, HasGuideBolt = true });
-            //this.listCores.Add(new Core() { Bezeichnung_RoCon = "Einsatz fuer Innendurchmesser d219", Außendurchmesser = 224.4m, Hoehe = 42.00m, Konus_Außen_Max = 210.00m, Konus_Außen_Min = 206.78m, Konus_Außen_Winkel = 15.00m, Konus_Hoehe = 6.00m, Gießhoehe_Max = 36.00m, Mit_Konusfuehrung = true });
-            //this.listCores.Add(new Core() { Bezeichnung_RoCon = "Einsatz fuer Innendurchmesser d=82", Außendurchmesser = 84.1m, Hoehe = 40.6m, Konus_Hoehe = 15.00m, Durchmesser_Fuehrung = 15.00m, Gießhoehe_Max = 25.6m, Hoehe_Fuehrung = 20.00m, Mit_Fuehrungsstift = true });
-            this.listBolts.Add(new Bolt() { ID = 25000, Description = "Testbolt_01", OuterDiameter = 1, FillHeightMax = 35.00m ,Thread = "M5", HasThread = true });
-            this.listBolts.Add(new Bolt() { ID = 25001, Description = "Testbolt_02", OuterDiameter = 2, FillHeightMax = 35.00m, Thread = "M5", HasThread = true });
-            this.listBolts.Add(new Bolt() { ID = 25002, Description = "Testbolt_03", OuterDiameter = 3, FillHeightMax = 35.00m, Thread = "M5", HasThread = true });
-            this.listBolts.Add(new Bolt() { ID = 25003, Description = "Testbolt_04", OuterDiameter = 1, FillHeightMax = 35.00m, Thread = "M6", HasThread = true });
-            this.listBolts.Add(new Bolt() { ID = 25004, Description = "Testbolt_05", OuterDiameter = 2, FillHeightMax = 35.00m, Thread = "M6", HasThread = true });
-            this.listBolts.Add(new Bolt() { ID = 25005, Description = "Testbolt_06", OuterDiameter = 3, FillHeightMax = 35.00m, Thread = "M6", HasThread = true });
-            this.listBolts.Add(new Bolt() { ID = 25006, Description = "Testbolt_07", OuterDiameter = 1, FillHeightMax = 35.00m, Thread = "M7", HasThread = true });
-            this.listBolts.Add(new Bolt() { ID = 25007, Description = "Testbolt_08", OuterDiameter = 2, FillHeightMax = 35.00m, Thread = "M7", HasThread = true });
-            this.listBolts.Add(new Bolt() { ID = 25008, Description = "Testbolt_09", OuterDiameter = 3, FillHeightMax = 35.00m, Thread = "M7", HasThread = true });*/
-
             this.listBaseplates.Add(new Baseplate()
             {
                 ID = 001,
@@ -255,11 +244,6 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                         if (this.productDisc.OuterDiameter < grundplatte.OuterDiameter)
                         {
                             this.listBaseplates.Add(grundplatte);
-                            Console.WriteLine("Grundplatte " + grundplatte + " added to the filter.");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Grundplatte " + grundplatte + " removed.");
                         }
                     }
 
@@ -268,11 +252,6 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                         if (this.productDisc.InnerDiameter > ring.OuterDiameter || this.productDisc.OuterDiameter < ring.InnerDiameter)
                         {
                             this.listRings.Add(ring);
-                            Console.WriteLine("Ring " + ring + " added to the filter.");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Ring " + ring + " removed.");
                         }
                     }
 
@@ -280,7 +259,6 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                     foreach (var einlegeplatte in db.InsertPlates)
                     {
                         this.listInsertPlates.Add(einlegeplatte);
-                        Console.WriteLine("Einlegeplatte " + einlegeplatte + " added to the filter.");
                     }
 
                     foreach (var innenkern in db.Cores)
@@ -288,11 +266,6 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                         if (this.productDisc.InnerDiameter > innenkern.OuterDiameter)
                         {
                             this.listCores.Add(innenkern);
-                            Console.WriteLine("Innenkern " + innenkern + " added to the filter.");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Innenkern " + innenkern + " removed.");
                         }
                     }
 
@@ -302,11 +275,6 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                         if (bolzen.OuterDiameter <= this.productDisc.HcHoleDiameter)
                         {
                             this.listBolts.Add(bolzen);
-                            Console.WriteLine("Bolzen " + bolzen + " added to the filter.");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Bolzen " + bolzen + " removed.");
                         }
                     }
 
@@ -317,11 +285,24 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                             && cupform.CupType == this.productCup.BaseCup)
                         {
                             this.listCupforms.Add(cupform);
-                            Console.WriteLine("Cupform " + cupform + " added to the filter.");
                         }
-                        else
+                    }
+
+                    foreach (var singleMoldDisc in db.SingleMoldDiscs)
+                    {
+                        if (singleMoldDisc.OuterDiameter >= productDisc.OuterDiameter
+                            && singleMoldDisc.InnerDiameter <= productDisc.InnerDiameter)
                         {
-                            Console.WriteLine("Cupform " + cupform + " removed.");
+                            this.listSingleMoldDiscs.Add(singleMoldDisc);
+                        }
+                    }
+
+                    // TODO: GGF. Abfrage für Cups hinzufügen.
+                    foreach (var coreSingleMold in db.CoreSingleMolds)
+                    {
+                        if (coreSingleMold.OuterDiameter <= productDisc.InnerDiameter)
+                        {
+                            this.listCoresSingleMold.Add(coreSingleMold);
                         }
                     }
                 }

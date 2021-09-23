@@ -181,7 +181,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             return (additionRing.OuterDiameter <= baseRing.InnerDiameter - 0.1m
                 && additionRing.OuterDiameter >= baseRing.InnerDiameter - 2m)
                 || (additionRing.InnerDiameter >= baseRing.OuterDiameter
-                && additionRing.InnerDiameter < baseRing.OuterDiameter - 2m);
+                && additionRing.InnerDiameter - 2 < baseRing.OuterDiameter);
         }
     }
 
@@ -192,12 +192,12 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
         public override bool Combine(Component a, Component b)
         {
             var components = new[] { a, b };
-            var core = components.OfType<Core>().ElementAt(0);
-            var additionRing = components.OfType<Ring>().ElementAt(1);
+            var core = (Core) a;
+            var additionRing = (Ring) b;
 
             // Der Innenring darf nicht zu groß und nicht zu klein sein.
             return additionRing.InnerDiameter >= core.OuterDiameter
-                && additionRing.InnerDiameter < core.OuterDiameter - 2m;
+                && additionRing.InnerDiameter - 2 < core.OuterDiameter;
         }
     }
 

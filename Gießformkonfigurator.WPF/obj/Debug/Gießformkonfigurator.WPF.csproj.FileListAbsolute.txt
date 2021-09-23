@@ -222,3 +222,5 @@ C:\Users\rethm\OneDrive\Dokumente\VisualStudio\Gießformkonfigurator.WPF\obj\Deb
 C:\Users\rethm\OneDrive\Dokumente\VisualStudio\Gießformkonfigurator.WPF\obj\Debug\Gießformkonfigurator.WPF.Migrations.changeddatatypeofHcHolestoint.resources
 C:\Users\rethm\OneDrive\Dokumente\VisualStudio\Gießformkonfigurator.WPF\obj\Debug\Gießformkonfigurator.WPF.Migrations.AddedCoreSingleMoldsTable.resources
 C:\Users\rethm\OneDrive\Dokumente\VisualStudio\Gießformkonfigurator.WPF\obj\Debug\Gießformkonfigurator.WPF.Migrations.databasechanges.resources
+C:\Users\rethm\OneDrive\Dokumente\VisualStudio\Gießformkonfigurator.WPF\obj\Debug\Gießformkonfigurator.WPF.Migrations.changedprecisiononcoreMoldSingle.resources
+C:\Users\rethm\OneDrive\Dokumente\VisualStudio\Gießformkonfigurator.WPF\obj\Debug\Gießformkonfigurator.WPF.Migrations.changedprecisisononallattributesofsingleMolds.resources

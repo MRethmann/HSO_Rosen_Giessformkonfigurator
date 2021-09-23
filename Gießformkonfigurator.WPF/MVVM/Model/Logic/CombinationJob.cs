@@ -29,6 +29,11 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
         public List<Bolt> listBolts { get; set; } = new List<Bolt>();
         public List<Cupform> listCupforms { get; set; } = new List<Cupform>();
         public List<ModularMold> modularMoldsOutput { get; set; }
+        public List<SingleMoldDisc> singleMoldDiscOutput { get; set; }
+        public List<SingleMoldCup> singleMoldCupOutput { get; set; }
+        public List<SingleMoldDisc> listSingleMoldDiscs { get; set; }
+        public List<SingleMoldCup> listSingleMoldCups { get; set; }
+        public List<CoreSingleMold> listCoresSingleMold { get; set; }
         public CombinationRuleset combinationRuleSet { get; set; }
         public ApplicationSettings applicationSettings { get; set; }
 
@@ -47,12 +52,16 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             listCores = new List<Core>(filterJob.listCores);
             listBolts = new List<Bolt>(filterJob.listBolts);
             listCupforms = new List<Cupform>(filterJob.listCupforms);
+            listCoresSingleMold = new List<CoreSingleMold>(filterJob.listCoresSingleMold);
+            listSingleMoldCups = new List<SingleMoldCup>(filterJob.listSingleMoldCups);
+            listSingleMoldDiscs = new List<SingleMoldDisc>(filterJob.listSingleMoldDiscs);
 
             combinationRuleSet = new CombinationRuleset();
             applicationSettings = new ApplicationSettings();
 
-            this.CombineDiscMold();
-            //this.CombineCupMold();
+            this.CombineModularDiscMold();
+            this.CombineModularCupMold();
+            this.CombineSingleDiscMold();
         }
 
         /// <summary>
@@ -64,7 +73,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
         /// Uses the pre filtered database entries (filterJob) to combine components to create modular molds for disc products.
         /// </summary>
         [STAThread]
-        public void CombineDiscMold()
+        public void CombineModularDiscMold()
         {
             // Listen, welche zur Zwischenspeicherung der mehrteiligen Gießformen genutzt werden, bevor sie vervollständigt wurden und ausgegeben werden können.
             List<ModularMold> discMoldsTemp01 = new List<ModularMold>();
@@ -148,7 +157,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                 foreach (var ring in listRings)
                 {
                     // Alle Ringe entfernen, die potentiell außerhalb des Guide Rings liegen könnten
-                    if (ring.InnerDiameter < mold.guideRing.OuterDiameter)
+                    if (ring.OuterDiameter < mold.guideRing.InnerDiameter + 1)
                     {
                         if (combinationRuleSet.Combine(mold.guideRing, ring))
                         {
@@ -171,12 +180,15 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                 {
                     foreach (var ring in listRings)
                     {
-                        if (ring.OuterDiameter > mold.core.OuterDiameter)
+                        if (ring.InnerDiameter + 1 > mold.core.OuterDiameter)
                         {
-                            if (combinationRuleSet.Combine(mold.ListCoreRings[i].Item1, ring))
+                            if (ring.OuterDiameter > mold.core.OuterDiameter)
                             {
-                                var differenceInnerDiameter = produktDisc.InnerDiameter - ring.OuterDiameter;
-                                mold.ListCoreRings.Add(new Tuple<Ring, Ring, decimal?>(mold.ListCoreRings[i].Item1, ring, differenceInnerDiameter));
+                                if (combinationRuleSet.Combine(mold.ListCoreRings[i].Item1, ring))
+                                {
+                                    var differenceInnerDiameter = produktDisc.InnerDiameter - ring.OuterDiameter;
+                                    mold.ListCoreRings.Add(new Tuple<Ring, Ring, decimal?>(mold.ListCoreRings[i].Item1, ring, differenceInnerDiameter));
+                                }
                             }
                         }
                     }
@@ -187,20 +199,20 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                 {
                     foreach (var ring in listRings)
                     {
-                        if (ring.InnerDiameter < mold.guideRing.OuterDiameter)
+                        if (ring.OuterDiameter < mold.guideRing.InnerDiameter + 1)
                         {
-                            if (combinationRuleSet.Combine(mold.ListOuterRings[i].Item1, ring))
+                            if (ring.InnerDiameter < mold.guideRing.OuterDiameter)
                             {
-                                var differenceOuterDiameter = ring.InnerDiameter - produktDisc.OuterDiameter;
-                                mold.ListOuterRings.Add(new Tuple<Ring, Ring, decimal?>(mold.ListOuterRings[i].Item1, ring, differenceOuterDiameter));
+                                if (combinationRuleSet.Combine(mold.ListOuterRings[i].Item1, ring))
+                                {
+                                    var differenceOuterDiameter = ring.InnerDiameter - produktDisc.OuterDiameter;
+                                    mold.ListOuterRings.Add(new Tuple<Ring, Ring, decimal?>(mold.ListOuterRings[i].Item1, ring, differenceOuterDiameter));
+                                }
                             }
                         }
                     }
                 }
             }
-
-            foreach (var mold in discMoldsTemp02)
-           
 
             this.modularMoldsOutput = new List<ModularMold>(discMoldsTemp02);
         }
@@ -208,7 +220,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
         /// <summary>
         /// Uses the pre filtered database entries (filterJob) to combine components to create modular molds for cup products.
         /// </summary>
-        public void CombineCupMold()
+        public void CombineModularCupMold()
         {
             List<ModularMold> cupMoldsTemp01 = new List<ModularMold>();
 
@@ -247,6 +259,28 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                         }
                     }
                 }
+            }
+        }
+
+        /// <summary>
+        /// Uses the pre filtered database entries (filterJob) to combine singleMoldDisc with optional Cores.
+        /// </summary>
+        public void CombineSingleDiscMold()
+        {
+            singleMoldDiscOutput = new List<SingleMoldDisc>();
+
+            foreach (var singleMoldDisc in this.listSingleMoldDiscs)
+            {
+                foreach (var coreSingleMold in this.listCoresSingleMold)
+                {
+                    if (singleMoldDisc.InnerDiameter <= coreSingleMold.InnerDiameter
+                        && singleMoldDisc.InnerDiameter <= coreSingleMold.InnerDiameter - 2
+                        && coreSingleMold.OuterDiameter < (singleMoldDisc.HcDiameter - singleMoldDisc.BoltDiameter/2))
+                    {
+                        singleMoldDiscOutput.Add(new SingleMoldDisc(coreSingleMold));
+                    }
+                }
+                singleMoldDiscOutput.Add(new SingleMoldDisc());
             }
         }
 
