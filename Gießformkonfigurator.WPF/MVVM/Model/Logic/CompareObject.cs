@@ -47,12 +47,17 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
         /// <summary>
         /// Array shows which BoltCircle of the mold is assigned to which circle of the product. Array index 1-3 is used for the boltcircles of the baseplate. Array index 4-6 is used for boltcircles of the insertPlate.
         /// </summary>
-        public int[] boltCirclesBaseplate { get; set; } = new int[7];
+        public bool[] boltCirclesBaseplate { get; set; } = new bool[4];
+
+        public bool[] boltCirclesInsertPlate { get; set; } = new bool[4];
 
         /// <summary>
-        /// 
+        /// Bolts
         /// </summary>
-        public List<Tuple<Bolt, int, decimal?>> bolts { get; set; } = new List<Tuple<Bolt, int, decimal?>>();
+        public List<Tuple<Bolt, decimal?>> bolts { get; set; } = new List<Tuple<Bolt, decimal?>>();
+
+        public List<Ring> outerRings { get; set; } = new List<Ring>();
+        public List<Ring> coreRings { get; set; } = new List<Ring>();
 
         public CompareObject(Product product, Mold mold)
         {

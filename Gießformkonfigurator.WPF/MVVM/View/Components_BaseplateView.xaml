@@ -54,6 +54,7 @@
                      Foreground="Black" FontSize="15">
         </TextBox>
         
+        
         <TextBlock Text="Bezeichnung"
                    HorizontalAlignment="Left" VerticalAlignment="Center"
                    Foreground="Black" FontSize="15"

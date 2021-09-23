@@ -179,9 +179,9 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 
             // Der Innenring darf nicht zu groß und nicht zu klein sein.
             return (additionRing.OuterDiameter <= baseRing.InnerDiameter - 0.1m
-                && additionRing.OuterDiameter >= baseRing.InnerDiameter - 0.5m)
+                && additionRing.OuterDiameter >= baseRing.InnerDiameter - 2m)
                 || (additionRing.InnerDiameter >= baseRing.OuterDiameter
-                && additionRing.InnerDiameter < baseRing.OuterDiameter - 0.5m);
+                && additionRing.InnerDiameter < baseRing.OuterDiameter - 2m);
         }
     }
 
@@ -197,7 +197,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 
             // Der Innenring darf nicht zu groß und nicht zu klein sein.
             return additionRing.InnerDiameter >= core.OuterDiameter
-                && additionRing.InnerDiameter < core.OuterDiameter - 0.5m;
+                && additionRing.InnerDiameter < core.OuterDiameter - 2m;
         }
     }
 

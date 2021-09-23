@@ -52,7 +52,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             applicationSettings = new ApplicationSettings();
 
             this.CombineDiscMold();
-            this.CombineCupMold();
+            //this.CombineCupMold();
         }
 
         /// <summary>
@@ -69,7 +69,6 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             // Listen, welche zur Zwischenspeicherung der mehrteiligen Gießformen genutzt werden, bevor sie vervollständigt wurden und ausgegeben werden können.
             List<ModularMold> discMoldsTemp01 = new List<ModularMold>();
             List<ModularMold> discMoldsTemp02 = new List<ModularMold>();
-            List<ModularMold> discMoldsTemp03 = new List<ModularMold>();
 
             // Grundplatten --> Fuehrungsringe
             for (int iGP = 0; iGP < this.listBaseplates.Count; iGP++)
@@ -144,43 +143,6 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             // Mehrteilige Gießformen --> Innenringe
             this.Index = discMoldsTemp02.Count;
 
-            // TODO: Wie viele Durchläufe machen hier Sinn?
-            for (int i = 0; i < 3; i++)
-            {
-                for (int iTemp = 0; iTemp < this.Index; iTemp++)
-                {
-                    for (int iRinge = 0; iRinge < this.listRings.Count; iRinge++)
-                    {
-                        // Betrachtet nur Ringe ohne Konusfuehrung
-                        if (this.listRings[iRinge].HasKonus == false)
-                        {
-                            // Neuer Ring muss größer als der vorhandene Kern sein
-                            if (this.listRings[iRinge].InnerDiameter > discMoldsTemp02[iTemp].core.OuterDiameter)
-                            {
-                                // Bereits Innenringe vorhanden --> Kombination mit letztem Innenring
-                                if (discMoldsTemp02[iTemp].ListOuterRings.Count > 0)
-                                {
-                                    int indexer = discMoldsTemp02[iTemp].ListOuterRings.Count - 1;
-                                    if (combinationRuleSet.Combine(discMoldsTemp02[iTemp].ListOuterRings[indexer], this.listRings[iRinge]))
-                                    {
-                                        discMoldsTemp02[iTemp].ListOuterRings.Add(this.listRings[iRinge]);
-                                    }
-                                }
-
-                                // Keine Innenringe vorhanden --> Kombination mit Fuehrungsring
-                                else
-                                {
-                                    if (combinationRuleSet.Combine(discMoldsTemp02[iTemp].guideRing, this.listRings[iRinge]))
-                                    {
-                                        discMoldsTemp02[iTemp].ListOuterRings.Add(this.listRings[iRinge]);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
             foreach (var mold in discMoldsTemp02)
             {
                 foreach (var ring in listRings)
@@ -190,11 +152,13 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                     {
                         if (combinationRuleSet.Combine(mold.guideRing, ring))
                         {
-                            mold.ListOuterRings.Add(ring);
+                            var differenceOuterDiameter = ring.InnerDiameter - produktDisc.OuterDiameter;
+                            mold.ListOuterRings.Add(new Tuple<Ring, Ring, decimal?>(ring, null, differenceOuterDiameter));
                         }
                         else if (combinationRuleSet.Combine(mold.core, ring))
                         {
-                            mold.ListCoreRings.Add(ring);
+                            var differenceInnerDiameter = produktDisc.InnerDiameter - ring.OuterDiameter;
+                            mold.ListCoreRings.Add(new Tuple<Ring, Ring, decimal?>(ring, null, differenceInnerDiameter));
                         }
                     }
                 }
@@ -202,35 +166,41 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 
             foreach (var mold in discMoldsTemp02)
             {
-                foreach (var coreRing in mold.ListCoreRings)
+                var counter01 = mold.ListCoreRings.Count;
+                for (int i = 0; i < counter01; i++)
                 {
                     foreach (var ring in listRings)
                     {
                         if (ring.OuterDiameter > mold.core.OuterDiameter)
                         {
-                            if (combinationRuleSet.Combine(coreRing, ring))
+                            if (combinationRuleSet.Combine(mold.ListCoreRings[i].Item1, ring))
                             {
-                                mold.ListCoreRings.Add(ring);
+                                var differenceInnerDiameter = produktDisc.InnerDiameter - ring.OuterDiameter;
+                                mold.ListCoreRings.Add(new Tuple<Ring, Ring, decimal?>(mold.ListCoreRings[i].Item1, ring, differenceInnerDiameter));
                             }
                         }
                     }
                 }
 
-                foreach (var outerRing in mold.ListOuterRings)
+                var counter02 = mold.ListOuterRings.Count;
+                for (int i = 0; i < counter02; i++)
                 {
                     foreach (var ring in listRings)
                     {
                         if (ring.InnerDiameter < mold.guideRing.OuterDiameter)
                         {
-                            if (combinationRuleSet.Combine(outerRing, ring))
+                            if (combinationRuleSet.Combine(mold.ListOuterRings[i].Item1, ring))
                             {
-                                mold.ListOuterRings.Add(ring);
+                                var differenceOuterDiameter = ring.InnerDiameter - produktDisc.OuterDiameter;
+                                mold.ListOuterRings.Add(new Tuple<Ring, Ring, decimal?>(mold.ListOuterRings[i].Item1, ring, differenceOuterDiameter));
                             }
                         }
                     }
                 }
             }
 
+            foreach (var mold in discMoldsTemp02)
+           
 
             this.modularMoldsOutput = new List<ModularMold>(discMoldsTemp02);
         }

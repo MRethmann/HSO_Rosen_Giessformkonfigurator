@@ -61,7 +61,8 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                 HcHoles = 12,
                 HcDiameter = 337.59m,
                 HcHoleDiameter = 14,
-                FactorPU = 1.0175m
+                FactorPU = 1.0175m,
+                BTC = "06A",
             };
 
             /*using (var db = new GießformDBContext())
@@ -97,7 +98,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
 
                     foreach (var compareObject in programLogic.finalOutput)
                     {
-                        ((ModularMold)compareObject.Mold).ListOuterRings.Add(new Model.Db_components.Ring { Description = "ALBERTOOO" , ID = 123151, OuterDiameter = 5, ToleranceInnerDiameter = "5", InnerDiameter = 5, ToleranceOuterDiameter = "5", FillHeightMax = 12, HasKonus = true, Height = 55});
+                        //((ModularMold)compareObject.Mold).ListOuterRings.Add(new Model.Db_components.Ring { Description = "ALBERTOOO" , ID = 123151, OuterDiameter = 5, ToleranceInnerDiameter = "5", InnerDiameter = 5, ToleranceOuterDiameter = "5", FillHeightMax = 12, HasKonus = true, Height = 55});
                         this.productSearchOutput.Add(compareObject);
                     }
 

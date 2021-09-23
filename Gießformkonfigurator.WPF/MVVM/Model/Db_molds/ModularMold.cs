@@ -7,6 +7,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_molds
 {
     using Gießformkonfigurator.WPF.Enums;
     using Gießformkonfigurator.WPF.MVVM.Model.Db_components;
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel;
 
@@ -22,9 +23,9 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_molds
 
         public Cupform cupform { get; set; }
 
-        public List<Ring> ListOuterRings = new List<Ring>();
+        public List<Tuple<Ring, Ring, decimal?>> ListOuterRings { get; set; } = new List<Tuple<Ring, Ring, decimal?>>();
 
-        public List<Ring> ListCoreRings = new List<Ring>();
+        public List<Tuple<Ring, Ring, decimal?>> ListCoreRings { get; set; } = new List<Tuple<Ring, Ring, decimal?>>();
 
         public ModularMold(Baseplate gp, Ring fr, InsertPlate el, Core ik)
         {

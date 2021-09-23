@@ -119,28 +119,11 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                 Hc3Thread = null
             });*/
 
-            this.listRings.Add(new Ring()
-            {
-                ID = 003,
-                Description = "Ring_Test03",
-                OuterDiameter = 700m,
-                ToleranceOuterDiameter = null,
-                InnerDiameter = 630m,
-                ToleranceInnerDiameter = "0.2",
-                Height = 20m,
-                FillHeightMax = 18m,
-                HasKonus = true,
-                InnerKonusMax = 643.71m,
-                InnerKonusMin = 639.94m,
-                InnerKonusAngle = 15.0m,
-                KonusHeight = 10m
-            });
-
             this.listCores.Add(new Core()
             {
                 ID = 004,
-                Description = "Core_Test04",
-                OuterDiameter = 270m,
+                Description = "Core_Test01",
+                OuterDiameter = 240m,
                 ToleranceOuterDiameter = null,
                 Height = 42,
                 FillHeightMax = 36,
@@ -162,14 +145,100 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                 ID = 005,
                 Description = "Bolt_Test05",
                 Height = 55,
-                OuterDiameter = 14,
+                OuterDiameter = 10,
                 FillHeightMax = 40,
                 HasThread = true,
-                Thread = "m10",
+                Thread = "M10",
                 HasGuideBolt = false,
                 GuideHeight = 15,
                 GuideOuterDiameter = 10,
             });
+
+            this.listRings.Add(new Ring()
+            {
+                ID = 003,
+                Description = "GuideRing_Test01",
+                OuterDiameter = 700m,
+                ToleranceOuterDiameter = null,
+                InnerDiameter = 630m,
+                ToleranceInnerDiameter = "0.2",
+                Height = 20m,
+                FillHeightMax = 18m,
+                HasKonus = true,
+                InnerKonusMax = 643.71m,
+                InnerKonusMin = 639.94m,
+                InnerKonusAngle = 15.0m,
+                KonusHeight = 10m
+            });
+
+            this.listRings.Add(new Ring() 
+            {
+                ID = 006,
+                Description = "OuterRing_Test01",
+                OuterDiameter = 629m,
+                ToleranceOuterDiameter = null,
+                InnerDiameter = 620m,
+                ToleranceInnerDiameter = "0.2",
+                Height = 20m,
+                FillHeightMax = 18m,
+                HasKonus = false
+            });
+
+            this.listRings.Add(new Ring()
+            {
+                ID = 007,
+                Description = "OuterRing_Test02",
+                OuterDiameter = 619m,
+                ToleranceOuterDiameter = null,
+                InnerDiameter = 600m,
+                ToleranceInnerDiameter = "0.2",
+                Height = 20m,
+                FillHeightMax = 18m,
+                HasKonus = false
+            });
+
+            this.listRings.Add(new Ring()
+            {
+                ID = 008,
+                Description = "CoreRing_Test01",
+                OuterDiameter = 250m,
+                ToleranceOuterDiameter = null,
+                InnerDiameter = 241m,
+                ToleranceInnerDiameter = "0.2",
+                Height = 20m,
+                FillHeightMax = 18m,
+                HasKonus = false
+            });
+
+            this.listRings.Add(new Ring()
+            {
+                ID = 009,
+                Description = "CoreRing_Test02",
+                OuterDiameter = 260m,
+                ToleranceOuterDiameter = null,
+                InnerDiameter = 251m,
+                ToleranceInnerDiameter = "0.2",
+                Height = 20m,
+                FillHeightMax = 18m,
+                HasKonus = false
+            });
+
+            this.listRings.Add(new Ring()
+            {
+                ID = 010,
+                Description = "CoreRing_Test03_SollteNichtGenommenWerden",
+                OuterDiameter = 280m,
+                ToleranceOuterDiameter = null,
+                InnerDiameter = 261m,
+                ToleranceInnerDiameter = "0.2",
+                Height = 20m,
+                FillHeightMax = 18m,
+                HasKonus = false
+            });
+
+
+            //this.listRings.Add(new Ring() { Bezeichnung_RoCon = "Innenring01", Außendurchmesser = 330.3m, Hoehe = 21.6m, Innendurchmesser = 310.7m, Gießhoehe_Max = 15.00m, mit_Konusfuehrung = false });
+            //this.listRings.Add(new Ring() { Bezeichnung_RoCon = "Innenring02", Außendurchmesser = 310.5m, Hoehe = 21.6m, Innendurchmesser = 250.0m, Gießhoehe_Max = 15.00m, mit_Konusfuehrung = false });
         }
 
         /// <summary>

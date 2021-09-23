@@ -50,7 +50,7 @@ namespace Gießformkonfigurator.WPF
                 {
                     for (int i = 0; i < mGießform.ListOuterRings.Count; i++)
                     {
-                        Console.Write(mGießform.ListOuterRings[i]?.Description + " + ");
+                        //Console.Write(mGießform.ListOuterRings[i]?.Description + " + ");
                     }
                 }
 

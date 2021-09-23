@@ -132,7 +132,7 @@
                                 </DataGridColumn.HeaderStyle>
                             </DataGridTextColumn>
 
-                            <DataGridTextColumn Header="Typ" Width="3*" Binding="{Binding Mold.type}">
+                            <DataGridTextColumn Header="Typ" Width="3*" Binding="{Binding Mold.moldType}">
                                 <DataGridColumn.HeaderStyle>
                                     <Style TargetType="DataGridColumnHeader">
                                         <Setter Property="Background" Value="White"/>
@@ -176,7 +176,7 @@
                         <DataGrid.RowDetailsTemplate>
                             <DataTemplate>
                                 <Grid Background="White">
-                                    
+
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
@@ -715,7 +715,7 @@
                                                             <TextBlock Grid.Row="9" Text="Konus Innen Max: " Foreground="White" FontSize="14"/>
                                                             <TextBlock Grid.Row="10" Text="Konus Innen Min: " Foreground="White" FontSize="14"/>
                                                             <TextBlock Grid.Row="11" Text="Konus Innen Winkel: " Foreground="White" FontSize="14"/>
-                                                            
+
                                                         </Grid>
 
                                                         <Grid Grid.Column="1" Margin="2">
@@ -746,8 +746,8 @@
                                                             <TextBlock Grid.Row="9" Text="{Binding Mold.guideRing.InnerKonusMax}" Foreground="White" FontSize="14"/>
                                                             <TextBlock Grid.Row="10" Text="{Binding Mold.guideRing.InnerKonusMin}" Foreground="White" FontSize="14"/>
                                                             <TextBlock Grid.Row="11" Text="{Binding Mold.guideRing.InnerKonusAngle}" Foreground="White" FontSize="14"/>
-                                                            
-                                                            
+
+
 
                                                         </Grid>
                                                     </Grid>
@@ -876,7 +876,7 @@
                                                             <Border Grid.Row="0" BorderBrush="White" BorderThickness="0,0,0,1">
                                                                 <TextBlock Text="Detailinfo" Foreground="White" FontSize="14"/>
                                                             </Border>
-                                                            
+
                                                             <TextBlock Grid.Row="1" Text="Aussendruchmesser:" Foreground="White" FontSize="14"/>
                                                             <TextBlock Grid.Row="2" Text="Innendurchmesser:" Foreground="White" FontSize="14"/>
                                                             <TextBlock Grid.Row="3" Text="KonusInnen:" Foreground="White" FontSize="14"/>
@@ -906,6 +906,7 @@
 
                                     </Grid>
                                 </Grid>
+
                             </DataTemplate>
                         </DataGrid.RowDetailsTemplate>
 

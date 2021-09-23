@@ -5,6 +5,7 @@
 //-----------------------------------------------------------------------
 namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 {
+    using Gießformkonfigurator.WPF.Core;
     using Gießformkonfigurator.WPF.MVVM.Model.Db_products;
     using System;
     using System.Collections.Generic;
@@ -15,14 +16,20 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
     {
         public List<CompareObject> rankingJobOutput { get; set; }
 
-        public decimal? factorOuterDiameter { get; set; } = 0.2m;
+        public ApplicationSettings applicationSettings { get; set; }
 
-        public decimal? factorInnerDiameter { get; set; } = 0.2m;
+        public decimal? factorOuterDiameter { get; set; }
 
-        public decimal? factorBoltDiameter { get; set; } = 0;
+        public decimal? factorInnerDiameter { get; set; }
+
+        public decimal? factorBoltDiameter { get; set; }
 
         public RankingJob(Product product, CompareJob compareJob)
         {
+            applicationSettings = new ApplicationSettings();
+            this.factorOuterDiameter = applicationSettings.rankingFactorOuterDiameter;
+            this.factorInnerDiameter = applicationSettings.rankingFactorInnerDiameter;
+            this.factorBoltDiameter = applicationSettings.rankingFactorBolts;
             this.rankingJobOutput = new List<CompareObject>(compareJob.compareJobOutput);
             this.rateMolds();
         }
@@ -42,18 +49,34 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
         {
             foreach (var compareObject in this.rankingJobOutput)
             {
-                compareObject.finalRating = this.compare(35.00m - compareObject.differenceOuterDiameter * this.factorOuterDiameter, 0.00m);
-                compareObject.finalRating += this.compare(35.00m - compareObject.differenceInnerDiameter * this.factorInnerDiameter, 0.00m);
+                compareObject.finalRating = this.compare(34.00m - compareObject.differenceOuterDiameter * this.factorOuterDiameter, 0.00m);
+                compareObject.finalRating += this.compare(34.00m - compareObject.differenceInnerDiameter * this.factorInnerDiameter, 0.00m);
 
-                for (int i = 1; i <= 6; i++)
+                if (compareObject.Product is ProductCup && ((ProductCup)compareObject.Product).BTC != null
+                    || compareObject.Product is ProductDisc && ((ProductDisc)compareObject.Product).BTC != null)
                 {
-                    if (compareObject.boltCirclesBaseplate[i] != 0)
+                    for (int i = 1; i < 3; i++)
                     {
-                        var tempList01 = compareObject.bolts.Where(bolt => bolt.Item2 == compareObject.boltCirclesBaseplate[i]);
-                        var minDifference = tempList01.Min(p => p.Item3);
-                        compareObject.finalRating += this.compare(10.00m - minDifference * this.factorBoltDiameter, 0.00m);
-                    } 
+                        if (compareObject.boltCirclesBaseplate[i] == true)
+                        {
+                            var minDifference = compareObject.bolts.Min(p => p.Item2);
+                            compareObject.finalRating += this.compare(32.00m - minDifference * this.factorBoltDiameter, 0.00m);
+                            compareObject.differenceBoltDiameter = minDifference;
+                        }
+                        else if (compareObject.boltCirclesInsertPlate[i] == true)
+                        {
+                            var minDifference = compareObject.bolts.Min(p => p.Item2);
+                            compareObject.finalRating += this.compare(32.00m - minDifference * this.factorBoltDiameter, 0.00m);
+                            compareObject.differenceBoltDiameter = minDifference;
+                        }
+                    }
                 }
+                else
+                {
+                    compareObject.finalRating += 32.00m;
+                }
+
+
             }
         }
     }
