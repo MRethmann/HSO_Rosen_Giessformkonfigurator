@@ -18,7 +18,7 @@
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="15"/>
-                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="250"/>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="15"/>
             </Grid.ColumnDefinitions>
@@ -55,7 +55,7 @@
 
                         <Border Margin="0, 30, 0, 30"></Border>
 
-                        <RadioButton Content="Produkt erstellen"
+                        <RadioButton Content="Produkt"
                                      x:Name="create_product"
                                      Visibility="Hidden"
                                      Height="50" 
@@ -63,7 +63,7 @@
                                      Style="{StaticResource MenuButtonTheme}"
                                      Command="{Binding Product_MainViewCmd}" />
 
-                        <RadioButton Content="Einteilige Gießform erstellen"
+                        <RadioButton Content="Einteilige Gießform"
                                      x:Name="create_one_piece_mold"
                                      Visibility="Hidden"
                                      Height="50"
@@ -71,7 +71,7 @@
                                      Style="{StaticResource MenuButtonTheme}"
                                      Command="{Binding Mold_MainViewCmd}" />
 
-                        <RadioButton Content="Gießformkomponente erstellen"
+                        <RadioButton Content="Gießformkomponenten"
                                      x:Name="create_casting_mold_component"
                                      Visibility="Hidden"
                                      Height="50"
@@ -79,6 +79,7 @@
                                      Style="{StaticResource MenuButtonTheme}"
                                      Command="{Binding Components_MainViewCmd}"/>
 
+                        <Border Margin="0, 30, 0, 30"></Border>
                         <RadioButton Content="Datenbankverwaltung"
                                      x:Name="database_management"
                                      Visibility="Hidden"
@@ -87,7 +88,6 @@
                                      Style="{StaticResource MenuButtonTheme}"
                                      Command="{Binding DBManagement_MainViewCmd}"/>
 
-                        <Border Margin="0, 30, 0, 30"></Border>
 
                         <RadioButton Content="Settings"
                                      x:Name="Settings"

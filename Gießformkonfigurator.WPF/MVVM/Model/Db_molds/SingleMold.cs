@@ -11,7 +11,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_molds
     {
         public SingleMold()
         {
-            this.moldType = MoldType.Einteilige_Gießform;
+            
         }
     }
 }

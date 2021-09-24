@@ -78,7 +78,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show("Fehler beim Hinzufügen.");
+                    MessageBox.Show("Fehler beim Hinzufügen." + e);
                 }
 
             }

@@ -39,14 +39,14 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_molds
 
         public SingleMoldCup()
         {
-            this.moldType = MoldType.Einteilige_Gießform;
+            this.moldType = MoldType.Einteilige_Gießform_Cup;
             this.productType = ProductType.Cup;
         }
 
         public SingleMoldCup(CoreSingleMold coreSingleMold)
         {
             this.coreSingleMold = coreSingleMold;
-            this.moldType = MoldType.Einteilige_Gießform;
+            this.moldType = MoldType.Einteilige_Gießform_Cup;
             this.productType = ProductType.Cup;
         }
 

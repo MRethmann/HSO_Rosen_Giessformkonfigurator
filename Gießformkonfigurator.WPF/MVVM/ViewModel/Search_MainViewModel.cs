@@ -6,6 +6,7 @@
 namespace Gießformkonfigurator.WPF.MVVM.ViewModel
 {
     using Gießformkonfigurator.WPF.Core;
+    using Gießformkonfigurator.WPF.MVVM.Model.Db_components;
     using Gießformkonfigurator.WPF.MVVM.Model.Db_molds;
     using Gießformkonfigurator.WPF.MVVM.Model.Db_products;
     using Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses;
@@ -14,6 +15,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
     using System.Collections.ObjectModel;
     using System.Globalization;
     using System.Windows;
+    using System.Windows.Controls;
     using System.Windows.Input;
 
     class Search_MainViewModel : ObservableObject
@@ -101,6 +103,10 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                         //((ModularMold)compareObject.Mold).ListOuterRings.Add(new Model.Db_components.Ring { Description = "ALBERTOOO" , ID = 123151, OuterDiameter = 5, ToleranceInnerDiameter = "5", InnerDiameter = 5, ToleranceOuterDiameter = "5", FillHeightMax = 12, HasKonus = true, Height = 55});
                         this.productSearchOutput.Add(compareObject);
                     }
+                    this.productSearchOutput.Add(new CompareObject(product, new ModularMold(new Baseplate(), new Ring(), new InsertPlate(), new Core())));
+                    this.productSearchOutput.Add(new CompareObject(product, new ModularMold(new Cupform(), new Core(), new InsertPlate())));
+                    this.productSearchOutput.Add(new CompareObject(product, new SingleMoldDisc()));
+                    this.productSearchOutput.Add(new CompareObject(product, new SingleMoldCup()));
 
                     this.IsLoading = Visibility.Hidden;
                     Mouse.OverrideCursor = System.Windows.Input.Cursors.Arrow;
@@ -117,5 +123,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
             else
                 return false;
         }
+
+        
     }
 }
