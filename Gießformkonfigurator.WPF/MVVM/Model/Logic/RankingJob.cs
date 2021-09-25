@@ -83,6 +83,17 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                 {
                     compareObject.finalRating += this.compare(32.00m - compareObject.differenceBoltDiameter * this.factorBoltDiameter, 0.00m);
                 }
+
+                compareObject.finalRating = Math.Round((Decimal) compareObject.finalRating, 2);
+
+                if (compareObject.differenceInnerDiameter > 0)
+                    compareObject.postProcessing.Add("Innendurchmesser bearbeiten");
+
+                if (compareObject.differenceOuterDiameter > 0)
+                    compareObject.postProcessing.Add("Außendurchmesser bearbeiten");
+
+                if (compareObject.differenceBoltDiameter > 0)
+                    compareObject.postProcessing.Add("Lochkreis einarbeiten");
             }
         }
     }

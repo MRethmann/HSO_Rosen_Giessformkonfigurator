@@ -39,14 +39,16 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_molds
 
         public SingleMoldDisc()
         {
-            this.moldType = MoldType.Einteilige_Gießform_Disc;
+            this.moldType = MoldType.SingleMold;
+            this.moldTypeName = "Einteilige Gießform";
             this.productType = ProductType.Disc;
+            this.productTypeName = "Scheibe";
         }
 
         public SingleMoldDisc(CoreSingleMold coreSingleMold)
         {
             this.coreSingleMold = coreSingleMold;
-            this.moldType = MoldType.Einteilige_Gießform_Disc;
+            this.moldType = MoldType.SingleMold;
             this.productType = ProductType.Disc;
         }
 

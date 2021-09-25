@@ -33,16 +33,17 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
         /// </summary>
         public decimal? differenceBoltDiameter { get; set; }
 
-        /// <summary>
-        /// GGF. überflüssig. Shows if mold has holeCircle or not. If not it needs to be added manually in post processing.
-        /// </summary>
-        public bool holeCircle { get; set; }
+        public List<string> postProcessing { get; set; } = new List<string>();
 
         /// <summary>
         /// 
         /// </summary>
         public decimal? finalRating { get; set; }
 
+        /// <summary>
+        /// GGF. überflüssig. Shows if mold has holeCircle or not. If not it needs to be added manually in post processing.
+        /// </summary>
+        public bool holeCircle { get; set; }
 
         /// <summary>
         /// Array shows which BoltCircle of the mold is assigned to which circle of the product. Array index 1-3 is used for the boltcircles of the baseplate. Array index 4-6 is used for boltcircles of the insertPlate.

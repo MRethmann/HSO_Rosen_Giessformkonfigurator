@@ -18,6 +18,12 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_molds
         public MoldType moldType { get; set; }
 
         [NotMapped]
+        public string moldTypeName { get; set; }
+
+        [NotMapped]
         public ProductType productType { get; set; }
+
+        [NotMapped]
+        public string productTypeName { get; set; }
     }
 }

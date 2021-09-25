@@ -8,9 +8,7 @@ namespace Gießformkonfigurator.WPF.Enums
 {
     public enum MoldType
     {
-        Mehrteilige_Gießform_Disc,
-        Mehrteilige_Gießform_Cup,
-        Einteilige_Gießform_Disc,
-        Einteilige_Gießform_Cup
+        MultiMold,
+        SingleMold,
     }
 }

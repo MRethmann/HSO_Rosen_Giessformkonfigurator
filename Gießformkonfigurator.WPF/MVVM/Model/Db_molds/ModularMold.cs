@@ -27,13 +27,16 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_molds
 
         public List<Tuple<Ring, Ring, decimal?>> ListCoreRings { get; set; } = new List<Tuple<Ring, Ring, decimal?>>();
 
-        public ModularMold(Baseplate gp, Ring fr, InsertPlate el, Core ik)
+        public ModularMold(Baseplate baseplate, Ring ring, InsertPlate insertPlate, Core core)
         {
-            this.baseplate = gp;
-            this.guideRing = fr;
-            this.insertPlate = el;
-            this.core = ik;
-            this.moldType = MoldType.Mehrteilige_Gießform_Disc;
+            this.baseplate = baseplate;
+            this.guideRing = ring;
+            this.insertPlate = insertPlate;
+            this.core = core;
+            this.moldType = MoldType.MultiMold;
+            this.moldTypeName = "Mehrteilige Gießform";
+            this.productType = ProductType.Disc;
+            this.productTypeName = "Scheibe";
         }
 
         public ModularMold(Cupform cupform, Core core, InsertPlate insertPlate)
@@ -41,7 +44,10 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_molds
             this.cupform = cupform;
             this.core = core;
             this.insertPlate = insertPlate;
-            this.moldType = MoldType.Mehrteilige_Gießform_Cup;
+            this.moldType = MoldType.MultiMold;
+            this.moldTypeName = "Mehrteilige Gießform";
+            this.productType = ProductType.Cup;
+            this.productTypeName = "Cup";
         }
 
         /*public override string ToString()

@@ -20,6 +20,12 @@ namespace Gießformkonfigurator.WPF.MVVM.View
             InitializeComponent();
             DataContext = new Search_MainViewModel();
         }
+
+        private void combinationJobOutput_LoadingRow(object sender, DataGridRowEventArgs e)
+        {
+            e.Row.Header = (e.Row.GetIndex() + 1).ToString(); 
+        }
+
     }
 
     public class MyCustomRowDetailsTemplateSelector : DataTemplateSelector
@@ -28,13 +34,13 @@ namespace Gießformkonfigurator.WPF.MVVM.View
         {
             CompareObject co = item as CompareObject;
 
-            if (co.Mold.moldType.ToString() == "Mehrteilige_Gießform_Disc")
+            if (co.Mold.moldType.ToString() == "MultiMold" && co.Mold.productType.ToString() == "Disc")
                 return MultiMoldDiscTemplate;
-            else if (co.Mold.moldType.ToString() == "Mehrteilige_Gießform_Cup")
+            else if (co.Mold.moldType.ToString() == "MultiMold" && co.Mold.productType.ToString() == "Cup")
                 return MultiMoldCupTemplate;
-            else if (co.Mold.moldType.ToString() == "Einteilige_Gießform_Disc")
+            else if (co.Mold.moldType.ToString() == "SingleMold" && co.Mold.productType.ToString() == "Disc")
                 return SingleMoldDiscTemplate;
-            else if (co.Mold.moldType.ToString() == "Einteilige_Gießform_Cup")
+            else if (co.Mold.moldType.ToString() == "SingleMold" && co.Mold.productType.ToString() == "Cup")
                 return SingleMoldCupTemplate;
             else
                 return null;

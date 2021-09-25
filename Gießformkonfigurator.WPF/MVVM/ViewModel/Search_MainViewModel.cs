@@ -14,6 +14,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
     using System;
     using System.Collections.ObjectModel;
     using System.Globalization;
+    using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
@@ -102,11 +103,25 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                     {
                         //((ModularMold)compareObject.Mold).ListOuterRings.Add(new Model.Db_components.Ring { Description = "ALBERTOOO" , ID = 123151, OuterDiameter = 5, ToleranceInnerDiameter = "5", InnerDiameter = 5, ToleranceOuterDiameter = "5", FillHeightMax = 12, HasKonus = true, Height = 55});
                         this.productSearchOutput.Add(compareObject);
+                        compareObject.postProcessing.Add("Test1");
+                        compareObject.postProcessing.Add("Test2");
                     }
-                    this.productSearchOutput.Add(new CompareObject(product, new ModularMold(new Baseplate(), new Ring(), new InsertPlate(), new Core())));
-                    this.productSearchOutput.Add(new CompareObject(product, new ModularMold(new Cupform(), new Core(), new InsertPlate())));
-                    this.productSearchOutput.Add(new CompareObject(product, new SingleMoldDisc()));
-                    this.productSearchOutput.Add(new CompareObject(product, new SingleMoldCup()));
+                    var test = new CompareObject(product, new ModularMold(new Baseplate(), new Ring(), new InsertPlate(), new Core())) { finalRating = 80 };
+                    ((ModularMold)test.Mold).ListCoreRings.Add(new Tuple<Ring, Ring, decimal?>(new Ring() { ID = 1 }, new Ring() ,0.1m));
+                    test.bolts.Add(new Tuple<Bolt, decimal?>(new Bolt() { Description = "BoltTest", ID = 123 }, 0.15m));
+                    test.bolts.Add(new Tuple<Bolt, decimal?>(new Bolt() { Description = "BoltTest1", ID = 23 }, 0.15m));
+                    test.bolts.Add(new Tuple<Bolt, decimal?>(new Bolt() { Description = "BoltTest2", ID = 2331 }, 0.15m));
+                    test.bolts.Add(new Tuple<Bolt, decimal?>(new Bolt() { Description = "BoltTest3", ID = 12 }, 0.15m));
+                    test.bolts.Add(new Tuple<Bolt, decimal?>(new Bolt() { Description = "BoltTest4", ID = 541 }, 0.15m));
+                    test.bolts.Add(new Tuple<Bolt, decimal?>(new Bolt() { Description = "BoltTest4", ID = 541 }, 0.15m));
+                    test.bolts.Add(new Tuple<Bolt, decimal?>(new Bolt() { Description = "BoltTest4", ID = 541 }, 0.15m));
+                    test.bolts.Add(new Tuple<Bolt, decimal?>(new Bolt() { Description = "BoltTest4", ID = 541 }, 0.15m));
+                    test.bolts.Add(new Tuple<Bolt, decimal?>(new Bolt() { Description = "BoltTest4", ID = 541 }, 0.15m));
+                    test.bolts.Add(new Tuple<Bolt, decimal?>(new Bolt() { Description = "BoltTest4", ID = 541 }, 0.15m));
+                    this.productSearchOutput.Add(test);
+                    this.productSearchOutput.Add(new CompareObject(product, new ModularMold(new Cupform(), new Core(), new InsertPlate())) { finalRating = 90 });
+                    this.productSearchOutput.Add(new CompareObject(product, new SingleMoldDisc()) { finalRating = 55 });
+                    this.productSearchOutput.Add(new CompareObject(product, new SingleMoldCup()) { finalRating = 85 });
 
                     this.IsLoading = Visibility.Hidden;
                     Mouse.OverrideCursor = System.Windows.Input.Cursors.Arrow;
