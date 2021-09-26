@@ -41,7 +41,7 @@
                    Grid.Row="0" Grid.Column="0"/>
 
         <TextBox x:Name="sap_nummer_TextBox"
-                 Text="{Binding ID, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                 Text="{Binding productDisc.ID, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                  Width="200" Height="40"
                  VerticalAlignment="Center" HorizontalAlignment="left"
                  VerticalContentAlignment="Center"
@@ -56,7 +56,7 @@
                    Grid.Row="1" Grid.Column="0"/>
 
         <TextBox x:Name="beschreibung_TextBox"
-                 Text="{Binding Description, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                 Text="{Binding productDisc.Description, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                  Width="200" Height="40"
                  VerticalAlignment="Center" HorizontalAlignment="left"
                  VerticalContentAlignment="Center"
@@ -71,7 +71,7 @@
                    Grid.Row="2" Grid.Column="0"/>
 
         <TextBox x:Name="aussendurchmesser_TextBox"
-                 Text="{Binding OuterDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                 Text="{Binding productDisc.OuterDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                  Width="200" Height="40"
                  VerticalAlignment="Center" HorizontalAlignment="left"
                  VerticalContentAlignment="Center"
@@ -86,7 +86,7 @@
                    Grid.Row="3" Grid.Column="0"/>
 
         <TextBox x:Name="innendurchmesser_TextBox"
-                 Text="{Binding InnerDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                 Text="{Binding productDisc.InnerDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                  Width="200" Height="40"
                  VerticalAlignment="Center" HorizontalAlignment="left"
                  VerticalContentAlignment="Center"
@@ -101,7 +101,7 @@
                    Grid.Row="4" Grid.Column="0"/>
         
         <TextBox x:Name="height_textbox"
-                    Text="{Binding FactorPU, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                    Text="{Binding productDisc.FactorPU, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                     Width="200" Height="40"
                     VerticalAlignment="Center" HorizontalAlignment="left"
                     VerticalContentAlignment="Center"
@@ -115,7 +115,7 @@
                    Grid.Row="5" Grid.Column="0"/>
 
         <TextBox x:Name="FaktorPU_textbox"
-                    Text="{Binding Height, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                    Text="{Binding productDisc.Height, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                     Width="200" Height="40"
                     VerticalAlignment="Center" HorizontalAlignment="left"
                     VerticalContentAlignment="Center"
@@ -129,7 +129,7 @@
                    Grid.Row="6" Grid.Column="0"/>
 
         <TextBox x:Name="BTC_textbox"
-                    Text="{Binding BTC, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                    Text="{Binding productDisc.BTC, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                     Width="200" Height="40"
                     VerticalAlignment="Center" HorizontalAlignment="left"
                     VerticalContentAlignment="Center"
@@ -143,7 +143,7 @@
                    Grid.Row="0" Grid.Column="3"/>
 
         <TextBox x:Name="hc_holes_textbox"
-                    Text="{Binding HcHoles, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                    Text="{Binding productDisc.HcHoles, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                     Width="200" Height="40"
                     VerticalAlignment="Center" HorizontalAlignment="left"
                     VerticalContentAlignment="Center"
@@ -157,7 +157,7 @@
                    Grid.Row="1" Grid.Column="3"/>
 
         <TextBox x:Name="hc_diameter_textbox"
-                    Text="{Binding HcDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                    Text="{Binding productDisc.HcDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                     Width="200" Height="40"
                     VerticalAlignment="Center" HorizontalAlignment="left"
                     VerticalContentAlignment="Center"
@@ -171,43 +171,12 @@
                    Grid.Row="2" Grid.Column="3"/>
 
         <TextBox x:Name="lochdurchmesser_textbox"
-                    Text="{Binding HcHoleDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                    Text="{Binding productDisc.HcHoleDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                     Width="200" Height="40"
                     VerticalAlignment="Center" HorizontalAlignment="left"
                     VerticalContentAlignment="Center"
                     Grid.Row="2" Grid.Column="4"
                     Foreground="Black" FontSize="15" Margin="0,12.8"/>
-
-
-        <Grid Grid.Column="4" Grid.Row="0"
-              Grid.ColumnSpan="2" Grid.RowSpan="3">
-            <Grid.Style>
-                <Style TargetType="Grid">
-                    <Setter Property="Visibility" Value="Visible"/>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding IsChecked, ElementName=lochkreis_stk_eins}" Value="True">
-                            <Setter Property="Visibility" Value="Visible"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding IsChecked, ElementName=lochkreis_stk_zwei}" Value="True">
-                            <Setter Property="Visibility" Value="Visible"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding IsChecked, ElementName=lochkreis_stk_drei}" Value="True">
-                            <Setter Property="Visibility" Value="Visible"/>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </Grid.Style>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="110"/>
-                <ColumnDefinition Width="200"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="65"/>
-                <RowDefinition Height="65"/>
-                <RowDefinition Height="65"/>
-            </Grid.RowDefinitions>
-        </Grid>
-
 
 
         <Button x:Name="Hinzufuegen" Content="Hinzufügen"

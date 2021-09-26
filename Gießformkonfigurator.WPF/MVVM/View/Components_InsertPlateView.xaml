@@ -45,7 +45,7 @@
                    Grid.Row="0" Grid.Column="0"/>
 
         <TextBox x:Name="sap_nummer_TextBox"
-                 Text="{Binding ID, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                 Text="{Binding insertPlate.ID, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                  Width="200" Height="40"
                  VerticalAlignment="Center" HorizontalAlignment="left"
                  VerticalContentAlignment="Center"
@@ -60,7 +60,7 @@
                    Grid.Row="1" Grid.Column="0"/>
 
         <TextBox x:Name="bezeichnung_rocon_TextBox"
-                 Text="{Binding Description, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                 Text="{Binding insertPlate.Description, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                  Width="200" Height="40"
                  VerticalAlignment="Center" HorizontalAlignment="left"
                  VerticalContentAlignment="Center"
@@ -75,7 +75,7 @@
                    Grid.Row="2" Grid.Column="0"/>
 
         <TextBox x:Name="aussendurchmesser_TextBox"
-                 Text="{Binding OuterDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                 Text="{Binding insertPlate.OuterDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                  Width="200" Height="40"
                  VerticalAlignment="Center" HorizontalAlignment="left"
                  VerticalContentAlignment="Center"
@@ -90,7 +90,7 @@
                    Grid.Row="3" Grid.Column="0"/>
 
         <TextBox x:Name="toleranz_aussendurchmesser_TextBox"
-                 Text="{Binding ToleranceOuterDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                 Text="{Binding insertPlate.ToleranceOuterDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                  Width="200" Height="40"
                  VerticalAlignment="Center" HorizontalAlignment="left"
                  VerticalContentAlignment="Center"
@@ -105,7 +105,7 @@
                    Grid.Row="4" Grid.Column="0"/>
 
         <TextBox x:Name="hoehe_TextBox"
-                 Text="{Binding Height, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                 Text="{Binding insertPlate.Height, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                  Width="200" Height="40"
                  VerticalAlignment="Center" HorizontalAlignment="left"
                  VerticalContentAlignment="Center"
@@ -120,7 +120,7 @@
                    Grid.Row="5" Grid.Column="0"/>
 
         <TextBox x:Name="konus_aussen_max_TextBox"
-                 Text="{Binding OuterKonusMax, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                 Text="{Binding insertPlate.OuterKonusMax, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                  Width="200" Height="40"
                  VerticalAlignment="Center" HorizontalAlignment="left"
                  VerticalContentAlignment="Center"
@@ -135,7 +135,7 @@
                    Grid.Row="6" Grid.Column="0"/>
 
         <TextBox x:Name="konus_aussen_min_TextBox"
-                 Text="{Binding OuterKonusMin, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                 Text="{Binding insertPlate.OuterKonusMin, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                  Width="200" Height="40"
                  VerticalAlignment="Center" HorizontalAlignment="left"
                  VerticalContentAlignment="Center"
@@ -150,7 +150,7 @@
                    Grid.Row="7" Grid.Column="0"/>
 
         <TextBox x:Name="konus_aussen_winkel_TextBox"
-                 Text="{Binding OuterKonusAngle, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                 Text="{Binding insertPlate.OuterKonusAngle, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                  Width="200" Height="40"
                  VerticalAlignment="Center" HorizontalAlignment="left"
                  VerticalContentAlignment="Center"
@@ -165,7 +165,7 @@
                    Grid.Row="8" Grid.Column="0"/>
 
         <TextBox x:Name="konus_hoehe_TextBox"
-                 Text="{Binding KonusHeight, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                 Text="{Binding insertPlate.KonusHeight, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                  Width="200" Height="40"
                  VerticalAlignment="Center" HorizontalAlignment="left"
                  VerticalContentAlignment="Center"
@@ -180,7 +180,7 @@
                      Margin="0,0,0,0" 
                      Foreground="Black" FontSize="15"
                      VerticalContentAlignment="Center"
-                     IsChecked="{Binding HasHoleguide}">
+                     IsChecked="{Binding insertPlate.HasHoleguide}">
             Lochführung
         </RadioButton>
 
@@ -191,7 +191,7 @@
                      Margin="0,0,0,0" 
                      Foreground="Black" FontSize="15"
                      VerticalContentAlignment="Center"
-                     IsChecked="{Binding HasCore}">
+                     IsChecked="{Binding insertPlate.HasCore}">
             Kern
         </RadioButton>
 
@@ -202,7 +202,7 @@
                      Margin="0,0,0,0" 
                      Foreground="Black" FontSize="15"
                      VerticalContentAlignment="Center"
-                     IsChecked="{Binding HasKonus}">
+                     IsChecked="{Binding insertPlate.HasKonus}">
             Konusführung
         </RadioButton>
 
@@ -214,7 +214,7 @@
                    Visibility="{Binding ElementName=Konusfuehrung, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
 
         <TextBox x:Name="konus_innen_max_TextBox"
-                 Text="{Binding InnerKonusMax, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                 Text="{Binding insertPlate.InnerKonusMax, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                  Width="200" Height="40"
                  VerticalAlignment="Center" HorizontalAlignment="left"
                  VerticalContentAlignment="Center"
@@ -231,7 +231,7 @@
                    Visibility="{Binding ElementName=Konusfuehrung, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
 
         <TextBox x:Name="konus_innen_min_TextBox"
-                 Text="{Binding InnerKonusMin, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                 Text="{Binding insertPlate.InnerKonusMin, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                  Width="200" Height="40"
                  VerticalAlignment="Center" HorizontalAlignment="left"
                  VerticalContentAlignment="Center"
@@ -248,7 +248,7 @@
                    Visibility="{Binding ElementName=Konusfuehrung, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
 
         <TextBox x:Name="konus_innen_winkel_TextBox"
-                 Text="{Binding InnerKonusAngle, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                 Text="{Binding insertPlate.InnerKonusAngle, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                  Width="200" Height="40"
                  VerticalAlignment="Center" HorizontalAlignment="left"
                  VerticalContentAlignment="Center"
@@ -265,7 +265,7 @@
                    Visibility="{Binding ElementName=Lochfuehrung, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
 
         <TextBox x:Name="innendurchmesser"
-                 Text="{Binding InnerDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                 Text="{Binding insertPlate.InnerDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                  Width="200" Height="40"
                  VerticalAlignment="Center" HorizontalAlignment="left"
                  VerticalContentAlignment="Center"
@@ -282,7 +282,7 @@
                    Visibility="{Binding ElementName=Lochfuehrung, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
 
         <TextBox x:Name="toleranz_innendurchmesser_TextBox"
-                 Text="{Binding ToleranceInnerDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                 Text="{Binding insertPlate.ToleranceInnerDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                  Width="200" Height="40"
                  VerticalAlignment="Center" HorizontalAlignment="left"
                  VerticalContentAlignment="Center"
@@ -367,7 +367,7 @@
                        Margin="0,0,10,0"/>
 
             <TextBox x:Name="lochkreis_a_gewinde_TextBox"
-                     Text="{Binding Hc1Thread, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                     Text="{Binding insertPlate.Hc1Thread, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                      Width="200" Height="40"
                      VerticalAlignment="Center" HorizontalAlignment="Left"
                      VerticalContentAlignment="Center"
@@ -381,7 +381,7 @@
                        Margin="0,0,10,0"/>
 
             <TextBox x:Name="lochkreis_a_durchmesser_TextBox"
-                     Text="{Binding Hc1Diameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                     Text="{Binding insertPlate.Hc1Diameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                      Width="200" Height="40"
                      VerticalAlignment="Center" HorizontalAlignment="Left"
                      VerticalContentAlignment="Center"
@@ -395,7 +395,7 @@
                        Margin="0,0,10,0"/>
 
             <TextBox x:Name="lochkreis_a_bohrungen_TextBox"
-                     Text="{Binding Hc1Holes, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                     Text="{Binding insertPlate.Hc1Holes, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                      Width="200" Height="40"
                      VerticalAlignment="Center" HorizontalAlignment="Left"
                      VerticalContentAlignment="Center"
@@ -437,7 +437,7 @@
                        Margin="0,0,10,0"/>
 
             <TextBox x:Name="lochkreis_b_gewinde_TextBox"
-                     Text="{Binding Hc2Thread, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                     Text="{Binding insertPlate.Hc2Thread, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                      Width="200" Height="40"
                      VerticalAlignment="Center" HorizontalAlignment="Left"
                      VerticalContentAlignment="Center"
@@ -451,7 +451,7 @@
                        Margin="0,0,10,0"/>
 
             <TextBox x:Name="lochkreis_b_durchmesser_TextBox"
-                     Text="{Binding Hc2Diameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                     Text="{Binding insertPlate.Hc2Diameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                      Width="200" Height="40"
                      VerticalAlignment="Center" HorizontalAlignment="Left"
                      VerticalContentAlignment="Center"
@@ -465,7 +465,7 @@
                        Margin="0,0,10,0"/>
 
             <TextBox x:Name="lochkreis_b_bohrungen_TextBox"
-                     Text="{Binding Hc2Holes, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                     Text="{Binding insertPlate.Hc2Holes, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                      Width="200" Height="40"
                      VerticalAlignment="Center" HorizontalAlignment="Left"
                      VerticalContentAlignment="Center"
@@ -495,7 +495,7 @@
                        Margin="0,0,10,0"/>
 
             <TextBox x:Name="lochkreis_c_gewinde_TextBox"
-                     Text="{Binding Hc3Thread, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                     Text="{Binding insertPlate.Hc3Thread, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                      Width="200" Height="40"
                      VerticalAlignment="Center" HorizontalAlignment="Left"
                      VerticalContentAlignment="Center"
@@ -509,7 +509,7 @@
                        Margin="0,0,10,0"/>
 
             <TextBox x:Name="lochkreis_c_durchmesser_TextBox"
-                     Text="{Binding Hc3Diameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                     Text="{Binding insertPlate.Hc3Diameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                      Width="200" Height="40"
                      VerticalAlignment="Center" HorizontalAlignment="Left"
                      VerticalContentAlignment="Center"
@@ -523,7 +523,7 @@
                        Margin="0,0,10,0"/>
 
             <TextBox x:Name="lochkreis_c_bohrungen_TextBox"
-                     Text="{Binding Hc3Holes, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                     Text="{Binding insertPlate.Hc3Holes, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                      Width="200" Height="40"
                      VerticalAlignment="Center" HorizontalAlignment="Left"
                      VerticalContentAlignment="Center"

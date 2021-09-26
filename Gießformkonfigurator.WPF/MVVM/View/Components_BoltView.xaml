@@ -39,7 +39,7 @@
                    Grid.Row="0" Grid.Column="0"/>
 
         <TextBox x:Name="sap_nummer_TextBox"
-                 Text="{Binding ID, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                 Text="{Binding bolt.ID, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                  Width="200" Height="40"
                  VerticalAlignment="Center" HorizontalAlignment="left"
                  VerticalContentAlignment="Center"
@@ -54,7 +54,7 @@
                    Grid.Row="1" Grid.Column="0"/>
 
         <TextBox x:Name="bezeichnung_rocon_TextBox" 
-                 Text="{Binding Description, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                 Text="{Binding bolt.Description, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                  Width="200" Height="40"
                  VerticalAlignment="Center" HorizontalAlignment="left"
                  VerticalContentAlignment="Center"
@@ -69,7 +69,7 @@
                    Grid.Row="2" Grid.Column="0"/>
 
         <TextBox x:Name="hoehe_TextBox"
-                 Text="{Binding Height, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                 Text="{Binding bolt.Height, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                  Width="200" Height="40"
                  VerticalAlignment="Center" HorizontalAlignment="left"
                  VerticalContentAlignment="Center"
@@ -84,7 +84,7 @@
                    Grid.Row="3" Grid.Column="0"/>
 
         <TextBox x:Name="aussendurchmesser_Textbox"
-                 Text="{Binding OuterDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                 Text="{Binding bolt.OuterDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                  Width="200" Height="40"
                  VerticalAlignment="Center" HorizontalAlignment="left"
                  VerticalContentAlignment="Center"
@@ -99,7 +99,7 @@
                    Grid.Row="4" Grid.Column="0"/>
 
         <TextBox x:Name="giesshoehe_max_TextBox"
-                 Text="{Binding FillHeightMax, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                 Text="{Binding bolt.FillHeightMax, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                  Width="200" Height="40"
                  VerticalAlignment="Center" HorizontalAlignment="left"
                  VerticalContentAlignment="Center"
@@ -114,7 +114,7 @@
                    Grid.Row="5" Grid.Column="0"/>
 
         <TextBox x:Name="hoehe_fuehrung_TextBox"
-                 Text="{Binding GuideHeight, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                 Text="{Binding bolt.GuideHeight, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                  Width="200" Height="40"
                  VerticalAlignment="Center" HorizontalAlignment="left"
                  VerticalContentAlignment="Center"
@@ -129,7 +129,7 @@
                    Grid.Row="6" Grid.Column="0"/>
 
         <TextBox x:Name="aussendurchmesser_fuehrung_TextBox"
-                 Text="{Binding GuideOuterDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                 Text="{Binding bolt.GuideOuterDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                  Width="200" Height="40"
                  VerticalAlignment="Center" HorizontalAlignment="left"
                  VerticalContentAlignment="Center"
@@ -144,7 +144,7 @@
                      Margin="0,0,0,0" 
                      Foreground="Black" FontSize="15"
                      VerticalContentAlignment="Center"
-                     IsChecked="{Binding HasGuideBolt}">
+                     IsChecked="{Binding bolt.HasGuideBolt}">
             Führungsstift
         </RadioButton>
 
@@ -155,7 +155,7 @@
                      Margin="0,0,0,0" 
                      Foreground="Black" FontSize="15"
                      VerticalContentAlignment="Center"
-                     IsChecked="{Binding HasThread}">
+                     IsChecked="{Binding bolt.HasThread}">
             Gewinde
         </RadioButton>
 
@@ -167,7 +167,7 @@
                    Visibility="{Binding ElementName=gewinde, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
 
         <TextBox x:Name="gewinde_art_TextBox"
-                 Text="{Binding Thread, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                 Text="{Binding bolt.Thread, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                  Width="200" Height="40"
                  VerticalAlignment="Center" HorizontalAlignment="left"
                  VerticalContentAlignment="Center"

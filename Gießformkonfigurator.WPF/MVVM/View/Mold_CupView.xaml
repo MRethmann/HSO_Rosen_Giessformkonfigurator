@@ -35,7 +35,7 @@
                    Margin="0,0,10,0"/>
 
         <TextBox x:Name="Parameter1TextBox"
-                 Text="{Binding ID, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                 Text="{Binding singleMoldCup.ID, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                  Width="200" Height="40"
                  VerticalAlignment="Center" HorizontalAlignment="left"
                  VerticalContentAlignment="Center"
@@ -51,7 +51,7 @@
                    Grid.Row="1" Grid.Column="1"/>
 
         <TextBox x:Name="Description_TextBox"
-                 Text="{Binding Description, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                 Text="{Binding singleMoldCup.Description, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                  Width="200" Height="40"
                  VerticalAlignment="Center" HorizontalAlignment="left"
                  VerticalContentAlignment="Center"
@@ -67,7 +67,7 @@
                    Grid.Row="2" Grid.Column="1"/>
 
         <TextBox x:Name="Außendurchmesser_textbox"
-                 Text="{Binding OuterDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                 Text="{Binding singleMoldCup.OuterDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                  Width="200" Height="40"
                  VerticalAlignment="Center" HorizontalAlignment="left"
                  VerticalContentAlignment="Center"
@@ -83,7 +83,7 @@
                    Grid.Row="3" Grid.Column="1"/>
 
         <TextBox x:Name="Innendurchmesser_textbox"
-                 Text="{Binding InnerDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                 Text="{Binding singleMoldCup.InnerDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                  Width="200" Height="40"
                  VerticalAlignment="Center" HorizontalAlignment="left"
                  VerticalContentAlignment="Center"
@@ -99,7 +99,7 @@
                    Grid.Row="4" Grid.Column="1"/>
 
         <TextBox x:Name="height_textbox"
-                 Text="{Binding Height, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                 Text="{Binding singleMoldCup.Height, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                  Width="200" Height="40"
                  VerticalAlignment="Center" HorizontalAlignment="left"
                  VerticalContentAlignment="Center"
@@ -115,7 +115,7 @@
                    Grid.Row="2" Grid.Column="3"/>
 
         <TextBox x:Name="hcDiameter_textbox"
-                 Text="{Binding HcDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                 Text="{Binding singleMoldCup.HcDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                  Width="200" Height="40"
                  VerticalAlignment="Center" HorizontalAlignment="left"
                  VerticalContentAlignment="Center"
@@ -131,7 +131,7 @@
                    Grid.Row="0" Grid.Column="3"/>
 
         <TextBox x:Name="hcHoles_textbox"
-                 Text="{Binding HcHoles, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                 Text="{Binding singleMoldCup.HcHoles, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                  Width="200" Height="40"
                  VerticalAlignment="Center" HorizontalAlignment="left"
                  VerticalContentAlignment="Center"
@@ -147,7 +147,7 @@
                    Grid.Row="1" Grid.Column="3"/>
 
         <TextBox x:Name="boltDiameter_textbox"
-                 Text="{Binding BoltDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                 Text="{Binding singleMoldCup.BoltDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                  Width="200" Height="40"
                  VerticalAlignment="Center" HorizontalAlignment="left"
                  VerticalContentAlignment="Center"

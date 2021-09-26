@@ -36,7 +36,7 @@
                    Grid.Row="0" Grid.Column="0"/>
 
         <TextBox x:Name="ID_TextBox"
-                 Text="{Binding ID, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                 Text="{Binding productCup.ID, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                  Width="200" Height="40"
                  VerticalAlignment="Center" HorizontalAlignment="left"
                  VerticalContentAlignment="Center"
@@ -51,7 +51,7 @@
                    Grid.Row="1" Grid.Column="0"/>
 
         <TextBox x:Name="beschreibung_TextBox"
-                 Text="{Binding Description, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                 Text="{Binding productCup.Description, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                  Width="200" Height="40"
                  VerticalAlignment="Center" HorizontalAlignment="left"
                  VerticalContentAlignment="Center"
@@ -66,7 +66,7 @@
                    Grid.Row="2" Grid.Column="0"/>
 
         <TextBox x:Name="grund_cup_TextBox"
-                 Text="{Binding BaseCup, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                 Text="{Binding productCup.BaseCup, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                  Width="200" Height="40"
                  VerticalAlignment="Center" HorizontalAlignment="left"
                  VerticalContentAlignment="Center"
@@ -81,7 +81,7 @@
                    Grid.Row="3" Grid.Column="0"/>
 
         <TextBox x:Name="innendurchmesser_TextBox"
-                 Text="{Binding InnerDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                 Text="{Binding productCup.InnerDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                  Width="200" Height="40"
                  VerticalAlignment="Center" HorizontalAlignment="left"
                  VerticalContentAlignment="Center"
@@ -96,7 +96,7 @@
                    Grid.Row="4" Grid.Column="0"/>
 
         <TextBox x:Name="FaktorPU_TextBox"
-                 Text="{Binding FactorPU, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                 Text="{Binding productCup.FactorPU, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                  Width="200" Height="40"
                  VerticalAlignment="Center" HorizontalAlignment="left"
                  VerticalContentAlignment="Center"
@@ -111,7 +111,7 @@
                    Grid.Row="5" Grid.Column="0"/>
 
         <TextBox x:Name="lochkreis_TextBox"
-                 Text="{Binding BTC, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                 Text="{Binding productCup.BTC, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                  Width="200" Height="40"
                  VerticalAlignment="Center" HorizontalAlignment="left"
                  VerticalContentAlignment="Center"

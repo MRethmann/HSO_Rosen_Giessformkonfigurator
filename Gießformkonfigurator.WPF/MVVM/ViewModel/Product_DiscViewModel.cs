@@ -13,52 +13,15 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
     using System.Windows;
     using System.Windows.Input;
 
-    class Product_DiscViewModel : ObservableObject, IDataErrorInfo
+    class Product_DiscViewModel : ObservableObject
     {
-        public int ID { get; set; }
-
-        public string Description { get; set; }
-
-        public decimal OuterDiameter { get; set; }
-
-        public decimal Height { get; set; }
-
-        public decimal InnerDiameter { get; set; }
-
-        public decimal? FactorPU { get; set; }
-
-        public string BTC { get; set; }
-
-        public decimal? HcDiameter { get; set; }
-
-        public int? HcHoles { get; set; }
-
-        public decimal? HcHoleDiameter { get; set; }
-
+        public ProductDisc productDisc { get; set; }
 
         public ICommand insertIntoDbCmd { get; set; }
 
-        public string this[string columnName]
-        {
-            get
-            {
-                string error = string.Empty;
-
-                switch (columnName)
-                {
-                    case nameof(ID):
-                        if (this.ID == 0)
-                            error = "SAP-Nr. muss ausgefüllt werden.";
-                        break;
-                }
-
-                return error;
-            }
-        }
-        public string Error => string.Empty;
-
         public Product_DiscViewModel()
         {
+            this.productDisc = new ProductDisc();
             insertIntoDbCmd = new RelayCommand(param => insertIntoDb(), param => validateData());
         }
 
@@ -68,20 +31,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
             {
                 try
                 {
-                    ProductDisc productDisc = new ProductDisc()
-                    {
-                        ID = this.ID,
-                        Description = this.Description,
-                        OuterDiameter = this.OuterDiameter,
-                        Height = this.Height,
-                        InnerDiameter = this.InnerDiameter,
-                        FactorPU = this.FactorPU,
-                        BTC = this.BTC,
-                        HcHoles = this.HcHoles,
-                        HcDiameter = this.HcDiameter,
-                        HcHoleDiameter = this.HcHoleDiameter,
-                    };
-                    db.ProductDiscs.Add(productDisc);
+                    db.ProductDiscs.Add(this.productDisc);
                     db.SaveChanges();
                     MessageBox.Show("Produkt erfolgreich hinzugefügt.");
                 }

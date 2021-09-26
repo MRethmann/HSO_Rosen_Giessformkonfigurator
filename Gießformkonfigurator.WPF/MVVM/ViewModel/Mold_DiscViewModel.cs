@@ -14,26 +14,13 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
 {
     class Mold_DiscViewModel
     {
-        public int ID { get; set; }
-
-        public string Description { get; set; }
-
-        public decimal OuterDiameter { get; set; }
-
-        public decimal InnerDiameter { get; set; }
-
-        public decimal Height { get; set; }
-
-        public decimal? HcDiameter { get; set; }
-
-        public int? HcHoles { get; set; }
-
-        public decimal? BoltDiameter { get; set; }
+        public SingleMoldDisc singleMoldDisc { get; set; }
 
         public ICommand insertIntoDbCmd { get; set; }
 
         public Mold_DiscViewModel()
         {
+            this.singleMoldDisc = new SingleMoldDisc();
             insertIntoDbCmd = new RelayCommand(param => insertIntoDb(), param => validateData());
         }
 
@@ -43,18 +30,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
             {
                 try
                 {
-                    SingleMoldDisc singleMoldDisc = new SingleMoldDisc()
-                    {
-                        ID = this.ID,
-                        Description = this.Description,
-                        OuterDiameter = this.OuterDiameter,
-                        InnerDiameter = this.InnerDiameter,
-                        Height = this.Height,
-                        HcDiameter = this.HcDiameter,
-                        HcHoles = this.HcHoles,
-                        BoltDiameter = this.BoltDiameter
-                    };
-                    db.SingleMoldDiscs.Add(singleMoldDisc);
+                    db.SingleMoldDiscs.Add(this.singleMoldDisc);
                     db.SaveChanges();
                     MessageBox.Show("Gießform erfolgreich hinzugefügt.");
                 }

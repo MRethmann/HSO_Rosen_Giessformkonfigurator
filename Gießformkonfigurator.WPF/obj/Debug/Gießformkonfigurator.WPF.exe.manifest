@@ -102,24 +102,24 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Gießformkonfigurator.WPF.exe" size="639936">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Gießformkonfigurator.WPF.exe" size="625600">
       <assemblyIdentity name="Gießformkonfigurator.WPF" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>yPnnSYkN1eKzb3SIXwV9bSm3H79fZPPsu0/uhfXx9/4=</dsig:DigestValue>
+        <dsig:DigestValue>r+P0crxmfb1Nwl6BXfDvnPd3OPcAT/P897Vssv2LHjA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="Gießformkonfigurator.WPF.exe.config" size="1333">
+  <file name="Gießformkonfigurator.WPF.exe.config" size="1330">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>lQZZ+MGOhTWEouOnrS2F/oiLkIkEHWK8/aX3i+cM+Sw=</dsig:DigestValue>
+      <dsig:DigestValue>YiAzgRp8xQ8N/8DYcjegvgPIuR90xeXxp8xvLdNkqNM=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>
