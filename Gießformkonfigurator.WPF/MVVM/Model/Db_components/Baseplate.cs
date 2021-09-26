@@ -7,12 +7,14 @@
 #pragma warning disable SA1601 // Partial elements should be documented
 namespace Gießformkonfigurator.WPF.MVVM.Model.Db_components
 {
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
     [Table("Baseplate")]
     public partial class Baseplate : Component
     {
+
         [Key]
         [Column("ID")]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
@@ -77,10 +79,9 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_components
 
         public string Hc3Thread { get; set; }
 
-
         public override string ToString()
         {
-            return ID.ToString() + " " + Description;
+            return ID.ToString() + ": " + Description;
         }
     }
 }

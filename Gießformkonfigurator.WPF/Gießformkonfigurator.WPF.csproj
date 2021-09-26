@@ -320,6 +320,7 @@
     <Compile Include="MVVM\ViewModel\Settings_FilterSettingsViewModel.cs" />
     <Compile Include="MVVM\ViewModel\Settings_MainViewModel.cs" />
     <Compile Include="MVVM\ViewModel\Settings_RankingSettingsViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\ValidationRules\DatatypeDecimalValidationRule.cs" />
     <Compile Include="MVVM\View\DBManagement_MainView.xaml.cs">
       <DependentUpon>DBManagement_MainView.xaml</DependentUpon>
     </Compile>
