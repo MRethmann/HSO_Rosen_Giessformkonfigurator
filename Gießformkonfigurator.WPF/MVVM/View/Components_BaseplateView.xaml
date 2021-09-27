@@ -99,7 +99,8 @@
             <TextBox.Text>
                 <Binding Path="baseplate.Description" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True" NotifyOnValidationError="True">
                     <Binding.ValidationRules>
-                        <validationRules:DatatypeDecimalValidationRule/>
+                        <validationRules:InputValueValidationRule/>
+                        <validationRules:MandatoryFieldValidationRule/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
