@@ -4,9 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Gießformkonfigurator.WPF.MVVM.View"
+             xmlns:validationRules="clr-namespace:Gießformkonfigurator.WPF.MVVM.View.ValidationRules"
              mc:Ignorable="d" 
              d:DesignHeight="900" d:DesignWidth="1600"
              Background="White">
+    
     <Grid HorizontalAlignment="Center">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
@@ -28,132 +30,117 @@
             <RowDefinition Height="100" />
         </Grid.RowDefinitions>
 
-        <TextBlock Text="ID"
-                   Grid.Column="1"
-                   HorizontalAlignment="left" VerticalAlignment="Center"
-                   Foreground="Black" FontSize="15"
-                   Margin="0,0,10,0"/>
+        <Grid.Resources>
+            <Style TargetType="TextBox">
+                <Setter Property="Width" Value="200"/>
+                <Setter Property="Height" Value="40"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+                <Setter Property="Foreground" Value="Black"/>
+                <Setter Property="Margin" Value="5"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="FontSize" Value="15"/>
+            </Style>
+            <Style TargetType="TextBlock">
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="Foreground" Value="Black"/>
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="Margin" Value="0,0,10,0"/>
+            </Style>         
+        </Grid.Resources>
+        
 
-        <TextBox x:Name="Parameter1TextBox"
-                 Text="{Binding singleMoldDisc.ID, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-                 Width="200" Height="40"
-                 VerticalAlignment="Center" HorizontalAlignment="left"
-                 VerticalContentAlignment="Center"
-                 Margin="5"
-                 Grid.Column="2"
-                 FontSize="15">
+        <TextBlock Text="SAP-Nr." Grid.Row="0" Grid.Column="1"/>
+        <TextBox x:Name="ID_TextBox" Grid.Row="0" Grid.Column="2">
+            <TextBox.Text>
+                <Binding Path="singleMoldDisc.ID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
+                    <Binding.ValidationRules>
+
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
         </TextBox>
 
-        <TextBlock Text="Description"
-                   HorizontalAlignment="left" VerticalAlignment="Center"
-                   Foreground="Black" FontSize="15"
-                   Margin="0,0,10,0"
-                   Grid.Row="1" Grid.Column="1"/>
 
-        <TextBox x:Name="Description_TextBox"
-                 Text="{Binding singleMoldDisc.Description, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-                 Width="200" Height="40"
-                 VerticalAlignment="Center" HorizontalAlignment="left"
-                 VerticalContentAlignment="Center"
-                 Margin="5"
-                 Grid.Row="1" Grid.Column="2"
-                 FontSize="15">
+        <TextBlock Text="Bezeichnung" Grid.Row="1" Grid.Column="1"/>
+        <TextBox x:Name="Description_TextBox" Grid.Row="1" Grid.Column="2">
+            <TextBox.Text>
+                <Binding Path="singleMoldDisc.Description" Mode="TwoWay" UpdateSourceTrigger="LostFocus" ValidatesOnDataErrors="True" NotifyOnValidationError="True">
+                    <Binding.ValidationRules>
+                        <validationRules:InputValueValidationRule/>
+                        <validationRules:MandatoryFieldValidationRule/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
         </TextBox>
 
-        <TextBlock Text="Außendurchmesser"
-                   HorizontalAlignment="left" VerticalAlignment="Center"
-                   Foreground="Black" FontSize="15"
-                   Margin="0,0,10,0"
-                   Grid.Row="2" Grid.Column="1"/>
 
-        <TextBox x:Name="Außendurchmesser_textbox"
-                 Text="{Binding singleMoldDisc.OuterDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-                 Width="200" Height="40"
-                 VerticalAlignment="Center" HorizontalAlignment="left"
-                 VerticalContentAlignment="Center"
-                 Margin="5"
-                 Grid.Row="2" Grid.Column="2"
-                 FontSize="15">
+        <TextBlock Text="Außendurchmeser" Grid.Row="2" Grid.Column="1"/>
+        <TextBox x:Name="OuterDiameter_TextBox" Grid.Row="2" Grid.Column="2">
+            <TextBox.Text>
+                <Binding Path="singleMoldDisc.OuterDiameter" Mode="TwoWay" ValidatesOnDataErrors="True">
+                    <Binding.ValidationRules>
+
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>       
+
+        <TextBlock Text="Innendurchmesser" Grid.Row="3" Grid.Column="1"/>
+        <TextBox x:Name="InnerDiameter_TextBox" Grid.Row="3" Grid.Column="2">
+            <TextBox.Text>
+                <Binding Path="singleMoldDisc.InnerDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
+                    <Binding.ValidationRules>
+
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
         </TextBox>
 
-        <TextBlock Text="Innendurchmesser"
-                   HorizontalAlignment="left" VerticalAlignment="Center"
-                   Foreground="Black" FontSize="15"
-                   Margin="0,0,10,0"
-                   Grid.Row="3" Grid.Column="1"/>
+        <TextBlock Text="Höhe" Grid.Row="4" Grid.Column="1"/>
+        <TextBox x:Name="Height_TextBox" Grid.Row="4" Grid.Column="2">
+            <TextBox.Text>
+                <Binding Path="singleMoldDisc.Height" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
+                    <Binding.ValidationRules>
 
-        <TextBox x:Name="Innendurchmesser_textbox"
-                 Text="{Binding singleMoldDisc.InnerDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-                 Width="200" Height="40"
-                 VerticalAlignment="Center" HorizontalAlignment="left"
-                 VerticalContentAlignment="Center"
-                 Margin="5"
-                 Grid.Row="3" Grid.Column="2"
-                 FontSize="15">
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>       
+
+        <TextBlock Text="Durchmesser Lochkreis" Grid.Row="2" Grid.Column="3"/>
+        <TextBox x:Name="A_HoleCircleDiameter_TextBox" Grid.Row="2" Grid.Column="4" >
+            <TextBox.Text>
+                <Binding Path="singleMoldDisc.HcDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
+                    <Binding.ValidationRules>
+
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
         </TextBox>
+        
 
-        <TextBlock Text="Höhe"
-                   HorizontalAlignment="left" VerticalAlignment="Center"
-                   Foreground="Black" FontSize="15"
-                   Margin="0,0,10,0"
-                   Grid.Row="4" Grid.Column="1"/>
+        <TextBlock Text="Anzahl Bohrungen" Grid.Column="3" Grid.Row="0"/>
+        <TextBox x:Name="HoleCircleHoles_TextBox" Grid.Column="4" Grid.Row="0">
+            <TextBox.Text>
+                <Binding Path="singleMoldDisc.HcHoles" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
+                    <Binding.ValidationRules>
 
-        <TextBox x:Name="height_textbox"
-                 Text="{Binding singleMoldDisc.Height, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-                 Width="200" Height="40"
-                 VerticalAlignment="Center" HorizontalAlignment="left"
-                 VerticalContentAlignment="Center"
-                 Margin="5"
-                 Grid.Row="4" Grid.Column="2"
-                 FontSize="15">
-        </TextBox>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>   
 
-        <TextBlock Text="Durchmesser Lochkreis"
-                   HorizontalAlignment="left" VerticalAlignment="Center"
-                   Foreground="Black" FontSize="15"
-                   Margin="0,0,10,0"
-                   Grid.Row="2" Grid.Column="3"/>
+        <TextBlock Text="Durchmesser Bolzen" Grid.Column="3" Grid.Row="1"/>
+        <TextBox x:Name="boltDiameter_TextBox" Grid.Column="4" Grid.Row="1">
+            <TextBox.Text>
+                <Binding Path="singleMoldDisc.BoltDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
+                    <Binding.ValidationRules>
 
-        <TextBox x:Name="hcDiameter_textbox"
-                 Text="{Binding singleMoldDisc.HcDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-                 Width="200" Height="40"
-                 VerticalAlignment="Center" HorizontalAlignment="left"
-                 VerticalContentAlignment="Center"
-                 Margin="5"
-                 Grid.Row="2" Grid.Column="4"
-                 FontSize="15">
-        </TextBox>
-
-        <TextBlock Text="Anzahl Bohrungen"
-                   HorizontalAlignment="left" VerticalAlignment="Center"
-                   Foreground="Black" FontSize="15"
-                   Margin="0,0,10,0"
-                   Grid.Row="0" Grid.Column="3"/>
-
-        <TextBox x:Name="hcHoles_textbox"
-                 Text="{Binding singleMoldDisc.HcHoles, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-                 Width="200" Height="40"
-                 VerticalAlignment="Center" HorizontalAlignment="left"
-                 VerticalContentAlignment="Center"
-                 Margin="5"
-                 Grid.Row="0" Grid.Column="4"
-                 FontSize="15">
-        </TextBox>
-
-        <TextBlock Text="Durchmesser Bolzen"
-                   HorizontalAlignment="left" VerticalAlignment="Center"
-                   Foreground="Black" FontSize="15"
-                   Margin="0,0,10,0"
-                   Grid.Row="1" Grid.Column="3"/>
-
-        <TextBox x:Name="boltDiameter_textbox"
-                 Text="{Binding singleMoldDisc.BoltDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-                 Width="200" Height="40"
-                 VerticalAlignment="Center" HorizontalAlignment="left"
-                 VerticalContentAlignment="Center"
-                 Margin="7"
-                 Grid.Row="1" Grid.Column="4"
-                 FontSize="15">
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
         </TextBox>
 
         <DockPanel Grid.Row="2" Grid.Column="2" 

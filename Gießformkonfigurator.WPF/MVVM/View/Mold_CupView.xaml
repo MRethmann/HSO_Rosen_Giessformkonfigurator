@@ -108,7 +108,7 @@
         <TextBlock Text="Anzahl Bohrungen" Grid.Row="0" Grid.Column="4"/>
         <TextBox x:Name="Holes_TextBox" Grid.Row="0" Grid.Column="5">
             <TextBox.Text>
-                <Binding Path="singleMoldCup.Holes" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                <Binding Path="singleMoldCup.HcHoles" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
 
                     </Binding.ValidationRules>
@@ -130,7 +130,7 @@
         <TextBlock Text="Durchmesser Lochkreis" Grid.Row="2" Grid.Column="4"/>
         <TextBox x:Name="hcDiameter_textbox" Grid.Row="2" Grid.Column="5">
             <TextBox.Text>
-                <Binding Path="singleMoldCup.hcDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                <Binding Path="singleMoldCup.HcDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
 
                     </Binding.ValidationRules>

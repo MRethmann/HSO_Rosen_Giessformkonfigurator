@@ -1321,18 +1321,151 @@
 
                 </Grid>
                 <Border Grid.Row="2" Grid.Column="2" BorderThickness="1, 0, 0, 0" BorderBrush="LightGray" Margin="10">
-                    <Grid Margin="10">
+                    <Grid Margin="2">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="30"/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
+                        
                         <TextBlock Text="Details" FontSize="18" Name="DetailsBox" Grid.Row="0"/>
                         <Expander Grid.Row="1" Header="Grundplatte">
-                            <ListBox Name="Grundplatte">
-                                <ListBoxItem>
-                                    <TextBlock Text="{Binding SelectedItem.Mold.baseplate.ID, ElementName=combinationJobOutput}"/>
-                                </ListBoxItem>
-                            </ListBox>
+                            <Grid Margin="5">
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid Grid.Column="0" Margin="2">
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+
+                                    <Border Grid.Row="0" BorderBrush="White" BorderThickness="0,0,0,1">
+                                        <TextBlock Text="Detailinfo" Foreground="White" FontSize="14"/>
+                                    </Border>
+
+                                    <TextBlock Grid.Row="1" Text="ID: " Foreground="White" FontSize="14"/>
+                                    <TextBlock Grid.Row="2" Text="Außendurchmesser: " Foreground="White" FontSize="14"/>
+                                    <TextBlock Grid.Row="3" Text="Höhe: " Foreground="White" FontSize="14"/>
+                                    <TextBlock Grid.Row="4" Text="Konus Außen Max: " Foreground="White" FontSize="14"/>
+                                    <TextBlock Grid.Row="5" Text="Konus Außen Min: " Foreground="White" FontSize="14"/>
+                                    <TextBlock Grid.Row="6" Text="Konus Außen Winkel: " Foreground="White" FontSize="14"/>
+                                    <TextBlock Grid.Row="7" Text="Konus Höhe: " Foreground="White" FontSize="14"/>
+                                    <TextBlock Grid.Row="8" Text="Konusführung: " Foreground="White" FontSize="14"/>
+                                    <TextBlock Grid.Row="9" Text="Konus Innen Max: " Foreground="White" FontSize="14"/>
+                                    <TextBlock Grid.Row="10" Text="Konus Innen Min: " Foreground="White" FontSize="14"/>
+                                    <TextBlock Grid.Row="11" Text="Konus Innen Winkel: " Foreground="White" FontSize="14"/>
+                                    <TextBlock Grid.Row="12" Text="Lochführung: " Foreground="White" FontSize="14"/>
+                                    <TextBlock Grid.Row="13" Text="Innendurchmesser: " Foreground="White" FontSize="14"/>
+                                    <TextBlock Grid.Row="14" Text="Toleranz Innendurchmesser: " Foreground="White" FontSize="14"/>
+                                    <TextBlock Grid.Row="15" Text="Kern: " Foreground="White" FontSize="14"/>
+                                    <TextBlock Grid.Row="16" Text="LK1 Durchmesser: " Foreground="White" FontSize="14"/>
+                                    <TextBlock Grid.Row="17" Text="LK1 Bohrungen: " Foreground="White" FontSize="14"/>
+                                    <TextBlock Grid.Row="18" Text="LK1 Gewinde: " Foreground="White" FontSize="14"/>
+                                    <TextBlock Grid.Row="19" Text="LK2 Durchmesser: " Foreground="White" FontSize="14"/>
+                                    <TextBlock Grid.Row="20" Text="LK2 Bohrungen: " Foreground="White" FontSize="14"/>
+                                    <TextBlock Grid.Row="21" Text="LK2 Gewinde: " Foreground="White" FontSize="14"/>
+                                    <TextBlock Grid.Row="22" Text="LK3 Durchmesser: " Foreground="White" FontSize="14"/>
+                                    <TextBlock Grid.Row="23" Text="LK3 Bohrungen: " Foreground="White" FontSize="14"/>
+                                    <TextBlock Grid.Row="24" Text="LK3 Gewinde: " Foreground="White" FontSize="14"/>
+                                </Grid>
+
+                                <Grid Grid.Column="1" Margin="2">
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="1" Text="{Binding Mold.baseplate.ID}" Foreground="White" FontSize="14"/>
+                                    <TextBlock Grid.Row="2" Text="{Binding Mold.baseplate.OuterDiameter}" Foreground="White" FontSize="14"/>
+                                    <TextBlock Grid.Row="3" Text="{Binding Mold.baseplate.Height}" Foreground="White" FontSize="14"/>
+                                    <TextBlock Grid.Row="4" Text="{Binding Mold.baseplate.OuterKonusMax}" Foreground="White" FontSize="14"/>
+                                    <TextBlock Grid.Row="5" Text="{Binding Mold.baseplate.OuterKonusMin}" Foreground="White" FontSize="14"/>
+                                    <TextBlock Grid.Row="6" Text="{Binding Mold.baseplate.OuterKonusAngle}" Foreground="White" FontSize="14"/>
+                                    <TextBlock Grid.Row="7" Text="{Binding Mold.baseplate.KonusHeight}" Foreground="White" FontSize="14"/>
+                                    <TextBlock Grid.Row="8" Text="{Binding Mold.baseplate.HasKonus}" Foreground="White" FontSize="14"/>
+                                    <TextBlock Grid.Row="9" Text="{Binding Mold.baseplate.InnerKonusMax}" Foreground="White" FontSize="14"/>
+                                    <TextBlock Grid.Row="10" Text="{Binding Mold.baseplate.InnerKonusMin}" Foreground="White" FontSize="14"/>
+                                    <TextBlock Grid.Row="11" Text="{Binding Mold.baseplate.InnerKonusAngle}" Foreground="White" FontSize="14"/>
+                                    <TextBlock Grid.Row="12" Text="{Binding Mold.baseplate.HasHoleguide}" Foreground="White" FontSize="14"/>
+                                    <TextBlock Grid.Row="13" Text="{Binding Mold.baseplate.InnerDiameter}" Foreground="White" FontSize="14"/>
+                                    <TextBlock Grid.Row="14" Text="{Binding Mold.baseplate.ToleranceInnerDiameter}" Foreground="White" FontSize="14"/>
+                                    <TextBlock Grid.Row="15" Text="{Binding Mold.baseplate.HasCore}" Foreground="White" FontSize="14"/>
+                                    <TextBlock Grid.Row="16" Text="{Binding Mold.baseplate.Hc1Diameter}" Foreground="White" FontSize="14"/>
+                                    <TextBlock Grid.Row="17" Text="{Binding Mold.baseplate.Hc1Holes}" Foreground="White" FontSize="14"/>
+                                    <TextBlock Grid.Row="18" Text="{Binding Mold.baseplate.Hc1Thread}" Foreground="White" FontSize="14"/>
+                                    <TextBlock Grid.Row="19" Text="{Binding Mold.baseplate.Hc2Diameter}" Foreground="White" FontSize="14"/>
+                                    <TextBlock Grid.Row="20" Text="{Binding Mold.baseplate.Hc2Holes}" Foreground="White" FontSize="14"/>
+                                    <TextBlock Grid.Row="21" Text="{Binding Mold.baseplate.Hc2Thread}" Foreground="White" FontSize="14"/>
+                                    <TextBlock Grid.Row="22" Text="{Binding Mold.baseplate.Hc3Diameter}" Foreground="White" FontSize="14"/>
+                                    <TextBlock Grid.Row="23" Text="{Binding Mold.baseplate.Hc3Holes}" Foreground="White" FontSize="14"/>
+                                    <TextBlock Grid.Row="24" Text="{Binding Mold.baseplate.Hc3Thread}" Foreground="White" FontSize="14"/>
+
+                                </Grid>
+                            </Grid>
                         </Expander>
 
                         <Expander Grid.Row="2" Header="Führungsring">
@@ -1347,19 +1480,19 @@
 
                         </Expander>
 
-                        <Expander Grid.Row="5" Header="Grundplatte">
+                        <Expander Grid.Row="5" Header="Innenring">
 
                         </Expander>
 
-                        <Expander Grid.Row="6" Header="Grundplatte">
+                        <Expander Grid.Row="6" Header="Innenring">
 
                         </Expander>
 
-                        <Expander Grid.Row="7" Header="Grundplatte">
+                        <Expander Grid.Row="7" Header="Kernring">
 
                         </Expander>
 
-                        <Expander Grid.Row="8" Header="Grundplatte">
+                        <Expander Grid.Row="8" Header="Kernring">
 
                         </Expander>
 

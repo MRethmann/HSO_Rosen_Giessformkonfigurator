@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Gießformkonfigurator.WPF.MVVM.View"
+             xmlns:validationRules="clr-namespace:Gießformkonfigurator.WPF.MVVM.View.ValidationRules"
              mc:Ignorable="d" 
              d:DesignHeight="1200" d:DesignWidth="1600"
              Background="White">
@@ -29,94 +30,92 @@
             <RowDefinition Height="65"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="ID"
-                   HorizontalAlignment="Left" VerticalAlignment="Center"
-                   Foreground="Black" FontSize="15"
-                   Margin="0,0,10,0"
-                   Grid.Row="0" Grid.Column="0"/>
+        <Grid.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="15"/>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Margin" Value="0,0,10,0"/>
+        </Style>
+        </Grid.Resources>
 
-        <TextBox x:Name="ID_TextBox"
-                 Text="{Binding productCup.ID, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-                 Width="200" Height="40"
-                 VerticalAlignment="Center" HorizontalAlignment="left"
-                 VerticalContentAlignment="Center"
-                 Grid.Row="0" Grid.Column="1"
-                 Foreground="Black" FontSize="15">
-        </TextBox>
-        
-        <TextBlock Text="Beschreibung"
-                   HorizontalAlignment="Left" VerticalAlignment="Center"
-                   Foreground="Black" FontSize="15"
-                   Margin="0,0,10,0"
-                   Grid.Row="1" Grid.Column="0"/>
+      
+        <TextBlock Text="SAP-Nr." Grid.Row="0" Grid.Column="0"/>
+        <TextBox x:Name="ID_TextBox" Grid.Row="0" Grid.Column="1">
+            <TextBox.Text>
+                <Binding Path="productCup.ID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
+                    <Binding.ValidationRules>
 
-        <TextBox x:Name="beschreibung_TextBox"
-                 Text="{Binding productCup.Description, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-                 Width="200" Height="40"
-                 VerticalAlignment="Center" HorizontalAlignment="left"
-                 VerticalContentAlignment="Center"
-                 Grid.Row="1" Grid.Column="1"
-                 Foreground="Black" FontSize="15">
-        </TextBox>
-        
-        <TextBlock Text="Grund-Cup"
-                   HorizontalAlignment="Left" VerticalAlignment="Center"
-                   Foreground="Black" FontSize="15"
-                   Margin="0,0,10,0"
-                   Grid.Row="2" Grid.Column="0"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>       
 
-        <TextBox x:Name="grund_cup_TextBox"
-                 Text="{Binding productCup.BaseCup, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-                 Width="200" Height="40"
-                 VerticalAlignment="Center" HorizontalAlignment="left"
-                 VerticalContentAlignment="Center"
-                 Grid.Row="2" Grid.Column="1"
-                 Foreground="Black" FontSize="15">
-        </TextBox>
+        <TextBlock Text="Bezeichnung" Grid.Row="1" Grid.Column="0"/>
+        <TextBox x:Name="Description_TextBox" Grid.Row="1" Grid.Column="1">
+            <TextBox.Text>
+                <Binding Path="productCup.Description" Mode="TwoWay" UpdateSourceTrigger="LostFocus" ValidatesOnDataErrors="True" NotifyOnValidationError="True">
+                    <Binding.ValidationRules>
+                        <validationRules:InputValueValidationRule/>
+                        <validationRules:MandatoryFieldValidationRule/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>        
 
-        <TextBlock Text="Innendurchmesser"
-                   HorizontalAlignment="Left" VerticalAlignment="Center"
-                   Foreground="Black" FontSize="15"
-                   Margin="0,0,10,0"
-                   Grid.Row="3" Grid.Column="0"/>
+        <TextBlock Text="Grund-Cup" Grid.Row="2" Grid.Column="0"/>
+        <TextBox x:Name="grund_cup_Textbox" Grid.Row="2" Grid.Column="1">
+            <TextBox.Text>
+                <Binding Path="productCup.BaseCup" Mode="TwoWay" ValidatesOnDataErrors="True">
+                    <Binding.ValidationRules>
 
-        <TextBox x:Name="innendurchmesser_TextBox"
-                 Text="{Binding productCup.InnerDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-                 Width="200" Height="40"
-                 VerticalAlignment="Center" HorizontalAlignment="left"
-                 VerticalContentAlignment="Center"
-                 Grid.Row="3" Grid.Column="1"
-                 Foreground="Black" FontSize="15">
-        </TextBox>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>        
+                 
+        <TextBlock Text="Innendurchmesser" Grid.Row="3" Grid.Column="0"/>
+        <TextBox x:Name="InnerDiameter_TextBox" Grid.Row="3" Grid.Column="1">
+            <TextBox.Text>
+                <Binding Path="productCup.InnerDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
+                    <Binding.ValidationRules>
 
-        <TextBlock Text="Faktor PU"
-                   HorizontalAlignment="Left" VerticalAlignment="Center"
-                   Foreground="Black" FontSize="15"
-                   Margin="0,0,10,0"
-                   Grid.Row="4" Grid.Column="0"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>       
 
-        <TextBox x:Name="FaktorPU_TextBox"
-                 Text="{Binding productCup.FactorPU, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-                 Width="200" Height="40"
-                 VerticalAlignment="Center" HorizontalAlignment="left"
-                 VerticalContentAlignment="Center"
-                 Grid.Row="4" Grid.Column="1"
-                 Foreground="Black" FontSize="15">
-        </TextBox>
-        
-        <TextBlock Text="BTC"
-                   HorizontalAlignment="Left" VerticalAlignment="Center"
-                   Foreground="Black" FontSize="15"
-                   Margin="0,0,10,0"
-                   Grid.Row="5" Grid.Column="0"/>
+        <TextBlock Text="Faktor PU" Grid.Row="4" Grid.Column="0"/>
+        <TextBox x:Name="FaktorPU_Textbox" Grid.Row="4" Grid.Column="1">
+            <TextBox.Text>
+                <Binding Path="productCup.FactorPU" Mode="TwoWay" ValidatesOnDataErrors="True">
+                    <Binding.ValidationRules>
 
-        <TextBox x:Name="lochkreis_TextBox"
-                 Text="{Binding productCup.BTC, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-                 Width="200" Height="40"
-                 VerticalAlignment="Center" HorizontalAlignment="left"
-                 VerticalContentAlignment="Center"
-                 Grid.Row="5" Grid.Column="1"
-                 Foreground="Black" FontSize="15">
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>            
+
+        <TextBlock Text="BTC" Grid.Row="5" Grid.Column="0"/>
+        <TextBox x:Name="lochkreis_Textbox" Grid.Row="5" Grid.Column="1">
+            <TextBox.Text>
+                <Binding Path="productCup.BTC" Mode="TwoWay" ValidatesOnDataErrors="True">
+                    <Binding.ValidationRules>
+
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
         </TextBox>
 
         <Button x:Name="Hinzufuegen" Content="Hinzufügen"
