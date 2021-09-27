@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
-namespace Gießformkonfigurator.WPF.MVVM.ViewModel.ValidationRules
+namespace Gießformkonfigurator.WPF.MVVM.View.ValidationRules
 {
     class InputValueValidationRule : ValidationRule
     {

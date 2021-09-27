@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Gießformkonfigurator.WPF.MVVM.View" 
              xmlns:src="clr-namespace:Gießformkonfigurator.WPF.MVVM.ViewModel"
-             xmlns:validationRules="clr-namespace:Gießformkonfigurator.WPF.MVVM.ViewModel.ValidationRules"
+             xmlns:validationRules="clr-namespace:Gießformkonfigurator.WPF.MVVM.View.ValidationRules"
              mc:Ignorable="d" 
              d:DesignHeight="1200" d:DesignWidth="1600"
              Background="White">
