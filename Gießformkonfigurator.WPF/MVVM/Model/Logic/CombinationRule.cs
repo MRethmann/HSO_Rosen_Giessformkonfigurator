@@ -64,8 +64,9 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             {
                 // TODO: Genaue Abweichung zwischen Innendurchmesser und Fuehrungsdurchmesser festlegen.
                 return baseplate.InnerDiameter >= core.GuideDiameter
-                    && (baseplate.InnerDiameter - 2) <= core.GuideDiameter
-                    && baseplate.Height >= core.GuideHeight;
+                    && (baseplate.InnerDiameter - 2) <= core.GuideDiameter;
+                    // Prüfung ob relevant?
+                    //&& baseplate.Height >= core.GuideHeight;
             }
 
             // TODO: Abklären, ob dieser Fall zustande kommen könnte.

@@ -15,15 +15,15 @@ namespace Gießformkonfigurator.WPF.MVVM.View.ValidationRules
             ValidationResult result = new ValidationResult(true, null);
             int inputValue;
 
-            /*if (string.IsNullOrEmpty(value.ToString()))
+            if (string.IsNullOrEmpty(value.ToString()))
             {
                 result = new ValidationResult(false, "Das Feld darf nicht leer sein!");
-            }*/
+            }
 
-            if (value.ToString() == "Albert")
+            /*if (value.ToString() == "Albert")
             {
                 result = new ValidationResult(false, "Der Eingabewert darf nicht Albert sein.");
-            }
+            }*/
 
             return result;
         }

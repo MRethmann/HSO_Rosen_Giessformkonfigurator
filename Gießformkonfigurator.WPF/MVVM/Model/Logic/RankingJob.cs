@@ -25,8 +25,11 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 
         public decimal? factorBoltDiameter { get; set; }
 
+        public Product product { get; set; }
+
         public RankingJob(Product product, CompareJob compareJob)
         {
+            this.product = product;
             applicationSettings = new ApplicationSettings();
             this.factorOuterDiameter = applicationSettings.rankingFactorOuterDiameter;
             this.factorInnerDiameter = applicationSettings.rankingFactorInnerDiameter;
@@ -86,13 +89,13 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 
                 compareObject.finalRating = Math.Round((Decimal) compareObject.finalRating, 2);
 
-                if (compareObject.differenceInnerDiameter > 0)
+                if (compareObject.differenceInnerDiameter > 1)
                     compareObject.postProcessing.Add("Innendurchmesser bearbeiten");
 
-                if (compareObject.differenceOuterDiameter > 0)
+                if (compareObject.differenceOuterDiameter > 1)
                     compareObject.postProcessing.Add("Außendurchmesser bearbeiten");
 
-                if (compareObject.differenceBoltDiameter > 0)
+                if (compareObject.differenceBoltDiameter > 1 || compareObject.differenceBoltDiameter == null && ((ProductDisc)product).BTC != null)
                     compareObject.postProcessing.Add("Lochkreis einarbeiten");
             }
         }

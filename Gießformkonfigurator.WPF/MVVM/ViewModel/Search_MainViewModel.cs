@@ -57,15 +57,15 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
             Product product = new ProductDisc()
             {
                 ID = 78700,
-                Description = "10 Seal.disc 273x82x15 65Ana 10A",
-                OuterDiameter = 273,
-                InnerDiameter = 82,
+                Description = "Testprodukt",
+                OuterDiameter = 406,
+                InnerDiameter = 170,
                 Height = 15,
-                HcHoles = 8,
-                HcDiameter = 120,
-                HcHoleDiameter = 10.0m,
-                FactorPU = 1.0175m,
-                BTC = "06A",
+                HcHoles = 12,
+                HcDiameter = 220,
+                HcHoleDiameter = 13.5m,
+                FactorPU = 1.0175m, 
+                BTC = "16A",
             };
 
             /*using (var db = new GießformDBContext())
@@ -103,10 +103,10 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                     {
                         //((ModularMold)compareObject.Mold).ListOuterRings.Add(new Model.Db_components.Ring { Description = "ALBERTOOO" , ID = 123151, OuterDiameter = 5, ToleranceInnerDiameter = "5", InnerDiameter = 5, ToleranceOuterDiameter = "5", FillHeightMax = 12, HasKonus = true, Height = 55});
                         this.productSearchOutput.Add(compareObject);
-                        compareObject.postProcessing.Add("Test1");
-                        compareObject.postProcessing.Add("Test2");
+                        //compareObject.postProcessing.Add("Test1");
+                        //compareObject.postProcessing.Add("Test2");
                     }
-                    var test = new CompareObject(product, new ModularMold(new Baseplate(), new Ring(), new InsertPlate(), new Core())) { finalRating = 80 };
+                    /*var test = new CompareObject(product, new ModularMold(new Baseplate(), new Ring(), new InsertPlate(), new Core())) { finalRating = 80 };
                     ((ModularMold)test.Mold).ListCoreRings.Add(new Tuple<Ring, Ring, decimal?>(new Ring() { ID = 1 }, new Ring() ,0.1m));
                     test.bolts.Add(new Tuple<Bolt, decimal?>(new Bolt() { Description = "BoltTest", ID = 123 }, 0.15m));
                     test.bolts.Add(new Tuple<Bolt, decimal?>(new Bolt() { Description = "BoltTest1", ID = 23 }, 0.15m));
@@ -121,7 +121,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                     this.productSearchOutput.Add(test);
                     this.productSearchOutput.Add(new CompareObject(product, new ModularMold(new Cupform(), new Core(), new InsertPlate())) { finalRating = 90 });
                     this.productSearchOutput.Add(new CompareObject(product, new SingleMoldDisc()) { finalRating = 55 });
-                    this.productSearchOutput.Add(new CompareObject(product, new SingleMoldCup()) { finalRating = 85 });
+                    this.productSearchOutput.Add(new CompareObject(product, new SingleMoldCup()) { finalRating = 85 });*/
 
                     this.IsLoading = Visibility.Hidden;
                     Mouse.OverrideCursor = System.Windows.Input.Cursors.Arrow;

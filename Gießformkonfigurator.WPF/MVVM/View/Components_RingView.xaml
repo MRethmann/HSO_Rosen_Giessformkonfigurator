@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Gießformkonfigurator.WPF.MVVM.View"
+             xmlns:validationRules="clr-namespace:Gießformkonfigurator.WPF.MVVM.View.ValidationRules"
              mc:Ignorable="d" 
              d:DesignHeight="1200" d:DesignWidth="1600"
              Background="White">
@@ -31,207 +32,194 @@
             <RowDefinition Height="65"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="SAP Nummer"
-                   HorizontalAlignment="Left" VerticalAlignment="Center"
-                   Foreground="Black" FontSize="15"
-                   Margin="0,0,10,0"
-                   Grid.Row="0" Grid.Column="0"/>
+        <Grid.Resources>
+            <Style TargetType="TextBox">
+                <Setter Property="Width" Value="200"/>
+                <Setter Property="Height" Value="40"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+                <Setter Property="Foreground" Value="Black"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="FontSize" Value="15"/>
+            </Style>
+            <Style TargetType="TextBlock">
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="Foreground" Value="Black"/>
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="Margin" Value="0,0,10,0"/>
+            </Style>
+            <Style TargetType="RadioButton">
+                <Setter Property="Width" Value="150"/>
+                <Setter Property="Height" Value="30"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+                <Setter Property="Margin" Value="0,0,0,0"/>
+                <Setter Property="Foreground" Value="Black"/>
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+            </Style>
+        </Grid.Resources>
 
-        <TextBox x:Name="sap_nummer_TextBox" 
-                 Text="{Binding ring.ID, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-                 Width="200" Height="40"
-                 VerticalAlignment="Center" HorizontalAlignment="left"
-                 VerticalContentAlignment="Center"
-                 Grid.Row="0" Grid.Column="1"
-                 Foreground="Black" FontSize="15">
+        <TextBlock Text="SAP-Nr." Grid.Row="0" Grid.Column="0"/>
+        <TextBox x:Name="ID_TextBox" Grid.Row="0" Grid.Column="1">
+            <TextBox.Text>
+                <Binding Path="ring.ID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
         </TextBox>
 
-        <TextBlock Text="Bezeichnung_RoCon"
-                   HorizontalAlignment="Left" VerticalAlignment="Center"
-                   Foreground="Black" FontSize="15"
-                   Margin="0,0,10,0"
-                   Grid.Row="1" Grid.Column="0"/>
+        <TextBlock Text="Bezeichnung" Grid.Row="1" Grid.Column="0"/>
+        <TextBox x:Name="Description_TextBox" Grid.Row="1" Grid.Column="1">
+            <TextBox.Text>
+                <Binding Path="ring.Description" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
 
-        <TextBox x:Name="bezeichnung_rocon_TextBox"
-                 Text="{Binding ring.Description, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-                 Width="200" Height="40"
-                 VerticalAlignment="Center" HorizontalAlignment="left"
-                 VerticalContentAlignment="Center"
-                 Grid.Row="1" Grid.Column="1"
-                 Foreground="Black" FontSize="15">
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
         </TextBox>
 
-        <TextBlock Text="Außendurchmeser"
-                   HorizontalAlignment="Left" VerticalAlignment="Center"
-                   Foreground="Black" FontSize="15"
-                   Margin="0,0,10,0"
-                   Grid.Row="2" Grid.Column="0"/>
+        <TextBlock Text="Außendurchmeser" Grid.Row="2" Grid.Column="0"/>
+        <TextBox x:Name="OuterDiameter_TextBox" Grid.Row="2" Grid.Column="1">
+            <TextBox.Text>
+                <Binding Path="ring.OuterDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
 
-        <TextBox x:Name="aussendurchmesser_TextBox"
-                 Text="{Binding ring.OuterDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-                 Width="200" Height="40"
-                 VerticalAlignment="Center" HorizontalAlignment="left"
-                 VerticalContentAlignment="Center"
-                 Grid.Row="2" Grid.Column="1"
-                 Foreground="Black" FontSize="15">
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
         </TextBox>
 
-        <TextBlock Text="Toleranz Außendurchmesser"
-                   HorizontalAlignment="Left" VerticalAlignment="Center"
-                   Foreground="Black" FontSize="15"
-                   Margin="0,0,10,0"
-                   Grid.Row="3" Grid.Column="0"/>
+        <TextBlock Text="Toleranz Außendurchmesser" Grid.Row="3" Grid.Column="0"/>
+        <TextBox x:Name="OuterDiameterTolerance_TextBox" Grid.Row="3" Grid.Column="1">
+            <TextBox.Text>
+                <Binding Path="ring.OuterDiameterTolerance" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
 
-        <TextBox x:Name="toleranz_aussendurchmesser_TextBox"
-                 Text="{Binding ring.ToleranceOuterDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-                 Width="200" Height="40"
-                 VerticalAlignment="Center" HorizontalAlignment="left"
-                 VerticalContentAlignment="Center"
-                 Grid.Row="3" Grid.Column="1"
-                 Foreground="Black" FontSize="15">
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
         </TextBox>
 
-        <TextBlock Text="Innendurchmesser"
-                   HorizontalAlignment="Left" VerticalAlignment="Center"
-                   Foreground="Black" FontSize="15"
-                   Margin="0,0,10,0"
-                   Grid.Row="4" Grid.Column="0"/>
+        <TextBlock Text="Innendurchmesser" Grid.Row="4" Grid.Column="0"/>
+        <TextBox x:Name="InnerDiameter_TextBox" Grid.Row="4" Grid.Column="1">
+            <TextBox.Text>
+                <Binding Path="ring.InnerDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
 
-        <TextBox x:Name="innendurchmesser_TextBox"
-                 Text="{Binding ring.InnerDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-                 Width="200" Height="40"
-                 VerticalAlignment="Center" HorizontalAlignment="left"
-                 VerticalContentAlignment="Center"
-                 Grid.Row="4" Grid.Column="1"
-                 Foreground="Black" FontSize="15">
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
         </TextBox>
 
-        <TextBlock Text="Toleranz Innendurchmesser"
-                   HorizontalAlignment="Left" VerticalAlignment="Center"
-                   Foreground="Black" FontSize="15"
-                   Margin="0,0,10,0"
-                   Grid.Row="5" Grid.Column="0"/>
+        <TextBlock Text="Toleranz Innendurchmesser" Grid.Row="5" Grid.Column="0"/>
+        <TextBox x:Name="InnerDiameterTolerance_TextBox" Grid.Row="5" Grid.Column="1">
+            <TextBox.Text>
+                <Binding Path="ring.InnerDiameterTolerance" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
 
-        <TextBox x:Name="toleranz_innendurchmesser_TextBox"
-                 Text="{Binding ring.ToleranceInnerDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-                 Width="200" Height="40"
-                 VerticalAlignment="Center" HorizontalAlignment="left"
-                 VerticalContentAlignment="Center"
-                 Grid.Row="5" Grid.Column="1"
-                 Foreground="Black" FontSize="15">
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
         </TextBox>
 
-        <TextBlock Text="Höhe"
-                   HorizontalAlignment="Left" VerticalAlignment="Center"
-                   Foreground="Black" FontSize="15"
-                   Margin="0,0,10,0"
-                   Grid.Row="6" Grid.Column="0"/>
+        <TextBlock Text="Höhe" Grid.Row="6" Grid.Column="0"/>
+        <TextBox x:Name="Height_TextBox" Grid.Row="6" Grid.Column="1">
+            <TextBox.Text>
+                <Binding Path="ring.Height" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
 
-        <TextBox x:Name="hoehe_TextBox"
-                 Text="{Binding ring.Height, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-                 Width="200" Height="40"
-                 VerticalAlignment="Center" HorizontalAlignment="left"
-                 VerticalContentAlignment="Center"
-                 Grid.Row="6" Grid.Column="1"
-                 Foreground="Black" FontSize="15">
-        </TextBox>
-        
-        <TextBlock Text="Gießhöhe Max"
-                   HorizontalAlignment="Left" VerticalAlignment="Center"
-                   Foreground="Black" FontSize="15"
-                   Margin="0,0,10,0"
-                   Grid.Row="7" Grid.Column="0"/>
-
-        <TextBox x:Name="gießhoehe_max_TextBox"
-                 Text="{Binding ring.FillHeightMax, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-                 Width="200" Height="40"
-                 VerticalAlignment="Center" HorizontalAlignment="left"
-                 VerticalContentAlignment="Center"
-                 Grid.Row="7" Grid.Column="1"
-                 Foreground="Black" FontSize="15">
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
         </TextBox>
 
-        <CheckBox x:Name="konusfuehrung" Content="Konusführung"
-                  Grid.Column="3" Grid.Row="0"
+        <TextBlock Text="Gießhöhe Max." Grid.Row="7" Grid.Column="0"/>
+        <TextBox x:Name="HeightFilling_TextBox" Grid.Row="7" Grid.Column="1">
+            <TextBox.Text>
+                <Binding Path="ring.HeightFilling" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+
+        <CheckBox x:Name="HasKonus_CheckBox" Content="Konusführung" Grid.Column="3" Grid.Row="0"                  
                   VerticalAlignment="Center" HorizontalAlignment="Left"
-                  Foreground="Black" FontSize="15"/>
+                  Foreground="Black" FontSize="15"
+                  IsChecked="{Binding ring.HasKonus}"/>
 
-        <TextBlock Text="Konus Max"
-                   HorizontalAlignment="Left" VerticalAlignment="Center"
-                   Foreground="Black" FontSize="15"
-                   Margin="0,0,10,0"
-                   Grid.Row="1" Grid.Column="3"
-                   Visibility="{Binding ElementName=konusfuehrung, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
+        <TextBlock Text="Konus Max." Grid.Row="1" Grid.Column="3" Visibility="{Binding ElementName=HasKonus, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
+        <TextBox x:Name="KonusMax_TextBox" Grid.Row="1" Grid.Column="4" Visibility="{Binding ElementName=HasKonus, Path=IsChecked, Converter={StaticResource BoolToVis}}">
+            <TextBox.Text>
+                <Binding Path="ring.KonusMax" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
 
-        <TextBox x:Name="konus_max_TextBox"
-                 Text="{Binding ring.InnerKonusMax, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-                 Width="200" Height="40"
-                 VerticalAlignment="Center" HorizontalAlignment="left"
-                 VerticalContentAlignment="Center"
-                 Grid.Row="1" Grid.Column="4"
-                 Foreground="Black" FontSize="15"
-                 Visibility="{Binding ElementName=konusfuehrung, Path=IsChecked, Converter={StaticResource BoolToVis}}">
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
         </TextBox>
 
-        <TextBlock Text="Konus Min"
-                   HorizontalAlignment="Left" VerticalAlignment="Center"
-                   Foreground="Black" FontSize="15"
-                   Margin="0,0,10,0"
-                   Grid.Row="2" Grid.Column="3"
-                   Visibility="{Binding ElementName=konusfuehrung, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
+        <TextBlock Text="Konus Min." Grid.Row="2" Grid.Column="3" Visibility="{Binding ElementName=HasKonus, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
+        <TextBox x:Name="KonusMin_TextBox" Grid.Row="2" Grid.Column="4" Visibility="{Binding ElementName=HasKonus, Path=IsChecked, Converter={StaticResource BoolToVis}}">
+            <TextBox.Text>
+                <Binding Path="ring.KonusMin" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
 
-        <TextBox x:Name="konus_min_TextBox"
-                 Text="{Binding ring.InnerKonusMin, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-                 Width="200" Height="40"
-                 VerticalAlignment="Center" HorizontalAlignment="left"
-                 VerticalContentAlignment="Center"
-                 Grid.Row="2" Grid.Column="4"
-                 Foreground="Black" FontSize="15"
-                 Visibility="{Binding ElementName=konusfuehrung, Path=IsChecked, Converter={StaticResource BoolToVis}}">
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
         </TextBox>
 
-        <TextBlock Text="Konus Winkel"
-                   HorizontalAlignment="Left" VerticalAlignment="Center"
-                   Foreground="Black" FontSize="15"
-                   Margin="0,0,10,0"
-                   Grid.Row="3" Grid.Column="3"
-                   Visibility="{Binding ElementName=konusfuehrung, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
+        <TextBlock Text="Konus Winkel" Grid.Row="3" Grid.Column="3" Visibility="{Binding ElementName=HasKonus, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
+        <TextBox x:Name="KonusAngle_TextBox" Grid.Row="3" Grid.Column="4" Visibility="{Binding ElementName=HasKonus, Path=IsChecked, Converter={StaticResource BoolToVis}}">
+            <TextBox.Text>
+                <Binding Path="ring.KonusAngle" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
 
-        <TextBox x:Name="konus_winkel_TextBox"
-                 Text="{Binding ring.InnerKonusAngle, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-                 Width="200" Height="40"
-                 VerticalAlignment="Center" HorizontalAlignment="left"
-                 VerticalContentAlignment="Center"
-                 Grid.Row="3" Grid.Column="4"
-                 Foreground="Black" FontSize="15"
-                 Visibility="{Binding ElementName=konusfuehrung, Path=IsChecked, Converter={StaticResource BoolToVis}}">
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>                      
         </TextBox>
 
-        <TextBlock Text="Konus Höhe"
-                   HorizontalAlignment="Left" VerticalAlignment="Center"
-                   Foreground="Black" FontSize="15"
-                   Margin="0,0,10,0"
-                   Grid.Row="4" Grid.Column="3"
-                   Visibility="{Binding ElementName=konusfuehrung, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
+        <TextBlock Text="Konus Höhe" Grid.Row="4" Grid.Column="3" Visibility="{Binding ElementName=HasKonus, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
+        <TextBox x:Name="KonusHeight_TextBox" Grid.Row="4" Grid.Column="4" Visibility="{Binding ElementName=HasKonus, Path=IsChecked, Converter={StaticResource BoolToVis}}">
+            <TextBox.Text>
+                <Binding Path="ring.KonusHeight" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
 
-        <TextBox x:Name="konus_hoehe_TextBox"
-                 Text="{Binding ring.KonusHeight, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-                 Width="200" Height="40"
-                 VerticalAlignment="Center" HorizontalAlignment="left"
-                 VerticalContentAlignment="Center"
-                 Grid.Row="4" Grid.Column="4"
-                 Foreground="Black" FontSize="15"
-                 Visibility="{Binding ElementName=konusfuehrung, Path=IsChecked, Converter={StaticResource BoolToVis}}">
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
         </TextBox>
 
-        <Button x:Name="Hinzufuegen" Content="Hinzufügen"
-                HorizontalAlignment="Right" VerticalAlignment="Center"
-                Width="150" Height="50"
-                Foreground="Black"
-                Background="White"
-                FontSize="15"
-                Grid.Column="4" Grid.Row="7"
-                Command="{Binding insertIntoDbCmd}"/>
+        <Button x:Name="Hinzufuegen" Content="Hinzufügen" Command="{Binding insertIntoDbCmd}" Grid.Column="4" Grid.Row="7">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="HorizontalAlignment" Value="Right"/>
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="Width" Value="150"/>
+                    <Setter Property="Height" Value="50"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="Background" Value="White"/>
+                    <Setter Property="FontSize" Value="15"/>
+                    <Setter Property="IsEnabled" Value="False"/>
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=Description_TextBox}" Value="False"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="IsEnabled" Value="True"/>
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
     </Grid>
 </UserControl>
            

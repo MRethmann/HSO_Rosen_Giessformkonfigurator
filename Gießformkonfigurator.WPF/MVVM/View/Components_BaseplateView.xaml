@@ -64,6 +64,7 @@
                 <Setter Property="VerticalContentAlignment" Value="Center"/>
                 <Setter Property="FontSize" Value="15"/>
             </Style>
+            
             <Style TargetType="TextBlock">
                 <Setter Property="HorizontalAlignment" Value="Left"/>
                 <Setter Property="VerticalAlignment" Value="Center"/>
@@ -71,6 +72,7 @@
                 <Setter Property="FontSize" Value="15"/>
                 <Setter Property="Margin" Value="0,0,10,0"/>
             </Style>
+            
             <Style TargetType="RadioButton">
                 <Setter Property="Width" Value="150"/>
                 <Setter Property="Height" Value="30"/>
@@ -95,9 +97,9 @@
         </TextBox>
 
         <TextBlock Text="Bezeichnung" Grid.Row="1" Grid.Column="0"/>
-        <TextBox x:Name="Description_TextBox" Grid.Row="1" Grid.Column="1">
+        <TextBox x:Name="Description_TextBox" Grid.Row="1" Grid.Column="1" >
             <TextBox.Text>
-                <Binding Path="baseplate.Description" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True" NotifyOnValidationError="True">
+                <Binding Path="baseplate.Description" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" FallbackValue="-" >
                     <Binding.ValidationRules>
                         <validationRules:InputValueValidationRule/>
                         <validationRules:MandatoryFieldValidationRule/>
@@ -105,6 +107,18 @@
                 </Binding>
             </TextBox.Text>
         </TextBox>
+        <TextBlock IsHitTestVisible="False" Text="Enter Search Term Here" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="DarkGray">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=Description_TextBox}" Value="">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style> 
+        </TextBlock>
 
         <TextBlock Text="Außendurchmeser" Grid.Row="2" Grid.Column="0"/>
         <TextBox x:Name="OuterDiameter_TextBox" Grid.Row="2" Grid.Column="1">
