@@ -15,18 +15,14 @@ namespace Gießformkonfigurator.WPF.MVVM.View.DataTemplates
         {
             CompareObject co = item as CompareObject;
 
-            if (co != null)
-            {
-                if (co?.Mold.moldType.ToString() == "SingleMold")
-                    return SingleMoldDetails;
-                else if (co?.Mold.moldType.ToString() == "MultiMold" && co.Mold.productType.ToString() == "Disc")
-                    return MultiMoldDiscDetails;
-                else if (co?.Mold.moldType.ToString() == "MultiMold" && co.Mold.productType.ToString() == "Cup")
-                    return MultiMoldCupDetails;
-                else
-                    return null;
-            }
-            else return null;
+            if (co?.Mold.moldType.ToString() == "SingleMold")
+                return SingleMoldDetails;
+            else if (co?.Mold.moldType.ToString() == "MultiMold" && co.Mold.productType.ToString() == "Disc")
+                return MultiMoldDiscDetails;
+            else if (co?.Mold.moldType.ToString() == "MultiMold" && co.Mold.productType.ToString() == "Cup")
+                return MultiMoldCupDetails;
+            else
+                return null;
             
         }
         public DataTemplate MultiMoldDiscDetails { get; set; }

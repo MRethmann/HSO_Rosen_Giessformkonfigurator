@@ -52,6 +52,7 @@
             <Grid Grid.Row="1" Grid.Column="0" Margin="10">
                 <Grid.Resources>
                     <DataTemplate x:Key="SingleMoldDiscTemplate">
+                        <Border BorderBrush="DarkGray" BorderThickness="2, 0, 2, 2">
                         <Grid Background="White">
 
                             <Grid.ColumnDefinitions>
@@ -61,7 +62,7 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
-                            <Grid Grid.Column="0" Margin="2, 2, 2, 2">
+                            <Grid Grid.Column="0" Margin="0, 2, 2, 2">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto"/>
                                     <RowDefinition Height="auto"/>
@@ -76,7 +77,7 @@
                                 <TextBlock  Text="{Binding Mold.Description, FallbackValue=-}" Margin="5, 0, 0, 0" Grid.Row="4" Foreground="Black"/>
                             </Grid>
 
-                            <Grid Grid.Column="1" Margin="2, 2, 2, 2">
+                            <Grid Grid.Column="1" Margin="0, 2, 2, 2">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto"/>
                                     <RowDefinition Height="auto"/>
@@ -86,12 +87,12 @@
                                 </Grid.RowDefinitions>
 
                                 <TextBlock Text="Außendurchmesser" Foreground="Gray" Margin="5, 0, 0, 0" Grid.Row="0"/>
-                                <TextBlock  Text="{Binding Mold.OuterDiameter, FallbackValue=-}" Margin="5, 0, 0, 0" Grid.Row="1" Foreground="Black"/>
+                                <TextBlock Text="{Binding Mold.OuterDiameter, FallbackValue=-}" Margin="5, 0, 0, 0" Grid.Row="1" Foreground="Black"/>
                                 <TextBlock Text="Innendurchmesser" Foreground="Gray" Margin="5, 0, 0, 0" Grid.Row="3"/>
-                                <TextBlock  Text="{Binding Mold.InnerDiameter, FallbackValue=-}" Margin="5, 0, 0, 0" Grid.Row="4" Foreground="Black"/>
+                                <TextBlock Text="{Binding Mold.InnerDiameter, FallbackValue=-}" Margin="5, 0, 0, 0" Grid.Row="4" Foreground="Black"/>
                             </Grid>
 
-                            <Grid Grid.Column="2" Margin="2, 2, 2, 2">
+                            <Grid Grid.Column="2" Margin="0, 2, 2, 2">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto"/>
                                     <RowDefinition Height="auto"/>
@@ -106,56 +107,26 @@
                                 <TextBlock Text="{Binding Mold.BTC, FallbackValue=-, TargetNullValue=-}" Margin="5, 0, 0, 0" Grid.Row="4" Foreground="Black"/>
                             </Grid>
 
-                            <Grid Grid.Column="3" Margin="2, 2, 2, 2">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="20"/>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                </Grid.RowDefinitions>
+                                <Grid Grid.Column="3" Margin="0, 2, 2, 2">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="20"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
 
-                                <TextBlock Text="Kern" Foreground="Gray" Margin="5, 0, 0, 0" Grid.Row="0"/>
-                                <TextBlock Text="{Binding Mold.coreSingleMold.ID, FallbackValue=-, TargetNullValue=-}" Margin="5, 0, 0, 0" Grid.Row="1" Foreground="Black"/>
+                                    <TextBlock Text="Kern" Foreground="Gray" Margin="5, 0, 0, 0" Grid.Row="0"/>
+                                    <TextBlock Text="{Binding Mold.coreSingleMold.ID, FallbackValue=-, TargetNullValue=-}" Margin="5, 0, 0, 0" Grid.Row="1" Foreground="Black"/>
 
+                                </Grid>
                             </Grid>
-
-                        </Grid>
+                        </Border>
                     </DataTemplate >
 
                     <DataTemplate x:Key="SingleMoldCupTemplate">
-                        <Grid Background="White">
-
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-
-                            <Grid Grid.Column="0">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-
-                                <Border BorderThickness="0, 0, 1, 0" BorderBrush="LightGray" Margin="10">
-                                    <TextBlock Text="Details" Foreground="Gray" Margin="0, 0, 10, 0"/>
-                                </Border>
-
-                                <Grid Grid.Column="1" Margin="10">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="20"/>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                    </Grid.RowDefinitions>
-
-                                </Grid>
-                            </Grid>
-
-                            <Grid Grid.Column="0" Grid.ColumnSpan="3" Margin="100,0,0,0">
+                        <Border BorderBrush="DarkGray" BorderThickness="2, 0, 2, 2">
+                            <Grid Background="White">
 
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
@@ -164,252 +135,286 @@
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Grid Grid.Column="0" Margin="10">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="20"/>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                    </Grid.RowDefinitions>
+                                <Grid Grid.Column="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
 
-                                    <TextBlock Text="SAP-Nr." Foreground="Gray" Margin="5, 0, 0, 0" Grid.Row="1"/>
-                                    <TextBlock  Text="{Binding Mold.ID, FallbackValue=-}" Margin="5, 0, 0, 0" Grid.Row="2">
-                                        <TextBlock.Style>
-                                            <Style TargetType="TextBlock">
-                                                <Setter Property="Foreground" Value="Black"/>
-                                                <Style.Triggers>
-                                                    <Trigger Property="IsMouseOver" Value="True">
-                                                        <Setter Property="Foreground" Value="LightGray" />
-                                                    </Trigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </TextBlock.Style>
-                                    </TextBlock>
+                                    <Border BorderThickness="0, 0, 1, 0" BorderBrush="LightGray" Margin="10">
+                                        <TextBlock Text="Details" Foreground="Gray" Margin="0, 0, 10, 0"/>
+                                    </Border>
 
-                                    <TextBlock Text="Beschreibung" Grid.Row="3" Foreground="Gray" Margin="5, 0, 0, 0"/>
-                                    <TextBlock  Text="{Binding Mold.Description, FallbackValue=-}" Margin="5, 0, 0, 0" Grid.Row="4" >
-                                        <TextBlock.Style>
-                                            <Style TargetType="TextBlock">
-                                                <Setter Property="Foreground" Value="Black"/>
-                                                <Style.Triggers>
-                                                    <Trigger Property="IsMouseOver" Value="True">
-                                                        <Setter Property="Foreground" Value="LightGray" />
-                                                    </Trigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </TextBlock.Style>
-                                    </TextBlock>
+                                    <Grid Grid.Column="1" Margin="10">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="20"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+
+                                    </Grid>
                                 </Grid>
 
-                                <Grid Grid.Column="1" Margin="10">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="20"/>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                    </Grid.RowDefinitions>
+                                <Grid Grid.Column="0" Grid.ColumnSpan="3" Margin="100,0,0,0">
 
-                                    <TextBlock Text="Außendurchmesser" Foreground="Gray" Margin="5, 0, 0, 0" Grid.Row="1"/>
-                                    <TextBlock  Text="{Binding Mold.OuterDiameter, FallbackValue=-}" Margin="5, 0, 0, 0" Grid.Row="2" >
-                                        <TextBlock.Style>
-                                            <Style TargetType="TextBlock">
-                                                <Setter Property="Foreground" Value="Black"/>
-                                                <Style.Triggers>
-                                                    <Trigger Property="IsMouseOver" Value="True">
-                                                        <Setter Property="Foreground" Value="LightGray" />
-                                                    </Trigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </TextBlock.Style>
-                                    </TextBlock>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
 
-                                    <TextBlock Text="Innendurchmesser" Foreground="Gray" Margin="5, 0, 0, 0" Grid.Row="3"/>
-                                    <TextBlock  Text="{Binding Mold.InnerDiameter, FallbackValue=-}" Margin="5, 0, 0, 0" Grid.Row="4">
-                                        <TextBlock.Style>
-                                            <Style TargetType="TextBlock">
-                                                <Setter Property="Foreground" Value="Black"/>
-                                                <Style.Triggers>
-                                                    <Trigger Property="IsMouseOver" Value="True">
-                                                        <Setter Property="Foreground" Value="LightGray" />
-                                                    </Trigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </TextBlock.Style>
-                                    </TextBlock>
-                                </Grid>
+                                    <Grid Grid.Column="0" Margin="10">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="20"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
 
-                                <Grid Grid.Column="2" Margin="10">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="20"/>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                    </Grid.RowDefinitions>
+                                        <TextBlock Text="SAP-Nr." Foreground="Gray" Margin="5, 0, 0, 0" Grid.Row="1"/>
+                                        <TextBlock  Text="{Binding Mold.ID, FallbackValue=-}" Margin="5, 0, 0, 0" Grid.Row="2">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Foreground" Value="Black"/>
+                                                    <Style.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter Property="Foreground" Value="LightGray" />
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
 
-                                    <TextBlock Text="Höhe" Foreground="Gray" Margin="5, 0, 0, 0" Grid.Row="1"/>
-                                    <TextBlock  Text="{Binding Mold.Height, FallbackValue=-}" Margin="5, 0, 0, 0" Grid.Row="2">
-                                        <TextBlock.Style>
-                                            <Style TargetType="TextBlock">
-                                                <Setter Property="Foreground" Value="Black"/>
-                                                <Style.Triggers>
-                                                    <Trigger Property="IsMouseOver" Value="True">
-                                                        <Setter Property="Foreground" Value="LightGray" />
-                                                    </Trigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </TextBlock.Style>
-                                    </TextBlock>
+                                        <TextBlock Text="Beschreibung" Grid.Row="3" Foreground="Gray" Margin="5, 0, 0, 0"/>
+                                        <TextBlock  Text="{Binding Mold.Description, FallbackValue=-}" Margin="5, 0, 0, 0" Grid.Row="4" >
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Foreground" Value="Black"/>
+                                                    <Style.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter Property="Foreground" Value="LightGray" />
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </Grid>
 
-                                    <TextBlock Text="Lochkreis" Grid.Row="3" Foreground="Gray" Margin="5, 0, 0, 0"/>
+                                    <Grid Grid.Column="1" Margin="10">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="20"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
 
-                                    <TextBlock  Text="{Binding a, FallbackValue=-}" Margin="5, 0, 0, 0" Grid.Row="4">
-                                        <TextBlock.Style>
-                                            <Style TargetType="TextBlock">
-                                                <Setter Property="Foreground" Value="Black"/>
-                                                <Style.Triggers>
-                                                    <Trigger Property="IsMouseOver" Value="True">
-                                                        <Setter Property="Foreground" Value="LightGray" />
-                                                    </Trigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </TextBlock.Style>
-                                    </TextBlock>
+                                        <TextBlock Text="Außendurchmesser" Foreground="Gray" Margin="5, 0, 0, 0" Grid.Row="1"/>
+                                        <TextBlock  Text="{Binding Mold.OuterDiameter, FallbackValue=-}" Margin="5, 0, 0, 0" Grid.Row="2" >
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Foreground" Value="Black"/>
+                                                    <Style.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter Property="Foreground" Value="LightGray" />
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
 
-                                </Grid>
+                                        <TextBlock Text="Innendurchmesser" Foreground="Gray" Margin="5, 0, 0, 0" Grid.Row="3"/>
+                                        <TextBlock  Text="{Binding Mold.InnerDiameter, FallbackValue=-}" Margin="5, 0, 0, 0" Grid.Row="4">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Foreground" Value="Black"/>
+                                                    <Style.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter Property="Foreground" Value="LightGray" />
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </Grid>
 
-                                <Grid Grid.Column="3" Margin="10">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="20"/>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                    </Grid.RowDefinitions>
+                                    <Grid Grid.Column="2" Margin="10">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="20"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
 
-                                    <TextBlock Text="Innenkern" Foreground="Gray" Margin="5, 0, 0, 0" Grid.Row="1"/>
-                                    <TextBlock  Text="{Binding Mold.coreSingleMold.ID, FallbackValue=-}" Margin="5, 0, 0, 0" Grid.Row="2">
-                                        <TextBlock.Style>
-                                            <Style TargetType="TextBlock">
-                                                <Setter Property="Foreground" Value="Black"/>
-                                            </Style>
-                                        </TextBlock.Style>
-                                    </TextBlock>
+                                        <TextBlock Text="Höhe" Foreground="Gray" Margin="5, 0, 0, 0" Grid.Row="1"/>
+                                        <TextBlock  Text="{Binding Mold.Height, FallbackValue=-}" Margin="5, 0, 0, 0" Grid.Row="2">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Foreground" Value="Black"/>
+                                                    <Style.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter Property="Foreground" Value="LightGray" />
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+
+                                        <TextBlock Text="Lochkreis" Grid.Row="3" Foreground="Gray" Margin="5, 0, 0, 0"/>
+
+                                        <TextBlock  Text="{Binding a, FallbackValue=-}" Margin="5, 0, 0, 0" Grid.Row="4">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Foreground" Value="Black"/>
+                                                    <Style.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter Property="Foreground" Value="LightGray" />
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+
+                                    </Grid>
+
+                                    <Grid Grid.Column="3" Margin="10">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="20"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <TextBlock Text="Innenkern" Foreground="Gray" Margin="5, 0, 0, 0" Grid.Row="1"/>
+                                        <TextBlock  Text="{Binding Mold.coreSingleMold.ID, FallbackValue=-}" Margin="5, 0, 0, 0" Grid.Row="2">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Foreground" Value="Black"/>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </Grid>
                                 </Grid>
                             </Grid>
-                        </Grid>
+                        </Border>
                     </DataTemplate >
 
                     <DataTemplate x:Key="MultiMoldDiscTemplate">
-                        <Grid Background="White">
-                            <Grid Grid.Column="0">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-
-                                <Grid Grid.Column="0" Margin="2, 2, 2, 2">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="10"/>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                    </Grid.RowDefinitions>
-
-                                    <TextBlock Text="Grundplatte" Foreground="Gray" Margin="5, 0, 0, 0" Grid.Row="0"/>
-                                    <TextBlock  Text="{Binding Mold.baseplate.ID, FallbackValue=-}" Margin="5, 0, 0, 0" Grid.Row="1" Foreground="Black"/>
-                                    <TextBlock Text="Einlegeplatte" Grid.Row="3" Foreground="Gray" Margin="5, 0, 0, 0"/>
-                                    <TextBlock  Text="{Binding Mold.insertPlate.ID, FallbackValue=-}" Margin="5, 0, 0, 0" Grid.Row="4" Foreground="Black"/>
-                                </Grid>
-
-                                <Grid Grid.Column="1" Margin="2, 2, 2, 2">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="10"/>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                    </Grid.RowDefinitions>
-
-                                    <TextBlock Text="InnenKern" Foreground="Gray" Margin="5, 0, 0, 0" Grid.Row="0"/>
-                                    <TextBlock  Text="{Binding Mold.core.ID, FallbackValue=-}" Margin="5, 0, 0, 0" Grid.Row="1" Foreground="Black"/>
-                                    <TextBlock Text="Führungsring" Foreground="Gray" Margin="5, 0, 0, 0" Grid.Row="3"/>
-                                    <TextBlock  Text="{Binding Mold.guideRing.ID, FallbackValue=-}" Margin="5, 0, 0, 0" Grid.Row="4" Foreground="Black"/>
-                                </Grid>
-
-                                <Grid Grid.Column="2" Margin="2, 2, 2, 2">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                    </Grid.RowDefinitions>
-
+                        <Border BorderBrush="DarkGray" BorderThickness="2, 0, 2, 2">
+                            <Grid Background="White">
+                                <Grid Grid.Column="0">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition/>
-                                        <ColumnDefinition/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
 
-                                    <TextBlock Text="Einlegeringe" Foreground="Gray" Margin="5, 0, 0, 0" Grid.Row="0" HorizontalAlignment="Left"/>
-                                    <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Margin="5, 0, 0, 0" Foreground="Black" Text="Außenringe:"/>
-                                    <TextBlock Text="{Binding Mold.ListOuterRings[0].Item1.ID, FallbackValue=-, TargetNullValue=-}" Margin="5, 0, 0, 0" Grid.Row="2" Grid.Column="0" Foreground="Black"/>
-                                    <TextBlock Text="{Binding Mold.ListOuterRings[0].Item2.ID, FallbackValue=-, TargetNullValue=-}" Margin="5, 0, 0, 0" Grid.Row="3" Grid.Column="0" Foreground="Black"/>
-                                    <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Margin="5, 0, 0, 0" Foreground="Black" Text="Kernringe:"/>
-                                    <TextBlock Text="{Binding Mold.ListCoreRings[0].Item1.ID, FallbackValue=-, TargetNullValue=-}" Margin="5, 0, 0, 0" Grid.Row="2" Grid.Column="1" Foreground="Black"/>
-                                    <TextBlock Text="{Binding Mold.ListCoreRings[0].Item2.ID, FallbackValue=-, TargetNullValue=-}" Margin="5, 0, 0, 0" Grid.Row="3" Grid.Column="1" Foreground="Black"/>
-                                    
+                                    <Grid Grid.Column="0" Margin="0, 2, 2, 2">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="10"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <TextBlock Text="Grundplatte" Foreground="Gray" Margin="5, 0, 0, 0" Grid.Row="0"/>
+                                        <TextBlock  Text="{Binding Mold.baseplate.ID, FallbackValue=-}" Margin="5, 0, 0, 0" Grid.Row="1" Foreground="Black"/>
+                                        <TextBlock Text="Einlegeplatte" Grid.Row="3" Foreground="Gray" Margin="5, 0, 0, 0"/>
+                                        <TextBlock  Text="{Binding Mold.insertPlate.ID, FallbackValue=-}" Margin="5, 0, 0, 0" Grid.Row="4" Foreground="Black"/>
+                                    </Grid>
+
+                                    <Grid Grid.Column="1" Margin="0, 2, 2, 2">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="10"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <TextBlock Text="InnenKern" Foreground="Gray" Margin="5, 0, 0, 0" Grid.Row="0"/>
+                                        <TextBlock  Text="{Binding Mold.core.ID, FallbackValue=-}" Margin="5, 0, 0, 0" Grid.Row="1" Foreground="Black"/>
+                                        <TextBlock Text="Führungsring" Foreground="Gray" Margin="5, 0, 0, 0" Grid.Row="3"/>
+                                        <TextBlock  Text="{Binding Mold.guideRing.ID, FallbackValue=-}" Margin="5, 0, 0, 0" Grid.Row="4" Foreground="Black"/>
+                                    </Grid>
+
+                                    <Grid Grid.Column="2" Margin="0, 2, 2, 2">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <TextBlock Text="Einlegeringe" Foreground="Gray" Margin="5, 0, 0, 0" Grid.Row="0" HorizontalAlignment="Left"/>
+                                        <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Margin="5, 0, 0, 0" Foreground="Black" Text="Außenringe:"/>
+                                        <TextBlock Text="{Binding Mold.ListOuterRings[0].Item1.ID, FallbackValue=-, TargetNullValue=-}" Margin="5, 0, 0, 0" Grid.Row="2" Grid.Column="0" Foreground="Black"/>
+                                        <TextBlock Text="{Binding Mold.ListOuterRings[0].Item2.ID, FallbackValue=-, TargetNullValue=-}" Margin="5, 0, 0, 0" Grid.Row="3" Grid.Column="0" Foreground="Black"/>
+                                        <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Margin="5, 0, 0, 0" Foreground="Black" Text="Kernringe:"/>
+                                        <TextBlock Text="{Binding Mold.ListCoreRings[0].Item1.ID, FallbackValue=-, TargetNullValue=-}" Margin="5, 0, 0, 0" Grid.Row="2" Grid.Column="1" Foreground="Black"/>
+                                        <TextBlock Text="{Binding Mold.ListCoreRings[0].Item2.ID, FallbackValue=-, TargetNullValue=-}" Margin="5, 0, 0, 0" Grid.Row="3" Grid.Column="1" Foreground="Black"/>
+
+                                    </Grid>
+
+                                    <Grid Grid.Column="3" Margin="0, 2, 2, 2">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="20"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <TextBlock Text="Bolzen" Foreground="Gray" Grid.Row="0" Margin="5, 0, 0, 0" />
+                                        <DataGrid ItemsSource="{Binding bolts}" AutoGenerateColumns="False" IsReadOnly="True" Focusable="False" Grid.Row="1" MaxHeight="100">
+
+                                            <DataGrid.Style>
+                                                <Style TargetType="DataGrid">
+                                                    <Setter Property="BorderThickness" Value="0"/>
+                                                    <Setter Property="HorizontalGridLinesBrush" Value="LightGray"/>
+                                                    <Setter Property="VerticalGridLinesBrush" Value="White"/>
+                                                </Style>
+                                            </DataGrid.Style>
+
+                                            <DataGrid.ColumnHeaderStyle>
+                                                <Style TargetType="DataGridColumnHeader">
+                                                    <Setter Property="Background" Value="Gray"/>
+                                                    <Setter Property="Foreground" Value="Black"/>
+                                                </Style>
+                                            </DataGrid.ColumnHeaderStyle>
+
+                                            <DataGrid.RowStyle>
+                                                <Style TargetType="DataGridRow">
+                                                    <Setter Property="IsHitTestVisible" Value="False"/>
+                                                </Style>
+                                            </DataGrid.RowStyle>
+                                            <DataGrid.Columns>
+                                                <DataGridTextColumn Binding="{Binding Item1.ID, FallbackValue=-}" Header="ID" Width="auto">
+                                                </DataGridTextColumn>
+
+                                                <DataGridTextColumn Binding="{Binding Item1.Description, FallbackValue=-}" Header="Beschreibung" Width="auto"/>
+                                                <DataGridTextColumn Binding="{Binding Item1.OuterDiameter, FallbackValue=-}" Header="OD" Width="auto"/>
+                                                <DataGridTextColumn Binding="{Binding Item1.Height, FallbackValue=-}" Header="T" Width="auto"/>
+                                            </DataGrid.Columns>
+                                        </DataGrid>
+                                    </Grid>
+
                                 </Grid>
-
-                                <Grid Grid.Column="3" Margin="2, 2, 2, 2">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="20"/>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                    </Grid.RowDefinitions>
-
-                                    <TextBlock Text="Bolzen" Foreground="Gray" Grid.Row="0" Margin="5, 0, 0, 0" />
-                                    <DataGrid ItemsSource="{Binding bolts}" AutoGenerateColumns="False" IsReadOnly="True" Focusable="False" Grid.Row="1" MaxHeight="100">
-
-                                        <DataGrid.Style>
-                                            <Style TargetType="DataGrid">
-                                                <Setter Property="BorderThickness" Value="0"/>
-                                                <Setter Property="HorizontalGridLinesBrush" Value="LightGray"/>
-                                                <Setter Property="VerticalGridLinesBrush" Value="White"/>
-                                            </Style>
-                                        </DataGrid.Style>
-
-                                        <DataGrid.ColumnHeaderStyle>
-                                            <Style TargetType="DataGridColumnHeader">
-                                                <Setter Property="Background" Value="Gray"/>
-                                                <Setter Property="Foreground" Value="Black"/>
-                                            </Style>
-                                        </DataGrid.ColumnHeaderStyle>
-
-                                        <DataGrid.RowStyle>
-                                            <Style TargetType="DataGridRow">
-                                                <Setter Property="IsHitTestVisible" Value="False"/>
-                                            </Style>
-                                        </DataGrid.RowStyle>
-                                        <DataGrid.Columns>
-                                            <DataGridTextColumn Binding="{Binding Item1.ID, FallbackValue=-}" Header="ID" Width="auto">
-                                            </DataGridTextColumn>
-
-                                            <DataGridTextColumn Binding="{Binding Item1.Description, FallbackValue=-}" Header="Beschreibung" Width="auto"/>
-                                            <DataGridTextColumn Binding="{Binding Item1.OuterDiameter, FallbackValue=-}" Header="OD" Width="auto"/>
-                                            <DataGridTextColumn Binding="{Binding Item1.Height, FallbackValue=-}" Header="T" Width="auto"/>
-                                        </DataGrid.Columns>
-                                    </DataGrid>
-                                </Grid>
-
                             </Grid>
-                        </Grid>
+                        </Border>
                     </DataTemplate>
 
                     <DataTemplate x:Key="MultiMoldCupTemplate">
@@ -418,9 +423,9 @@
 
                     <DataTemplate x:Key="PostProcessing">
                         <StackPanel>
-                            <TextBlock Margin="5,0,0,0" Text="{Binding postProcessing[0], TargetNullValue=-, FallbackValue=-}"/>
-                            <TextBlock Margin="5,0,0,0" Text="{Binding postProcessing[1], TargetNullValue=-, FallbackValue=-}"/>
-                            <TextBlock Margin="5,0,0,0" Text="{Binding postProcessing[2], TargetNullValue=-, FallbackValue=-}"/>
+                            <TextBlock Margin="5,0,0,0" Text="{Binding postProcessing[0]}"/>
+                            <TextBlock Margin="5,0,0,0" Text="{Binding postProcessing[1]}"/>
+                            <TextBlock Margin="5,0,0,0" Text="{Binding postProcessing[2]}"/>
                         </StackPanel>
                     </DataTemplate>
 
@@ -434,9 +439,9 @@
                                 <RowDefinition/>
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
-                            
-                            <TextBlock Grid.Row="0" Text="{Binding Mold.baseplate.ID}"/>
-                            <TextBlock Grid.Row="1" Text="{Binding Mold.baseplate.Description}"/>
+
+                            <TextBlock Grid.Row="0" Text="{Binding Mold.baseplate.ID}" Margin="6, 2, 2, 2"/>
+                            <TextBlock Grid.Row="1" Text="{Binding Mold.baseplate.Description}" Margin="6, 2, 2, 2"/>
                         </Grid>
                     </DataTemplate>
 
@@ -452,14 +457,14 @@
                                 <RowDefinition/>
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
-                            
-                            <TextBlock Grid.Row="0" Text="{Binding Mold.ID}"/>
-                            <TextBlock Grid.Row="1" Text="{Binding Mold.Description}"/>
+
+                            <TextBlock Grid.Row="0" Text="{Binding Mold.ID}" Margin="6, 2, 2, 2"/>
+                            <TextBlock Grid.Row="1" Text="{Binding Mold.Description}" Margin="6, 2, 2, 2"/>
                         </Grid>
                     </DataTemplate>
 
                     <DataTemplate x:Key="MultiMoldDiscDetails">
-                        <Grid Margin="20, 20, 20, 20">
+                        <Grid Margin="10, 0, 20, 20">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
@@ -476,11 +481,8 @@
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
 
-                            <TextBlock Text="Details" FontSize="18" HorizontalAlignment="Left" Margin="5, 0, 0, 5" Grid.Row="0" Grid.ColumnSpan="2"/>
-                            <Border BorderBrush="Gray" BorderThickness="0, 0, 0, 1"/>
-
                             <!-- Baseplate Details-->
-                            <Expander Grid.Row="1" Header="Grundplatte" Margin="0, 10, 0, 0">
+                            <Expander Grid.Row="1" Header="Grundplatte" Margin="0, 10, 0, 0" FontSize="20">
                                 <Expander.Style>
                                     <Style TargetType="Expander">
                                         <Style.Triggers>
@@ -492,8 +494,8 @@
                                 </Expander.Style>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="3*"/>
+                                        <ColumnDefinition Width="1*"/>
                                     </Grid.ColumnDefinitions>
 
                                     <Grid.RowDefinitions>
@@ -571,7 +573,7 @@
                             </Expander>
 
                             <!-- Insertplate Details -->
-                            <Expander Grid.Row="2" Header="Einlegeplatte">
+                            <Expander Grid.Row="2" Header="Einlegeplatte" FontSize="20">
                                 <Expander.Style>
                                     <Style TargetType="Expander">
                                         <Style.Triggers>
@@ -646,7 +648,7 @@
                             </Expander>
 
                             <!-- GuideRing Details -->
-                            <Expander Grid.Row="3" Header="Führungsring">
+                            <Expander Grid.Row="3" Header="Führungsring" FontSize="20">
                                 <Expander.Style>
                                     <Style TargetType="Expander">
                                         <Style.Triggers>
@@ -693,7 +695,7 @@
                             </Expander>
 
                             <!-- Core Details -->
-                            <Expander Grid.Row="4" Header="Kern">
+                            <Expander Grid.Row="4" Header="Kern" FontSize="20">
                                 <Expander.Style>
                                     <Style TargetType="Expander">
                                         <Style.Triggers>
@@ -748,7 +750,7 @@
                             </Expander>
 
                             <!-- OuterRing01 Details -->
-                            <Expander Grid.Row="5" Header="Außenring Nr.1">
+                            <Expander Grid.Row="5" Header="Außenring Nr.1" FontSize="20">
                                 <Expander.Style>
                                     <Style TargetType="Expander">
                                         <Style.Triggers>
@@ -790,7 +792,7 @@
                             </Expander>
 
                             <!-- OuterRing02 Details -->
-                            <Expander Grid.Row="6" Header="Außenring Nr.2">
+                            <Expander Grid.Row="6" Header="Außenring Nr.2" FontSize="20">
                                 <Expander.Style>
                                     <Style TargetType="Expander">
                                         <Style.Triggers>
@@ -832,7 +834,7 @@
                             </Expander>
 
                             <!-- CoreRing01 Details -->
-                            <Expander Grid.Row="7" Header="Kernring Nr.1">
+                            <Expander Grid.Row="7" Header="Kernring Nr.1" FontSize="20">
                                 <Expander.Style>
                                     <Style TargetType="Expander">
                                         <Style.Triggers>
@@ -874,7 +876,7 @@
                             </Expander>
 
                             <!-- CoreRing02 Details -->
-                            <Expander Grid.Row="8" Header="Kernring Nr.2">
+                            <Expander Grid.Row="8" Header="Kernring Nr.2" FontSize="20">
                                 <Expander.Style>
                                     <Style TargetType="Expander">
                                         <Style.Triggers>
@@ -914,16 +916,28 @@
                                     </StackPanel>
                                 </Grid>
                             </Expander>
-
                         </Grid>
+
+                        <DataTemplate.Resources>
+                            <Style TargetType="Expander">
+                                <Setter Property="Foreground" Value="Black"/>
+                                <Setter Property="FontSize" Value="25"/>
+                            </Style>
+
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Foreground" Value="Black"/>
+                                <Setter Property="FontSize" Value="15"/>
+                            </Style>
+                        </DataTemplate.Resources>
+                        
                     </DataTemplate>
 
                     <DataTemplate x:Key="MultiMoldCupDetails">
-
+                        <TextBlock>MultiMoldCupDetails</TextBlock>
                     </DataTemplate>
 
                     <DataTemplate x:Key="SingleMoldDetails">
-
+                        <TextBlock>SingleMoldDetails</TextBlock>
                     </DataTemplate>
 
                     <DataTemplates:RowDetailsTemplateSelector x:Key="RowDetailsTemplate"
@@ -950,10 +964,11 @@
                 </Grid.ColumnDefinitions>
 
                 <DataGrid Name="combinationJobOutput" AutoGenerateColumns="False" ItemsSource="{Binding productSearchOutput, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"
-                              Background="white" 
-                              BorderThickness="0"
+                              Background="white"
+                              BorderThickness="0" BorderBrush="Transparent"
                               HorizontalGridLinesBrush="LightGray"
                               VerticalGridLinesBrush="White"
+                              GridLinesVisibility="None"
                               Grid.Column="0"
                               HeadersVisibility="Column"
                               HorizontalAlignment="Stretch"
@@ -1055,7 +1070,15 @@
 
                 <Border Grid.Column="1" Margin="5, 0, 0, 0" BorderBrush="Gray" BorderThickness="1, 0, 0, 0">
                     <Grid>
-                        <ContentControl Content="{Binding}"  ContentTemplateSelector="{StaticResource DetailsTemplateSelector}" />
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="10*"/>
+                        </Grid.RowDefinitions>
+
+                        <Border>
+                            <TextBlock Text="Details" FontSize="30" HorizontalAlignment="Left" Margin="10, 10, 0, 0" Grid.Row="0"/>
+                        </Border>
+                        <ContentControl Content="{Binding SelectedItem, ElementName=combinationJobOutput}"  ContentTemplateSelector="{StaticResource DetailsTemplateSelector}" Grid.Row="2"/>
                     </Grid>
                 </Border>
             </Grid>
