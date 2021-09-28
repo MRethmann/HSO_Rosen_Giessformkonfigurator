@@ -12,6 +12,9 @@ namespace Gießformkonfigurator.WPF
     /// </summary>
     public partial class App : Application
     {
-
+        private void Application_Exit(object sender, ExitEventArgs e)
+        {
+            Gießformkonfigurator.WPF.Properties.Settings.Default.Save();
+        }
     }
 }

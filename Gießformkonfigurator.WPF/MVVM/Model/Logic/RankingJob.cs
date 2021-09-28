@@ -167,8 +167,15 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                         && ((ModularMold)nextObject.Mold).insertPlate?.ID == ((ModularMold)currentObject.Mold).insertPlate?.ID
                         && ((ModularMold)compareObject.Mold).ListCoreRings.Count <= 0 && ((ModularMold)compareObject.Mold).ListOuterRings.Count <= 0)
                     {
-                        currentObject.alternativeCores.Add(((ModularMold)nextObject.Mold).core);
-                        currentObject.alternativeGuideRings.Add(((ModularMold)nextObject.Mold).guideRing);
+                        if (!currentObject.alternativeCores.Contains(((ModularMold)nextObject.Mold).core))
+                        {
+                            currentObject.alternativeCores.Add(((ModularMold)nextObject.Mold).core);
+                        }
+                        
+                        if (!currentObject.alternativeGuideRings.Contains(((ModularMold)nextObject.Mold).guideRing))
+                        {
+                            currentObject.alternativeGuideRings.Add(((ModularMold)nextObject.Mold).guideRing);
+                        }
                     }
                     // Case: There are additional core- or outerings involved --> combination gets seperate table entry
                     else

@@ -6,8 +6,12 @@
         xmlns:local="clr-namespace:Gießformkonfigurator.WPF"
         xmlns:viewModel="clr-namespace:Gießformkonfigurator.WPF.MVVM.ViewModel"
         mc:Ignorable="d"
-        WindowState="Maximized"
-        Background="WhiteSmoke">
+        Background="WhiteSmoke"
+        Height="{local:SettingBinding Height}"
+        Width="{local:SettingBinding Width}"
+        Left="{local:SettingBinding Left}"
+        Top="{local:SettingBinding Top}"
+        WindowState="{local:SettingBinding Maximized}">
 
     <Window.DataContext>
         <viewModel:MainViewModel/>
