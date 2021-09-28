@@ -6,6 +6,7 @@
 namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 {
     using Gießformkonfigurator.WPF.Core;
+    using Gießformkonfigurator.WPF.MVVM.Model.Db_components;
     using Gießformkonfigurator.WPF.MVVM.Model.Db_molds;
     using Gießformkonfigurator.WPF.MVVM.Model.Db_products;
     using System;
@@ -15,7 +16,11 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
     using System.Threading.Tasks;
     class RankingJob
     {
+        public List<CompareObject> rankingJobInput { get; set; }
+
         public List<CompareObject> rankingJobOutput { get; set; }
+
+        public List<CompareObject> filteredOutput { get; set; } = new List<CompareObject>();
 
         public ApplicationSettings applicationSettings { get; set; }
 
@@ -34,8 +39,9 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             this.factorOuterDiameter = applicationSettings.rankingFactorOuterDiameter;
             this.factorInnerDiameter = applicationSettings.rankingFactorInnerDiameter;
             this.factorBoltDiameter = applicationSettings.rankingFactorBolts;
-            this.rankingJobOutput = new List<CompareObject>(compareJob.compareJobOutput);
-            this.rateMolds();
+            this.rankingJobInput = new List<CompareObject>(compareJob.compareJobOutput);
+            this.addRatingInformation();
+            this.orderOutputData();
         }
 
         public decimal? compare(decimal? var1, decimal? var2)
@@ -49,9 +55,9 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
         /// <summary>
         /// Final Step to rate all molds based on their difference between actual Output after production and prefered Output on paper. Important Values are for example differences in outer and inner diameter and height. 
         /// </summary>
-        public void rateMolds()
+        public void addRatingInformation()
         {
-            foreach (var compareObject in this.rankingJobOutput)
+            foreach (var compareObject in this.rankingJobInput)
             {
                 compareObject.finalRating = this.compare(34.00m - compareObject.differenceOuterDiameter * this.factorOuterDiameter, 0.00m);
                 compareObject.finalRating += this.compare(34.00m - compareObject.differenceInnerDiameter * this.factorInnerDiameter, 0.00m);
@@ -98,6 +104,95 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                 if (compareObject.differenceBoltDiameter > 1 || compareObject.differenceBoltDiameter == null && ((ProductDisc)product).BTC != null)
                     compareObject.postProcessing.Add("Lochkreis einarbeiten");
             }
+        }
+
+        public void orderOutputData()
+        {
+            List<CompareObject> listModularMolds = new List<CompareObject>();
+            List<CompareObject> sortedList = new List<CompareObject>();
+
+            // Create list with only modular molds
+            foreach (CompareObject compareObject in rankingJobInput)
+            {
+                if (compareObject.Mold is ModularMold)
+                {
+                    listModularMolds.Add(compareObject);
+                }
+                else
+                {
+                    filteredOutput.Add(compareObject);
+                }
+                    
+            }
+
+            // lists will be split into groups based on the contained baseplate
+            var groupedLists01 = listModularMolds.GroupBy(x => ((ModularMold)x.Mold).baseplate.ID).Select(grp => grp.ToList()).ToList();
+
+            // Grouped lists will be sorted by finalRating and merged into one list 
+            foreach (List<CompareObject> list01 in groupedLists01)
+            {
+                var tempList = list01.GroupBy(x => ((ModularMold)x.Mold).insertPlate?.ID).Select(grp => grp.ToList()).ToList();
+                
+                foreach (List<CompareObject> list02 in tempList)
+                {
+                    var orderedList = list02.OrderByDescending(x => x.finalRating);
+                    sortedList.AddRange(orderedList);
+                }
+            }
+
+            // Algorithm to combine CompareObjects with identical baseplates into one object to reduce table entries on output
+            CompareObject nextObject;
+            CompareObject currentObject = null;
+
+            foreach (CompareObject compareObject in sortedList)
+            {
+                if (compareObject.Mold is ModularMold)
+                {
+                    nextObject = compareObject;
+
+                    // Case: Different baseplate or insertPlates
+                    if (currentObject == null 
+                        || ((ModularMold)nextObject.Mold).baseplate.ID != ((ModularMold)currentObject.Mold).baseplate.ID
+                        || ((ModularMold)nextObject.Mold).insertPlate?.ID != ((ModularMold)currentObject.Mold).insertPlate?.ID)
+                    {
+                        if (currentObject != null)
+                        {
+                            filteredOutput.Add(currentObject);
+                        }
+                        currentObject = nextObject;
+                    }
+
+                    // Case: Baseplates and insertPlate are identical but core and guideRing are different
+                    else if (((ModularMold)nextObject.Mold).baseplate.ID == ((ModularMold)currentObject.Mold).baseplate.ID
+                        && ((ModularMold)nextObject.Mold).insertPlate?.ID == ((ModularMold)currentObject.Mold).insertPlate?.ID
+                        && ((ModularMold)compareObject.Mold).ListCoreRings.Count <= 0 && ((ModularMold)compareObject.Mold).ListOuterRings.Count <= 0)
+                    {
+                        currentObject.alternativeCores.Add(((ModularMold)nextObject.Mold).core);
+                        currentObject.alternativeGuideRings.Add(((ModularMold)nextObject.Mold).guideRing);
+                    }
+                    // Case: There are additional core- or outerings involved --> combination gets seperate table entry
+                    else
+                    {
+                        if (currentObject != null)
+                        {
+                            filteredOutput.Add(currentObject);
+                        }
+                    }
+                }
+                else
+                {
+                    filteredOutput.Add(compareObject);
+                }
+            }
+
+            // Last object will be added after algorithm is finished
+            if (currentObject != null)
+            {
+                filteredOutput.Add(currentObject);
+            }
+
+            var listOrdered = filteredOutput.OrderByDescending(x => x.finalRating);
+            this.rankingJobOutput = new List<CompareObject>(listOrdered);
         }
     }
 }

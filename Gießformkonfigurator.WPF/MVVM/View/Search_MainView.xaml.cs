@@ -21,11 +21,6 @@ namespace Gießformkonfigurator.WPF.MVVM.View
             DataContext = new Search_MainViewModel();
         }
 
-        private void combinationJobOutput_LoadingRow(object sender, DataGridRowEventArgs e)
-        {
-            e.Row.Header = (e.Row.GetIndex() + 1).ToString(); 
-        }
-
     }
 
     public class MyCustomRowDetailsTemplateSelector : DataTemplateSelector
