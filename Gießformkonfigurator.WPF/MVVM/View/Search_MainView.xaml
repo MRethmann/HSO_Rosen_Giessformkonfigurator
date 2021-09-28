@@ -19,28 +19,28 @@
 
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="8*"/>
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
                 
                 <TextBlock Text="ProduktID:"
-                           HorizontalAlignment="Center" VerticalAlignment="Center"
+                           HorizontalAlignment="Left" VerticalAlignment="Center"
                            Margin="10,0,0,0"
                            Foreground="Black" FontSize="15" Grid.Column="0"/>
 
                 <TextBox x:Name="ProduktIDTextBox" 
                          Text="{Binding productId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}"
                          Width="Auto" Height="40"
-                         VerticalAlignment="Center" HorizontalAlignment="Stretch"
+                         HorizontalAlignment="Stretch"
+                         VerticalAlignment="Center"
                          VerticalContentAlignment="Center"
                          Margin="5" Grid.Column="1"
-                         Foreground="Black" FontSize="15" Background="White">
-                </TextBox>
+                         Foreground="Black" FontSize="15" Background="White"/>
 
                 <Button x:Name="ProduktID" Content="Suchen"
-                        HorizontalAlignment="Left" VerticalAlignment="Center"
-                        Width="100" Height="40"
+                        HorizontalAlignment="Stretch" VerticalAlignment="Center"
+                        Width="Auto" Height="40"
                         Foreground="Black"
                         Background="White"
                         FontSize="15" 
@@ -52,7 +52,7 @@
             <Grid Grid.Row="1" Grid.Column="0" Margin="10">
                 <Grid.Resources>
                     <DataTemplate x:Key="SingleMoldDiscTemplate">
-                        <Border BorderBrush="DarkGray" BorderThickness="2, 0, 2, 2">
+                        <Border BorderBrush="DarkGray" BorderThickness="1.5, 0, 1.5, 1.5">
                         <Grid Background="White">
 
                             <Grid.ColumnDefinitions>
@@ -125,7 +125,7 @@
                     </DataTemplate >
 
                     <DataTemplate x:Key="SingleMoldCupTemplate">
-                        <Border BorderBrush="DarkGray" BorderThickness="2, 0, 2, 2">
+                        <Border BorderBrush="DarkGray" BorderThickness="1.5, 0, 1.5, 1.5">
                             <Grid Background="White">
 
                                 <Grid.ColumnDefinitions>
@@ -306,7 +306,7 @@
                     </DataTemplate >
 
                     <DataTemplate x:Key="MultiMoldDiscTemplate">
-                        <Border BorderBrush="DarkGray" BorderThickness="2, 0, 2, 2">
+                        <Border BorderBrush="DarkGray" BorderThickness="1.5, 0, 1.5, 1.5">
                             <Grid Background="White">
                                 <Grid Grid.Column="0">
                                     <Grid.ColumnDefinitions>
@@ -966,9 +966,9 @@
                 <DataGrid Name="combinationJobOutput" AutoGenerateColumns="False" ItemsSource="{Binding productSearchOutput, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"
                               Background="white"
                               BorderThickness="0" BorderBrush="Transparent"
-                              HorizontalGridLinesBrush="LightGray"
+                              HorizontalGridLinesBrush="DarkGray"
                               VerticalGridLinesBrush="White"
-                              GridLinesVisibility="None"
+                              GridLinesVisibility="Horizontal"
                               Grid.Column="0"
                               HeadersVisibility="Column"
                               HorizontalAlignment="Stretch"
