@@ -90,7 +90,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                 }
                 else if (compareObject.Mold is SingleMold)
                 {
-                    compareObject.finalRating += this.compare(32.00m - compareObject.differenceBoltDiameter * this.factorBoltDiameter, 0.00m);
+                    compareObject.finalRating += this.compare(10.00m - compareObject.differenceBoltDiameter * this.factorBoltDiameter, 0.00m);
                 }
 
                 compareObject.finalRating = Math.Round((Decimal) compareObject.finalRating, 2);

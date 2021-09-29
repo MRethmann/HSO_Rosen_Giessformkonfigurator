@@ -226,9 +226,8 @@ C:\Users\rethm\OneDrive\Dokumente\VisualStudio\Gießformkonfigurator.WPF\obj\Deb
 C:\Users\rethm\OneDrive\Dokumente\VisualStudio\Gießformkonfigurator.WPF\obj\Debug\Gießformkonfigurator.WPF.Migrations.changedprecisisononallattributesofsingleMolds.resources
 C:\Users\rethm\OneDrive\Dokumente\VisualStudio\Gießformkonfigurator.WPF\obj\Debug\Gießformkonfigurator.WPF.Migrations.outerkonusbaseplatemaybenull.resources
 C:\Users\rethm\OneDrive\Dokumente\VisualStudio\Gießformkonfigurator.WPF\obj\Debug\Gießformkonfigurator.WPF.Migrations.fillHeighoncoremaybenull.resources
-C:\Users\rethm\OneDrive\Dokumente\VisualStudio\Gießformkonfigurator.WPF\obj\Debug\Gießformkonfigurator.WPF.Migrations.sync.resources
-C:\Users\rethm\OneDrive\Dokumente\VisualStudio\Gießformkonfigurator.WPF\obj\Debug\Gießformkonfigurator.WPF.Migrations.sync1.resources
 C:\Users\rethm\OneDrive\Dokumente\VisualStudio\Gießformkonfigurator.WPF\obj\Debug\LoginWindow.g.cs
 C:\Users\rethm\OneDrive\Dokumente\VisualStudio\Gießformkonfigurator.WPF\obj\Debug\StartWindow.g.cs
 C:\Users\rethm\OneDrive\Dokumente\VisualStudio\Gießformkonfigurator.WPF\obj\Debug\LoginWindow.baml
 C:\Users\rethm\OneDrive\Dokumente\VisualStudio\Gießformkonfigurator.WPF\obj\Debug\StartWindow.baml
+C:\Users\rethm\OneDrive\Dokumente\VisualStudio\Gießformkonfigurator.WPF\obj\Debug\Gießformkonfigurator.WPF.Migrations.holePairAngleDatatypechanged.resources

@@ -100,6 +100,10 @@
     <Compile Include="loginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202109291213028_holePairAngle Datatype changed.cs" />
+    <Compile Include="Migrations\202109291213028_holePairAngle Datatype changed.Designer.cs">
+      <DependentUpon>202109291213028_holePairAngle Datatype changed.cs</DependentUpon>
+    </Compile>
     <Compile Include="MVVM\View\DataTemplates\DetailsTemplateSelector.cs" />
     <Compile Include="MVVM\View\DataTemplates\QuickInfoTemplateSelector.cs" />
     <Compile Include="MVVM\View\DataTemplates\RowDetailsTemplateSelector.cs" />
@@ -266,14 +270,6 @@
     <Compile Include="Migrations\202109231430436_fillHeigh on core may be null.cs" />
     <Compile Include="Migrations\202109231430436_fillHeigh on core may be null.Designer.cs">
       <DependentUpon>202109231430436_fillHeigh on core may be null.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109251019138_sync.cs" />
-    <Compile Include="Migrations\202109251019138_sync.Designer.cs">
-      <DependentUpon>202109251019138_sync.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109251021448_sync1.cs" />
-    <Compile Include="Migrations\202109251021448_sync1.Designer.cs">
-      <DependentUpon>202109251021448_sync1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MVVM\Model\Db_components\Baseplate.cs" />
@@ -447,11 +443,8 @@
     <EmbeddedResource Include="Migrations\202109231430436_fillHeigh on core may be null.resx">
       <DependentUpon>202109231430436_fillHeigh on core may be null.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109251019138_sync.resx">
-      <DependentUpon>202109251019138_sync.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109251021448_sync1.resx">
-      <DependentUpon>202109251021448_sync1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202109291213028_holePairAngle Datatype changed.resx">
+      <DependentUpon>202109291213028_holePairAngle Datatype changed.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

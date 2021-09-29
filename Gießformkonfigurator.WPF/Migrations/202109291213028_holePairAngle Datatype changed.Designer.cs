@@ -7,13 +7,13 @@ namespace Gießformkonfigurator.WPF.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class sync : IMigrationMetadata
+    public sealed partial class holePairAngleDatatypechanged : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(sync));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(holePairAngleDatatypechanged));
         
         string IMigrationMetadata.Id
         {
-            get { return "202109251019138_sync"; }
+            get { return "202109291213028_holePairAngle Datatype changed"; }
         }
         
         string IMigrationMetadata.Source
