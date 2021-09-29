@@ -58,14 +58,14 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
             {
                 ID = 78700,
                 Description = "Testprodukt",
-                OuterDiameter = 406,
-                InnerDiameter = 170,
+                OuterDiameter = 328,
+                InnerDiameter = 82,
                 Height = 15,
-                HcHoles = 12,
-                HcDiameter = 220,
-                HcHoleDiameter = 13.5m,
+                HcHoles = null,
+                HcDiameter = null,
+                HcHoleDiameter = null,
                 FactorPU = 1.0175m, 
-                BTC = "16A",
+                BTC = null,
             };
 
             /*using (var db = new GießformDBContext())

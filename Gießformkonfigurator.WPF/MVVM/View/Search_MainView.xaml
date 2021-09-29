@@ -8,6 +8,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              Background="white">
+    
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+    </UserControl.Resources>
 
     <Border BorderThickness="1" BorderBrush="Black" CornerRadius="4">
 
@@ -23,30 +27,180 @@
                     <ColumnDefinition Width="8*"/>
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
-                
-                <TextBlock Text="ProduktID:"
-                           HorizontalAlignment="Left" VerticalAlignment="Center"
-                           Margin="10,0,0,0"
-                           Foreground="Black" FontSize="15" Grid.Column="0"/>
 
-                <TextBox x:Name="ProduktIDTextBox" 
-                         Text="{Binding productId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}"
-                         Width="Auto" Height="40"
-                         HorizontalAlignment="Stretch"
-                         VerticalAlignment="Center"
-                         VerticalContentAlignment="Center"
-                         Margin="5" Grid.Column="1"
-                         Foreground="Black" FontSize="15" Background="White"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <ComboBox x:Name="Combobox_SearchView" Margin="10" Height="25" HorizontalContentAlignment="Center" VerticalContentAlignment="center">
+                        <ComboBoxItem IsSelected="True" x:Name="productSearchID">ProduktID</ComboBoxItem>
+                        <ComboBoxItem x:Name="productSearchParam">Werte Eingeben</ComboBoxItem>
+                    </ComboBox>
+                    
+                </Grid>
+
+                <Grid x:Name="grid_SearchProductID" Grid.Column="1" Visibility="{Binding ElementName=productSearchID, Path=IsSelected, Converter={StaticResource BoolToVis}}">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock x:Name="productIDTextBlock"
+                               Text="ProduktID:"
+                               HorizontalAlignment="Left" VerticalAlignment="Center"
+                               Margin="10,0,0,0" 
+                               Foreground="Black" FontSize="15" />
+
+                    <TextBox x:Name="ProduktIDTextBox" 
+                             Text="{Binding productId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}"
+                             Width="Auto" Height="40"
+                             HorizontalAlignment="Stretch"
+                             VerticalAlignment="Center"
+                             VerticalContentAlignment="Center"
+                             Margin="5" Grid.Column="1"
+                             Foreground="Black" FontSize="15" Background="White"/>
+                </Grid>
+
+                <Grid x:Name="grid_SearchParameters" Grid.Column="1" Visibility="{Binding ElementName=productSearchParam, Path=IsSelected, Converter={StaticResource BoolToVis}}">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock x:Name="outerDiameter_TextBlock"
+                               Text="Außendurchmesser"
+                               HorizontalAlignment="Left" VerticalAlignment="Center"
+                               Margin="10,0,0,0" 
+                               Foreground="Black" FontSize="15" Grid.Column="0"/>
+
+                    <TextBox x:Name="outerDiameter_TextBox" 
+                             Text="placeholder"
+                             Width="auto" Height="40"
+                             HorizontalAlignment="Stretch"
+                             VerticalAlignment="Center"
+                             VerticalContentAlignment="Center"
+                             Margin="5" Grid.Column="1"
+                             Foreground="Black" FontSize="15" Background="White"/>
+
+                    <TextBlock x:Name="innerDiameter_TextBlock"
+                               Text="Innendurchmesser"
+                               HorizontalAlignment="Left" VerticalAlignment="Center"
+                               Margin="10,0,0,0" 
+                               Foreground="Black" FontSize="15" Grid.Column="0" Grid.Row="1"/>
+
+                    <TextBox x:Name="innerDiameter_TextBox" 
+                             Text="placeholder"
+                             Width="auto" Height="40"
+                             HorizontalAlignment="Stretch"
+                             VerticalAlignment="Center"
+                             VerticalContentAlignment="Center"
+                             Margin="5" Grid.Column="1" Grid.Row="1"
+                             Foreground="Black" FontSize="15" Background="White"/>
+
+                    <TextBlock x:Name="height_TextBlock"
+                               Text="Höhe"
+                               HorizontalAlignment="Left" VerticalAlignment="Center"
+                               Margin="10,0,0,0" 
+                               Foreground="Black" FontSize="15" Grid.Column="2" Grid.Row="0"/>
+
+                    <TextBox x:Name="height_TextBox" 
+                             Text="placeholder"
+                             Width="auto" Height="40"
+                             HorizontalAlignment="Stretch"
+                             VerticalAlignment="Center"
+                             VerticalContentAlignment="Center"
+                             Margin="5" Grid.Column="3" Grid.Row="0"
+                             Foreground="Black" FontSize="15" Background="White"/>
+
+                    <TextBlock x:Name="BTC_TextBlock"
+                               Text="BTC?"
+                               HorizontalAlignment="Left" VerticalAlignment="Center"
+                               Margin="10,0,0,0" 
+                               Foreground="Black" FontSize="15" Grid.Column="2" Grid.Row="1"/>
+
+                    <TextBox x:Name="BTC_TextBox" 
+                             Text="placeholder"
+                             Width="auto" Height="40"
+                             HorizontalAlignment="Stretch"
+                             VerticalAlignment="Center"
+                             VerticalContentAlignment="Center"
+                             Margin="5" Grid.Column="3" Grid.Row="1"
+                             Foreground="Black" FontSize="15" Background="White"/>
+
+                    <TextBlock x:Name="HcDiameter_TextBlock"
+                               Text="Lochkreisdurchmesser"
+                               HorizontalAlignment="Left" VerticalAlignment="Center"
+                               Margin="10,0,0,0" 
+                               Foreground="Black" FontSize="15" Grid.Column="4" Grid.Row="0"/>
+
+                    <TextBox x:Name="HcDiameter_TextBox" 
+                             Text="placeholder"
+                             Width="auto" Height="40"
+                             HorizontalAlignment="Stretch"
+                             VerticalAlignment="Center"
+                             VerticalContentAlignment="Center"
+                             Margin="5" Grid.Column="5" Grid.Row="0"
+                             Foreground="Black" FontSize="15" Background="White"/>
+
+                    <TextBlock x:Name="HcHoles_TextBlock"
+                               Text="HcHoles"
+                               HorizontalAlignment="Left" VerticalAlignment="Center"
+                               Margin="10,0,0,0" 
+                               Foreground="Black" FontSize="15" Grid.Column="4" Grid.Row="1"/>
+
+                    <TextBox x:Name="HcHoles_TextBox" 
+                             Text="placeholder"
+                             Width="auto" Height="40"
+                             HorizontalAlignment="Stretch"
+                             VerticalAlignment="Center"
+                             VerticalContentAlignment="Center"
+                             Margin="5" Grid.Column="5" Grid.Row="1"
+                             Foreground="Black" FontSize="15" Background="White"/>
+
+
+                    <TextBlock x:Name="HcHolesDiameter_TextBlock"
+                               Text="HcHolesDiameter"
+                               HorizontalAlignment="Left" VerticalAlignment="Center"
+                               Margin="10,0,0,0" 
+                               Foreground="Black" FontSize="15" Grid.Column="6" Grid.Row="0"/>
+
+                    <TextBox x:Name="HcHolesDiameter_TextBox" 
+                             Text="placeholder"
+                             Width="auto" Height="40"
+                             HorizontalAlignment="Stretch"
+                             VerticalAlignment="Center"
+                             VerticalContentAlignment="Center"
+                             Margin="5" Grid.Column="7" Grid.Row="0"
+                             Foreground="Black" FontSize="15" Background="White"/>
+
+
+                </Grid>
 
                 <Button x:Name="ProduktID" Content="Suchen"
-                        HorizontalAlignment="Stretch" VerticalAlignment="Center"
-                        Width="Auto" Height="40"
-                        Foreground="Black"
-                        Background="White"
-                        FontSize="15" 
-                        Grid.Column="2"
-                        Command="{Binding searchCommand}">
+                            HorizontalAlignment="Stretch" VerticalAlignment="Center"
+                            Width="Auto" Height="40" Margin="10"
+                            Foreground="Black"
+                            Background="White"
+                            FontSize="15" 
+                            Grid.Column="3"
+                            Command="{Binding searchCommand}">
                 </Button>
+
             </Grid>
 
             <Grid Grid.Row="1" Grid.Column="0" Margin="10">
@@ -948,7 +1102,7 @@
                                 <Expander.Style>
                                     <Style TargetType="Expander">
                                         <Style.Triggers>
-                                            <DataTrigger Binding="{Binding SelectedItem.alternativeGuideRings2, ElementName=combinationJobOutput}" Value="{x:Null}">
+                                            <DataTrigger Binding="{Binding SelectedItem.alternativeGuideRings, ElementName=combinationJobOutput}" Value="{x:Null}">
                                                 <Setter Property="IsEnabled" Value="False"/>
                                             </DataTrigger>
                                         </Style.Triggers>
@@ -966,7 +1120,7 @@
                                             <RowDefinition/>
                                         </Grid.RowDefinitions>
 
-                                        <DataGrid Grid.Column="0" Grid.Row="1" ItemsSource="{Binding SelectedItem.alternativeGuideRings2, ElementName=combinationJobOutput}" Height="Auto" FontSize="15" Background="white"
+                                        <DataGrid Grid.Column="0" Grid.Row="1" ItemsSource="{Binding SelectedItem.alternativeGuideRings, ElementName=combinationJobOutput}" Height="Auto" FontSize="15" Background="white"
                                                   Grid.ColumnSpan="2"
                                                   AutoGenerateColumns="False"
                                                   BorderThickness="0" BorderBrush="Transparent"
@@ -1003,7 +1157,7 @@
                                 <Expander.Style>
                                     <Style TargetType="Expander">
                                         <Style.Triggers>
-                                            <DataTrigger Binding="{Binding SelectedItem.alternativeCores2, ElementName=combinationJobOutput}" Value="{x:Null}">
+                                            <DataTrigger Binding="{Binding SelectedItem.alternativeCores, ElementName=combinationJobOutput}" Value="{x:Null}">
                                                 <Setter Property="IsEnabled" Value="False"/>
                                             </DataTrigger>
                                         </Style.Triggers>
@@ -1021,7 +1175,7 @@
                                             <RowDefinition/>
                                         </Grid.RowDefinitions>
 
-                                        <DataGrid Grid.Column="0" Grid.Row="1" ItemsSource="{Binding SelectedItem.alternativeCores2, ElementName=combinationJobOutput}" Height="Auto" FontSize="15" Background="white"
+                                        <DataGrid Grid.Column="0" Grid.Row="1" ItemsSource="{Binding SelectedItem.alternativeCores, ElementName=combinationJobOutput}" Height="Auto" FontSize="15" Background="white"
                                                   Grid.ColumnSpan="2"
                                                   AutoGenerateColumns="False"
                                                   BorderThickness="0" BorderBrush="Transparent"

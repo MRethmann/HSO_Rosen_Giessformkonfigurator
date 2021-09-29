@@ -35,8 +35,15 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                 productDisc.OuterDiameter = Math.Round(productDisc.OuterDiameter * productDisc.FactorPU.GetValueOrDefault(1m), 2);
                 productDisc.InnerDiameter = Math.Round(productDisc.InnerDiameter * productDisc.FactorPU.GetValueOrDefault(1m), 2);
                 productDisc.Height = Math.Round(productDisc.Height * productDisc.FactorPU.GetValueOrDefault(1m), 2);
-                productDisc.HcDiameter = Math.Round((Decimal)productDisc.HcDiameter * productDisc.FactorPU.GetValueOrDefault(1m), 2);
-                productDisc.HcHoleDiameter = Math.Round((Decimal)productDisc.HcHoleDiameter * productDisc.FactorPU.GetValueOrDefault(1m), 2);
+                if (productDisc.HcDiameter != null)
+                {
+                    productDisc.HcDiameter = Math.Round((Decimal)productDisc.HcDiameter * productDisc.FactorPU.GetValueOrDefault(1m), 2);
+                }
+                
+                if (productDisc.HcHoleDiameter != null)
+                {
+                    productDisc.HcHoleDiameter = Math.Round((Decimal)productDisc.HcHoleDiameter * productDisc.FactorPU.GetValueOrDefault(1m), 2);
+                }
             } 
             else if (product.GetType() == typeof(ProductCup))
             {

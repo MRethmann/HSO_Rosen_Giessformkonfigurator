@@ -188,7 +188,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                                 if (combinationRuleSet.Combine(mold.ListCoreRings[i].Item1, ring))
                                 {
                                     var differenceInnerDiameter = produktDisc.InnerDiameter - ring.OuterDiameter;
-                                    mold.ListCoreRings.Add(new Tuple<Ring, Ring, decimal?>(mold.ListCoreRings[i].Item1, ring, differenceInnerDiameter));
+                                    mold.ListCoreRings.Insert(0, new Tuple<Ring, Ring, decimal?>(mold.ListCoreRings[i].Item1, ring, differenceInnerDiameter));
                                 }
                             }
                         }
@@ -207,7 +207,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                                 if (combinationRuleSet.Combine(mold.ListOuterRings[i].Item1, ring))
                                 {
                                     var differenceOuterDiameter = ring.InnerDiameter - produktDisc.OuterDiameter;
-                                    mold.ListOuterRings.Add(new Tuple<Ring, Ring, decimal?>(mold.ListOuterRings[i].Item1, ring, differenceOuterDiameter));
+                                    mold.ListOuterRings.Insert(0, new Tuple<Ring, Ring, decimal?>(mold.ListOuterRings[i].Item1, ring, differenceOuterDiameter));
                                 }
                             }
                         }

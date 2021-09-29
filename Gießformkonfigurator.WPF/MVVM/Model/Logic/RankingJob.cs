@@ -163,7 +163,11 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                     // Case: Different baseplate or insertPlates
                     if (currentObject == null 
                         || ((ModularMold)nextObject.Mold).baseplate.ID != ((ModularMold)currentObject.Mold).baseplate.ID
-                        || ((ModularMold)nextObject.Mold).insertPlate?.ID != ((ModularMold)currentObject.Mold).insertPlate?.ID)
+                        || ((ModularMold)nextObject.Mold).insertPlate?.ID != ((ModularMold)currentObject.Mold).insertPlate?.ID
+                        || ((ModularMold)nextObject.Mold).ListCoreRings?.First()?.Item1 != ((ModularMold)currentObject.Mold).ListCoreRings?.First()?.Item1
+                        || ((ModularMold)nextObject.Mold).ListCoreRings?.First()?.Item2 != ((ModularMold)currentObject.Mold).ListCoreRings?.First()?.Item2
+                        || ((ModularMold)nextObject.Mold).ListOuterRings?.First()?.Item1 != ((ModularMold)currentObject.Mold).ListOuterRings?.First()?.Item1
+                        || ((ModularMold)nextObject.Mold).ListOuterRings?.First()?.Item1 != ((ModularMold)currentObject.Mold).ListOuterRings?.First()?.Item2)
                     {
                         if (currentObject != null)
                         {
@@ -177,21 +181,20 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                         && ((ModularMold)nextObject.Mold).insertPlate?.ID == ((ModularMold)currentObject.Mold).insertPlate?.ID
                         && ((ModularMold)compareObject.Mold).ListCoreRings.Count <= 0 && ((ModularMold)compareObject.Mold).ListOuterRings.Count <= 0)
                     {
-                        if (!currentObject.alternativeCores.Contains(((ModularMold)nextObject.Mold).core))
+                        if (!currentObject.alternativeCores.Any(c => c.Item1 == ((ModularMold)nextObject.Mold).core))
+                            //Contains(((ModularMold)nextObject.Mold).core))
                         {
-                            currentObject.alternativeCores.Add(((ModularMold)nextObject.Mold).core);
                             var core = ((ModularMold)nextObject.Mold).core;
                             var diffToProduct = Math.Round((Decimal)nextObject.differenceInnerDiameter, 2).ToString();
-                            currentObject.alternativeCores2.Add(new Tuple<Core, string>(core, diffToProduct));
+                            currentObject.alternativeCores.Add(new Tuple<Core, string>(core, diffToProduct));
                         }
                         
-                        if (!currentObject.alternativeGuideRings.Contains(((ModularMold)nextObject.Mold).guideRing))
+                        if (!currentObject.alternativeGuideRings.Any(c => c.Item1 == ((ModularMold)nextObject.Mold).guideRing))
+                        //Contains(((ModularMold)nextObject.Mold).guideRing))
                         {
-                            currentObject.alternativeGuideRings.Add(((ModularMold)nextObject.Mold).guideRing);
-
                             var guideRing = ((ModularMold)nextObject.Mold).guideRing;
                             var diffToProduct = Math.Round((Decimal)nextObject.differenceOuterDiameter, 2).ToString();
-                            currentObject.alternativeGuideRings2.Add(new Tuple<Ring, string>(guideRing, diffToProduct));
+                            currentObject.alternativeGuideRings.Add(new Tuple<Ring, string>(guideRing, diffToProduct));
                         }
                     }
                     // Case: There are additional core- or outerings involved --> combination gets seperate table entry
