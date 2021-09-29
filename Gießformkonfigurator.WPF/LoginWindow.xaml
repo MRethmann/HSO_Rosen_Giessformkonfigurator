@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel VerticalAlignment="Center">
-            <Image Source="C:\Users\Anwender\source\repos\MRethmann\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\Images/house.png" Width="80"/>
+            <Image Source="Images/house.png" Width="80"/>
             <TextBlock Text="Als Admin anmelden"
                         FontWeight="Light"
                         FontSize="22"
@@ -38,7 +38,7 @@
                 <PasswordBox x:Name="password_box"
                              FontFamily="Helvetica"
                              FontWeight="Light"
-                             Password="SEP"
+                             
                              FontSize="20"
                              HorizontalAlignment="Center"
                              Foreground="Black"

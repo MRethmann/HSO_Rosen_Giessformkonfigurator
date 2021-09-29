@@ -34,14 +34,14 @@ namespace Gießformkonfigurator.WPF
             if (password_box.Password != admin_password)
             {
                 MessageBox.Show("Geben sie das richtige Passwort ein");
+                password_box.Password = "";
             }
             else
             {
-                mainWindow.create_product.Visibility = Visibility.Visible;
-                mainWindow.create_one_piece_mold.Visibility = Visibility.Visible;
-                mainWindow.create_casting_mold_component.Visibility = Visibility.Visible;
-                mainWindow.Settings.Visibility = Visibility.Visible;
-                mainWindow.database_management.Visibility = Visibility.Visible;
+                password_box.Password = "";
+                mainWindow.Admin_Grid.Visibility = Visibility.Visible;
+                mainWindow.Admin_Logo.Visibility = Visibility.Visible;
+                mainWindow.Logo.Visibility = Visibility.Collapsed;
                 mainWindow.AdminLoginButton.IsEnabled = false;
                 mainWindow.AdminLogoutButton.IsEnabled = true;
                 this.Close();

@@ -163,11 +163,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                     // Case: Different baseplate or insertPlates
                     if (currentObject == null 
                         || ((ModularMold)nextObject.Mold).baseplate.ID != ((ModularMold)currentObject.Mold).baseplate.ID
-                        || ((ModularMold)nextObject.Mold).insertPlate?.ID != ((ModularMold)currentObject.Mold).insertPlate?.ID
-                        || ((ModularMold)nextObject.Mold).ListCoreRings?.First()?.Item1 != ((ModularMold)currentObject.Mold).ListCoreRings?.First()?.Item1
-                        || ((ModularMold)nextObject.Mold).ListCoreRings?.First()?.Item2 != ((ModularMold)currentObject.Mold).ListCoreRings?.First()?.Item2
-                        || ((ModularMold)nextObject.Mold).ListOuterRings?.First()?.Item1 != ((ModularMold)currentObject.Mold).ListOuterRings?.First()?.Item1
-                        || ((ModularMold)nextObject.Mold).ListOuterRings?.First()?.Item1 != ((ModularMold)currentObject.Mold).ListOuterRings?.First()?.Item2)
+                        || ((ModularMold)nextObject.Mold).insertPlate?.ID != ((ModularMold)currentObject.Mold).insertPlate?.ID)
                     {
                         if (currentObject != null)
                         {
@@ -178,8 +174,8 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 
                     // Case: Baseplates and insertPlate are identical but core and guideRing are different
                     else if (((ModularMold)nextObject.Mold).baseplate.ID == ((ModularMold)currentObject.Mold).baseplate.ID
-                        && ((ModularMold)nextObject.Mold).insertPlate?.ID == ((ModularMold)currentObject.Mold).insertPlate?.ID
-                        && ((ModularMold)compareObject.Mold).ListCoreRings.Count <= 0 && ((ModularMold)compareObject.Mold).ListOuterRings.Count <= 0)
+                        && ((ModularMold)nextObject.Mold).insertPlate?.ID == ((ModularMold)currentObject.Mold).insertPlate?.ID)
+                        //&& ((ModularMold)compareObject.Mold).ListCoreRings.Count <= 0 && ((ModularMold)compareObject.Mold).ListOuterRings.Count <= 0)
                     {
                         if (!currentObject.alternativeCores.Any(c => c.Item1 == ((ModularMold)nextObject.Mold).core))
                             //Contains(((ModularMold)nextObject.Mold).core))

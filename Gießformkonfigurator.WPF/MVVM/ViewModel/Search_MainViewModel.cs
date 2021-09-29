@@ -29,6 +29,10 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
 
         public string listSize { get; set; }
 
+        public bool searchByProductId { get; set; }
+
+        public ProductDisc productDisc { get; set; } = new ProductDisc();
+
         public int productId { get; set; }
 
         private decimal? _FactorPU;
@@ -52,93 +56,64 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
 
         public void findMatchingMolds()
         {
-            //Product product = new ProductDisc() { OuterDiameter = 310.00m, InnerDiameter = 42.00m, Height = 30.00m, Hc1Holes = 8, Hc1Diameter = 10, Hc1HoleDiameter = 1, Hc2Holes = 8, Hc2Diameter = 20, Hc2HoleDiameter = 2, Hc3Holes = 8, Hc3Diameter = 30, Hc3HoleDiameter = 3 };
-            
-            Product product = new ProductDisc()
+            if (this.searchByProductId)
             {
-                ID = 78700,
-                Description = "Testprodukt",
-                OuterDiameter = 328,
-                InnerDiameter = 82,
-                Height = 15,
-                HcHoles = null,
-                HcDiameter = null,
-                HcHoleDiameter = null,
-                FactorPU = 1.0175m, 
-                BTC = null,
-            };
-
-            /*using (var db = new GießformDBContext())
-            {
-                product = db.ProductDiscs.Find(productId); 
-            }*/
-
-            if (product != null)
-            {
-                // Validate if factorPU is filled in GUI or set in database.
-                // ToDo: Make it possible so the user can choose which Value to take.
-                if (product.FactorPU != null && this.FactorPU != null && product.FactorPU != this.FactorPU)
+                try
                 {
-                    MessageBox.Show("Faktor-PU Eingabe stimmt nicht mit dem Produkteintrag in der Datenbank überein. In der Datenbank ist folgender Faktor hinterlegt: " + product.FactorPU);
-                }
-                else if (product.FactorPU == null && this.FactorPU == null)
-                {
-                    MessageBox.Show("Bitte fülle den Faktor-PU aus!");
-                }
-                else
-                {
-                    if (product.FactorPU == null)
+                    using (var db = new GießformDBContext())
                     {
-                        product.FactorPU = Convert.ToDecimal(this.FactorPU);
+                        this.productDisc = db.ProductDiscs.Find(productId);
                     }
-
-                    Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
-                    this.IsLoading = Visibility.Visible;
-
-                    programLogic = new ProgramLogic(product);
-
-                    this.productSearchOutput.Clear();
-
-                    foreach (var compareObject in programLogic.finalOutput)
-                    {
-                        //((ModularMold)compareObject.Mold).ListOuterRings.Add(new Model.Db_components.Ring { Description = "ALBERTOOO" , ID = 123151, OuterDiameter = 5, ToleranceInnerDiameter = "5", InnerDiameter = 5, ToleranceOuterDiameter = "5", FillHeightMax = 12, HasKonus = true, Height = 55});
-                        this.productSearchOutput.Add(compareObject);
-                        //compareObject.postProcessing.Add("Test1");
-                        //compareObject.postProcessing.Add("Test2");
-                    }
-                    /*var test = new CompareObject(product, new ModularMold(new Baseplate(), new Ring(), new InsertPlate(), new Core())) { finalRating = 80 };
-                    ((ModularMold)test.Mold).ListCoreRings.Add(new Tuple<Ring, Ring, decimal?>(new Ring() { ID = 1 }, new Ring() ,0.1m));
-                    test.bolts.Add(new Tuple<Bolt, decimal?>(new Bolt() { Description = "BoltTest", ID = 123 }, 0.15m));
-                    test.bolts.Add(new Tuple<Bolt, decimal?>(new Bolt() { Description = "BoltTest1", ID = 23 }, 0.15m));
-                    test.bolts.Add(new Tuple<Bolt, decimal?>(new Bolt() { Description = "BoltTest2", ID = 2331 }, 0.15m));
-                    test.bolts.Add(new Tuple<Bolt, decimal?>(new Bolt() { Description = "BoltTest3", ID = 12 }, 0.15m));
-                    test.bolts.Add(new Tuple<Bolt, decimal?>(new Bolt() { Description = "BoltTest4", ID = 541 }, 0.15m));
-                    test.bolts.Add(new Tuple<Bolt, decimal?>(new Bolt() { Description = "BoltTest4", ID = 541 }, 0.15m));
-                    test.bolts.Add(new Tuple<Bolt, decimal?>(new Bolt() { Description = "BoltTest4", ID = 541 }, 0.15m));
-                    test.bolts.Add(new Tuple<Bolt, decimal?>(new Bolt() { Description = "BoltTest4", ID = 541 }, 0.15m));
-                    test.bolts.Add(new Tuple<Bolt, decimal?>(new Bolt() { Description = "BoltTest4", ID = 541 }, 0.15m));
-                    test.bolts.Add(new Tuple<Bolt, decimal?>(new Bolt() { Description = "BoltTest4", ID = 541 }, 0.15m));
-                    this.productSearchOutput.Add(test);
-                    this.productSearchOutput.Add(new CompareObject(product, new ModularMold(new Cupform(), new Core(), new InsertPlate())) { finalRating = 90 });
-                    this.productSearchOutput.Add(new CompareObject(product, new SingleMoldDisc()) { finalRating = 55 });
-                    this.productSearchOutput.Add(new CompareObject(product, new SingleMoldCup()) { finalRating = 85 });*/
-
-                    this.IsLoading = Visibility.Hidden;
-                    Mouse.OverrideCursor = System.Windows.Input.Cursors.Arrow;
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Suche fehlgeschlagen. Überprüfe die Db Verbindung!");
                 }
             }
             else
-                MessageBox.Show("Es stimmt kein Produkt mit der eingegebenen SAP-Nr. überein. Bitte validiere die Eingabe!");
+            {
+                if (this.productDisc.OuterDiameter == 0
+                    || this.productDisc.InnerDiameter == 0
+                    || this.productDisc.Height == 0
+                    // || productdisc.FactorPU == null
+                    // || productdisc.FactorPU == 0
+                    || this.productDisc.BTC == null)
+                {
+                    MessageBox.Show("Bitte alle Werte ausfüllen!");
+                }
+            }
+
+
+            if (productDisc != null)
+            {
+                Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
+                this.IsLoading = Visibility.Visible;
+
+                programLogic = new ProgramLogic(productDisc);
+
+                this.productSearchOutput.Clear();
+
+                foreach (var compareObject in programLogic.finalOutput)
+                {
+                    this.productSearchOutput.Add(compareObject);
+                }
+
+                this.IsLoading = Visibility.Hidden;
+                Mouse.OverrideCursor = System.Windows.Input.Cursors.Arrow;
+            }
+            else
+            {
+                MessageBox.Show("Kein Produkt bekannt!");
+            }
         }
 
         public bool validateSearch()
         {
-            if (productId != 0)
+            /*if (productId != 0)
                 return true;
             else
-                return false;
-        }
-
-        
+                return false;*/
+            return true;
+        } 
     }
 }

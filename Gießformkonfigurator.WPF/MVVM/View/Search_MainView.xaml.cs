@@ -20,8 +20,5 @@ namespace Gießformkonfigurator.WPF.MVVM.View
             InitializeComponent();
             DataContext = new Search_MainViewModel();
         }
-
-
-
     }
 }

@@ -46,11 +46,9 @@ namespace Gießformkonfigurator.WPF
 
         private void Logout_Click(object sender, RoutedEventArgs e)
         {
-            create_product.Visibility = Visibility.Hidden;
-            create_one_piece_mold.Visibility = Visibility.Hidden;
-            create_casting_mold_component.Visibility = Visibility.Hidden;
-            Settings.Visibility = Visibility.Hidden;
-            database_management.Visibility = Visibility.Hidden;
+            Admin_Grid.Visibility = Visibility.Collapsed;
+            Admin_Logo.Visibility = Visibility.Collapsed;
+            Logo.Visibility = Visibility.Visible;
             AdminLoginButton.IsEnabled = true;
         }
     }

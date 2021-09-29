@@ -24,14 +24,14 @@
                 <MenuItem Header="Optionen">
                     <MenuItem x:Name="AdminLoginButton" Header="Administrator" Click="Open_LoginView"/>
                     <Separator/>
-                    <MenuItem x:Name="AdminLogoutButton" Header="Logout" Click="Logout_Click" IsEnabled="false"/>
+                    <MenuItem x:Name="AdminLogoutButton" Header="Logout" Click="Logout_Click" IsEnabled="false" Command="{Binding Search_MainViewCmd}"/>
                 </MenuItem>
             </Menu>
             
             <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="15"/>
-                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="15"/>
             </Grid.ColumnDefinitions>
@@ -48,18 +48,23 @@
                                VerticalAlignment="center" HorizontalAlignment="Center"
                                Foreground="Gray" FontSize="50" FontWeight="Medium"
                                Margin="20,0,0,0"/>
-            </Grid>
+                    <Border BorderBrush="#144F9B">
+                        <Image Width="180" Height="100" Source="/Images/rosen.png" x:Name="Logo" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    </Border>
+                </Grid>
 
             <Grid Grid.Column="1" Grid.Row="1" >
                 <Border BorderBrush="#144F9B">
-                    <Image Width="180" Height="100" Source="/Images/rosen.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <Image Width="180" Height="100" Source="/Images/rosen.png" x:Name="Admin_Logo" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed"/>
                 </Border>
             </Grid>
 
-            <Grid Grid.Row="2" Grid.Column="1" Margin="0, 0, 10, 0" Background="White">
+
+            <Grid x:Name="Admin_Grid" Grid.Row="2" Grid.Column="1" Margin="0, 0, 10, 0" Background="White" Visibility="Collapsed">
                 <Border BorderThickness="1" BorderBrush="#144F9B" CornerRadius="4">
                     <StackPanel >
                         <RadioButton Content="Produktsuche"
+                                     
                                      Height="50"
                                      FontSize="20"
                                      Style="{StaticResource MenuButtonTheme}"
@@ -70,7 +75,6 @@
 
                         <RadioButton Content="Produkt"
                                      x:Name="create_product"
-                                     Visibility="Hidden"
                                      Height="50" 
                                      FontSize="20"
                                      Style="{StaticResource MenuButtonTheme}"
@@ -78,7 +82,6 @@
 
                         <RadioButton Content="Einteilige Gießform"
                                      x:Name="create_one_piece_mold"
-                                     Visibility="Hidden"
                                      Height="50"
                                      FontSize="20"
                                      Style="{StaticResource MenuButtonTheme}"
@@ -86,7 +89,6 @@
 
                         <RadioButton Content="Gießformkomponenten"
                                      x:Name="create_casting_mold_component"
-                                     Visibility="Hidden"
                                      Height="50"
                                      FontSize="20"
                                      Style="{StaticResource MenuButtonTheme}"
@@ -95,7 +97,6 @@
                         <Border Margin="0, 30, 0, 30"></Border>
                         <RadioButton Content="Datenbankverwaltung"
                                      x:Name="database_management"
-                                     Visibility="Hidden"
                                      Height="50"
                                      FontSize="20"
                                      Style="{StaticResource MenuButtonTheme}"
@@ -104,7 +105,6 @@
 
                             <RadioButton Content="Settings"
                                      x:Name="Settings"
-                                     Visibility="Hidden"
                                      Height="50"
                                      FontSize="20"
                                      Style="{StaticResource MenuButtonTheme}"
