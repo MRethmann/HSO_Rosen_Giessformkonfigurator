@@ -19,8 +19,16 @@
     </Window.DataContext>
 
     <Border>
-        
-        <Grid>
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="Optionen">
+                    <MenuItem x:Name="AdminLoginButton" Header="Administrator" Click="Open_LoginView"/>
+                    <Separator/>
+                    <MenuItem x:Name="AdminLogoutButton" Header="Logout" Click="Logout_Click" IsEnabled="false"/>
+                </MenuItem>
+            </Menu>
+            
+            <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="15"/>
                 <ColumnDefinition Width="250"/>
@@ -94,35 +102,17 @@
                                      Command="{Binding DBManagement_MainViewCmd}"/>
 
 
-                        <RadioButton Content="Settings"
+                            <RadioButton Content="Settings"
                                      x:Name="Settings"
                                      Visibility="Hidden"
                                      Height="50"
                                      FontSize="20"
                                      Style="{StaticResource MenuButtonTheme}"
                                      Command="{Binding Settings_MainViewCmd}"/>
-
-                        <Border Margin="0, 170, 0, 170"></Border>
-
-                        <Label x:Name="password_label">Passwort:</Label>
-                        <PasswordBox 
-                            x:Name="password_box"
-                            PasswordChar="*"
-                            >
-                            </PasswordBox>
-
-                            <Button x:Name="Admin_Login" Content="Login"
-                                 Click="Admin_Login_Click"
-                             
-                                />
-                            <Button x:Name="Logout" 
-                                Content="Logout"
-                                 
-                                Visibility="Hidden" Click="Logout_Click"
-                               
-                                />
-
-                    </StackPanel>
+                            <Border Margin="0, 170, 0, 170"></Border>
+                        
+                        
+                        </StackPanel>
                 </Border>
             </Grid>
 
@@ -132,5 +122,6 @@
                 </Border>
             </Grid>
         </Grid>
+        </DockPanel>
     </Border>
 </Window>

@@ -12,19 +12,37 @@ namespace Gießformkonfigurator.WPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        Window creatingForm;
+        private Window _startWindow;
+        private Window _loginWindow;
 
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        public Window startWindow
         {
-            if (creatingForm != null)
-                creatingForm.Close();
+            get { return _startWindow; }
+            set { _startWindow = value; }
         }
 
+        public Window loginWindow
+        {
+            get { return _loginWindow; }
+            set { _loginWindow = value; }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (startWindow != null)
+                startWindow.Close();
+        }
+
+        private void Open_LoginView(object sender, RoutedEventArgs e)
+        {
+            loginWindow = new loginWindow(this);
+            loginWindow.Show();
+        }
 
         private void Logout_Click(object sender, RoutedEventArgs e)
         {
@@ -33,35 +51,8 @@ namespace Gießformkonfigurator.WPF
             create_casting_mold_component.Visibility = Visibility.Hidden;
             Settings.Visibility = Visibility.Hidden;
             database_management.Visibility = Visibility.Hidden;
-            Logout.Visibility = Visibility.Collapsed;
-            password_label.Visibility = Visibility.Visible;
-            password_box.Visibility = Visibility.Visible;
-            Admin_Login.Visibility = Visibility.Visible;
-        }
-
-        private void Admin_Login_Click(object sender, RoutedEventArgs e)
-        {
-            var admin_password = "SEP";
-
-            if (password_box.Password != admin_password)
-            {
-                MessageBox.Show("Geben sie das richtige Passwort ein");
-                
-            }
-
-            else
-            {
-                create_product.Visibility = Visibility.Visible;
-                create_one_piece_mold.Visibility = Visibility.Visible;
-                create_casting_mold_component.Visibility = Visibility.Visible;
-                Settings.Visibility = Visibility.Visible;
-                database_management.Visibility = Visibility.Visible;
-                Logout.Visibility = Visibility.Visible;
-                password_label.Visibility = Visibility.Hidden;
-                password_box.Visibility = Visibility.Hidden;
-                Admin_Login.Visibility = Visibility.Collapsed;
-            }
-        }
+            AdminLoginButton.IsEnabled = true;
         }
     }
+}
 
