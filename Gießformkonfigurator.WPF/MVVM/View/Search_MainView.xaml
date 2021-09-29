@@ -559,11 +559,11 @@
 
                                     <Expander Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2">
                                         <Grid>
-                                            <DataGrid Grid.Column="0" Grid.Row="1" ItemsSource="{Binding SelectedItem.alternativeGuideRings, ElementName=combinationJobOutput}" Height="Auto">
+                                            <DataGrid Grid.Column="0" Grid.Row="1" ItemsSource="{Binding SelectedItem.alternativeGuideRings2, ElementName=combinationJobOutput}" Height="Auto">
 
                                             </DataGrid>
 
-                                            <DataGrid Grid.Column="1" Grid.Row="1" ItemsSource="{Binding SelectedItem.alternativeCores, ElementName=combinationJobOutput}" Height="Auto">
+                                            <DataGrid Grid.Column="1" Grid.Row="1" ItemsSource="{Binding SelectedItem.alternativeCores2, ElementName=combinationJobOutput}" Height="Auto">
 
                                             </DataGrid>
                                         </Grid>

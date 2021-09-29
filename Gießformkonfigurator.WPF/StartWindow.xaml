@@ -1,0 +1,52 @@
+﻿<Window x:Class="Gießformkonfigurator.WPF.StartWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Gießformkonfigurator.WPF"
+        mc:Ignorable="d"
+        Title="StartWindow" Height="450" Width="380"
+       
+        >
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <StackPanel VerticalAlignment="Center">
+                <Image Source="C:\Users\Anwender\source\repos\MRethmann\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\Images/house.png" Width="80"/>
+                <TextBlock Text="Gießformkonfigurator"
+                           FontWeight="Light"
+                           FontSize="22"
+                           HorizontalAlignment="Center"
+                           Foreground="Black"/>
+            </StackPanel>
+
+            <StackPanel  Grid.Row="1">
+                <StackPanel>
+                    <TextBlock FontFamily="Helvetica"
+                               FontWeight="Light"
+                               Text="Datenbank Verbindung"
+                               FontSize="20"
+                               HorizontalAlignment="Center"
+                               Foreground="Black"
+                               Margin="5"
+                                   />
+                </StackPanel>
+
+                <Grid>
+                    <Button Content="Verbinden" Click="btnOpenModal_Click"
+                            Width="100"
+                            Margin="0,10"
+                            Height="30"
+                            FontFamily="Helvetica"
+                            FontWeight="Light"
+                            FontSize="16"
+                            HorizontalAlignment="center"/>
+                </Grid>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

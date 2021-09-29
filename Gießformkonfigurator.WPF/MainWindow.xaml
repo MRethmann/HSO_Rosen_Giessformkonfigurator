@@ -7,6 +7,7 @@
         xmlns:viewModel="clr-namespace:Gießformkonfigurator.WPF.MVVM.ViewModel"
         mc:Ignorable="d"
         Background="WhiteSmoke"
+        Loaded="Window_Loaded"
         Height="{local:SettingBinding Height}"
         Width="{local:SettingBinding Width}"
         Left="{local:SettingBinding Left}"

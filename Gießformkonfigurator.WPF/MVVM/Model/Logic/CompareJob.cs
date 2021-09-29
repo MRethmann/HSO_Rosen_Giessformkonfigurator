@@ -174,7 +174,8 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                         if (compareObject.boltCirclesBaseplate[i] == true)
                         {
                             if (bolt.OuterDiameter <= this.productDisc.HcHoleDiameter
-                            && bolt.Thread == ((ModularMold)compareObject.Mold).baseplate.GetType().GetProperty(propGewinde).GetValue(((ModularMold)compareObject.Mold).baseplate).ToString())
+                                && bolt.OuterDiameter >= this.productDisc.HcHoleDiameter - 1
+                                && bolt.Thread == ((ModularMold)compareObject.Mold).baseplate.GetType().GetProperty(propGewinde).GetValue(((ModularMold)compareObject.Mold).baseplate).ToString())
                             {
                                 compareObject.bolts.Add(new System.Tuple<Bolt, decimal?>(bolt, this.productDisc.HcHoleDiameter - bolt.OuterDiameter));
                             }
@@ -188,7 +189,8 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                         if (compareObject.boltCirclesInsertPlate[i] == true)
                         {
                             if (bolt.OuterDiameter <= this.productDisc.HcHoleDiameter
-                            && bolt.Thread == ((ModularMold)compareObject.Mold).insertPlate.GetType().GetProperty(propGewinde).GetValue(((ModularMold)compareObject.Mold).insertPlate).ToString())
+                                && bolt.OuterDiameter >= this.productDisc.HcHoleDiameter - 1
+                                && bolt.Thread == ((ModularMold)compareObject.Mold).insertPlate.GetType().GetProperty(propGewinde).GetValue(((ModularMold)compareObject.Mold).insertPlate).ToString())
                             {
                                 compareObject.bolts.Add(new System.Tuple<Bolt, decimal?>(bolt, this.productDisc.HcHoleDiameter - bolt.OuterDiameter));
                             }
@@ -213,7 +215,6 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                 {
                     var compareObject = new CompareObject((ProductCup) this.productCup, (ModularMold) modularMold);
                     compareObject.differenceInnerDiameter = productCup.InnerDiameter - modularMold.core.OuterDiameter;
-                    //compareObject.differenceHeight = ;
                     compareObjectsTemp01.Add(compareObject);
                 }
             }

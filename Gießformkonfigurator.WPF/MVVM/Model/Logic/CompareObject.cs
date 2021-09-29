@@ -21,6 +21,10 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 
         public List<Core> alternativeCores { get; set; } = new List<Core>();
 
+        public List<Tuple<Ring, string>> alternativeGuideRings2 { get; set; } = new List<Tuple<Ring, string>>();
+
+        public List<Tuple<Core, string>> alternativeCores2 { get; set; } = new List<Tuple<Core, string>>();
+
         /// <summary>
         /// Difference between prefered inner Diameter and actual inner Diameter which requires post processing.
         /// </summary>

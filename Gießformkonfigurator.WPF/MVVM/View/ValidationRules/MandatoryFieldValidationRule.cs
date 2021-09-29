@@ -20,11 +20,6 @@ namespace Gießformkonfigurator.WPF.MVVM.View.ValidationRules
                 result = new ValidationResult(false, "Das Feld darf nicht leer sein!");
             }
 
-            /*if (value.ToString() == "Albert")
-            {
-                result = new ValidationResult(false, "Der Eingabewert darf nicht Albert sein.");
-            }*/
-
             return result;
         }
     }

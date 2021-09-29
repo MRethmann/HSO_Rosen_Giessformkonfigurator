@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:Gießformkonfigurator.WPF"
              xmlns:viewModel="clr-namespace:Gießformkonfigurator.WPF.MVVM.ViewModel"
              xmlns:view="clr-namespace:Gießformkonfigurator.WPF.MVVM.View"
-             StartupUri="MainWindow.xaml" Exit="Application_Exit">
+             StartupUri="StartWindow.xaml" Exit="Application_Exit">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

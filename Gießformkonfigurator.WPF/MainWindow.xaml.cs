@@ -12,11 +12,20 @@ namespace Gießformkonfigurator.WPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        
+        Window creatingForm;
+
         public MainWindow()
         {
             InitializeComponent();
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (creatingForm != null)
+                creatingForm.Close();
+        }
+
+
         private void Logout_Click(object sender, RoutedEventArgs e)
         {
             create_product.Visibility = Visibility.Hidden;

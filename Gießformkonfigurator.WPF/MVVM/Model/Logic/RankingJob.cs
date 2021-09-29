@@ -59,33 +59,33 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
         {
             foreach (var compareObject in this.rankingJobInput)
             {
-                compareObject.finalRating = this.compare(34.00m - compareObject.differenceOuterDiameter * this.factorOuterDiameter, 0.00m);
-                compareObject.finalRating += this.compare(34.00m - compareObject.differenceInnerDiameter * this.factorInnerDiameter, 0.00m);
+                compareObject.finalRating = this.compare(45.00m - compareObject.differenceOuterDiameter * this.factorOuterDiameter, 0.00m);
+                compareObject.finalRating += this.compare(45.00m - compareObject.differenceInnerDiameter * this.factorInnerDiameter, 0.00m);
 
                 if (compareObject.Mold is ModularMold)
                 {
                     if (compareObject.Product is ProductCup && ((ProductCup)compareObject.Product).BTC != null
-                    || compareObject.Product is ProductDisc && ((ProductDisc)compareObject.Product).BTC != null)
+                        || compareObject.Product is ProductDisc && ((ProductDisc)compareObject.Product).BTC != null)
                     {
                         for (int i = 1; i < 3; i++)
                         {
                             if (compareObject.boltCirclesBaseplate[i] == true)
                             {
                                 var minDifference = compareObject.bolts.Min(p => p.Item2);
-                                compareObject.finalRating += this.compare(32.00m - minDifference * this.factorBoltDiameter, 0.00m);
+                                compareObject.finalRating += this.compare(10.00m - minDifference * this.factorBoltDiameter, 0.00m);
                                 compareObject.differenceBoltDiameter = minDifference;
                             }
                             else if (compareObject.boltCirclesInsertPlate[i] == true)
                             {
                                 var minDifference = compareObject.bolts.Min(p => p.Item2);
-                                compareObject.finalRating += this.compare(32.00m - minDifference * this.factorBoltDiameter, 0.00m);
+                                compareObject.finalRating += this.compare(10.00m - minDifference * this.factorBoltDiameter, 0.00m);
                                 compareObject.differenceBoltDiameter = minDifference;
                             }
                         }
                     }
                     else
                     {
-                        compareObject.finalRating += 32.00m;
+                        compareObject.finalRating += 10.00m;
                     }
                 }
                 else if (compareObject.Mold is SingleMold)
@@ -96,13 +96,23 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                 compareObject.finalRating = Math.Round((Decimal) compareObject.finalRating, 2);
 
                 if (compareObject.differenceInnerDiameter > 1)
-                    compareObject.postProcessing.Add("Innendurchmesser bearbeiten");
+                {
+                    string diffInnerDiameter = Math.Round((Decimal)compareObject.differenceInnerDiameter, 2).ToString();
+                    compareObject.postProcessing.Add($"Innendurchmesser bearbeiten: {diffInnerDiameter}");
+                }
 
                 if (compareObject.differenceOuterDiameter > 1)
-                    compareObject.postProcessing.Add("Außendurchmesser bearbeiten");
+                {
+                    string diffOuterDiameter = Math.Round((Decimal)compareObject.differenceOuterDiameter, 2).ToString();
+                    compareObject.postProcessing.Add($"Außendurchmesser bearbeiten: {diffOuterDiameter}");
+                }   
 
-                if (compareObject.differenceBoltDiameter > 1 || compareObject.differenceBoltDiameter == null && ((ProductDisc)product).BTC != null)
-                    compareObject.postProcessing.Add("Lochkreis einarbeiten");
+                if (compareObject.differenceBoltDiameter == null && ((ProductDisc)product).BTC != null)
+                {
+                    string BTC = ((ProductDisc)product).BTC.ToString();
+                    compareObject.postProcessing.Add($"Lochkreis einarbeiten: {BTC}");
+                }
+                    
             }
         }
 
@@ -170,11 +180,18 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                         if (!currentObject.alternativeCores.Contains(((ModularMold)nextObject.Mold).core))
                         {
                             currentObject.alternativeCores.Add(((ModularMold)nextObject.Mold).core);
+                            var core = ((ModularMold)nextObject.Mold).core;
+                            var diffToProduct = Math.Round((Decimal)nextObject.differenceInnerDiameter, 2).ToString();
+                            currentObject.alternativeCores2.Add(new Tuple<Core, string>(core, diffToProduct));
                         }
                         
                         if (!currentObject.alternativeGuideRings.Contains(((ModularMold)nextObject.Mold).guideRing))
                         {
                             currentObject.alternativeGuideRings.Add(((ModularMold)nextObject.Mold).guideRing);
+
+                            var guideRing = ((ModularMold)nextObject.Mold).guideRing;
+                            var diffToProduct = Math.Round((Decimal)nextObject.differenceOuterDiameter, 2).ToString();
+                            currentObject.alternativeGuideRings2.Add(new Tuple<Ring, string>(guideRing, diffToProduct));
                         }
                     }
                     // Case: There are additional core- or outerings involved --> combination gets seperate table entry
