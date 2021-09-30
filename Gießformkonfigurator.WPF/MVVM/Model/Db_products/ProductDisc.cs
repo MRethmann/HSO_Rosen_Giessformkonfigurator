@@ -24,9 +24,6 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_products
 
         public decimal InnerDiameter { get; set; }
 
-        [StringLength(5)]
-        public string BTC { get; set; }
-
         public decimal? HcDiameter { get; set; }
 
         public int? HcHoles { get; set; }

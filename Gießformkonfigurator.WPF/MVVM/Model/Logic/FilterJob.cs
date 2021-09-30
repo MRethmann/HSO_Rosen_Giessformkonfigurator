@@ -298,8 +298,8 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 
                     foreach (var singleMoldDisc in db.SingleMoldDiscs)
                     {
-                        if (singleMoldDisc.OuterDiameter >= productDisc?.OuterDiameter
-                            && singleMoldDisc.InnerDiameter <= productDisc?.InnerDiameter)
+                        if (singleMoldDisc.OuterDiameter + 0.1m >= productDisc?.OuterDiameter && singleMoldDisc.OuterDiameter - 0.1m <= productDisc?.OuterDiameter
+                            && singleMoldDisc.InnerDiameter + 0.1m >= productDisc?.InnerDiameter && singleMoldDisc.InnerDiameter - 0.1m <= productDisc?.InnerDiameter)
                         {
                             this.listSingleMoldDiscs.Add(singleMoldDisc);
                         }

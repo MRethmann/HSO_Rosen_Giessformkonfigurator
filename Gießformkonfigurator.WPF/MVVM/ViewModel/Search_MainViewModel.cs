@@ -51,6 +51,8 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
         /// </summary>
         public ProductCup productCup { get; set; } = new ProductCup();
 
+        public Product product { get; set; }
+
         public int productId { get; set; }
 
         public ICommand searchCommand { get; set; }
@@ -65,7 +67,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
         /// </summary>
         public void findMatchingMolds()
         {
-            Product product = new Product();
+            product = new Product();
 
             // Search by SAP-Nr.
             if (this.searchByProductId)

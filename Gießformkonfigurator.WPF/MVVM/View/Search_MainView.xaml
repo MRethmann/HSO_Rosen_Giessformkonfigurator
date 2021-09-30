@@ -150,19 +150,19 @@
                                  Margin="5" Grid.Column="3" Grid.Row="1"
                                  Foreground="Black" FontSize="15" Background="White"/>
 
-                        <TextBlock x:Name="HcDiameter_TextBlock"
-                                   Text="Durchmesser Lochkreis"
+                        <TextBlock x:Name="FactorPU_TextBlock"
+                                   Text="Faktor PU"
                                    HorizontalAlignment="Left" VerticalAlignment="Center"
                                    Margin="10,0,0,0" 
                                    Foreground="Black" FontSize="15" Grid.Column="4" Grid.Row="0"/>
 
-                        <TextBox x:Name="HcDiameter_TextBox" 
-                                 Text="{Binding productDisc.HcDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, TargetNullValue=''}"
+                        <TextBox x:Name="FactorPU_TextBox" 
+                                 Text="{Binding productDisc.FactorPU, Mode=TwoWay, UpdateSourceTrigger=LostFocus, TargetNullValue=''}"
                                  Width="auto" Height="30"
                                  HorizontalAlignment="Stretch"
                                  VerticalAlignment="Center"
                                  VerticalContentAlignment="Center"
-                                 Margin="5" Grid.Column="5" Grid.Row="0"
+                                 Margin="5" Grid.Column="5" Grid.Row="0" 
                                  Foreground="Black" FontSize="15" Background="White"/>
 
                         <TextBlock x:Name="HcHoles_TextBlock"
@@ -180,7 +180,6 @@
                                  Margin="5" Grid.Column="5" Grid.Row="1"
                                  Foreground="Black" FontSize="15" Background="White"/>
 
-
                         <TextBlock x:Name="HcHolesDiameter_TextBlock"
                                    Text="Lochdurchmesser"
                                    HorizontalAlignment="Left" VerticalAlignment="Center"
@@ -194,6 +193,21 @@
                                  VerticalAlignment="Center"
                                  VerticalContentAlignment="Center"
                                  Margin="5" Grid.Column="7" Grid.Row="0" 
+                                 Foreground="Black" FontSize="15" Background="White"/>
+
+                        <TextBlock x:Name="HcDiameter_TextBlock"
+                                   Text="Durchmesser Lochkreis"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center"
+                                   Margin="10,0,0,0" 
+                                   Foreground="Black" FontSize="15" Grid.Column="6" Grid.Row="1"/>
+
+                        <TextBox x:Name="HcDiameter_TextBox" 
+                                 Text="{Binding productDisc.HcDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, TargetNullValue=''}"
+                                 Width="auto" Height="30"
+                                 HorizontalAlignment="Stretch"
+                                 VerticalAlignment="Center"
+                                 VerticalContentAlignment="Center"
+                                 Margin="5" Grid.Column="7" Grid.Row="1"
                                  Foreground="Black" FontSize="15" Background="White"/>
                     </Grid>
 
@@ -803,24 +817,6 @@
                                                 <TextBlock Text="{Binding SelectedItem.Mold.baseplate.Hc3Holes, ElementName=combinationJobOutput}"/>
                                                 <TextBlock Text="{Binding SelectedItem.Mold.baseplate.Hc3Thread, ElementName=combinationJobOutput}"/>
                                             </StackPanel>
-
-                                            <Expander Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2">
-                                                <Grid>
-                                                    <DataGrid Grid.Column="0" Grid.Row="1" ItemsSource="{Binding SelectedItem.alternativeGuideRings2, ElementName=combinationJobOutput}" Height="Auto" FontSize="5">
-                                                        <DataGrid.Columns>
-                                                            <DataGridTextColumn Header="Führungsring" Binding="{Binding Item1.ID}"/>
-                                                            <DataGridTextColumn Header="Nachbearbeitung" Binding="{Binding Item2}"/>
-                                                        </DataGrid.Columns>
-                                                    </DataGrid>
-
-                                                    <DataGrid Grid.Column="1" Grid.Row="1" AutoGenerateColumns="False" ItemsSource="{Binding SelectedItem.alternativeCores2, ElementName=combinationJobOutput}" Height="Auto" FontSize="5">
-                                                        <DataGrid.Columns>
-                                                            <DataGridTextColumn Header="Kern" Binding="{Binding Item1.ID}"/>
-                                                            <DataGridTextColumn Header="Nachbearbeitung" Binding="{Binding Item2}"/>
-                                                        </DataGrid.Columns>
-                                                    </DataGrid>
-                                                </Grid>
-                                            </Expander>
                                         </Grid>
                                     </Expander>
 
@@ -1001,7 +997,7 @@
                                         </Grid>
                                     </Expander>
 
-                                    <!-- OuterRing01 Details -->
+                                    <!-- Führungsringe tbd. if needed
                                     <Expander Grid.Row="5" Header="Außenring Nr.1" FontSize="20">
                                         <Expander.Style>
                                             <Style TargetType="Expander">
@@ -1043,7 +1039,7 @@
                                         </Grid>
                                     </Expander>
 
-                                    <!-- OuterRing02 Details -->
+
                                     <Expander Grid.Row="6" Header="Außenring Nr.2" FontSize="20">
                                         <Expander.Style>
                                             <Style TargetType="Expander">
@@ -1085,7 +1081,7 @@
                                         </Grid>
                                     </Expander>
 
-                                    <!-- CoreRing01 Details -->
+                                    
                                     <Expander Grid.Row="7" Header="Kernring Nr.1" FontSize="20">
                                         <Expander.Style>
                                             <Style TargetType="Expander">
@@ -1127,7 +1123,7 @@
                                         </Grid>
                                     </Expander>
 
-                                    <!-- CoreRing02 Details -->
+                                    
                                     <Expander Grid.Row="8" Header="Kernring Nr.2" FontSize="20">
                                         <Expander.Style>
                                             <Style TargetType="Expander">
@@ -1168,6 +1164,9 @@
                                             </StackPanel>
                                         </Grid>
                                     </Expander>
+                                    -->
+                                    
+                                    
                                 </Grid>
                             </Expander>
 
@@ -1415,7 +1414,7 @@
                                             </DataGrid.ColumnHeaderStyle>
 
                                             <DataGrid.Columns>
-                                                <DataGridTextColumn Header="Führungsring" Binding="{Binding Item1.ID}" Width="*"/>
+                                                <DataGridTextColumn Header="Innenkern" Binding="{Binding Item1.ID}" Width="*"/>
                                                 <DataGridTextColumn Header="Nachbearbeitung" Binding="{Binding Item2}" Width="*"/>
                                             </DataGrid.Columns>
 
@@ -1552,7 +1551,7 @@
                             </DataGridColumn.HeaderStyle>
                         </DataGridTextColumn>
 
-                        <DataGridTemplateColumn Header="Nachbearbeitung" Width="*" CellTemplate="{StaticResource PostProcessing}">
+                        <DataGridTemplateColumn Header="Abweichung" Width="*" CellTemplate="{StaticResource PostProcessing}">
                             <DataGridColumn.HeaderStyle>
                                 <Style TargetType="DataGridColumnHeader">
                                     <Setter Property="Background" Value="White"/>

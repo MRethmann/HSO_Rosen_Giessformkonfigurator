@@ -8,5 +8,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_products
     public class Product
     {
         public decimal? FactorPU { get; set; }
+
+        public string BTC { get; set; }
     }
 }

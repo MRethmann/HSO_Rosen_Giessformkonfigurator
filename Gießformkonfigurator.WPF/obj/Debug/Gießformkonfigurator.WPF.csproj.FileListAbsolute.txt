@@ -231,3 +231,4 @@ C:\Users\rethm\OneDrive\Dokumente\VisualStudio\Gießformkonfigurator.WPF\obj\Deb
 C:\Users\rethm\OneDrive\Dokumente\VisualStudio\Gießformkonfigurator.WPF\obj\Debug\LoginWindow.baml
 C:\Users\rethm\OneDrive\Dokumente\VisualStudio\Gießformkonfigurator.WPF\obj\Debug\StartWindow.baml
 C:\Users\rethm\OneDrive\Dokumente\VisualStudio\Gießformkonfigurator.WPF\obj\Debug\Gießformkonfigurator.WPF.Migrations.holePairAngleDatatypechanged.resources
+C:\Users\rethm\OneDrive\Dokumente\VisualStudio\Gießformkonfigurator.WPF\obj\Debug\Gießformkonfigurator.WPF.Migrations.sync.resources

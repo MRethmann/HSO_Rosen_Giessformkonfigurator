@@ -21,7 +21,7 @@ namespace Gieﬂformkonfigurator.WPF.MVVM.Model.Logic
                     {
                     new ProductCupModularMoldCompare(),
                     new ProductDiscModularMoldCompare(),
-                    new ProductSingleDiscCompare()
+                    new ProductDiscSingleMoldCompare()
                     };
         }
 

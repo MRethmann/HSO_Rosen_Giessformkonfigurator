@@ -65,7 +65,7 @@ namespace Gieﬂformkonfigurator.WPF.MVVM.Model.Logic
             var modularMold = compareElements.OfType<ModularMold>().Single();
 
             // TODO: Innenring als Attribut hinzuf¸gen
-            if (product.HcDiameter != 0.0m)
+            if (product.HcDiameter != 0.0m || String.IsNullOrEmpty(product.HcDiameter.ToString()))
             {
                 return product.OuterDiameter <= modularMold.guideRing.InnerDiameter
                     && product.InnerDiameter > modularMold.core.OuterDiameter
@@ -79,7 +79,7 @@ namespace Gieﬂformkonfigurator.WPF.MVVM.Model.Logic
         }
     }
 
-    class ProductSingleDiscCompare : CompareRule
+    class ProductDiscSingleMoldCompare : CompareRule
     {
         protected override IEnumerable<Type> Typen => new[] { typeof(ProductDisc), typeof(SingleMoldDisc) };
 
@@ -89,12 +89,12 @@ namespace Gieﬂformkonfigurator.WPF.MVVM.Model.Logic
             var productDisc = compareElements.OfType<ProductDisc>().Single();
             var singleMoldDisc = compareElements.OfType<SingleMoldDisc>().Single();
 
-            return productDisc.OuterDiameter <= singleMoldDisc.OuterDiameter
-                && productDisc.InnerDiameter >= singleMoldDisc.InnerDiameter
-                && productDisc.HcDiameter <= singleMoldDisc.HcDiameter + 0.5m
-                && productDisc.HcDiameter >= singleMoldDisc.HcDiameter - 0.5m
-                && productDisc.HcHoleDiameter >= singleMoldDisc.BoltDiameter
-                && productDisc.HcHoles == singleMoldDisc.HcHoles;
+            return productDisc.OuterDiameter + 0.1m >= singleMoldDisc.OuterDiameter && productDisc.OuterDiameter - 0.1m <= singleMoldDisc.OuterDiameter
+                && productDisc.InnerDiameter + 0.1m >= singleMoldDisc.InnerDiameter && productDisc.InnerDiameter - 0.1m <= singleMoldDisc.InnerDiameter
+                && productDisc.HcDiameter == null || productDisc.HcDiameter <= singleMoldDisc.HcDiameter + 0.5m
+                && productDisc.HcDiameter == null || productDisc.HcDiameter >= singleMoldDisc.HcDiameter - 0.5m
+                && productDisc.HcHoleDiameter == null || productDisc.HcHoleDiameter >= singleMoldDisc.BoltDiameter
+                && productDisc.HcHoles == null ||  productDisc.HcHoles == singleMoldDisc.HcHoles;
         }
     }
 }
