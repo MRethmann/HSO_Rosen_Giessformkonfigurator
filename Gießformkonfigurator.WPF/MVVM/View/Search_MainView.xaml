@@ -31,16 +31,26 @@
                         <ColumnDefinition Width="7*"/>
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
-
+                    
                     <Grid>
-                        <ComboBox x:Name="Combobox_SearchView" Margin="10" Height="40" Width="auto" HorizontalContentAlignment="Center" VerticalContentAlignment="center" FontSize="15">
-                            <ComboBoxItem IsSelected="{Binding searchByProductId}" x:Name="productSearchID">ProduktID</ComboBoxItem>
-                            <ComboBoxItem x:Name="productSearchParam">Werte Eingeben</ComboBoxItem>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <ComboBox x:Name="SearchMethod_ComboBox" Margin="5" Height="30" Width="auto" HorizontalContentAlignment="Center" VerticalContentAlignment="center" FontSize="15">
+                            <ComboBoxItem IsSelected="{Binding searchByProductId}" x:Name="searchByProductId" Content="SAP-Nr."/>
+                            <ComboBoxItem x:Name="searchByProductParams" Content="Eingabe der Produktwerte"/>
+                        </ComboBox>
+
+                        <ComboBox x:Name="ProductType_ComboBox" Margin="5" Height="30" Width="auto" HorizontalContentAlignment="Center" VerticalContentAlignment="center" FontSize="15" Grid.Row="1">
+                            <ComboBoxItem IsSelected="{Binding searchTypeProduct}" x:Name="productDisc" Content="Disc"/>
+                            <ComboBoxItem x:Name="productCup" Content="Cup"/>
                         </ComboBox>
                     </Grid>
 
-                    <Grid x:Name="grid_SearchProductID" Grid.Column="1" Visibility="{Binding ElementName=productSearchID, Path=IsSelected, Converter={StaticResource BoolToVis}}">
-
+                    <Grid x:Name="grid_SearchProductID" Grid.Column="1" Visibility="{Binding ElementName=searchByProductId, Path=IsSelected, Converter={StaticResource BoolToVis}}">
+                        
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="auto"/>
                             <ColumnDefinition/>
@@ -50,11 +60,11 @@
                                    Text="ProduktID:"
                                    HorizontalAlignment="Left" VerticalAlignment="Center"
                                    Margin="10,0,0,0" 
-                                   Foreground="Black" FontSize="15" />
+                                   Foreground="Black" FontSize="18" />
 
                         <TextBox x:Name="ProduktIDTextBox" 
                                  Text="{Binding productId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}"
-                                 Width="Auto" Height="40"
+                                 Width="Auto" Height="50"
                                  HorizontalAlignment="Stretch"
                                  VerticalAlignment="Center"
                                  VerticalContentAlignment="Center"
@@ -62,7 +72,7 @@
                                  Foreground="Black" FontSize="15" Background="White"/>
                     </Grid>
 
-                    <Grid x:Name="grid_SearchParameters" Grid.Column="1" Visibility="{Binding ElementName=productSearchParam, Path=IsSelected, Converter={StaticResource BoolToVis}}">
+                    <Grid x:Name="grid_SearchDiscParameters" Grid.Column="1" Visibility="{Binding ElementName=searchByProductParams, Path=IsSelected, Converter={StaticResource BoolToVis}}">
 
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="auto"/>
@@ -187,16 +197,79 @@
                                  Foreground="Black" FontSize="15" Background="White"/>
                     </Grid>
 
-                    <Button x:Name="ProduktID" Content="Suchen"
-                            HorizontalAlignment="Stretch" VerticalAlignment="Center"
-                            Height="40" Margin="10" 
-                            Foreground="Black"
-                            Background="White"
-                            FontSize="15" 
-                            Grid.Column="2"
-                            Command="{Binding searchCommand}">
-                    </Button>
+                    <Grid x:Name="grid_SearchCupParameters" Grid.Column="1" Visibility="Hidden">
 
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock x:Name="BaseCup_TextBlock"
+                                   Text="BaseCup"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center"
+                                   Margin="10,0,0,0" 
+                                   Foreground="Black" FontSize="15" Grid.Column="0"/>
+
+                        <TextBox x:Name="BaseCup_TextBox" 
+                                 Text="placeholder"
+                                 Width="auto" Height="30"
+                                 HorizontalAlignment="Stretch"
+                                 VerticalAlignment="Center"
+                                 VerticalContentAlignment="Center"
+                                 Margin="5" Grid.Column="1"
+                                 Foreground="Black" FontSize="15" Background="White"/>
+
+                        <TextBlock x:Name="cupInnerDiameter_TextBlock"
+                                   Text="Innendurchmesser"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center"
+                                   Margin="10,0,0,0" 
+                                   Foreground="Black" FontSize="15" Grid.Column="0" Grid.Row="1"/>
+
+                        <TextBox x:Name="cupInnerDiameter_TextBox" 
+                                 Text="placeholder"
+                                 Width="auto" Height="30"
+                                 HorizontalAlignment="Stretch"
+                                 VerticalAlignment="Center"
+                                 VerticalContentAlignment="Center"
+                                 Margin="5" Grid.Column="1" Grid.Row="1"
+                                 Foreground="Black" FontSize="15" Background="White"/>
+
+                        <TextBlock x:Name="cupBTC_TextBlock"
+                                   Text="BTC"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center"
+                                   Margin="10,0,0,0" 
+                                   Foreground="Black" FontSize="15" Grid.Column="2"/>
+
+                        <TextBox x:Name="cupBTC_TextBox" 
+                                 Text="placeholder"
+                                 Width="auto" Height="30"
+                                 HorizontalAlignment="Stretch"
+                                 VerticalAlignment="Center"
+                                 VerticalContentAlignment="Center"
+                                 Margin="5" Grid.Column="3" 
+                                 Foreground="Black" FontSize="15" Background="White"/>
+
+                    </Grid>
+
+                    <Grid Grid.Column="2">
+                        <Button x:Name="ProduktID" Content="Suchen"
+                                HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                Margin="10" 
+                                Foreground="Black"
+                                Background="White"
+                                FontSize="15" 
+                                Command="{Binding searchCommand}">
+                        </Button>
+                    </Grid>
                 </Grid>
             </Border>
 
@@ -583,9 +656,9 @@
 
                     <DataTemplate x:Key="PostProcessing">
                         <StackPanel>
-                            <TextBlock Margin="5,0,0,0" Text="{Binding postProcessing[0]}"/>
-                            <TextBlock Margin="5,0,0,0" Text="{Binding postProcessing[1]}"/>
-                            <TextBlock Margin="5,0,0,0" Text="{Binding postProcessing[2]}"/>
+                            <TextBlock Margin="5,0,0,0" Text="{Binding postProcessing[0], TargetNullValue=''}"/>
+                            <TextBlock Margin="5,0,0,0" Text="{Binding postProcessing[1], TargetNullValue=''}"/>
+                            <TextBlock Margin="5,0,0,0" Text="{Binding postProcessing[2], TargetNullValue=''}"/>
                         </StackPanel>
                     </DataTemplate>
 
@@ -1098,16 +1171,17 @@
                                 </Grid>
                             </Expander>
 
-
                             <!-- Zusatzringe Außen -->
-                            <Expander Header="Zusatzringe Außen" Grid.Row="1" Margin="0, 10, 0, 0" FontSize="25" IsExpanded="True">
+                            <Expander Header="Zusatzringe Außen" Grid.Row="1" Margin="0, 10, 0, 0" FontSize="25">
                                 <Expander.Style>
                                     <Style TargetType="Expander">
                                         <Style.Triggers>
-                                            <DataTrigger Binding="{Binding SelectedItem.Mold.ListOuterRings, ElementName=combinationJobOutput}" Value="{x:Null}">
+                                            <DataTrigger Binding="{Binding SelectedItem.Mold.ListOuterRings[0], ElementName=combinationJobOutput}" Value="{x:Null}">
                                                 <Setter Property="IsEnabled" Value="False"/>
+                                                <Setter Property="IsExpanded" Value="False"/>
                                             </DataTrigger>
                                         </Style.Triggers>
+                                        <Setter Property="IsExpanded" Value="True"/>
                                     </Style>
                                 </Expander.Style>
                                 <Grid>
@@ -1147,7 +1221,7 @@
 
                                             <DataGrid.Columns>
                                                 <DataGridTextColumn Header="Ring 1" Binding="{Binding Item1.ID}" Width="*"/>
-                                                <DataGridTextColumn Header="Ring 2" Binding="{Binding Item2}" Width="*"/>
+                                                <DataGridTextColumn Header="Ring 2" Binding="{Binding Item2.ID}" Width="*"/>
                                                 <DataGridTextColumn Header="Abweichung" Binding="{Binding Item3}" Width="*"/>
                                             </DataGrid.Columns>
 
@@ -1167,14 +1241,16 @@
                             </Expander>
 
                             <!-- Zusatzringe Innen -->
-                            <Expander Header="Zusatzringe Außen" Grid.Row="2" Margin="0, 10, 0, 0" FontSize="25" IsExpanded="True">
+                            <Expander Header="Zusatzringe Innen" Grid.Row="2" Margin="0, 10, 0, 0" FontSize="25">
                                 <Expander.Style>
                                     <Style TargetType="Expander">
                                         <Style.Triggers>
-                                            <DataTrigger Binding="{Binding SelectedItem.Mold.ListCoreRings, ElementName=combinationJobOutput}" Value="{x:Null}">
+                                            <DataTrigger Binding="{Binding SelectedItem.Mold.ListCoreRings[0], ElementName=combinationJobOutput}" Value="{x:Null}">
                                                 <Setter Property="IsEnabled" Value="False"/>
+                                                <Setter Property="IsExpanded" Value="False"/>
                                             </DataTrigger>
                                         </Style.Triggers>
+                                        <Setter Property="IsExpanded" Value="True"/>
                                     </Style>
                                 </Expander.Style>
                                 <Grid>
@@ -1214,7 +1290,7 @@
 
                                             <DataGrid.Columns>
                                                 <DataGridTextColumn Header="Ring 1" Binding="{Binding Item1.ID}" Width="*"/>
-                                                <DataGridTextColumn Header="Ring 2" Binding="{Binding Item2}" Width="*"/>
+                                                <DataGridTextColumn Header="Ring 2" Binding="{Binding Item2.ID}" Width="*"/>
                                                 <DataGridTextColumn Header="Abweichung" Binding="{Binding Item3}" Width="*"/>
                                             </DataGrid.Columns>
 
@@ -1234,14 +1310,16 @@
                             </Expander>
 
                             <!-- Alternative GuideRings -->
-                            <Expander Header="Alternative Führungsringe" Grid.Row="3" Margin="0, 10, 0, 0" FontSize="25" IsExpanded="True">
+                            <Expander Header="Alternative Führungsringe" Grid.Row="3" Margin="0, 10, 0, 0" FontSize="25">
                                 <Expander.Style>
                                     <Style TargetType="Expander">
                                         <Style.Triggers>
-                                            <DataTrigger Binding="{Binding SelectedItem.alternativeGuideRings, ElementName=combinationJobOutput}" Value="{x:Null}">
+                                            <DataTrigger Binding="{Binding SelectedItem.alternativeGuideRings[0], ElementName=combinationJobOutput}" Value="{x:Null}">
                                                 <Setter Property="IsEnabled" Value="False"/>
+                                                <Setter Property="IsExpanded" Value="False"/>
                                             </DataTrigger>
                                         </Style.Triggers>
+                                        <Setter Property="IsExpanded" Value="True"/>
                                     </Style>
                                 </Expander.Style>
                                 <Grid>
@@ -1289,14 +1367,16 @@
                             </Expander>
 
                             <!-- Alternative Cores -->
-                            <Expander Header="Alternative Innenkerne" Grid.Row="4" Margin="0, 10, 0, 0" FontSize="25" IsExpanded="True">
+                            <Expander Header="Alternative Innenkerne" Grid.Row="4" Margin="0, 10, 0, 0" FontSize="25">
                                 <Expander.Style>
                                     <Style TargetType="Expander">
                                         <Style.Triggers>
-                                            <DataTrigger Binding="{Binding SelectedItem.alternativeCores, ElementName=combinationJobOutput}" Value="{x:Null}">
+                                            <DataTrigger Binding="{Binding SelectedItem.alternativeCores[0], ElementName=combinationJobOutput}" Value="{x:Null}">
                                                 <Setter Property="IsEnabled" Value="False"/>
+                                                <Setter Property="IsExpanded" Value="False"/>
                                             </DataTrigger>
                                         </Style.Triggers>
+                                        <Setter Property="IsExpanded" Value="True"/>
                                     </Style>
                                 </Expander.Style>
                                 <Grid>

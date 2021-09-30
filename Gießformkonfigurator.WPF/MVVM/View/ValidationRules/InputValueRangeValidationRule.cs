@@ -19,18 +19,21 @@ namespace Gießformkonfigurator.WPF.MVVM.View.ValidationRules
             int inputIntValue;
             double inputDoubleValue;
 
-            if (int.TryParse(value.ToString(), out inputIntValue))
+            if (value != null)
             {
-                if (inputIntValue < 0 || inputIntValue > 100000)
+                if (int.TryParse(value.ToString(), out inputIntValue))
                 {
-                    result = new ValidationResult(false, "Der Eingabewert darf nicht negativ oder größer 100.000 sein.");
+                    if (inputIntValue < 0 || inputIntValue > 100000)
+                    {
+                        result = new ValidationResult(false, "Der Eingabewert darf nicht negativ oder größer 100.000 sein.");
+                    }
                 }
-            }
-            else if(double.TryParse(value.ToString(), out inputDoubleValue))
-            {
-                if (inputDoubleValue < 0 || inputDoubleValue > 100000)
+                else if (double.TryParse(value.ToString(), out inputDoubleValue))
                 {
-                    result = new ValidationResult(false, "Der Eingabewert darf nicht negativ oder größer 100.000 sein.");
+                    if (inputDoubleValue < 0 || inputDoubleValue > 100000)
+                    {
+                        result = new ValidationResult(false, "Der Eingabewert darf nicht negativ oder größer 100.000 sein.");
+                    }
                 }
             }
 

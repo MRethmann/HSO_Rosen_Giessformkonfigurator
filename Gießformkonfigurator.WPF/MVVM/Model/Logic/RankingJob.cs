@@ -163,11 +163,11 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                     // Case: Different baseplate or insertPlates
                     if (currentObject == null 
                         || ((ModularMold)nextObject.Mold).baseplate.ID != ((ModularMold)currentObject.Mold).baseplate.ID
-                        || ((ModularMold)nextObject.Mold).insertPlate?.ID != ((ModularMold)currentObject.Mold).insertPlate?.ID)
-                       // || ((ModularMold)nextObject.Mold).ListCoreRings[0]?.Item1?.ID != ((ModularMold)currentObject.Mold).ListCoreRings[0]?.Item1?.ID
-                       // || ((ModularMold)nextObject.Mold).ListCoreRings[0]?.Item2?.ID != ((ModularMold)currentObject.Mold).ListCoreRings[0]?.Item2?.ID
-                       // || ((ModularMold)nextObject.Mold).ListOuterRings[0]?.Item1?.ID != ((ModularMold)currentObject.Mold).ListOuterRings[0]?.Item1?.ID
-                       // || ((ModularMold)nextObject.Mold).ListOuterRings[0]?.Item2?.ID != ((ModularMold)currentObject.Mold).ListOuterRings[0]?.Item2?.ID)
+                        || ((ModularMold)nextObject.Mold).insertPlate?.ID != ((ModularMold)currentObject.Mold).insertPlate?.ID
+                        || ((ModularMold)nextObject.Mold).ListCoreRings?.FirstOrDefault()?.Item1 != ((ModularMold)currentObject.Mold).ListCoreRings?.FirstOrDefault()?.Item1
+                        || ((ModularMold)nextObject.Mold).ListCoreRings?.FirstOrDefault()?.Item2 != ((ModularMold)currentObject.Mold).ListCoreRings?.FirstOrDefault()?.Item2
+                        || ((ModularMold)nextObject.Mold).ListOuterRings?.FirstOrDefault()?.Item1 != ((ModularMold)currentObject.Mold).ListOuterRings?.FirstOrDefault()?.Item1
+                        || ((ModularMold)nextObject.Mold).ListOuterRings?.FirstOrDefault()?.Item2 != ((ModularMold)currentObject.Mold).ListOuterRings?.FirstOrDefault()?.Item2)
                     {
                         if (currentObject != null)
                         {
@@ -178,11 +178,12 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 
                     // Case: Baseplates and insertPlate are identical but core and guideRing are different
                     else if (((ModularMold)nextObject.Mold).baseplate.ID == ((ModularMold)currentObject.Mold).baseplate.ID
-                        && ((ModularMold)nextObject.Mold).insertPlate?.ID == ((ModularMold)currentObject.Mold).insertPlate?.ID)
-                       // && ((ModularMold)nextObject.Mold).ListCoreRings[0]?.Item1?.ID == ((ModularMold)currentObject.Mold).ListCoreRings[0]?.Item1?.ID
-                      //  && ((ModularMold)nextObject.Mold).ListCoreRings[0]?.Item2?.ID == ((ModularMold)currentObject.Mold).ListCoreRings[0]?.Item2?.ID
-                      //  && ((ModularMold)nextObject.Mold).ListOuterRings[0]?.Item1?.ID == ((ModularMold)currentObject.Mold).ListOuterRings[0]?.Item1?.ID
-                       // && ((ModularMold)nextObject.Mold).ListOuterRings[0]?.Item2?.ID == ((ModularMold)currentObject.Mold).ListOuterRings[0]?.Item2?.ID)
+                        && ((ModularMold)nextObject.Mold).insertPlate?.ID == ((ModularMold)currentObject.Mold).insertPlate?.ID
+                        && ((ModularMold)nextObject.Mold).ListCoreRings.Count > 0  && ((ModularMold)nextObject.Mold).ListOuterRings.Count > 0
+                        || (((ModularMold)nextObject.Mold).ListCoreRings.FirstOrDefault()?.Item1 == ((ModularMold)currentObject.Mold).ListCoreRings.FirstOrDefault()?.Item1
+                        && ((ModularMold)nextObject.Mold).ListCoreRings.FirstOrDefault()?.Item2 == ((ModularMold)currentObject.Mold).ListCoreRings.FirstOrDefault()?.Item2
+                        && ((ModularMold)nextObject.Mold).ListOuterRings.FirstOrDefault()?.Item1 == ((ModularMold)currentObject.Mold).ListOuterRings.FirstOrDefault()?.Item1
+                        && ((ModularMold)nextObject.Mold).ListOuterRings.FirstOrDefault()?.Item2 == ((ModularMold)currentObject.Mold).ListOuterRings.FirstOrDefault()?.Item2))
                     {
                         if (!currentObject.alternativeCores.Any(c => c.Item1 == ((ModularMold)nextObject.Mold).core))
                             //Contains(((ModularMold)nextObject.Mold).core))
@@ -219,6 +220,13 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             if (currentObject != null)
             {
                 filteredOutput.Add(currentObject);
+            }
+
+            // Order Lists of alternative Components
+            foreach (var compareObject in filteredOutput)
+            {
+                compareObject.alternativeCores.OrderBy(x => x.Item2);
+                compareObject.alternativeGuideRings.OrderBy(x => x.Item2);
             }
 
             var listOrdered = filteredOutput.OrderByDescending(x => x.finalRating);

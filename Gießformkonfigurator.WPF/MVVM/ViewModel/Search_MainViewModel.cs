@@ -27,93 +27,132 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
 
         public Visibility IsLoading { get; set; } = Visibility.Hidden;
 
-        public string listSize { get; set; }
-
+        /// <summary>
+        /// Property determines the search method. 
+        /// True = Search via SAP number. 
+        /// False = Search by entering product parameters manually.
+        /// </summary>
         public bool searchByProductId { get; set; } = true;
 
+        /// <summary>
+        /// Property determines the product type in the GUI via Binding. 
+        /// True = ProductDisc. 
+        /// False = ProductCup.
+        /// </summary>
+        public bool searchTypeProduct { get; set; } = true;
+
+        /// <summary>
+        /// Property used for the creating of a temporary product Disc via GUI parameter input.
+        /// </summary>
         public ProductDisc productDisc { get; set; } = new ProductDisc();
 
+        /// <summary>
+        /// Property used for the creating of a temporary product Cup via GUI parameter input.
+        /// </summary>
+        public ProductCup productCup { get; set; } = new ProductCup();
+
         public int productId { get; set; }
-
-        private decimal? _FactorPU;
-
-        public decimal? FactorPU 
-        {
-            get { return _FactorPU; } 
-            set
-            {
-                this._FactorPU = value;
-                OnPropertyChanged("FactorPU");
-            }
-        }
 
         public ICommand searchCommand { get; set; }
 
         public Search_MainViewModel()
         {
-            searchCommand = new RelayCommand(param => findMatchingMolds(), param => validateSearch());
+            searchCommand = new RelayCommand(param => findMatchingMolds(), param => true);
         }
 
+        /// <summary>
+        /// Starts the algorithm to find matching molds based on the entered product.
+        /// </summary>
         public void findMatchingMolds()
         {
+            Product product = new Product();
+
+            // Search by SAP-Nr.
             if (this.searchByProductId)
             {
-                try
+                // Product Disc
+                if (this.searchTypeProduct)
                 {
-                    using (var db = new GießformDBContext())
+                    try
                     {
-                        this.productDisc = db.ProductDiscs.Find(productId);
+                        using (var db = new GießformDBContext())
+                        {
+                            product = db.ProductDiscs.Find(productId);
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Suche fehlgeschlagen. Überprüfe die Db Verbindung!");
                     }
                 }
-                catch (Exception)
+
+                // Product Cup
+                else
                 {
-                    MessageBox.Show("Suche fehlgeschlagen. Überprüfe die Db Verbindung!");
+                    try
+                    {
+                        using (var db = new GießformDBContext())
+                        {
+                            product = db.ProductCups.Find(productId);
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Suche fehlgeschlagen. Überprüfe die Db Verbindung!");
+                    }
                 }
+                
             }
+
+            // Search via product parameters
             else
             {
-                if (this.productDisc.OuterDiameter == 0
+                // Product Disc
+                if (this.searchTypeProduct)
+                {
+                    if (this.productDisc.OuterDiameter == 0
                     || this.productDisc.InnerDiameter == 0
                     || this.productDisc.Height == 0)
                     // || productdisc.FactorPU == null
                     // || productdisc.FactorPU == 0
                     // || this.productDisc.BTC == null)
+                    {
+                        MessageBox.Show("Bitte alle Werte ausfüllen!");
+                    }
+                    else
+                    {
+                        product = productDisc;
+                    }
+                }
+
+                // Product Cup
+                else
                 {
-                    MessageBox.Show("Bitte alle Werte ausfüllen!");
+                    /*if ()
+                    {
+                        MessageBox.Show("Bitte alle Werte ausfüllen!");
+                    }
+                    else
+                    {
+                        product = productCup;
+                    }*/
                 }
             }
 
-
-            if (productDisc != null)
+            // Create new ProgramLogic --> start algorithm to search for fitting molds
+            if (product != null)
             {
-                Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
-                this.IsLoading = Visibility.Visible;
-
-                programLogic = new ProgramLogic(productDisc);
-
+                programLogic = new ProgramLogic(product);
                 this.productSearchOutput.Clear();
-
                 foreach (var compareObject in programLogic.finalOutput)
                 {
                     this.productSearchOutput.Add(compareObject);
                 }
-
-                this.IsLoading = Visibility.Hidden;
-                Mouse.OverrideCursor = System.Windows.Input.Cursors.Arrow;
             }
             else
             {
                 MessageBox.Show("Kein Produkt bekannt!");
             }
         }
-
-        public bool validateSearch()
-        {
-            /*if (productId != 0)
-                return true;
-            else
-                return false;*/
-            return true;
-        } 
     }
 }

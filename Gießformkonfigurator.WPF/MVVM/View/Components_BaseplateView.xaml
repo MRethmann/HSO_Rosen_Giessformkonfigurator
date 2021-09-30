@@ -84,11 +84,11 @@
         </TextBox>
 
         <TextBlock Text="Bezeichnung" Grid.Row="1" Grid.Column="0"/>
-        <TextBox x:Name="Description_TextBox" Grid.Row="1" Grid.Column="1" >
+        <TextBox x:Name="Description_TextBox" Grid.Row="1" Grid.Column="1">
             <TextBox.Text>
                 <Binding Path="baseplate.Description" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" FallbackValue="-">
                     <Binding.ValidationRules>
-                        <validationRules:InputValueRangeValidationRule/>
+                        <validationRules:MandatoryFieldValidationRule/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>

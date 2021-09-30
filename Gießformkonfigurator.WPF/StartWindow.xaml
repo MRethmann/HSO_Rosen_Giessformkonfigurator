@@ -5,9 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Gießformkonfigurator.WPF"
         mc:Ignorable="d"
-        Title="StartWindow" Height="450" Width="380"
-       
-        >
+        Title="StartWindow" Height="450" Width="380" 
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid>
             <Grid.RowDefinitions>

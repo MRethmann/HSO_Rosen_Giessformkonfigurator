@@ -9,6 +9,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 #pragma warning disable SA1623 // Property summary documentation should match accessors
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using Gießformkonfigurator.WPF.Core;
     using Gießformkonfigurator.WPF.MVVM.Model.Db_components;
     using Gießformkonfigurator.WPF.MVVM.Model.Db_molds;
@@ -213,6 +214,12 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                         }
                     }
                 }
+            }
+
+            foreach (var mold in discMoldsTemp02)
+            {
+                mold.ListCoreRings.OrderBy(o => o.Item3);
+                mold.ListOuterRings.OrderBy(o => o.Item3);
             }
 
             this.modularMoldsOutput = new List<ModularMold>(discMoldsTemp02);
