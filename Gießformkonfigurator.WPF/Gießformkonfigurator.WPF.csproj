@@ -315,7 +315,7 @@
     <Compile Include="MVVM\Model\Logic\CompareRuleset.cs" />
     <Compile Include="MVVM\Model\Logic\FilterJob.cs" />
     <Compile Include="MVVM\Model\Logic\RankingJob.cs" />
-    <Compile Include="MVVM\Model\Logic\ProgramLogic.cs" />
+    <Compile Include="MVVM\Model\Logic\SearchJob.cs" />
     <Compile Include="MVVM\ViewModel\Components_CupformViewModel.cs" />
     <Compile Include="MVVM\ViewModel\Components_MainViewModel.cs" />
     <Compile Include="MVVM\ViewModel\DBManagement_MainViewModel.cs" />

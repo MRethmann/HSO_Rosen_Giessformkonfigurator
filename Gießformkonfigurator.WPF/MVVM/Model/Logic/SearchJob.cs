@@ -8,7 +8,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
     using Gießformkonfigurator.WPF.MVVM.Model.Db_products;
     using System.Collections.Generic;
 
-    class ProgramLogic
+    class SearchJob
     {
         public FilterJob filterJob { get; set; }
 
@@ -18,12 +18,12 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 
         public RankingJob rankingJob { get; set; }
 
-        public Product product { get; set; }
+        public Product product { get; set; } = new Product();
 
         public List<CompareObject> finalOutput { get; set; }
 
 
-        public ProgramLogic(Product product)
+        public SearchJob(Product product)
         {
             this.product = product;
 

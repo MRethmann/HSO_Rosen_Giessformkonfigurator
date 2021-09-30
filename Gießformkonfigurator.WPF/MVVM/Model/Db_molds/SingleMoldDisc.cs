@@ -37,6 +37,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_molds
         public int? HcHoles { get; set; }
 
 
+
         public SingleMoldDisc()
         {
             this.moldType = MoldType.SingleMold;

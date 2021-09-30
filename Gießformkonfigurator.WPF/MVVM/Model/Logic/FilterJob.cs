@@ -31,211 +31,55 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
         {
             if (product.GetType() == typeof(ProductDisc))
             {
-                this.productDisc = (ProductDisc) product;
-                productDisc.OuterDiameter = Math.Round(productDisc.OuterDiameter * productDisc.FactorPU.GetValueOrDefault(1m), 2);
-                productDisc.InnerDiameter = Math.Round(productDisc.InnerDiameter * productDisc.FactorPU.GetValueOrDefault(1m), 2);
-                productDisc.Height = Math.Round(productDisc.Height * productDisc.FactorPU.GetValueOrDefault(1m), 2);
-                if (productDisc.HcDiameter != null)
-                {
-                    productDisc.HcDiameter = Math.Round((Decimal)productDisc.HcDiameter * productDisc.FactorPU.GetValueOrDefault(1m), 2);
-                }
-                
-                if (productDisc.HcHoleDiameter != null)
-                {
-                    productDisc.HcHoleDiameter = Math.Round((Decimal)productDisc.HcHoleDiameter * productDisc.FactorPU.GetValueOrDefault(1m), 2);
-                }
+                productDisc = new ProductDisc();
+                productDisc = (ProductDisc) product;
             } 
             else if (product.GetType() == typeof(ProductCup))
             {
-                this.productCup = (ProductCup) product;
-                productCup.InnerDiameter = productCup.InnerDiameter * productCup.FactorPU.GetValueOrDefault(1m);
+                productCup = new ProductCup();
+                productCup = (ProductCup) product;
             }
 
-            //this.ArraysTestData();
             this.GetFilteredDatabase();
+            this.AdjustProductInformation();
         }
 
-        public void ArraysTestData()
+        public void AdjustProductInformation()
         {
-            this.listBaseplates.Add(new Baseplate()
+            if (this.productDisc != null)
             {
-                ID = 001,
-                Description = "Baseplate_Test01",
-                OuterDiameter = 700m,
-                Height = 20,
-                OuterKonusMax = 645.58m,
-                OuterKonusMin = 639.31m,
-                OuterKonusAngle = 15.0m,
-                KonusHeight = 11m,
-                HasKonus = true,
-                InnerKonusMax = 265.31m,
-                InnerKonusMin = 259.42m,
-                InnerKonusAngle = 15m,
-                HasHoleguide = false,
-                InnerDiameter = 225m,
-                ToleranceInnerDiameter = null,
-                HasCore = false,
-                Hc1Diameter = 337.59m,
-                Hc1Holes = 12,
-                Hc1Thread = "M10",
-                Hc2Diameter = 286.44m,
-                Hc2Holes = 12,
-                Hc2Thread = "M10",
-                Hc3Diameter = null,
-                Hc3Holes = null,
-                Hc3Thread = null
-            });
+                if (!String.IsNullOrWhiteSpace(productDisc.BTC))
+                {
+                    BoltCircleType boltCircleInformation = new BoltCircleType();
 
-            /*this.listInsertPlates.Add(new InsertPlate()
+                    try
+                    {
+                        using (var db = new GießformDBContext())
+                        {
+                            boltCircleInformation = db.BoltCircleTypes.Find(productDisc.BTC);
+                        }
+                    }
+                    catch (Exception)
+                    {
+
+                    }
+
+                    productDisc.HcDiameter = boltCircleInformation?.Diameter;
+                    productDisc.HcHoleDiameter = boltCircleInformation?.HoleDiameter;
+                    productDisc.HcHoles = boltCircleInformation?.HoleQty;
+                }
+
+                productDisc.OuterDiameter = Math.Round(productDisc.OuterDiameter * productDisc.FactorPU.GetValueOrDefault(1m), 2);
+                productDisc.InnerDiameter = Math.Round(productDisc.InnerDiameter * productDisc.FactorPU.GetValueOrDefault(1m), 2);
+                productDisc.Height = Math.Round(productDisc.Height * productDisc.FactorPU.GetValueOrDefault(1m), 2);
+                productDisc.HcDiameter = Math.Round((Decimal)productDisc?.HcDiameter * productDisc.FactorPU.GetValueOrDefault(1m), 2);
+                productDisc.HcHoleDiameter = Math.Round((Decimal)productDisc?.HcHoleDiameter * productDisc.FactorPU.GetValueOrDefault(1m), 2);
+
+            }
+            else if (this.productCup != null)
             {
-                ID = 002,
-                Description = "InsertPlate_Test02",
-                OuterDiameter = 265m,
-                ToleranceOuterDiameter = null,
-                Height = 20,
-                OuterKonusMax = 265m,
-                OuterKonusMin = 259.11m,
-                OuterKonusAngle = 15,
-                KonusHeight = 11,
-                HasKonus = false,
-                InnerKonusMax = null,
-                InnerKonusMin = null,
-                InnerKonusAngle = null,
-                HasHoleguide = true,
-                InnerDiameter = 30,
-                ToleranceInnerDiameter = "H7",
-                HasCore = false,
-                Hc1Diameter = null,
-                Hc1Holes = null,
-                Hc1Thread = null,
-                Hc2Diameter = null,
-                Hc2Holes = null,
-                Hc2Thread = null,
-                Hc3Diameter = null,
-                Hc3Holes = null,
-                Hc3Thread = null
-            });*/
-
-            this.listCores.Add(new Core()
-            {
-                ID = 004,
-                Description = "Core_Test01",
-                OuterDiameter = 240m,
-                ToleranceOuterDiameter = null,
-                Height = 42,
-                FillHeightMax = 36,
-                HasKonus = true,
-                OuterKonusMax = 263.96m,
-                OuterKonusMin = 259.35m,
-                OuterKonusAngle = 15,
-                KonusHeight = 6,
-                HasGuideBolt = false,
-                GuideHeight = null,
-                GuideDiameter = null,
-                ToleranceGuideDiameter = null,
-                HasHoleguide = false,
-                AdapterDiameter = null,
-            });
-
-            this.listBolts.Add(new Bolt()
-            {
-                ID = 005,
-                Description = "Bolt_Test05",
-                Height = 55,
-                OuterDiameter = 10,
-                FillHeightMax = 40,
-                HasThread = true,
-                Thread = "M10",
-                HasGuideBolt = false,
-                GuideHeight = 15,
-                GuideOuterDiameter = 10,
-            });
-
-            this.listRings.Add(new Ring()
-            {
-                ID = 003,
-                Description = "GuideRing_Test01",
-                OuterDiameter = 700m,
-                ToleranceOuterDiameter = null,
-                InnerDiameter = 630m,
-                ToleranceInnerDiameter = "0.2",
-                Height = 20m,
-                FillHeightMax = 18m,
-                HasKonus = true,
-                InnerKonusMax = 643.71m,
-                InnerKonusMin = 639.94m,
-                InnerKonusAngle = 15.0m,
-                KonusHeight = 10m
-            });
-
-            this.listRings.Add(new Ring() 
-            {
-                ID = 006,
-                Description = "OuterRing_Test01",
-                OuterDiameter = 629m,
-                ToleranceOuterDiameter = null,
-                InnerDiameter = 620m,
-                ToleranceInnerDiameter = "0.2",
-                Height = 20m,
-                FillHeightMax = 18m,
-                HasKonus = false
-            });
-
-            this.listRings.Add(new Ring()
-            {
-                ID = 007,
-                Description = "OuterRing_Test02",
-                OuterDiameter = 619m,
-                ToleranceOuterDiameter = null,
-                InnerDiameter = 600m,
-                ToleranceInnerDiameter = "0.2",
-                Height = 20m,
-                FillHeightMax = 18m,
-                HasKonus = false
-            });
-
-            this.listRings.Add(new Ring()
-            {
-                ID = 008,
-                Description = "CoreRing_Test01",
-                OuterDiameter = 250m,
-                ToleranceOuterDiameter = null,
-                InnerDiameter = 241m,
-                ToleranceInnerDiameter = "0.2",
-                Height = 20m,
-                FillHeightMax = 18m,
-                HasKonus = false
-            });
-
-            this.listRings.Add(new Ring()
-            {
-                ID = 009,
-                Description = "CoreRing_Test02",
-                OuterDiameter = 260m,
-                ToleranceOuterDiameter = null,
-                InnerDiameter = 251m,
-                ToleranceInnerDiameter = "0.2",
-                Height = 20m,
-                FillHeightMax = 18m,
-                HasKonus = false
-            });
-
-            this.listRings.Add(new Ring()
-            {
-                ID = 010,
-                Description = "CoreRing_Test03_SollteNichtGenommenWerden",
-                OuterDiameter = 280m,
-                ToleranceOuterDiameter = null,
-                InnerDiameter = 261m,
-                ToleranceInnerDiameter = "0.2",
-                Height = 20m,
-                FillHeightMax = 18m,
-                HasKonus = false
-            });
-
-
-            //this.listRings.Add(new Ring() { Bezeichnung_RoCon = "Innenring01", Außendurchmesser = 330.3m, Hoehe = 21.6m, Innendurchmesser = 310.7m, Gießhoehe_Max = 15.00m, mit_Konusfuehrung = false });
-            //this.listRings.Add(new Ring() { Bezeichnung_RoCon = "Innenring02", Außendurchmesser = 310.5m, Hoehe = 21.6m, Innendurchmesser = 250.0m, Gießhoehe_Max = 15.00m, mit_Konusfuehrung = false });
+                productCup.InnerDiameter = productCup.InnerDiameter * productCup.FactorPU.GetValueOrDefault(1m);
+            }
         }
 
         /// <summary>

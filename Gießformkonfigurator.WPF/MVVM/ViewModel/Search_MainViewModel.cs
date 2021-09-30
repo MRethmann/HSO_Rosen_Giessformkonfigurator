@@ -23,7 +23,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
     {
         public ObservableCollection<CompareObject> productSearchOutput { get; } = new ObservableCollection<CompareObject>();
 
-        private ProgramLogic programLogic { get; set; }
+        private SearchJob programLogic { get; set; }
 
         public Visibility IsLoading { get; set; } = Visibility.Hidden;
 
@@ -41,15 +41,25 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
         /// </summary>
         public bool searchTypeProduct { get; set; } = true;
 
-        /// <summary>
-        /// Property used for the creating of a temporary product Disc via GUI parameter input.
-        /// </summary>
-        public ProductDisc productDisc { get; set; } = new ProductDisc();
+        public ProductDisc productDisc { get; set; }
 
-        /// <summary>
-        /// Property used for the creating of a temporary product Cup via GUI parameter input.
-        /// </summary>
-        public ProductCup productCup { get; set; } = new ProductCup();
+        public ProductCup productCup { get; set; }
+
+        public decimal OuterDiameter { get; set; }
+
+        public decimal InnerDiameter { get; set; }
+
+        public decimal Height { get; set; }
+
+        public decimal? HcDiameter { get; set; }
+
+        public int? HcHoles { get; set; }
+
+        public decimal? HcHoleDiameter { get; set; }
+
+        public decimal? FactorPU { get; set; }
+
+        public string BTC { get; set; }
 
         public Product product { get; set; }
 
@@ -67,8 +77,6 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
         /// </summary>
         public void findMatchingMolds()
         {
-            product = new Product();
-
             // Search by SAP-Nr.
             if (this.searchByProductId)
             {
@@ -79,6 +87,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                     {
                         using (var db = new GießformDBContext())
                         {
+                            this.product = new Product();
                             product = db.ProductDiscs.Find(productId);
                         }
                     }
@@ -95,6 +104,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                     {
                         using (var db = new GießformDBContext())
                         {
+                            this.product = new Product();
                             product = db.ProductCups.Find(productId);
                         }
                     }
@@ -112,18 +122,28 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                 // Product Disc
                 if (this.searchTypeProduct)
                 {
-                    if (this.productDisc.OuterDiameter == 0
-                    || this.productDisc.InnerDiameter == 0
-                    || this.productDisc.Height == 0)
+                    if (this.OuterDiameter == 0
+                    || this.InnerDiameter == 0
+                    || this.Height == 0
                     // || productdisc.FactorPU == null
                     // || productdisc.FactorPU == 0
-                    // || this.productDisc.BTC == null)
+                     || this.BTC == null)
                     {
                         MessageBox.Show("Bitte alle Werte ausfüllen!");
                     }
                     else
                     {
-                        product = productDisc;
+                        this.product = new Product();
+                        this.productDisc = new ProductDisc();
+                        this.productDisc.OuterDiameter = this.OuterDiameter;
+                        this.productDisc.InnerDiameter = this.InnerDiameter;
+                        this.productDisc.Height = this.Height;
+                        this.productDisc.HcHoles = this.HcHoles != null ? this.HcHoles : null;
+                        this.productDisc.HcHoleDiameter = this.HcHoleDiameter != null ? this.HcHoleDiameter : null;
+                        this.productDisc.HcDiameter = this.HcDiameter != null ? this.HcDiameter : null;
+                        this.productDisc.BTC = this.BTC != null ? this.BTC : null;
+                        this.productDisc.FactorPU = this.FactorPU != null ? this.FactorPU : null;
+                        this.product = productDisc;
                     }
                 }
 
@@ -137,6 +157,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                     else
                     {
                         product = productCup;
+                        this.productCup = new ProductCup();
                     }*/
                 }
             }
@@ -144,7 +165,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
             // Create new ProgramLogic --> start algorithm to search for fitting molds
             if (product != null)
             {
-                programLogic = new ProgramLogic(product);
+                this.programLogic = new SearchJob(product);
                 this.productSearchOutput.Clear();
                 foreach (var compareObject in programLogic.finalOutput)
                 {
