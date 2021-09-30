@@ -11,7 +11,7 @@ namespace Gießformkonfigurator.WPF.MVVM.View.ValidationRules
     /// <summary>
     /// ValidationRule to check if the Input Value is positive and not greater than 100.000. This rule should avoid input mistakes.
     /// </summary>
-    class InputValueValidationRule : ValidationRule
+    public class InputValueRangeValidationRule : ValidationRule
     {
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {

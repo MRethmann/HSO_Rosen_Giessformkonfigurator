@@ -67,7 +67,7 @@
             <TextBox.Text>
                 <Binding Path="productCup.Description" Mode="TwoWay" UpdateSourceTrigger="LostFocus" ValidatesOnDataErrors="True" NotifyOnValidationError="True">
                     <Binding.ValidationRules>
-                        <validationRules:InputValueValidationRule/>
+                        <validationRules:InputValueRangeValidationRule/>
                         <validationRules:MandatoryFieldValidationRule/>
                     </Binding.ValidationRules>
                 </Binding>

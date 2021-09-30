@@ -86,26 +86,13 @@
         <TextBlock Text="Bezeichnung" Grid.Row="1" Grid.Column="0"/>
         <TextBox x:Name="Description_TextBox" Grid.Row="1" Grid.Column="1" >
             <TextBox.Text>
-                <Binding Path="baseplate.Description" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" FallbackValue="-" >
+                <Binding Path="baseplate.Description" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" FallbackValue="-">
                     <Binding.ValidationRules>
-                        <validationRules:InputValueValidationRule/>
-                        <validationRules:MandatoryFieldValidationRule/>
+                        <validationRules:InputValueRangeValidationRule/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
         </TextBox>
-        <TextBlock IsHitTestVisible="False" Text="Enter Search Term Here" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="DarkGray">
-            <TextBlock.Style>
-                <Style TargetType="{x:Type TextBlock}">
-                    <Setter Property="Visibility" Value="Collapsed"/>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding Text, ElementName=Description_TextBox}" Value="">
-                            <Setter Property="Visibility" Value="Visible"/>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </TextBlock.Style> 
-        </TextBlock>
 
         <TextBlock Text="Außendurchmeser" Grid.Row="2" Grid.Column="0"/>
         <TextBox x:Name="OuterDiameter_TextBox" Grid.Row="2" Grid.Column="1">
@@ -132,7 +119,7 @@
         <TextBlock Text="Konus Außen Max." Grid.Row="4" Grid.Column="0"/>
         <TextBox x:Name="OuterKonusMax_TextBox" Grid.Row="4" Grid.Column="1">
             <TextBox.Text>
-                <Binding Path="baseplate.OuterKonusMax" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                <Binding Path="baseplate.OuterKonusMax" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
                     <Binding.ValidationRules>
 
                     </Binding.ValidationRules>

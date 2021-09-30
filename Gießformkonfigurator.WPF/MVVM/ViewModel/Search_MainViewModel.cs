@@ -29,7 +29,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
 
         public string listSize { get; set; }
 
-        public bool searchByProductId { get; set; }
+        public bool searchByProductId { get; set; } = true;
 
         public ProductDisc productDisc { get; set; } = new ProductDisc();
 
@@ -74,10 +74,10 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
             {
                 if (this.productDisc.OuterDiameter == 0
                     || this.productDisc.InnerDiameter == 0
-                    || this.productDisc.Height == 0
+                    || this.productDisc.Height == 0)
                     // || productdisc.FactorPU == null
                     // || productdisc.FactorPU == 0
-                    || this.productDisc.BTC == null)
+                    // || this.productDisc.BTC == null)
                 {
                     MessageBox.Show("Bitte alle Werte ausfüllen!");
                 }

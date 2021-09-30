@@ -8,12 +8,11 @@ using System.Windows.Controls;
 
 namespace Gießformkonfigurator.WPF.MVVM.View.ValidationRules
 {
-    class MandatoryFieldValidationRule : ValidationRule
+    public class MandatoryFieldValidationRule : ValidationRule
     {
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
             ValidationResult result = new ValidationResult(true, null);
-            int inputValue;
 
             if (string.IsNullOrEmpty(value.ToString()))
             {
