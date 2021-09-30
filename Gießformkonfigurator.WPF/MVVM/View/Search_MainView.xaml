@@ -38,14 +38,14 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
 
-                        <ComboBox x:Name="SearchMethod_ComboBox" Margin="5" Height="30" Width="auto" HorizontalContentAlignment="Center" VerticalContentAlignment="center" FontSize="15">
-                            <ComboBoxItem IsSelected="{Binding searchByProductId}" x:Name="searchByProductId" Content="SAP-Nr."/>
-                            <ComboBoxItem x:Name="searchByProductParams" Content="Eingabe der Produktwerte"/>
+                        <ComboBox x:Name="SearchMethod_ComboBox" Margin="5" Height="Auto" Width="auto" HorizontalContentAlignment="Center" VerticalContentAlignment="center">
+                            <ComboBoxItem IsSelected="{Binding searchByProductId}" x:Name="searchByProductId" Content="SAP-Nr." Height="Auto"/>
+                            <ComboBoxItem x:Name="searchByProductParams" Content="Eingabe der Produktwerte" Height="Auto"/>
                         </ComboBox>
 
-                        <ComboBox x:Name="ProductType_ComboBox" Margin="5" Height="30" Width="auto" HorizontalContentAlignment="Center" VerticalContentAlignment="center" FontSize="15" Grid.Row="1">
-                            <ComboBoxItem IsSelected="{Binding searchTypeProduct}" x:Name="productDisc" Content="Disc"/>
-                            <ComboBoxItem x:Name="productCup" Content="Cup"/>
+                        <ComboBox x:Name="ProductType_ComboBox" Margin="5" Height="Auto" Width="auto" HorizontalContentAlignment="Center" VerticalContentAlignment="center" Grid.Row="1">
+                            <ComboBoxItem IsSelected="{Binding searchTypeProduct}" x:Name="productDisc" Content="Disc" Height="Auto"/>
+                            <ComboBoxItem x:Name="productCup" Content="Cup" Height="Auto"/>
                         </ComboBox>
                     </Grid>
 
@@ -64,7 +64,7 @@
 
                         <TextBox x:Name="ProduktIDTextBox" 
                                  Text="{Binding productId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}"
-                                 Width="Auto" Height="50"
+                                 Width="Auto" Height="Auto"
                                  HorizontalAlignment="Stretch"
                                  VerticalAlignment="Center"
                                  VerticalContentAlignment="Center"
@@ -98,7 +98,7 @@
 
                         <TextBox x:Name="outerDiameter_TextBox" 
                                  Text="{Binding OuterDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"
-                                 Width="auto" Height="30"
+                                 Width="auto" Height="Auto"
                                  HorizontalAlignment="Stretch"
                                  VerticalAlignment="Center"
                                  VerticalContentAlignment="Center"
@@ -113,7 +113,7 @@
 
                         <TextBox x:Name="innerDiameter_TextBox" 
                                  Text="{Binding InnerDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"
-                                 Width="auto" Height="30"
+                                 Width="auto" Height="Auto"
                                  HorizontalAlignment="Stretch"
                                  VerticalAlignment="Center"
                                  VerticalContentAlignment="Center"
@@ -128,7 +128,7 @@
 
                         <TextBox x:Name="height_TextBox" 
                                  Text="{Binding Height, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"
-                                 Width="auto" Height="30"
+                                 Width="auto" Height="Auto"
                                  HorizontalAlignment="Stretch"
                                  VerticalAlignment="Center"
                                  VerticalContentAlignment="Center"
@@ -143,7 +143,7 @@
 
                         <TextBox x:Name="BTC_TextBox" 
                                  Text="{Binding BTC, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"
-                                 Width="auto" Height="30"
+                                 Width="auto" Height="Auto"
                                  HorizontalAlignment="Stretch"
                                  VerticalAlignment="Center"
                                  VerticalContentAlignment="Center"
@@ -158,7 +158,7 @@
 
                         <TextBox x:Name="FactorPU_TextBox" 
                                  Text="{Binding FactorPU, Mode=TwoWay, UpdateSourceTrigger=LostFocus, TargetNullValue=''}"
-                                 Width="auto" Height="30"
+                                 Width="auto" Height="Auto"
                                  HorizontalAlignment="Stretch"
                                  VerticalAlignment="Center"
                                  VerticalContentAlignment="Center"
@@ -173,7 +173,7 @@
 
                         <TextBox x:Name="HcHoles_TextBox" 
                                  Text="{Binding HcHoles, Mode=TwoWay, UpdateSourceTrigger=LostFocus, TargetNullValue=''}"
-                                 Width="auto" Height="30"
+                                 Width="auto" Height="Auto"
                                  HorizontalAlignment="Stretch"
                                  VerticalAlignment="Center"
                                  VerticalContentAlignment="Center"
@@ -188,7 +188,7 @@
 
                         <TextBox x:Name="HcHolesDiameter_TextBox" 
                                  Text="{Binding HcHoleDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, TargetNullValue=''}"
-                                 Width="auto" Height="30"
+                                 Width="auto" Height="Auto"
                                  HorizontalAlignment="Stretch"
                                  VerticalAlignment="Center"
                                  VerticalContentAlignment="Center"
@@ -203,7 +203,7 @@
 
                         <TextBox x:Name="HcDiameter_TextBox" 
                                  Text="{Binding HcDiameter, Mode=OneWay, UpdateSourceTrigger=LostFocus, TargetNullValue=''}"
-                                 Width="auto" Height="30"
+                                 Width="auto" Height="Auto"
                                  HorizontalAlignment="Stretch"
                                  VerticalAlignment="Center"
                                  VerticalContentAlignment="Center"

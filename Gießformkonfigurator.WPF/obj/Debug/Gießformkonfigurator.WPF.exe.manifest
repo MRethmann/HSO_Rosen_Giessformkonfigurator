@@ -109,17 +109,17 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>glC9We+k5lZF/GQlE4Yjf5XxECzsqJHeg67s3JGYSCY=</dsig:DigestValue>
+        <dsig:DigestValue>i2jrPpiP9JnNyX7dyK6yiLzJ1RthuRuq2hkOlOA6nb8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="Gießformkonfigurator.WPF.exe.config" size="2413">
+  <file name="Gießformkonfigurator.WPF.exe.config" size="2415">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>zAKWnFDUo8wSIEw8iAEi7I+C0MVu06vg6EIhso9MIT4=</dsig:DigestValue>
+      <dsig:DigestValue>DtQH0+ko+9DY41D3yNyj/LrpqtPpWxHSqnOwHZTxhx0=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>
