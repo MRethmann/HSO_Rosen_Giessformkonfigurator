@@ -39,13 +39,13 @@
                         </Grid.RowDefinitions>
 
                         <ComboBox x:Name="SearchMethod_ComboBox" Margin="5" Height="Auto" Width="auto" HorizontalContentAlignment="Center" VerticalContentAlignment="center">
-                            <ComboBoxItem IsSelected="{Binding searchByProductId}" x:Name="searchByProductId" Content="SAP-Nr." Height="Auto"/>
-                            <ComboBoxItem x:Name="searchByProductParams" Content="Eingabe der Produktwerte" Height="Auto"/>
+                            <ComboBoxItem IsSelected="{Binding searchByProductId}" x:Name="searchByProductId" Content="SAP-Nr."/>
+                            <ComboBoxItem x:Name="searchByProductParams" Content="Eingabe der Produktwerte"/>
                         </ComboBox>
 
                         <ComboBox x:Name="ProductType_ComboBox" Margin="5" Height="Auto" Width="auto" HorizontalContentAlignment="Center" VerticalContentAlignment="center" Grid.Row="1">
-                            <ComboBoxItem IsSelected="{Binding searchTypeProduct}" x:Name="productDisc" Content="Disc" Height="Auto"/>
-                            <ComboBoxItem x:Name="productCup" Content="Cup" Height="Auto"/>
+                            <ComboBoxItem IsSelected="{Binding searchTypeProduct}" x:Name="productDisc" Content="Disc"/>
+                            <ComboBoxItem x:Name="productCup" Content="Cup"/>
                         </ComboBox>
                     </Grid>
 
@@ -68,7 +68,7 @@
                                  HorizontalAlignment="Stretch"
                                  VerticalAlignment="Center"
                                  VerticalContentAlignment="Center"
-                                 Margin="5" Grid.Column="1"
+                                 Margin="5" Grid.Column="1" Grid.Row="0"
                                  Foreground="Black" FontSize="15" Background="White"/>
                     </Grid>
 
