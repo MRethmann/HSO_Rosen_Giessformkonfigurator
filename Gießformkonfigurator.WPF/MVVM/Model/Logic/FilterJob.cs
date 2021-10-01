@@ -40,8 +40,8 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                 productCup = (ProductCup) product;
             }
 
-            this.GetFilteredDatabase();
             this.AdjustProductInformation();
+            this.GetFilteredDatabase();
         }
 
         public void AdjustProductInformation()
@@ -72,8 +72,8 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                 productDisc.OuterDiameter = Math.Round(productDisc.OuterDiameter * productDisc.FactorPU.GetValueOrDefault(1m), 2);
                 productDisc.InnerDiameter = Math.Round(productDisc.InnerDiameter * productDisc.FactorPU.GetValueOrDefault(1m), 2);
                 productDisc.Height = Math.Round(productDisc.Height * productDisc.FactorPU.GetValueOrDefault(1m), 2);
-                productDisc.HcDiameter = Math.Round((Decimal)productDisc?.HcDiameter * productDisc.FactorPU.GetValueOrDefault(1m), 2);
-                productDisc.HcHoleDiameter = Math.Round((Decimal)productDisc?.HcHoleDiameter * productDisc.FactorPU.GetValueOrDefault(1m), 2);
+                //productDisc.HcDiameter = Math.Round((Decimal)productDisc?.HcDiameter * productDisc.FactorPU.GetValueOrDefault(1m), 2);
+                //productDisc.HcHoleDiameter = Math.Round((Decimal)productDisc?.HcHoleDiameter * productDisc.FactorPU.GetValueOrDefault(1m), 2);
 
             }
             else if (this.productCup != null)
@@ -140,10 +140,12 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                         }
                     }
 
+                    // Check if it makes sense
+                    //singleMoldDisc.OuterDiameter + 0.1m >= productDisc?.OuterDiameter && singleMoldDisc.OuterDiameter - 0.1m <= productDisc?.OuterDiameter
+
                     foreach (var singleMoldDisc in db.SingleMoldDiscs)
                     {
-                        if (singleMoldDisc.OuterDiameter + 0.1m >= productDisc?.OuterDiameter && singleMoldDisc.OuterDiameter - 0.1m <= productDisc?.OuterDiameter
-                            && singleMoldDisc.InnerDiameter + 0.1m >= productDisc?.InnerDiameter && singleMoldDisc.InnerDiameter - 0.1m <= productDisc?.InnerDiameter)
+                        if (singleMoldDisc.InnerDiameter + 0.1m >= productDisc?.InnerDiameter && singleMoldDisc.InnerDiameter - 2m <= productDisc?.InnerDiameter)
                         {
                             this.listSingleMoldDiscs.Add(singleMoldDisc);
                         }

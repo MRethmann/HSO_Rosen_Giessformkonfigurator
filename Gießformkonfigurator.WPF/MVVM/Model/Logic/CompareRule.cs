@@ -89,8 +89,8 @@ namespace Gieﬂformkonfigurator.WPF.MVVM.Model.Logic
             var productDisc = compareElements.OfType<ProductDisc>().Single();
             var singleMoldDisc = compareElements.OfType<SingleMoldDisc>().Single();
 
-            return productDisc.OuterDiameter + 0.1m >= singleMoldDisc.OuterDiameter && productDisc.OuterDiameter - 0.1m <= singleMoldDisc.OuterDiameter
-                && productDisc.InnerDiameter + 0.1m >= singleMoldDisc.InnerDiameter && productDisc.InnerDiameter - 0.1m <= singleMoldDisc.InnerDiameter
+            return productDisc.OuterDiameter + 0.5m >= singleMoldDisc.OuterDiameter && productDisc.OuterDiameter - 2m <= singleMoldDisc.OuterDiameter
+                && productDisc.InnerDiameter + 2m >= singleMoldDisc.InnerDiameter && productDisc.InnerDiameter - 0.1m <= singleMoldDisc.InnerDiameter
                 && productDisc.HcDiameter == null || productDisc.HcDiameter <= singleMoldDisc.HcDiameter + 0.5m
                 && productDisc.HcDiameter == null || productDisc.HcDiameter >= singleMoldDisc.HcDiameter - 0.5m
                 && productDisc.HcHoleDiameter == null || productDisc.HcHoleDiameter >= singleMoldDisc.BoltDiameter
