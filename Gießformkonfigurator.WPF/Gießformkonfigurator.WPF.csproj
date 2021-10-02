@@ -110,6 +110,7 @@
     </Compile>
     <Compile Include="MVVM\View\Converter\DecimalConverter.cs" />
     <Compile Include="MVVM\View\Converter\IsNullConverter.cs" />
+    <Compile Include="MVVM\View\DataTemplates\AdditionalRingTemplateSelector.cs" />
     <Compile Include="MVVM\View\DataTemplates\DetailsTemplateSelector.cs" />
     <Compile Include="MVVM\View\DataTemplates\QuickInfoTemplateSelector.cs" />
     <Compile Include="MVVM\View\DataTemplates\RowDetailsTemplateSelector.cs" />

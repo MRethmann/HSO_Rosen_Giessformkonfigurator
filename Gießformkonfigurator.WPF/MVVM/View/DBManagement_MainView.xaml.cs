@@ -32,25 +32,39 @@ namespace Gießformkonfigurator.WPF.MVVM.View
                 using (SqlConnection connection = new SqlConnection(connString))
                 {
                     connection.Open();
-                    string table = selectedTableComboBox.SelectedItem.ToString();
-                    string attribute = selectedAttributeComboBox.SelectedItem.ToString();
-                    string selectedOperator = this.selectedOperatorComboBox.Text;
-                    string attributeValue = attributeValueTextBox.Text;
+                    string table = selectedTableComboBox?.SelectedItem?.ToString();
+                    string attribute = selectedAttributeComboBox?.SelectedItem?.ToString();
+                    string selectedOperator = this.selectedOperatorComboBox?.Text;
+                    string attributeValue = attributeValueTextBox?.Text;
                     string query = $"SELECT * FROM {table} WHERE {attribute} {selectedOperator} '{attributeValue}'";
+
+                    if (table != null)
+                    {
+                        if (attribute == null || String.IsNullOrEmpty(attributeValue))
+                        {
+                            query = $"SELECT * FROM {table}";
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Bitte Tabelle auswählen!");
+                    }
+
                     DataTable dataTable = new DataTable();
 
                     try
                     {
                         using (SqlCommand command = new SqlCommand(query, connection))
                         {
+                            dbQueryOutput.ItemsSource = null;
                             SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
                             dataAdapter.Fill(dataTable);
                             dbQueryOutput.ItemsSource = dataTable.DefaultView;
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        MessageBox.Show("Eingabefehler. Überprüfe die Werte! " + ex);
+                        
                     }
                     
                 }
