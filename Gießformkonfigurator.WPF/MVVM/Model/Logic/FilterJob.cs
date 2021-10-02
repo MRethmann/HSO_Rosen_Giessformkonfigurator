@@ -140,12 +140,25 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                         }
                     }
 
-                    // Check if it makes sense
-                    //singleMoldDisc.OuterDiameter + 0.1m >= productDisc?.OuterDiameter && singleMoldDisc.OuterDiameter - 0.1m <= productDisc?.OuterDiameter
+                    // Check if it makes sense - old logic
+                    /*if (singleMoldDisc.InnerDiameter + 0.1m >= productDisc?.InnerDiameter && singleMoldDisc.InnerDiameter - 2m <= productDisc?.InnerDiameter
+                            && singleMoldDisc.OuterDiameter + 0.1m >= productDisc?.OuterDiameter && singleMoldDisc.OuterDiameter - 0.1m <= productDisc?.OuterDiameter)
+                        {
+                        this.listSingleMoldDiscs.Add(singleMoldDisc);
+                    }*/
+
+                    // product.OuterDiameter <= singleMoldDisc.OuterDiameter + {Tolerance singleMoldOuterDiameter Max} --> larger product
+                    // product.OuterDiameter >= singleMoldDisc.OuterDiameter - {Tolerance singleMoldOuterDiameter Min} --> smaller product --> definition should be more precise
+
+                    // product.InnerDiameter <= singleMoldDisc.InnerDiameter + {Tolerance singleMoldInnerDiameter Min} --> smaller product --> definition should be more precise
+                    // product.InnerDiameter >= singleMoldDisc.InnerDiameter - {Tolerance singleMoldInnerDiameter Max} --> larger product
 
                     foreach (var singleMoldDisc in db.SingleMoldDiscs)
                     {
-                        if (singleMoldDisc.InnerDiameter + 0.1m >= productDisc?.InnerDiameter && singleMoldDisc.InnerDiameter - 2m <= productDisc?.InnerDiameter)
+                        if (productDisc.OuterDiameter <= singleMoldDisc.OuterDiameter + 3
+                            && productDisc.OuterDiameter >= singleMoldDisc.OuterDiameter - 1
+                            && productDisc.InnerDiameter <= singleMoldDisc.InnerDiameter + 3
+                            && productDisc.InnerDiameter >= singleMoldDisc.InnerDiameter - 1)
                         {
                             this.listSingleMoldDiscs.Add(singleMoldDisc);
                         }

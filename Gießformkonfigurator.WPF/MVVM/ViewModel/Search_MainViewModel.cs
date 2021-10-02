@@ -124,10 +124,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                 {
                     if (this.OuterDiameter == 0
                     || this.InnerDiameter == 0
-                    || this.Height == 0
-                    // || productdisc.FactorPU == null
-                    // || productdisc.FactorPU == 0
-                     || this.BTC == null)
+                    || this.Height == 0)
                     {
                         MessageBox.Show("Bitte alle Werte ausfüllen!");
                     }
