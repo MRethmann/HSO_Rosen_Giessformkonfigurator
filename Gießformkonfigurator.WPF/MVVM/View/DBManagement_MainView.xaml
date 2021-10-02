@@ -155,27 +155,44 @@
                             </Border>
 
                             <DataGrid Grid.Row="1"  Margin="10"
-                                    Name="dbQueryOutput" AutoGenerateColumns="True" IsReadOnly="True"  
-                                    Background="white" 
-                                    FontSize="15" 
-                                    BorderThickness="1"
-                                    HorizontalGridLinesBrush="LightGray"
-                                    VerticalGridLinesBrush="White"
-                                    MinRowHeight="20"
-                                    HeadersVisibility="Column">
+                                      Name="dbQueryOutput" AutoGenerateColumns="True" IsReadOnly="True"  
+                                      Background="white" 
+                                      FontSize="15" 
+                                      BorderThickness="1"
+                                      VerticalGridLinesBrush="White"
+                                      MinRowHeight="20"
+                                      HeadersVisibility="Column"
+                                      BorderBrush="Transparent"
+                                      HorizontalGridLinesBrush="DarkGray"
+                                      GridLinesVisibility="Horizontal"
+                                      Grid.Column="0"
+                                      HorizontalAlignment="Stretch"
+                                      VerticalAlignment="Stretch"
+                                      CanUserAddRows="False"
+                                      CanUserDeleteRows="False"
+                                      CanUserReorderColumns="False"
+                                      CanUserResizeColumns="False"
+                                      CanUserResizeRows="False"
+                                      CanUserSortColumns="False"
+                                      SelectionUnit="FullRow">
 
                                 <DataGrid.Resources>
                                     <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}" >
-                                        <Setter Property="Background" Value="Red" />
+                                        <Setter Property="Background" Value="White" />
                                         <Setter Property="Foreground" Value="Black" />
-                                        <Setter Property="BorderBrush" Value="Black"/>
                                         <Setter Property="BorderThickness" Value="1 1 1 1"/>
                                         <Setter Property="Margin" Value="-1,-1,0,0" />
                                         <Setter Property="Height" Value="28" />
                                         <Setter Property="Width" Value="auto"/>
-                                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
                                     </Style>
                                 </DataGrid.Resources>
+
+                                <!-- Adds a standard margin to column headers -->
+                                <DataGrid.ColumnHeaderStyle>
+                                    <Style>
+                                        
+                                    </Style>
+                                </DataGrid.ColumnHeaderStyle>
 
 
                                 <DataGrid.RowStyle>
