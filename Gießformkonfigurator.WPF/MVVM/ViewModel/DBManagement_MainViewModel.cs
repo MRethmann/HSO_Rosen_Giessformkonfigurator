@@ -77,7 +77,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
             {
                 connection.Open();
                 
-                string query = "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME != '__MigrationHistory'";
+                string query = "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME NOT IN ('__MigrationHistory', 'ApplicationSettings')";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     using (SqlDataReader reader = command.ExecuteReader())
@@ -135,7 +135,14 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
 
         public bool validateSearch()
         {
-            return true;
+            if (selectedTable == null || selectedAttribute == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 }
