@@ -7,14 +7,14 @@
     <framework targetVersion="4.7.2" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="Gießformkonfigurator.WPF.exe.manifest" size="7128">
+    <dependentAssembly dependencyType="install" codebase="Gießformkonfigurator.WPF.exe.manifest" size="7796">
       <assemblyIdentity name="Gießformkonfigurator.WPF.exe" version="1.0.0.2" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>QYbiG8aiw3Vad44rxqrQHKDi+5IKETKhaWAx9p/7OXw=</dsig:DigestValue>
+        <dsig:DigestValue>7ozMNIk0lMCEx1ayVFyMJgg4yHctw/luTiPzL+8sqA8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

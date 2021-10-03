@@ -11,6 +11,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
     using Gießformkonfigurator.WPF.MVVM.Model.Db_products;
     using Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses;
     using Gießformkonfigurator.WPF.MVVM.Model.Logic;
+    using log4net;
     using System;
     using System.Collections.ObjectModel;
     using System.Globalization;
@@ -65,6 +66,8 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
 
         public int productId { get; set; }
 
+        private static readonly ILog log = LogManager.GetLogger(typeof(Search_MainViewModel));
+
         public ICommand searchCommand { get; set; }
 
         public Search_MainViewModel()
@@ -89,6 +92,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                         {
                             this.product = new Product();
                             product = db.ProductDiscs.Find(productId);
+                            log.Info("Info message");
                         }
                     }
                     catch (Exception)
