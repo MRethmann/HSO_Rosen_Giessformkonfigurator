@@ -11,15 +11,6 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_components
     [Table("CoreSingleMold")]
     public partial class CoreSingleMold : Component
     {
-        [Key]
-        [Column("ID")]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int ID { get; set; }
-
-        [Required]
-        [StringLength(100)]
-        public string Description { get; set; }
-
         public decimal OuterDiameter { get; set; }
 
         public decimal InnerDiameter { get; set; }

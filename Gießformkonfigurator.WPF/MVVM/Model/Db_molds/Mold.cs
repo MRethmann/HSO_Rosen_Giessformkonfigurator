@@ -9,9 +9,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Gießformkonfigurator.WPF.MVVM.Model.Db_molds
 {
-    
-    
-
     public abstract class Mold
     {
         [NotMapped]

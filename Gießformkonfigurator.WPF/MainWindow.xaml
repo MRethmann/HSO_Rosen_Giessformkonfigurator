@@ -12,7 +12,8 @@
         Width="{local:SettingBinding Width}"
         Left="{local:SettingBinding Left}"
         Top="{local:SettingBinding Top}"
-        WindowState="{local:SettingBinding Maximized}">
+        WindowState="{local:SettingBinding Maximized}"
+        Title="Gießformkonfigurator">
 
     <Window.DataContext>
         <viewModel:MainViewModel/>
@@ -60,7 +61,7 @@
                         <Image Width="360" Height="140" Source="/Images/rosen.png" x:Name="Logo" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                     </Border>
 
-                    <Button Grid.Column="3" Width="40" HorizontalAlignment="Right" Height="40" VerticalAlignment="Bottom" Margin="0, 0, 0, 10" Background="Transparent" BorderThickness="0">
+                    <Button Grid.Column="3" Width="40" HorizontalAlignment="Right" Height="40" VerticalAlignment="Bottom" Margin="0, 0, 0, 10" Background="Transparent" BorderThickness="0" Click="Open_ReportIssueView">
                         <Image Source="/Images/exclamation-mark.png"></Image>
                     </Button>
                 </Grid>

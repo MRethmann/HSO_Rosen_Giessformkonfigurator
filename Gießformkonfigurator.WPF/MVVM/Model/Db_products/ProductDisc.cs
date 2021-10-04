@@ -11,13 +11,6 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_products
     [Table("ProductDisc")]
     public partial class ProductDisc : Product
     {
-        [Key]
-        [Column("ID")]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int ID { get; set; }
-
-        public string Description { get; set; }
-
         public decimal OuterDiameter { get; set; }
 
         public decimal Height { get; set; }

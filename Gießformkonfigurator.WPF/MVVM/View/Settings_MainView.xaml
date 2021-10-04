@@ -25,7 +25,7 @@
                          Margin="10,0,10,0"
                          Style="{StaticResource MenuButtonTheme}"
                          Command="{Binding ApplicationSettingsViewCommand}"
-                         Visibility="Collapsed"/>
+                         IsChecked="True"/>
 
                 <RadioButton Content="Filter Settings"
                          Height="50" Width="200"   
@@ -41,8 +41,7 @@
                          HorizontalContentAlignment="Center"
                          FontSize="20"
                          Style="{StaticResource MenuButtonTheme}"
-                         Command="{Binding CombinationSettingsViewCommand}"
-                         IsChecked="True"/>
+                         Command="{Binding CombinationSettingsViewCommand}"/>
 
                 <RadioButton Content="Compare Settings"
                          Height="50" Width="200"  

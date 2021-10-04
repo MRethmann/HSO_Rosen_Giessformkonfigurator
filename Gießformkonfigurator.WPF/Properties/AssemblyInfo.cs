@@ -15,7 +15,7 @@ using System.Windows;
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-[assembly: log4net.Config.XmlConfigurator(ConfigFile = "log4net.config")]
+[assembly: log4net.Config.XmlConfigurator(Watch = true)]
 
 // Durch Festlegen von ComVisible auf FALSE werden die Typen in dieser Assembly
 // für COM-Komponenten unsichtbar.  Wenn Sie auf einen Typ in dieser Assembly von

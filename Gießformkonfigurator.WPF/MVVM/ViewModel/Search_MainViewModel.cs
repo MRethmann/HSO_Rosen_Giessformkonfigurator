@@ -92,7 +92,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                         {
                             this.product = new Product();
                             product = db.ProductDiscs.Find(productId);
-                            log.Info("Info message");
+                            log.Info($"ProductDisc search via SAP-Nr. started for product: {product}");
                         }
                     }
                     catch (Exception)
@@ -110,6 +110,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                         {
                             this.product = new Product();
                             product = db.ProductCups.Find(productId);
+                            log.Info($"ProductCup search via SAP-Nr. started for product: {product}");
                         }
                     }
                     catch (Exception)
@@ -145,6 +146,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                         this.productDisc.BTC = this.BTC != null ? this.BTC : null;
                         this.productDisc.FactorPU = this.FactorPU != null ? this.FactorPU : null;
                         this.product = productDisc;
+                        log.Info($"ProductDisc search started via manual entry for product: {productDisc.OuterDiameter}, {productDisc.InnerDiameter}, {productDisc.Height}, {productDisc.BTC}, {productDisc.FactorPU} - (OD, ID, T, BTC, Factor)");
                     }
                 }
 
@@ -166,6 +168,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
             // Create new ProgramLogic --> start algorithm to search for fitting molds
             if (product != null)
             {
+                
                 this.programLogic = new SearchJob(product);
                 this.productSearchOutput.Clear();
                 foreach (var compareObject in programLogic.finalOutput)

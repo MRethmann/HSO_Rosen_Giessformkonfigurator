@@ -6,8 +6,28 @@
              xmlns:local="clr-namespace:Gießformkonfigurator.WPF.MVVM.View"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
-             Background="SlateGray">
+             Background="White">
     <Grid>
-            
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Text="Log File Destination" Margin="10" FontSize="18"/>
+            <TextBlock Background="AliceBlue" Grid.Row="1" Grid.Column="1" x:Name="CurrentLogFilePath"  HorizontalAlignment="Stretch" Width="Auto" Height="30" Margin="10" FontSize="18"/>
+            <Button Name="LogFilePathSelector" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" Width="100" Height="30" Margin="10" Content="Choose Filepath" Click="LogFilePathSelector_Click"/>
+
+        </Grid>
     </Grid>
 </UserControl>

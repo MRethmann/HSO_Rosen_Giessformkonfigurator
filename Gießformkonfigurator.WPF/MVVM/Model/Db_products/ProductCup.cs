@@ -11,13 +11,6 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_products
     [Table("ProductCup")]
     public partial class ProductCup : Product
     {
-        [Key]
-        [Column("ID")]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int ID { get; set; }
-
-        public string Description { get; set; }
-
         [Column("BaseCup")]
         [StringLength(100)]
         public string BaseCup { get; set; }

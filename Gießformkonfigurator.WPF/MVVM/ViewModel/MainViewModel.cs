@@ -6,6 +6,7 @@
 namespace Gießformkonfigurator.WPF.MVVM.ViewModel
 {
     using Gießformkonfigurator.WPF.Core;
+    using log4net;
 
     class MainViewModel : ObservableObject
     {
@@ -16,6 +17,8 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
         public RelayCommand Components_MainViewCmd { get; set; }
         public RelayCommand Settings_MainViewCmd { get; set; }
         public RelayCommand DBManagement_MainViewCmd { get; set; }
+
+        private static readonly ILog log = LogManager.GetLogger(typeof(MainViewModel));
 
         public Mold_MainViewModel Mold_MainViewModel { get; set; }
         public Product_MainViewModel Product_MainViewModel { get; set; }
@@ -47,7 +50,6 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
             DBManagement_MainViewModel = new DBManagement_MainViewModel();
 
             CurrentView = Search_MainViewModel;
-
             Search_MainViewCmd = new RelayCommand(o =>
             {
                 CurrentView = Search_MainViewModel;

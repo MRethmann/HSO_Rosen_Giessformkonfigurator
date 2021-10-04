@@ -13,15 +13,6 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_components
     [Table("Core")]
     public partial class Core : Component
     {
-        [Key]
-        [Column("ID")]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int ID { get; set; }
-
-        [Required]
-        [StringLength(100)]
-        public string Description { get; set; }
-
         public decimal OuterDiameter { get; set; }
 
         [StringLength(10)]

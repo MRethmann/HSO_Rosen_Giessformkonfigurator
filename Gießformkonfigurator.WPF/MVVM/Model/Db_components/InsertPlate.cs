@@ -13,14 +13,6 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_components
     [Table("Insertplate")]
     public partial class InsertPlate : Component
     {
-        [Key]
-        [Column("ID")]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int ID { get; set; }
-
-        [StringLength(100)]
-        public string Description { get; set; }
-
         public decimal OuterDiameter { get; set; }
 
         [StringLength(5)]

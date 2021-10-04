@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Gießformkonfigurator.WPF"
         mc:Ignorable="d"
-        Title="loginWindow" Height="450" Width="380"
+        Title="Admin Login" Height="450" Width="380"
         WindowStartupLocation="CenterScreen">
     
     

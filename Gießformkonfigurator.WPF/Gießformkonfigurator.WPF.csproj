@@ -83,6 +83,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -112,12 +113,27 @@
     <Compile Include="Migrations\202109301428107_sync.Designer.cs">
       <DependentUpon>202109301428107_sync.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202110041047043_changed attributes on products.cs" />
+    <Compile Include="Migrations\202110041047043_changed attributes on products.Designer.cs">
+      <DependentUpon>202110041047043_changed attributes on products.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110041052168_changed vererbung on singleMolds.cs" />
+    <Compile Include="Migrations\202110041052168_changed vererbung on singleMolds.Designer.cs">
+      <DependentUpon>202110041052168_changed vererbung on singleMolds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110041208258_changed vererbung on components.cs" />
+    <Compile Include="Migrations\202110041208258_changed vererbung on components.Designer.cs">
+      <DependentUpon>202110041208258_changed vererbung on components.cs</DependentUpon>
+    </Compile>
     <Compile Include="MVVM\View\Converter\DecimalConverter.cs" />
     <Compile Include="MVVM\View\Converter\IsNullConverter.cs" />
     <Compile Include="MVVM\View\DataTemplates\AdditionalRingTemplateSelector.cs" />
     <Compile Include="MVVM\View\DataTemplates\DetailsTemplateSelector.cs" />
     <Compile Include="MVVM\View\DataTemplates\QuickInfoTemplateSelector.cs" />
     <Compile Include="MVVM\View\DataTemplates\RowDetailsTemplateSelector.cs" />
+    <Compile Include="ReportIssueWindow.xaml.cs">
+      <DependentUpon>ReportIssueWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SettingBindingExtension.cs" />
     <Compile Include="StartWindow.xaml.cs">
       <DependentUpon>StartWindow.xaml</DependentUpon>
@@ -227,6 +243,10 @@
     <Page Include="MVVM\View\Search_MainView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ReportIssueWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="StartWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -460,15 +480,19 @@
     <EmbeddedResource Include="Migrations\202109301428107_sync.resx">
       <DependentUpon>202109301428107_sync.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110041047043_changed attributes on products.resx">
+      <DependentUpon>202110041047043_changed attributes on products.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110041052168_changed vererbung on singleMolds.resx">
+      <DependentUpon>202110041052168_changed vererbung on singleMolds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110041208258_changed vererbung on components.resx">
+      <DependentUpon>202110041208258_changed vererbung on components.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="App.log" />
-    <None Include="Gießformkonfigurator.WPF_TemporaryKey.pfx" />
-    <None Include="log4net.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

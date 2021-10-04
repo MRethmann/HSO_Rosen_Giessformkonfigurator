@@ -12,6 +12,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
     using Gießformkonfigurator.WPF.MVVM.Model.Db_molds;
     using Gießformkonfigurator.WPF.MVVM.Model.Db_products;
     using Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses;
+    using log4net;
 
     class FilterJob
     {
@@ -26,6 +27,8 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
         public List<Cupform> listCupforms { get; set; } = new List<Cupform>();
         public ProductDisc productDisc { get; set; }
         public ProductCup productCup { get; set; }
+
+        private static readonly ILog log = LogManager.GetLogger(typeof(FilterJob));
 
         public FilterJob(Product product)
         {
@@ -75,11 +78,15 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                 //productDisc.HcDiameter = Math.Round((Decimal)productDisc?.HcDiameter * productDisc.FactorPU.GetValueOrDefault(1m), 2);
                 //productDisc.HcHoleDiameter = Math.Round((Decimal)productDisc?.HcHoleDiameter * productDisc.FactorPU.GetValueOrDefault(1m), 2);
 
+                log.Info("ProductDisc information with shrink --> OD: " + productDisc.OuterDiameter + ", ID: " + productDisc.InnerDiameter + ", Height: " + productDisc.Height);
+
             }
             else if (this.productCup != null)
             {
                 productCup.InnerDiameter = productCup.InnerDiameter * productCup.FactorPU.GetValueOrDefault(1m);
             }
+
+            
         }
 
         /// <summary>
@@ -96,6 +103,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                         if (this.productDisc?.OuterDiameter < grundplatte.OuterDiameter)
                         {
                             this.listBaseplates.Add(grundplatte);
+                            log.Info($"");
                         }
                     }
 
@@ -171,42 +179,6 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                         {
                             this.listCoresSingleMold.Add(coreSingleMold);
                         }
-                    }
-                }
-            }
-            else
-            {
-                // TODO: Prüfen ob dieser Teil relevant ist. Soll das Szenario abfangen, dass kein Produkt vorhanden ist und man den Kombinationsalgorithmus trotzdem ausführen möchte.
-                using (var db = new GießformDBContext())
-                {
-                    foreach (var grundplatte in db.Baseplates)
-                    {
-                        this.listBaseplates.Add(grundplatte);
-                    }
-
-                    foreach (var ring in db.Rings)
-                    {
-                        this.listRings.Add(ring);
-                    }
-
-                    foreach (var einlegeplatte in db.InsertPlates)
-                    {
-                        this.listInsertPlates.Add(einlegeplatte);
-                    }
-
-                    foreach (var innenkern in db.Cores)
-                    {
-                        this.listCores.Add(innenkern);
-                    }
-
-                    foreach (var bolzen in db.Bolts)
-                    {
-                        this.listBolts.Add(bolzen);
-                    }
-
-                    foreach (var cupform in db.Cupforms)
-                    {
-                        this.listCupforms.Add(cupform);
                     }
                 }
             }

@@ -414,4 +414,8 @@ C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\Gießformkonfigurat
 C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\Gießformkonfigurator.WPF\obj\Debug\Gießformkonfigurator.WPF.pdb
 C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\Gießformkonfigurator.WPF\bin\Debug\log4net.dll
 C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\Gießformkonfigurator.WPF\bin\Debug\log4net.xml
-C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\Gießformkonfigurator.WPF\bin\Debug\log4net.config
+C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\Gießformkonfigurator.WPF\obj\Debug\Gießformkonfigurator.WPF.Migrations.changedattributesonproducts.resources
+C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\Gießformkonfigurator.WPF\obj\Debug\Gießformkonfigurator.WPF.Migrations.changedvererbungonsingleMolds.resources
+C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\Gießformkonfigurator.WPF\obj\Debug\ReportIssueWindow.g.cs
+C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\Gießformkonfigurator.WPF\obj\Debug\ReportIssueWindow.baml
+C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\Gießformkonfigurator.WPF\obj\Debug\Gießformkonfigurator.WPF.Migrations.changedvererbungoncomponents.resources

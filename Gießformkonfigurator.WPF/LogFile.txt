@@ -1,0 +1,7 @@
+13:07:18,787 [1] INFO - ProductDisc information with shrink --> OD: 361,21, ID: 143,47, Height: 15,26
+13:08:36,454 [1] INFO - ProductDisc information with shrink --> OD: 361,21, ID: 143,47, Height: 15,26
+13:09:02,898 [1] INFO - ProductDisc search via SAP-Nr. started for product: SAP: 3060, Description: 14" Seal.disc 355x141x15.0 65Ana 14A
+13:09:02,923 [1] INFO - ProductDisc information with shrink --> OD: 361,21, ID: 143,47, Height: 15,26
+13:58:38,134 [1] ERROR - Error Type: System.Windows.Controls.ComboBoxItem: Error - Error Description: Test
+13:59:21,555 [1] ERROR - Error Type: System.Windows.Controls.ComboBoxItem: Wunsch - Error Description: Albert
+14:00:58,297 [1] ERROR - Type: Error --- Description: Testmeldung

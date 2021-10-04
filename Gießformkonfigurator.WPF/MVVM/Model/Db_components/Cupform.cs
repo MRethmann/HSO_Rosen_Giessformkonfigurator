@@ -13,14 +13,6 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_components
     [Table("Cupform")]
     public partial class Cupform : Component
     {
-        [Key]
-        [Column("ID")]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int ID { get; set; }
-
-        [StringLength(255)]
-        public string Description { get; set; }
-
         [StringLength(20)]
         public string CupType { get; set; }
 

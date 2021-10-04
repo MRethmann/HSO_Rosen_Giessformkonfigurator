@@ -14,15 +14,6 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_components
     [Table("Baseplate")]
     public partial class Baseplate : Component
     {
-
-        [Key]
-        [Column("ID")]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int ID { get; set; }
-
-        [StringLength(255)]
-        public string Description { get; set; }
-
         public decimal OuterDiameter { get; set; }
 
         public decimal Height { get; set; }

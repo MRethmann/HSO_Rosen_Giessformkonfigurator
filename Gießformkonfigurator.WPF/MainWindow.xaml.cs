@@ -14,6 +14,7 @@ namespace Gießformkonfigurator.WPF
     {
         private Window _startWindow;
         private Window _loginWindow;
+        private Window _reportIssueWindow;
 
         public MainWindow()
         {
@@ -32,6 +33,12 @@ namespace Gießformkonfigurator.WPF
             set { _loginWindow = value; }
         }
 
+        public Window reportIssueWindow
+        {
+            get { return _reportIssueWindow; }
+            set { _reportIssueWindow = value; }
+        }
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             if (startWindow != null)
@@ -42,6 +49,12 @@ namespace Gießformkonfigurator.WPF
         {
             loginWindow = new loginWindow(this);
             loginWindow.Show();
+        }
+
+        private void Open_ReportIssueView(object sender, RoutedEventArgs e)
+        {
+            reportIssueWindow = new ReportIssueWindow(this);
+            reportIssueWindow.Show();
         }
 
         private void Logout_Click(object sender, RoutedEventArgs e)
