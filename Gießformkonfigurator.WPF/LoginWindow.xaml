@@ -16,7 +16,6 @@
         </Grid.RowDefinitions>
 
         <StackPanel VerticalAlignment="Center">
-            <Image Source="Images/house.png" Width="80"/>
             <TextBlock Text="Als Admin anmelden"
                         FontWeight="Light"
                         FontSize="22"
@@ -46,17 +45,6 @@
                              Margin="5"
                              Width="235"
                              />
-
-                <TextBlock x:Name="testAusgabe"
-                           FontFamily="Helvetica"
-                           FontWeight="Light"
-                           Text="Test ausgabe"
-                           FontSize="20"
-                           HorizontalAlignment="Center"
-                           Foreground="Black"
-                           Margin="5"
-                           Width="235"
-                           />
 
             </StackPanel>
 
