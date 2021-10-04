@@ -296,7 +296,7 @@
                 <Grid.Resources>
                     <DataTemplate x:Key="SingleMoldDiscTemplate">
                         <Border BorderBrush="DarkGray" BorderThickness="1.5, 0, 1.5, 1.5">
-                        <Grid Background="White">
+                        <Grid Background="WhiteSmoke">
 
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
@@ -369,7 +369,7 @@
 
                     <DataTemplate x:Key="SingleMoldCupTemplate">
                         <Border BorderBrush="DarkGray" BorderThickness="1.5, 0, 1.5, 1.5">
-                            <Grid Background="White">
+                            <Grid Background="WhiteSmoke">
 
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
@@ -490,7 +490,7 @@
 
                     <DataTemplate x:Key="MultiMoldDiscTemplate">
                         <Border BorderBrush="DarkGray" BorderThickness="1.5, 0, 1.5, 1.5">
-                            <Grid Background="White">
+                            <Grid Background="WhiteSmoke">
                                 <Grid Grid.Column="0">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
