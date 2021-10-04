@@ -76,29 +76,29 @@
             <TextBox.Text>
                 <Binding Path="Cupform.ID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
-
+                        <validationRules:MandatoryFieldValidationRule/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
         </TextBox>
 
-        <TextBlock Text="Bezeichnung_RoCon" Grid.Row="1" Grid.Column="0"/>
+        <TextBlock Text="Bezeichnung" Grid.Row="1" Grid.Column="0"/>
         <TextBox x:Name="Description_TextBox" Grid.Row="1" Grid.Column="1">
             <TextBox.Text>
             <Binding Path="Cupform.Description" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                 <Binding.ValidationRules>
-
-                </Binding.ValidationRules>
+                        <validationRules:MandatoryFieldValidationRule/>
+                    </Binding.ValidationRules>
             </Binding>
             </TextBox.Text>
         </TextBox>
 
         <TextBlock Text="Cup-Typ" Grid.Row="2" Grid.Column="0"/>
-        <TextBox x:Name="cup_typ_TextBox" Grid.Row="2" Grid.Column="1">
+        <TextBox x:Name="CupType_TextBox" Grid.Row="2" Grid.Column="1">
             <TextBox.Text>
                 <Binding Path="Cupform.cup_typ" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
-
+                        <validationRules:MandatoryFieldValidationRule/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
@@ -107,9 +107,9 @@
         <TextBlock Text="Innendurchmesser" Grid.Row="3" Grid.Column="0"/>
         <TextBox x:Name="InnerDiameter_TextBox" Grid.Row="3" Grid.Column="1">
             <TextBox.Text>
-                <Binding Path="Cupform.InnerDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                <Binding Path="Cupform.InnerDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
                     <Binding.ValidationRules>
-
+                        <validationRules:InputValueRangeValidationRule/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
@@ -127,11 +127,11 @@
         </TextBox>
 
         <TextBlock Text="Lochkreis" Grid.Row="5" Grid.Column="0"/>
-        <TextBox x:Name="holecircle_TextBox" Grid.Row="5" Grid.Column="1">
+        <TextBox x:Name="HoleCircle_TextBox" Grid.Row="5" Grid.Column="1">
             <TextBox.Text>
                 <Binding Path="Cupform.holecircle" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
-
+                        
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
@@ -163,22 +163,22 @@
                   Foreground="Black" FontSize="15"/>
 
         <TextBlock Text="Konus Innen Max" Grid.Row="3" Grid.Column="3" Visibility="{Binding ElementName=HasKonus_CheckBox, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
-        <TextBox x:Name="konusInsideMax_TextBox" Grid.Row="3" Grid.Column="4" Visibility="{Binding ElementName=HasKonus_CheckBox, Path=IsChecked, Converter={StaticResource BoolToVis}}"> 
+        <TextBox x:Name="KonusInsideMax_TextBox" Grid.Row="3" Grid.Column="4" Visibility="{Binding ElementName=HasKonus_CheckBox, Path=IsChecked, Converter={StaticResource BoolToVis}}"> 
             <TextBox.Text>
-                <Binding Path="Cupform.KonusInsideMax" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                <Binding Path="Cupform.KonusInsideMax" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
                     <Binding.ValidationRules>
-
+                        <validationRules:InputValueRangeValidationRule/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
         </TextBox>
 
         <TextBlock Text="Konus Innen Min" Grid.Row="4" Grid.Column="3" Visibility="{Binding ElementName=HasKonus_CheckBox, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
-        <TextBox x:Name="konusinsidemin_TextBox" Grid.Row="4" Grid.Column="4" Visibility="{Binding ElementName=HasKonus_CheckBox, Path=IsChecked, Converter={StaticResource BoolToVis}}">
+        <TextBox x:Name="KonusInsideMin_TextBox" Grid.Row="4" Grid.Column="4" Visibility="{Binding ElementName=HasKonus_CheckBox, Path=IsChecked, Converter={StaticResource BoolToVis}}">
             <TextBox.Text>
-                <Binding Path="Cupform.KonusInsidemin" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                <Binding Path="Cupform.KonusInsidemin" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
                     <Binding.ValidationRules>
-
+                        <validationRules:InputValueRangeValidationRule/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
@@ -186,11 +186,11 @@
         </TextBox>
 
         <TextBlock Text="Konus Innen Winkel" Grid.Row="5" Grid.Column="3" Visibility="{Binding ElementName=HasKonus_CheckBox, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
-        <TextBox x:Name="KonusInsideangel_TextBox" Grid.Row="5" Grid.Column="4" Visibility="{Binding ElementName=HasKonus_CheckBox, Path=IsChecked, Converter={StaticResource BoolToVis}}">
+        <TextBox x:Name="KonusInsideAngel_TextBox" Grid.Row="5" Grid.Column="4" Visibility="{Binding ElementName=HasKonus_CheckBox, Path=IsChecked, Converter={StaticResource BoolToVis}}">
             <TextBox.Text>
-                <Binding Path="Cupform.KonusInsideAngel" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                <Binding Path="Cupform.KonusInsideAngel" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
                     <Binding.ValidationRules>
-
+                        <validationRules:InputValueRangeValidationRule/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
@@ -211,7 +211,15 @@
                     <Style.Triggers>
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=ID_TextBox}" Value="False"/>
                                 <Condition Binding="{Binding Path=(Validation.HasError), ElementName=Description_TextBox}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=CupType_TextBox}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=InnerDiameter_TextBox}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=ToleranceInnerDiameter_TextBox}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=HoleCircle_TextBox}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=KonusInsideMax_TextBox}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=KonusInsideMin_TextBox}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=KonusInsideAngel_TextBox}" Value="False"/> 
                             </MultiDataTrigger.Conditions>
                             <Setter Property="IsEnabled" Value="True"/>
                         </MultiDataTrigger>

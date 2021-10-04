@@ -10,6 +10,7 @@
     <Grid HorizontalAlignment="Center">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="100"/>
             <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -23,7 +24,7 @@
         </Grid.RowDefinitions>
 
         <TextBlock Text="Faktoren der Kombinationsbewertungen"
-                   HorizontalAlignment="Left" VerticalAlignment="Center" Grid.ColumnSpan="2"
+                   HorizontalAlignment="Left" VerticalAlignment="Center" Grid.ColumnSpan="3"
                    Foreground="Black" FontSize="18"
                    Margin="0,0,10,0"
                    Grid.Row="0" Grid.Column="0"/>
@@ -34,7 +35,7 @@
                    Margin="0,0,10,0"
                    Grid.Row="1" Grid.Column="0"/>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="2">
             <TextBox Text="{Binding rankingFactorOuterDiameter}" Width="75" Height="40"
                  VerticalAlignment="Center"
                  VerticalContentAlignment="Center"
@@ -50,7 +51,7 @@
                    Margin="0,0,10,0"
                    Grid.Row="2" Grid.Column="0"/>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1">
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="2">
 
             <TextBox Text="{Binding rankingFactorInnerDiameter}" Width="75" Height="40"
                  VerticalAlignment="Center"
@@ -66,7 +67,7 @@
                    Margin="0,0,10,0"
                    Grid.Row="3" Grid.Column="0"/>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="1">
+        <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="2">
 
             <TextBox Text="{Binding rankingFactorBolts}" Width="75" Height="40"
                  VerticalAlignment="Center"
@@ -82,7 +83,7 @@
                 Foreground="Black"
                 Background="White"
                 FontSize="15"
-                Grid.Column="1" Grid.Row="4"
+                Grid.Column="2" Grid.Row="4"
                 Command="{Binding insertIntoDbCmd}"/>
 
     </Grid>

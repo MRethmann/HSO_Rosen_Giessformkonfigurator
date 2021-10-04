@@ -54,9 +54,9 @@
         <TextBlock Text="SAP-Nr." Grid.Row="0" Grid.Column="0"/>
         <TextBox x:Name="ID_TextBox" Grid.Row="0" Grid.Column="1">
             <TextBox.Text>
-                <Binding Path="productCup.ID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
+                <Binding Path="productCup.ID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
-
+                        <validationRules:MandatoryFieldValidationRule/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
@@ -65,9 +65,8 @@
         <TextBlock Text="Bezeichnung" Grid.Row="1" Grid.Column="0"/>
         <TextBox x:Name="Description_TextBox" Grid.Row="1" Grid.Column="1">
             <TextBox.Text>
-                <Binding Path="productCup.Description" Mode="TwoWay" UpdateSourceTrigger="LostFocus" ValidatesOnDataErrors="True" NotifyOnValidationError="True">
+                <Binding Path="productCup.Description" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
-                        <validationRules:InputValueRangeValidationRule/>
                         <validationRules:MandatoryFieldValidationRule/>
                     </Binding.ValidationRules>
                 </Binding>
@@ -75,11 +74,11 @@
         </TextBox>        
 
         <TextBlock Text="Grund-Cup" Grid.Row="2" Grid.Column="0"/>
-        <TextBox x:Name="grund_cup_Textbox" Grid.Row="2" Grid.Column="1">
+        <TextBox x:Name="BaseCup_Textbox" Grid.Row="2" Grid.Column="1">
             <TextBox.Text>
-                <Binding Path="productCup.BaseCup" Mode="TwoWay" ValidatesOnDataErrors="True">
+                <Binding Path="productCup.BaseCup" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
-
+                        <validationRules:MandatoryFieldValidationRule/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
@@ -88,43 +87,62 @@
         <TextBlock Text="Innendurchmesser" Grid.Row="3" Grid.Column="0"/>
         <TextBox x:Name="InnerDiameter_TextBox" Grid.Row="3" Grid.Column="1">
             <TextBox.Text>
-                <Binding Path="productCup.InnerDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
+                <Binding Path="productCup.InnerDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
-
+                        <validationRules:InputValueRangeValidationRule/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
         </TextBox>       
 
         <TextBlock Text="Faktor PU" Grid.Row="4" Grid.Column="0"/>
-        <TextBox x:Name="FaktorPU_Textbox" Grid.Row="4" Grid.Column="1">
+        <TextBox x:Name="FactorPU_Textbox" Grid.Row="4" Grid.Column="1">
             <TextBox.Text>
-                <Binding Path="productCup.FactorPU" Mode="TwoWay" ValidatesOnDataErrors="True">
+                <Binding Path="productCup.FactorPU" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
-
+                        <validationRules:InputValueRangeValidationRule/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
         </TextBox>            
 
         <TextBlock Text="BTC" Grid.Row="5" Grid.Column="0"/>
-        <TextBox x:Name="lochkreis_Textbox" Grid.Row="5" Grid.Column="1">
+        <TextBox x:Name="BTC_Textbox" Grid.Row="5" Grid.Column="1">
             <TextBox.Text>
-                <Binding Path="productCup.BTC" Mode="TwoWay" ValidatesOnDataErrors="True">
+                <Binding Path="productCup.BTC" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
-
+                        <validationRules:MandatoryFieldValidationRule/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
         </TextBox>
 
-        <Button x:Name="Hinzufuegen" Content="Hinzufügen"
-                Command="{Binding insertIntoDbCmd}"
-                HorizontalAlignment="Right" VerticalAlignment="Center"
-                Width="150" Height="50"
-                Foreground="Black"
-                Background="White"
-                FontSize="15"
-                Grid.Column="1" Grid.Row="6"/>
+        <Button x:Name="Hinzufuegen" Content="Hinzufügen" Command="{Binding insertIntoDbCmd}" Grid.Column="1" Grid.Row="6">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="HorizontalAlignment" Value="Right"/>
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="Width" Value="150"/>
+                    <Setter Property="Height" Value="50"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="Background" Value="White"/>
+                    <Setter Property="FontSize" Value="15"/>
+                    <Setter Property="IsEnabled" Value="False"/>
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=ID_TextBox}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=Description_TextBox}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=BaseCup_Textbox}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=InnerDiameter_TextBox}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=FactorPU_Textbox}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=BTC_Textbox}" Value="False"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="IsEnabled" Value="True"/>
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
     </Grid>
 </UserControl>

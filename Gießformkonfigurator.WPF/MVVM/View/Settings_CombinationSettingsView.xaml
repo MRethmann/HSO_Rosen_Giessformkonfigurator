@@ -11,6 +11,7 @@
     <Grid HorizontalAlignment="Center">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="100"/>
             <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -23,8 +24,8 @@
             <RowDefinition Height="65"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Benötigte Konusabweichung zwischen zwei kombinierbaren Komponenten:"
-                   HorizontalAlignment="Left" VerticalAlignment="Center" Grid.ColumnSpan="2"
+        <TextBlock Text="Konusabweichung zwischen zwei Komponenten:"
+                   HorizontalAlignment="Left" VerticalAlignment="Center" Grid.ColumnSpan="3"
                    Foreground="Black" FontSize="18"
                    Margin="0,0,10,0"
                    Grid.Row="0" Grid.Column="0"/>
@@ -35,7 +36,7 @@
                    Margin="0,0,10,0"
                    Grid.Row="1" Grid.Column="0"/>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="2">
 
             <TextBox Text="{Binding deviationKonusBaseplateGuideRing}" 
                  Width="75" Height="40"
@@ -56,7 +57,7 @@
                    Margin="0,0,10,0"
                    Grid.Row="2" Grid.Column="0"/>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1">
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="2">
 
             <TextBox Text="{Binding deviationKonusBaseplateInsertPlate}" 
                  Width="75" Height="40"
@@ -77,7 +78,7 @@
                    Margin="0,0,10,0"
                    Grid.Row="3" Grid.Column="0"/>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="1">
+        <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="2">
 
             <TextBox Text="{Binding deviationKonusBaseplateCore}" 
                  Width="75" Height="40"
@@ -98,7 +99,7 @@
                    Margin="0,0,10,0"
                    Grid.Row="4" Grid.Column="0"/>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="1">
+        <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="2">
 
             <TextBox Text="{Binding deviationKonusInsertPlateCore}"
                  Width="75" Height="40"
@@ -119,7 +120,7 @@
                 Foreground="Black"
                 Background="White"
                 FontSize="15"
-                Grid.Column="1" Grid.Row="5"
+                Grid.Column="2" Grid.Row="5"
                 Command="{Binding insertIntoDbCmd}"/>
     </Grid>
 </UserControl>

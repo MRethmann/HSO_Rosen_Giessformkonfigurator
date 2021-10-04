@@ -60,9 +60,9 @@
         <TextBlock Text="SAP-Nr." Grid.Row="0" Grid.Column="0"/>
         <TextBox x:Name="ID_TextBox" Grid.Row="0" Grid.Column="1">
             <TextBox.Text>
-                <Binding Path="productDisc.ID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
+                <Binding Path="productDisc.ID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
-
+                        <validationRules:MandatoryFieldValidationRule/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
@@ -71,9 +71,8 @@
         <TextBlock Text="Bezeichnung" Grid.Row="1" Grid.Column="0"/>
         <TextBox x:Name="Description_TextBox" Grid.Row="1" Grid.Column="1">
             <TextBox.Text>
-                <Binding Path="productDisc.Description" Mode="TwoWay" UpdateSourceTrigger="LostFocus" ValidatesOnDataErrors="True" NotifyOnValidationError="True">
+                <Binding Path="productDisc.Description" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
-                        <validationRules:InputValueRangeValidationRule/>
                         <validationRules:MandatoryFieldValidationRule/>
                     </Binding.ValidationRules>
                 </Binding>
@@ -83,9 +82,9 @@
         <TextBlock Text="Außendurchmeser" Grid.Row="2" Grid.Column="0"/>
         <TextBox x:Name="OuterDiameter_TextBox" Grid.Row="2" Grid.Column="1">
             <TextBox.Text>
-                <Binding Path="productDisc.OuterDiameter" Mode="TwoWay" ValidatesOnDataErrors="True">
+                <Binding Path="productDisc.OuterDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
-
+                        <validationRules:InputValueRangeValidationRule/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
@@ -94,9 +93,9 @@
         <TextBlock Text="Innendurchmesser" Grid.Row="3" Grid.Column="0"/>
         <TextBox x:Name="InnerDiameter_TextBox" Grid.Row="3" Grid.Column="1">
             <TextBox.Text>
-                <Binding Path="productDisc.InnerDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
+                <Binding Path="productDisc.InnerDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
-
+                        <validationRules:InputValueRangeValidationRule/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
@@ -105,42 +104,42 @@
         <TextBlock Text="Höhe" Grid.Row="4" Grid.Column="0"/>
         <TextBox x:Name="Height_TextBox" Grid.Row="4" Grid.Column="1">
             <TextBox.Text>
-                <Binding Path="productDisc.Height" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
+                <Binding Path="productDisc.Height" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
-
+                        <validationRules:InputValueRangeValidationRule/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
         </TextBox>        
 
         <TextBlock Text="Faktor PU" Grid.Row="5" Grid.Column="0"/>
-        <TextBox x:Name="FaktorPU_Textbox" Grid.Row="5" Grid.Column="1">
+        <TextBox x:Name="FactorPU_Textbox" Grid.Row="5" Grid.Column="1">
             <TextBox.Text>
-                <Binding Path="productDisc.FactorPU" Mode="TwoWay" ValidatesOnDataErrors="True">
+                <Binding Path="productDisc.FactorPU" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
-
+                        <validationRules:InputValueRangeValidationRule/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
         </TextBox>
 
         <TextBlock Text="BTC" Grid.Row="6" Grid.Column="0"/>
-        <TextBox x:Name="lochkreis_Textbox" Grid.Row="6" Grid.Column="1">
+        <TextBox x:Name="BTC_Textbox" Grid.Row="6" Grid.Column="1">
             <TextBox.Text>
-                <Binding Path="productDisc.BTC" Mode="TwoWay" ValidatesOnDataErrors="True">
+                <Binding Path="productDisc.BTC" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
-
+                        <validationRules:MandatoryFieldValidationRule/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
         </TextBox>        
 
         <TextBlock Text="Durchmesser Lochkreis" Grid.Row="0" Grid.Column="3"/>
-        <TextBox x:Name="A_HoleCircleDiameter_TextBox" Grid.Row="0" Grid.Column="4" >
+        <TextBox x:Name="HcDiameter_TextBox" Grid.Row="0" Grid.Column="4" >
             <TextBox.Text>
-                <Binding Path="productDisc.HcDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
+                <Binding Path="productDisc.HcDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
                     <Binding.ValidationRules>
-
+                        <validationRules:InputValueRangeValidationRule/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
@@ -148,37 +147,58 @@
         
 
         <TextBlock Text="Anzahl Bohrungen" Grid.Column="3" Grid.Row="1"/>
-        <TextBox x:Name="HoleCircleHoles_TextBox" Grid.Column="4" Grid.Row="1">
+        <TextBox x:Name="HcHoles_TextBox" Grid.Column="4" Grid.Row="1">
             <TextBox.Text>
-                <Binding Path="productDisc.HcHoles" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
+                <Binding Path="productDisc.HcHoles" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
                     <Binding.ValidationRules>
-
+                        <validationRules:InputValueRangeValidationRule/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
         </TextBox>
 
         <TextBlock Text="Lochdurchmesser" Grid.Column="3" Grid.Row="2"/>
-        <TextBox x:Name="lochdurchmesser_TextBox" Grid.Column="4" Grid.Row="2">
+        <TextBox x:Name="HcHoleDiameter_TextBox" Grid.Column="4" Grid.Row="2">
             <TextBox.Text>
-                <Binding Path="productDisc.HcHoleDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
+                <Binding Path="productDisc.HcHoleDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
                     <Binding.ValidationRules>
-
+                        <validationRules:InputValueRangeValidationRule/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
         </TextBox>
 
 
-        <Button x:Name="Hinzufuegen" Content="Hinzufügen"
-                HorizontalAlignment="Right" VerticalAlignment="Center"
-                Width="150" Height="50"
-                Foreground="Black"
-                Background="White"
-                FontSize="15"
-                Grid.Column="5" Grid.Row="9"
-                Command="{Binding insertIntoDbCmd}"/>
-        
-
+        <Button x:Name="Hinzufuegen" Content="Hinzufügen" Command="{Binding insertIntoDbCmd}" Grid.Column="4" Grid.Row="7">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="HorizontalAlignment" Value="Right"/>
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="Width" Value="150"/>
+                    <Setter Property="Height" Value="50"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="Background" Value="White"/>
+                    <Setter Property="FontSize" Value="15"/>
+                    <Setter Property="IsEnabled" Value="False"/>
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=ID_TextBox}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=Description_TextBox}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=OuterDiameter_TextBox}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=InnerDiameter_TextBox}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=Height_TextBox}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=FactorPU_Textbox}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=BTC_TextBox}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=HcDiameter_TextBox}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=HcHoles_TextBox}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=HcHoleDiameter_TextBox}" Value="False"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="IsEnabled" Value="True"/>
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
     </Grid>
 </UserControl>

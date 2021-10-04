@@ -78,7 +78,7 @@
 >            <TextBox.Text>
                 <Binding Path="Bolt.ID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
-
+                        <validationRules:MandatoryFieldValidationRule/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
@@ -87,9 +87,9 @@
         <TextBlock Text="Bezeichnung" Grid.Row="1" Grid.Column="0"/>
         <TextBox x:Name="Description_TextBox" Grid.Row="1" Grid.Column="1">
             <TextBox.Text>
-                <Binding Path="bolt.Description" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True" NotifyOnValidationError="True">
+                <Binding Path="bolt.Description" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
-
+                        <validationRules:MandatoryFieldValidationRule/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
@@ -98,9 +98,9 @@
         <TextBlock Text="Höhe" Grid.Row="2" Grid.Column="0"/>
         <TextBox x:Name="height_TextBox" Grid.Row="2" Grid.Column="1">
             <TextBox.Text>
-                <Binding Path="bolt.height" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True" NotifyOnValidationError="True">
+                <Binding Path="bolt.height" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
-
+                        <validationRules:InputValueRangeValidationRule/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
@@ -109,9 +109,9 @@
         <TextBlock Text="Außendurchmesser" Grid.Row="3" Grid.Column="0"/> 
         <TextBox x:Name="OuterDiameter_Textbox" Grid.Row="3" Grid.Column="1">
             <TextBox.Text>
-                <Binding Path="bolt.OuterDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True" NotifyOnValidationError="True">
+                <Binding Path="bolt.OuterDiameter" Mode="TwoWay" TargetNullValue="">
                     <Binding.ValidationRules>
-
+                        <validationRules:InputValueRangeValidationRule/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
@@ -120,20 +120,20 @@
         <TextBlock Text="Gießhöhe Max" Grid.Row="4" Grid.Column="0"/>
         <TextBox x:Name="FillHeight_max_TextBox" Grid.Row="4" Grid.Column="1">
             <TextBox.Text>
-                <Binding Path="bolt.FillHeightMax" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True" NotifyOnValidationError="True">
+                <Binding Path="bolt.FillHeightMax" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
-
+                        <validationRules:InputValueRangeValidationRule/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
         </TextBox>
 
         <TextBlock Text="Höhe Führung" Grid.Row="5" Grid.Column="0"/> 
-        <TextBox x:Name="guideheight_TextBox" Grid.Row="5" Grid.Column="1">
+        <TextBox x:Name="GuideHeight_TextBox" Grid.Row="5" Grid.Column="1">
             <TextBox.Text>
-                <Binding Path="bolt.GuideHeight" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True" NotifyOnValidationError="True">
+                <Binding Path="bolt.GuideHeight" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
                     <Binding.ValidationRules>
-
+                        <validationRules:InputValueRangeValidationRule/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
@@ -142,9 +142,9 @@
         <TextBlock Text="Außendurchmesser Führung" Grid.Row="6" Grid.Column="0"/> 
         <TextBox x:Name="GuideOuterDiameter_TextBox" Grid.Row="6" Grid.Column="1">
             <TextBox.Text>
-                <Binding Path="bolt.GuideOuterDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True" NotifyOnValidationError="True">
+                <Binding Path="bolt.GuideOuterDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
                     <Binding.ValidationRules>
-
+                        <validationRules:InputValueRangeValidationRule/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
@@ -153,10 +153,10 @@
         <RadioButton x:Name="guide_pin" Content="Führungsstift" GroupName="boltType" Grid.Column="3" Grid.RowSpan="2" IsChecked="{Binding bolt.HasGuideBolt}"/>
         <RadioButton x:Name="gewinde" GroupName="boltType" Content="Gewinde" Grid.Column="3" Grid.Row="1" IsChecked="{Binding bolt.HasThread}"/>
 
-        <TextBlock Text="Art des Gewindes" Grid.Column="4" Grid.Row="1" Visibility="{Binding ElementName=gewinde, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
-        <TextBox x:Name="gewinde_art_TextBox" Grid.Row="1" Grid.Column="5" Visibility="{Binding ElementName=gewinde, Path=IsChecked, Converter={StaticResource BoolToVis}}">
+        <TextBlock Text="Gewinde" Grid.Column="4" Grid.Row="1" Visibility="{Binding ElementName=gewinde, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
+        <TextBox x:Name="Thread_TextBox" Grid.Row="1" Grid.Column="5" Visibility="{Binding ElementName=gewinde, Path=IsChecked, Converter={StaticResource BoolToVis}}">
             <TextBox.Text>
-                <Binding Path="Binding bolt.Thread" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                <Binding Path="bolt.Thread" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
 
                     </Binding.ValidationRules>
@@ -179,7 +179,14 @@
                     <Style.Triggers>
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=ID_TextBox}" Value="False"/>
                                 <Condition Binding="{Binding Path=(Validation.HasError), ElementName=Description_TextBox}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=height_TextBox}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=OuterDiameter_Textbox}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=FillHeight_max_TextBox}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=GuideHeight_TextBox}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=GuideOuterDiameter_TextBox}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=Thread_TextBox}" Value="False"/>
                             </MultiDataTrigger.Conditions>
                             <Setter Property="IsEnabled" Value="True"/>
                         </MultiDataTrigger>
