@@ -506,9 +506,6 @@
     <Folder Include="Fonts\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\house.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\rosen.png" />
   </ItemGroup>
   <ItemGroup>
