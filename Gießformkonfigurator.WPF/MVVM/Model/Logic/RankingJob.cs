@@ -24,6 +24,8 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 
         public ApplicationSettings applicationSettings { get; set; }
 
+        public ToleranceSettings toleranceSettings { get; set; }
+
         public decimal? factorOuterDiameter { get; set; }
 
         public decimal? factorInnerDiameter { get; set; }
@@ -40,6 +42,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             this.factorInnerDiameter = applicationSettings.rankingFactorInnerDiameter;
             this.factorBoltDiameter = applicationSettings.rankingFactorBolts;
             this.rankingJobInput = new List<CompareObject>(compareJob.compareJobOutput);
+            toleranceSettings = new ToleranceSettings();
             this.addRatingInformation();
             this.orderOutputData();
             this.addRatingInformation();
@@ -61,8 +64,8 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             foreach (var compareObject in this.rankingJobInput)
             {
                 compareObject.finalRating = 0;
-                compareObject.finalRating = this.compare(45.00m - compareObject.differenceOuterDiameter * this.factorOuterDiameter, 0.00m);
-                compareObject.finalRating += this.compare(45.00m - compareObject.differenceInnerDiameter * this.factorInnerDiameter, 0.00m);
+                compareObject.finalRating = this.compare(45.00m - (compareObject.differenceOuterDiameter > toleranceSettings?.ring_OuterDiameter ? compareObject.differenceOuterDiameter : 0) * this.factorOuterDiameter, 0.00m);
+                compareObject.finalRating += this.compare(45.00m - (compareObject.differenceInnerDiameter > toleranceSettings?.core_OuterDiameter ? compareObject.differenceInnerDiameter : 0) * this.factorInnerDiameter, 0.00m);
 
                 if (compareObject.Mold is ModularMold)
                 {
@@ -74,13 +77,13 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                             if (compareObject.boltCirclesBaseplate[i] == true)
                             {
                                 var minDifference = compareObject.bolts.Min(p => p.Item2);
-                                compareObject.finalRating += this.compare(10.00m - minDifference * this.factorBoltDiameter, 0.00m);
+                                compareObject.finalRating += this.compare(10.00m - (minDifference > toleranceSettings?.bolt_Diameter ? minDifference : 0) * this.factorBoltDiameter, 0.00m);
                                 compareObject.differenceBoltDiameter = minDifference;
                             }
                             else if (compareObject.boltCirclesInsertPlate[i] == true)
                             {
                                 var minDifference = compareObject.bolts.Min(p => p.Item2);
-                                compareObject.finalRating += this.compare(10.00m - minDifference * this.factorBoltDiameter, 0.00m);
+                                compareObject.finalRating += this.compare(10.00m - (minDifference > toleranceSettings?.bolt_Diameter ? minDifference : 0) * this.factorBoltDiameter, 0.00m);
                                 compareObject.differenceBoltDiameter = minDifference;
                             }
                         }
@@ -246,13 +249,13 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                 compareObject.alternativeCores.Remove(compareObject.alternativeCores.Find(x => x.Item1.ID == ((ModularMold)compareObject?.Mold).core?.ID));
                 compareObject.alternativeGuideRings.Remove(compareObject.alternativeGuideRings.Find(x => x.Item1.ID == ((ModularMold)compareObject?.Mold).guideRing?.ID));
 
-                if (compareObject.differenceInnerDiameter > 0.01m)
+                if (compareObject.differenceInnerDiameter > toleranceSettings?.core_OuterDiameter)
                 {
                     string diffInnerDiameter = Math.Round((Decimal)compareObject.differenceInnerDiameter, 2).ToString();
                     compareObject.postProcessing.Add($"Innendurchmesser:  {diffInnerDiameter}");
                 }
 
-                if (compareObject.differenceOuterDiameter > 0.01m)
+                if (compareObject.differenceOuterDiameter > toleranceSettings?.ring_InnerDiameter)
                 {
                     string diffOuterDiameter = Math.Round((Decimal)compareObject.differenceOuterDiameter, 2).ToString();
                     compareObject.postProcessing.Add($"Außendurchmesser: {diffOuterDiameter}");

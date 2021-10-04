@@ -5,6 +5,7 @@
 //-----------------------------------------------------------------------
 namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 {
+    using Gießformkonfigurator.WPF.Core;
     using Gießformkonfigurator.WPF.MVVM.Model.Db_components;
     using Gießformkonfigurator.WPF.MVVM.Model.Db_molds;
     using Gießformkonfigurator.WPF.MVVM.Model.Db_products;
@@ -21,6 +22,8 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
         public List<SingleMoldCup> singleMoldCups { get; set; }
         public List<Bolt> bolts { get; set; }
         public List<CompareObject> compareJobOutput { get; set; } = new List<CompareObject>();
+
+        public ToleranceSettings toleranceSettings { get; set; }
 
         public CompareJob(Product product, CombinationJob combinationJob)
         {
@@ -52,6 +55,8 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             {
                 this.CompareDiscProduct();
             }
+
+            toleranceSettings = new ToleranceSettings();
         }
 
         public void CompareDiscProduct()
@@ -70,19 +75,21 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                     if (modularMold.ListCoreRings.Count > 0)
                     {
                         compareObject.differenceInnerDiameter = modularMold.ListCoreRings.Min(p => p.Item3);
+                        compareObject.differenceInnerDiameter = compareObject.differenceInnerDiameter > 0 ? compareObject.differenceInnerDiameter : 0;
                     }
                     else
                     {
-                        compareObject.differenceInnerDiameter = productDisc.InnerDiameter - modularMold.core.OuterDiameter;
+                        compareObject.differenceInnerDiameter = (productDisc.InnerDiameter - modularMold.core.OuterDiameter) > 0 ? productDisc.InnerDiameter - modularMold.core.OuterDiameter : 0;
                     }
 
                     if (modularMold.ListOuterRings.Count > 0)
                     {
                         compareObject.differenceOuterDiameter = modularMold.ListOuterRings.Min(p => p.Item3);
+                        compareObject.differenceOuterDiameter = compareObject.differenceOuterDiameter > 0 ? compareObject.differenceOuterDiameter : 0;
                     }
                     else
                     {
-                        compareObject.differenceOuterDiameter = modularMold.guideRing.InnerDiameter - productDisc.OuterDiameter;
+                        compareObject.differenceOuterDiameter = (modularMold.guideRing.InnerDiameter - productDisc.OuterDiameter) > 0 ? modularMold.guideRing.InnerDiameter - productDisc.OuterDiameter : 0;
                     }
 
                     compareObjectsTemp01.Add(compareObject);
@@ -98,8 +105,8 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                         && singleMoldDisc.coreSingleMold?.OuterDiameter <= productDisc.InnerDiameter)
                     {
                         var compareObject = new CompareObject((ProductDisc)this.productDisc, (SingleMoldDisc)singleMoldDisc);
-                        compareObject.differenceInnerDiameter = productDisc.InnerDiameter - singleMoldDisc.coreSingleMold.OuterDiameter;
-                        compareObject.differenceOuterDiameter = singleMoldDisc.OuterDiameter - productDisc.OuterDiameter;
+                        compareObject.differenceInnerDiameter = (productDisc.InnerDiameter - singleMoldDisc.coreSingleMold.OuterDiameter) > 0 ? productDisc.InnerDiameter - singleMoldDisc.coreSingleMold.OuterDiameter : 0;
+                        compareObject.differenceOuterDiameter = (singleMoldDisc.OuterDiameter - productDisc.OuterDiameter) > 0 ? singleMoldDisc.OuterDiameter - productDisc.OuterDiameter : 0;
                         compareObject.differenceBoltDiameter = (productDisc.HcHoleDiameter - singleMoldDisc.BoltDiameter) > 0 ? (productDisc.HcHoleDiameter - singleMoldDisc.BoltDiameter) : 0;
                         compareJobOutput.Add(compareObject);
                     }
@@ -109,8 +116,8 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                     if (compareRuleSet.Compare(this.productDisc, singleMoldDisc))
                     {
                         var compareObject = new CompareObject((ProductDisc)this.productDisc, (SingleMoldDisc)singleMoldDisc);
-                        compareObject.differenceInnerDiameter = productDisc.InnerDiameter - singleMoldDisc.InnerDiameter;
-                        compareObject.differenceOuterDiameter = singleMoldDisc.OuterDiameter - productDisc.OuterDiameter;
+                        compareObject.differenceInnerDiameter = (productDisc.InnerDiameter - singleMoldDisc.InnerDiameter) > 0 ? productDisc.InnerDiameter - singleMoldDisc.InnerDiameter : 0;
+                        compareObject.differenceOuterDiameter = (singleMoldDisc.OuterDiameter - productDisc.OuterDiameter) > 0 ? singleMoldDisc.OuterDiameter - productDisc.OuterDiameter : 0;
                         compareObject.differenceBoltDiameter = (productDisc.HcHoleDiameter - singleMoldDisc.BoltDiameter) > 0 ? (productDisc.HcHoleDiameter - singleMoldDisc.BoltDiameter) : 0;
                         compareJobOutput.Add(compareObject);
                     }
@@ -123,18 +130,21 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                 // Grundplatten
                 if (this.productDisc.HcDiameter > 0)
                 {
-                    if (this.productDisc.HcDiameter == ((ModularMold)compareObject.Mold).baseplate.Hc1Diameter
-                        && this.productDisc.HcHoles == ((ModularMold)compareObject.Mold).baseplate.Hc1Holes)
+                    if (this.productDisc.HcDiameter <= ((ModularMold)compareObject.Mold).baseplate.Hc1Diameter + toleranceSettings?.hc_Diameter
+                            && this.productDisc.HcDiameter >= ((ModularMold)compareObject.Mold).baseplate.Hc1Diameter - toleranceSettings?.hc_Diameter
+                            && this.productDisc.HcHoles == ((ModularMold)compareObject.Mold).baseplate.Hc1Holes)
                     {
                         compareObject.boltCirclesBaseplate[1] = true;
                     }
-                    else if (this.productDisc.HcDiameter == ((ModularMold)compareObject.Mold).baseplate.Hc2Diameter
-                        && this.productDisc.HcHoles == ((ModularMold)compareObject.Mold).baseplate.Hc2Holes)
+                    else if (this.productDisc.HcDiameter <= ((ModularMold)compareObject.Mold).baseplate.Hc2Diameter + toleranceSettings?.hc_Diameter
+                            && this.productDisc.HcDiameter >= ((ModularMold)compareObject.Mold).baseplate.Hc1Diameter - toleranceSettings?.hc_Diameter
+                            && this.productDisc.HcHoles == ((ModularMold)compareObject.Mold).baseplate.Hc2Holes)
                     {
                         compareObject.boltCirclesBaseplate[2] = true;
                     }
-                    else if (this.productDisc.HcDiameter == ((ModularMold)compareObject.Mold).baseplate.Hc3Diameter
-                        && this.productDisc.HcHoles == ((ModularMold)compareObject.Mold).baseplate.Hc3Holes)
+                    else if (this.productDisc.HcDiameter <= ((ModularMold)compareObject.Mold).baseplate.Hc3Diameter + toleranceSettings?.hc_Diameter
+                            && this.productDisc.HcDiameter >= ((ModularMold)compareObject.Mold).baseplate.Hc1Diameter - toleranceSettings?.hc_Diameter
+                            && this.productDisc.HcHoles == ((ModularMold)compareObject.Mold).baseplate.Hc3Holes)
                     {
                         compareObject.boltCirclesBaseplate[3] = true;
                     }
@@ -144,18 +154,21 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                 // Einlegeplatten
                 if (this.productDisc.HcDiameter > 0)
                 {
-                    if (this.productDisc.HcDiameter == ((ModularMold)compareObject.Mold).insertPlate?.Hc1Diameter
-                        && this.productDisc.HcHoles == ((ModularMold)compareObject.Mold).insertPlate?.Hc1Holes)
+                    if (this.productDisc.HcDiameter <= ((ModularMold)compareObject.Mold).insertPlate?.Hc1Diameter + toleranceSettings?.hc_Diameter
+                            && this.productDisc.HcDiameter >= ((ModularMold)compareObject.Mold).insertPlate?.Hc1Diameter - toleranceSettings?.hc_Diameter
+                            && this.productDisc.HcHoles == ((ModularMold)compareObject.Mold).insertPlate?.Hc1Holes)
                     {
                         compareObject.boltCirclesInsertPlate[1] = true;
                     }
-                    else if (this.productDisc.HcDiameter == ((ModularMold)compareObject.Mold).insertPlate?.Hc2Diameter
-                        && this.productDisc.HcHoles == ((ModularMold)compareObject.Mold).insertPlate?.Hc2Holes)
+                    else if (this.productDisc.HcDiameter <= ((ModularMold)compareObject.Mold).insertPlate?.Hc2Diameter + toleranceSettings?.hc_Diameter
+                            && this.productDisc.HcDiameter >= ((ModularMold)compareObject.Mold).insertPlate?.Hc2Diameter - toleranceSettings?.hc_Diameter
+                            && this.productDisc.HcHoles == ((ModularMold)compareObject.Mold).insertPlate?.Hc2Holes)
                     {
                         compareObject.boltCirclesInsertPlate[2] = true;
                     }
-                    else if (this.productDisc.HcDiameter == ((ModularMold)compareObject.Mold).insertPlate?.Hc3Diameter
-                        && this.productDisc.HcHoles == ((ModularMold)compareObject.Mold).insertPlate?.Hc3Holes)
+                    else if (this.productDisc.HcDiameter <= ((ModularMold)compareObject.Mold).insertPlate?.Hc3Diameter + toleranceSettings?.hc_Diameter
+                            && this.productDisc.HcDiameter >= ((ModularMold)compareObject.Mold).insertPlate?.Hc3Diameter - toleranceSettings?.hc_Diameter
+                            && this.productDisc.HcHoles == ((ModularMold)compareObject.Mold).insertPlate?.Hc3Holes)
                     {
                         compareObject.boltCirclesInsertPlate[3] = true;
                     }
@@ -173,8 +186,8 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                         var propGewinde = "Hc" + i + "Thread";
                         if (compareObject.boltCirclesBaseplate[i] == true)
                         {
-                            if (bolt.OuterDiameter <= this.productDisc.HcHoleDiameter
-                                && bolt.OuterDiameter >= this.productDisc.HcHoleDiameter - 1
+                            if (bolt.OuterDiameter <= this.productDisc.HcHoleDiameter + toleranceSettings.bolt_Diameter
+                                && bolt.OuterDiameter >= this.productDisc.HcHoleDiameter - toleranceSettings.bolt_Diameter
                                 && bolt.Thread == ((ModularMold)compareObject.Mold).baseplate.GetType().GetProperty(propGewinde).GetValue(((ModularMold)compareObject.Mold).baseplate).ToString())
                             {
                                 compareObject.bolts.Add(new System.Tuple<Bolt, decimal?>(bolt, this.productDisc.HcHoleDiameter - bolt.OuterDiameter));
@@ -188,8 +201,8 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                         var propGewinde = "Hc" + i + "Thread";
                         if (compareObject.boltCirclesInsertPlate[i] == true)
                         {
-                            if (bolt.OuterDiameter <= this.productDisc.HcHoleDiameter
-                                && bolt.OuterDiameter >= this.productDisc.HcHoleDiameter - 1
+                            if (bolt.OuterDiameter <= this.productDisc.HcHoleDiameter + toleranceSettings.bolt_Diameter
+                                && bolt.OuterDiameter >= this.productDisc.HcHoleDiameter - toleranceSettings.bolt_Diameter
                                 && bolt.Thread == ((ModularMold)compareObject.Mold).insertPlate.GetType().GetProperty(propGewinde).GetValue(((ModularMold)compareObject.Mold).insertPlate).ToString())
                             {
                                 compareObject.bolts.Add(new System.Tuple<Bolt, decimal?>(bolt, this.productDisc.HcHoleDiameter - bolt.OuterDiameter));

@@ -585,11 +585,11 @@
                                                   VerticalAlignment="Stretch"
                                                   SelectionUnit="FullRow"
                                                   IsHitTestVisible="False"
-                                                  Background="White">
+                                                  Background="WhiteSmoke">
 
                                             <DataGrid.ColumnHeaderStyle>
                                                 <Style TargetType="DataGridColumnHeader">
-                                                    <Setter Property="Background" Value="White"/>
+                                                    <Setter Property="Background" Value="WhiteSmoke"/>
                                                     <Setter Property="Foreground" Value="Black"/>
                                                     <Setter Property="Margin" Value="0, 0, 0, 10"/>
                                                 </Style>

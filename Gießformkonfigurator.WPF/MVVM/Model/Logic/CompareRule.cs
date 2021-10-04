@@ -67,10 +67,10 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             // TODO: Innenring als Attribut hinzufügen
             if (product.HcDiameter != 0.0m || String.IsNullOrEmpty(product.HcDiameter.ToString()))
             {
-                return product.OuterDiameter <= modularMold.guideRing.InnerDiameter
-                    && product.InnerDiameter > modularMold.core.OuterDiameter
-                    && product.Height <= modularMold.guideRing.Height
-                    && product.Height <= modularMold.core.Height;
+                return product.OuterDiameter <= modularMold.guideRing.InnerDiameter + 2 //Tolerance ring innerDiameter MIN
+                    && product.InnerDiameter >= modularMold.core.OuterDiameter - 2 //Tolerance core outerDiameter MIN 
+                    && product.Height <= modularMold.guideRing.FillHeightMax
+                    && product.Height <= modularMold.core.FillHeightMax;
             }
             else
             {
@@ -89,11 +89,11 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             var productDisc = compareElements.OfType<ProductDisc>().Single();
             var singleMoldDisc = compareElements.OfType<SingleMoldDisc>().Single();
 
-            return productDisc.OuterDiameter + 0.5m >= singleMoldDisc.OuterDiameter && productDisc.OuterDiameter - 2m <= singleMoldDisc.OuterDiameter
-                && productDisc.InnerDiameter + 2m >= singleMoldDisc.InnerDiameter && productDisc.InnerDiameter - 0.1m <= singleMoldDisc.InnerDiameter
-                && productDisc.HcDiameter == null || (productDisc.HcDiameter <= singleMoldDisc.HcDiameter + 0.5m && productDisc.HcDiameter >= singleMoldDisc.HcDiameter - 0.5m)
-                && productDisc.HcHoleDiameter == null || productDisc.HcHoleDiameter >= singleMoldDisc.BoltDiameter
-                && productDisc.HcHoles == null ||  productDisc.HcHoles == singleMoldDisc.HcHoles;
+            return productDisc.OuterDiameter <= singleMoldDisc.OuterDiameter + 2 //Tolerance singleMoldDisc OuterDiameter MIN
+                && productDisc.InnerDiameter >= singleMoldDisc.InnerDiameter - 2 //Tolerance singleMoldDisc InnerDiameter MIN
+                && (productDisc.HcDiameter == null || (productDisc.HcDiameter <= singleMoldDisc.HcDiameter + 0.5m && productDisc.HcDiameter >= singleMoldDisc.HcDiameter - 0.5m)) //Tolernace HC Diameter
+                && (productDisc.HcHoleDiameter == null || (productDisc.HcHoleDiameter >= singleMoldDisc.BoltDiameter - 0.5m && productDisc.HcHoleDiameter <= singleMoldDisc.BoltDiameter + 0.5m)) // Tolerance Bolt Diameter
+                && (productDisc.HcHoles == null || productDisc.HcHoles == singleMoldDisc.HcHoles);
         }
     }
 }

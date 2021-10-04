@@ -144,7 +144,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                         this.productDisc.HcHoleDiameter = this.HcHoleDiameter != null ? this.HcHoleDiameter : null;
                         this.productDisc.HcDiameter = this.HcDiameter != null ? this.HcDiameter : null;
                         this.productDisc.BTC = this.BTC != null ? this.BTC : null;
-                        this.productDisc.FactorPU = this.FactorPU != null ? this.FactorPU : null;
+                        this.productDisc.FactorPU = this.FactorPU;
                         this.product = productDisc;
                         log.Info($"ProductDisc search started via manual entry for product: {productDisc.OuterDiameter}, {productDisc.InnerDiameter}, {productDisc.Height}, {productDisc.BTC}, {productDisc.FactorPU} - (OD, ID, T, BTC, Factor)");
                     }
@@ -163,6 +163,11 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                         this.productCup = new ProductCup();
                     }*/
                 }
+            }
+
+            if (product.FactorPU == null)
+            {
+                product.FactorPU = this.FactorPU;
             }
 
             // Create new ProgramLogic --> start algorithm to search for fitting molds

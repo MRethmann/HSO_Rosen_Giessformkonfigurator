@@ -5,6 +5,7 @@
 //-----------------------------------------------------------------------
 namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 {
+    using Gießformkonfigurator.WPF.Core;
     using Gießformkonfigurator.WPF.MVVM.Model.Db_components;
     using Gießformkonfigurator.WPF.MVVM.Model.Db_molds;
     using Gießformkonfigurator.WPF.MVVM.Model.Db_products;
@@ -27,6 +28,8 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
         public ProductDisc productDisc { get; set; }
         public ProductCup productCup { get; set; }
 
+        public ToleranceSettings toleranceSettings { get; set; }
+
         private static readonly ILog log = LogManager.GetLogger(typeof(FilterJob));
 
         public FilterJob(Product product)
@@ -41,6 +44,8 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                 productCup = new ProductCup();
                 productCup = (ProductCup) product;
             }
+
+            toleranceSettings = new ToleranceSettings();
 
             this.AdjustProductInformation();
             this.GetFilteredDatabase();
@@ -71,11 +76,16 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                     productDisc.HcHoles = boltCircleInformation?.HoleQty;
                 }
 
+                if (productDisc.FactorPU == null)
+                {
+
+                }
+
                 productDisc.OuterDiameter = Math.Round(productDisc.OuterDiameter * productDisc.FactorPU.GetValueOrDefault(1m), 2);
                 productDisc.InnerDiameter = Math.Round(productDisc.InnerDiameter * productDisc.FactorPU.GetValueOrDefault(1m), 2);
                 productDisc.Height = Math.Round(productDisc.Height * productDisc.FactorPU.GetValueOrDefault(1m), 2);
-                //productDisc.HcDiameter = Math.Round((Decimal)productDisc?.HcDiameter * productDisc.FactorPU.GetValueOrDefault(1m), 2);
-                //productDisc.HcHoleDiameter = Math.Round((Decimal)productDisc?.HcHoleDiameter * productDisc.FactorPU.GetValueOrDefault(1m), 2);
+                productDisc.HcDiameter = productDisc?.HcDiameter != null ? Math.Round((Decimal)productDisc?.HcDiameter * productDisc.FactorPU.GetValueOrDefault(1m), 2) : 0.0m;
+                productDisc.HcHoleDiameter = productDisc?.HcHoleDiameter != null ? Math.Round((Decimal)productDisc?.HcHoleDiameter * productDisc.FactorPU.GetValueOrDefault(1m), 2) : 0.0m;
 
                 log.Info("ProductDisc information with shrink --> OD: " + productDisc.OuterDiameter + ", ID: " + productDisc.InnerDiameter + ", Height: " + productDisc.Height);
 
@@ -110,7 +120,8 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 
                     foreach (var ring in db.Rings)
                     {
-                        if (this.productDisc?.InnerDiameter > ring.OuterDiameter || this.productDisc?.OuterDiameter < ring.InnerDiameter)
+                        if (this.productDisc?.InnerDiameter <= ring.OuterDiameter + toleranceSettings.ring_OuterDiameter // Tolerance Rings MIN --> smaller Product
+                            || this.productDisc?.OuterDiameter >= ring.InnerDiameter - toleranceSettings.ring_InnerDiameter) //Tolerance Ring Rings MIN --> smaller Product
                         {
                             this.listRings.Add(ring);
                             log.Info($"Added ring: {ring}");
@@ -130,7 +141,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 
                     foreach (var core in db.Cores)
                     {
-                        if (this.productDisc?.InnerDiameter > core.OuterDiameter)
+                        if (this.productDisc?.InnerDiameter >= core.OuterDiameter - toleranceSettings.core_OuterDiameter) // Tolerance Core OuterDiameter MIN
                         {
                             this.listCores.Add(core);
                             log.Info($"Added core: {core}");
@@ -141,7 +152,6 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 
                     foreach (var bolt in db.Bolts)
                     {
-                        // TODO: Abgleich hinzufügen. Produkt besitzt aktuell nur das Attribut Lochkreis, welches keine Vergleichseigenschaft besitzt. Durchmesser der Löcher benötigt.
                         if (bolt.OuterDiameter <= this.productDisc?.HcHoleDiameter)
                         {
                             this.listBolts.Add(bolt);
@@ -153,7 +163,6 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 
                     foreach (var cupform in db.Cupforms)
                     {
-                        // TODO: Abgleich hinzufügen. Produkt besitzt aktuell nur das Attribut Lochkreis, welches keine Vergleichseigenschaft besitzt. Durchmesser der Löcher benötigt.
                         if (cupform.InnerDiameter <= this.productCup?.InnerDiameter
                             && cupform?.CupType == this.productCup?.BaseCup)
                         {
@@ -164,25 +173,10 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                             log.Info($"Removed cupform: {cupform} by {cupform?.InnerDiameter - this.productCup?.InnerDiameter} / {cupform?.CupType} != {this.productCup?.BaseCup}");
                     }
 
-                    // Check if it makes sense - old logic
-                    /*if (singleMoldDisc.InnerDiameter + 0.1m >= productDisc?.InnerDiameter && singleMoldDisc.InnerDiameter - 2m <= productDisc?.InnerDiameter
-                            && singleMoldDisc.OuterDiameter + 0.1m >= productDisc?.OuterDiameter && singleMoldDisc.OuterDiameter - 0.1m <= productDisc?.OuterDiameter)
-                        {
-                        this.listSingleMoldDiscs.Add(singleMoldDisc);
-                    }*/
-
-                    // product.OuterDiameter <= singleMoldDisc.OuterDiameter + {Tolerance singleMoldOuterDiameter Max} --> larger product
-                    // product.OuterDiameter >= singleMoldDisc.OuterDiameter - {Tolerance singleMoldOuterDiameter Min} --> smaller product --> definition should be more precise
-
-                    // product.InnerDiameter <= singleMoldDisc.InnerDiameter + {Tolerance singleMoldInnerDiameter Min} --> smaller product --> definition should be more precise
-                    // product.InnerDiameter >= singleMoldDisc.InnerDiameter - {Tolerance singleMoldInnerDiameter Max} --> larger product
-
                     foreach (var singleMoldDisc in db.SingleMoldDiscs)
                     {
-                        if (productDisc.OuterDiameter <= singleMoldDisc.OuterDiameter + 3
-                            && productDisc.OuterDiameter >= singleMoldDisc.OuterDiameter - 1
-                            && productDisc.InnerDiameter <= singleMoldDisc.InnerDiameter + 3
-                            && productDisc.InnerDiameter >= singleMoldDisc.InnerDiameter - 1)
+                        if (productDisc.OuterDiameter >= singleMoldDisc.OuterDiameter - toleranceSettings.singleMold_OuterDiameter // Tolerance singleMold OuterDiameter MIN
+                            && productDisc.InnerDiameter <= singleMoldDisc.InnerDiameter + toleranceSettings.singleMold_InnerDiameter) // Tolerance singleMold InnerDiameter MIN
                         {
                             this.listSingleMoldDiscs.Add(singleMoldDisc);
                             log.Info($"Added singleMoldDisc: {singleMoldDisc}");
@@ -194,7 +188,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                     // TODO: GGF. Abfrage für Cups hinzufügen.
                     foreach (var coreSingleMold in db.CoreSingleMolds)
                     {
-                        if (coreSingleMold.OuterDiameter <= productDisc?.InnerDiameter)
+                        if (productDisc?.InnerDiameter >= coreSingleMold.OuterDiameter - toleranceSettings.core_OuterDiameter) // Tolerance Core Outer Diameter MIN
                         {
                             this.listCoresSingleMold.Add(coreSingleMold);
                             log.Info($"Added coreSingleMold: {coreSingleMold}");
