@@ -96,35 +96,7 @@
                              Margin="10"
                              MinWidth="225"
                              Text="{Binding attributeValue, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
-
-                    <!--  <TextBox x:Name="TableSelection" 
-                             Width="200" Height="40"
-                             VerticalAlignment="Center" HorizontalAlignment="left"
-                             VerticalContentAlignment="Center"
-                             Margin="5"
-                             Grid.Row="0" Grid.Column="1"
-                             Foreground="Black" FontSize="15" Background="White">
-                    </TextBox>
-
-                    <TextBox x:Name="AttributeSelection" 
-                             Width="200" Height="40"
-                             VerticalAlignment="Center" HorizontalAlignment="left"
-                             VerticalContentAlignment="Center"
-                             Margin="5"
-                             Grid.Row="0" Grid.Column="2"
-                             Foreground="Black" FontSize="15" Background="White">
-                    </TextBox>
-
-                    <TextBox x:Name="FilterInput" 
-                             Width="200" Height="40"
-                             VerticalAlignment="Center" HorizontalAlignment="left"
-                             VerticalContentAlignment="Center"
-                             Margin="5"
-                             Grid.Row="0" Grid.Column="2"
-                             Foreground="Black" FontSize="15" Background="White">
-                    </TextBox>
-
-                    -->
+                    
                     <Button x:Name="DBQueryBtn" Content="Suchen"
                             HorizontalAlignment="right" VerticalAlignment="top"
                             Width="150" Height="50"
@@ -159,7 +131,7 @@
                                       Background="white" 
                                       FontSize="15" 
                                       BorderThickness="1"
-                                      VerticalGridLinesBrush="White"
+                                      VerticalGridLinesBrush="Black"
                                       MinRowHeight="20"
                                       HeadersVisibility="Column"
                                       BorderBrush="Transparent"
@@ -189,16 +161,18 @@
 
                                 <!-- Adds a standard margin to column headers -->
                                 <DataGrid.ColumnHeaderStyle>
-                                    <Style>
-                                        
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="Background" Value="White"/>
+                                        <Setter Property="FontWeight" Value="Medium"/>
+                                        <Setter Property="Margin" Value="10"/>
                                     </Style>
                                 </DataGrid.ColumnHeaderStyle>
 
-
                                 <DataGrid.RowStyle>
                                     <Style TargetType="DataGridRow">
-                                        <Setter Property="Background" Value="WhiteSmoke" />
+                                        <Setter Property="Background" Value="White" />
                                         <Setter Property="MinHeight" Value="50"/>
+                                        <Setter Property="Margin" Value="10, 0, 0, 0"/>
                                         <Style.Triggers>
                                             <Trigger Property="IsMouseOver" Value="True">
                                                 <Setter Property="Background" Value="#144F9B"/>

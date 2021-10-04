@@ -91,8 +91,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 
             return productDisc.OuterDiameter + 0.5m >= singleMoldDisc.OuterDiameter && productDisc.OuterDiameter - 2m <= singleMoldDisc.OuterDiameter
                 && productDisc.InnerDiameter + 2m >= singleMoldDisc.InnerDiameter && productDisc.InnerDiameter - 0.1m <= singleMoldDisc.InnerDiameter
-                && productDisc.HcDiameter == null || productDisc.HcDiameter <= singleMoldDisc.HcDiameter + 0.5m
-                && productDisc.HcDiameter == null || productDisc.HcDiameter >= singleMoldDisc.HcDiameter - 0.5m
+                && productDisc.HcDiameter == null || (productDisc.HcDiameter <= singleMoldDisc.HcDiameter + 0.5m && productDisc.HcDiameter >= singleMoldDisc.HcDiameter - 0.5m)
                 && productDisc.HcHoleDiameter == null || productDisc.HcHoleDiameter >= singleMoldDisc.BoltDiameter
                 && productDisc.HcHoles == null ||  productDisc.HcHoles == singleMoldDisc.HcHoles;
         }

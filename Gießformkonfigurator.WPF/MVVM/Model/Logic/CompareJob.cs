@@ -95,12 +95,12 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                 if (singleMoldDisc.coreSingleMold != null)
                 {
                     if (compareRuleSet.Compare(this.productDisc, singleMoldDisc) 
-                        && singleMoldDisc.coreSingleMold.OuterDiameter <= productDisc.InnerDiameter)
+                        && singleMoldDisc.coreSingleMold?.OuterDiameter <= productDisc.InnerDiameter)
                     {
                         var compareObject = new CompareObject((ProductDisc)this.productDisc, (SingleMoldDisc)singleMoldDisc);
                         compareObject.differenceInnerDiameter = productDisc.InnerDiameter - singleMoldDisc.coreSingleMold.OuterDiameter;
                         compareObject.differenceOuterDiameter = singleMoldDisc.OuterDiameter - productDisc.OuterDiameter;
-                        compareObject.differenceBoltDiameter = productDisc.HcHoleDiameter - singleMoldDisc.BoltDiameter;
+                        compareObject.differenceBoltDiameter = (productDisc.HcHoleDiameter - singleMoldDisc.BoltDiameter) > 0 ? (productDisc.HcHoleDiameter - singleMoldDisc.BoltDiameter) : 0;
                         compareJobOutput.Add(compareObject);
                     }
                 }
@@ -111,7 +111,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                         var compareObject = new CompareObject((ProductDisc)this.productDisc, (SingleMoldDisc)singleMoldDisc);
                         compareObject.differenceInnerDiameter = productDisc.InnerDiameter - singleMoldDisc.InnerDiameter;
                         compareObject.differenceOuterDiameter = singleMoldDisc.OuterDiameter - productDisc.OuterDiameter;
-                        compareObject.differenceBoltDiameter = productDisc.HcHoleDiameter - singleMoldDisc.BoltDiameter;
+                        compareObject.differenceBoltDiameter = (productDisc.HcHoleDiameter - singleMoldDisc.BoltDiameter) > 0 ? (productDisc.HcHoleDiameter - singleMoldDisc.BoltDiameter) : 0;
                         compareJobOutput.Add(compareObject);
                     }
                 }

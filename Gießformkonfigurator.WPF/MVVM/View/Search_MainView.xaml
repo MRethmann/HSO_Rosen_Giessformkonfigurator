@@ -700,7 +700,7 @@
                                         </Expander.Style>
                                         <Grid>
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="3*"/>
+                                                <ColumnDefinition Width="2*"/>
                                                 <ColumnDefinition Width="1*"/>
                                             </Grid.ColumnDefinitions>
 
@@ -778,7 +778,7 @@
                                         </Expander.Style>
                                         <Grid>
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="2*"/>
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
 
@@ -853,7 +853,7 @@
                                         </Expander.Style>
                                         <Grid>
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="2*"/>
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
 
@@ -900,7 +900,7 @@
                                         </Expander.Style>
                                         <Grid>
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="2*"/>
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
 
@@ -1375,6 +1375,7 @@
                                     <Setter Property="Background" Value="White"/>
                                     <Setter Property="Foreground" Value="Black"/>
                                     <Setter Property="FontSize" Value="18"/>
+                                    <Setter Property="FontWeight" Value="Medium"/>
                                     <Setter Property="BorderThickness" Value="0, 0, 0, 1"/>
                                     <Setter Property="BorderBrush" Value="Gray"/>
                                     <Setter Property="Margin" Value=" 0, 10, 0, 0"/>
@@ -1390,6 +1391,7 @@
                                     <Setter Property="Background" Value="White"/>
                                     <Setter Property="Foreground" Value="Black"/>
                                     <Setter Property="FontSize" Value="18"/>
+                                    <Setter Property="FontWeight" Value="Medium"/>
                                     <Setter Property="BorderThickness" Value="0, 0, 0, 1"/>
                                     <Setter Property="BorderBrush" Value="Gray"/>
                                     <Setter Property="Margin" Value=" 0, 10, 0, 0"/>
@@ -1403,6 +1405,7 @@
                                     <Setter Property="Background" Value="White"/>
                                     <Setter Property="Foreground" Value="Black"/>
                                     <Setter Property="FontSize" Value="18"/>
+                                    <Setter Property="FontWeight" Value="Medium"/>
                                     <Setter Property="BorderThickness" Value="0, 0, 0, 1"/>
                                     <Setter Property="BorderBrush" Value="Gray"/>
                                     <Setter Property="Margin" Value=" 0, 10, 0, 0"/>
@@ -1416,6 +1419,7 @@
                                     <Setter Property="Background" Value="White"/>
                                     <Setter Property="Foreground" Value="Black"/>
                                     <Setter Property="FontSize" Value="18"/>
+                                    <Setter Property="FontWeight" Value="Medium"/>
                                     <Setter Property="BorderThickness" Value="0, 0, 0, 1"/>
                                     <Setter Property="BorderBrush" Value="Gray"/>
                                     <Setter Property="Margin" Value=" 0, 10, 0, 0"/>
