@@ -34,5 +34,10 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_molds
         public decimal? BoltDiameter { get; set; }
 
         public int? HcHoles { get; set; }
+
+        public override string ToString()
+        {
+            return "SAP: " + this.ID + ", Description: " + this.Description;
+        }
     }
 }

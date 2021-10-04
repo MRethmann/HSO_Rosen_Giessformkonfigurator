@@ -41,15 +41,32 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
 
-                        <ComboBox x:Name="SearchMethod_ComboBox" Margin="5" Height="Auto" Width="auto" HorizontalContentAlignment="Center" VerticalContentAlignment="center">
+                        <ComboBox x:Name="SearchMethod_ComboBox" Margin="20, 0, 20, 0" Height="Auto" Width="Auto" HorizontalContentAlignment="Center" VerticalContentAlignment="center" HorizontalAlignment="Stretch" VerticalAlignment="Center" FontSize="15">
                             <ComboBoxItem IsSelected="{Binding searchByProductId}" x:Name="searchByProductId" Content="SAP-Nr."/>
                             <ComboBoxItem x:Name="searchByProductParams" Content="Eingabe der Produktwerte"/>
                         </ComboBox>
 
+                        <ComboBox x:Name="FactorPU_ID_ComboBox" 
+                                 SelectedItem="{Binding FactorPU, Mode=TwoWay, UpdateSourceTrigger=LostFocus, TargetNullValue='', Converter={StaticResource DecimalConverter}}"
+                                 Width="auto" Height="Auto"
+                                 HorizontalAlignment="Stretch"
+                                 HorizontalContentAlignment="Center"
+                                 VerticalAlignment="Center"
+                                 VerticalContentAlignment="Center"
+                                 Margin="20, 0, 20, 0" Grid.Row="1" 
+                                 Foreground="Black" FontSize="15" Background="White">
+                            <ComboBoxItem Content="1.017" IsSelected="True"/>
+                            <ComboBoxItem Content="1.0175"/>
+                            <ComboBoxItem Content="1.023"/>
+                            <ComboBoxItem Content="1.025"/>
+                        </ComboBox>
+
+                        <!-- Not used as of now
                         <ComboBox x:Name="ProductType_ComboBox" Margin="5" Height="Auto" Width="auto" HorizontalContentAlignment="Center" VerticalContentAlignment="center" Grid.Row="1">
                             <ComboBoxItem IsSelected="{Binding searchTypeProduct}" x:Name="productDisc" Content="Disc"/>
                             <ComboBoxItem x:Name="productCup" Content="Cup"/>
                         </ComboBox>
+                        -->
                     </Grid>
 
                     <Grid x:Name="grid_SearchProductID" Grid.Column="1" Visibility="{Binding ElementName=searchByProductId, Path=IsSelected, Converter={StaticResource BoolToVis}}">
@@ -67,7 +84,7 @@
 
                         <TextBox x:Name="ProduktIDTextBox" 
                                  Text="{Binding productId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}"
-                                 Width="Auto" Height="Auto"
+                                 Width="Auto" Height="40"
                                  HorizontalAlignment="Stretch"
                                  VerticalAlignment="Center"
                                  VerticalContentAlignment="Center"
@@ -153,26 +170,6 @@
                                  Margin="5" Grid.Column="3" Grid.Row="1"
                                  Foreground="Black" FontSize="15" Background="White"/>
 
-                        <TextBlock x:Name="FactorPU_TextBlock"
-                                   Text="Faktor PU"
-                                   HorizontalAlignment="Left" VerticalAlignment="Center"
-                                   Margin="10,0,0,0" 
-                                   Foreground="Black" FontSize="15" Grid.Column="4" Grid.Row="0"/>
-
-                        <ComboBox x:Name="FactorPU_ComboBox" 
-                                 SelectedItem="{Binding FactorPU, Mode=TwoWay, UpdateSourceTrigger=LostFocus, TargetNullValue='', Converter={StaticResource DecimalConverter}}"
-                                 Width="auto" Height="Auto"
-                                 HorizontalAlignment="Stretch"
-                                 VerticalAlignment="Center"
-                                 VerticalContentAlignment="Center"
-                                 Margin="5" Grid.Column="5" Grid.Row="0" 
-                                 Foreground="Black" FontSize="15" Background="White">
-                            <ComboBoxItem Content="1.017" IsSelected="True"/>
-                            <ComboBoxItem Content="1.0175"/>
-                            <ComboBoxItem Content="1.023"/>
-                            <ComboBoxItem Content="1.025"/>
-                        </ComboBox>
-
                         <TextBlock x:Name="HcHoles_TextBlock"
                                    Text="Anzahl Bohrungen"
                                    HorizontalAlignment="Left" VerticalAlignment="Center"
@@ -192,7 +189,7 @@
                                    Text="Lochdurchmesser"
                                    HorizontalAlignment="Left" VerticalAlignment="Center"
                                    Margin="10,0,0,0" 
-                                   Foreground="Black" FontSize="15" Grid.Column="6" Grid.Row="0"/>
+                                   Foreground="Black" FontSize="15" Grid.Column="4" Grid.Row="0"/>
 
                         <TextBox x:Name="HcHolesDiameter_TextBox" 
                                  Text="{Binding HcHoleDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, TargetNullValue=''}"
@@ -200,14 +197,14 @@
                                  HorizontalAlignment="Stretch"
                                  VerticalAlignment="Center"
                                  VerticalContentAlignment="Center"
-                                 Margin="5" Grid.Column="7" Grid.Row="0" 
+                                 Margin="5" Grid.Column="5" Grid.Row="0" 
                                  Foreground="Black" FontSize="15" Background="White"/>
 
                         <TextBlock x:Name="HcDiameter_TextBlock"
                                    Text="Durchmesser Lochkreis"
                                    HorizontalAlignment="Left" VerticalAlignment="Center"
                                    Margin="10,0,0,0" 
-                                   Foreground="Black" FontSize="15" Grid.Column="6" Grid.Row="1"/>
+                                   Foreground="Black" FontSize="15" Grid.Column="6" Grid.Row="0"/>
 
                         <TextBox x:Name="HcDiameter_TextBox" 
                                  Text="{Binding HcDiameter, Mode=OneWay, UpdateSourceTrigger=LostFocus, TargetNullValue=''}"
@@ -215,7 +212,7 @@
                                  HorizontalAlignment="Stretch"
                                  VerticalAlignment="Center"
                                  VerticalContentAlignment="Center"
-                                 Margin="5" Grid.Column="7" Grid.Row="1"
+                                 Margin="5" Grid.Column="7" Grid.Row="0"
                                  Foreground="Black" FontSize="15" Background="White"/>
                     </Grid>
 

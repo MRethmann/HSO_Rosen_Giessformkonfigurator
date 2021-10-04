@@ -5,14 +5,13 @@
 //-----------------------------------------------------------------------
 namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
     using Gießformkonfigurator.WPF.MVVM.Model.Db_components;
     using Gießformkonfigurator.WPF.MVVM.Model.Db_molds;
     using Gießformkonfigurator.WPF.MVVM.Model.Db_products;
     using Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses;
     using log4net;
+    using System;
+    using System.Collections.Generic;
 
     class FilterJob
     {
@@ -98,13 +97,15 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             {
                 using (var db = new GießformDBContext())
                 {
-                    foreach (var grundplatte in db.Baseplates)
+                    foreach (var baseplate in db.Baseplates)
                     {
-                        if (this.productDisc?.OuterDiameter < grundplatte.OuterDiameter)
+                        if (this.productDisc?.OuterDiameter < baseplate.OuterDiameter)
                         {
-                            this.listBaseplates.Add(grundplatte);
-                            log.Info($"");
+                            this.listBaseplates.Add(baseplate);
+                            log.Info($"Added baseplate: {baseplate}");
                         }
+                        else
+                            log.Info($"Removed baseplate: {baseplate} by {productDisc?.OuterDiameter - baseplate.OuterDiameter}");
                     }
 
                     foreach (var ring in db.Rings)
@@ -112,40 +113,55 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                         if (this.productDisc?.InnerDiameter > ring.OuterDiameter || this.productDisc?.OuterDiameter < ring.InnerDiameter)
                         {
                             this.listRings.Add(ring);
+                            log.Info($"Added ring: {ring}");
                         }
+                        else
+                            log.Info($"Removed baseplate: {ring} by {productDisc?.InnerDiameter - ring.OuterDiameter} / {this.productDisc?.OuterDiameter - ring.InnerDiameter}");
                     }
 
                     // no filter for insertplates
-                    foreach (var einlegeplatte in db.InsertPlates)
+                    foreach (var insertPlate in db.InsertPlates)
                     {
-                        this.listInsertPlates.Add(einlegeplatte);
+                        this.listInsertPlates.Add(insertPlate);
+
+                        //No need since insertplates can not be prefiltered
+                        //log.Info($"Added insertplate: {insertPlate}");
                     }
 
-                    foreach (var innenkern in db.Cores)
+                    foreach (var core in db.Cores)
                     {
-                        if (this.productDisc?.InnerDiameter > innenkern.OuterDiameter)
+                        if (this.productDisc?.InnerDiameter > core.OuterDiameter)
                         {
-                            this.listCores.Add(innenkern);
+                            this.listCores.Add(core);
+                            log.Info($"Added core: {core}");
                         }
+                        else
+                            log.Info($"Removed core: {core} by {productDisc?.InnerDiameter - core.OuterDiameter}");
                     }
 
-                    foreach (var bolzen in db.Bolts)
+                    foreach (var bolt in db.Bolts)
                     {
                         // TODO: Abgleich hinzufügen. Produkt besitzt aktuell nur das Attribut Lochkreis, welches keine Vergleichseigenschaft besitzt. Durchmesser der Löcher benötigt.
-                        if (bolzen.OuterDiameter <= this.productDisc?.HcHoleDiameter)
+                        if (bolt.OuterDiameter <= this.productDisc?.HcHoleDiameter)
                         {
-                            this.listBolts.Add(bolzen);
+                            this.listBolts.Add(bolt);
+                            log.Info($"Added bolt: {bolt}");
                         }
+                        else
+                            log.Info($"Removed bolt: {bolt} by {bolt.OuterDiameter - this.productDisc?.HcHoleDiameter}");
                     }
 
                     foreach (var cupform in db.Cupforms)
                     {
                         // TODO: Abgleich hinzufügen. Produkt besitzt aktuell nur das Attribut Lochkreis, welches keine Vergleichseigenschaft besitzt. Durchmesser der Löcher benötigt.
                         if (cupform.InnerDiameter <= this.productCup?.InnerDiameter
-                            && cupform.CupType == this.productCup.BaseCup)
+                            && cupform?.CupType == this.productCup?.BaseCup)
                         {
                             this.listCupforms.Add(cupform);
+                            log.Info($"Added cupform: {cupform}");
                         }
+                        else
+                            log.Info($"Removed cupform: {cupform} by {cupform?.InnerDiameter - this.productCup?.InnerDiameter} / {cupform?.CupType} != {this.productCup?.BaseCup}");
                     }
 
                     // Check if it makes sense - old logic
@@ -169,7 +185,10 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                             && productDisc.InnerDiameter >= singleMoldDisc.InnerDiameter - 1)
                         {
                             this.listSingleMoldDiscs.Add(singleMoldDisc);
+                            log.Info($"Added singleMoldDisc: {singleMoldDisc}");
                         }
+                        else
+                            log.Info($"Removed singleMoldDisc: {singleMoldDisc} by {productDisc.OuterDiameter - singleMoldDisc.OuterDiameter + 3} / {productDisc.OuterDiameter - singleMoldDisc.OuterDiameter - 1} / {productDisc.InnerDiameter - singleMoldDisc.InnerDiameter + 3} / {productDisc.InnerDiameter - singleMoldDisc.InnerDiameter - 1}");
                     }
 
                     // TODO: GGF. Abfrage für Cups hinzufügen.
@@ -178,7 +197,10 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                         if (coreSingleMold.OuterDiameter <= productDisc?.InnerDiameter)
                         {
                             this.listCoresSingleMold.Add(coreSingleMold);
+                            log.Info($"Added coreSingleMold: {coreSingleMold}");
                         }
+                        else
+                            log.Info($"Removed coreSingleMold: {coreSingleMold} by {coreSingleMold.OuterDiameter - productDisc?.InnerDiameter}");
                     }
                 }
             }
