@@ -3,6 +3,7 @@
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Gießformkonfigurator.WPF.MVVM.Model.Db_components;
     using Gießformkonfigurator.WPF.MVVM.Model.Db_products;
+    using Gießformkonfigurator.WPF.MVVM.Model.Logic;
 
     [TestClass]
     public class RankingJobTest
@@ -20,12 +21,12 @@
                 HcHoles = 8, 
                 HcDiameter = 10, 
                 HcHoleDiameter = 1, 
-                Hc2Holes = 8, 
+               /* Hc2Holes = 8, 
                 Hc2Diameter = 20, 
                 Hc2HoleDiameter = 2, 
                 Hc3Holes = 8, 
                 Hc3Diameter = 30, 
-                Hc3HoleDiameter = 3 
+                Hc3HoleDiameter = 3 */
             };
 
             Baseplate baseplate = new Baseplate()
@@ -163,12 +164,76 @@
         public void rateMolds_majorDifferenceBetweenParts_returnsTrue()
         {
             // Arrange
-
+            
 
             // Act
 
 
             // Assert
+        }
+
+        [TestCategory("Unit-Test")]
+        [TestMethod]
+        public void compare_Var1Var2_Var1Bigger()
+        {
+            // Arrange
+            var product1 = new ProductDisc();
+            var product2 = new ProductDisc();
+            product1.ID = 1312;
+            product1.OuterDiameter = 50;
+            product1.InnerDiameter = 35;
+            product1.Height = 15;
+            product1.HcDiameter = 10;
+            product1.HcHoleDiameter = 3;
+            product2.ID = 1313;
+            product2.OuterDiameter = 45;
+            product2.InnerDiameter = 30;
+            product2.Height = 15;
+            product2.HcDiameter = 10;
+            product2.HcHoleDiameter = 3;
+            var filterJob = new FilterJob(product1);
+            var combinationJob = new CombinationJob(product1, filterJob);
+            var compareJob = new CompareJob(product1, combinationJob);
+            var rankingJob = new RankingJob(product1, compareJob);
+
+            // Act
+            var result1 = rankingJob.compare(product1.OuterDiameter, product2.OuterDiameter);
+
+            // Assert
+
+            Assert.AreEqual(result1, product1.OuterDiameter);
+        }
+
+        [TestCategory("Unit-Test")]
+        [TestMethod]
+        public void compare_Var1Var2_Var2Bigger()
+        {
+            // Arrange
+            var product1 = new ProductDisc();
+            var product2 = new ProductDisc();
+            product1.ID = 1312;
+            product1.OuterDiameter = 45;
+            product1.InnerDiameter = 30;
+            product1.Height = 15;
+            product1.HcDiameter = 10;
+            product1.HcHoleDiameter = 3;
+            product2.ID = 1313;
+            product2.OuterDiameter = 50;
+            product2.InnerDiameter = 35;
+            product2.Height = 15;
+            product2.HcDiameter = 10;
+            product2.HcHoleDiameter = 3;
+            var filterJob = new FilterJob(product1);
+            var combinationJob = new CombinationJob(product1, filterJob);
+            var compareJob = new CompareJob(product1, combinationJob);
+            var rankingJob = new RankingJob(product1, compareJob);
+
+            // Act
+            var result1 = rankingJob.compare(product1.OuterDiameter, product2.OuterDiameter);
+
+            // Assert
+
+            Assert.AreEqual(result1, product2.OuterDiameter);
         }
     }
 }

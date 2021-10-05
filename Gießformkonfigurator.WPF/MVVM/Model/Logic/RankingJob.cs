@@ -48,8 +48,6 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             
             // Updating rating information because there might be a better ring/core which was found
             this.addRatingInformation();
-
-
         }
 
         public decimal? compare(decimal? var1, decimal? var2)
@@ -107,9 +105,9 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                         compareObject.differenceBoltDiameter = 0;
                     }
                     else if (!String.IsNullOrWhiteSpace(product.BTC) 
-                        && (((SingleMold)compareObject.Mold).HcDiameter != null || ((SingleMold)compareObject.Mold).HcDiameter >= 0)
-                        && (((SingleMold)compareObject.Mold).HcHoles != null || ((SingleMold)compareObject.Mold).HcHoles >= 0)
-                        && (((SingleMold)compareObject.Mold).BoltDiameter != null || ((SingleMold)compareObject.Mold).BoltDiameter >= 0))
+                        && (((SingleMold)compareObject.Mold).HcDiameter != null && ((SingleMold)compareObject.Mold).HcDiameter > 0)
+                        && (((SingleMold)compareObject.Mold).HcHoles != null && ((SingleMold)compareObject.Mold).HcHoles > 0)
+                        && (((SingleMold)compareObject.Mold).BoltDiameter != null && ((SingleMold)compareObject.Mold).BoltDiameter > 0))
                     {
                         compareObject.finalRating += 10.00m;
 
@@ -143,18 +141,32 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                 }  
             }
 
-            // lists will be split into groups based on the contained baseplate
-            var groupedList = listModularMolds.GroupBy(x => ((ModularMold)x.Mold).baseplate.ID).Select(grp => grp.ToList()).ToList();
+            
+            // Grouped by baseplates
+            var groupedByBaseplate = listModularMolds.GroupBy(x => ((ModularMold)x.Mold).baseplate.ID).Select(grp => grp.ToList()).ToList();
 
-            // Grouped lists will be sorted by finalRating and merged into one list 
-            foreach (List<CompareObject> list01 in groupedList)
+            // Grouped by insertplates 
+            foreach (List<CompareObject> list01 in groupedByBaseplate)
             {
-                var tempList = list01.GroupBy(x => ((ModularMold)x.Mold).insertPlate?.ID).Select(grp => grp.ToList()).ToList();
-                
-                foreach (List<CompareObject> list02 in tempList)
+                var groupedByInsertplate = list01.GroupBy(x => ((ModularMold)x.Mold).insertPlate?.ID).Select(grp => grp.ToList()).ToList();
+
+                // Grouped by Guide Rings
+                foreach (List<CompareObject> list02 in groupedByInsertplate)
                 {
-                    var orderedList = list02.OrderBy(x => x.finalRating);
-                    sortedList.AddRange(orderedList);
+                    var groupedByGuideRing = list02.GroupBy(x => ((ModularMold)x.Mold).guideRing?.ID).Select(grp => grp.ToList()).ToList();
+
+                    // Grouped by Cores
+                    foreach (List<CompareObject> list03 in groupedByGuideRing)
+                    {
+                        var groupedByCore = list03.GroupBy(x => ((ModularMold)x.Mold).core?.ID).Select(grp => grp.ToList()).ToList();
+
+                        // Sorted by final rating and ordered
+                        foreach (List<CompareObject> list04 in groupedByCore)
+                        {
+                            var orderedList = list04.OrderBy(x => x.finalRating);
+                            sortedList.AddRange(orderedList);
+                        }
+                    }
                 }
             }
 
@@ -263,13 +275,13 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                 if (compareObject.differenceInnerDiameter > toleranceSettings?.product_InnerDiameter_MAX)
                 {
                     string diffInnerDiameter = Math.Round((Decimal)compareObject.differenceInnerDiameter, 2).ToString();
-                    compareObject.postProcessing.Add($"Innendurchmesser:  {diffInnerDiameter}");
+                    compareObject.postProcessing.Add($"Innendurchmesser:  {diffInnerDiameter} mm");
                 }
 
                 if (compareObject.differenceOuterDiameter > toleranceSettings?.product_OuterDiameter_MAX)
                 {
                     string diffOuterDiameter = Math.Round((Decimal)compareObject.differenceOuterDiameter, 2).ToString();
-                    compareObject.postProcessing.Add($"Außendurchmesser: {diffOuterDiameter}");
+                    compareObject.postProcessing.Add($"Außendurchmesser: {diffOuterDiameter} mm");
                 }
 
                 if (compareObject.differenceBoltDiameter == null && !String.IsNullOrWhiteSpace(((ProductDisc)product).BTC))

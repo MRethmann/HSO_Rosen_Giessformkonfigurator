@@ -56,12 +56,13 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="KombinationStressTest.cs" />
+    <Compile Include="Logic\KombinationStressTest.cs" />
     <Compile Include="Logic\CombinationJobTest.cs" />
     <Compile Include="Logic\CompareJobTest.cs" />
     <Compile Include="Logic\FilterJobTest.cs" />
-    <Compile Include="Logic\RankingJobTest.cs" />
     <Compile Include="Logic\ProgramLogicTest.cs" />
+    <Compile Include="Logic\RankingJobTest.cs" />
+    <Compile Include="Logic\SQLServerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

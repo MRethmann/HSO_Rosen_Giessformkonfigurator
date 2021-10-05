@@ -91,16 +91,16 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             var baseplate = components.OfType<Baseplate>().Single();
             var insertPlate = components.OfType<InsertPlate>().Single();
 
-            // Insertplate has no outer konus and therefore will be placed loose inside the baseplate
-            if (baseplate.HasHoleguide && insertPlate.OuterKonusMax == 0)
+            // Insertplate has no outer konus and therefore will be placed loose inside the baseplate. OuterKonus is used as workaround to show if insertPlate has OuterKonus.
+            if (baseplate.HasHoleguide && (insertPlate.OuterKonusMax == 0 || insertPlate.OuterKonusMax == null))
             {
                 return baseplate.InnerDiameter > insertPlate.OuterDiameter
-                    && (baseplate.InnerDiameter - 1) <= insertPlate.OuterDiameter
-                    && baseplate.Height == insertPlate.Height;
+                    && (baseplate.InnerDiameter - 1) <= insertPlate.OuterDiameter;
+                    //&& baseplate.Height == insertPlate.Height; // Check if needed
             }
 
             // Insertplate has outer konus which needs to match inner konus of baseplate (more likely)
-            else if (baseplate.HasKonus && insertPlate.OuterDiameter != 0)
+            else if (baseplate.HasKonus && insertPlate.OuterKonusMax != 0)
             {
                 return baseplate.InnerKonusMax > insertPlate.OuterKonusMax
                     && (baseplate.InnerKonusMax - 1) <= insertPlate.OuterKonusMax
@@ -158,7 +158,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             {
                 return core.HasGuideBolt == true
                     && insertPlate.InnerDiameter == core.GuideDiameter
-                    && insertPlate.Height >= core.GuideHeight;
+                    && insertPlate.Height >= (core.GuideHeight != null ? core.GuideHeight : 0);
             }
             else
             {

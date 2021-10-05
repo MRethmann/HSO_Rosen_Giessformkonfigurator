@@ -565,6 +565,7 @@
                                         </Grid.ColumnDefinitions>
 
                                         <TextBlock Text="Bolzen" Foreground="Gray" Grid.Row="0" Margin="5, 0, 0, 0"/>
+                                        
                                         <DataGrid ItemsSource="{Binding bolts}" 
                                                   AutoGenerateColumns="False" 
                                                   IsReadOnly="True" 
@@ -574,9 +575,7 @@
                                                   Margin="5, 0, 0, 0" 
                                                   BorderThickness="0" 
                                                   BorderBrush="Transparent"
-                                                  HorizontalGridLinesBrush="DarkGray"
-                                                  VerticalGridLinesBrush="Black"
-                                                  GridLinesVisibility="Vertical"
+                                                  GridLinesVisibility="None"
                                                   HeadersVisibility="Column"
                                                   HorizontalAlignment="Stretch"
                                                   VerticalAlignment="Stretch"
@@ -584,6 +583,12 @@
                                                   IsHitTestVisible="False"
                                                   Background="WhiteSmoke">
 
+                                            <DataGrid.RowStyle>
+                                                <Style TargetType="DataGridRow">
+                                                    <Setter Property="Background" Value="WhiteSmoke"/>
+                                                </Style>
+                                            </DataGrid.RowStyle>
+                                            
                                             <DataGrid.ColumnHeaderStyle>
                                                 <Style TargetType="DataGridColumnHeader">
                                                     <Setter Property="Background" Value="WhiteSmoke"/>
@@ -591,11 +596,12 @@
                                                     <Setter Property="Margin" Value="0, 0, 0, 10"/>
                                                 </Style>
                                             </DataGrid.ColumnHeaderStyle>
-
+                                            
                                             <DataGrid.Columns>
                                                 <DataGridTextColumn Binding="{Binding Item1.ID, FallbackValue=-}" Header="ID" Width="*"/>
                                                 <DataGridTextColumn Binding="{Binding Item1.Description, FallbackValue=-}" Header="Beschreibung" Width="3*"/>
                                             </DataGrid.Columns>
+                                            
                                         </DataGrid>
                                     </Grid>
                                 </Grid>

@@ -61,7 +61,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
 
         public List<Decimal?> PUFactors { get; set; } = new List<decimal?>() { 1.017m, 1.0175m, 1.023m, 1.025m };
 
-        public decimal? selectedFactorPU { get; set; }
+        public decimal? selectedFactorPU { get; set; } = 1.017m;
 
         public string BTC { get; set; }
 

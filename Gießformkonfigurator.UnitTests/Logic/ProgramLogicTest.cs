@@ -2,15 +2,19 @@
 {
     using Gießformkonfigurator.WPF.MVVM.Model.Db_components;
     using Gießformkonfigurator.WPF.MVVM.Model.Db_products;
+    using Gießformkonfigurator.WPF.MVVM.Model.Logic;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System;
 
     [TestClass]
     public class ProgramLogicTest
     {
+        [TestCategory("Unit-Test")]
         [TestMethod]
         public void newProgramLogic_usingTestdata_returnsTrue()
         {
+
+            // Arrange
             Product product = new ProductDisc()
             {
                 ID = 000,
@@ -20,15 +24,10 @@
                 HcHoles = 8,
                 HcDiameter = 10,
                 HcHoleDiameter = 1,
-                Hc2Holes = 8,
-                Hc2Diameter = 20,
-                Hc2HoleDiameter = 2,
-                Hc3Holes = 8,
-                Hc3Diameter = 30,
-                Hc3HoleDiameter = 3
+                
             };
 
-            Baseplate baseplate = new Baseplate()
+            /*Baseplate baseplate = new Baseplate()
             {
                 ID = 001,
                 Description = "Baseplate_Test01",
@@ -137,7 +136,18 @@
                 HasGuideBolt = false,
                 GuideHeight = 15,
                 GuideOuterDiameter = 10,
-            };
+            };*/
+
+            var filterJob = new FilterJob(product);
+            var combinationJob = new CombinationJob(product, filterJob);
+            var compareJob = new CompareJob(product, combinationJob);
+            var rankingJob = new RankingJob(product, compareJob);
+
+            // Act
+            var result = rankingJob.rankingJobOutput;
+
+            // Assert
+            Assert.IsNotNull(result);            
         }
     }
 }
