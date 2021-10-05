@@ -25,7 +25,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
     {
         public ObservableCollection<CompareObject> productSearchOutput { get; } = new ObservableCollection<CompareObject>();
 
-        private SearchJob programLogic { get; set; }
+        private SearchJob searchJob { get; set; }
 
         public Visibility IsLoading { get; set; } = Visibility.Hidden;
 
@@ -170,18 +170,17 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                 }
             }
 
-            if (product.FactorPU == null)
-            {
-                product.FactorPU = this.selectedFactorPU;
-            }
-
             // Create new ProgramLogic --> start algorithm to search for fitting molds
             if (product != null)
             {
-                
-                this.programLogic = new SearchJob(product);
+                if (product.FactorPU == null)
+                {
+                    product.FactorPU = this.selectedFactorPU;
+                }
+
+                this.searchJob = new SearchJob(product);
                 this.productSearchOutput.Clear();
-                foreach (var compareObject in programLogic.finalOutput)
+                foreach (var compareObject in searchJob.finalOutput)
                 {
                     this.productSearchOutput.Add(compareObject);
                 }
