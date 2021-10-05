@@ -47,18 +47,15 @@
                         </ComboBox>
 
                         <ComboBox x:Name="FactorPU_ID_ComboBox" 
-                                 SelectedItem="{Binding FactorPU, Mode=TwoWay, UpdateSourceTrigger=LostFocus, TargetNullValue='', Converter={StaticResource DecimalConverter}}"
+                                 SelectedItem="{Binding selectedFactorPU, Mode=TwoWay, UpdateSourceTrigger=LostFocus, Converter={StaticResource DecimalConverter}}"
                                  Width="auto" Height="Auto"
                                  HorizontalAlignment="Stretch"
                                  HorizontalContentAlignment="Center"
                                  VerticalAlignment="Center"
                                  VerticalContentAlignment="Center"
                                  Margin="20, 0, 20, 0" Grid.Row="1" 
-                                 Foreground="Black" FontSize="15" Background="White">
-                            <ComboBoxItem Content="1.017" IsSelected="True"/>
-                            <ComboBoxItem Content="1.0175"/>
-                            <ComboBoxItem Content="1.023"/>
-                            <ComboBoxItem Content="1.025"/>
+                                 Foreground="Black" FontSize="15" Background="White"
+                                 ItemsSource="{Binding PUFactors}">
                         </ComboBox>
 
                         <!-- Not used as of now

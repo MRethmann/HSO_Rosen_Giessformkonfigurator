@@ -8,11 +8,14 @@ namespace Gieﬂformkonfigurator.WPF.MVVM.Model.Logic
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using Gieﬂformkonfigurator.WPF.Core;
     using Gieﬂformkonfigurator.WPF.MVVM.Model.Db_molds;
     using Gieﬂformkonfigurator.WPF.MVVM.Model.Db_products;
 
     abstract class CompareRule
     {
+        public ToleranceSettings toleranceSettings { get; set; } = new ToleranceSettings();
+
         protected abstract IEnumerable<Type> Typen { get; }
 
         public virtual bool Akzeptiert(Type teilTyp1, Type teilTyp2)
@@ -64,18 +67,10 @@ namespace Gieﬂformkonfigurator.WPF.MVVM.Model.Logic
             var product = compareElements.OfType<ProductDisc>().Single();
             var modularMold = compareElements.OfType<ModularMold>().Single();
 
-            // TODO: Innenring als Attribut hinzuf¸gen
-            if (product.HcDiameter != 0.0m || String.IsNullOrEmpty(product.HcDiameter.ToString()))
-            {
-                return product.OuterDiameter <= modularMold.guideRing.InnerDiameter + 2 //Tolerance ring innerDiameter MIN
-                    && product.InnerDiameter >= modularMold.core.OuterDiameter - 2 //Tolerance core outerDiameter MIN 
-                    && product.Height <= modularMold.guideRing.FillHeightMax
-                    && product.Height <= modularMold.core.FillHeightMax;
-            }
-            else
-            {
-                return false;
-            }
+            return product.OuterDiameter <= modularMold.guideRing.InnerDiameter + toleranceSettings.product_OuterDiameter_MIN //Tolerance ring innerDiameter MIN
+                && product.InnerDiameter >= modularMold.core.OuterDiameter - toleranceSettings.product_InnerDiameter_MIN //Tolerance core outerDiameter MIN 
+                && product.Height <= (modularMold.guideRing.FillHeightMax > 0 ? modularMold.guideRing.FillHeightMax : modularMold.guideRing.Height)
+                && product.Height <= (modularMold.core.FillHeightMax > 0 ? modularMold.core.FillHeightMax : modularMold.core.Height);
         }
     }
 
@@ -89,11 +84,33 @@ namespace Gieﬂformkonfigurator.WPF.MVVM.Model.Logic
             var productDisc = compareElements.OfType<ProductDisc>().Single();
             var singleMoldDisc = compareElements.OfType<SingleMoldDisc>().Single();
 
-            return productDisc.OuterDiameter <= singleMoldDisc.OuterDiameter + 2 //Tolerance singleMoldDisc OuterDiameter MIN
-                && productDisc.InnerDiameter >= singleMoldDisc.InnerDiameter - 2 //Tolerance singleMoldDisc InnerDiameter MIN
-                && (productDisc.HcDiameter == null || (productDisc.HcDiameter <= singleMoldDisc.HcDiameter + 0.5m && productDisc.HcDiameter >= singleMoldDisc.HcDiameter - 0.5m)) //Tolernace HC Diameter
-                && (productDisc.HcHoleDiameter == null || (productDisc.HcHoleDiameter >= singleMoldDisc.BoltDiameter - 0.5m && productDisc.HcHoleDiameter <= singleMoldDisc.BoltDiameter + 0.5m)) // Tolerance Bolt Diameter
-                && (productDisc.HcHoles == null || productDisc.HcHoles == singleMoldDisc.HcHoles);
+            // General comparison between single Mold and product
+            if (productDisc.OuterDiameter <= singleMoldDisc.OuterDiameter + toleranceSettings.product_OuterDiameter_MIN
+                && productDisc.InnerDiameter >= singleMoldDisc.InnerDiameter - toleranceSettings.product_InnerDiameter_MIN)
+            {
+                // Product and singleMoldDisc have BTC
+                if (!String.IsNullOrWhiteSpace(productDisc.BTC) 
+                        && (singleMoldDisc.HcDiameter != null && singleMoldDisc.HcDiameter > 0)
+                        && (singleMoldDisc.HcHoles != null && singleMoldDisc.HcHoles > 0)
+                        && (singleMoldDisc.BoltDiameter != null && singleMoldDisc.BoltDiameter > 0))
+                {
+                    return (productDisc.HcDiameter == null || productDisc.HcDiameter <= 0 || (productDisc.HcDiameter <= singleMoldDisc.HcDiameter + toleranceSettings.hc_Diameter && productDisc.HcDiameter >= singleMoldDisc.HcDiameter - toleranceSettings.hc_Diameter))
+                        && (productDisc.HcHoleDiameter == null || productDisc.HcHoleDiameter <= 0 || (productDisc.HcHoleDiameter >= singleMoldDisc.BoltDiameter - toleranceSettings.bolt_Diameter && productDisc.HcHoleDiameter <= singleMoldDisc.BoltDiameter + toleranceSettings.bolt_Diameter))
+                        && (productDisc.HcHoles == null || productDisc.HcHoles <= 0 || productDisc.HcHoles == singleMoldDisc.HcHoles);
+                }
+
+                // Product has no fitting BTC
+                else
+                {
+                    return singleMoldDisc.HcDiameter == null || singleMoldDisc.HcDiameter <= 0
+                    || singleMoldDisc.HcHoles == null || singleMoldDisc.HcHoles <= 0
+                    || singleMoldDisc.BoltDiameter == null || singleMoldDisc.BoltDiameter <= 0;
+                }
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

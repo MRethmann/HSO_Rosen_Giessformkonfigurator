@@ -23,7 +23,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
         public List<Bolt> bolts { get; set; }
         public List<CompareObject> compareJobOutput { get; set; } = new List<CompareObject>();
 
-        public ToleranceSettings toleranceSettings { get; set; }
+        public ToleranceSettings toleranceSettings { get; set; } = new ToleranceSettings();
 
         public CompareJob(Product product, CombinationJob combinationJob)
         {
@@ -55,8 +55,6 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             {
                 this.CompareDiscProduct();
             }
-
-            toleranceSettings = new ToleranceSettings();
         }
 
         public void CompareDiscProduct()
@@ -107,7 +105,6 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                         var compareObject = new CompareObject((ProductDisc)this.productDisc, (SingleMoldDisc)singleMoldDisc);
                         compareObject.differenceInnerDiameter = (productDisc.InnerDiameter - singleMoldDisc.coreSingleMold.OuterDiameter) > 0 ? productDisc.InnerDiameter - singleMoldDisc.coreSingleMold.OuterDiameter : 0;
                         compareObject.differenceOuterDiameter = (singleMoldDisc.OuterDiameter - productDisc.OuterDiameter) > 0 ? singleMoldDisc.OuterDiameter - productDisc.OuterDiameter : 0;
-                        compareObject.differenceBoltDiameter = (productDisc.HcHoleDiameter - singleMoldDisc.BoltDiameter) > 0 ? (productDisc.HcHoleDiameter - singleMoldDisc.BoltDiameter) : 0;
                         compareJobOutput.Add(compareObject);
                     }
                 }
@@ -118,7 +115,6 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                         var compareObject = new CompareObject((ProductDisc)this.productDisc, (SingleMoldDisc)singleMoldDisc);
                         compareObject.differenceInnerDiameter = (productDisc.InnerDiameter - singleMoldDisc.InnerDiameter) > 0 ? productDisc.InnerDiameter - singleMoldDisc.InnerDiameter : 0;
                         compareObject.differenceOuterDiameter = (singleMoldDisc.OuterDiameter - productDisc.OuterDiameter) > 0 ? singleMoldDisc.OuterDiameter - productDisc.OuterDiameter : 0;
-                        compareObject.differenceBoltDiameter = (productDisc.HcHoleDiameter - singleMoldDisc.BoltDiameter) > 0 ? (productDisc.HcHoleDiameter - singleMoldDisc.BoltDiameter) : 0;
                         compareJobOutput.Add(compareObject);
                     }
                 }

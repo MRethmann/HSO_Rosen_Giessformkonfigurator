@@ -33,7 +33,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
         public decimal? differenceOuterDiameter { get; set; } = 0;
 
         /// <summary>
-        /// Difference between prefered hole size and actual hole Size which requires post processing.
+        /// Difference is used to determine the best bolts. Every bolt can be used for the product without post processing.
         /// </summary>
         public decimal? differenceBoltDiameter { get; set; }
 

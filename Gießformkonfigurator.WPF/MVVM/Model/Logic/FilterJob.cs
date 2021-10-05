@@ -120,8 +120,8 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 
                     foreach (var ring in db.Rings)
                     {
-                        if (this.productDisc?.InnerDiameter <= ring.OuterDiameter + toleranceSettings.ring_OuterDiameter // Tolerance Rings MIN --> smaller Product
-                            || this.productDisc?.OuterDiameter >= ring.InnerDiameter - toleranceSettings.ring_InnerDiameter) //Tolerance Ring Rings MIN --> smaller Product
+                        if (this.productDisc?.InnerDiameter >= ring.OuterDiameter - toleranceSettings.product_InnerDiameter_MIN // Tolerance Rings MIN --> smaller Product
+                            || this.productDisc?.OuterDiameter <= ring.InnerDiameter + toleranceSettings.product_OuterDiameter_MIN) //Tolerance Ring Rings MIN --> smaller Product
                         {
                             this.listRings.Add(ring);
                             log.Info($"Added ring: {ring}");
@@ -141,7 +141,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 
                     foreach (var core in db.Cores)
                     {
-                        if (this.productDisc?.InnerDiameter >= core.OuterDiameter - toleranceSettings.core_OuterDiameter) // Tolerance Core OuterDiameter MIN
+                        if (this.productDisc?.InnerDiameter >= core.OuterDiameter - toleranceSettings.product_InnerDiameter_MIN) // Tolerance Core OuterDiameter MIN
                         {
                             this.listCores.Add(core);
                             log.Info($"Added core: {core}");
@@ -152,7 +152,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 
                     foreach (var bolt in db.Bolts)
                     {
-                        if (bolt.OuterDiameter <= this.productDisc?.HcHoleDiameter)
+                        if (bolt.OuterDiameter <= this.productDisc?.HcHoleDiameter + toleranceSettings.bolt_Diameter)
                         {
                             this.listBolts.Add(bolt);
                             log.Info($"Added bolt: {bolt}");
@@ -175,8 +175,8 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 
                     foreach (var singleMoldDisc in db.SingleMoldDiscs)
                     {
-                        if (productDisc.OuterDiameter >= singleMoldDisc.OuterDiameter - toleranceSettings.singleMold_OuterDiameter // Tolerance singleMold OuterDiameter MIN
-                            && productDisc.InnerDiameter <= singleMoldDisc.InnerDiameter + toleranceSettings.singleMold_InnerDiameter) // Tolerance singleMold InnerDiameter MIN
+                        if (productDisc.OuterDiameter <= singleMoldDisc.OuterDiameter + toleranceSettings.product_OuterDiameter_MIN // Tolerance singleMold OuterDiameter MIN
+                            && productDisc.InnerDiameter >= singleMoldDisc.InnerDiameter - toleranceSettings.product_InnerDiameter_MIN) // Tolerance singleMold InnerDiameter MIN
                         {
                             this.listSingleMoldDiscs.Add(singleMoldDisc);
                             log.Info($"Added singleMoldDisc: {singleMoldDisc}");
@@ -188,7 +188,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                     // TODO: GGF. Abfrage für Cups hinzufügen.
                     foreach (var coreSingleMold in db.CoreSingleMolds)
                     {
-                        if (productDisc?.InnerDiameter >= coreSingleMold.OuterDiameter - toleranceSettings.core_OuterDiameter) // Tolerance Core Outer Diameter MIN
+                        if (productDisc?.InnerDiameter >= coreSingleMold.OuterDiameter - toleranceSettings.product_InnerDiameter_MIN) // Tolerance Core Outer Diameter MIN
                         {
                             this.listCoresSingleMold.Add(coreSingleMold);
                             log.Info($"Added coreSingleMold: {coreSingleMold}");

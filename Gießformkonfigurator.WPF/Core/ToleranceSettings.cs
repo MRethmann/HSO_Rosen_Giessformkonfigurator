@@ -13,23 +13,17 @@ namespace Gießformkonfigurator.WPF.Core
 
     class ToleranceSettings
     {
-        public decimal singleMold_OuterDiameter { get; set; }
+        public decimal product_OuterDiameter_MAX { get; set; }
 
-        public decimal singleMold_InnerDiameter { get; set; }
+        public decimal product_InnerDiameter_MAX { get; set; }
 
-        public decimal ring_OuterDiameter { get; set; }
+        public decimal product_OuterDiameter_MIN { get; set; }
 
-        public decimal ring_InnerDiameter { get; set; }
-
-        public decimal core_OuterDiameter { get; set; }
+        public decimal product_InnerDiameter_MIN { get; set; }
 
         public decimal hc_Diameter { get; set; }
 
         public decimal bolt_Diameter { get; set; }
-
-        public decimal product_OuterDiameter { get; set; }
-
-        public decimal product_InnerDiameter { get; set; }
 
         public ToleranceSettings()
         {
@@ -53,15 +47,12 @@ namespace Gießformkonfigurator.WPF.Core
                         {
                             SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
                             dataAdapter.Fill(dataTable);
-                            this.singleMold_OuterDiameter = (Decimal) dataTable?.Rows[0]["singleMold_OuterDiameter"];
-                            this.singleMold_InnerDiameter = (Decimal) dataTable?.Rows[0]["singleMold_InnerDiameter"];
-                            this.ring_OuterDiameter = (Decimal) dataTable?.Rows[0]["ring_OuterDiameter"];
-                            this.ring_InnerDiameter = (Decimal) dataTable?.Rows[0]["ring_InnerDiameter"];
-                            this.core_OuterDiameter = (Decimal) dataTable?.Rows[0]["core_OuterDiameter"];
+                            this.product_OuterDiameter_MAX = (Decimal) dataTable?.Rows[0]["product_OuterDiameter_MAX"];
+                            this.product_InnerDiameter_MAX = (Decimal) dataTable?.Rows[0]["product_InnerDiameter_MAX"];
+                            this.product_OuterDiameter_MIN = (Decimal) dataTable?.Rows[0]["product_OuterDiameter_MIN"];
+                            this.product_InnerDiameter_MIN = (Decimal) dataTable?.Rows[0]["product_InnerDiameter_MIN"];
                             this.hc_Diameter = (Decimal) dataTable?.Rows[0]["hc_Diameter"];
                             this.bolt_Diameter = (Decimal) dataTable?.Rows[0]["bolt_Diameter"];
-                            this.product_OuterDiameter = (Decimal) dataTable?.Rows[0]["product_OuterDiameter"];
-                            this.product_InnerDiameter = (Decimal) dataTable?.Rows[0]["product_InnerDiameter"];
                         }
                     }
                     catch (Exception ex)

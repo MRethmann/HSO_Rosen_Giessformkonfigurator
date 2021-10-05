@@ -45,7 +45,11 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             toleranceSettings = new ToleranceSettings();
             this.addRatingInformation();
             this.orderOutputData();
+            
+            // Updating rating information because there might be a better ring/core which was found
             this.addRatingInformation();
+
+
         }
 
         public decimal? compare(decimal? var1, decimal? var2)
@@ -64,8 +68,8 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             foreach (var compareObject in this.rankingJobInput)
             {
                 compareObject.finalRating = 0;
-                compareObject.finalRating = this.compare(45.00m - (compareObject.differenceOuterDiameter > toleranceSettings?.ring_OuterDiameter ? compareObject.differenceOuterDiameter : 0) * this.factorOuterDiameter, 0.00m);
-                compareObject.finalRating += this.compare(45.00m - (compareObject.differenceInnerDiameter > toleranceSettings?.core_OuterDiameter ? compareObject.differenceInnerDiameter : 0) * this.factorInnerDiameter, 0.00m);
+                compareObject.finalRating = this.compare(45.00m - (compareObject.differenceOuterDiameter > toleranceSettings?.product_OuterDiameter_MAX ? compareObject.differenceOuterDiameter : 0) * this.factorOuterDiameter, 0.00m);
+                compareObject.finalRating += this.compare(45.00m - (compareObject.differenceInnerDiameter > toleranceSettings?.product_InnerDiameter_MAX ? compareObject.differenceInnerDiameter : 0) * this.factorInnerDiameter, 0.00m);
 
                 if (compareObject.Mold is ModularMold)
                 {
@@ -77,13 +81,13 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                             if (compareObject.boltCirclesBaseplate[i] == true)
                             {
                                 var minDifference = compareObject.bolts.Min(p => p.Item2);
-                                compareObject.finalRating += this.compare(10.00m - (minDifference > toleranceSettings?.bolt_Diameter ? minDifference : 0) * this.factorBoltDiameter, 0.00m);
+                                compareObject.finalRating += 10.00m;
                                 compareObject.differenceBoltDiameter = minDifference;
                             }
                             else if (compareObject.boltCirclesInsertPlate[i] == true)
                             {
                                 var minDifference = compareObject.bolts.Min(p => p.Item2);
-                                compareObject.finalRating += this.compare(10.00m - (minDifference > toleranceSettings?.bolt_Diameter ? minDifference : 0) * this.factorBoltDiameter, 0.00m);
+                                compareObject.finalRating += 10.00m;
                                 compareObject.differenceBoltDiameter = minDifference;
                             }
                         }
@@ -95,23 +99,30 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                 }
                 else if (compareObject.Mold is SingleMold)
                 {
-                    if (compareObject.differenceBoltDiameter == null && String.IsNullOrEmpty(product.BTC))
+                    if (String.IsNullOrWhiteSpace(product.BTC))
                     {
                         compareObject.finalRating += 10.00m;
+
+                        // Used while adding post processing information. Means that no BTC needs to be added to the product.
+                        compareObject.differenceBoltDiameter = 0;
                     }
-                    else
+                    else if (!String.IsNullOrWhiteSpace(product.BTC) 
+                        && (((SingleMold)compareObject.Mold).HcDiameter != null || ((SingleMold)compareObject.Mold).HcDiameter >= 0)
+                        && (((SingleMold)compareObject.Mold).HcHoles != null || ((SingleMold)compareObject.Mold).HcHoles >= 0)
+                        && (((SingleMold)compareObject.Mold).BoltDiameter != null || ((SingleMold)compareObject.Mold).BoltDiameter >= 0))
                     {
-                        compareObject.finalRating += this.compare(10.00m - compareObject.differenceBoltDiameter * this.factorBoltDiameter, 0.00m);
+                        compareObject.finalRating += 10.00m;
+
+                        // Used while adding post processing information. Means that no BTC needs to be added to the product.
+                        compareObject.differenceBoltDiameter = 0;
                     }
                 }
 
                 compareObject.finalRating = Math.Round((Decimal) compareObject.finalRating, 2);    
             }
-        }
 
-        public void sortData()
-        {
-
+            var tempList = rankingJobOutput?.OrderByDescending(x => x.finalRating);
+            rankingJobOutput = rankingJobOutput != null ? new List<CompareObject>(tempList) : null;
         }
 
         public void orderOutputData()
@@ -133,10 +144,10 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             }
 
             // lists will be split into groups based on the contained baseplate
-            var groupedLists01 = listModularMolds.GroupBy(x => ((ModularMold)x.Mold).baseplate.ID).Select(grp => grp.ToList()).ToList();
+            var groupedList = listModularMolds.GroupBy(x => ((ModularMold)x.Mold).baseplate.ID).Select(grp => grp.ToList()).ToList();
 
             // Grouped lists will be sorted by finalRating and merged into one list 
-            foreach (List<CompareObject> list01 in groupedLists01)
+            foreach (List<CompareObject> list01 in groupedList)
             {
                 var tempList = list01.GroupBy(x => ((ModularMold)x.Mold).insertPlate?.ID).Select(grp => grp.ToList()).ToList();
                 
@@ -249,13 +260,13 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                 compareObject.alternativeCores.Remove(compareObject.alternativeCores.Find(x => x.Item1.ID == ((ModularMold)compareObject?.Mold).core?.ID));
                 compareObject.alternativeGuideRings.Remove(compareObject.alternativeGuideRings.Find(x => x.Item1.ID == ((ModularMold)compareObject?.Mold).guideRing?.ID));
 
-                if (compareObject.differenceInnerDiameter > toleranceSettings?.core_OuterDiameter)
+                if (compareObject.differenceInnerDiameter > toleranceSettings?.product_InnerDiameter_MAX)
                 {
                     string diffInnerDiameter = Math.Round((Decimal)compareObject.differenceInnerDiameter, 2).ToString();
                     compareObject.postProcessing.Add($"Innendurchmesser:  {diffInnerDiameter}");
                 }
 
-                if (compareObject.differenceOuterDiameter > toleranceSettings?.ring_InnerDiameter)
+                if (compareObject.differenceOuterDiameter > toleranceSettings?.product_OuterDiameter_MAX)
                 {
                     string diffOuterDiameter = Math.Round((Decimal)compareObject.differenceOuterDiameter, 2).ToString();
                     compareObject.postProcessing.Add($"Außendurchmesser: {diffOuterDiameter}");

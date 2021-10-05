@@ -13,6 +13,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
     using Gießformkonfigurator.WPF.MVVM.Model.Logic;
     using log4net;
     using System;
+    using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Globalization;
     using System.Linq;
@@ -58,7 +59,9 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
 
         public decimal? HcHoleDiameter { get; set; }
 
-        public decimal? FactorPU { get; set; }
+        public List<Decimal?> PUFactors { get; set; } = new List<decimal?>() { 1.017m, 1.0175m, 1.023m, 1.025m };
+
+        public decimal? selectedFactorPU { get; set; }
 
         public string BTC { get; set; }
 
@@ -144,7 +147,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                         this.productDisc.HcHoleDiameter = this.HcHoleDiameter != null ? this.HcHoleDiameter : null;
                         this.productDisc.HcDiameter = this.HcDiameter != null ? this.HcDiameter : null;
                         this.productDisc.BTC = this.BTC != null ? this.BTC : null;
-                        this.productDisc.FactorPU = this.FactorPU;
+                        this.productDisc.FactorPU = this.selectedFactorPU;
                         this.product = productDisc;
                         log.Info($"ProductDisc search started via manual entry for product: {productDisc.OuterDiameter}, {productDisc.InnerDiameter}, {productDisc.Height}, {productDisc.BTC}, {productDisc.FactorPU} - (OD, ID, T, BTC, Factor)");
                     }
@@ -167,7 +170,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
 
             if (product.FactorPU == null)
             {
-                product.FactorPU = this.FactorPU;
+                product.FactorPU = this.selectedFactorPU;
             }
 
             // Create new ProgramLogic --> start algorithm to search for fitting molds
