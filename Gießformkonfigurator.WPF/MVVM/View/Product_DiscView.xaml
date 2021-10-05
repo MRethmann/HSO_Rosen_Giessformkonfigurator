@@ -113,7 +113,7 @@
         </TextBox>        
 
         <TextBlock Text="Faktor PU" Grid.Row="5" Grid.Column="0"/>
-        <TextBox x:Name="FactorPU_Textbox" Grid.Row="5" Grid.Column="1">
+        <TextBox x:Name="FactorPU_TextBox" Grid.Row="5" Grid.Column="1">
             <TextBox.Text>
                 <Binding Path="productDisc.FactorPU" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
@@ -124,7 +124,7 @@
         </TextBox>
 
         <TextBlock Text="BTC" Grid.Row="6" Grid.Column="0"/>
-        <TextBox x:Name="BTC_Textbox" Grid.Row="6" Grid.Column="1">
+        <TextBox x:Name="BTC_TextBox" Grid.Row="6" Grid.Column="1">
             <TextBox.Text>
                 <Binding Path="productDisc.BTC" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
@@ -188,7 +188,7 @@
                                 <Condition Binding="{Binding Path=(Validation.HasError), ElementName=OuterDiameter_TextBox}" Value="False"/>
                                 <Condition Binding="{Binding Path=(Validation.HasError), ElementName=InnerDiameter_TextBox}" Value="False"/>
                                 <Condition Binding="{Binding Path=(Validation.HasError), ElementName=Height_TextBox}" Value="False"/>
-                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=FactorPU_Textbox}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=FactorPU_TextBox}" Value="False"/>
                                 <Condition Binding="{Binding Path=(Validation.HasError), ElementName=BTC_TextBox}" Value="False"/>
                                 <Condition Binding="{Binding Path=(Validation.HasError), ElementName=HcDiameter_TextBox}" Value="False"/>
                                 <Condition Binding="{Binding Path=(Validation.HasError), ElementName=HcHoles_TextBox}" Value="False"/>

@@ -86,13 +86,14 @@ namespace Gieﬂformkonfigurator.WPF.MVVM.Model.Logic
 
             // General comparison between single Mold and product
             if (productDisc.OuterDiameter <= singleMoldDisc.OuterDiameter + toleranceSettings.product_OuterDiameter_MIN
-                && productDisc.InnerDiameter >= singleMoldDisc.InnerDiameter - toleranceSettings.product_InnerDiameter_MIN)
+                && productDisc.InnerDiameter >= singleMoldDisc.InnerDiameter - toleranceSettings.product_InnerDiameter_MIN
+                && productDisc.Height <= singleMoldDisc.Height)
             {
                 // Product and singleMoldDisc have BTC
                 if (!String.IsNullOrWhiteSpace(productDisc.BTC) 
-                        && (singleMoldDisc.HcDiameter != null && singleMoldDisc.HcDiameter > 0)
-                        && (singleMoldDisc.HcHoles != null && singleMoldDisc.HcHoles > 0)
-                        && (singleMoldDisc.BoltDiameter != null && singleMoldDisc.BoltDiameter > 0))
+                        && singleMoldDisc.HcDiameter != null && singleMoldDisc.HcDiameter > 0
+                        && singleMoldDisc.HcHoles != null && singleMoldDisc.HcHoles > 0
+                        && singleMoldDisc.BoltDiameter != null && singleMoldDisc.BoltDiameter > 0)
                 {
                     return (productDisc.HcDiameter == null || productDisc.HcDiameter <= 0 || (productDisc.HcDiameter <= singleMoldDisc.HcDiameter + toleranceSettings.hc_Diameter && productDisc.HcDiameter >= singleMoldDisc.HcDiameter - toleranceSettings.hc_Diameter))
                         && (productDisc.HcHoleDiameter == null || productDisc.HcHoleDiameter <= 0 || (productDisc.HcHoleDiameter >= singleMoldDisc.BoltDiameter - toleranceSettings.bolt_Diameter && productDisc.HcHoleDiameter <= singleMoldDisc.BoltDiameter + toleranceSettings.bolt_Diameter))

@@ -22,7 +22,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
         public Product_DiscViewModel()
         {
             this.productDisc = new ProductDisc();
-            insertIntoDbCmd = new RelayCommand(param => insertIntoDb(), param => validateData());
+            insertIntoDbCmd = new RelayCommand(param => insertIntoDb(), param => true);
         }
 
         public void insertIntoDb()
@@ -41,10 +41,6 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                 }
 
             }
-        }
-        private bool validateData()
-        {
-            return true;
         }
     }
 }

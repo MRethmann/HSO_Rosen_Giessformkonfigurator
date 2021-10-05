@@ -134,9 +134,10 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                 {
                     if (this.OuterDiameter == 0
                     || this.InnerDiameter == 0
-                    || this.Height == 0)
+                    || this.Height == 0
+                    || this.OuterDiameter < this.InnerDiameter)
                     {
-                        MessageBox.Show("Bitte alle Werte ausfüllen!");
+                        MessageBox.Show("Bitte überprüfe die eingegebenen Werte!");
                     }
                     else
                     {
@@ -184,10 +185,6 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                 {
                     this.productSearchOutput.Add(compareObject);
                 }
-            }
-            else
-            {
-                MessageBox.Show("Kein Produkt bekannt!");
             }
         }
     }

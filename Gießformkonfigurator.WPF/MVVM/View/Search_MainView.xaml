@@ -47,7 +47,7 @@
                         </ComboBox>
 
                         <ComboBox x:Name="FactorPU_ID_ComboBox" 
-                                 SelectedItem="{Binding selectedFactorPU, Mode=TwoWay, UpdateSourceTrigger=LostFocus, Converter={StaticResource DecimalConverter}}"
+                                 SelectedItem="{Binding selectedFactorPU, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DecimalConverter}}"
                                  Width="auto" Height="Auto"
                                  HorizontalAlignment="Stretch"
                                  HorizontalContentAlignment="Center"

@@ -176,7 +176,8 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                     foreach (var singleMoldDisc in db.SingleMoldDiscs)
                     {
                         if (productDisc.OuterDiameter <= singleMoldDisc.OuterDiameter + toleranceSettings.product_OuterDiameter_MIN // Tolerance singleMold OuterDiameter MIN
-                            && productDisc.InnerDiameter >= singleMoldDisc.InnerDiameter - toleranceSettings.product_InnerDiameter_MIN) // Tolerance singleMold InnerDiameter MIN
+                            && productDisc.InnerDiameter >= singleMoldDisc.InnerDiameter - toleranceSettings.product_InnerDiameter_MIN
+                            && productDisc.Height <= singleMoldDisc.Height) // Tolerance singleMold InnerDiameter MIN
                         {
                             this.listSingleMoldDiscs.Add(singleMoldDisc);
                             log.Info($"Added singleMoldDisc: {singleMoldDisc}");
