@@ -98,9 +98,10 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                             log.Info($"ProductDisc search via SAP-Nr. started for product: {product}");
                         }
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
                         MessageBox.Show("Suche fehlgeschlagen. Überprüfe die Db Verbindung!");
+                        log.Error(ex);
                     }
                 }
 
@@ -116,9 +117,10 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                             log.Info($"ProductCup search via SAP-Nr. started for product: {product}");
                         }
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
                         MessageBox.Show("Suche fehlgeschlagen. Überprüfe die Db Verbindung!");
+                        log.Error(ex);
                     }
                 }
                 
