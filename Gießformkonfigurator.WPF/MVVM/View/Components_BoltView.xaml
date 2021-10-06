@@ -76,7 +76,7 @@
         <TextBlock Text="SAP-Nr." Grid.Row="0" Grid.Column="0"/>
         <TextBox x:Name="ID_TextBox" Grid.Row="0" Grid.Column="1"
 >            <TextBox.Text>
-                <Binding Path="Bolt.ID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                <Binding Path="bolt.ID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
                         <validationRules:MandatoryFieldValidationRule/>
                     </Binding.ValidationRules>
@@ -89,7 +89,7 @@
             <TextBox.Text>
                 <Binding Path="bolt.Description" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
-                        <validationRules:MandatoryFieldValidationRule/>
+
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
@@ -98,7 +98,7 @@
         <TextBlock Text="Höhe" Grid.Row="2" Grid.Column="0"/>
         <TextBox x:Name="height_TextBox" Grid.Row="2" Grid.Column="1">
             <TextBox.Text>
-                <Binding Path="bolt.height" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                <Binding Path="bolt.Height" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
                         <validationRules:InputValueRangeValidationRule/>
                     </Binding.ValidationRules>
@@ -186,7 +186,6 @@
                                 <Condition Binding="{Binding Path=(Validation.HasError), ElementName=FillHeight_max_TextBox}" Value="False"/>
                                 <Condition Binding="{Binding Path=(Validation.HasError), ElementName=GuideHeight_TextBox}" Value="False"/>
                                 <Condition Binding="{Binding Path=(Validation.HasError), ElementName=GuideOuterDiameter_TextBox}" Value="False"/>
-                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=Thread_TextBox}" Value="False"/>
                             </MultiDataTrigger.Conditions>
                             <Setter Property="IsEnabled" Value="True"/>
                         </MultiDataTrigger>

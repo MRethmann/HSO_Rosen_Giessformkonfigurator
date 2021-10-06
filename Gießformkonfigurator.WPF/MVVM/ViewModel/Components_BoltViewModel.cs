@@ -46,9 +46,9 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
         {
             if (bolt.ID.ToString().Length <= 1
                 || ((bolt.OuterDiameter ?? 0) == 0)
-                || ((bolt.Height == 0)
-                || (bolt.HasThread && bolt.Thread == null)
-                || (bolt.HasGuideBolt && ((bolt.GuideHeight ?? 0) == 0) || ((bolt.GuideOuterDiameter ?? 0) == 0))))
+                || bolt.Height == 0
+                || (bolt.HasThread && string.IsNullOrWhiteSpace(bolt.Thread))
+                || bolt.HasGuideBolt && (((bolt.GuideHeight ?? 0) == 0) || ((bolt.GuideOuterDiameter ?? 0) == 0)))
             {
                 return false;
             }
