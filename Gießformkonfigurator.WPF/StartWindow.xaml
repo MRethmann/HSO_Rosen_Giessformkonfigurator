@@ -5,47 +5,91 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Gießformkonfigurator.WPF"
         mc:Ignorable="d"
-        Title="Gießformkonfigurator" Height="450" Width="380" 
+        Title="Gießformkonfigurator" Height="600" Width="600" 
         WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <StackPanel VerticalAlignment="Center">
-                <Image Source="C:\Users\Anwender\source\repos\MRethmann\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\Images/house.png" Width="80"/>
-                <TextBlock Text="Gießformkonfigurator"
-                           FontWeight="Light"
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Gießformkonfigurator"
+                           FontWeight="Medium"
                            FontSize="22"
                            HorizontalAlignment="Center"
-                           Foreground="Black"/>
-            </StackPanel>
+                           VerticalAlignment="Bottom"
+                           Foreground="Black" Grid.ColumnSpan="2"/>
 
-            <StackPanel  Grid.Row="1">
-                <StackPanel>
-                    <TextBlock FontFamily="Helvetica"
+            <TextBlock FontFamily="Helvetica"
                                FontWeight="Light"
-                               Text="Datenbank Verbindung"
+                               Text="Server:"
                                FontSize="20"
-                               HorizontalAlignment="Center"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
                                Foreground="Black"
-                               Margin="5"
-                                   />
-                </StackPanel>
+                               Margin="10"
+                               Grid.Row="2"/>
 
-                <Grid>
-                    <Button Content="Verbinden" Click="btnOpenModal_Click"
+            <TextBox Name="Server_TextBox" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300" Height="Auto" FontSize="20" Margin="10" TextChanged="ConnectionDataChanged" IsEnabled="False"/>
+
+
+            <TextBlock FontFamily="Helvetica"
+                               FontWeight="Light"
+                               Text="Datenbank:"
+                               FontSize="20"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Foreground="Black"
+                               Margin="10"
+                               Grid.Row="3"/>
+
+            <TextBox Name="DB_TextBox" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300" Height="Auto" FontSize="20" Margin="10" TextChanged="ConnectionDataChanged" IsEnabled="False"/>
+
+            <TextBlock FontFamily="Helvetica"
+                               FontWeight="Light"
+                               Text="Benutzer:"
+                               FontSize="20"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Foreground="Black"
+                               Margin="10"
+                               Grid.Row="4"/>
+
+            <TextBox Name="User_TextBox" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300" Height="Auto" FontSize="20" Margin="10" TextChanged="ConnectionDataChanged" IsEnabled="False"/>
+
+            <TextBlock FontFamily="Helvetica"
+                               FontWeight="Light"
+                               Text="Passwort:"
+                               FontSize="20"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Foreground="Black"
+                               Margin="10"
+                               Grid.Row="5"/>
+
+            <PasswordBox Name="Password_TextBox" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300" Height="Auto" FontSize="20" Margin="10" IsEnabled="False"/>
+
+            <Button Content="Verbinden" Click="btnOpenModal_Click"
                             Width="100"
-                            Margin="0,10"
                             Height="30"
                             FontFamily="Helvetica"
                             FontWeight="Light"
                             FontSize="16"
-                            HorizontalAlignment="center"/>
-                </Grid>
-            </StackPanel>
+                            HorizontalAlignment="center"
+                            VerticalAlignment="Bottom"
+                            Grid.Row="6" Grid.ColumnSpan="2"/>
         </Grid>
     </Grid>
 </Window>
