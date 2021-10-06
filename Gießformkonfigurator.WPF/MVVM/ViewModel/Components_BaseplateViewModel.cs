@@ -22,7 +22,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
         public Components_BaseplateViewModel()
         {
             baseplate = new Baseplate();
-            insertIntoDbCmd = new RelayCommand(param => insertIntoDb(), param => validateData());
+            insertIntoDbCmd = new RelayCommand(param => insertIntoDb(), param => validateInput());
         }
 
         // TODO: Implement some kind of validation that prevents wrong input.
@@ -48,26 +48,22 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
         /// Validates if all required fields are filled out and activates the button if true.
         /// </summary>
         /// <returns>True if all required fields are filled.</returns>
-        private bool validateData()
+        public bool validateInput()
         {
-            /*if (this.ID != 0
-                && this.OuterDiameter != 0
-                && this.Description != null
-                && this.Height != 0
-                && this.OuterKonusMax != 0
-                && this.OuterKonusMin != 0
-                && this.OuterKonusAngle != 0
-                && this.KonusHeight != 0
-                && ((this.HasKonus == true && ((this.InnerKonusMax != 0 || this.InnerKonusMax != null) && (this.InnerKonusMin != 0 || this.InnerKonusMin != null) && (this.InnerKonusAngle != 0 || this.InnerKonusAngle != null)))
-                || (this.HasHoleguide == true && (this.InnerDiameter != 0 || this.InnerDiameter != null))
-                || (this.HasCore == true)))
+            if (baseplate.ID.ToString().Length <= 1
+                || baseplate.OuterDiameter == 0
+                || baseplate.Height == 0
+                || ((baseplate.OuterKonusMax ?? 0) == 0)
+                || ((baseplate.OuterKonusMin ?? 0) == 0)
+                || ((baseplate.OuterKonusAngle ?? 0) == 0)
+                || ((baseplate.KonusHeight ?? 0) == 0)
+                || (baseplate.HasKonus && (((baseplate.InnerKonusMin ?? 0) == 0) || ((baseplate.InnerKonusMax ?? 0) == 0) || ((baseplate.InnerKonusAngle ?? 0) == 0)))
+                || (baseplate.HasHoleguide && ((baseplate.InnerDiameter ?? 0) == 0)))
             {
-                return true;
+                return false;
             }
-            else
-                return false;*/
+
             return true;
         }
-
     }
 }

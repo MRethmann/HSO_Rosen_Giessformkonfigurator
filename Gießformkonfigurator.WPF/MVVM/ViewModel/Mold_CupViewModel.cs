@@ -21,7 +21,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
         public Mold_CupViewModel()
         {
             singleMoldCup = new SingleMoldCup();
-            insertIntoDbCmd = new RelayCommand(param => insertIntoDb(), param => validateData());
+            insertIntoDbCmd = new RelayCommand(param => insertIntoDb(), param => validateInput());
         }
 
         public void insertIntoDb()
@@ -41,8 +41,17 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
 
             }
         }
-        private bool validateData()
+
+        public bool validateInput()
         {
+            if (singleMoldCup.ID.ToString().Length <= 1
+                || singleMoldCup.OuterDiameter == 0
+                || singleMoldCup.InnerDiameter == 0
+                || singleMoldCup.Height == 0)
+            {
+                return false;
+            }
+
             return true;
         }
     }

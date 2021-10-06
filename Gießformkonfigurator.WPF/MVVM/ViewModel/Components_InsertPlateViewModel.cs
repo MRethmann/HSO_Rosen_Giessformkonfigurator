@@ -22,7 +22,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
         public Components_InsertPlateViewModel()
         {
             this.insertPlate = new InsertPlate();
-            insertIntoDbCmd = new RelayCommand(param => insertIntoDb(), param => validateData());
+            insertIntoDbCmd = new RelayCommand(param => insertIntoDb(), param => validateInput());
         }
 
         public void insertIntoDb()
@@ -42,8 +42,18 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
 
             }
         }
-        private bool validateData()
+
+        public bool validateInput()
         {
+            if (insertPlate.ID.ToString().Length <= 1
+                || insertPlate.OuterDiameter == 0
+                || insertPlate.Height == 0
+                || (insertPlate.HasKonus && (((insertPlate.InnerKonusMin ?? 0) == 0) || ((insertPlate.InnerKonusMax ?? 0) == 0) || ((insertPlate.InnerKonusAngle ?? 0) == 0) || ((insertPlate.KonusHeight ?? 0) == 0)))
+                || (insertPlate.HasHoleguide && ((insertPlate.InnerDiameter ?? 0) == 0)))
+            {
+                return false;
+            }
+
             return true;
         }
     }

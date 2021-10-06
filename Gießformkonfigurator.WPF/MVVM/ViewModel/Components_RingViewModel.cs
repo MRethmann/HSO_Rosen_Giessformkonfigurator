@@ -22,7 +22,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
         public Components_RingViewModel()
         {
             this.ring = new Ring();
-            insertIntoDbCmd = new RelayCommand(param => insertIntoDb(), param => validateData());
+            insertIntoDbCmd = new RelayCommand(param => insertIntoDb(), param => validateInput());
         }
 
         public void insertIntoDb()
@@ -42,8 +42,19 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
 
             }
         }
-        private bool validateData()
+
+        public bool validateInput()
         {
+            if (ring.ID.ToString().Length <= 1
+                || ring.OuterDiameter == 0
+                || ring.Height == 0
+                || ring.FillHeightMax == 0
+                || ring.InnerDiameter == 0
+                || (ring.HasKonus && (((ring.InnerKonusMin ?? 0) == 0) || ((ring.InnerKonusMax ?? 0) == 0) || ((ring.InnerKonusAngle ?? 0) == 0))))
+            {
+                return false;
+            }
+
             return true;
         }
     }

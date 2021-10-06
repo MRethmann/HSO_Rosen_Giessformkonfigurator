@@ -21,7 +21,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
         public Components_BoltViewModel()
         {
             this.bolt = new Bolt();
-            insertIntoDbCmd = new RelayCommand(param => insertIntoDb(), param => validateData());
+            insertIntoDbCmd = new RelayCommand(param => insertIntoDb(), param => validateInput());
         }
 
         public void insertIntoDb()
@@ -41,8 +41,18 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
 
             }
         }
-        private bool validateData()
+
+        public bool validateInput()
         {
+            if (bolt.ID.ToString().Length <= 1
+                || ((bolt.OuterDiameter ?? 0) == 0)
+                || ((bolt.Height == 0)
+                || (bolt.HasThread && bolt.Thread == null)
+                || (bolt.HasGuideBolt && ((bolt.GuideHeight ?? 0) == 0) || ((bolt.GuideOuterDiameter ?? 0) == 0))))
+            {
+                return false;
+            }
+
             return true;
         }
     }

@@ -21,7 +21,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
         public Mold_DiscViewModel()
         {
             this.singleMoldDisc = new SingleMoldDisc();
-            insertIntoDbCmd = new RelayCommand(param => insertIntoDb(), param => validateData());
+            insertIntoDbCmd = new RelayCommand(param => insertIntoDb(), param => validateInput());
         }
 
         public void insertIntoDb()
@@ -41,8 +41,17 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
 
             }
         }
-        private bool validateData()
+
+        public bool validateInput()
         {
+            if (singleMoldDisc.ID.ToString().Length <= 1
+                || singleMoldDisc.OuterDiameter == 0
+                || singleMoldDisc.InnerDiameter == 0
+                || singleMoldDisc.Height == 0)
+            {
+                return false;
+            }
+
             return true;
         }
     }

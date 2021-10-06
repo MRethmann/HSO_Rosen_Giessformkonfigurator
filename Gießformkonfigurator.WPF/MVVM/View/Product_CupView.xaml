@@ -48,6 +48,16 @@
             <Setter Property="FontSize" Value="15"/>
             <Setter Property="Margin" Value="0,0,10,0"/>
         </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="15"/>
+        </Style>
         </Grid.Resources>
 
       
@@ -96,22 +106,14 @@
         </TextBox>       
 
         <TextBlock Text="Faktor PU" Grid.Row="4" Grid.Column="0"/>
-        <TextBox x:Name="FactorPU_Textbox" Grid.Row="4" Grid.Column="1">
-            <TextBox.Text>
-                <Binding Path="productCup.FactorPU" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
-                    <Binding.ValidationRules>
-                        <validationRules:InputValueRangeValidationRule/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>            
+        <ComboBox x:Name="FactorPU_ComboBox" SelectedItem="{Binding productCup.FactorPU, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="4" Grid.Column="1" ItemsSource="{Binding PUFactors}"/>            
 
         <TextBlock Text="BTC" Grid.Row="5" Grid.Column="0"/>
         <TextBox x:Name="BTC_Textbox" Grid.Row="5" Grid.Column="1">
             <TextBox.Text>
                 <Binding Path="productCup.BTC" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
-                        <validationRules:MandatoryFieldValidationRule/>
+                        
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
@@ -135,7 +137,7 @@
                                 <Condition Binding="{Binding Path=(Validation.HasError), ElementName=Description_TextBox}" Value="False"/>
                                 <Condition Binding="{Binding Path=(Validation.HasError), ElementName=BaseCup_Textbox}" Value="False"/>
                                 <Condition Binding="{Binding Path=(Validation.HasError), ElementName=InnerDiameter_TextBox}" Value="False"/>
-                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=FactorPU_Textbox}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=FactorPU_ComboBox}" Value="False"/>
                                 <Condition Binding="{Binding Path=(Validation.HasError), ElementName=BTC_Textbox}" Value="False"/>
                             </MultiDataTrigger.Conditions>
                             <Setter Property="IsEnabled" Value="True"/>

@@ -102,14 +102,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Gießformkonfigurator.WPF.exe" size="519616">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Gießformkonfigurator.WPF.exe" size="522176">
       <assemblyIdentity name="Gießformkonfigurator.WPF" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>x0CUzK7UMyoWfPfJ2dzDqOIoSHch5kVsA127pIE85Io=</dsig:DigestValue>
+        <dsig:DigestValue>N34jRQPeSDVR3bPR8Ptt+4j+Glwtl7hlXiPkxCI2yJc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

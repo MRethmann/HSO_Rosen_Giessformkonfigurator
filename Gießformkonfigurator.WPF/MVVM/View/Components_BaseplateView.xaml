@@ -88,7 +88,7 @@
             <TextBox.Text>
                 <Binding Path="baseplate.Description" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
-                        <validationRules:MandatoryFieldValidationRule/>
+
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>

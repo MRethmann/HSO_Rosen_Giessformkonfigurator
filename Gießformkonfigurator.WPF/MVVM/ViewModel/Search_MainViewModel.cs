@@ -171,7 +171,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                 }
             }
 
-            // Create new ProgramLogic --> start algorithm to search for fitting molds
+            // Create new SearchJob --> start algorithm to search for fitting molds
             if (product != null)
             {
                 if (product.FactorPU == null)
