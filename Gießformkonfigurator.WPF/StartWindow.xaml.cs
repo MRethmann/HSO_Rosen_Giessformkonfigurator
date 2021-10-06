@@ -1,4 +1,5 @@
 ﻿
+using Gießformkonfigurator.WPF.Properties;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Windows;
@@ -37,8 +38,11 @@ namespace Gießformkonfigurator.WPF
 
         private void ConnectionDataChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
-            //ConfigurationManager.ConnectionStrings["GießformDB"].ConnectionString = $"data source = {Server_TextBox.Text}; initial catalog = {DB_TextBox.Text}; persist security info = True; user id = {User_TextBox.Text}; password = {Password_TextBox.Password}; multipleactiveresultsets = True; application name = EntityFramework";
-            //ConfigurationManager.RefreshSection("connectionStrings");
+            Settings.Default.DBServer = Server_TextBox.Text;
+            Settings.Default.DBName = DB_TextBox.Text;
+            Settings.Default.DBUserId = User_TextBox.Text;
+            Settings.Default.DBPassword = Password_TextBox.Password;
+            Settings.Default.DBConString = $"data source = {Server_TextBox.Text}; initial catalog = {DB_TextBox.Text}; persist security info = True; user id = {User_TextBox.Text}; password = {Password_TextBox.Password}; multipleactiveresultsets = True; application name = EntityFramework";
         }
 
     }
