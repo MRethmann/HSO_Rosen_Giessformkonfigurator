@@ -5,6 +5,7 @@
 //-----------------------------------------------------------------------
 namespace Gießformkonfigurator.WPF.Core
 {
+    using log4net;
     using System;
     using System.Configuration;
     using System.Data;
@@ -24,6 +25,8 @@ namespace Gießformkonfigurator.WPF.Core
         public decimal hc_Diameter { get; set; }
 
         public decimal bolt_Diameter { get; set; }
+
+        private static readonly ILog log = LogManager.GetLogger(typeof(ToleranceSettings));
 
         public ToleranceSettings()
         {
@@ -57,7 +60,7 @@ namespace Gießformkonfigurator.WPF.Core
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Tolerance Settings konnten nicht abgerufen werden!" + ex);
+                        log.Error(ex);
                     }
 
                 }

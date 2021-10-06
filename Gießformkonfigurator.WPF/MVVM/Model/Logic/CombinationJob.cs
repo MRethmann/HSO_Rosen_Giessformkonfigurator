@@ -36,7 +36,6 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
         public List<SingleMoldCup> listSingleMoldCups { get; set; }
         public List<CoreSingleMold> listCoresSingleMold { get; set; }
         public CombinationRuleset combinationRuleSet { get; set; }
-        public ApplicationSettings applicationSettings { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CombinationJob"/> class.
@@ -58,7 +57,6 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             listSingleMoldDiscs = new List<SingleMoldDisc>(filterJob.listSingleMoldDiscs);
 
             combinationRuleSet = new CombinationRuleset();
-            applicationSettings = new ApplicationSettings();
 
             this.CombineModularDiscMold();
             this.CombineModularCupMold();

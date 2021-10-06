@@ -27,32 +27,16 @@
                          Command="{Binding ApplicationSettingsViewCommand}"
                          IsChecked="True"/>
 
-                <RadioButton Content="Filter Settings"
-                         Height="50" Width="200"   
-                         HorizontalAlignment="Center" VerticalAlignment="Center"
-                         FontSize="20"
-                         Margin="0,0,10,0"
-                         Style="{StaticResource MenuButtonTheme}"
-                         Command="{Binding FilterSettingsViewCommand}"
-                         Visibility="Collapsed"/>
-
-                <RadioButton Content="Combination Settings"
-                         Height="50" Width="200"  
-                         HorizontalContentAlignment="Center"
-                         FontSize="20"
-                         Style="{StaticResource MenuButtonTheme}"
-                         Command="{Binding CombinationSettingsViewCommand}"/>
-
-                <RadioButton Content="Compare Settings"
+                <RadioButton Content="Tolerance Settings"
                          Height="50" Width="200"  
                          HorizontalAlignment="Center" VerticalAlignment="Center"
                          FontSize="20"
                          Margin="10,0,10,0"
                          Style="{StaticResource MenuButtonTheme}"
-                         Command="{Binding CompareSettingsViewCommand}"
-                         Visibility="Collapsed"/>
+                         Command="{Binding ToleranceSettingsViewCommand}"
+                         Visibility="Visible"/>
 
-                <RadioButton Content="Rankings Settings"
+                <RadioButton Content="Ranking Settings"
                          Height="50" Width="200"  
                          HorizontalContentAlignment="Center"
                          FontSize="20"

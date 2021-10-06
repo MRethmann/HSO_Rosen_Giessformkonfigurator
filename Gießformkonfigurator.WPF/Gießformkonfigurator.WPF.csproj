@@ -102,6 +102,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Core\RankingSettings.cs" />
     <Compile Include="Core\ApplicationSettings.cs" />
     <Compile Include="loginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
@@ -181,11 +182,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MVVM\View\Settings_CombinationSettingsView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="MVVM\View\Settings_CompareSettingsView.xaml">
+    <Page Include="MVVM\View\Settings_ToleranceSettingsView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -196,10 +193,6 @@
     <Page Include="MVVM\View\Components_InsertPlateView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MVVM\View\Settings_FilterSettingsView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="MVVM\View\Mold_MainView.xaml">
       <SubType>Designer</SubType>
@@ -361,9 +354,7 @@
     <Compile Include="MVVM\ViewModel\Search_MainViewModel.cs" />
     <Compile Include="MVVM\ViewModel\MainViewModel.cs" />
     <Compile Include="MVVM\ViewModel\Settings_ApplicationSettingsViewModel.cs" />
-    <Compile Include="MVVM\ViewModel\Settings_CombinationSettingsViewModel.cs" />
-    <Compile Include="MVVM\ViewModel\Settings_CompareSettingsViewModel.cs" />
-    <Compile Include="MVVM\ViewModel\Settings_FilterSettingsViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\Settings_ToleranceSettingsViewModel.cs" />
     <Compile Include="MVVM\ViewModel\Settings_MainViewModel.cs" />
     <Compile Include="MVVM\ViewModel\Settings_RankingSettingsViewModel.cs" />
     <Compile Include="MVVM\View\ValidationRules\InputValueRangeValidationRule.cs" />
@@ -383,20 +374,14 @@
     <Compile Include="MVVM\View\Components_MainView.xaml.cs">
       <DependentUpon>Components_MainView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\View\Settings_CombinationSettingsView.xaml.cs">
-      <DependentUpon>Settings_CombinationSettingsView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MVVM\View\Settings_CompareSettingsView.xaml.cs">
-      <DependentUpon>Settings_CompareSettingsView.xaml</DependentUpon>
+    <Compile Include="MVVM\View\Settings_ToleranceSettingsView.xaml.cs">
+      <DependentUpon>Settings_ToleranceSettingsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\View\Components_CupformView.xaml.cs">
       <DependentUpon>Components_CupformView.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\View\Components_InsertPlateView.xaml.cs">
       <DependentUpon>Components_InsertPlateView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MVVM\View\Settings_FilterSettingsView.xaml.cs">
-      <DependentUpon>Settings_FilterSettingsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\View\Mold_MainView.xaml.cs">
       <DependentUpon>Mold_MainView.xaml</DependentUpon>

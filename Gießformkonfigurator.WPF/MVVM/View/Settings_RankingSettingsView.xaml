@@ -23,20 +23,15 @@
             <RowDefinition Height="65"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Faktoren der Kombinationsbewertungen"
-                   HorizontalAlignment="Left" VerticalAlignment="Center" Grid.ColumnSpan="3"
-                   Foreground="Black" FontSize="18"
-                   Margin="0,0,10,0"
-                   Grid.Row="0" Grid.Column="0"/>
 
         <TextBlock Text="Außendurchmesser-Faktor"
                    HorizontalAlignment="Left" VerticalAlignment="Center"
                    Foreground="Black" FontSize="15"
                    Margin="0,0,10,0"
-                   Grid.Row="1" Grid.Column="0"/>
+                   Grid.Row="0" Grid.Column="0"/>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="2">
-            <TextBox Text="{Binding rankingFactorOuterDiameter}" Width="75" Height="40"
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="2">
+            <TextBox Text="{Binding rankingFactorOuterDiameter}" Width="150" Height="40"
                  VerticalAlignment="Center"
                  VerticalContentAlignment="Center"
                  HorizontalAlignment="Right"
@@ -49,11 +44,11 @@
                    HorizontalAlignment="Left" VerticalAlignment="Center"
                    Foreground="Black" FontSize="15"
                    Margin="0,0,10,0"
-                   Grid.Row="2" Grid.Column="0"/>
+                   Grid.Row="1" Grid.Column="0"/>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="2">
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="2">
 
-            <TextBox Text="{Binding rankingFactorInnerDiameter}" Width="75" Height="40"
+            <TextBox Text="{Binding rankingFactorInnerDiameter}" Width="150" Height="40"
                  VerticalAlignment="Center"
                  VerticalContentAlignment="Center"
                  Foreground="Black" FontSize="15">
@@ -65,11 +60,11 @@
                    HorizontalAlignment="Left" VerticalAlignment="Center"
                    Foreground="Black" FontSize="15"
                    Margin="0,0,10,0"
-                   Grid.Row="3" Grid.Column="0"/>
+                   Grid.Row="2" Grid.Column="0"/>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="2">
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="2">
 
-            <TextBox Text="{Binding rankingFactorBolts}" Width="75" Height="40"
+            <TextBox Text="{Binding rankingFactorBolts}" Width="150" Height="40"
                  VerticalAlignment="Center"
                  VerticalContentAlignment="Center"
                  Foreground="Black" FontSize="15">
@@ -78,7 +73,7 @@
         </StackPanel>
 
         <Button Content="Speichern"
-                HorizontalAlignment="Right" VerticalAlignment="Center"
+                HorizontalAlignment="Left" VerticalAlignment="Center"
                 Width="150" Height="50"
                 Foreground="Black"
                 Background="White"

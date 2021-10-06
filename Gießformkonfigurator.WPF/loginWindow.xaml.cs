@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Gießformkonfigurator.WPF.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,15 +22,18 @@ namespace Gießformkonfigurator.WPF
     {
         MainWindow mainWindow;
 
+        ApplicationSettings applicationSettings;
+
         public loginWindow (MainWindow mainWindow)
         {
             this.mainWindow = mainWindow;
+            applicationSettings = new ApplicationSettings();
             InitializeComponent();
         }
 
         private void Admin_Login_Click(object sender, RoutedEventArgs e)
         {
-            var admin_password = "SEP";
+            var admin_password = applicationSettings.adminPassword;
 
             if (password_box.Password != admin_password)
             {

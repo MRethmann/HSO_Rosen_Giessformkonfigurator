@@ -72,16 +72,8 @@
                 <view:Settings_ApplicationSettingsView/>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type viewModel:Settings_CombinationSettingsViewModel}">
-                <view:Settings_CombinationSettingsView/>
-            </DataTemplate>
-
-            <DataTemplate DataType="{x:Type viewModel:Settings_CompareSettingsViewModel}">
-                <view:Settings_CompareSettingsView/>
-            </DataTemplate>
-
-            <DataTemplate DataType="{x:Type viewModel:Settings_FilterSettingsViewModel}">
-                <view:Settings_FilterSettingsView/>
+            <DataTemplate DataType="{x:Type viewModel:Settings_ToleranceSettingsViewModel}">
+                <view:Settings_ToleranceSettingsView/>
             </DataTemplate>
 
             <DataTemplate DataType="{x:Type viewModel:Settings_MainViewModel}">

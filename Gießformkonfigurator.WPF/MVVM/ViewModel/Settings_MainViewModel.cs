@@ -9,15 +9,11 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
     class Settings_MainViewModel : ObservableObject
     {
         public RelayCommand ApplicationSettingsViewCommand { get; set; }
-        public RelayCommand FilterSettingsViewCommand { get; set; }
-        public RelayCommand CombinationSettingsViewCommand { get; set; }
-        public RelayCommand CompareSettingsViewCommand { get; set; }
+        public RelayCommand ToleranceSettingsViewCommand { get; set; }
         public RelayCommand RankingSettingsViewCommand { get; set; }
 
         public Settings_ApplicationSettingsViewModel ApplicationSettingsVm { get; set; }
-        public Settings_FilterSettingsViewModel FilterSettingsVm { get; set; }
-        public Settings_CombinationSettingsViewModel CombinationSettingsVm { get; set; }
-        public Settings_CompareSettingsViewModel CompareSettingsVm { get; set; }
+        public Settings_ToleranceSettingsViewModel ToleranceSettingsVm { get; set; }
         public Settings_RankingSettingsViewModel RankingSettingsVm { get; set; }
 
         private object _currentViewAdmin;
@@ -35,9 +31,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
         public Settings_MainViewModel()
         {
             ApplicationSettingsVm = new Settings_ApplicationSettingsViewModel();
-            FilterSettingsVm = new Settings_FilterSettingsViewModel();
-            CombinationSettingsVm = new Settings_CombinationSettingsViewModel();
-            CompareSettingsVm = new Settings_CompareSettingsViewModel();
+            ToleranceSettingsVm = new Settings_ToleranceSettingsViewModel();
             RankingSettingsVm = new Settings_RankingSettingsViewModel();
 
             CurrentViewAdmin = ApplicationSettingsVm;
@@ -47,19 +41,9 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                 CurrentViewAdmin = ApplicationSettingsVm;
             });
 
-            FilterSettingsViewCommand = new RelayCommand(o =>
+            ToleranceSettingsViewCommand = new RelayCommand(o =>
             {
-                CurrentViewAdmin = FilterSettingsVm;
-            });
-
-            CombinationSettingsViewCommand = new RelayCommand(o =>
-            {
-                CurrentViewAdmin = CombinationSettingsVm;
-            });
-
-            CompareSettingsViewCommand = new RelayCommand(o =>
-            {
-                CurrentViewAdmin = CompareSettingsVm;
+                CurrentViewAdmin = ToleranceSettingsVm;
             });
 
             RankingSettingsViewCommand = new RelayCommand(o =>

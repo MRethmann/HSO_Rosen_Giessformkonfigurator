@@ -13,11 +13,10 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 
     abstract class CombinationRule
     {
-        public ApplicationSettings applicationSettings { get; set; }
 
         public CombinationRule()
         {
-            applicationSettings = new ApplicationSettings();
+
         }
 
         protected abstract IEnumerable<Type> Typen { get; }

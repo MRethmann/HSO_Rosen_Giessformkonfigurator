@@ -12,15 +12,17 @@ namespace Gießformkonfigurator.WPF.Core
     using System.Data.SqlClient;
     using System.Windows;
 
-    class ApplicationSettings
+    class RankingSettings
     {
-        public string adminPassword { get; set; }
+        public decimal rankingFactorOuterDiameter { get; set; }
 
-        public string logFilePath { get; set; }
+        public decimal rankingFactorInnerDiameter { get; set; }
+
+        public decimal rankingFactorBolts { get; set; }
 
         private static readonly ILog log = LogManager.GetLogger(typeof(ToleranceSettings));
 
-        public ApplicationSettings()
+        public RankingSettings()
         {
             getCurrentSettingsFromDb();
         }
@@ -34,7 +36,7 @@ namespace Gießformkonfigurator.WPF.Core
                 using (SqlConnection connection = new SqlConnection(connString))
                 {
                     connection.Open();
-                    string query = "SELECT * FROM dbo.ApplicationSettings";
+                    string query = "SELECT * FROM dbo.RankingSettings";
                     DataTable dataTable = new DataTable();
                     try
                     {
@@ -42,7 +44,9 @@ namespace Gießformkonfigurator.WPF.Core
                         {
                             SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
                             dataAdapter.Fill(dataTable);
-                            this.adminPassword = dataTable?.Rows[0]["adminPassword"].ToString();
+                            this.rankingFactorOuterDiameter = (Decimal) dataTable.Rows[0]["rankingFactorOuterDiameter"];
+                            this.rankingFactorInnerDiameter = (Decimal) dataTable.Rows[0]["rankingFactorInnerDiameter"];
+                            this.rankingFactorBolts = (Decimal) dataTable.Rows[0]["rankingFactorBolts"];
                         }
                     }
                     catch (Exception ex)

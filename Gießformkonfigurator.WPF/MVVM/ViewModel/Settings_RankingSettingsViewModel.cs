@@ -22,17 +22,17 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
 
         public decimal rankingFactorBolts { get; set; }
 
-        public ApplicationSettings applicationSettings { get; set; }
+        public RankingSettings rankingSettings { get; set; }
 
         public ICommand insertIntoDbCmd { get; set; }
 
         public Settings_RankingSettingsViewModel()
         {
             insertIntoDbCmd = new RelayCommand(param => insertIntoDb(), param => validateData());
-            applicationSettings = new ApplicationSettings();
-            this.rankingFactorOuterDiameter = applicationSettings.rankingFactorOuterDiameter;
-            this.rankingFactorInnerDiameter = applicationSettings.rankingFactorInnerDiameter;
-            this.rankingFactorBolts = applicationSettings.rankingFactorBolts;
+            rankingSettings = new RankingSettings();
+            this.rankingFactorOuterDiameter = rankingSettings.rankingFactorOuterDiameter;
+            this.rankingFactorInnerDiameter = rankingSettings.rankingFactorInnerDiameter;
+            this.rankingFactorBolts = rankingSettings.rankingFactorBolts;
         }
 
         public void insertIntoDb()
@@ -47,7 +47,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                         connection.Open();
                         NumberFormatInfo nfi = new NumberFormatInfo();
                         nfi.NumberDecimalSeparator = ".";
-                        string query = $"UPDATE dbo.ApplicationSettings SET rankingFactorOuterDiameter = {this.rankingFactorOuterDiameter.ToString(nfi)}, rankingFactorInnerDiameter = {this.rankingFactorInnerDiameter.ToString(nfi)}, rankingFactorBolts = {this.rankingFactorBolts.ToString(nfi)}";
+                        string query = $"UPDATE dbo.RankingSettings SET rankingFactorOuterDiameter = {this.rankingFactorOuterDiameter.ToString(nfi)}, rankingFactorInnerDiameter = {this.rankingFactorInnerDiameter.ToString(nfi)}, rankingFactorBolts = {this.rankingFactorBolts.ToString(nfi)}";
                         try
                         {
                             using (SqlCommand command = new SqlCommand(query, connection))

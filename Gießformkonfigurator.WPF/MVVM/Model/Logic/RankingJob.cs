@@ -22,7 +22,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 
         public List<CompareObject> filteredOutput { get; set; } = new List<CompareObject>();
 
-        public ApplicationSettings applicationSettings { get; set; }
+        public RankingSettings rankingSettings { get; set; }
 
         public ToleranceSettings toleranceSettings { get; set; }
 
@@ -37,10 +37,10 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
         public RankingJob(Product product, CompareJob compareJob)
         {
             this.product = product;
-            applicationSettings = new ApplicationSettings();
-            this.factorOuterDiameter = applicationSettings.rankingFactorOuterDiameter;
-            this.factorInnerDiameter = applicationSettings.rankingFactorInnerDiameter;
-            this.factorBoltDiameter = applicationSettings.rankingFactorBolts;
+            rankingSettings = new RankingSettings();
+            this.factorOuterDiameter = rankingSettings.rankingFactorOuterDiameter;
+            this.factorInnerDiameter = rankingSettings.rankingFactorInnerDiameter;
+            this.factorBoltDiameter = rankingSettings.rankingFactorBolts;
             this.rankingJobInput = new List<CompareObject>(compareJob.compareJobOutput);
             toleranceSettings = new ToleranceSettings();
             this.addRatingInformation();

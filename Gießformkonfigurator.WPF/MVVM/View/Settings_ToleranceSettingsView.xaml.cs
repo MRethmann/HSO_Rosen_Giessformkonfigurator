@@ -5,15 +5,17 @@
 //-----------------------------------------------------------------------
 namespace Gießformkonfigurator.WPF.MVVM.View
 {
+    using Gießformkonfigurator.WPF.MVVM.ViewModel;
     using System.Windows.Controls;
     /// <summary>
     /// Interaktionslogik für Settings_CompareSettingsView.xaml
     /// </summary>
-    public partial class Settings_CompareSettingsView : UserControl
+    public partial class Settings_ToleranceSettingsView : UserControl
     {
-        public Settings_CompareSettingsView()
+        public Settings_ToleranceSettingsView()
         {
             InitializeComponent();
+            DataContext = new Settings_ToleranceSettingsViewModel();
         }
     }
 }

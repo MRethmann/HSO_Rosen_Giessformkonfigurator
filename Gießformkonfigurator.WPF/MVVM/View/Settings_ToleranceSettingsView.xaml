@@ -1,13 +1,12 @@
-﻿<UserControl x:Class="Gießformkonfigurator.WPF.MVVM.View.Settings_CombinationSettingsView"
+﻿<UserControl x:Class="Gießformkonfigurator.WPF.MVVM.View.Settings_ToleranceSettingsView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Gießformkonfigurator.WPF.MVVM.View"
              mc:Ignorable="d" 
-             d:DesignHeight="1200" d:DesignWidth="1600"
+             d:DesignHeight="450" d:DesignWidth="800"
              Background="White">
-    
     <Grid HorizontalAlignment="Center">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
@@ -22,15 +21,26 @@
             <RowDefinition Height="65"/>
             <RowDefinition Height="65"/>
             <RowDefinition Height="65"/>
+            <RowDefinition Height="65"/>
+            <RowDefinition Height="65"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Konusabweichung zwischen zwei Komponenten:"
-                   HorizontalAlignment="Left" VerticalAlignment="Center" Grid.ColumnSpan="3"
-                   Foreground="Black" FontSize="18"
+        <TextBlock Text="Produkt Außendurchmesser MAX:"
+                   HorizontalAlignment="Left" VerticalAlignment="Center"
+                   Foreground="Black" FontSize="15"
                    Margin="0,0,10,0"
                    Grid.Row="0" Grid.Column="0"/>
 
-        <TextBlock Text="Grundplatte und Führungsring"
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="2">
+            <TextBox Text="{Binding product_OuterDiameter_MAX}" Width="150" Height="40"
+                 VerticalAlignment="Center"
+                 VerticalContentAlignment="Center"
+                 HorizontalAlignment="Right"
+                 Foreground="Black" FontSize="15">
+            </TextBox>
+        </StackPanel>
+
+        <TextBlock Text="Produkt Außendurchmesser MIN:"
                    HorizontalAlignment="Left" VerticalAlignment="Center"
                    Foreground="Black" FontSize="15"
                    Margin="0,0,10,0"
@@ -38,20 +48,14 @@
 
         <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="2">
 
-            <TextBox Text="{Binding deviationKonusBaseplateGuideRing}" 
-                 Width="75" Height="40"
+            <TextBox Text="{Binding product_OuterDiameter_MIN}" Width="150" Height="40"
                  VerticalAlignment="Center"
                  VerticalContentAlignment="Center"
                  Foreground="Black" FontSize="15">
             </TextBox>
-
-        <TextBlock Text="mm"
-                   VerticalAlignment="Center"
-                   Foreground="Black" FontSize="15"
-                   Margin="10"/>
         </StackPanel>
 
-        <TextBlock Text="Grundplatte und Einlegeplatte"
+        <TextBlock Text="Produkt Innendurchmesser MAX:"
                    HorizontalAlignment="Left" VerticalAlignment="Center"
                    Foreground="Black" FontSize="15"
                    Margin="0,0,10,0"
@@ -59,68 +63,63 @@
 
         <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="2">
 
-            <TextBox Text="{Binding deviationKonusBaseplateInsertPlate}" 
-                 Width="75" Height="40"
+            <TextBox Text="{Binding product_InnerDiameter_MAX}" Width="150" Height="40"
                  VerticalAlignment="Center"
                  VerticalContentAlignment="Center"
                  Foreground="Black" FontSize="15">
             </TextBox>
-
-            <TextBlock Text="mm"
-                   VerticalAlignment="Center"
-                   Foreground="Black" FontSize="15"
-                   Margin="10"/>
         </StackPanel>
 
-        <TextBlock Text="Grundplatte und Kern"
+        <TextBlock Text="Produkt Innendurchmesser MIN:"
                    HorizontalAlignment="Left" VerticalAlignment="Center"
                    Foreground="Black" FontSize="15"
                    Margin="0,0,10,0"
                    Grid.Row="3" Grid.Column="0"/>
-
         <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="2">
 
-            <TextBox Text="{Binding deviationKonusBaseplateCore}" 
-                 Width="75" Height="40"
+            <TextBox Text="{Binding product_InnerDiameter_MIN}" Width="150" Height="40"
                  VerticalAlignment="Center"
                  VerticalContentAlignment="Center"
                  Foreground="Black" FontSize="15">
             </TextBox>
-
-            <TextBlock Text="mm"
-                   VerticalAlignment="Center"
-                   Foreground="Black" FontSize="15"
-                   Margin="10"/>
         </StackPanel>
 
-        <TextBlock Text="Einlegeplatte und Kern"
+        <TextBlock Text="Lochkkreisdurchmesser:"
                    HorizontalAlignment="Left" VerticalAlignment="Center"
                    Foreground="Black" FontSize="15"
                    Margin="0,0,10,0"
                    Grid.Row="4" Grid.Column="0"/>
-
         <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="2">
 
-            <TextBox Text="{Binding deviationKonusInsertPlateCore}"
-                 Width="75" Height="40"
+            <TextBox Text="{Binding hc_Diameter}" Width="150" Height="40"
                  VerticalAlignment="Center"
                  VerticalContentAlignment="Center"
                  Foreground="Black" FontSize="15">
             </TextBox>
+        </StackPanel>
 
-            <TextBlock Text="mm"
-                   VerticalAlignment="Center"
+        <TextBlock Text="Lochdurchmesser:"
+                   HorizontalAlignment="Left" VerticalAlignment="Center"
                    Foreground="Black" FontSize="15"
-                   Margin="10"/>
+                   Margin="0,0,10,0"
+                   Grid.Row="5" Grid.Column="0"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="2">
+
+            <TextBox Text="{Binding bolt_Diameter}" Width="150" Height="40"
+                 VerticalAlignment="Center"
+                 VerticalContentAlignment="Center"
+                 Foreground="Black" FontSize="15">
+            </TextBox>
         </StackPanel>
 
         <Button Content="Speichern"
-                HorizontalAlignment="Right" VerticalAlignment="Center"
+                HorizontalAlignment="Left" VerticalAlignment="Center"
                 Width="150" Height="50"
                 Foreground="Black"
                 Background="White"
                 FontSize="15"
-                Grid.Column="2" Grid.Row="5"
+                Grid.Column="2" Grid.Row="7"
                 Command="{Binding insertIntoDbCmd}"/>
+
     </Grid>
 </UserControl>

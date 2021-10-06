@@ -25,7 +25,7 @@ namespace Gießformkonfigurator.WPF
         {
             var errorType = ErrorType_ComboBox.Text.ToString();
             var errorDescription = ErrorDescription_TextBox.Text.ToString();
-            log.Error($"Type: {errorType} --- Description: {errorDescription}");
+            log.Warn($"Type: {errorType} --- Description: {errorDescription}");
             this.Close();
         }
     }

@@ -33526,3 +33526,732 @@
 18:26:54,662 [1] INFO - Removed coreSingleMold: 371860 F18CBC2A by 180,1600
 18:26:54,662 [1] INFO - Removed coreSingleMold: 371861 F18CBC3A by 208,6500
 18:26:54,662 [1] INFO - Removed coreSingleMold: 371862 F18CBC4A by 241,2100
+13:12:27,846 [1] INFO - ProductDisc search via SAP-Nr. started for product: SAP: 3060, Description: 14" Seal.disc 355x141x15.0 65Ana 14A
+13:12:27,865 [1] INFO - ProductDisc information with shrink --> OD: 361,21, ID: 143,47, Height: 15,26
+13:12:27,887 [1] INFO - Removed baseplate: 21590: Grundplatte 4 by 213,21
+13:12:27,887 [1] INFO - Removed baseplate: 21615: Grundplatte 6" by 154,21
+13:12:27,887 [1] INFO - Added baseplate: 21726: Grundplatte 12
+13:12:27,887 [1] INFO - Added baseplate: 21769: Grundplatte 16"
+13:12:27,888 [1] INFO - Added baseplate: 21816: Grundplatte 18"
+13:12:27,888 [1] INFO - Added baseplate: 21873: Grundplatte  22in
+13:12:27,888 [1] INFO - Added baseplate: 21875: Grundplatte 22
+13:12:27,888 [1] INFO - Added baseplate: 21895: Grundplatte 24in
+13:12:27,888 [1] INFO - Added baseplate: 21950: Grundplatte 30"
+13:12:27,888 [1] INFO - Added baseplate: 21951: Grundplatte 30"
+13:12:27,889 [1] INFO - Added baseplate: 21968: Grundplatte 32"
+13:12:27,889 [1] INFO - Added baseplate: 21980: Scheibenformen 34" (Cadkey)
+13:12:27,889 [1] INFO - Added baseplate: 21990: Grundplatte 36"
+13:12:27,889 [1] INFO - Added baseplate: 21991: Grundplatte 36"
+13:12:27,889 [1] INFO - Added baseplate: 22008: Grundplatte 40in
+13:12:27,889 [1] INFO - Added baseplate: 22051: Grundplatte 56"
+13:12:27,889 [1] INFO - Added baseplate: 49538: Grundplatte Giessform
+13:12:27,889 [1] INFO - Added baseplate: 67972: Grundplatte 22
+13:12:27,889 [1] INFO - Added baseplate: 67984: Grundplatte 24in
+13:12:27,889 [1] INFO - Added baseplate: 71711: Grundplatte D1330 48in
+13:12:27,889 [1] INFO - Added baseplate: 71736: Grundplatte 26/28in
+13:12:27,889 [1] INFO - Added baseplate: 71765: Einsatz fuer Grundplatte 16in
+13:12:27,889 [1] INFO - Added baseplate: 71777: Einsatz fuer Grundplatte 14in
+13:12:27,889 [1] INFO - Added baseplate: 92980: Grundplatte 48"
+13:12:27,890 [1] INFO - Added baseplate: 218331: Grundplatte 20
+13:12:27,890 [1] INFO - Added baseplate: 218332: Grundplatte 20in
+13:12:27,900 [1] INFO - Added ring: 21588 Formring Dichtscheibe d 76
+13:12:27,900 [1] INFO - Removed baseplate: 21592 Formring Fuehrungsscheibe d 104 by -63,53 / 254,81
+13:12:27,901 [1] INFO - Removed baseplate: 21594 Formring Fuehrungsscheibe d 94 by -63,53 / 265,01
+13:12:27,901 [1] INFO - Removed baseplate: 21595 Formring Dichtscheibe d 110 by -63,53 / 248,71
+13:12:27,901 [1] INFO - Removed baseplate: 21596 Formring Fuehrungsscheibe d 104 by -4,53 / 254,81
+13:12:27,901 [1] INFO - Removed baseplate: 21597 Formring Dichtscheibe d 114 by -4,53 / 244,62
+13:12:27,901 [1] INFO - Added ring: 21598 Formring Zwischenscheibe d 65
+13:12:27,901 [1] INFO - Removed baseplate: 21621 Formring Fuehrungsscheibe d 144 by -17,72 / 213,81
+13:12:27,901 [1] INFO - Removed baseplate: 21622 Formring Fuehrungsscheibe OD=158 by -63,53 / 199,62
+13:12:27,901 [1] INFO - Removed baseplate: 21623 Formring Dichtscheibe d 154 by -28,03 / 203,62
+13:12:27,901 [1] INFO - Removed baseplate: 21624 Formring Dichtscheibe d 168 by -64,33 / 189,31
+13:12:27,901 [1] INFO - Removed baseplate: 21625 Formring Zwischenscheibe d 65 by -17,93 / 258,91
+13:12:27,901 [1] INFO - Removed baseplate: 21671 Formring Fuehrungsscheibe  d 205 by -187,13 / 151,52
+13:12:27,901 [1] INFO - Removed baseplate: 21672 Formring d 177 by -187,03 / 180,12
+13:12:27,901 [1] INFO - Removed baseplate: 21673 Formring Dichtscheibe d 219 by -187,13 / 137,21
+13:12:27,901 [1] INFO - Removed baseplate: 21674 Aufsatzring by -231,53 / 30,61
+13:12:27,901 [1] INFO - Removed baseplate: 21680 Formring Dichtscheibe d 177 by -78,22 / 180,12
+13:12:27,901 [1] INFO - Removed baseplate: 21681 Formring Dichtscheibe d 209 by -187,13 / 147,21
+13:12:27,901 [1] INFO - Removed baseplate: 21682 Formring Zwischenscheibe  d 135 by -187,13 / 223,21
+13:12:27,901 [1] INFO - Removed baseplate: 21708 Formring Fuehrungsscheibe d 224 by -115,92 / 132,21
+13:12:27,901 [1] INFO - Removed baseplate: 21709 Formring Fuehrungsscheibe d 236 by -115,53 / 119,71
+13:12:27,901 [1] INFO - Removed baseplate: 21710 Formring Fuehrungsscheibe d 252 by -171,63 / 101,41
+13:12:27,901 [1] INFO - Removed baseplate: 21711 Formring Fuehrungsscheibe d 257 by -171,63 / 98,32
+13:12:27,901 [1] INFO - Removed baseplate: 21713 Formring Dichtscheibe d 240 by -135,03 / 115,71
+13:12:27,901 [1] INFO - Removed baseplate: 21733 Formring Fuehrungsscheibe d 298,5 by -186,72 / 55,91
+13:12:27,901 [1] INFO - Removed baseplate: 21734 Form ring by -231,53 / 45,91
+13:12:27,901 [1] INFO - Added ring: 21736 Formring Dichtscheibe
+13:12:27,901 [1] INFO - Removed baseplate: 21738 Formring Zwischenscheibe  d 200 by -171,63 / 153,21
+13:12:27,901 [1] INFO - Removed baseplate: 21750 Formring Fuehrungsscheibe d 356 by -252,53 / 33,21
+13:12:27,901 [1] INFO - Removed baseplate: 21751 Formring Fuehrungsscheibe d338 by -252,53 / 14,21
+13:12:27,901 [1] INFO - Removed baseplate: 21752 Formring Fuehrungsscheibe d 344,5 by -252,53 / 8,82
+13:12:27,901 [1] INFO - Removed baseplate: 21755 Formring Dichtscheibe d 339 by -270,92 / 14,21
+13:12:27,901 [1] INFO - Added ring: 21756 Formring Dichtscheibe d 355
+13:12:27,901 [1] INFO - Added ring: 21768 Grundplatte 16in        ,
+13:12:27,901 [1] INFO - Added ring: 21780 Formring Fuehrungsscheibe d 356
+13:12:27,901 [1] INFO - Added ring: 21781 Formring Fuehrungsscheibe d 368 x 25
+13:12:27,901 [1] INFO - Added ring: 21782 Formring Fuehrungsscheibe d 375
+13:12:27,901 [1] INFO - Added ring: 21783 Formring Fuehrungsscheibe d 389
+13:12:27,901 [1] INFO - Added ring: 21785 Formring Fuehrungsscheibe d 404
+13:12:27,901 [1] INFO - Added ring: 21786 Formring Dichtscheibe d 375
+13:12:27,902 [1] INFO - Added ring: 21787 Formring Dichtscheibe d 387 x 15
+13:12:27,902 [1] INFO - Added ring: 21788 Formring Dichtscheibe d 405
+13:12:27,902 [1] INFO - Added ring: 21789 Formring Dichtscheibe d 416
+13:12:27,902 [1] INFO - Added ring: 21829 Formring Fuehrungsscheibe d 437
+13:12:27,902 [1] INFO - Added ring: 21830 Formring Fuehrungsscheibe d 443
+13:12:27,902 [1] INFO - Added ring: 21846 Formring Fuehrungsscheibe d 482,5 x 30
+13:12:27,902 [1] INFO - Added ring: 21847 Formring Fuehrungsscheibe d 488 x 30
+13:12:27,902 [1] INFO - Added ring: 21848 Formring Fuehrungsscheibe d 495 x 30
+13:12:27,902 [1] INFO - Added ring: 21849 Formring Fuehrungsscheibe d478x30 Zeep,
+13:12:27,902 [1] INFO - Added ring: 21850 Formring Dichtscheibe d 508 x 20
+13:12:27,902 [1] INFO - Added ring: 21885 Formring Fuehrungsscheibe d 536 x 30
+13:12:27,902 [1] INFO - Added ring: 21888 Formring Dichtscheibe d 560 x 20
+13:12:27,902 [1] INFO - Added ring: 21897 Formring Fuehrungsscheibe d 546 x 30
+13:12:27,902 [1] INFO - Added ring: 21899 Formring Fuehrungsscheibe d 590 x 30
+13:12:27,902 [1] INFO - Added ring: 21902 Formring Dichtscheibe d 610 x 20
+13:12:27,902 [1] INFO - Added ring: 21923 Formring Fuehrungsscheibe d 635 x 40
+13:12:27,902 [1] INFO - Added ring: 21924 Formring Fuehrungsscheibe d 615 x 40
+13:12:27,902 [1] INFO - Added ring: 21925 Formring Dichtscheibe d 660 x 25
+13:12:27,902 [1] INFO - Added ring: 21926 Formring Dichtscheibe d 640 x 25
+13:12:27,902 [1] INFO - Added ring: 21934 Formring Fuehrungsscheibe d 693 x 40
+13:12:27,902 [1] INFO - Added ring: 21935 Formring Dichtscheibe d 711 x 25
+13:12:27,902 [1] INFO - Added ring: 21957 Formring Fuehrungsscheibe d 710
+13:12:27,902 [1] INFO - Added ring: 21958 Formring Fuehrungsscheibe d 727
+13:12:27,902 [1] INFO - Added ring: 21959 Formring Fuehrungsscheibe d 737
+13:12:27,902 [1] INFO - Added ring: 21960 Formring Fuehrungsscheibe d749
+13:12:27,902 [1] INFO - Added ring: 21961 Formring Dichtscheibe d 764
+13:12:27,902 [1] INFO - Added ring: 21975 Formring Fuehrungsscheibe d 775
+13:12:27,902 [1] INFO - Added ring: 21976 Formring Fuehrungsscheibe d 788
+13:12:27,902 [1] INFO - Added ring: 21977 Formring Fuehrungsscheibe d 799
+13:12:27,902 [1] INFO - Added ring: 21979 Formring Dichtscheibe d 812
+13:12:27,902 [1] INFO - Added ring: 21988 Formring Dichtscheibe 864x25
+13:12:27,903 [1] INFO - Added ring: 21989 Formring Dichtscheibe
+13:12:27,903 [1] INFO - Added ring: 22001 Formring Fuehrungsscheibe d 870 36in
+13:12:27,903 [1] INFO - Added ring: 22003 Formring Fuehrungsscheibe d 901
+13:12:27,903 [1] INFO - Added ring: 22004 Formring Dichtscheibe d 915
+13:12:27,903 [1] INFO - Added ring: 22015 Formring Fuehrungsscheibe D963      40in
+13:12:27,903 [1] INFO - Added ring: 22017 Formring Fuehrungsscheibe D1034     40in
+13:12:27,903 [1] INFO - Added ring: 22020 Formring Dichtscheibe D1030         40in
+13:12:27,903 [1] INFO - Added ring: 22044 Formring Fuehrungsscheibe D1183   48in
+13:12:27,903 [1] INFO - Added ring: 22045 Formring Fuehrungsscheibe D1196   48in
+13:12:27,903 [1] INFO - Added ring: 22047 Formring Dichtscheibe D1224      48in
+13:12:27,903 [1] INFO - Added ring: 41417 Formring Fuehrungsscheibe D710
+13:12:27,903 [1] INFO - Added ring: 41511 Formring-Fuehrungsscheibe D810
+13:12:27,903 [1] INFO - Added ring: 42553 Formring Fuehrungsscheibe d 900
+13:12:27,903 [1] INFO - Added ring: 42638 Formring fuer Zwischenscheibe d535x40
+13:12:27,903 [1] INFO - Added ring: 43268 Formring Fuehrungsscheibe D1015
+13:12:27,903 [1] INFO - Added ring: 47128 Formring Fuehrungsscheibe
+13:12:27,903 [1] INFO - Added ring: 49785 Formring Fuehrungsscheibe d855 x 40
+13:12:27,903 [1] INFO - Removed baseplate: 50195 AR S d375 x d310 x 25,6 by -231,53 / 51,21
+13:12:27,903 [1] INFO - Removed baseplate: 62114 Formring Furungsschiebe d260 by -171,63 / 95,21
+13:12:27,903 [1] INFO - Added ring: 62991 Formring Fuehrungsscheibe d=844 x 40
+13:12:27,903 [1] INFO - Added ring: 65370 Formring Fuehrungsscheibe d770
+13:12:27,903 [1] INFO - Removed baseplate: 68950 Formring Fuehrungsscheibe d 100 by -4,53 / 258,91
+13:12:27,903 [1] INFO - Removed baseplate: 70234 Formring Fuehrungsscheibe by -252,53 / 23,61
+13:12:27,903 [1] INFO - Added ring: 71713 Formring D1330 48in
+13:12:27,904 [1] INFO - Removed baseplate: 76435 Formring Fuehrungsscheibe d 150 by -28,03 / 207,62
+13:12:27,904 [1] INFO - Removed baseplate: 83569 Formring Fuehrungsscheibe d 86 by -4,53 / 273,21
+13:12:27,904 [1] INFO - Removed baseplate: 83570 Innenring fuer 08" Scheibe OD=190 by -171,53 / 166,81
+13:12:27,904 [1] INFO - Added ring: 96015 Aussenring fuer Fueh,sch, 24" d=596x30
+13:12:27,904 [1] INFO - Added ring: 99239 Formring fuer 20" Fueh,scheibe 510x30
+13:12:27,904 [1] INFO - Added ring: 173672 Formring Dichtscheibe d 400
+13:12:27,904 [1] INFO - Removed baseplate: 217151 Formring Dichtscheibe  d 273 by -187,13 / 81,91
+13:12:27,904 [1] INFO - Removed baseplate: 217152 Formring Dichtscheibe d 273 by -187,13 / 81,91
+13:12:27,904 [1] INFO - Removed baseplate: 217351 Formring Dichtscheibe  d 324 by -231,53 / 30,61
+13:12:27,904 [1] INFO - Removed baseplate: 217352 Formring Dichtscheibe d 324 by -231,53 / 30,61
+13:12:27,904 [1] INFO - Added ring: 217841 Formring Fuehrungsscheibe d 395
+13:12:27,904 [1] INFO - Added ring: 217842 Formring Fuehrungsscheibe d 395
+13:12:27,904 [1] INFO - Added ring: 218311 Formring Dichtscheibe d 457
+13:12:27,904 [1] INFO - Added ring: 218312 Formring Dichtscheibe d 457
+13:12:27,904 [1] INFO - Added ring: 218618 Aussenring OD=1440x43
+13:12:27,904 [1] INFO - Added ring: 218622 Aussenring OD=1370x60
+13:12:27,904 [1] INFO - Added ring: 348219 Formring Fuehrungsscheibe D=1183 48"
+13:12:27,904 [1] INFO - Added ring: 348223 Formring Fuehrungsscheibe D937
+13:12:27,947 [1] INFO - Removed core: 8801 Innenring Cup-ID=159 by -19,53
+13:12:27,947 [1] INFO - Removed core: 8990 Innenring by -16,13
+13:12:27,947 [1] INFO - Removed core: 8991 Adapterring CDP 18" HW by -43,03
+13:12:27,947 [1] INFO - Removed core: 9184 Einlegering D=250,5 (D=244,8) Cupf,B20CB by -107,03
+13:12:27,947 [1] INFO - Removed core: 9186 Einlegering D=225 (D=220) Cupf, B20CB04 by -81,53
+13:12:27,947 [1] INFO - Removed core: 9202 Einlegering D=210 (D=205) Cupf, B20CB04 by -66,53
+13:12:27,947 [1] INFO - Removed core: 9340 Einlegering D=225 (D=220) Cupf, C22CB01 by -81,53
+13:12:27,947 [1] INFO - Removed core: 9940 Kernring Cup-ID=459 by -326,53
+13:12:27,947 [1] INFO - Added core: 21591 Einsatz fuer Innendurchmesser d 15    ,
+13:12:27,947 [1] INFO - Added core: 21616 Einsatz fuer Innendurchmesser d 20
+13:12:27,947 [1] INFO - Added core: 21618 Einsatz fuer Innendurchmesser d 52
+13:12:27,947 [1] INFO - Added core: 21619 Einsatz fuer Innendurchmesser d 60
+13:12:27,948 [1] INFO - Added core: 21620 Einsatz fuer Innendurchmesser d 40
+13:12:27,948 [1] INFO - Added core: 21667 Einsatz fuer Innendurchmesser d 25
+13:12:27,948 [1] INFO - Added core: 21669 Einsatz Innendurchmesser d 20
+13:12:27,948 [1] INFO - Added core: 21670 Einsatz Innendurchmesser d 32
+13:12:27,948 [1] INFO - Added core: 21706 Einsatz fuer Innendurchmesser d 30
+13:12:27,948 [1] INFO - Added core: 21707 Einsatz fuer Innendurchmesser 40,5
+13:12:27,948 [1] INFO - Added core: 21727 Einsatz fuer Innendurchmesser d 37
+13:12:27,948 [1] INFO - Added core: 21730 Einsatz fuer Innendurchmesser d 100
+13:12:27,948 [1] INFO - Added core: 21741 Einsatz fuer Innendurchmesser d 40
+13:12:27,948 [1] INFO - Added core: 21742 Einsatz fuer Innendurchmesser d 100
+13:12:27,948 [1] INFO - Added core: 21743 Einsatz fuer Innendurchmesser d 120
+13:12:27,948 [1] INFO - Added core: 21744 Einsatz fuer Innendurchmesser d 140
+13:12:27,948 [1] INFO - Added core: 21748 Einsatz fuer Innendurchmesser d 110
+13:12:27,948 [1] INFO - Removed core: 21771 Einsatz fuer Innendurchmesser 222 by -83,63
+13:12:27,948 [1] INFO - Removed core: 21817 Einsatz fuer Innendurchmesser d194 by -55,03
+13:12:27,948 [1] INFO - Removed core: 21818 Einsatz fuer Innendurchmesser D 220 by -83,63
+13:12:27,948 [1] INFO - Removed core: 21825 Einsatz fuer Innendurchmesser D 194 by -55,53
+13:12:27,948 [1] INFO - Added core: 21836 Einsatz fuer Innendurchmesser d100
+13:12:27,948 [1] INFO - Removed core: 21837 Einsatz fuer Innendurchmesser d200 by -61,03
+13:12:27,948 [1] INFO - Removed core: 21838 Einsatz fuer Innendurchmesser d219 by -80,93
+13:12:27,948 [1] INFO - Removed core: 21839 Einsatz fuer Innendurchmesser d275 by -138,53
+13:12:27,948 [1] INFO - Removed core: 21840 Einsatz fuer Innendurchmesser 220 Zeep, by -81,03
+13:12:27,948 [1] INFO - Removed core: 21876 Einsatz f, Innendurchmesser d200 22-24in by -61,53
+13:12:27,949 [1] INFO - Removed core: 21877 Formring Fuehrungsscheibe D by -137,83
+13:12:27,949 [1] INFO - Removed core: 21879 Einsatz fuer Innendurchmesser d 275 by -137,83
+13:12:27,949 [1] INFO - Removed core: 21881 Einsatz f, Innendurchmesser d359 22-24" by -223,53
+13:12:27,949 [1] INFO - Removed core: 21882 Einsatz f, Innendurchmesser 222  20"-22" by -83,53
+13:12:27,949 [1] INFO - Removed core: 21883 Einsatz f, Innendurchmesser by -80,93
+13:12:27,949 [1] INFO - Removed core: 21894 Einsatz fuer Innendurchmesser D 275 by -137,83
+13:12:27,949 [1] INFO - Removed core: 21918 Formring Fuehrungsscheibe D 640 26/28in by -189,03
+13:12:27,949 [1] INFO - Removed core: 21929 Einsatz fuer Innendurchmesser D410 by -276,03
+13:12:27,949 [1] INFO - Removed core: 21952 Einsatz fuer Innendurchmesser d356 by -220,73
+13:12:27,949 [1] INFO - Removed core: 21955 Einsatz fuer Innendurchmesser D461 by -328,08
+13:12:27,949 [1] INFO - Removed core: 21974 Einsatzfuer Innendurchmesser D 360 by -225,03
+13:12:27,949 [1] INFO - Removed core: 21982 ER 34 d416  x d370 x 55 by -272,53
+13:12:27,949 [1] INFO - Removed core: 21983 Einsatz f, Innendurchm, d356 32in-34in by -220,73
+13:12:27,949 [1] INFO - Removed core: 22010 Einsatz fuer Innendurchmesser d509   40i by -377,53
+13:12:27,949 [1] INFO - Removed core: 22038 Einsatz f, Innendurchmesser d715 42"CDP by -587,53
+13:12:27,949 [1] INFO - Removed core: 22052 Einsatz fuer Innendurchmesser d660,4 by -534,53
+13:12:27,949 [1] INFO - Removed core: 22057 Formring Fuehrungsscheibe fuer 56" RLO by -587,53
+13:12:27,949 [1] INFO - Removed core: 43246 Innenring Cup-ID=153 by -13,53
+13:12:27,949 [1] INFO - Removed core: 49535 Innenring by -537,02
+13:12:27,949 [1] INFO - Removed core: 51361 Einsatz f, Innendurchm, d325 22 -24 by -189,03
+13:12:27,949 [1] INFO - Added core: 53200 Einsatz fuer Innendurchmesser d36
+13:12:27,949 [1] INFO - Added core: 53202 Einsatz fuer Innendurchmesser d58
+13:12:27,950 [1] INFO - Added core: 53854 Einsatz Innendurchmesser d=51
+13:12:27,950 [1] INFO - Removed core: 53950 Einsatz fuer Innendurchmesser D=408,5 by -274,53
+13:12:27,950 [1] INFO - Removed core: 63960 Kragen by -224,81
+13:12:27,950 [1] INFO - Added core: 66005 Einsatz fuer Innendurchmesser d 20
+13:12:27,950 [1] INFO - Added core: 70233 Einsatz fuer Innendurchmesser d 128
+13:12:27,950 [1] INFO - Added core: 71185 Einlegering fuer ID 58
+13:12:27,950 [1] INFO - Added core: 71186 Einlegering fuer ID 69
+13:12:27,950 [1] INFO - Added core: 71191 Einlegering fuer ID 46
+13:12:27,950 [1] INFO - Removed core: 71712 Einlegering D574 48" by -430,53
+13:12:27,950 [1] INFO - Removed core: 73129 Einlegering by -56,03
+13:12:27,950 [1] INFO - Removed core: 76884 Einsatz fuer Innendurchmesser d 154 by -14,13
+13:12:27,950 [1] INFO - Added core: 79313 Kernring ID=117
+13:12:27,950 [1] INFO - Removed core: 82387 Kernring Cup-ID=273 by -136,03
+13:12:27,950 [1] INFO - Added core: 95132 Einsatz fuer Innendurchmesser d=82
+13:12:27,950 [1] INFO - Removed core: 164086 Einlegering f, Innendurchmesser (d=475) by -342,53
+13:12:27,950 [1] INFO - Removed core: 164087 Einlegering f, Innendurchmesser (d=475) by -342,53
+13:12:27,950 [1] INFO - Added core: 171294 Einsatz fuer Innendurchmesser d=75 (2,5%
+13:12:27,950 [1] INFO - Added core: 173667 Einsatz fuer Innendurchmesser 140
+13:12:27,950 [1] INFO - Removed core: 182539 Einsatz fuer Innendurchmesser d 154 by -14,13
+13:12:27,950 [1] INFO - Added core: 189300 EK 62,6 x 33,9 x 35,4
+13:12:27,950 [1] INFO - Added core: 203719 Einsatz fuer Innendurchmesser d 53
+13:12:27,950 [1] INFO - Added core: 217281 Einsatz fuer Innendurchmesser d 40
+13:12:27,950 [1] INFO - Added core: 217282 Einsatz fuer Innendurchmesser d 40
+13:12:27,950 [1] INFO - Added core: 217451 Einsatz fuer Innendurchmesser 86,5
+13:12:27,950 [1] INFO - Added core: 217452 Einsatz fuer Innendurchmesser 86,5
+13:12:27,950 [1] INFO - Removed core: 217701 Einsatz fuer Innendurchmesser d168 by -28,73
+13:12:27,950 [1] INFO - Removed core: 217702 Einsatz fuer Innendurchmesser 168 by -28,73
+13:12:27,950 [1] INFO - Removed core: 217703 Einsatz fuer Innendurchmesser 168 by -28,73
+13:12:27,951 [1] INFO - Removed core: 219721 Einsatz fuer Innendurchmesser D512 by -380,53
+13:12:27,951 [1] INFO - Removed core: 219722 Einsatz fuer Innendurchmesser D512 by -380,53
+13:12:27,951 [1] INFO - Removed core: 219921 Einsatz fuer Innendurchmesser by -325,53
+13:12:27,951 [1] INFO - Removed core: 219922 Einsatz fuer Innendurchmesser by -325,53
+13:12:27,951 [1] INFO - Removed core: 219951 Einsatz fuer Innendurchmesser D565 by -434,53
+13:12:27,951 [1] INFO - Removed core: 219952 Einsatz fuer Innendurchmesser D565 by -434,53
+13:12:27,951 [1] INFO - Removed core: 243435 Kernring ID=153 by -12,53
+13:12:27,951 [1] INFO - Removed core: 243436 Kernring ID=173 by -30,53
+13:12:27,951 [1] INFO - Removed core: 249747 Einsatz fuer Innendurchmesser d 159 by -19,23
+13:12:27,951 [1] INFO - Removed core: 249748 Einsatz fuer Innendurchmesser d 168 by -28,43
+13:12:27,951 [1] INFO - Added core: 267045 Einsatz fuer Innendurchmesser d 65
+13:12:27,951 [1] INFO - Removed core: 278620 Einsatz fuer Innendurchmesser 278 by -141,13
+13:12:27,951 [1] INFO - Added core: 291309 Kernring ID=82 h=25,6
+13:12:27,951 [1] INFO - Added core: 291429 Kernring ID=82 h=30,8
+13:12:27,951 [1] INFO - Added core: 297876 Kern (6" Cup-Giessform)
+13:12:27,951 [1] INFO - Removed core: 426401 Einsatz f, Innendurchmesser d400 by -265,53
+13:12:27,951 [1] INFO - Removed core: 426402 Einsatz f, Innendurchmesser d400 by -265,53
+13:12:27,951 [1] INFO - Added core: 660071 Einsatz fuer Innendurchmesser d 20
+13:12:27,951 [1] INFO - Added core: 660072 Einsatz fuer Innendurchmesser d 20
+13:12:27,961 [1] INFO - Removed bolt: 0  by 
+13:12:27,961 [1] INFO - Added bolt: 21759 Stehbolzen Scheiben
+13:12:27,961 [1] INFO - Added bolt: 21856 Stehbolzen
+13:12:27,961 [1] INFO - Removed bolt: 21906 Stehbolzen by 4,76
+13:12:27,961 [1] INFO - Removed bolt: 22005 Stehbolzen by 4,76
+13:12:27,961 [1] INFO - Removed bolt: 22025 Stehbolzen by 4,76
+13:12:27,961 [1] INFO - Removed bolt: 49536 Stehbolzen by 10,26
+13:12:27,972 [1] INFO - Removed cupform: 69692 Giessform L-Cup (B08CB02b) by  / L != 
+13:12:27,972 [1] INFO - Removed cupform: 71551 Giessform 06" L-Cup ID=20 by  / L != 
+13:12:27,972 [1] INFO - Removed cupform: 72651 Giessform 06" U-Cup ID=20 - mit Steg - by  / U != 
+13:12:27,972 [1] INFO - Removed cupform: 72652 Giessform UH-Cup  (B08CB2Aa) by  / UH != 
+13:12:27,972 [1] INFO - Removed cupform: 72659 Giessform 10" U-Cup ID=40 mit Steg by  / U != 
+13:12:27,972 [1] INFO - Removed cupform: 72667 Giessform UH-Cup  (B06CB08a) by  / UH != 
+13:12:27,972 [1] INFO - Removed cupform: 72683 Giessform  T -Cup  (B06CB09a) by  / TL != 
+13:12:27,972 [1] INFO - Removed cupform: 72688 F10CB03B by  / M != 
+13:12:27,972 [1] INFO - Removed cupform: 72691 Giessform  M -Cup  (B08CB04b) by  / M != 
+13:12:27,972 [1] INFO - Removed cupform: 72694 Giessform Dual-Size-Cup (B08CB1Aa) by  / DD != 
+13:12:27,972 [1] INFO - Removed cupform: 72695 Giessform  H -Cup  (B08CB01b) by  / H != 
+13:12:27,972 [1] INFO - Removed cupform: 72703 Giessform L -Cup (B04CB02a) by  / L != 
+13:12:27,972 [1] INFO - Removed cupform: 72704 Giessform 10" L-Cup ID=40 by  / L != 
+13:12:27,972 [1] INFO - Removed cupform: 72709 Giessform 06" H-Cup ID=20 by  / H != 
+13:12:27,972 [1] INFO - Removed cupform: 72713 Giessform 10" H-Cup ID=40 by  / H != 
+13:12:27,972 [1] INFO - Removed cupform: 72719 Giessform  MH -Cup  (B04CB03b) by  / MH != 
+13:12:27,972 [1] INFO - Removed cupform: 79869 Giessform 03" U-Cup ID=17 by  / U != 
+13:12:27,972 [1] INFO - Removed cupform: 170790 Giessform 06" U-Cup ID=68 (06C) by  / U != 
+13:12:27,973 [1] INFO - Removed cupform: 186351 Giessform 10" Cup-L fuer Radaufbau by  /  L Radaufbau != 
+13:12:27,973 [1] INFO - Removed cupform: 727031 Giessform L -Cup (B04CB02a) by  / L != 
+13:12:27,973 [1] INFO - Removed cupform: 727032 Giessform L -Cup (B04CB02a) by  / L != 
+13:12:27,973 [1] INFO - Removed cupform: 727161 Giessform U-Cup  (B08CB09a) by  / U != 
+13:12:27,973 [1] INFO - Removed cupform: 727162 Giessform U-Cup  (B08CB09a) by  / U != 
+13:12:27,981 [1] INFO - Removed singleMoldDisc: SAP: 344642, Description: GF 06“ DS 168/21/8/- by 193,2700 / 189,2700 / 125,1000 / 121,1000
+13:12:27,981 [1] INFO - Removed singleMoldDisc: SAP: 344643, Description: GF 06“ FS 158/21/15/- by 203,5200 / 199,5200 / 125,1100 / 121,1100
+13:12:27,981 [1] INFO - Removed singleMoldDisc: SAP: 344644, Description: GF 08“ DS 219/25/10/- by 141,3800 / 137,3800 / 121,0300 / 117,0300
+13:12:27,981 [1] INFO - Removed singleMoldDisc: SAP: 344645, Description: GF 08“ FS 205/25/20/- by 155,7200 / 151,7200 / 121,0400 / 117,0400
+13:12:27,981 [1] INFO - Removed singleMoldDisc: SAP: 344650, Description: GF 10“ DS 273/41/15/- by 86,4300 / 82,4300 / 104,7500 / 100,7500
+13:12:27,981 [1] INFO - Removed singleMoldDisc: SAP: 344651, Description: GF 10“ FS 257/41/25/- by 102,8400 / 98,8400 / 104,7700 / 100,7700
+13:12:27,981 [1] INFO - Removed singleMoldDisc: SAP: 344652, Description: GF 10“ DS 273/82/15/10A by 34,5400 / 30,5400 / 104,7500 / 100,7500
+13:12:27,981 [1] INFO - Removed singleMoldDisc: SAP: 344655, Description: GF 12“ DS 324/102/15/12A by 34,5400 / 30,5400 / 42,6800 / 38,6800
+13:12:27,981 [1] INFO - Removed singleMoldDisc: SAP: 344656, Description: GF 20“ DS 508/221/20/20A by -152,6800 / -156,6800 / -78,4000 / -82,4000
+13:12:27,981 [1] INFO - Removed singleMoldDisc: SAP: 344657, Description: GF 16“ DS 406/170/15/16A by -48,9000 / -52,9000 / -26,5100 / -30,5100
+13:12:27,981 [1] INFO - Removed singleMoldDisc: SAP: 344658, Description: GF 20" DS 610/275/20/24A by -256,4700 / -260,4700 / -133,3400 / -137,3400
+13:12:27,981 [1] INFO - Removed singleMoldDisc: SAP: 344659, Description: GF 16“ FS 389/170/25/16A by -31,4000 / -35,4000 / -26,4200 / -30,4200
+13:12:27,981 [1] INFO - Removed singleMoldDisc: SAP: 344661, Description: GF 24“ FS 588/275/30/24A by -233,7900 / -237,7900 / -133,2100 / -137,2100
+13:12:27,981 [1] INFO - Removed singleMoldDisc: SAP: 344663, Description: GF 20“ FS 488/221/30/20A by -132,0900 / -136,0900 / -78,2900 / -82,2900
+13:12:27,981 [1] INFO - Removed singleMoldDisc: SAP: 345152, Description: GF 10“ DS 273/82/15/10A by 86,4300 / 82,4300 / 63,0300 / 59,0300
+13:12:27,981 [1] INFO - Removed singleMoldDisc: SAP: 345153, Description: GF 12" FS 308/102/25/12A by 50,9740 / 46,9740 / 42,7360 / 38,7360
+13:12:27,981 [1] INFO - Removed singleMoldDisc: SAP: 345155, Description: GF 12" DS 324/82/15/12J by 34,5400 / 30,5400 / 63,0350 / 59,0350
+13:12:27,981 [1] INFO - Removed singleMoldDisc: SAP: 346466, Description: GF 06“ DS 168/52/8/06A by 193,2700 / 189,2700 / 93,5600 / 89,5600
+13:12:27,981 [1] INFO - Removed singleMoldDisc: SAP: 346474, Description: GF 08“ DS 219/82/10/08A by 141,4870 / 137,4870 / 63,0760 / 59,0760
+13:12:27,982 [1] INFO - Removed singleMoldDisc: SAP: 346487, Description: GF 12“ FS 308/82/25/12J by 50,9740 / 46,9740 / 63,0760 / 59,0760
+13:12:27,982 [1] INFO - Removed singleMoldDisc: SAP: 346490, Description: GF 10“ FS 257/82/25/10A by 102,8410 / 98,8410 / 63,0760 / 59,0760
+13:12:27,982 [1] INFO - Removed singleMoldDisc: SAP: 346549, Description: GF 08“ FS 205/82/20/08A by 155,7250 / 151,7250 / 63,0760 / 59,0760
+13:12:27,982 [1] INFO - Removed singleMoldDisc: SAP: 346565, Description: GF 06“ FS 158/82/15/06A by 203,5240 / 199,5240 / 93,5860 / 89,5860
+13:12:27,982 [1] INFO - Removed singleMoldDisc: SAP: 346587, Description: GF 18“ DS 457/194/20/18A by -100,7875 / -104,7875 / -50,9250 / -54,9250
+13:12:27,982 [1] INFO - Added singleMoldDisc: SAP: 346598, Description: GF 14“ DS 355/141/15/14A
+13:12:27,982 [1] INFO - Removed singleMoldDisc: SAP: 354777, Description: GF 04" DS 114/17/5/- by 248,2150 / 244,2150 / 129,1725 / 125,1725
+13:12:27,982 [1] INFO - Removed singleMoldDisc: SAP: 354779, Description: GF 14" FS 338/41/25/- by 20,4640 / 16,4640 / 104,7730 / 100,7730
+13:12:27,982 [1] INFO - Removed singleMoldDisc: SAP: 354783, Description: GF 14" FS 338/141/25/14A by 20,4640 / 16,4640 / 3,0730 / -0,9270
+13:12:27,982 [1] INFO - Removed singleMoldDisc: SAP: 354786, Description: GF 18" FS 437/194/30/18A by -80,2190 / -84,2190 / -50,8280 / -54,8280
+13:12:27,982 [1] INFO - Added singleMoldDisc: SAP: 354792, Description: GF 14" DS 355/41/15/-
+13:12:27,982 [1] INFO - Removed singleMoldDisc: SAP: 354796, Description: GF 04" FS 104/17/10/- by 258,4420 / 254,4420 / 129,1810 / 125,1810
+13:12:27,982 [1] INFO - Removed singleMoldDisc: SAP: 359352, Description: GF 12“ FS 308/41/25/- by 50,9700 / 46,9700 / 104,7700 / 100,7700
+13:12:27,982 [1] INFO - Removed singleMoldDisc: SAP: 367792, Description: GF 26“ FS 635/328/40/26A by -281,5850 / -285,5850 / -187,1060 / -191,1060
+13:12:27,982 [1] INFO - Removed singleMoldDisc: SAP: 369961, Description: GF 30“ FS 737/360/40/30A by -385,3190 / -389,3190 / -219,6500 / -223,6500
+13:12:27,982 [1] INFO - Removed singleMoldDisc: SAP: 369962, Description: GF 30“ DS 764/360/25/30A by -413,1600 / -417,1600 / -219,8300 / -223,8300
+13:12:27,982 [1] INFO - Removed singleMoldDisc: SAP: 369963, Description: GF 28“ DS 711/328/25/26A by -359,2325 / -363,2325 / -187,2700 / -191,2700
+13:12:27,982 [1] INFO - Removed singleMoldDisc: SAP: 369964, Description: GF 28“ FS 694/328/40/26A by -341,5880 / -345,5880 / -187,1060 / -191,1060
+13:12:27,982 [1] INFO - Removed singleMoldDisc: SAP: 369965, Description: GF 28“ FS 688/328/40/26A by -335,4860 / -339,4860 / -187,1060 / -191,1060
+13:12:27,982 [1] INFO - Removed singleMoldDisc: SAP: 369966, Description: GF 26“ DS 660/328/25/26A by -307,3400 / -311,3400 / -187,2700 / -191,2700
+13:12:27,989 [1] INFO - Added coreSingleMold: 371436 F06CBF4A
+13:12:27,989 [1] INFO - Added coreSingleMold: 371829 F06CBE9A
+13:12:27,989 [1] INFO - Added coreSingleMold: 371830 F06CBF0A
+13:12:27,989 [1] INFO - Added coreSingleMold: 371831 F06CBF1A
+13:12:27,989 [1] INFO - Added coreSingleMold: 371832 F06CBF2A
+13:12:27,989 [1] INFO - Added coreSingleMold: 371833 F06CBF3A
+13:12:27,989 [1] INFO - Added coreSingleMold: 371834 F10CBB7A
+13:12:27,989 [1] INFO - Added coreSingleMold: 371835 F10CBB8A
+13:12:27,990 [1] INFO - Added coreSingleMold: 371836 F10CBB9A
+13:12:27,990 [1] INFO - Added coreSingleMold: 371837 F10CBC1A
+13:12:27,990 [1] INFO - Added coreSingleMold: 371838 F10CBC3A
+13:12:27,990 [1] INFO - Added coreSingleMold: 371839 F10CBC4A
+13:12:27,990 [1] INFO - Removed coreSingleMold: 371840 F10CBC5A by 12,2075
+13:12:27,990 [1] INFO - Removed coreSingleMold: 371841 F10CBC6A by 18,3125
+13:12:27,990 [1] INFO - Removed coreSingleMold: 371842 F10CBC7A by 29,5050
+13:12:27,990 [1] INFO - Removed coreSingleMold: 371843 F10CBC8A by 42,7325
+13:12:27,990 [1] INFO - Removed coreSingleMold: 371844 F10CBC9A by 53,9250
+13:12:27,990 [1] INFO - Added coreSingleMold: 371845 F10CBB4A
+13:12:27,990 [1] INFO - Added coreSingleMold: 371846 F10CBB5A
+13:12:27,990 [1] INFO - Added coreSingleMold: 371847 F10CBB6A
+13:12:27,990 [1] INFO - Added coreSingleMold: 371848 F06CBF5A
+13:12:27,990 [1] INFO - Added coreSingleMold: 371849 F06CBF6A
+13:12:27,990 [1] INFO - Added coreSingleMold: 371850 F06CBF7A
+13:12:27,990 [1] INFO - Added coreSingleMold: 371851 F06CBF8A
+13:12:27,990 [1] INFO - Added coreSingleMold: 371852 F06CBF9A
+13:12:27,990 [1] INFO - Added coreSingleMold: 371853 F06CBG0A
+13:12:27,990 [1] INFO - Removed coreSingleMold: 371854 F18CBB6A by 29,5050
+13:12:27,990 [1] INFO - Removed coreSingleMold: 371855 F18CBB7A by 42,7325
+13:12:27,990 [1] INFO - Removed coreSingleMold: 371856 F18CBB8A by 53,9250
+13:12:27,990 [1] INFO - Removed coreSingleMold: 371857 F18CBB9A by 81,3975
+13:12:27,990 [1] INFO - Removed coreSingleMold: 371858 F18CBC0A by 105,8175
+13:12:27,990 [1] INFO - Removed coreSingleMold: 371859 F18CBC1A by 136,3425
+13:12:27,990 [1] INFO - Removed coreSingleMold: 371860 F18CBC2A by 161,7800
+13:12:27,990 [1] INFO - Removed coreSingleMold: 371861 F18CBC3A by 190,2700
+13:12:27,990 [1] INFO - Removed coreSingleMold: 371862 F18CBC4A by 222,8300
+13:13:47,606 [1] INFO - ProductDisc information with shrink --> OD: 367,53, ID: 145,98, Height: 15,53
+13:13:47,607 [1] INFO - Removed baseplate: 21590: Grundplatte 4 by 219,53
+13:13:47,607 [1] INFO - Removed baseplate: 21615: Grundplatte 6" by 160,53
+13:13:47,607 [1] INFO - Added baseplate: 21726: Grundplatte 12
+13:13:47,607 [1] INFO - Added baseplate: 21769: Grundplatte 16"
+13:13:47,607 [1] INFO - Added baseplate: 21816: Grundplatte 18"
+13:13:47,607 [1] INFO - Added baseplate: 21873: Grundplatte  22in
+13:13:47,607 [1] INFO - Added baseplate: 21875: Grundplatte 22
+13:13:47,607 [1] INFO - Added baseplate: 21895: Grundplatte 24in
+13:13:47,607 [1] INFO - Added baseplate: 21950: Grundplatte 30"
+13:13:47,607 [1] INFO - Added baseplate: 21951: Grundplatte 30"
+13:13:47,607 [1] INFO - Added baseplate: 21968: Grundplatte 32"
+13:13:47,607 [1] INFO - Added baseplate: 21980: Scheibenformen 34" (Cadkey)
+13:13:47,607 [1] INFO - Added baseplate: 21990: Grundplatte 36"
+13:13:47,607 [1] INFO - Added baseplate: 21991: Grundplatte 36"
+13:13:47,607 [1] INFO - Added baseplate: 22008: Grundplatte 40in
+13:13:47,607 [1] INFO - Added baseplate: 22051: Grundplatte 56"
+13:13:47,607 [1] INFO - Added baseplate: 49538: Grundplatte Giessform
+13:13:47,607 [1] INFO - Added baseplate: 67972: Grundplatte 22
+13:13:47,607 [1] INFO - Added baseplate: 67984: Grundplatte 24in
+13:13:47,607 [1] INFO - Added baseplate: 71711: Grundplatte D1330 48in
+13:13:47,607 [1] INFO - Added baseplate: 71736: Grundplatte 26/28in
+13:13:47,608 [1] INFO - Added baseplate: 71765: Einsatz fuer Grundplatte 16in
+13:13:47,608 [1] INFO - Added baseplate: 71777: Einsatz fuer Grundplatte 14in
+13:13:47,608 [1] INFO - Added baseplate: 92980: Grundplatte 48"
+13:13:47,608 [1] INFO - Added baseplate: 218331: Grundplatte 20
+13:13:47,608 [1] INFO - Added baseplate: 218332: Grundplatte 20in
+13:13:47,608 [1] INFO - Added ring: 21588 Formring Dichtscheibe d 76
+13:13:47,608 [1] INFO - Removed baseplate: 21592 Formring Fuehrungsscheibe d 104 by -61,02 / 261,13
+13:13:47,608 [1] INFO - Removed baseplate: 21594 Formring Fuehrungsscheibe d 94 by -61,02 / 271,33
+13:13:47,608 [1] INFO - Removed baseplate: 21595 Formring Dichtscheibe d 110 by -61,02 / 255,03
+13:13:47,608 [1] INFO - Removed baseplate: 21596 Formring Fuehrungsscheibe d 104 by -2,02 / 261,13
+13:13:47,608 [1] INFO - Removed baseplate: 21597 Formring Dichtscheibe d 114 by -2,02 / 250,94
+13:13:47,608 [1] INFO - Added ring: 21598 Formring Zwischenscheibe d 65
+13:13:47,608 [1] INFO - Removed baseplate: 21621 Formring Fuehrungsscheibe d 144 by -15,21 / 220,13
+13:13:47,608 [1] INFO - Removed baseplate: 21622 Formring Fuehrungsscheibe OD=158 by -61,02 / 205,94
+13:13:47,609 [1] INFO - Removed baseplate: 21623 Formring Dichtscheibe d 154 by -25,52 / 209,94
+13:13:47,609 [1] INFO - Removed baseplate: 21624 Formring Dichtscheibe d 168 by -61,82 / 195,63
+13:13:47,609 [1] INFO - Removed baseplate: 21625 Formring Zwischenscheibe d 65 by -15,42 / 265,23
+13:13:47,609 [1] INFO - Removed baseplate: 21671 Formring Fuehrungsscheibe  d 205 by -184,62 / 157,84
+13:13:47,609 [1] INFO - Removed baseplate: 21672 Formring d 177 by -184,52 / 186,44
+13:13:47,609 [1] INFO - Removed baseplate: 21673 Formring Dichtscheibe d 219 by -184,62 / 143,53
+13:13:47,609 [1] INFO - Removed baseplate: 21674 Aufsatzring by -229,02 / 36,93
+13:13:47,609 [1] INFO - Removed baseplate: 21680 Formring Dichtscheibe d 177 by -75,71 / 186,44
+13:13:47,609 [1] INFO - Removed baseplate: 21681 Formring Dichtscheibe d 209 by -184,62 / 153,53
+13:13:47,609 [1] INFO - Removed baseplate: 21682 Formring Zwischenscheibe  d 135 by -184,62 / 229,53
+13:13:47,609 [1] INFO - Removed baseplate: 21708 Formring Fuehrungsscheibe d 224 by -113,41 / 138,53
+13:13:47,609 [1] INFO - Removed baseplate: 21709 Formring Fuehrungsscheibe d 236 by -113,02 / 126,03
+13:13:47,609 [1] INFO - Removed baseplate: 21710 Formring Fuehrungsscheibe d 252 by -169,12 / 107,73
+13:13:47,609 [1] INFO - Removed baseplate: 21711 Formring Fuehrungsscheibe d 257 by -169,12 / 104,64
+13:13:47,609 [1] INFO - Removed baseplate: 21713 Formring Dichtscheibe d 240 by -132,52 / 122,03
+13:13:47,609 [1] INFO - Removed baseplate: 21733 Formring Fuehrungsscheibe d 298,5 by -184,21 / 62,23
+13:13:47,609 [1] INFO - Removed baseplate: 21734 Form ring by -229,02 / 52,23
+13:13:47,609 [1] INFO - Added ring: 21736 Formring Dichtscheibe
+13:13:47,609 [1] INFO - Removed baseplate: 21738 Formring Zwischenscheibe  d 200 by -169,12 / 159,53
+13:13:47,609 [1] INFO - Removed baseplate: 21750 Formring Fuehrungsscheibe d 356 by -250,02 / 39,53
+13:13:47,609 [1] INFO - Removed baseplate: 21751 Formring Fuehrungsscheibe d338 by -250,02 / 20,53
+13:13:47,609 [1] INFO - Removed baseplate: 21752 Formring Fuehrungsscheibe d 344,5 by -250,02 / 15,14
+13:13:47,609 [1] INFO - Removed baseplate: 21755 Formring Dichtscheibe d 339 by -268,41 / 20,53
+13:13:47,610 [1] INFO - Removed baseplate: 21756 Formring Dichtscheibe d 355 by -268,02 / 5,53
+13:13:47,610 [1] INFO - Added ring: 21768 Grundplatte 16in        ,
+13:13:47,610 [1] INFO - Removed baseplate: 21780 Formring Fuehrungsscheibe d 356 by -257,52 / 3,53
+13:13:47,610 [1] INFO - Added ring: 21781 Formring Fuehrungsscheibe d 368 x 25
+13:13:47,610 [1] INFO - Added ring: 21782 Formring Fuehrungsscheibe d 375
+13:13:47,610 [1] INFO - Added ring: 21783 Formring Fuehrungsscheibe d 389
+13:13:47,610 [1] INFO - Added ring: 21785 Formring Fuehrungsscheibe d 404
+13:13:47,610 [1] INFO - Added ring: 21786 Formring Dichtscheibe d 375
+13:13:47,610 [1] INFO - Added ring: 21787 Formring Dichtscheibe d 387 x 15
+13:13:47,610 [1] INFO - Added ring: 21788 Formring Dichtscheibe d 405
+13:13:47,610 [1] INFO - Added ring: 21789 Formring Dichtscheibe d 416
+13:13:47,610 [1] INFO - Added ring: 21829 Formring Fuehrungsscheibe d 437
+13:13:47,610 [1] INFO - Added ring: 21830 Formring Fuehrungsscheibe d 443
+13:13:47,610 [1] INFO - Added ring: 21846 Formring Fuehrungsscheibe d 482,5 x 30
+13:13:47,610 [1] INFO - Added ring: 21847 Formring Fuehrungsscheibe d 488 x 30
+13:13:47,610 [1] INFO - Added ring: 21848 Formring Fuehrungsscheibe d 495 x 30
+13:13:47,610 [1] INFO - Added ring: 21849 Formring Fuehrungsscheibe d478x30 Zeep,
+13:13:47,610 [1] INFO - Added ring: 21850 Formring Dichtscheibe d 508 x 20
+13:13:47,610 [1] INFO - Added ring: 21885 Formring Fuehrungsscheibe d 536 x 30
+13:13:47,610 [1] INFO - Added ring: 21888 Formring Dichtscheibe d 560 x 20
+13:13:47,610 [1] INFO - Added ring: 21897 Formring Fuehrungsscheibe d 546 x 30
+13:13:47,610 [1] INFO - Added ring: 21899 Formring Fuehrungsscheibe d 590 x 30
+13:13:47,610 [1] INFO - Added ring: 21902 Formring Dichtscheibe d 610 x 20
+13:13:47,610 [1] INFO - Added ring: 21923 Formring Fuehrungsscheibe d 635 x 40
+13:13:47,610 [1] INFO - Added ring: 21924 Formring Fuehrungsscheibe d 615 x 40
+13:13:47,611 [1] INFO - Added ring: 21925 Formring Dichtscheibe d 660 x 25
+13:13:47,611 [1] INFO - Added ring: 21926 Formring Dichtscheibe d 640 x 25
+13:13:47,611 [1] INFO - Added ring: 21934 Formring Fuehrungsscheibe d 693 x 40
+13:13:47,611 [1] INFO - Added ring: 21935 Formring Dichtscheibe d 711 x 25
+13:13:47,611 [1] INFO - Added ring: 21957 Formring Fuehrungsscheibe d 710
+13:13:47,611 [1] INFO - Added ring: 21958 Formring Fuehrungsscheibe d 727
+13:13:47,611 [1] INFO - Added ring: 21959 Formring Fuehrungsscheibe d 737
+13:13:47,611 [1] INFO - Added ring: 21960 Formring Fuehrungsscheibe d749
+13:13:47,611 [1] INFO - Added ring: 21961 Formring Dichtscheibe d 764
+13:13:47,611 [1] INFO - Added ring: 21975 Formring Fuehrungsscheibe d 775
+13:13:47,611 [1] INFO - Added ring: 21976 Formring Fuehrungsscheibe d 788
+13:13:47,611 [1] INFO - Added ring: 21977 Formring Fuehrungsscheibe d 799
+13:13:47,611 [1] INFO - Added ring: 21979 Formring Dichtscheibe d 812
+13:13:47,611 [1] INFO - Added ring: 21988 Formring Dichtscheibe 864x25
+13:13:47,611 [1] INFO - Added ring: 21989 Formring Dichtscheibe
+13:13:47,611 [1] INFO - Added ring: 22001 Formring Fuehrungsscheibe d 870 36in
+13:13:47,611 [1] INFO - Added ring: 22003 Formring Fuehrungsscheibe d 901
+13:13:47,611 [1] INFO - Added ring: 22004 Formring Dichtscheibe d 915
+13:13:47,611 [1] INFO - Added ring: 22015 Formring Fuehrungsscheibe D963      40in
+13:13:47,611 [1] INFO - Added ring: 22017 Formring Fuehrungsscheibe D1034     40in
+13:13:47,611 [1] INFO - Added ring: 22020 Formring Dichtscheibe D1030         40in
+13:13:47,611 [1] INFO - Added ring: 22044 Formring Fuehrungsscheibe D1183   48in
+13:13:47,611 [1] INFO - Added ring: 22045 Formring Fuehrungsscheibe D1196   48in
+13:13:47,611 [1] INFO - Added ring: 22047 Formring Dichtscheibe D1224      48in
+13:13:47,612 [1] INFO - Added ring: 41417 Formring Fuehrungsscheibe D710
+13:13:47,612 [1] INFO - Added ring: 41511 Formring-Fuehrungsscheibe D810
+13:13:47,612 [1] INFO - Added ring: 42553 Formring Fuehrungsscheibe d 900
+13:13:47,612 [1] INFO - Added ring: 42638 Formring fuer Zwischenscheibe d535x40
+13:13:47,612 [1] INFO - Added ring: 43268 Formring Fuehrungsscheibe D1015
+13:13:47,612 [1] INFO - Added ring: 47128 Formring Fuehrungsscheibe
+13:13:47,612 [1] INFO - Added ring: 49785 Formring Fuehrungsscheibe d855 x 40
+13:13:47,612 [1] INFO - Removed baseplate: 50195 AR S d375 x d310 x 25,6 by -229,02 / 57,53
+13:13:47,612 [1] INFO - Removed baseplate: 62114 Formring Furungsschiebe d260 by -169,12 / 101,53
+13:13:47,612 [1] INFO - Added ring: 62991 Formring Fuehrungsscheibe d=844 x 40
+13:13:47,612 [1] INFO - Added ring: 65370 Formring Fuehrungsscheibe d770
+13:13:47,612 [1] INFO - Removed baseplate: 68950 Formring Fuehrungsscheibe d 100 by -2,02 / 265,23
+13:13:47,612 [1] INFO - Removed baseplate: 70234 Formring Fuehrungsscheibe by -250,02 / 29,93
+13:13:47,612 [1] INFO - Added ring: 71713 Formring D1330 48in
+13:13:47,612 [1] INFO - Removed baseplate: 76435 Formring Fuehrungsscheibe d 150 by -25,52 / 213,94
+13:13:47,612 [1] INFO - Removed baseplate: 83569 Formring Fuehrungsscheibe d 86 by -2,02 / 279,53
+13:13:47,612 [1] INFO - Removed baseplate: 83570 Innenring fuer 08" Scheibe OD=190 by -169,02 / 173,13
+13:13:47,612 [1] INFO - Added ring: 96015 Aussenring fuer Fueh,sch, 24" d=596x30
+13:13:47,612 [1] INFO - Added ring: 99239 Formring fuer 20" Fueh,scheibe 510x30
+13:13:47,612 [1] INFO - Added ring: 173672 Formring Dichtscheibe d 400
+13:13:47,612 [1] INFO - Removed baseplate: 217151 Formring Dichtscheibe  d 273 by -184,62 / 88,23
+13:13:47,612 [1] INFO - Removed baseplate: 217152 Formring Dichtscheibe d 273 by -184,62 / 88,23
+13:13:47,612 [1] INFO - Removed baseplate: 217351 Formring Dichtscheibe  d 324 by -229,02 / 36,93
+13:13:47,612 [1] INFO - Removed baseplate: 217352 Formring Dichtscheibe d 324 by -229,02 / 36,93
+13:13:47,612 [1] INFO - Added ring: 217841 Formring Fuehrungsscheibe d 395
+13:13:47,613 [1] INFO - Added ring: 217842 Formring Fuehrungsscheibe d 395
+13:13:47,613 [1] INFO - Added ring: 218311 Formring Dichtscheibe d 457
+13:13:47,613 [1] INFO - Added ring: 218312 Formring Dichtscheibe d 457
+13:13:47,613 [1] INFO - Added ring: 218618 Aussenring OD=1440x43
+13:13:47,613 [1] INFO - Added ring: 218622 Aussenring OD=1370x60
+13:13:47,613 [1] INFO - Added ring: 348219 Formring Fuehrungsscheibe D=1183 48"
+13:13:47,613 [1] INFO - Added ring: 348223 Formring Fuehrungsscheibe D937
+13:13:47,614 [1] INFO - Removed core: 8801 Innenring Cup-ID=159 by -17,02
+13:13:47,614 [1] INFO - Removed core: 8990 Innenring by -13,62
+13:13:47,614 [1] INFO - Removed core: 8991 Adapterring CDP 18" HW by -40,52
+13:13:47,614 [1] INFO - Removed core: 9184 Einlegering D=250,5 (D=244,8) Cupf,B20CB by -104,52
+13:13:47,614 [1] INFO - Removed core: 9186 Einlegering D=225 (D=220) Cupf, B20CB04 by -79,02
+13:13:47,614 [1] INFO - Removed core: 9202 Einlegering D=210 (D=205) Cupf, B20CB04 by -64,02
+13:13:47,614 [1] INFO - Removed core: 9340 Einlegering D=225 (D=220) Cupf, C22CB01 by -79,02
+13:13:47,614 [1] INFO - Removed core: 9940 Kernring Cup-ID=459 by -324,02
+13:13:47,614 [1] INFO - Added core: 21591 Einsatz fuer Innendurchmesser d 15    ,
+13:13:47,614 [1] INFO - Added core: 21616 Einsatz fuer Innendurchmesser d 20
+13:13:47,614 [1] INFO - Added core: 21618 Einsatz fuer Innendurchmesser d 52
+13:13:47,614 [1] INFO - Added core: 21619 Einsatz fuer Innendurchmesser d 60
+13:13:47,614 [1] INFO - Added core: 21620 Einsatz fuer Innendurchmesser d 40
+13:13:47,615 [1] INFO - Added core: 21667 Einsatz fuer Innendurchmesser d 25
+13:13:47,615 [1] INFO - Added core: 21669 Einsatz Innendurchmesser d 20
+13:13:47,615 [1] INFO - Added core: 21670 Einsatz Innendurchmesser d 32
+13:13:47,615 [1] INFO - Added core: 21706 Einsatz fuer Innendurchmesser d 30
+13:13:47,615 [1] INFO - Added core: 21707 Einsatz fuer Innendurchmesser 40,5
+13:13:47,615 [1] INFO - Added core: 21727 Einsatz fuer Innendurchmesser d 37
+13:13:47,615 [1] INFO - Added core: 21730 Einsatz fuer Innendurchmesser d 100
+13:13:47,615 [1] INFO - Added core: 21741 Einsatz fuer Innendurchmesser d 40
+13:13:47,615 [1] INFO - Added core: 21742 Einsatz fuer Innendurchmesser d 100
+13:13:47,615 [1] INFO - Added core: 21743 Einsatz fuer Innendurchmesser d 120
+13:13:47,615 [1] INFO - Added core: 21744 Einsatz fuer Innendurchmesser d 140
+13:13:47,615 [1] INFO - Added core: 21748 Einsatz fuer Innendurchmesser d 110
+13:13:47,615 [1] INFO - Removed core: 21771 Einsatz fuer Innendurchmesser 222 by -81,12
+13:13:47,615 [1] INFO - Removed core: 21817 Einsatz fuer Innendurchmesser d194 by -52,52
+13:13:47,615 [1] INFO - Removed core: 21818 Einsatz fuer Innendurchmesser D 220 by -81,12
+13:13:47,615 [1] INFO - Removed core: 21825 Einsatz fuer Innendurchmesser D 194 by -53,02
+13:13:47,615 [1] INFO - Added core: 21836 Einsatz fuer Innendurchmesser d100
+13:13:47,615 [1] INFO - Removed core: 21837 Einsatz fuer Innendurchmesser d200 by -58,52
+13:13:47,615 [1] INFO - Removed core: 21838 Einsatz fuer Innendurchmesser d219 by -78,42
+13:13:47,615 [1] INFO - Removed core: 21839 Einsatz fuer Innendurchmesser d275 by -136,02
+13:13:47,615 [1] INFO - Removed core: 21840 Einsatz fuer Innendurchmesser 220 Zeep, by -78,52
+13:13:47,615 [1] INFO - Removed core: 21876 Einsatz f, Innendurchmesser d200 22-24in by -59,02
+13:13:47,615 [1] INFO - Removed core: 21877 Formring Fuehrungsscheibe D by -135,32
+13:13:47,615 [1] INFO - Removed core: 21879 Einsatz fuer Innendurchmesser d 275 by -135,32
+13:13:47,615 [1] INFO - Removed core: 21881 Einsatz f, Innendurchmesser d359 22-24" by -221,02
+13:13:47,615 [1] INFO - Removed core: 21882 Einsatz f, Innendurchmesser 222  20"-22" by -81,02
+13:13:47,616 [1] INFO - Removed core: 21883 Einsatz f, Innendurchmesser by -78,42
+13:13:47,616 [1] INFO - Removed core: 21894 Einsatz fuer Innendurchmesser D 275 by -135,32
+13:13:47,616 [1] INFO - Removed core: 21918 Formring Fuehrungsscheibe D 640 26/28in by -186,52
+13:13:47,616 [1] INFO - Removed core: 21929 Einsatz fuer Innendurchmesser D410 by -273,52
+13:13:47,616 [1] INFO - Removed core: 21952 Einsatz fuer Innendurchmesser d356 by -218,22
+13:13:47,616 [1] INFO - Removed core: 21955 Einsatz fuer Innendurchmesser D461 by -325,57
+13:13:47,616 [1] INFO - Removed core: 21974 Einsatzfuer Innendurchmesser D 360 by -222,52
+13:13:47,616 [1] INFO - Removed core: 21982 ER 34 d416  x d370 x 55 by -270,02
+13:13:47,616 [1] INFO - Removed core: 21983 Einsatz f, Innendurchm, d356 32in-34in by -218,22
+13:13:47,616 [1] INFO - Removed core: 22010 Einsatz fuer Innendurchmesser d509   40i by -375,02
+13:13:47,616 [1] INFO - Removed core: 22038 Einsatz f, Innendurchmesser d715 42"CDP by -585,02
+13:13:47,616 [1] INFO - Removed core: 22052 Einsatz fuer Innendurchmesser d660,4 by -532,02
+13:13:47,616 [1] INFO - Removed core: 22057 Formring Fuehrungsscheibe fuer 56" RLO by -585,02
+13:13:47,616 [1] INFO - Removed core: 43246 Innenring Cup-ID=153 by -11,02
+13:13:47,616 [1] INFO - Removed core: 49535 Innenring by -534,51
+13:13:47,616 [1] INFO - Removed core: 51361 Einsatz f, Innendurchm, d325 22 -24 by -186,52
+13:13:47,616 [1] INFO - Added core: 53200 Einsatz fuer Innendurchmesser d36
+13:13:47,616 [1] INFO - Added core: 53202 Einsatz fuer Innendurchmesser d58
+13:13:47,616 [1] INFO - Added core: 53854 Einsatz Innendurchmesser d=51
+13:13:47,616 [1] INFO - Removed core: 53950 Einsatz fuer Innendurchmesser D=408,5 by -272,02
+13:13:47,616 [1] INFO - Removed core: 63960 Kragen by -222,30
+13:13:47,616 [1] INFO - Added core: 66005 Einsatz fuer Innendurchmesser d 20
+13:13:47,616 [1] INFO - Added core: 70233 Einsatz fuer Innendurchmesser d 128
+13:13:47,616 [1] INFO - Added core: 71185 Einlegering fuer ID 58
+13:13:47,616 [1] INFO - Added core: 71186 Einlegering fuer ID 69
+13:13:47,617 [1] INFO - Added core: 71191 Einlegering fuer ID 46
+13:13:47,617 [1] INFO - Removed core: 71712 Einlegering D574 48" by -428,02
+13:13:47,617 [1] INFO - Removed core: 73129 Einlegering by -53,52
+13:13:47,617 [1] INFO - Removed core: 76884 Einsatz fuer Innendurchmesser d 154 by -11,62
+13:13:47,617 [1] INFO - Added core: 79313 Kernring ID=117
+13:13:47,617 [1] INFO - Removed core: 82387 Kernring Cup-ID=273 by -133,52
+13:13:47,617 [1] INFO - Added core: 95132 Einsatz fuer Innendurchmesser d=82
+13:13:47,617 [1] INFO - Removed core: 164086 Einlegering f, Innendurchmesser (d=475) by -340,02
+13:13:47,617 [1] INFO - Removed core: 164087 Einlegering f, Innendurchmesser (d=475) by -340,02
+13:13:47,617 [1] INFO - Added core: 171294 Einsatz fuer Innendurchmesser d=75 (2,5%
+13:13:47,617 [1] INFO - Added core: 173667 Einsatz fuer Innendurchmesser 140
+13:13:47,617 [1] INFO - Removed core: 182539 Einsatz fuer Innendurchmesser d 154 by -11,62
+13:13:47,617 [1] INFO - Added core: 189300 EK 62,6 x 33,9 x 35,4
+13:13:47,617 [1] INFO - Added core: 203719 Einsatz fuer Innendurchmesser d 53
+13:13:47,617 [1] INFO - Added core: 217281 Einsatz fuer Innendurchmesser d 40
+13:13:47,617 [1] INFO - Added core: 217282 Einsatz fuer Innendurchmesser d 40
+13:13:47,617 [1] INFO - Added core: 217451 Einsatz fuer Innendurchmesser 86,5
+13:13:47,617 [1] INFO - Added core: 217452 Einsatz fuer Innendurchmesser 86,5
+13:13:47,617 [1] INFO - Removed core: 217701 Einsatz fuer Innendurchmesser d168 by -26,22
+13:13:47,617 [1] INFO - Removed core: 217702 Einsatz fuer Innendurchmesser 168 by -26,22
+13:13:47,617 [1] INFO - Removed core: 217703 Einsatz fuer Innendurchmesser 168 by -26,22
+13:13:47,617 [1] INFO - Removed core: 219721 Einsatz fuer Innendurchmesser D512 by -378,02
+13:13:47,617 [1] INFO - Removed core: 219722 Einsatz fuer Innendurchmesser D512 by -378,02
+13:13:47,617 [1] INFO - Removed core: 219921 Einsatz fuer Innendurchmesser by -323,02
+13:13:47,617 [1] INFO - Removed core: 219922 Einsatz fuer Innendurchmesser by -323,02
+13:13:47,617 [1] INFO - Removed core: 219951 Einsatz fuer Innendurchmesser D565 by -432,02
+13:13:47,617 [1] INFO - Removed core: 219952 Einsatz fuer Innendurchmesser D565 by -432,02
+13:13:47,617 [1] INFO - Removed core: 243435 Kernring ID=153 by -10,02
+13:13:47,618 [1] INFO - Removed core: 243436 Kernring ID=173 by -28,02
+13:13:47,618 [1] INFO - Removed core: 249747 Einsatz fuer Innendurchmesser d 159 by -16,72
+13:13:47,618 [1] INFO - Removed core: 249748 Einsatz fuer Innendurchmesser d 168 by -25,92
+13:13:47,618 [1] INFO - Added core: 267045 Einsatz fuer Innendurchmesser d 65
+13:13:47,618 [1] INFO - Removed core: 278620 Einsatz fuer Innendurchmesser 278 by -138,62
+13:13:47,618 [1] INFO - Added core: 291309 Kernring ID=82 h=25,6
+13:13:47,618 [1] INFO - Added core: 291429 Kernring ID=82 h=30,8
+13:13:47,618 [1] INFO - Added core: 297876 Kern (6" Cup-Giessform)
+13:13:47,618 [1] INFO - Removed core: 426401 Einsatz f, Innendurchmesser d400 by -263,02
+13:13:47,618 [1] INFO - Removed core: 426402 Einsatz f, Innendurchmesser d400 by -263,02
+13:13:47,618 [1] INFO - Added core: 660071 Einsatz fuer Innendurchmesser d 20
+13:13:47,618 [1] INFO - Added core: 660072 Einsatz fuer Innendurchmesser d 20
+13:13:47,619 [1] INFO - Removed bolt: 0  by 
+13:13:47,619 [1] INFO - Added bolt: 21759 Stehbolzen Scheiben
+13:13:47,619 [1] INFO - Added bolt: 21856 Stehbolzen
+13:13:47,619 [1] INFO - Removed bolt: 21906 Stehbolzen by 4,76
+13:13:47,619 [1] INFO - Removed bolt: 22005 Stehbolzen by 4,76
+13:13:47,619 [1] INFO - Removed bolt: 22025 Stehbolzen by 4,76
+13:13:47,619 [1] INFO - Removed bolt: 49536 Stehbolzen by 10,26
+13:13:47,619 [1] INFO - Removed cupform: 69692 Giessform L-Cup (B08CB02b) by  / L != 
+13:13:47,619 [1] INFO - Removed cupform: 71551 Giessform 06" L-Cup ID=20 by  / L != 
+13:13:47,620 [1] INFO - Removed cupform: 72651 Giessform 06" U-Cup ID=20 - mit Steg - by  / U != 
+13:13:47,620 [1] INFO - Removed cupform: 72652 Giessform UH-Cup  (B08CB2Aa) by  / UH != 
+13:13:47,620 [1] INFO - Removed cupform: 72659 Giessform 10" U-Cup ID=40 mit Steg by  / U != 
+13:13:47,620 [1] INFO - Removed cupform: 72667 Giessform UH-Cup  (B06CB08a) by  / UH != 
+13:13:47,620 [1] INFO - Removed cupform: 72683 Giessform  T -Cup  (B06CB09a) by  / TL != 
+13:13:47,620 [1] INFO - Removed cupform: 72688 F10CB03B by  / M != 
+13:13:47,620 [1] INFO - Removed cupform: 72691 Giessform  M -Cup  (B08CB04b) by  / M != 
+13:13:47,620 [1] INFO - Removed cupform: 72694 Giessform Dual-Size-Cup (B08CB1Aa) by  / DD != 
+13:13:47,620 [1] INFO - Removed cupform: 72695 Giessform  H -Cup  (B08CB01b) by  / H != 
+13:13:47,620 [1] INFO - Removed cupform: 72703 Giessform L -Cup (B04CB02a) by  / L != 
+13:13:47,620 [1] INFO - Removed cupform: 72704 Giessform 10" L-Cup ID=40 by  / L != 
+13:13:47,620 [1] INFO - Removed cupform: 72709 Giessform 06" H-Cup ID=20 by  / H != 
+13:13:47,620 [1] INFO - Removed cupform: 72713 Giessform 10" H-Cup ID=40 by  / H != 
+13:13:47,620 [1] INFO - Removed cupform: 72719 Giessform  MH -Cup  (B04CB03b) by  / MH != 
+13:13:47,620 [1] INFO - Removed cupform: 79869 Giessform 03" U-Cup ID=17 by  / U != 
+13:13:47,620 [1] INFO - Removed cupform: 170790 Giessform 06" U-Cup ID=68 (06C) by  / U != 
+13:13:47,620 [1] INFO - Removed cupform: 186351 Giessform 10" Cup-L fuer Radaufbau by  /  L Radaufbau != 
+13:13:47,620 [1] INFO - Removed cupform: 727031 Giessform L -Cup (B04CB02a) by  / L != 
+13:13:47,620 [1] INFO - Removed cupform: 727032 Giessform L -Cup (B04CB02a) by  / L != 
+13:13:47,620 [1] INFO - Removed cupform: 727161 Giessform U-Cup  (B08CB09a) by  / U != 
+13:13:47,620 [1] INFO - Removed cupform: 727162 Giessform U-Cup  (B08CB09a) by  / U != 
+13:13:47,621 [1] INFO - Removed singleMoldDisc: SAP: 344642, Description: GF 06“ DS 168/21/8/- by 199,5900 / 195,5900 / 127,6100 / 123,6100
+13:13:47,621 [1] INFO - Removed singleMoldDisc: SAP: 344643, Description: GF 06“ FS 158/21/15/- by 209,8400 / 205,8400 / 127,6200 / 123,6200
+13:13:47,621 [1] INFO - Removed singleMoldDisc: SAP: 344644, Description: GF 08“ DS 219/25/10/- by 147,7000 / 143,7000 / 123,5400 / 119,5400
+13:13:47,621 [1] INFO - Removed singleMoldDisc: SAP: 344645, Description: GF 08“ FS 205/25/20/- by 162,0400 / 158,0400 / 123,5500 / 119,5500
+13:13:47,621 [1] INFO - Removed singleMoldDisc: SAP: 344650, Description: GF 10“ DS 273/41/15/- by 92,7500 / 88,7500 / 107,2600 / 103,2600
+13:13:47,621 [1] INFO - Removed singleMoldDisc: SAP: 344651, Description: GF 10“ FS 257/41/25/- by 109,1600 / 105,1600 / 107,2800 / 103,2800
+13:13:47,621 [1] INFO - Removed singleMoldDisc: SAP: 344652, Description: GF 10“ DS 273/82/15/10A by 40,8600 / 36,8600 / 107,2600 / 103,2600
+13:13:47,621 [1] INFO - Removed singleMoldDisc: SAP: 344655, Description: GF 12“ DS 324/102/15/12A by 40,8600 / 36,8600 / 45,1900 / 41,1900
+13:13:47,621 [1] INFO - Removed singleMoldDisc: SAP: 344656, Description: GF 20“ DS 508/221/20/20A by -146,3600 / -150,3600 / -75,8900 / -79,8900
+13:13:47,621 [1] INFO - Removed singleMoldDisc: SAP: 344657, Description: GF 16“ DS 406/170/15/16A by -42,5800 / -46,5800 / -24,0000 / -28,0000
+13:13:47,621 [1] INFO - Removed singleMoldDisc: SAP: 344658, Description: GF 20" DS 610/275/20/24A by -250,1500 / -254,1500 / -130,8300 / -134,8300
+13:13:47,621 [1] INFO - Removed singleMoldDisc: SAP: 344659, Description: GF 16“ FS 389/170/25/16A by -25,0800 / -29,0800 / -23,9100 / -27,9100
+13:13:47,621 [1] INFO - Removed singleMoldDisc: SAP: 344661, Description: GF 24“ FS 588/275/30/24A by -227,4700 / -231,4700 / -130,7000 / -134,7000
+13:13:47,621 [1] INFO - Removed singleMoldDisc: SAP: 344663, Description: GF 20“ FS 488/221/30/20A by -125,7700 / -129,7700 / -75,7800 / -79,7800
+13:13:47,621 [1] INFO - Removed singleMoldDisc: SAP: 345152, Description: GF 10“ DS 273/82/15/10A by 92,7500 / 88,7500 / 65,5400 / 61,5400
+13:13:47,621 [1] INFO - Removed singleMoldDisc: SAP: 345153, Description: GF 12" FS 308/102/25/12A by 57,2940 / 53,2940 / 45,2460 / 41,2460
+13:13:47,621 [1] INFO - Removed singleMoldDisc: SAP: 345155, Description: GF 12" DS 324/82/15/12J by 40,8600 / 36,8600 / 65,5450 / 61,5450
+13:13:47,621 [1] INFO - Removed singleMoldDisc: SAP: 346466, Description: GF 06“ DS 168/52/8/06A by 199,5900 / 195,5900 / 96,0700 / 92,0700
+13:13:47,621 [1] INFO - Removed singleMoldDisc: SAP: 346474, Description: GF 08“ DS 219/82/10/08A by 147,8070 / 143,8070 / 65,5860 / 61,5860
+13:13:47,621 [1] INFO - Removed singleMoldDisc: SAP: 346487, Description: GF 12“ FS 308/82/25/12J by 57,2940 / 53,2940 / 65,5860 / 61,5860
+13:13:47,621 [1] INFO - Removed singleMoldDisc: SAP: 346490, Description: GF 10“ FS 257/82/25/10A by 109,1610 / 105,1610 / 65,5860 / 61,5860
+13:13:47,621 [1] INFO - Removed singleMoldDisc: SAP: 346549, Description: GF 08“ FS 205/82/20/08A by 162,0450 / 158,0450 / 65,5860 / 61,5860
+13:13:47,621 [1] INFO - Removed singleMoldDisc: SAP: 346565, Description: GF 06“ FS 158/82/15/06A by 209,8440 / 205,8440 / 96,0960 / 92,0960
+13:13:47,621 [1] INFO - Removed singleMoldDisc: SAP: 346587, Description: GF 18“ DS 457/194/20/18A by -94,4675 / -98,4675 / -48,4150 / -52,4150
+13:13:47,621 [1] INFO - Removed singleMoldDisc: SAP: 346598, Description: GF 14“ DS 355/141/15/14A by 9,3175 / 5,3175 / 5,5125 / 1,5125
+13:13:47,621 [1] INFO - Removed singleMoldDisc: SAP: 354777, Description: GF 04" DS 114/17/5/- by 254,5350 / 250,5350 / 131,6825 / 127,6825
+13:13:47,621 [1] INFO - Removed singleMoldDisc: SAP: 354779, Description: GF 14" FS 338/41/25/- by 26,7840 / 22,7840 / 107,2830 / 103,2830
+13:13:47,621 [1] INFO - Removed singleMoldDisc: SAP: 354783, Description: GF 14" FS 338/141/25/14A by 26,7840 / 22,7840 / 5,5830 / 1,5830
+13:13:47,621 [1] INFO - Removed singleMoldDisc: SAP: 354786, Description: GF 18" FS 437/194/30/18A by -73,8990 / -77,8990 / -48,3180 / -52,3180
+13:13:47,621 [1] INFO - Removed singleMoldDisc: SAP: 354792, Description: GF 14" DS 355/41/15/- by 9,3175 / 5,3175 / 107,2625 / 103,2625
+13:13:47,621 [1] INFO - Removed singleMoldDisc: SAP: 354796, Description: GF 04" FS 104/17/10/- by 264,7620 / 260,7620 / 131,6910 / 127,6910
+13:13:47,621 [1] INFO - Removed singleMoldDisc: SAP: 359352, Description: GF 12“ FS 308/41/25/- by 57,2900 / 53,2900 / 107,2800 / 103,2800
+13:13:47,621 [1] INFO - Removed singleMoldDisc: SAP: 367792, Description: GF 26“ FS 635/328/40/26A by -275,2650 / -279,2650 / -184,5960 / -188,5960
+13:13:47,621 [1] INFO - Removed singleMoldDisc: SAP: 369961, Description: GF 30“ FS 737/360/40/30A by -378,9990 / -382,9990 / -217,1400 / -221,1400
+13:13:47,621 [1] INFO - Removed singleMoldDisc: SAP: 369962, Description: GF 30“ DS 764/360/25/30A by -406,8400 / -410,8400 / -217,3200 / -221,3200
+13:13:47,621 [1] INFO - Removed singleMoldDisc: SAP: 369963, Description: GF 28“ DS 711/328/25/26A by -352,9125 / -356,9125 / -184,7600 / -188,7600
+13:13:47,622 [1] INFO - Removed singleMoldDisc: SAP: 369964, Description: GF 28“ FS 694/328/40/26A by -335,2680 / -339,2680 / -184,5960 / -188,5960
+13:13:47,622 [1] INFO - Removed singleMoldDisc: SAP: 369965, Description: GF 28“ FS 688/328/40/26A by -329,1660 / -333,1660 / -184,5960 / -188,5960
+13:13:47,622 [1] INFO - Removed singleMoldDisc: SAP: 369966, Description: GF 26“ DS 660/328/25/26A by -301,0200 / -305,0200 / -184,7600 / -188,7600
+13:13:47,622 [1] INFO - Added coreSingleMold: 371436 F06CBF4A
+13:13:47,622 [1] INFO - Added coreSingleMold: 371829 F06CBE9A
+13:13:47,622 [1] INFO - Added coreSingleMold: 371830 F06CBF0A
+13:13:47,622 [1] INFO - Added coreSingleMold: 371831 F06CBF1A
+13:13:47,622 [1] INFO - Added coreSingleMold: 371832 F06CBF2A
+13:13:47,622 [1] INFO - Added coreSingleMold: 371833 F06CBF3A
+13:13:47,622 [1] INFO - Added coreSingleMold: 371834 F10CBB7A
+13:13:47,622 [1] INFO - Added coreSingleMold: 371835 F10CBB8A
+13:13:47,622 [1] INFO - Added coreSingleMold: 371836 F10CBB9A
+13:13:47,622 [1] INFO - Added coreSingleMold: 371837 F10CBC1A
+13:13:47,622 [1] INFO - Added coreSingleMold: 371838 F10CBC3A
+13:13:47,622 [1] INFO - Added coreSingleMold: 371839 F10CBC4A
+13:13:47,622 [1] INFO - Removed coreSingleMold: 371840 F10CBC5A by 9,6975
+13:13:47,622 [1] INFO - Removed coreSingleMold: 371841 F10CBC6A by 15,8025
+13:13:47,622 [1] INFO - Removed coreSingleMold: 371842 F10CBC7A by 26,9950
+13:13:47,622 [1] INFO - Removed coreSingleMold: 371843 F10CBC8A by 40,2225
+13:13:47,622 [1] INFO - Removed coreSingleMold: 371844 F10CBC9A by 51,4150
+13:13:47,622 [1] INFO - Added coreSingleMold: 371845 F10CBB4A
+13:13:47,622 [1] INFO - Added coreSingleMold: 371846 F10CBB5A
+13:13:47,623 [1] INFO - Added coreSingleMold: 371847 F10CBB6A
+13:13:47,623 [1] INFO - Added coreSingleMold: 371848 F06CBF5A
+13:13:47,623 [1] INFO - Added coreSingleMold: 371849 F06CBF6A
+13:13:47,623 [1] INFO - Added coreSingleMold: 371850 F06CBF7A
+13:13:47,623 [1] INFO - Added coreSingleMold: 371851 F06CBF8A
+13:13:47,623 [1] INFO - Added coreSingleMold: 371852 F06CBF9A
+13:13:47,623 [1] INFO - Added coreSingleMold: 371853 F06CBG0A
+13:13:47,623 [1] INFO - Removed coreSingleMold: 371854 F18CBB6A by 26,9950
+13:13:47,623 [1] INFO - Removed coreSingleMold: 371855 F18CBB7A by 40,2225
+13:13:47,623 [1] INFO - Removed coreSingleMold: 371856 F18CBB8A by 51,4150
+13:13:47,623 [1] INFO - Removed coreSingleMold: 371857 F18CBB9A by 78,8875
+13:13:47,623 [1] INFO - Removed coreSingleMold: 371858 F18CBC0A by 103,3075
+13:13:47,623 [1] INFO - Removed coreSingleMold: 371859 F18CBC1A by 133,8325
+13:13:47,623 [1] INFO - Removed coreSingleMold: 371860 F18CBC2A by 159,2700
+13:13:47,623 [1] INFO - Removed coreSingleMold: 371861 F18CBC3A by 187,7600
+13:13:47,623 [1] INFO - Removed coreSingleMold: 371862 F18CBC4A by 220,3200
+22:55:15,261 [1] ERROR - System.IndexOutOfRangeException: An der Position 0 befindet sich keine Zeile.
+   bei System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)
+   bei System.Data.DataRowCollection.get_Item(Int32 index)
+   bei Gießformkonfigurator.WPF.Core.ApplicationSettings.getCurrentSettingsFromDb() in C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\Gießformkonfigurator.WPF\Core\ApplicationSettings.cs:Zeile 45.
+22:55:15,378 [1] ERROR - System.IndexOutOfRangeException: An der Position 0 befindet sich keine Zeile.
+   bei System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)
+   bei System.Data.DataRowCollection.get_Item(Int32 index)
+   bei Gießformkonfigurator.WPF.Core.RankingSettings.getCurrentSettingsFromDb() in C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\Gießformkonfigurator.WPF\Core\RankingSettings.cs:Zeile 55.
+23:00:39,652 [1] ERROR - System.IndexOutOfRangeException: An der Position 0 befindet sich keine Zeile.
+   bei System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)
+   bei System.Data.DataRowCollection.get_Item(Int32 index)
+   bei Gießformkonfigurator.WPF.Core.RankingSettings.getCurrentSettingsFromDb() in C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\Gießformkonfigurator.WPF\Core\RankingSettings.cs:Zeile 55.
+23:00:42,587 [1] ERROR - System.IndexOutOfRangeException: An der Position 0 befindet sich keine Zeile.
+   bei System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)
+   bei System.Data.DataRowCollection.get_Item(Int32 index)
+   bei Gießformkonfigurator.WPF.Core.RankingSettings.getCurrentSettingsFromDb() in C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\Gießformkonfigurator.WPF\Core\RankingSettings.cs:Zeile 55.
+23:00:44,119 [1] ERROR - System.IndexOutOfRangeException: An der Position 0 befindet sich keine Zeile.
+   bei System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)
+   bei System.Data.DataRowCollection.get_Item(Int32 index)
+   bei Gießformkonfigurator.WPF.Core.RankingSettings.getCurrentSettingsFromDb() in C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\Gießformkonfigurator.WPF\Core\RankingSettings.cs:Zeile 55.
+23:00:47,109 [1] ERROR - System.IndexOutOfRangeException: An der Position 0 befindet sich keine Zeile.
+   bei System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)
+   bei System.Data.DataRowCollection.get_Item(Int32 index)
+   bei Gießformkonfigurator.WPF.Core.RankingSettings.getCurrentSettingsFromDb() in C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\Gießformkonfigurator.WPF\Core\RankingSettings.cs:Zeile 55.
+23:03:18,368 [1] ERROR - System.ArgumentException: Spalte 'deviationKonusBaseplateCore' gehört nicht zu Tabelle .
+   bei System.Data.DataRow.GetDataColumn(String columnName)
+   bei System.Data.DataRow.get_Item(String columnName)
+   bei Gießformkonfigurator.WPF.Core.RankingSettings.getCurrentSettingsFromDb() in C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\Gießformkonfigurator.WPF\Core\RankingSettings.cs:Zeile 55.
+23:03:33,642 [1] ERROR - System.ArgumentException: Spalte 'deviationKonusBaseplateCore' gehört nicht zu Tabelle .
+   bei System.Data.DataRow.GetDataColumn(String columnName)
+   bei System.Data.DataRow.get_Item(String columnName)
+   bei Gießformkonfigurator.WPF.Core.RankingSettings.getCurrentSettingsFromDb() in C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\Gießformkonfigurator.WPF\Core\RankingSettings.cs:Zeile 55.
