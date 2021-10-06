@@ -20,7 +20,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
 
         public Components_BoltViewModel()
         {
-            this.bolt = new Bolt();
+            this.bolt = new Bolt() { HasThread = true };
             insertIntoDbCmd = new RelayCommand(param => insertIntoDb(), param => validateInput());
         }
 

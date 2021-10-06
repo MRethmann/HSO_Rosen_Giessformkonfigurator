@@ -21,7 +21,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
 
         public Components_BaseplateViewModel()
         {
-            baseplate = new Baseplate();
+            baseplate = new Baseplate() { HasKonus = true };
             insertIntoDbCmd = new RelayCommand(param => insertIntoDb(), param => validateInput());
         }
 

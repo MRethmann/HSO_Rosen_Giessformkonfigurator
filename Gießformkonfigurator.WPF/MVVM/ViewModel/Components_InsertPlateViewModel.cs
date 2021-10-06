@@ -21,7 +21,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
 
         public Components_InsertPlateViewModel()
         {
-            this.insertPlate = new InsertPlate();
+            this.insertPlate = new InsertPlate() { HasKonus = true } ;
             insertIntoDbCmd = new RelayCommand(param => insertIntoDb(), param => validateInput());
         }
 

@@ -20,7 +20,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
 
         public Components_CoreViewModel()
         {
-            this.core = new Core();
+            this.core = new Core() { HasKonus = true };
             insertIntoDbCmd = new RelayCommand(param => insertIntoDb(), param => validateInput());
         }
 
