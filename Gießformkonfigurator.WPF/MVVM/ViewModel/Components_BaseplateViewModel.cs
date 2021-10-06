@@ -53,6 +53,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
             if (baseplate.ID.ToString().Length <= 1
                 || baseplate.OuterDiameter == 0
                 || baseplate.Height == 0
+                || baseplate.OuterDiameter < baseplate.InnerDiameter
                 || ((baseplate.OuterKonusMax ?? 0) == 0)
                 || ((baseplate.OuterKonusMin ?? 0) == 0)
                 || ((baseplate.OuterKonusAngle ?? 0) == 0)

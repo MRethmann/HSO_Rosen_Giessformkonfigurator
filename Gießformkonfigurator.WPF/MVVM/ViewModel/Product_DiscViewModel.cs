@@ -51,7 +51,8 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
             if (productDisc.ID.ToString().Length <= 1
                 || productDisc.OuterDiameter == 0
                 || productDisc.InnerDiameter == 0
-                || productDisc.Height == 0)
+                || productDisc.Height == 0
+                || productDisc.OuterDiameter < productDisc.InnerDiameter)
             {
                 return false;
             }
