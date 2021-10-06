@@ -75,7 +75,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
 
         public Search_MainViewModel()
         {
-            searchCommand = new RelayCommand(param => findMatchingMolds(), param => true);
+            searchCommand = new RelayCommand(param => findMatchingMolds(), param => validateInput());
         }
 
         /// <summary>
@@ -186,6 +186,17 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                     this.productSearchOutput.Add(compareObject);
                 }
             }
+        }
+
+        public bool validateInput()
+        {
+            if ((searchByProductId == true && productId == 0)
+                || (searchByProductId == false && (OuterDiameter == 0 || InnerDiameter == 0 || Height == 0)))
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }
