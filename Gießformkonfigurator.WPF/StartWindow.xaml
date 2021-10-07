@@ -84,11 +84,11 @@
             <PasswordBox Name="Password_TextBox" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300" Height="Auto" FontSize="20" Margin="10" BorderThickness="0" IsEnabled="False"/>
 
             <Button Content="Verbinden" Click="btnOpenModal_Click"
-                            Width="100"
-                            Height="30"
+                            Width="120"
+                            Height="40"
                             FontFamily="Helvetica"
                             FontWeight="Light"
-                            FontSize="16"
+                            FontSize="20"
                             HorizontalAlignment="center"
                             VerticalAlignment="Bottom"
                             Grid.Row="6" Grid.ColumnSpan="2"/>

@@ -16,7 +16,7 @@
         Title="Gießformkonfigurator">
 
     <Window.DataContext>
-        <viewModel:MainViewModel/>
+        <viewModel:MainViewModel x:Name="MainViewModel"/>
     </Window.DataContext>
 
     <Border>

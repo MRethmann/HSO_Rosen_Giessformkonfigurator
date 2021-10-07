@@ -29,7 +29,7 @@
     <ProductName>Gießformkonfigurator</ProductName>
     <MinimumRequiredVersion>1.0.0.5</MinimumRequiredVersion>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>6</ApplicationRevision>
+    <ApplicationRevision>7</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -522,6 +522,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Gießformkonfigurator.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\key.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

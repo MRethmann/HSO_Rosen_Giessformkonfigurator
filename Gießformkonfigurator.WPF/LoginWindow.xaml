@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Gießformkonfigurator.WPF"
         mc:Ignorable="d"
-        Title="Admin Login" Height="450" Width="380"
+        Title="Admin Login" Height="400" Width="380"
         WindowStartupLocation="CenterScreen">
     
     
@@ -16,11 +16,14 @@
         </Grid.RowDefinitions>
 
         <StackPanel VerticalAlignment="Center">
-            <TextBlock Text="Als Admin anmelden"
-                        FontWeight="Light"
-                        FontSize="22"
-                        HorizontalAlignment="Center"
-                        Foreground="Black"/>
+            
+            <TextBlock Text="Admin Login"
+                       FontFamily="Helvetica"
+                        FontWeight="Medium"
+                        Foreground="#144F9B"
+                        FontSize="24"
+                        HorizontalAlignment="Center"/>
+            <Image Source="Images\key.png" Width="60" Margin="20"/>
         </StackPanel>
 
         <StackPanel  Grid.Row="1">

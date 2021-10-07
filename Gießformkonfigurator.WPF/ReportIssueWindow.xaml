@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Gießformkonfigurator.WPF"
         mc:Ignorable="d"
-        Title="Report Issue" Height="450" Width="380"
-        WindowStartupLocation="CenterScreen">
+        Title="Feedbackformular" Height="500" Width="400"
+        WindowStartupLocation="CenterScreen" Background="WhiteSmoke">
     <Grid>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -14,24 +14,25 @@
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="6*"/>
+                <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="Fehlermeldung/Problem" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
-            <TextBlock Grid.Row="1" Text="Meldungstyp:" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="15"/>
-            <ComboBox Name="ErrorType_ComboBox" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="Auto" Margin="5">
-                <ComboBoxItem Content="Ausgabefehler" IsSelected="True"/>
-                <ComboBoxItem Content="Error"/>
-                <ComboBoxItem Content="Wunsch" />
-            </ComboBox>
-            <TextBlock Grid.Row="2" Text="Beschreibung: " VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="15"/>
-            <TextBox Name="ErrorDescription_TextBox" Grid.Row="3" Grid.RowSpan="2" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="20, 5, 20, 5" Height="100" BorderThickness="1" BorderBrush="Gray"/>
-            <Button Name="SendErrorInformation" Grid.Row="5" VerticalAlignment="Top" HorizontalAlignment="Center" Width="120" Height="30" Content="Absenden" Margin="20, 5, 20, 5" Click="SendErrorInformation_Click"/>
+            <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="Feedbackformular" FontWeight="Medium" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Foreground="#144F9B" FontFamily="Helvetica"/>
+            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="Meldungstyp:" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" Margin="10"/>
+                <ComboBox Name="ErrorType_ComboBox" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="Auto" Margin="10" FontSize="15">
+                    <ComboBoxItem Content="Ausgabefehler" IsSelected="True"/>
+                    <ComboBoxItem Content="Error"/>
+                    <ComboBoxItem Content="Wunsch" />
+                </ComboBox>
+            </StackPanel>
+            <TextBlock Grid.Row="2" Text="Beschreibung: " VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="18" Margin="5"/>
+            <TextBox Name="ErrorDescription_TextBox" Grid.Row="3" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="20, 5, 20, 5" Height="200" BorderThickness="1" BorderBrush="Gray" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" AcceptsReturn="True" Background="White" />
+            <Button Name="SendErrorInformation" Grid.Row="4" VerticalAlignment="Top" HorizontalAlignment="Center" Width="120" Height="30" Content="Absenden" Margin="20, 5, 20, 5" Click="SendErrorInformation_Click"/>
 
         </Grid>
     </Grid>
