@@ -1,0 +1,602 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Gießformkonfigurator.WPF</name>
+    </assembly>
+    <members>
+        <member name="T:Gießformkonfigurator.WPF.loginWindow">
+            <summary>
+            Interaktionslogik für loginWindow.xaml
+            </summary>
+            <summary>
+            loginWindow
+            </summary>
+        </member>
+        <member name="M:Gießformkonfigurator.WPF.loginWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Gießformkonfigurator.WPF.MVVM.View.DataTemplates.AdditionalRingTemplateSelector">
+            <summary>
+            Not in use. Could be used to avoid binding errors on RowDetails --> Additional Inner/Core Rings
+            </summary>
+        </member>
+        <member name="T:Gießformkonfigurator.WPF.MVVM.View.ValidationRules.InputValueRangeValidationRule">
+            <summary>
+            ValidationRule to check if the Input Value is positive and not greater than 100.000. This rule should avoid input mistakes.
+            </summary>
+        </member>
+        <member name="T:Gießformkonfigurator.WPF.MVVM.View.ValidationRules.MandatoryFieldValidationRule">
+            <summary>
+            Validation Rule for string values which are required fields.
+            </summary>
+        </member>
+        <member name="T:Gießformkonfigurator.WPF.MVVM.View.DBManagement_MainView">
+            <summary>
+            Interaktionslogik für DBManagement_MainView.xaml
+            </summary>
+            <summary>
+            DBManagement_MainView
+            </summary>
+        </member>
+        <member name="M:Gießformkonfigurator.WPF.MVVM.View.DBManagement_MainView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Gießformkonfigurator.WPF.MVVM.View.Mold_CupView">
+            <summary>
+            Interaktionslogik für ScheibeHinzufuegenView.xaml
+            </summary>
+            <summary>
+            Mold_CupView
+            </summary>
+        </member>
+        <member name="M:Gießformkonfigurator.WPF.MVVM.View.Mold_CupView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Gießformkonfigurator.WPF.MVVM.View.Settings_MainView">
+            <summary>
+            Interaktionslogik für Settings_SettingsMainView.xaml
+            </summary>
+            <summary>
+            Settings_MainView
+            </summary>
+        </member>
+        <member name="M:Gießformkonfigurator.WPF.MVVM.View.Settings_MainView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Gießformkonfigurator.WPF.MVVM.View.Settings_ApplicationSettingsView">
+            <summary>
+            Interaktionslogik für Settings_ApplicationSettingsView.xaml
+            </summary>
+            <summary>
+            Settings_ApplicationSettingsView
+            </summary>
+        </member>
+        <member name="M:Gießformkonfigurator.WPF.MVVM.View.Settings_ApplicationSettingsView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Gießformkonfigurator.WPF.MVVM.View.Components_MainView">
+            <summary>
+            Interaktionslogik für BauteileHinzufuegenView.xaml
+            </summary>
+            <summary>
+            Components_MainView
+            </summary>
+        </member>
+        <member name="M:Gießformkonfigurator.WPF.MVVM.View.Components_MainView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Gießformkonfigurator.WPF.MVVM.View.Settings_ToleranceSettingsView">
+            <summary>
+            Interaktionslogik für Settings_CompareSettingsView.xaml
+            </summary>
+            <summary>
+            Settings_ToleranceSettingsView
+            </summary>
+        </member>
+        <member name="M:Gießformkonfigurator.WPF.MVVM.View.Settings_ToleranceSettingsView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Gießformkonfigurator.WPF.MVVM.View.Components_CupformView">
+            <summary>
+            Interaktionslogik für CupHinzufuegenView.xaml
+            </summary>
+            <summary>
+            Components_CupformView
+            </summary>
+        </member>
+        <member name="M:Gießformkonfigurator.WPF.MVVM.View.Components_CupformView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Gießformkonfigurator.WPF.MVVM.View.Components_InsertPlateView">
+            <summary>
+            Interaktionslogik für EinlegeplatteHinzufuegenView.xaml
+            </summary>
+            <summary>
+            Components_InsertPlateView
+            </summary>
+        </member>
+        <member name="M:Gießformkonfigurator.WPF.MVVM.View.Components_InsertPlateView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Gießformkonfigurator.WPF.MVVM.View.Mold_MainView">
+            <summary>
+            Interaktionslogik für FormHinzufuegenView.xaml
+            </summary>
+            <summary>
+            Mold_MainView
+            </summary>
+        </member>
+        <member name="M:Gießformkonfigurator.WPF.MVVM.View.Mold_MainView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Gießformkonfigurator.WPF.MVVM.View.Product_CupView">
+            <summary>
+            Interaktionslogik für ProduktCupHinzufuegenView.xaml
+            </summary>
+            <summary>
+            Product_CupView
+            </summary>
+        </member>
+        <member name="M:Gießformkonfigurator.WPF.MVVM.View.Product_CupView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Gießformkonfigurator.WPF.MVVM.View.Product_DiscView">
+            <summary>
+            Interaktionslogik für ProduktScheibeHinzufuegenView.xaml
+            </summary>
+            <summary>
+            Product_DiscView
+            </summary>
+        </member>
+        <member name="M:Gießformkonfigurator.WPF.MVVM.View.Product_DiscView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Gießformkonfigurator.WPF.MVVM.View.Settings_RankingSettingsView">
+            <summary>
+            Interaktionslogik für RankingSettingsView.xaml
+            </summary>
+            <summary>
+            Settings_RankingSettingsView
+            </summary>
+        </member>
+        <member name="M:Gießformkonfigurator.WPF.MVVM.View.Settings_RankingSettingsView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Gießformkonfigurator.WPF.MVVM.View.Components_RingView">
+            <summary>
+            Interaktionslogik für RingHinzufuegenView.xaml
+            </summary>
+            <summary>
+            Components_RingView
+            </summary>
+        </member>
+        <member name="M:Gießformkonfigurator.WPF.MVVM.View.Components_RingView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Gießformkonfigurator.WPF.MVVM.View.Components_BaseplateView">
+            <summary>
+            Interaktionslogik für GrundplatteHinzufuegenView.xaml
+            </summary>
+            <summary>
+            Components_BaseplateView
+            </summary>
+        </member>
+        <member name="M:Gießformkonfigurator.WPF.MVVM.View.Components_BaseplateView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Gießformkonfigurator.WPF.MVVM.View.Product_MainView">
+            <summary>
+            Interaktionslogik für HinzufuegenView.xaml
+            </summary>
+            <summary>
+            Product_MainView
+            </summary>
+        </member>
+        <member name="M:Gießformkonfigurator.WPF.MVVM.View.Product_MainView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Gießformkonfigurator.WPF.MVVM.View.Components_CoreView">
+            <summary>
+            Interaktionslogik für InnenkernHinzufuegenView.xaml
+            </summary>
+            <summary>
+            Components_CoreView
+            </summary>
+        </member>
+        <member name="M:Gießformkonfigurator.WPF.MVVM.View.Components_CoreView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Gießformkonfigurator.WPF.MVVM.View.Mold_DiscView">
+            <summary>
+            Interaktionslogik für ScheibeHinzufuegenView.xaml
+            </summary>
+            <summary>
+            Mold_DiscView
+            </summary>
+        </member>
+        <member name="M:Gießformkonfigurator.WPF.MVVM.View.Mold_DiscView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Gießformkonfigurator.WPF.MVVM.View.Components_BoltView">
+            <summary>
+            Interaktionslogik für StehbolzenHinzufuegenView.xaml
+            </summary>
+            <summary>
+            Components_BoltView
+            </summary>
+        </member>
+        <member name="M:Gießformkonfigurator.WPF.MVVM.View.Components_BoltView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Gießformkonfigurator.WPF.MVVM.View.Search_MainView">
+            <summary>
+            Interaktionslogik für AnsichtZwei.xaml
+            </summary>
+            <summary>
+            Search_MainView
+            </summary>
+        </member>
+        <member name="M:Gießformkonfigurator.WPF.MVVM.View.Search_MainView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="P:Gießformkonfigurator.WPF.MVVM.Model.Db_components.Baseplate.HasKonus">
+            <summary>
+            Konusführung
+            </summary>
+        </member>
+        <member name="P:Gießformkonfigurator.WPF.MVVM.Model.Db_components.Baseplate.HasHoleguide">
+            <summary>
+            Lochführung
+            </summary>
+        </member>
+        <member name="P:Gießformkonfigurator.WPF.MVVM.Model.Db_components.Baseplate.HasCore">
+            <summary>
+            Intergrierter Kern
+            </summary>
+        </member>
+        <member name="P:Gießformkonfigurator.WPF.MVVM.Model.Db_components.Bolt.HasThread">
+            <summary>
+            Gewinde
+            </summary>
+        </member>
+        <member name="P:Gießformkonfigurator.WPF.MVVM.Model.Db_components.Bolt.HasGuideBolt">
+            <summary>
+            Steckbolzen
+            </summary>
+        </member>
+        <member name="P:Gießformkonfigurator.WPF.MVVM.Model.Db_components.Core.HasKonus">
+            <summary>
+            Konusführung
+            </summary>
+        </member>
+        <member name="P:Gießformkonfigurator.WPF.MVVM.Model.Db_components.Core.HasGuideBolt">
+            <summary>
+            Führungsstift
+            </summary>
+        </member>
+        <member name="P:Gießformkonfigurator.WPF.MVVM.Model.Db_components.Core.HasHoleguide">
+            <summary>
+            Lochführung
+            </summary>
+        </member>
+        <member name="P:Gießformkonfigurator.WPF.MVVM.Model.Db_components.Cupform.HasGuideBolt">
+            <summary>
+            Führungsstift
+            </summary>
+        </member>
+        <member name="P:Gießformkonfigurator.WPF.MVVM.Model.Db_components.Cupform.HasThread">
+            <summary>
+            Innengewinde
+            </summary>
+        </member>
+        <member name="P:Gießformkonfigurator.WPF.MVVM.Model.Db_components.Cupform.HasKonus">
+            <summary>
+            Konusführung
+            </summary>
+        </member>
+        <member name="P:Gießformkonfigurator.WPF.MVVM.Model.Db_components.Cupform.HasHoleguide">
+            <summary>
+            Lochführung
+            </summary>
+        </member>
+        <member name="P:Gießformkonfigurator.WPF.MVVM.Model.Db_components.Cupform.HasCore">
+            <summary>
+            Innenkern
+            </summary>
+        </member>
+        <member name="T:Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses.GießformDBContext">
+            <summary>
+            Implementiert die Klasse DbContext. Konfiguration der DB Grundstruktur.
+            </summary>
+        </member>
+        <member name="M:Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses.GießformDBContext.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses.GießformDBContext"/> class.
+            Stellt DB Verbindung her. Connection String befindet sich in der App.Config.
+            </summary>
+        </member>
+        <member name="M:Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses.GießformDBContext.OnModelCreating(System.Data.Entity.DbModelBuilder)">
+            <summary>
+            Initialisiert die EntityConfigurations für alle DB-Objekte.
+            </summary>
+            <param name="modelBuilder">tbd.</param>
+        </member>
+        <member name="T:Gießformkonfigurator.WPF.MVVM.Model.Logic.CombinationJob">
+            <summary>
+            Objekt zur Kombination der Komponenten zur Erstellung der mehrteiligen Gießformen (MGießformen).
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Gießformkonfigurator.WPF.MVVM.Model.Logic.CombinationJob.#ctor(Gießformkonfigurator.WPF.MVVM.Model.Db_products.Product,Gießformkonfigurator.WPF.MVVM.Model.Logic.FilterJob)" -->
+        <member name="P:Gießformkonfigurator.WPF.MVVM.Model.Logic.CombinationJob.Index">
+            <summary>
+            Speichert den aktuellen Listenindex.
+            </summary>
+        </member>
+        <member name="M:Gießformkonfigurator.WPF.MVVM.Model.Logic.CombinationJob.CombineModularDiscMold">
+            <summary>
+            Uses the pre filtered database entries (filterJob) to combine components to create modular molds for disc products.
+            </summary>
+        </member>
+        <member name="M:Gießformkonfigurator.WPF.MVVM.Model.Logic.CombinationJob.CombineModularCupMold">
+            <summary>
+            Uses the pre filtered database entries (filterJob) to combine components to create modular molds for cup products.
+            </summary>
+        </member>
+        <member name="M:Gießformkonfigurator.WPF.MVVM.Model.Logic.CombinationJob.CombineSingleDiscMold">
+            <summary>
+            Uses the pre filtered database entries (filterJob) to combine singleMoldDisc with optional Cores.
+            </summary>
+        </member>
+        <member name="T:Gießformkonfigurator.WPF.MVVM.Model.Logic.BaseplateCoreCombination">
+            <summary>
+            No Documentation necessary.
+            </summary>
+        </member>
+        <member name="P:Gießformkonfigurator.WPF.MVVM.Model.Logic.CompareObject.differenceInnerDiameter">
+            <summary>
+            Difference between prefered inner Diameter and actual inner Diameter which requires post processing.
+            </summary>
+        </member>
+        <member name="P:Gießformkonfigurator.WPF.MVVM.Model.Logic.CompareObject.differenceOuterDiameter">
+            <summary>
+            Difference between prefered outer Diameter and actual outer Diameter which requires post processing.
+            </summary>
+        </member>
+        <member name="P:Gießformkonfigurator.WPF.MVVM.Model.Logic.CompareObject.differenceBoltDiameter">
+            <summary>
+            Difference is used to determine the best bolts. Every bolt can be used for the product without post processing.
+            </summary>
+        </member>
+        <member name="P:Gießformkonfigurator.WPF.MVVM.Model.Logic.CompareObject.finalRating">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Gießformkonfigurator.WPF.MVVM.Model.Logic.CompareObject.holeCircle">
+            <summary>
+            GGF. überflüssig. Shows if mold has holeCircle or not. If not it needs to be added manually in post processing.
+            </summary>
+        </member>
+        <member name="P:Gießformkonfigurator.WPF.MVVM.Model.Logic.CompareObject.boltCirclesBaseplate">
+            <summary>
+            Array shows which BoltCircle of the mold is assigned to which circle of the product. Array index 1-3 is used for the boltcircles of the baseplate. Array index 4-6 is used for boltcircles of the insertPlate.
+            </summary>
+        </member>
+        <member name="P:Gießformkonfigurator.WPF.MVVM.Model.Logic.CompareObject.bolts">
+            <summary>
+            Bolts
+            </summary>
+        </member>
+        <member name="M:Gießformkonfigurator.WPF.MVVM.Model.Logic.FilterJob.GetFilteredDatabase">
+            <summary>
+            Stellt eine Verbindung zur Datenbank her und speichert die Komponenten in einer lokalen Objektliste. Die Komponenten werden über die Produktparameter vorgefiltert.
+            </summary>
+        </member>
+        <member name="M:Gießformkonfigurator.WPF.MVVM.Model.Logic.RankingJob.addRatingInformation">
+            <summary>
+            Final Step to rate all molds based on their difference between actual Output after production and prefered Output on paper. Important Values are for example differences in outer and inner diameter and height. 
+            </summary>
+        </member>
+        <member name="M:Gießformkonfigurator.WPF.MVVM.ViewModel.Components_BaseplateViewModel.validateInput">
+            <summary>
+            Validates if all required fields are filled out and activates the button if true.
+            </summary>
+            <returns>True if all required fields are filled.</returns>
+        </member>
+        <member name="P:Gießformkonfigurator.WPF.MVVM.ViewModel.Search_MainViewModel.searchByProductId">
+            <summary>
+            Property determines the search method. 
+            True = Search via SAP number. 
+            False = Search by entering product parameters manually.
+            </summary>
+        </member>
+        <member name="P:Gießformkonfigurator.WPF.MVVM.ViewModel.Search_MainViewModel.searchTypeProduct">
+            <summary>
+            Property determines the product type in the GUI via Binding. 
+            True = ProductDisc. 
+            False = ProductCup.
+            </summary>
+        </member>
+        <member name="M:Gießformkonfigurator.WPF.MVVM.ViewModel.Search_MainViewModel.findMatchingMolds">
+            <summary>
+            Starts the algorithm to find matching molds based on the entered product.
+            </summary>
+        </member>
+        <member name="M:Gießformkonfigurator.WPF.MVVM.ViewModel.Settings_ApplicationSettingsViewModel.validateData">
+            <summary>
+            Validates if all required fields are filled out and activates the button if true.
+            </summary>
+            <returns>True if all required fields are filled.</returns>
+        </member>
+        <member name="M:Gießformkonfigurator.WPF.MVVM.ViewModel.Settings_ToleranceSettingsViewModel.validateData">
+            <summary>
+            Validates if all required fields are filled out and activates the button if true.
+            </summary>
+            <returns>True if all required fields are filled.</returns>
+        </member>
+        <member name="M:Gießformkonfigurator.WPF.MVVM.ViewModel.Settings_RankingSettingsViewModel.validateData">
+            <summary>
+            Validates if all required fields are filled out and activates the button if true.
+            </summary>
+            <returns>True if all required fields are filled.</returns>
+        </member>
+        <member name="T:Gießformkonfigurator.WPF.ReportIssueWindow">
+            <summary>
+            Interaktionslogik für ReportIssueView.xaml
+            </summary>
+            <summary>
+            ReportIssueWindow
+            </summary>
+        </member>
+        <member name="M:Gießformkonfigurator.WPF.ReportIssueWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Gießformkonfigurator.WPF.StartWindow">
+            <summary>
+            Interaktionslogik für StartWindow.xaml
+            </summary>
+            <summary>
+            StartWindow
+            </summary>
+        </member>
+        <member name="M:Gießformkonfigurator.WPF.StartWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Gießformkonfigurator.WPF.App">
+            <summary>
+            Interaktionslogik für "App.xaml"
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:Gießformkonfigurator.WPF.App.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:Gießformkonfigurator.WPF.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:Gießformkonfigurator.WPF.MainWindow">
+            <summary>
+            Interaktionslogik für MainWindow.xaml
+            </summary>
+            <summary>
+            MainWindow
+            </summary>
+        </member>
+        <member name="M:Gießformkonfigurator.WPF.MainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Gießformkonfigurator.WPF.Program">
+            <summary>
+            Program Entry.
+            </summary>
+        </member>
+        <member name="P:Gießformkonfigurator.WPF.Program.Index">
+            <summary>
+            Speichert den aktuellen Listenindex.
+            </summary>
+        </member>
+        <member name="M:Gießformkonfigurator.WPF.Program.Main">
+            <summary>
+            Der Haupteinstiegspunkt für die Anwendung.
+            </summary>
+        </member>
+        <member name="T:Gießformkonfigurator.WPF.Properties.Resources">
+            <summary>
+              Eine stark typisierte Ressourcenklasse zum Suchen von lokalisierten Zeichenfolgen usw.
+            </summary>
+        </member>
+        <member name="P:Gießformkonfigurator.WPF.Properties.Resources.ResourceManager">
+            <summary>
+              Gibt die zwischengespeicherte ResourceManager-Instanz zurück, die von dieser Klasse verwendet wird.
+            </summary>
+        </member>
+        <member name="P:Gießformkonfigurator.WPF.Properties.Resources.Culture">
+            <summary>
+              Überschreibt die CurrentUICulture-Eigenschaft des aktuellen Threads für alle
+              Ressourcenzuordnungen, die diese stark typisierte Ressourcenklasse verwenden.
+            </summary>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
+            </summary>
+        </member>
+    </members>
+</doc>

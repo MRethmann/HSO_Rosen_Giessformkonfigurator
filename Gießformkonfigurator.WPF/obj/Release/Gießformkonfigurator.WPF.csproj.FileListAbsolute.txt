@@ -6,11 +6,9 @@ C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\Gießformkonfigurat
 C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\Gießformkonfigurator.WPF\bin\Release\Gießformkonfigurator.WPF.pdb
 C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\Gießformkonfigurator.WPF\bin\Release\EntityFramework.dll
 C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\Gießformkonfigurator.WPF\bin\Release\EntityFramework.SqlServer.dll
-C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\Gießformkonfigurator.WPF\bin\Release\FontAwesome.WPF.dll
 C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\Gießformkonfigurator.WPF\bin\Release\log4net.dll
 C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\Gießformkonfigurator.WPF\bin\Release\EntityFramework.xml
 C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\Gießformkonfigurator.WPF\bin\Release\EntityFramework.SqlServer.xml
-C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\Gießformkonfigurator.WPF\bin\Release\FontAwesome.WPF.xml
 C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\Gießformkonfigurator.WPF\bin\Release\log4net.xml
 C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\Gießformkonfigurator.WPF\bin\Release\de\EntityFramework.resources.dll
 C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\Gießformkonfigurator.WPF\bin\Release\de\EntityFramework.SqlServer.resources.dll
@@ -89,6 +87,6 @@ C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\Gießformkonfigurat
 C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\Gießformkonfigurator.WPF\obj\Release\Gießformkonfigurator.WPF.csproj.CoreCompileInputs.cache
 C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\Gießformkonfigurator.WPF\obj\Release\Gießformkonfigurator.WPF.exe.manifest
 C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\Gießformkonfigurator.WPF\obj\Release\Gießformkonfigurator.WPF.application
-C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\Gießformkonfigurator.WPF\obj\Release\Gießformkonfigurator.WPF.csproj.CopyComplete
 C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\Gießformkonfigurator.WPF\obj\Release\Gießformkonfigurator.WPF.exe
 C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\Gießformkonfigurator.WPF\obj\Release\Gießformkonfigurator.WPF.pdb
+C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\Gießformkonfigurator.WPF\bin\Release\Gießformkonfigurator.WPF.xml

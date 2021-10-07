@@ -70,10 +70,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Gießformkonfigurator.WindowsForms\Gießformkonfigurator.WindowsForms.csproj">
-      <Project>{B7AA5BAA-369A-44B8-9696-1809F236A9BA}</Project>
-      <Name>Gießformkonfigurator.WindowsForms</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Gießformkonfigurator.WPF\Gießformkonfigurator.WPF.csproj">
       <Project>{5674d79b-26a3-45b5-9cfc-b79795235897}</Project>
       <Name>Gießformkonfigurator.WPF</Name>
