@@ -5,6 +5,7 @@
 //-----------------------------------------------------------------------
 namespace Gießformkonfigurator.WPF.Core
 {
+    using Gießformkonfigurator.WPF.Properties;
     using log4net;
     using System;
     using System.Configuration;
@@ -24,8 +25,7 @@ namespace Gießformkonfigurator.WPF.Core
         public ApplicationSettings()
         {
             getCurrentSettingsFromDb();
-            //log4net.GlobalContext.Properties["LogFileName"] = @"C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio"; //log file path 
-            //log4net.Config.XmlConfigurator.Configure(new FileInfo("log4net.config"));
+            this.logFilePath = Settings.Default.LogFilePath;
         }
 
         public void getCurrentSettingsFromDb()

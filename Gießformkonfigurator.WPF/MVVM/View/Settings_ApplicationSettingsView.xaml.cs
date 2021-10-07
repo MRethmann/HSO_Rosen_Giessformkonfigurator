@@ -5,6 +5,7 @@
 //-----------------------------------------------------------------------
 namespace Gießformkonfigurator.WPF.MVVM.View
 {
+    using Gießformkonfigurator.WPF.MVVM.ViewModel;
     using Gießformkonfigurator.WPF.Properties;
     using System.Configuration;
     using System.IO;
@@ -17,6 +18,7 @@ namespace Gießformkonfigurator.WPF.MVVM.View
         public Settings_ApplicationSettingsView()
         {
             InitializeComponent();
+            DataContext = new Settings_ApplicationSettingsViewModel();
         }
 
         private void LogFilePathSelector_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -27,8 +29,9 @@ namespace Gießformkonfigurator.WPF.MVVM.View
                 if (result == System.Windows.Forms.DialogResult.OK)
                 {
                     CurrentLogFilePath.Text = dialog.SelectedPath.ToString();
-                    //log4net.GlobalContext.Properties["LogFileName"] = @"E:\Maurice\Downloads"; //log file path 
-                    //log4net.Config.XmlConfigurator.Configure(new FileInfo("log4net.config"));
+                    Settings.Default.LogFilePath = dialog.SelectedPath.ToString() + "\\GießformkonfiguratorLogFile";
+                    log4net.GlobalContext.Properties["LogFileName"] = dialog.SelectedPath.ToString() + "\\GießformkonfiguratorLogFile";
+                    log4net.Config.XmlConfigurator.Configure(new FileInfo("log4net.config"));
                 }
             }
         }
