@@ -13,8 +13,7 @@
         Left="{local:SettingBinding Left}"
         Top="{local:SettingBinding Top}"
         WindowState="{local:SettingBinding Maximized}"
-        Title="Gießformkonfigurator"
-        Closing="MainWindow_Closing">
+        Title="Gießformkonfigurator">
 
     <Window.DataContext>
         <viewModel:MainViewModel/>
