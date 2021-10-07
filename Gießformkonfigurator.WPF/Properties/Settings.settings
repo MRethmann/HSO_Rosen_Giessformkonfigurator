@@ -17,18 +17,6 @@
     <Setting Name="Maximized" Type="System.Windows.WindowState" Scope="User">
       <Value Profile="(Default)">Maximized</Value>
     </Setting>
-    <Setting Name="DBServer" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="DBName" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="DBUserId" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="DBPassword" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
     <Setting Name="LogFilePath" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>

@@ -21,16 +21,18 @@
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
 
             <TextBlock Text="Gießformkonfigurator"
                            FontWeight="Medium"
-                           FontSize="22"
+                           FontSize="34"
                            HorizontalAlignment="Center"
-                           VerticalAlignment="Bottom"
-                           Foreground="Black" Grid.ColumnSpan="2"/>
+                           VerticalAlignment="Center"
+                           Foreground="#144F9B" 
+                           Grid.ColumnSpan="2" 
+                           Grid.RowSpan="2"/>
 
             <TextBlock FontFamily="Helvetica"
                                FontWeight="Light"
@@ -42,7 +44,7 @@
                                Margin="10"
                                Grid.Row="2"/>
 
-            <TextBox Name="Server_TextBox" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300" Height="Auto" FontSize="20" Margin="10" TextChanged="ConnectionDataChanged"/>
+            <TextBox Name="Server_TextBox" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300" Height="Auto" FontSize="20" Margin="10" BorderThickness="0" IsEnabled="False"/>
 
 
             <TextBlock FontFamily="Helvetica"
@@ -55,7 +57,7 @@
                                Margin="10"
                                Grid.Row="3"/>
 
-            <TextBox Name="DB_TextBox" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300" Height="Auto" FontSize="20" Margin="10" TextChanged="ConnectionDataChanged"/>
+            <TextBox Name="DB_TextBox" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300" Height="Auto" FontSize="20" Margin="10" BorderThickness="0" IsEnabled="False"/>
 
             <TextBlock FontFamily="Helvetica"
                                FontWeight="Light"
@@ -67,7 +69,7 @@
                                Margin="10"
                                Grid.Row="4"/>
 
-            <TextBox Name="User_TextBox" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300" Height="Auto" FontSize="20" Margin="10" TextChanged="ConnectionDataChanged"/>
+            <TextBox Name="User_TextBox" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300" Height="Auto" FontSize="20" Margin="10" BorderThickness="0" IsEnabled="False"/>
 
             <TextBlock FontFamily="Helvetica"
                                FontWeight="Light"
@@ -79,7 +81,7 @@
                                Margin="10"
                                Grid.Row="5"/>
 
-            <PasswordBox Name="Password_TextBox" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300" Height="Auto" FontSize="20" Margin="10"/>
+            <PasswordBox Name="Password_TextBox" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300" Height="Auto" FontSize="20" Margin="10" BorderThickness="0" IsEnabled="False"/>
 
             <Button Content="Verbinden" Click="btnOpenModal_Click"
                             Width="100"
