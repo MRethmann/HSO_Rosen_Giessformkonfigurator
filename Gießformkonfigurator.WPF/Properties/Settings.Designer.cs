@@ -73,7 +73,7 @@ namespace Gießformkonfigurator.WPF.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Normal")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Maximized")]
         public global::System.Windows.WindowState Maximized {
             get {
                 return ((global::System.Windows.WindowState)(this["Maximized"]));
@@ -128,18 +128,6 @@ namespace Gießformkonfigurator.WPF.Properties {
             }
             set {
                 this["DBPassword"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string DBConString {
-            get {
-                return ((string)(this["DBConString"]));
-            }
-            set {
-                this["DBConString"] = value;
             }
         }
     }

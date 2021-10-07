@@ -42,7 +42,7 @@
                                Margin="10"
                                Grid.Row="2"/>
 
-            <TextBox Name="Server_TextBox" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300" Height="Auto" FontSize="20" Margin="10" TextChanged="ConnectionDataChanged" IsEnabled="False"/>
+            <TextBox Name="Server_TextBox" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300" Height="Auto" FontSize="20" Margin="10" TextChanged="ConnectionDataChanged"/>
 
 
             <TextBlock FontFamily="Helvetica"
@@ -55,7 +55,7 @@
                                Margin="10"
                                Grid.Row="3"/>
 
-            <TextBox Name="DB_TextBox" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300" Height="Auto" FontSize="20" Margin="10" TextChanged="ConnectionDataChanged" IsEnabled="False"/>
+            <TextBox Name="DB_TextBox" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300" Height="Auto" FontSize="20" Margin="10" TextChanged="ConnectionDataChanged"/>
 
             <TextBlock FontFamily="Helvetica"
                                FontWeight="Light"
@@ -67,7 +67,7 @@
                                Margin="10"
                                Grid.Row="4"/>
 
-            <TextBox Name="User_TextBox" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300" Height="Auto" FontSize="20" Margin="10" TextChanged="ConnectionDataChanged" IsEnabled="False"/>
+            <TextBox Name="User_TextBox" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300" Height="Auto" FontSize="20" Margin="10" TextChanged="ConnectionDataChanged"/>
 
             <TextBlock FontFamily="Helvetica"
                                FontWeight="Light"
@@ -79,7 +79,7 @@
                                Margin="10"
                                Grid.Row="5"/>
 
-            <PasswordBox Name="Password_TextBox" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300" Height="Auto" FontSize="20" Margin="10" IsEnabled="False"/>
+            <PasswordBox Name="Password_TextBox" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300" Height="Auto" FontSize="20" Margin="10"/>
 
             <Button Content="Verbinden" Click="btnOpenModal_Click"
                             Width="100"

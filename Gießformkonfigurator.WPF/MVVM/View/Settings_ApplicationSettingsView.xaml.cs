@@ -5,7 +5,9 @@
 //-----------------------------------------------------------------------
 namespace Gießformkonfigurator.WPF.MVVM.View
 {
+    using Gießformkonfigurator.WPF.Properties;
     using System.Configuration;
+    using System.IO;
     using System.Windows.Controls;
     /// <summary>
     /// Interaktionslogik für Settings_ApplicationSettingsView.xaml
@@ -25,6 +27,8 @@ namespace Gießformkonfigurator.WPF.MVVM.View
                 if (result == System.Windows.Forms.DialogResult.OK)
                 {
                     CurrentLogFilePath.Text = dialog.SelectedPath.ToString();
+                    //log4net.GlobalContext.Properties["LogFileName"] = @"E:\Maurice\Downloads"; //log file path 
+                    //log4net.Config.XmlConfigurator.Configure(new FileInfo("log4net.config"));
                 }
             }
         }

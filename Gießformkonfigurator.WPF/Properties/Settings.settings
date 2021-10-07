@@ -15,7 +15,7 @@
       <Value Profile="(Default)">500</Value>
     </Setting>
     <Setting Name="Maximized" Type="System.Windows.WindowState" Scope="User">
-      <Value Profile="(Default)">Normal</Value>
+      <Value Profile="(Default)">Maximized</Value>
     </Setting>
     <Setting Name="DBServer" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
@@ -27,9 +27,6 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="DBPassword" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="DBConString" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
   </Settings>

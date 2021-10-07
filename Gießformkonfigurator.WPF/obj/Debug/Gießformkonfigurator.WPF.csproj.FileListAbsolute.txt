@@ -415,3 +415,4 @@ C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\Gießformkonfigurat
 C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\Gießformkonfigurator.WPF\obj\Debug\Gießformkonfigurator.WPF.Migrations.changedvererbungoncomponents.resources
 C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Settings_ToleranceSettingsView.g.cs
 C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Settings_ToleranceSettingsView.baml
+C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\Gießformkonfigurator.WPF\bin\Debug\log4net.config
