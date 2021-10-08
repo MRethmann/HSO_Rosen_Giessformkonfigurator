@@ -89,7 +89,7 @@
             <TextBox.Text>
                 <Binding Path="core.Description" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
-                        <validationRules:MandatoryFieldValidationRule/>
+                        
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
@@ -140,7 +140,7 @@
         </TextBox>
 
         <RadioButton x:Name="HasHoleGuide" GroupName="LochKernKonus" Content="Lochführung" Grid.Column="3" Grid.Row="0" IsChecked="{Binding core.HasHoleguide}"/>
-        <RadioButton x:Name="guide_pin" GroupName="LochKernKonus" Content="Führungsstift" Grid.Column="3" Grid.RowSpan="2" IsChecked="{Binding core.HasGuideBolt}"/>
+        <RadioButton x:Name="GuideBolt" GroupName="LochKernKonus" Content="Führungsstift" Grid.Column="3" Grid.RowSpan="2" IsChecked="{Binding core.HasGuideBolt}"/>
         <RadioButton x:Name="HasKonus" GroupName="LochKernKonus" Content="Konusführung" Grid.Column="3" Grid.Row="1" IsChecked="{Binding core.HasKonus}"/>
         
         <TextBlock Text="Konus außen Max" Grid.Row="2" Grid.Column="3" Visibility="{Binding ElementName=HasKonus, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
@@ -188,8 +188,8 @@
             </TextBox.Text>
         </TextBox>
 
-        <TextBlock Text="Führungsstift Höhe" Grid.Row="2" Grid.Column="3" Visibility="{Binding ElementName=guide_pin, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
-        <TextBox x:Name="GuideHeight_Textbox" Grid.Row="2" Grid.Column="4" Visibility="{Binding ElementName=guide_pin, Path=IsChecked, Converter={StaticResource BoolToVis}}">
+        <TextBlock Text="Führungsstift Höhe" Grid.Row="2" Grid.Column="3" Visibility="{Binding ElementName=GuideBolt, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
+        <TextBox x:Name="GuideHeight_TextBox" Grid.Row="2" Grid.Column="4" Visibility="{Binding ElementName=GuideBolt, Path=IsChecked, Converter={StaticResource BoolToVis}}">
             <TextBox.Text>
                 <Binding Path="core.GuideHeight" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
                     <Binding.ValidationRules>
@@ -199,8 +199,8 @@
             </TextBox.Text>
         </TextBox>
 
-        <TextBlock Text="Führungsstift Durchmesser" Grid.Row="3" Grid.Column="3" Visibility="{Binding ElementName=guide_pin, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
-        <TextBox x:Name="GuideDiameter_Textbox" Grid.Row="3" Grid.Column="4" Visibility="{Binding ElementName=guide_pin, Path=IsChecked, Converter={StaticResource BoolToVis}}">
+        <TextBlock Text="Führungsstift Durchmesser" Grid.Row="3" Grid.Column="3" Visibility="{Binding ElementName=GuideBolt, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
+        <TextBox x:Name="GuideDiameter_TextBox" Grid.Row="3" Grid.Column="4" Visibility="{Binding ElementName=GuideBolt, Path=IsChecked, Converter={StaticResource BoolToVis}}">
             <TextBox.Text>
                 <Binding Path="core.GuideDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
                     <Binding.ValidationRules>
@@ -210,8 +210,8 @@
             </TextBox.Text>
         </TextBox>
 
-        <TextBlock Text="Führungsstift Toleranz" Grid.Row="4" Grid.Column="3"  Visibility="{Binding ElementName=guide_pin, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
-        <TextBox x:Name="ToleranceGuideDiameter_Textbox" Grid.Row="4" Grid.Column="4" Visibility="{Binding ElementName=guide_pin, Path=IsChecked, Converter={StaticResource BoolToVis}}">
+        <TextBlock Text="Führungsstift Toleranz" Grid.Row="4" Grid.Column="3"  Visibility="{Binding ElementName=GuideBolt, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
+        <TextBox x:Name="ToleranceGuideDiameter_TextBox" Grid.Row="4" Grid.Column="4" Visibility="{Binding ElementName=GuideBolt, Path=IsChecked, Converter={StaticResource BoolToVis}}">
             <TextBox.Text>
                 <Binding Path="core.ToleranceGuideDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
@@ -222,7 +222,7 @@
         </TextBox>
 
         <TextBlock Text="Adapter Durchmesser" Grid.Row="2" Grid.Column="3" Visibility="{Binding ElementName=HasHoleGuide, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
-        <TextBox x:Name="AdapterDiameter_Textbox" Grid.Row="2" Grid.Column="4" Visibility="{Binding ElementName=HasHoleGuide, Path=IsChecked, Converter={StaticResource BoolToVis}}">
+        <TextBox x:Name="AdapterDiameter_TextBox" Grid.Row="2" Grid.Column="4" Visibility="{Binding ElementName=HasHoleGuide, Path=IsChecked, Converter={StaticResource BoolToVis}}">
             <TextBox.Text>
                 <Binding Path="core.AdapterDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
                     <Binding.ValidationRules>
@@ -256,10 +256,10 @@
                                 <Condition Binding="{Binding Path=(Validation.HasError), ElementName=OuterKonusMin_TextBox}" Value="False"/>
                                 <Condition Binding="{Binding Path=(Validation.HasError), ElementName=OuterKonusAngle_TextBox}" Value="False"/>
                                 <Condition Binding="{Binding Path=(Validation.HasError), ElementName=OuterKonusHeight_TextBox}" Value="False"/>
-                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=GuideHeight_Textbox}" Value="False"/>
-                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=GuideDiameter_Textbox}" Value="False"/>
-                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=ToleranceGuideDiameter_Textbox}" Value="False"/>
-                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=AdapterDiameter_Textbox}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=GuideHeight_TextBox}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=GuideDiameter_TextBox}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=ToleranceGuideDiameter_TextBox}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=AdapterDiameter_TextBox}" Value="False"/>
                             </MultiDataTrigger.Conditions>
                             <Setter Property="IsEnabled" Value="True"/>
                         </MultiDataTrigger>

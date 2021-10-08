@@ -9,6 +9,5 @@
 //------------------------------------------------------------------------------
 
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("log4net.config")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("properties/settings.settings")]
 
 

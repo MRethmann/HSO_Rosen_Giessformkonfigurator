@@ -3493,3 +3493,4 @@
 22:10:01,620 [1] INFO - Removed coreSingleMold: 371860 F18CBC2A by 161,8500
 22:10:01,620 [1] INFO - Removed coreSingleMold: 371861 F18CBC3A by 190,3400
 22:10:01,620 [1] INFO - Removed coreSingleMold: 371862 F18CBC4A by 222,9000
+22:45:17,539 [1] WARN - Type: Error --- Description: Test

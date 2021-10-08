@@ -51,8 +51,10 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
             {
                 return false;
             }
-
-            return true;
+            else
+            {
+                return true;
+            }
         }
     }
 }

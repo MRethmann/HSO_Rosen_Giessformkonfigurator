@@ -48,9 +48,9 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                 || core.OuterDiameter == 0
                 || core.Height == 0
                 || core.FillHeightMax == 0
-                || (core.HasKonus && (((core.OuterKonusMin ?? 0) == 0) || ((core.OuterKonusMax ?? 0) == 0) || ((core.OuterKonusAngle ?? 0) == 0)))
-                || (core.HasGuideBolt && ((core.AdapterDiameter ?? 0) == 0))
-                || (core.HasHoleguide && (((core.GuideHeight ?? 0) == 0) || ((core.GuideDiameter ?? 0) == 0))))
+                || (core.HasKonus && (((core.OuterKonusMin ?? 0) == 0) || ((core.OuterKonusMax ?? 0) == 0) || ((core.OuterKonusAngle ?? 0) == 0) || ((core.KonusHeight ?? 0) == 0)))
+                || (core.HasHoleguide && ((core.AdapterDiameter ?? 0) == 0))
+                || (core.HasGuideBolt && (((core.GuideHeight ?? 0) == 0) || ((core.GuideDiameter ?? 0) == 0))))
             {
                 return false;
             }

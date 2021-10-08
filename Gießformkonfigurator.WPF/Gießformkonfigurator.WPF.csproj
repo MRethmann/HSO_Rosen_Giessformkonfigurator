@@ -30,7 +30,7 @@
     <MinimumRequiredVersion>1.0.0.5</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>14</ApplicationRevision>
+    <ApplicationRevision>15</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -132,6 +132,10 @@
     <Compile Include="Migrations\202110041208258_changed vererbung on components.cs" />
     <Compile Include="Migrations\202110041208258_changed vererbung on components.Designer.cs">
       <DependentUpon>202110041208258_changed vererbung on components.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110082039419_changed datatypes of singlemolds.cs" />
+    <Compile Include="Migrations\202110082039419_changed datatypes of singlemolds.Designer.cs">
+      <DependentUpon>202110082039419_changed datatypes of singlemolds.cs</DependentUpon>
     </Compile>
     <Compile Include="MVVM\View\Converter\DecimalConverter.cs" />
     <Compile Include="MVVM\View\Converter\IsNullConverter.cs" />
@@ -434,7 +438,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <EmbeddedResource Include="Migrations\202109220934549_Product changes, Added SingleMold Tables.resx">
       <DependentUpon>202109220934549_Product changes, Added SingleMold Tables.cs</DependentUpon>
@@ -482,6 +486,9 @@
     <EmbeddedResource Include="Migrations\202110041208258_changed vererbung on components.resx">
       <DependentUpon>202110041208258_changed vererbung on components.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110082039419_changed datatypes of singlemolds.resx">
+      <DependentUpon>202110082039419_changed datatypes of singlemolds.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -490,11 +497,11 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="packages.config" />
-    <Content Include="Properties\Settings.settings">
+    <Resource Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

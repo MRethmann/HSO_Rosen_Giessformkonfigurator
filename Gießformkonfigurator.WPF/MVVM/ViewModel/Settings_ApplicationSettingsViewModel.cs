@@ -16,7 +16,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
     {
         public string adminPassword { get; set; }
 
-        public string logFilePath { get; set; }
+        public string LogFilePath { get; set; }
 
         public ApplicationSettings applicationSettings { get; set; }
 
@@ -27,7 +27,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
             insertIntoDbCmd = new RelayCommand(param => insertIntoDb(), param => validateData());
             applicationSettings = new ApplicationSettings();
             this.adminPassword = applicationSettings.adminPassword;
-            this.logFilePath = applicationSettings.LogFilePath;
+            this.LogFilePath = applicationSettings.LogFilePath;
         }
 
         public void insertIntoDb()

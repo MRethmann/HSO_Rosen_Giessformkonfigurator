@@ -51,7 +51,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                 || ring.FillHeightMax == 0
                 || ring.InnerDiameter == 0
                 || ring.OuterDiameter < ring.InnerDiameter
-                || (ring.HasKonus && (((ring.InnerKonusMin ?? 0) == 0) || ((ring.InnerKonusMax ?? 0) == 0) || ((ring.InnerKonusAngle ?? 0) == 0))))
+                || (ring.HasKonus && (((ring.InnerKonusMin ?? 0) == 0) || ((ring.InnerKonusMax ?? 0) == 0) || ((ring.InnerKonusAngle ?? 0) == 0) || ((ring.KonusHeight ?? 0) == 0))))
             {
                 return false;
             }

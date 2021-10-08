@@ -23,11 +23,11 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_molds
         [StringLength(255)]
         public string Description { get; set; }
 
-        public decimal? OuterDiameter { get; set; }
+        public decimal OuterDiameter { get; set; }
 
-        public decimal? InnerDiameter { get; set; }
+        public decimal InnerDiameter { get; set; }
 
-        public decimal? Height { get; set; }
+        public decimal Height { get; set; }
 
         public decimal? HcDiameter { get; set; }
 

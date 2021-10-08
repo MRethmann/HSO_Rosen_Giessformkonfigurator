@@ -77,7 +77,7 @@
             <TextBox.Text>
                 <Binding Path="ring.Description" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
-                        <validationRules:MandatoryFieldValidationRule/>
+
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
@@ -139,9 +139,9 @@
         </TextBox>
 
         <TextBlock Text="Gießhöhe Max." Grid.Row="7" Grid.Column="0"/>
-        <TextBox x:Name="HeightFilling_TextBox" Grid.Row="7" Grid.Column="1">
+        <TextBox x:Name="FillHeightMax_TextBox" Grid.Row="7" Grid.Column="1">
             <TextBox.Text>
-                <Binding Path="ring.HeightFilling" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                <Binding Path="ring.FillHeightMax" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
                         <validationRules:InputValueRangeValidationRule/>
                     </Binding.ValidationRules>
@@ -157,7 +157,7 @@
         <TextBlock Text="Konus Max." Grid.Row="1" Grid.Column="3" Visibility="{Binding ElementName=HasKonus_CheckBox, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
         <TextBox x:Name="KonusMax_TextBox" Grid.Row="1" Grid.Column="4" Visibility="{Binding ElementName=HasKonus_CheckBox, Path=IsChecked, Converter={StaticResource BoolToVis}}">
             <TextBox.Text>
-                <Binding Path="ring.KonusMax" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
+                <Binding Path="ring.InnerKonusMax" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
                     <Binding.ValidationRules>
                         <validationRules:InputValueRangeValidationRule/>
                     </Binding.ValidationRules>
@@ -168,7 +168,7 @@
         <TextBlock Text="Konus Min." Grid.Row="2" Grid.Column="3" Visibility="{Binding ElementName=HasKonus_CheckBox, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
         <TextBox x:Name="KonusMin_TextBox" Grid.Row="2" Grid.Column="4" Visibility="{Binding ElementName=HasKonus_CheckBox, Path=IsChecked, Converter={StaticResource BoolToVis}}">
             <TextBox.Text>
-                <Binding Path="ring.KonusMin" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
+                <Binding Path="ring.InnerKonusMin" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
                     <Binding.ValidationRules>
                         <validationRules:InputValueRangeValidationRule/>
                     </Binding.ValidationRules>
@@ -179,7 +179,7 @@
         <TextBlock Text="Konus Winkel" Grid.Row="3" Grid.Column="3" Visibility="{Binding ElementName=HasKonus_CheckBox, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
         <TextBox x:Name="KonusAngle_TextBox" Grid.Row="3" Grid.Column="4" Visibility="{Binding ElementName=HasKonus_CheckBox, Path=IsChecked, Converter={StaticResource BoolToVis}}">
             <TextBox.Text>
-                <Binding Path="ring.KonusAngle" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
+                <Binding Path="ring.InnerKonusAngle" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
                     <Binding.ValidationRules>
                         <validationRules:InputValueRangeValidationRule/>
                     </Binding.ValidationRules>
@@ -219,7 +219,7 @@
                                 <Condition Binding="{Binding Path=(Validation.HasError), ElementName=InnerDiameter_TextBox}" Value="False"/>
                                 <Condition Binding="{Binding Path=(Validation.HasError), ElementName=InnerDiameterTolerance_TextBox}" Value="False"/>
                                 <Condition Binding="{Binding Path=(Validation.HasError), ElementName=Height_TextBox}" Value="False"/>
-                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=HeightFilling_TextBox}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=FillHeightMax_TextBox}" Value="False"/>
                                 <Condition Binding="{Binding Path=(Validation.HasError), ElementName=KonusMax_TextBox}" Value="False"/>
                                 <Condition Binding="{Binding Path=(Validation.HasError), ElementName=KonusMin_TextBox}" Value="False"/>
                                 <Condition Binding="{Binding Path=(Validation.HasError), ElementName=KonusAngle_TextBox}" Value="False"/>
