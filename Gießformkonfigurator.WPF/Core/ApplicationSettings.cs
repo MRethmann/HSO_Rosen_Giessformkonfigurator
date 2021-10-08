@@ -18,14 +18,14 @@ namespace Gießformkonfigurator.WPF.Core
     {
         public string adminPassword { get; set; }
 
-        public string logFilePath { get; set; }
+        public string LogFilePath { get; set; }
 
         private static readonly ILog log = LogManager.GetLogger(typeof(ToleranceSettings));
 
         public ApplicationSettings()
         {
             getCurrentSettingsFromDb();
-            this.logFilePath = Settings.Default.LogFilePath;
+            this.LogFilePath = Settings.Default.LogFilePath;
         }
 
         public void getCurrentSettingsFromDb()

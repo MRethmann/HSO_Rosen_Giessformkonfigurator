@@ -25,7 +25,7 @@
             </Grid.RowDefinitions>
 
             <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Text="Speicherort Logdateien:" Margin="10" FontSize="18"/>
-            <TextBox Background="AliceBlue" Grid.Row="1" Grid.Column="1" x:Name="CurrentLogFilePath"  HorizontalAlignment="Stretch" Width="Auto" Height="30" Margin="10" FontSize="18" Text="{Binding logFilePath}" IsEnabled="False"/>
+            <TextBox Background="AliceBlue" Grid.Row="1" Grid.Column="1" x:Name="CurrentLogFilePath"  HorizontalAlignment="Stretch" Width="Auto" Height="30" Margin="10" FontSize="18" Text="{Binding LogFilePath}" IsEnabled="False"/>
             <Button Name="LogFilePathSelector" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" Width="100" Height="30" Margin="10" Content="Choose Filepath" Click="LogFilePathSelector_Click"/>
 
             <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Text="Admin Passwort:" Margin="10" FontSize="18"/>

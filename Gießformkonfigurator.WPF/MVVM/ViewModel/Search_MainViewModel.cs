@@ -137,6 +137,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                     || this.Height == 0
                     || this.OuterDiameter < this.InnerDiameter)
                     {
+                        this.product = null;
                         MessageBox.Show("Bitte überprüfe die eingegebenen Werte!");
                     }
                     else
