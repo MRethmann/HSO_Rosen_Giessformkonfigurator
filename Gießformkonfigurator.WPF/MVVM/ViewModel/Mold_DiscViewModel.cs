@@ -32,11 +32,11 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                 {
                     db.SingleMoldDiscs.Add(this.singleMoldDisc);
                     db.SaveChanges();
-                    MessageBox.Show("Gießform erfolgreich hinzugefügt.");
+                    MessageBox.Show("Gießform erfolgreich hinzugefügt");
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show(e + "Fehler beim Hinzufügen.");
+                    MessageBox.Show(e + "Fehler beim Hinzufügen");
                 }
 
             }

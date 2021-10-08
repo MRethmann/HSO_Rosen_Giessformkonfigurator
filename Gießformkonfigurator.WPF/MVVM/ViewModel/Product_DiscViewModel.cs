@@ -36,7 +36,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                 {
                     db.ProductDiscs.Add(this.productDisc);
                     db.SaveChanges();
-                    MessageBox.Show("Produkt erfolgreich hinzugefügt.");
+                    MessageBox.Show("Produkt erfolgreich hinzugefügt");
                 }
                 catch (Exception e)
                 {

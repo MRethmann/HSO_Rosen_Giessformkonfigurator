@@ -35,7 +35,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                 {
                     db.ProductCups.Add(this.productCup);
                     db.SaveChanges();
-                    MessageBox.Show("Produkt erfolgreich hinzugefügt.");
+                    MessageBox.Show("Produkt erfolgreich hinzugefügt");
                 }
                 catch (Exception e)
                 {

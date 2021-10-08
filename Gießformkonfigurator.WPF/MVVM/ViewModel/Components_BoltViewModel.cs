@@ -32,11 +32,11 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                 {
                     db.Bolts.Add(this.bolt);
                     db.SaveChanges();
-                    MessageBox.Show("Grundplatte erfolgreich hinzugefügt.");
+                    MessageBox.Show("Bolzen erfolgreich hinzugefügt");
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show(e + "Fehler beim Hinzufügen.");
+                    MessageBox.Show(e + "Fehler beim Hinzufügen");
                 }
 
             }

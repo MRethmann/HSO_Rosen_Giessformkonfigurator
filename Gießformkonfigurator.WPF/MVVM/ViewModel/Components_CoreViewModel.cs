@@ -32,11 +32,11 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                 {
                     db.Cores.Add(this.core);
                     db.SaveChanges();
-                    MessageBox.Show("Kern erfolgreich hinzugefügt.");
+                    MessageBox.Show("Kern erfolgreich hinzugefügt");
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show(e + "Fehler beim Hinzufügen.");
+                    MessageBox.Show(e + "Fehler beim Hinzufügen");
                 }
 
             }

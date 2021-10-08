@@ -33,11 +33,11 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                 {
                     db.InsertPlates.Add(this.insertPlate);
                     db.SaveChanges();
-                    MessageBox.Show("Einlegeplatte erfolgreich hinzugefügt.");
+                    MessageBox.Show("Einlegeplatte erfolgreich hinzugefügt");
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show(e + "Fehler beim Hinzufügen.");
+                    MessageBox.Show(e + "Fehler beim Hinzufügen");
                 }
 
             }

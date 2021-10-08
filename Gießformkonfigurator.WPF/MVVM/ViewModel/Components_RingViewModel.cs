@@ -33,11 +33,11 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                 {
                     db.Rings.Add(this.ring);
                     db.SaveChanges();
-                    MessageBox.Show("Ring erfolgreich hinzugefügt.");
+                    MessageBox.Show("Ring erfolgreich hinzugefügt");
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show(e + "Fehler beim Hinzufügen.");
+                    MessageBox.Show(e + "Fehler beim Hinzufügen");
                 }
 
             }

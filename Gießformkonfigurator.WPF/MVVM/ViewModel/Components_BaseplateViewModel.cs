@@ -34,11 +34,11 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                 {
                     db.Baseplates.Add(this.baseplate);
                     db.SaveChanges();
-                    MessageBox.Show("Grundplatte erfolgreich hinzugefügt.");
+                    MessageBox.Show("Grundplatte erfolgreich hinzugefügt");
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show(e + "Fehler beim Hinzufügen.");
+                    MessageBox.Show(e + "Fehler beim Hinzufügen");
                 }
 
             }
