@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\Gießformkonfigurator.WPF\obj\Debug\
+C:\Users\Johanna Böttcher\Source\Repos\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\
 Gießformkonfigurator.WPF
 none
 false
 DEBUG;TRACE
-C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\Gießformkonfigurator.WPF\App.xaml
+C:\Users\Johanna Böttcher\Source\Repos\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\App.xaml
 25-1191740616
 1-1575529357
 1381452443968
-201340197591
+20-424457439
 LoginWindow.xaml;MainWindow.xaml;MVVM\View\DBManagement_MainView.xaml;MVVM\View\Mold_CupView.xaml;MVVM\View\Settings_MainView.xaml;MVVM\View\Settings_ApplicationSettingsView.xaml;MVVM\View\Components_MainView.xaml;MVVM\View\Settings_ToleranceSettingsView.xaml;MVVM\View\Components_CupformView.xaml;MVVM\View\Components_InsertPlateView.xaml;MVVM\View\Mold_MainView.xaml;MVVM\View\Product_CupView.xaml;MVVM\View\Product_DiscView.xaml;MVVM\View\Settings_RankingSettingsView.xaml;MVVM\View\Components_RingView.xaml;MVVM\View\Components_BaseplateView.xaml;MVVM\View\Product_MainView.xaml;MVVM\View\Components_CoreView.xaml;MVVM\View\Mold_DiscView.xaml;MVVM\View\Components_BoltView.xaml;MVVM\View\Search_MainView.xaml;ReportIssueWindow.xaml;StartWindow.xaml;Theme\MenuButtonTheme.xaml;Theme\TextboxTheme.xaml;
 
-False
+True
 
