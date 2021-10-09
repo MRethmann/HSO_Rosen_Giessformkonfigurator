@@ -239,10 +239,8 @@ C:\Users\Johanna Böttcher\Source\Repos\HSO_Rosen_Giessformkonfigurator\Gießfor
 C:\Users\Johanna Böttcher\Source\Repos\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\bin\Debug\Gießformkonfigurator.WPF.pdb
 C:\Users\Johanna Böttcher\Source\Repos\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\bin\Debug\EntityFramework.dll
 C:\Users\Johanna Böttcher\Source\Repos\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\bin\Debug\EntityFramework.SqlServer.dll
-C:\Users\Johanna Böttcher\Source\Repos\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\bin\Debug\FontAwesome.WPF.dll
 C:\Users\Johanna Böttcher\Source\Repos\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\bin\Debug\EntityFramework.xml
 C:\Users\Johanna Böttcher\Source\Repos\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\Johanna Böttcher\Source\Repos\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\bin\Debug\FontAwesome.WPF.xml
 C:\Users\Johanna Böttcher\Source\Repos\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\bin\Debug\de\EntityFramework.resources.dll
 C:\Users\Johanna Böttcher\Source\Repos\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\bin\Debug\de\EntityFramework.SqlServer.resources.dll
 C:\Users\Johanna Böttcher\Source\Repos\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\Gießformkonfigurator.WPF.csproj.AssemblyReference.cache
@@ -255,11 +253,8 @@ C:\Users\Johanna Böttcher\Source\Repos\HSO_Rosen_Giessformkonfigurator\Gießfor
 C:\Users\Johanna Böttcher\Source\Repos\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Settings_MainView.g.cs
 C:\Users\Johanna Böttcher\Source\Repos\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Settings_ApplicationSettingsView.g.cs
 C:\Users\Johanna Böttcher\Source\Repos\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Components_MainView.g.cs
-C:\Users\Johanna Böttcher\Source\Repos\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Settings_CombinationSettingsView.g.cs
-C:\Users\Johanna Böttcher\Source\Repos\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Settings_CompareSettingsView.g.cs
 C:\Users\Johanna Böttcher\Source\Repos\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Components_CupformView.g.cs
 C:\Users\Johanna Böttcher\Source\Repos\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Components_InsertPlateView.g.cs
-C:\Users\Johanna Böttcher\Source\Repos\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Settings_FilterSettingsView.g.cs
 C:\Users\Johanna Böttcher\Source\Repos\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Mold_MainView.g.cs
 C:\Users\Johanna Böttcher\Source\Repos\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Product_CupView.g.cs
 C:\Users\Johanna Böttcher\Source\Repos\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Product_DiscView.g.cs
@@ -284,11 +279,8 @@ C:\Users\Johanna Böttcher\Source\Repos\HSO_Rosen_Giessformkonfigurator\Gießfor
 C:\Users\Johanna Böttcher\Source\Repos\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Settings_MainView.baml
 C:\Users\Johanna Böttcher\Source\Repos\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Settings_ApplicationSettingsView.baml
 C:\Users\Johanna Böttcher\Source\Repos\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Components_MainView.baml
-C:\Users\Johanna Böttcher\Source\Repos\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Settings_CombinationSettingsView.baml
-C:\Users\Johanna Böttcher\Source\Repos\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Settings_CompareSettingsView.baml
 C:\Users\Johanna Böttcher\Source\Repos\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Components_CupformView.baml
 C:\Users\Johanna Böttcher\Source\Repos\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Components_InsertPlateView.baml
-C:\Users\Johanna Böttcher\Source\Repos\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Settings_FilterSettingsView.baml
 C:\Users\Johanna Böttcher\Source\Repos\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Mold_MainView.baml
 C:\Users\Johanna Böttcher\Source\Repos\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Product_CupView.baml
 C:\Users\Johanna Böttcher\Source\Repos\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Product_DiscView.baml
@@ -416,3 +408,16 @@ C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\Gießformkonfigurat
 C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\Gießformkonfigurator.WPF\obj\Debug\Gießformkonfigurator.WPF_Content.g.cs
 C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\Gießformkonfigurator.WPF\bin\Debug\Properties\Settings.Designer.cs
 C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\Gießformkonfigurator.WPF\obj\Debug\Gießformkonfigurator.WPF.Migrations.changeddatatypesofsinglemolds.resources
+C:\Users\Johanna Böttcher\Source\Repos\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\bin\Debug\Properties\Settings.Designer.cs
+C:\Users\Johanna Böttcher\Source\Repos\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\bin\Debug\log4net.config
+C:\Users\Johanna Böttcher\Source\Repos\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\bin\Debug\log4net.dll
+C:\Users\Johanna Böttcher\Source\Repos\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\bin\Debug\log4net.xml
+C:\Users\Johanna Böttcher\Source\Repos\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Settings_ToleranceSettingsView.g.cs
+C:\Users\Johanna Böttcher\Source\Repos\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\ReportIssueWindow.g.cs
+C:\Users\Johanna Böttcher\Source\Repos\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\Gießformkonfigurator.WPF_Content.g.cs
+C:\Users\Johanna Böttcher\Source\Repos\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Settings_ToleranceSettingsView.baml
+C:\Users\Johanna Böttcher\Source\Repos\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\ReportIssueWindow.baml
+C:\Users\Johanna Böttcher\Source\Repos\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\Gießformkonfigurator.WPF.Migrations.changedattributesonproducts.resources
+C:\Users\Johanna Böttcher\Source\Repos\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\Gießformkonfigurator.WPF.Migrations.changedvererbungonsingleMolds.resources
+C:\Users\Johanna Böttcher\Source\Repos\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\Gießformkonfigurator.WPF.Migrations.changedvererbungoncomponents.resources
+C:\Users\Johanna Böttcher\Source\Repos\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\Gießformkonfigurator.WPF.Migrations.changeddatatypesofsinglemolds.resources
