@@ -14,7 +14,7 @@ namespace Gießformkonfigurator.WPF.Core
     using System.IO;
     using System.Windows;
 
-    class ApplicationSettings
+    public class ApplicationSettings
     {
         public string adminPassword { get; set; }
 

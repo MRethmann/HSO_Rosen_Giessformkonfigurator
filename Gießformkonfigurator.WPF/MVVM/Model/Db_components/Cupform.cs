@@ -24,17 +24,17 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_components
         public decimal? HoleCircle { get; set; }
 
         /// <summary>
-        /// Führungsstift
+        /// Gets or Sets a value indicating whether the Cupform has a Fuehrungsstift.
         /// </summary>
         public bool HasGuideBolt { get; set; }
 
         /// <summary>
-        /// Innengewinde
+        /// Gets or Sets a value indicating whether the Cupform has a Innengewinde.
         /// </summary>
         public bool HasThread { get; set; }
 
         /// <summary>
-        /// Konusführung
+        /// Gets or Sets a value indicating whether the Cupform has a Konusfuehrung.
         /// </summary>
         public bool HasKonus { get; set; }
 
@@ -45,18 +45,18 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_components
         public decimal? InnerKonusAngle { get; set; }
 
         /// <summary>
-        /// Lochführung
+        /// Gets or Sets a value indicating whether the Cupform has a Lochfuehrung.
         /// </summary>
         public bool HasHoleguide { get; set; }
 
         /// <summary>
-        /// Innenkern
+        /// Gets or Sets a value indicating whether the Cupform has a Innenkern.
         /// </summary>
         public bool HasCore { get; set; }
 
         public override string ToString()
         {
-            return ID.ToString() + " " + Description;
+            return this.ID.ToString() + " " + this.Description;
         }
     }
 }

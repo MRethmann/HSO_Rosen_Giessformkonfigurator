@@ -20,14 +20,14 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_components
         public decimal FillHeightMax { get; set; }
 
         /// <summary>
-        /// Gewinde
+        /// Gets or Sets a value indicating whether the bolt has a Gewinde.
         /// </summary>
         public bool HasThread { get; set; }
 
         public string Thread { get; set; }
 
         /// <summary>
-        /// Steckbolzen
+        /// Gets or Sets a value indicating whether the bolt has a Steckbolzen.
         /// </summary>
         public bool HasGuideBolt { get; set; }
 
@@ -37,7 +37,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_components
 
         public override string ToString()
         {
-            return ID.ToString() + " " + Description;
+            return this.ID.ToString() + " " + this.Description;
         }
     }
 }

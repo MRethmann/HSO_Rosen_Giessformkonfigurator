@@ -10,10 +10,14 @@ namespace Gieﬂformkonfigurator.WPF.MVVM.Model.Logic
     using Gieﬂformkonfigurator.WPF.MVVM.Model.Db_molds;
     using Gieﬂformkonfigurator.WPF.MVVM.Model.Db_products;
 
-    class CompareRuleSet
+    /// <summary>
+    /// Contains all CompareRules.
+    /// </summary>
+    public class CompareRuleSet
     {
-        private IEnumerable<CompareRule> CompareRules { get; set; }
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CompareRuleSet"/> class.
+        /// </summary>
         public CompareRuleSet()
         {
             // hier m¸ssen alle Regeln registriert werden, damit sie verwendet werden.
@@ -21,9 +25,11 @@ namespace Gieﬂformkonfigurator.WPF.MVVM.Model.Logic
                     {
                     new ProductCupModularMoldCompare(),
                     new ProductDiscModularMoldCompare(),
-                    new ProductDiscSingleMoldCompare()
+                    new ProductDiscSingleMoldCompare(),
                     };
         }
+
+        private IEnumerable<CompareRule> CompareRules { get; set; }
 
         public bool Compare(Product a, Mold b)
         {

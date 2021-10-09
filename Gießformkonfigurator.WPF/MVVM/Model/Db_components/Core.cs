@@ -23,7 +23,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_components
         public decimal? FillHeightMax { get; set; }
 
         /// <summary>
-        /// Konusführung
+        /// Gets or Sets a value indicating whether the core has a Konusfuehrung.
         /// </summary>
         public bool HasKonus { get; set; }
 
@@ -36,7 +36,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_components
         public decimal? KonusHeight { get; set; }
 
         /// <summary>
-        /// Führungsstift
+        /// Gets or Sets a value indicating whether the core has a Fuehrungsstift.
         /// </summary>
         public bool HasGuideBolt { get; set; }
 
@@ -47,7 +47,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_components
         public string ToleranceGuideDiameter { get; set; }
 
         /// <summary>
-        /// Lochführung
+        /// Gets or Sets a value indicating whether the core has a Lochfuehrung.
         /// </summary>
         public bool HasHoleguide { get; set; }
 
@@ -55,7 +55,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_components
 
         public override string ToString()
         {
-            return ID.ToString() + " " + Description;
+            return this.ID.ToString() + " " + this.Description;
         }
     }
 }

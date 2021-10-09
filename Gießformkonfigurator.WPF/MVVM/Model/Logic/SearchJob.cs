@@ -1,41 +1,47 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="ProgramLogic.cs" company="PlaceholderCompany">
+// <copyright file="SearchJob.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
 namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 {
-    using Gießformkonfigurator.WPF.MVVM.Model.Db_products;
     using System.Collections.Generic;
+    using Gießformkonfigurator.WPF.MVVM.Model.Db_products;
 
-    class SearchJob
+    /// <summary>
+    /// Primary class that triggers all algorithms used for the mold search in a specific order and returns the final output to the viewModel.
+    /// </summary>
+    public class SearchJob
     {
-        public FilterJob filterJob { get; set; }
-
-        public CombinationJob combinationJob { get; set; }
-
-        public CompareJob compareJob { get; set; }
-
-        public RankingJob rankingJob { get; set; }
-
-        public Product product { get; set; } = new Product();
-
-        public List<CompareObject> finalOutput { get; set; }
-
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SearchJob"/> class.
+        /// </summary>
+        /// <param name="product"></param>
         public SearchJob(Product product)
         {
-            this.product = product;
+            this.Product = product;
 
-            filterJob = new FilterJob(this.product);
+            this.FilterJob = new FilterJob(this.Product);
 
-            combinationJob = new CombinationJob(this.product, this.filterJob);
+            this.CombinationJob = new CombinationJob(this.Product, this.FilterJob);
 
-            compareJob = new CompareJob(this.product, this.combinationJob);
+            this.CompareJob = new CompareJob(this.Product, this.CombinationJob);
 
-            rankingJob = new RankingJob(this.product, this.compareJob);
+            this.RankingJob = new RankingJob(this.Product, this.CompareJob);
 
-            finalOutput = new List<CompareObject>(this.rankingJob.rankingJobOutput);
+            this.FinalOutput = new List<CompareObject>(this.RankingJob.RankingJobOutput);
         }
+
+        public FilterJob FilterJob { get; set; }
+
+        public CombinationJob CombinationJob { get; set; }
+
+        public CompareJob CompareJob { get; set; }
+
+        public RankingJob RankingJob { get; set; }
+
+        public Product Product { get; set; } = new Product();
+
+        public List<CompareObject> FinalOutput { get; set; }
     }
 }

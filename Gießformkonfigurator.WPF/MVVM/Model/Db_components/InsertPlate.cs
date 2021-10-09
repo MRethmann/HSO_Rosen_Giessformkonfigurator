@@ -28,6 +28,9 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_components
 
         public decimal? KonusHeight { get; set; }
 
+        /// <summary>
+        /// Gets or Sets a value indicating whether the InsertPlate has a Konusfuehrung.
+        /// </summary>
         public bool HasKonus { get; set; }
 
         public decimal? InnerKonusMax { get; set; }
@@ -36,6 +39,9 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_components
 
         public decimal? InnerKonusAngle { get; set; }
 
+        /// <summary>
+        /// Gets or Sets a value indicating whether the InsertPlate has a Fuehrungsstift.
+        /// </summary>
         public bool HasHoleguide { get; set; }
 
         public decimal? InnerDiameter { get; set; }
@@ -43,6 +49,9 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_components
         [StringLength(5)]
         public string ToleranceInnerDiameter { get; set; }
 
+        /// <summary>
+        /// Gets or Sets a value indicating whether the InsertPlate has a Core.
+        /// </summary>
         public bool HasCore { get; set; }
 
         public decimal? Hc1Diameter { get; set; }
@@ -62,9 +71,10 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_components
         public int? Hc3Holes { get; set; }
 
         public string Hc3Thread { get; set; }
+
         public override string ToString()
         {
-            return ID.ToString() + " " + Description;
+            return this.ID.ToString() + " " + this.Description;
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Gießformkonfigurator.WPF.Core
     using System.Data.SqlClient;
     using System.Windows;
 
-    class ToleranceSettings
+    public class ToleranceSettings
     {
         public decimal product_OuterDiameter_MAX { get; set; }
 

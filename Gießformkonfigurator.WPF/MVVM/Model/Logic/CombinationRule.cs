@@ -11,16 +11,26 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
     using Gießformkonfigurator.WPF.Core;
     using Gießformkonfigurator.WPF.MVVM.Model.Db_components;
 
-    abstract class CombinationRule
+    /// <summary>
+    /// All CombinationRules that are placed within the CombinationRuleSet.
+    /// </summary>
+    public abstract class CombinationRule
     {
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CombinationRule"/> class.
+        /// </summary>
         public CombinationRule()
         {
-
         }
 
         protected abstract IEnumerable<Type> Typen { get; }
 
+        /// <summary>
+        /// Checks if the parameters are subclasses of Component class.
+        /// </summary>
+        /// <param name="teilTyp1">Component 1.</param>
+        /// <param name="teilTyp2">Component 2.</param>
+        /// <returns></returns>
         public virtual bool Akzeptiert(Type teilTyp1, Type teilTyp2)
         {
             if (!teilTyp1.IsSubclassOf(typeof(Component)) || !teilTyp2.IsSubclassOf(typeof(Component)))
@@ -32,6 +42,12 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                 && this.Typen.ElementAt(1) == teilTyp2;
         }
 
+        /// <summary>
+        /// Combines to components based on their combinationRule.
+        /// </summary>
+        /// <param name="a">Component 1.</param>
+        /// <param name="b">Component 2.</param>
+        /// <returns></returns>
         public abstract bool Combine(Component a, Component b);
     }
 
@@ -64,8 +80,6 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                 // TODO: Genaue Abweichung zwischen Innendurchmesser und Fuehrungsdurchmesser festlegen.
                 return baseplate.InnerDiameter >= core.GuideDiameter
                     && (baseplate.InnerDiameter - 2) <= core.GuideDiameter;
-                    // Prüfung ob relevant?
-                    //&& baseplate.Height >= core.GuideHeight;
             }
 
             // TODO: Abklären, ob dieser Fall zustande kommen könnte.
@@ -95,7 +109,6 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             {
                 return baseplate.InnerDiameter > insertPlate.OuterDiameter
                     && (baseplate.InnerDiameter - 1) <= insertPlate.OuterDiameter;
-                    //&& baseplate.Height == insertPlate.Height; // Check if needed
             }
 
             // Insertplate has outer konus which needs to match inner konus of baseplate (more likely)
@@ -107,7 +120,6 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                     && (baseplate.InnerKonusMin - 1) <= insertPlate.OuterKonusMin
                     && baseplate.InnerKonusAngle == insertPlate.OuterKonusAngle;
             }
-
             else
             {
                 return false;
@@ -166,7 +178,6 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
         }
     }
 
-    // TODO: Fertigstellen
     class RingAddition : CombinationRule
     {
         protected override IEnumerable<Type> Typen => new[] { typeof(Ring), typeof(Ring) };
@@ -177,7 +188,6 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             var baseRing = components.OfType<Ring>().ElementAt(0);
             var additionRing = components.OfType<Ring>().ElementAt(1);
 
-            // Der Innenring darf nicht zu groß und nicht zu klein sein.
             return (additionRing.OuterDiameter <= baseRing.InnerDiameter - 0.1m
                 && additionRing.OuterDiameter >= baseRing.InnerDiameter - 2m)
                 || (additionRing.InnerDiameter >= baseRing.OuterDiameter
@@ -195,7 +205,6 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             var core = (Core) a;
             var additionRing = (Ring) b;
 
-            // Der Innenring darf nicht zu groß und nicht zu klein sein.
             return additionRing.InnerDiameter >= core.OuterDiameter
                 && additionRing.InnerDiameter - 2 < core.OuterDiameter;
         }

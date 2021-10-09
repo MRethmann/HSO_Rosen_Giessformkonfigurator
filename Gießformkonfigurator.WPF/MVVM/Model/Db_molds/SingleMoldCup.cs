@@ -5,30 +5,29 @@
 //-----------------------------------------------------------------------
 namespace Gießformkonfigurator.WPF.MVVM.Model.Db_molds
 {
-    using Gießformkonfigurator.WPF.Enums;
-    using Gießformkonfigurator.WPF.MVVM.Model.Db_components;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using Gießformkonfigurator.WPF.Enums;
+    using Gießformkonfigurator.WPF.MVVM.Model.Db_components;
 
     [Table("SingleMoldCup")]
     public partial class SingleMoldCup : SingleMold
     {
         public SingleMoldCup()
         {
-            this.moldType = MoldType.SingleMold;
-            this.moldTypeName = "Einteilige Gießform";
-            this.productType = ProductType.Cup;
-            this.productTypeName = "Cup";
+            this.MoldType = MoldType.SingleMold;
+            this.MoldTypeName = "Einteilige Gießform";
+            this.ProductType = ProductType.Cup;
+            this.ProductTypeName = "Cup";
         }
 
         public SingleMoldCup(CoreSingleMold coreSingleMold)
         {
-            this.coreSingleMold = coreSingleMold;
-            this.moldType = MoldType.SingleMold;
-            this.moldTypeName = "Einteilige Gießform";
-            this.productType = ProductType.Cup;
-            this.productTypeName = "Cup";
+            this.CoreSingleMold = coreSingleMold;
+            this.MoldType = MoldType.SingleMold;
+            this.MoldTypeName = "Einteilige Gießform";
+            this.ProductType = ProductType.Cup;
+            this.ProductTypeName = "Cup";
         }
-
     }
 }

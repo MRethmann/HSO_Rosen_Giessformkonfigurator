@@ -15,11 +15,11 @@ namespace Gießformkonfigurator.WPF.MVVM.View.DataTemplates
         {
             CompareObject co = item as CompareObject;
 
-            if (co?.Mold.moldType.ToString() == "SingleMold")
+            if (co?.Mold.MoldType.ToString() == "SingleMold")
                 return QuickInfoSingleMold;
-            else if (co?.Mold.moldType.ToString() == "MultiMold" && co.Mold.productType.ToString() == "Disc")
+            else if (co?.Mold.MoldType.ToString() == "MultiMold" && co.Mold.ProductType.ToString() == "Disc")
                 return QuickInfoMultiMoldDisc;
-            else if (co?.Mold.moldType.ToString() == "MultiMold" && co.Mold.productType.ToString() == "Cup")
+            else if (co?.Mold.MoldType.ToString() == "MultiMold" && co.Mold.ProductType.ToString() == "Cup")
                 return QuickInfoMultiMoldCup;
             else
                 return null;

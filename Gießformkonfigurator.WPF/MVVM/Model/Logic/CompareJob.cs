@@ -5,117 +5,130 @@
 //-----------------------------------------------------------------------
 namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 {
+    using System.Collections.Generic;
+    using System.Linq;
     using Gießformkonfigurator.WPF.Core;
     using Gießformkonfigurator.WPF.MVVM.Model.Db_components;
     using Gießformkonfigurator.WPF.MVVM.Model.Db_molds;
     using Gießformkonfigurator.WPF.MVVM.Model.Db_products;
-    using System.Collections.Generic;
-    using System.Linq;
 
-    class CompareJob
+    /// <summary>
+    /// Compares singleMolds and multiMolds with the given product to see if they are matching.
+    /// </summary>
+    public class CompareJob
     {
-        public ProductDisc productDisc { get; set; }
-
-        public ProductCup productCup { get; set; }
-        public List<ModularMold> modularMolds { get; set; }
-        public List<SingleMoldDisc> singleMoldDiscs { get; set; }
-        public List<SingleMoldCup> singleMoldCups { get; set; }
-        public List<Bolt> bolts { get; set; }
-        public List<CompareObject> compareJobOutput { get; set; } = new List<CompareObject>();
-
-        public ToleranceSettings toleranceSettings { get; set; } = new ToleranceSettings();
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CompareJob"/> class.
+        /// </summary>
+        /// <param name="product"></param>
+        /// <param name="combinationJob"></param>
         public CompareJob(Product product, CombinationJob combinationJob)
         {
             if (product is ProductCup)
             {
-                this.productCup = (ProductCup) product;
-            }   
+                this.ProductCup = (ProductCup)product;
+            }
             else if (product is ProductDisc)
             {
-                this.productDisc = (ProductDisc) product;
+                this.ProductDisc = (ProductDisc)product;
             }
 
-            modularMolds = new List<ModularMold>(combinationJob.modularMoldsOutput);
+            this.ModularMolds = new List<ModularMold>(combinationJob.ModularMoldsOutput);
 
-            singleMoldDiscs = new List<SingleMoldDisc>(combinationJob.singleMoldDiscOutput);
+            this.SingleMoldDiscs = new List<SingleMoldDisc>(combinationJob.SingleMoldDiscOutput);
 
-            singleMoldCups = new List<SingleMoldCup>(combinationJob.singleMoldCupOutput);
+            this.SingleMoldCups = new List<SingleMoldCup>(combinationJob.SingleMoldCupOutput);
 
-            bolts = new List<Bolt>(combinationJob.listBolts);
+            this.Bolts = new List<Bolt>(combinationJob.ListBolts);
 
             // Contains the final Output of Compareobjects with ranking parameters and bolts
-            compareJobOutput = new List<CompareObject>();
+            this.CompareJobOutput = new List<CompareObject>();
 
-            if (productCup != null)
+            if (this.ProductCup != null)
             {
                 this.CompareCupProduct();
             }
-            else if (productDisc != null)
+            else if (this.ProductDisc != null)
             {
                 this.CompareDiscProduct();
             }
         }
 
+        public ProductDisc ProductDisc { get; set; }
+
+        public ProductCup ProductCup { get; set; }
+
+        public List<ModularMold> ModularMolds { get; set; }
+
+        public List<SingleMoldDisc> SingleMoldDiscs { get; set; }
+
+        public List<SingleMoldCup> SingleMoldCups { get; set; }
+
+        public List<Bolt> Bolts { get; set; }
+
+        public List<CompareObject> CompareJobOutput { get; set; } = new List<CompareObject>();
+
+        public ToleranceSettings ToleranceSettings { get; set; } = new ToleranceSettings();
+
         public void CompareDiscProduct()
         {
             CompareRuleSet compareRuleSet = new CompareRuleSet();
 
-            // Contains all CompareObjects without any bolts
+            // Contains all CompareObjects without the bolts
             List<CompareObject> compareObjectsTemp01 = new List<CompareObject>();
 
             // First Step: Compare ModularMolds with Product. Add ranking Information
-            foreach (var modularMold in this.modularMolds)
+            foreach (var modularMold in this.ModularMolds)
             {
-                if (compareRuleSet.Compare(this.productDisc, modularMold))
+                if (compareRuleSet.Compare(this.ProductDisc, modularMold))
                 {
-                    var compareObject = new CompareObject((ProductDisc) this.productDisc, (ModularMold) modularMold);
+                    var compareObject = new CompareObject((ProductDisc) this.ProductDisc, (ModularMold) modularMold);
                     if (modularMold.ListCoreRings.Count > 0)
                     {
-                        compareObject.differenceInnerDiameter = modularMold.ListCoreRings.Min(p => p.Item3);
-                        compareObject.differenceInnerDiameter = compareObject.differenceInnerDiameter > 0 ? compareObject.differenceInnerDiameter : 0;
+                        compareObject.DifferenceInnerDiameter = modularMold.ListCoreRings.Min(p => p.Item3);
+                        compareObject.DifferenceInnerDiameter = compareObject.DifferenceInnerDiameter > 0 ? compareObject.DifferenceInnerDiameter : 0;
                     }
                     else
                     {
-                        compareObject.differenceInnerDiameter = (productDisc.InnerDiameter - modularMold.core.OuterDiameter) > 0 ? productDisc.InnerDiameter - modularMold.core.OuterDiameter : 0;
+                        compareObject.DifferenceInnerDiameter = (this.ProductDisc.InnerDiameter - modularMold.Core.OuterDiameter) > 0 ? this.ProductDisc.InnerDiameter - modularMold.Core.OuterDiameter : 0;
                     }
 
                     if (modularMold.ListOuterRings.Count > 0)
                     {
-                        compareObject.differenceOuterDiameter = modularMold.ListOuterRings.Min(p => p.Item3);
-                        compareObject.differenceOuterDiameter = compareObject.differenceOuterDiameter > 0 ? compareObject.differenceOuterDiameter : 0;
+                        compareObject.DifferenceOuterDiameter = modularMold.ListOuterRings.Min(p => p.Item3);
+                        compareObject.DifferenceOuterDiameter = compareObject.DifferenceOuterDiameter > 0 ? compareObject.DifferenceOuterDiameter : 0;
                     }
                     else
                     {
-                        compareObject.differenceOuterDiameter = (modularMold.guideRing.InnerDiameter - productDisc.OuterDiameter) > 0 ? modularMold.guideRing.InnerDiameter - productDisc.OuterDiameter : 0;
+                        compareObject.DifferenceOuterDiameter = (modularMold.GuideRing.InnerDiameter - this.ProductDisc.OuterDiameter) > 0 ? modularMold.GuideRing.InnerDiameter - this.ProductDisc.OuterDiameter : 0;
                     }
 
                     compareObjectsTemp01.Add(compareObject);
                 }
             }
 
-            // Second Step: Compare SingleMolds with Product.
-            foreach (var singleMoldDisc in this.singleMoldDiscs)
+            // Second Step: Compare SingleMolds with Product. Add rating information.
+            foreach (var singleMoldDisc in this.SingleMoldDiscs)
             {
-                if (singleMoldDisc.coreSingleMold != null)
+                if (singleMoldDisc.CoreSingleMold != null)
                 {
-                    if (compareRuleSet.Compare(this.productDisc, singleMoldDisc) 
-                        && singleMoldDisc.coreSingleMold?.OuterDiameter <= productDisc.InnerDiameter)
+                    if (compareRuleSet.Compare(this.ProductDisc, singleMoldDisc) 
+                        && singleMoldDisc.CoreSingleMold?.OuterDiameter <= this.ProductDisc.InnerDiameter)
                     {
-                        var compareObject = new CompareObject((ProductDisc)this.productDisc, (SingleMoldDisc)singleMoldDisc);
-                        compareObject.differenceInnerDiameter = (productDisc.InnerDiameter - singleMoldDisc.coreSingleMold.OuterDiameter) > 0 ? productDisc.InnerDiameter - singleMoldDisc.coreSingleMold.OuterDiameter : 0;
-                        compareObject.differenceOuterDiameter = (singleMoldDisc.OuterDiameter - productDisc.OuterDiameter) > 0 ? singleMoldDisc.OuterDiameter - productDisc.OuterDiameter : 0;
-                        compareJobOutput.Add(compareObject);
+                        var compareObject = new CompareObject((ProductDisc)this.ProductDisc, (SingleMoldDisc)singleMoldDisc);
+                        compareObject.DifferenceInnerDiameter = (this.ProductDisc.InnerDiameter - singleMoldDisc.CoreSingleMold.OuterDiameter) > 0 ? this.ProductDisc.InnerDiameter - singleMoldDisc.CoreSingleMold.OuterDiameter : 0;
+                        compareObject.DifferenceOuterDiameter = (singleMoldDisc.OuterDiameter - this.ProductDisc.OuterDiameter) > 0 ? singleMoldDisc.OuterDiameter - this.ProductDisc.OuterDiameter : 0;
+                        this.CompareJobOutput.Add(compareObject);
                     }
                 }
                 else
                 {
-                    if (compareRuleSet.Compare(this.productDisc, singleMoldDisc))
+                    if (compareRuleSet.Compare(this.ProductDisc, singleMoldDisc))
                     {
-                        var compareObject = new CompareObject((ProductDisc)this.productDisc, (SingleMoldDisc)singleMoldDisc);
-                        compareObject.differenceInnerDiameter = (productDisc.InnerDiameter - singleMoldDisc.InnerDiameter) > 0 ? productDisc.InnerDiameter - singleMoldDisc.InnerDiameter : 0;
-                        compareObject.differenceOuterDiameter = (singleMoldDisc.OuterDiameter - productDisc.OuterDiameter) > 0 ? singleMoldDisc.OuterDiameter - productDisc.OuterDiameter : 0;
-                        compareJobOutput.Add(compareObject);
+                        var compareObject = new CompareObject((ProductDisc)this.ProductDisc, (SingleMoldDisc)singleMoldDisc);
+                        compareObject.DifferenceInnerDiameter = (this.ProductDisc.InnerDiameter - singleMoldDisc.InnerDiameter) > 0 ? this.ProductDisc.InnerDiameter - singleMoldDisc.InnerDiameter : 0;
+                        compareObject.DifferenceOuterDiameter = (singleMoldDisc.OuterDiameter - this.ProductDisc.OuterDiameter) > 0 ? singleMoldDisc.OuterDiameter - this.ProductDisc.OuterDiameter : 0;
+                        this.CompareJobOutput.Add(compareObject);
                     }
                 }
             }
@@ -123,50 +136,50 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             // Third Step: Compare ModularMolds with HoleCircle
             foreach (var compareObject in compareObjectsTemp01)
             {
-                // Grundplatten
-                if (this.productDisc.HcDiameter > 0)
+                // Baseplates
+                if (this.ProductDisc.HcDiameter > 0)
                 {
-                    if (this.productDisc.HcDiameter <= ((ModularMold)compareObject.Mold).baseplate.Hc1Diameter + toleranceSettings?.hc_Diameter
-                            && this.productDisc.HcDiameter >= ((ModularMold)compareObject.Mold).baseplate.Hc1Diameter - toleranceSettings?.hc_Diameter
-                            && this.productDisc.HcHoles == ((ModularMold)compareObject.Mold).baseplate.Hc1Holes)
+                    if (this.ProductDisc.HcDiameter <= ((ModularMold)compareObject.Mold).Baseplate.Hc1Diameter + this.ToleranceSettings?.hc_Diameter
+                            && this.ProductDisc.HcDiameter >= ((ModularMold)compareObject.Mold).Baseplate.Hc1Diameter - this.ToleranceSettings?.hc_Diameter
+                            && this.ProductDisc.HcHoles == ((ModularMold)compareObject.Mold).Baseplate.Hc1Holes)
                     {
-                        compareObject.boltCirclesBaseplate[1] = true;
+                        compareObject.BoltCirclesBaseplate[1] = true;
                     }
-                    else if (this.productDisc.HcDiameter <= ((ModularMold)compareObject.Mold).baseplate.Hc2Diameter + toleranceSettings?.hc_Diameter
-                            && this.productDisc.HcDiameter >= ((ModularMold)compareObject.Mold).baseplate.Hc1Diameter - toleranceSettings?.hc_Diameter
-                            && this.productDisc.HcHoles == ((ModularMold)compareObject.Mold).baseplate.Hc2Holes)
+                    else if (this.ProductDisc.HcDiameter <= ((ModularMold)compareObject.Mold).Baseplate.Hc2Diameter + this.ToleranceSettings?.hc_Diameter
+                            && this.ProductDisc.HcDiameter >= ((ModularMold)compareObject.Mold).Baseplate.Hc1Diameter - this.ToleranceSettings?.hc_Diameter
+                            && this.ProductDisc.HcHoles == ((ModularMold)compareObject.Mold).Baseplate.Hc2Holes)
                     {
-                        compareObject.boltCirclesBaseplate[2] = true;
+                        compareObject.BoltCirclesBaseplate[2] = true;
                     }
-                    else if (this.productDisc.HcDiameter <= ((ModularMold)compareObject.Mold).baseplate.Hc3Diameter + toleranceSettings?.hc_Diameter
-                            && this.productDisc.HcDiameter >= ((ModularMold)compareObject.Mold).baseplate.Hc1Diameter - toleranceSettings?.hc_Diameter
-                            && this.productDisc.HcHoles == ((ModularMold)compareObject.Mold).baseplate.Hc3Holes)
+                    else if (this.ProductDisc.HcDiameter <= ((ModularMold)compareObject.Mold).Baseplate.Hc3Diameter + this.ToleranceSettings?.hc_Diameter
+                            && this.ProductDisc.HcDiameter >= ((ModularMold)compareObject.Mold).Baseplate.Hc1Diameter - this.ToleranceSettings?.hc_Diameter
+                            && this.ProductDisc.HcHoles == ((ModularMold)compareObject.Mold).Baseplate.Hc3Holes)
                     {
-                        compareObject.boltCirclesBaseplate[3] = true;
+                        compareObject.BoltCirclesBaseplate[3] = true;
                     }
                 }
 
 
-                // Einlegeplatten
-                if (this.productDisc.HcDiameter > 0)
+                // InsertPlates
+                if (this.ProductDisc.HcDiameter > 0)
                 {
-                    if (this.productDisc.HcDiameter <= ((ModularMold)compareObject.Mold).insertPlate?.Hc1Diameter + toleranceSettings?.hc_Diameter
-                            && this.productDisc.HcDiameter >= ((ModularMold)compareObject.Mold).insertPlate?.Hc1Diameter - toleranceSettings?.hc_Diameter
-                            && this.productDisc.HcHoles == ((ModularMold)compareObject.Mold).insertPlate?.Hc1Holes)
+                    if (this.ProductDisc.HcDiameter <= ((ModularMold)compareObject.Mold).InsertPlate?.Hc1Diameter + this.ToleranceSettings?.hc_Diameter
+                            && this.ProductDisc.HcDiameter >= ((ModularMold)compareObject.Mold).InsertPlate?.Hc1Diameter - this.ToleranceSettings?.hc_Diameter
+                            && this.ProductDisc.HcHoles == ((ModularMold)compareObject.Mold).InsertPlate?.Hc1Holes)
                     {
-                        compareObject.boltCirclesInsertPlate[1] = true;
+                        compareObject.BoltCirclesInsertPlate[1] = true;
                     }
-                    else if (this.productDisc.HcDiameter <= ((ModularMold)compareObject.Mold).insertPlate?.Hc2Diameter + toleranceSettings?.hc_Diameter
-                            && this.productDisc.HcDiameter >= ((ModularMold)compareObject.Mold).insertPlate?.Hc2Diameter - toleranceSettings?.hc_Diameter
-                            && this.productDisc.HcHoles == ((ModularMold)compareObject.Mold).insertPlate?.Hc2Holes)
+                    else if (this.ProductDisc.HcDiameter <= ((ModularMold)compareObject.Mold).InsertPlate?.Hc2Diameter + this.ToleranceSettings?.hc_Diameter
+                            && this.ProductDisc.HcDiameter >= ((ModularMold)compareObject.Mold).InsertPlate?.Hc2Diameter - this.ToleranceSettings?.hc_Diameter
+                            && this.ProductDisc.HcHoles == ((ModularMold)compareObject.Mold).InsertPlate?.Hc2Holes)
                     {
-                        compareObject.boltCirclesInsertPlate[2] = true;
+                        compareObject.BoltCirclesInsertPlate[2] = true;
                     }
-                    else if (this.productDisc.HcDiameter <= ((ModularMold)compareObject.Mold).insertPlate?.Hc3Diameter + toleranceSettings?.hc_Diameter
-                            && this.productDisc.HcDiameter >= ((ModularMold)compareObject.Mold).insertPlate?.Hc3Diameter - toleranceSettings?.hc_Diameter
-                            && this.productDisc.HcHoles == ((ModularMold)compareObject.Mold).insertPlate?.Hc3Holes)
+                    else if (this.ProductDisc.HcDiameter <= ((ModularMold)compareObject.Mold).InsertPlate?.Hc3Diameter + this.ToleranceSettings?.hc_Diameter
+                            && this.ProductDisc.HcDiameter >= ((ModularMold)compareObject.Mold).InsertPlate?.Hc3Diameter - this.ToleranceSettings?.hc_Diameter
+                            && this.ProductDisc.HcHoles == ((ModularMold)compareObject.Mold).InsertPlate?.Hc3Holes)
                     {
-                        compareObject.boltCirclesInsertPlate[3] = true;
+                        compareObject.BoltCirclesInsertPlate[3] = true;
                     }
                 }
             }
@@ -174,39 +187,39 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             // Fourth Step: Compare ModularMolds with Bolts
             foreach (var compareObject in compareObjectsTemp01)
             {
-                foreach (var bolt in this.bolts)
+                foreach (var bolt in this.Bolts)
                 {
-                    // Baseplate
+                    // Baseplates
                     for (int i = 1; i < 4; i++)
                     {
                         var propGewinde = "Hc" + i + "Thread";
-                        if (compareObject.boltCirclesBaseplate[i] == true)
+                        if (compareObject.BoltCirclesBaseplate[i] == true)
                         {
-                            if (bolt.OuterDiameter <= this.productDisc.HcHoleDiameter + toleranceSettings.bolt_Diameter
-                                && bolt.OuterDiameter >= this.productDisc.HcHoleDiameter - toleranceSettings.bolt_Diameter
-                                && bolt.Thread == ((ModularMold)compareObject.Mold).baseplate.GetType().GetProperty(propGewinde).GetValue(((ModularMold)compareObject.Mold).baseplate).ToString())
+                            if (bolt.OuterDiameter <= this.ProductDisc.HcHoleDiameter + this.ToleranceSettings.bolt_Diameter
+                                && bolt.OuterDiameter >= this.ProductDisc.HcHoleDiameter - this.ToleranceSettings.bolt_Diameter
+                                && bolt.Thread == ((ModularMold)compareObject.Mold).Baseplate.GetType().GetProperty(propGewinde).GetValue(((ModularMold)compareObject.Mold).Baseplate).ToString())
                             {
-                                compareObject.bolts.Add(new System.Tuple<Bolt, decimal?>(bolt, this.productDisc.HcHoleDiameter - bolt.OuterDiameter));
+                                compareObject.Bolts.Add(new System.Tuple<Bolt, decimal?>(bolt, this.ProductDisc.HcHoleDiameter - bolt.OuterDiameter));
                             }
                         }
                     }
 
-                    // Insertplate
+                    // Insertplates
                     for (int i = 1; i < 4; i++)
                     {
                         var propGewinde = "Hc" + i + "Thread";
-                        if (compareObject.boltCirclesInsertPlate[i] == true)
+                        if (compareObject.BoltCirclesInsertPlate[i] == true)
                         {
-                            if (bolt.OuterDiameter <= this.productDisc.HcHoleDiameter + toleranceSettings.bolt_Diameter
-                                && bolt.OuterDiameter >= this.productDisc.HcHoleDiameter - toleranceSettings.bolt_Diameter
-                                && bolt.Thread == ((ModularMold)compareObject.Mold).insertPlate.GetType().GetProperty(propGewinde).GetValue(((ModularMold)compareObject.Mold).insertPlate).ToString())
+                            if (bolt.OuterDiameter <= this.ProductDisc.HcHoleDiameter + this.ToleranceSettings.bolt_Diameter
+                                && bolt.OuterDiameter >= this.ProductDisc.HcHoleDiameter - this.ToleranceSettings.bolt_Diameter
+                                && bolt.Thread == ((ModularMold)compareObject.Mold).InsertPlate.GetType().GetProperty(propGewinde).GetValue(((ModularMold)compareObject.Mold).InsertPlate).ToString())
                             {
-                                compareObject.bolts.Add(new System.Tuple<Bolt, decimal?>(bolt, this.productDisc.HcHoleDiameter - bolt.OuterDiameter));
+                                compareObject.Bolts.Add(new System.Tuple<Bolt, decimal?>(bolt, this.ProductDisc.HcHoleDiameter - bolt.OuterDiameter));
                             }
                         }
                     }
                 }
-                this.compareJobOutput.Add(compareObject);
+                this.CompareJobOutput.Add(compareObject);
             }
         }
 
@@ -217,13 +230,13 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             // Contains all CompareObjects without any bolts
             List<CompareObject> compareObjectsTemp01 = new List<CompareObject>();
 
-            // First Step: Compare ModularMolds with Product. Add ranking Information
-            foreach (var modularMold in this.modularMolds)
+            // First Step: Compare ModularMolds with Product. Add rating Information.
+            foreach (var modularMold in this.ModularMolds)
             {
-                if (compareRuleSet.Compare(this.productCup, modularMold))
+                if (compareRuleSet.Compare(this.ProductCup, modularMold))
                 {
-                    var compareObject = new CompareObject((ProductCup) this.productCup, (ModularMold) modularMold);
-                    compareObject.differenceInnerDiameter = productCup.InnerDiameter - modularMold.core.OuterDiameter;
+                    var compareObject = new CompareObject((ProductCup) this.ProductCup, (ModularMold) modularMold);
+                    compareObject.DifferenceInnerDiameter = this.ProductCup.InnerDiameter - modularMold.Core.OuterDiameter;
                     compareObjectsTemp01.Add(compareObject);
                 }
             }

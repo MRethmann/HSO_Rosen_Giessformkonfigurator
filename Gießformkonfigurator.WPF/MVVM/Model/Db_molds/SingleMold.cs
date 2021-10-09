@@ -10,10 +10,16 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Gießformkonfigurator.WPF.MVVM.Model.Db_molds
 {
+    /// <summary>
+    /// Derived Class from Mold. Superclass of SingleMoldDisc and SingleMoldCup.
+    /// </summary>
     public abstract class SingleMold : Mold
     {
+        /// <summary>
+        /// Gets or Sets the potential Core of the SingleMoldObject.
+        /// </summary>
         [NotMapped]
-        public CoreSingleMold coreSingleMold { get; set; }
+        public CoreSingleMold CoreSingleMold { get; set; }
 
         [Key]
         [Column("ID")]
@@ -35,6 +41,10 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_molds
 
         public int? HcHoles { get; set; }
 
+        /// <summary>
+        /// Used to Output the essential SingleMold ínformations.
+        /// </summary>
+        /// <returns>SAP and Description.</returns>
         public override string ToString()
         {
             return "SAP: " + this.ID + ", Description: " + this.Description;

@@ -16,27 +16,10 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
     using Gießformkonfigurator.WPF.MVVM.Model.Db_products;
 
     /// <summary>
-    /// Objekt zur Kombination der Komponenten zur Erstellung der mehrteiligen Gießformen (MGießformen).
+    /// Combines modular components to create multi molds.
     /// </summary>
-    class CombinationJob
+    public class CombinationJob
     {
-        // Frage: Wie kann man das universell umsetzen?
-        public ProductDisc produktDisc { get; set; }
-        public ProductCup produktCup { get; set; }
-        public List<Baseplate> listBaseplates { get; set; } = new List<Baseplate>();
-        public List<Ring> listRings { get; set; } = new List<Ring>();
-        public List<InsertPlate> listInsertPlates { get; set; } = new List<InsertPlate>();
-        public List<Core> listCores { get; set; } = new List<Core>();
-        public List<Bolt> listBolts { get; set; } = new List<Bolt>();
-        public List<Cupform> listCupforms { get; set; } = new List<Cupform>();
-        public List<ModularMold> modularMoldsOutput { get; set; }
-        public List<SingleMoldDisc> singleMoldDiscOutput { get; set; }
-        public List<SingleMoldCup> singleMoldCupOutput { get; set; }
-        public List<SingleMoldDisc> listSingleMoldDiscs { get; set; }
-        public List<SingleMoldCup> listSingleMoldCups { get; set; }
-        public List<CoreSingleMold> listCoresSingleMold { get; set; }
-        public CombinationRuleset combinationRuleSet { get; set; }
-
         /// <summary>
         /// Initializes a new instance of the <see cref="CombinationJob"/> class.
         /// </summary>
@@ -44,25 +27,68 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
         /// <param name="sapnr">PK in der DB.</param>
         public CombinationJob(Product product, FilterJob filterJob)
         {
-            this.produktDisc = (ProductDisc) product;
+            this.ProduktDisc = (ProductDisc)product;
 
-            listBaseplates = new List<Baseplate>(filterJob.listBaseplates);
-            listRings = new List<Ring>(filterJob.listRings);
-            listInsertPlates = new List<InsertPlate>(filterJob.listInsertPlates);
-            listCores = new List<Core>(filterJob.listCores);
-            listBolts = new List<Bolt>(filterJob.listBolts);
-            listCupforms = new List<Cupform>(filterJob.listCupforms);
-            listCoresSingleMold = new List<CoreSingleMold>(filterJob.listCoresSingleMold);
-            listSingleMoldCups = new List<SingleMoldCup>(filterJob.listSingleMoldCups);
-            listSingleMoldDiscs = new List<SingleMoldDisc>(filterJob.listSingleMoldDiscs);
+            this.ListBaseplates = new List<Baseplate>(filterJob.ListBaseplates);
+            this.ListRings = new List<Ring>(filterJob.ListRings);
+            this.ListInsertPlates = new List<InsertPlate>(filterJob.ListInsertPlates);
+            this.ListCores = new List<Core>(filterJob.ListCores);
+            this.ListBolts = new List<Bolt>(filterJob.ListBolts);
+            this.ListCupforms = new List<Cupform>(filterJob.ListCupforms);
+            this.ListCoresSingleMold = new List<CoreSingleMold>(filterJob.ListCoresSingleMold);
+            this.ListSingleMoldCups = new List<SingleMoldCup>(filterJob.ListSingleMoldCups);
+            this.ListSingleMoldDiscs = new List<SingleMoldDisc>(filterJob.ListSingleMoldDiscs);
 
-            combinationRuleSet = new CombinationRuleset();
+            this.CombinationRuleSet = new CombinationRuleset();
 
             this.CombineModularDiscMold();
             this.CombineModularCupMold();
             this.CombineSingleDiscMold();
             this.CombineSingleCupMold();
         }
+
+        // Frage: Wie kann man das universell umsetzen?
+        public ProductDisc ProduktDisc { get; set; }
+
+        public ProductCup ProduktCup { get; set; }
+
+        public List<Baseplate> ListBaseplates { get; set; } = new List<Baseplate>();
+
+        public List<Ring> ListRings { get; set; } = new List<Ring>();
+
+        public List<InsertPlate> ListInsertPlates { get; set; } = new List<InsertPlate>();
+
+        public List<Core> ListCores { get; set; } = new List<Core>();
+
+        public List<Bolt> ListBolts { get; set; } = new List<Bolt>();
+
+        public List<Cupform> ListCupforms { get; set; } = new List<Cupform>();
+
+        /// <summary>
+        /// Gets or Sets the final output of the modular mold combination algorithm.
+        /// </summary>
+        public List<ModularMold> ModularMoldsOutput { get; set; }
+
+        /// <summary>
+        /// Gets or Sets the final output of the single mold combination algorithm.
+        /// </summary>
+        public List<SingleMoldDisc> SingleMoldDiscOutput { get; set; }
+
+        public List<SingleMoldCup> SingleMoldCupOutput { get; set; }
+
+        /// <summary>
+        /// Gets or Sets the list of single mold disc received from the filterJob.
+        /// </summary>
+        public List<SingleMoldDisc> ListSingleMoldDiscs { get; set; }
+
+        public List<SingleMoldCup> ListSingleMoldCups { get; set; }
+
+        public List<CoreSingleMold> ListCoresSingleMold { get; set; }
+
+        /// <summary>
+        /// Gets of Sets the ruleset that is used to combine the components.
+        /// </summary>
+        public CombinationRuleset CombinationRuleSet { get; set; }
 
         /// <summary>
         /// Speichert den aktuellen Listenindex.
@@ -75,98 +101,99 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
         [STAThread]
         public void CombineModularDiscMold()
         {
+            // Lists, used to temporarely save multi molds while they are prepared for final output.
             // Listen, welche zur Zwischenspeicherung der mehrteiligen Gießformen genutzt werden, bevor sie vervollständigt wurden und ausgegeben werden können.
             List<ModularMold> discMoldsTemp01 = new List<ModularMold>();
             List<ModularMold> discMoldsTemp02 = new List<ModularMold>();
 
-            // Grundplatten --> Fuehrungsringe
-            for (int iGP = 0; iGP < this.listBaseplates.Count; iGP++)
+            // Baseplates --> GuideRings
+            for (int iGP = 0; iGP < this.ListBaseplates.Count; iGP++)
             {
-                for (int iRinge = 0; iRinge < this.listRings.Count; iRinge++)
+                for (int iRinge = 0; iRinge < this.ListRings.Count; iRinge++)
                 {
-                    if (combinationRuleSet.Combine(this.listBaseplates[iGP], this.listRings[iRinge]))
+                    if (this.CombinationRuleSet.Combine(this.ListBaseplates[iGP], this.ListRings[iRinge]))
                     {
-                        discMoldsTemp01.Add(new ModularMold(this.listBaseplates[iGP], this.listRings[iRinge], null, null));
+                        discMoldsTemp01.Add(new ModularMold(this.ListBaseplates[iGP], this.ListRings[iRinge], null, null));
                     }
                 }
             }
 
-            // Mehrteilige Gießformen --> Einlegeplatten
+            // MultiMolds (Baseplates with guideRings) --> InsertPlates
             this.Index = discMoldsTemp01.Count;
             for (int iTemp = 0; iTemp < this.Index; iTemp++)
             {
-                if (discMoldsTemp01[iTemp].baseplate.HasKonus)
+                if (discMoldsTemp01[iTemp].Baseplate.HasKonus)
                 {
-                    for (int iEP = 0; iEP < this.listInsertPlates.Count; iEP++)
+                    for (int iEP = 0; iEP < this.ListInsertPlates.Count; iEP++)
                     {
-                        if (combinationRuleSet.Combine(discMoldsTemp01[iTemp].baseplate, this.listInsertPlates[iEP]))
+                        if (this.CombinationRuleSet.Combine(discMoldsTemp01[iTemp].Baseplate, this.ListInsertPlates[iEP]))
                         {
-                            discMoldsTemp01.Add(new ModularMold(discMoldsTemp01[iTemp].baseplate, discMoldsTemp01[iTemp].guideRing, this.listInsertPlates[iEP], null));
+                            discMoldsTemp01.Add(new ModularMold(discMoldsTemp01[iTemp].Baseplate, discMoldsTemp01[iTemp].GuideRing, this.ListInsertPlates[iEP], null));
                         }
                     }
                 }
             }
 
-            // Mehrteilige Gießformen --> Kerne
+            // MultiMolds (Baseplates, GuideRings, InsertPlates) --> Cores
             this.Index = discMoldsTemp01.Count;
             for (int iTemp = 0; iTemp < this.Index; iTemp++)
             {
-                for (int iKerne = 0; iKerne < this.listCores.Count; iKerne++)
+                for (int iKerne = 0; iKerne < this.ListCores.Count; iKerne++)
                 {
                     // Einlegeplatte vorhanden
-                    if (discMoldsTemp01[iTemp].insertPlate != null)
+                    if (discMoldsTemp01[iTemp].InsertPlate != null)
                     {
                         // Einlegeplatten mit Konusfuehrung und Lochfuehrung
-                        if ((discMoldsTemp01[iTemp].insertPlate.HasKonus || discMoldsTemp01[iTemp].insertPlate.HasHoleguide) && combinationRuleSet.Combine(discMoldsTemp01[iTemp].insertPlate, this.listCores[iKerne]))
+                        if ((discMoldsTemp01[iTemp].InsertPlate.HasKonus || discMoldsTemp01[iTemp].InsertPlate.HasHoleguide) && this.CombinationRuleSet.Combine(discMoldsTemp01[iTemp].InsertPlate, this.ListCores[iKerne]))
                         {
-                            discMoldsTemp02.Add(new ModularMold(discMoldsTemp01[iTemp].baseplate, discMoldsTemp01[iTemp].guideRing, discMoldsTemp01[iTemp].insertPlate, this.listCores[iKerne]));
+                            discMoldsTemp02.Add(new ModularMold(discMoldsTemp01[iTemp].Baseplate, discMoldsTemp01[iTemp].GuideRing, discMoldsTemp01[iTemp].InsertPlate, this.ListCores[iKerne]));
                         }
 
                         // Einlegeplatte mit Kern
-                        else if (discMoldsTemp01[iTemp].insertPlate.HasCore == true)
+                        else if (discMoldsTemp01[iTemp].InsertPlate.HasCore == true)
                         {
                             // TODO: Hier am besten einen "virtuelle" Kern erstellen, der die Maße der Einlegeplatte bekommt.
-                            discMoldsTemp02.Add(new ModularMold(discMoldsTemp01[iTemp].baseplate, discMoldsTemp01[iTemp].guideRing, discMoldsTemp01[iTemp].insertPlate, null));
+                            discMoldsTemp02.Add(new ModularMold(discMoldsTemp01[iTemp].Baseplate, discMoldsTemp01[iTemp].GuideRing, discMoldsTemp01[iTemp].InsertPlate, null));
                         }
                     }
 
                     // Ohne Einlegeplatte
-                    else if (discMoldsTemp01[iTemp].insertPlate == null)
+                    else if (discMoldsTemp01[iTemp].InsertPlate == null)
                     {
                         // Grundplatten mit Konusfuehrung und Lochfuehrung
-                        if ((discMoldsTemp01[iTemp].baseplate.HasKonus == true || discMoldsTemp01[iTemp].baseplate.HasHoleguide == true) && combinationRuleSet.Combine(discMoldsTemp01[iTemp].baseplate, this.listCores[iKerne]))
+                        if ((discMoldsTemp01[iTemp].Baseplate.HasKonus == true || discMoldsTemp01[iTemp].Baseplate.HasHoleguide == true) && this.CombinationRuleSet.Combine(discMoldsTemp01[iTemp].Baseplate, this.ListCores[iKerne]))
                         {
-                            discMoldsTemp02.Add(new ModularMold(discMoldsTemp01[iTemp].baseplate, discMoldsTemp01[iTemp].guideRing, null, this.listCores[iKerne]));
+                            discMoldsTemp02.Add(new ModularMold(discMoldsTemp01[iTemp].Baseplate, discMoldsTemp01[iTemp].GuideRing, null, this.ListCores[iKerne]));
                         }
 
                         // Grundplatte mit Kern
-                        else if (discMoldsTemp01[iTemp].baseplate.HasCore == true)
+                        else if (discMoldsTemp01[iTemp].Baseplate.HasCore == true)
                         {
                             // TODO: Hier am besten einen "virtuelle" Kern erstellen, der die Maße der Grundplatte bekommt.
-                            discMoldsTemp02.Add(new ModularMold(discMoldsTemp01[iTemp].baseplate, discMoldsTemp01[iTemp].guideRing, null, null));
+                            discMoldsTemp02.Add(new ModularMold(discMoldsTemp01[iTemp].Baseplate, discMoldsTemp01[iTemp].GuideRing, null, null));
                         }
                     }
                 }
             }
 
-            // Mehrteilige Gießformen --> Innenringe
+            // MultiMolds (Baseplates, GuideRings, InsertPlates, Cores) --> OuterRings + CoreRings
             this.Index = discMoldsTemp02.Count;
 
             foreach (var mold in discMoldsTemp02)
             {
-                foreach (var ring in listRings)
+                foreach (var ring in this.ListRings)
                 {
                     // Alle Ringe entfernen, die potentiell außerhalb des Guide Rings liegen könnten
-                    if (ring.OuterDiameter < mold.guideRing.InnerDiameter + 1)
+                    if (ring.OuterDiameter < mold.GuideRing.InnerDiameter + 1)
                     {
-                        if (combinationRuleSet.Combine(mold.guideRing, ring))
+                        if (this.CombinationRuleSet.Combine(mold.GuideRing, ring))
                         {
-                            var differenceOuterDiameter = ring.InnerDiameter - produktDisc.OuterDiameter;
+                            var differenceOuterDiameter = ring.InnerDiameter - this.ProduktDisc.OuterDiameter;
                             mold.ListOuterRings.Add(new Tuple<Ring, Ring, decimal?>(ring, null, differenceOuterDiameter));
                         }
-                        else if (combinationRuleSet.Combine(mold.core, ring))
+                        else if (this.CombinationRuleSet.Combine(mold.Core, ring))
                         {
-                            var differenceInnerDiameter = produktDisc.InnerDiameter - ring.OuterDiameter;
+                            var differenceInnerDiameter = this.ProduktDisc.InnerDiameter - ring.OuterDiameter;
                             mold.ListCoreRings.Add(new Tuple<Ring, Ring, decimal?>(ring, null, differenceInnerDiameter));
                         }
                     }
@@ -178,15 +205,15 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                 var counter01 = mold.ListCoreRings.Count;
                 for (int i = 0; i < counter01; i++)
                 {
-                    foreach (var ring in listRings)
+                    foreach (var ring in this.ListRings)
                     {
-                        if (ring.InnerDiameter + 1 > mold.core.OuterDiameter)
+                        if (ring.InnerDiameter + 1 > mold.Core.OuterDiameter)
                         {
-                            if (ring.OuterDiameter > mold.core.OuterDiameter)
+                            if (ring.OuterDiameter > mold.Core.OuterDiameter)
                             {
-                                if (combinationRuleSet.Combine(mold.ListCoreRings[i].Item1, ring))
+                                if (this.CombinationRuleSet.Combine(mold.ListCoreRings[i].Item1, ring))
                                 {
-                                    var differenceInnerDiameter = produktDisc.InnerDiameter - ring.OuterDiameter;
+                                    var differenceInnerDiameter = this.ProduktDisc.InnerDiameter - ring.OuterDiameter;
                                     mold.ListCoreRings.Insert(0, new Tuple<Ring, Ring, decimal?>(mold.ListCoreRings[i].Item1, ring, differenceInnerDiameter));
                                 }
                             }
@@ -197,15 +224,15 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                 var counter02 = mold.ListOuterRings.Count;
                 for (int i = 0; i < counter02; i++)
                 {
-                    foreach (var ring in listRings)
+                    foreach (var ring in this.ListRings)
                     {
-                        if (ring.OuterDiameter < mold.guideRing.InnerDiameter + 1)
+                        if (ring.OuterDiameter < mold.GuideRing.InnerDiameter + 1)
                         {
-                            if (ring.InnerDiameter < mold.guideRing.OuterDiameter)
+                            if (ring.InnerDiameter < mold.GuideRing.OuterDiameter)
                             {
-                                if (combinationRuleSet.Combine(mold.ListOuterRings[i].Item1, ring))
+                                if (this.CombinationRuleSet.Combine(mold.ListOuterRings[i].Item1, ring))
                                 {
-                                    var differenceOuterDiameter = ring.InnerDiameter - produktDisc.OuterDiameter;
+                                    var differenceOuterDiameter = ring.InnerDiameter - this.ProduktDisc.OuterDiameter;
                                     mold.ListOuterRings.Insert(0, new Tuple<Ring, Ring, decimal?>(mold.ListOuterRings[i].Item1, ring, differenceOuterDiameter));
                                 }
                             }
@@ -214,13 +241,14 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                 }
             }
 
+            // Order lists of coreRings and outerRings by rating.
             foreach (var mold in discMoldsTemp02)
             {
                 mold.ListCoreRings.OrderBy(o => o.Item3);
                 mold.ListOuterRings.OrderBy(o => o.Item3);
             }
 
-            this.modularMoldsOutput = new List<ModularMold>(discMoldsTemp02);
+            this.ModularMoldsOutput = new List<ModularMold>(discMoldsTemp02);
         }
 
         /// <summary>
@@ -231,11 +259,11 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             List<ModularMold> cupMoldsTemp01 = new List<ModularMold>();
 
             // Combine cupform with insertPlates
-            foreach (var cupform in this.listCupforms)
+            foreach (var cupform in this.ListCupforms)
             {
-                foreach (var insertPlate in this.listInsertPlates)
+                foreach (var insertPlate in this.ListInsertPlates)
                 {
-                    if (combinationRuleSet.Combine(cupform, insertPlate))
+                    if (this.CombinationRuleSet.Combine(cupform, insertPlate))
                     {
                         cupMoldsTemp01.Add(new ModularMold(cupform, null, insertPlate));
                     }
@@ -245,23 +273,23 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             // Combine cupform with cores
             foreach (var modularMold in cupMoldsTemp01)
             {
-                foreach (var core in this.listCores)
+                foreach (var core in this.ListCores)
                 {
                     // Case that cupform has an insertPlate --> compare insertPlate with core
-                    if (modularMold.insertPlate != null)
+                    if (modularMold.InsertPlate != null)
                     {
-                        if (combinationRuleSet.Combine(modularMold.insertPlate, core))
+                        if (this.CombinationRuleSet.Combine(modularMold.InsertPlate, core))
                         {
-                            this.modularMoldsOutput.Add(new ModularMold(modularMold.cupform, core, modularMold.insertPlate));
+                            this.ModularMoldsOutput.Add(new ModularMold(modularMold.Cupform, core, modularMold.InsertPlate));
                         }
                     }
 
                     // Case that cupform has no insertPlate --> compare cupform directly with core
-                    else if (modularMold.insertPlate == null)
+                    else if (modularMold.InsertPlate == null)
                     {
-                        if (combinationRuleSet.Combine(modularMold.cupform, core))
+                        if (this.CombinationRuleSet.Combine(modularMold.Cupform, core))
                         {
-                            this.modularMoldsOutput.Add(new ModularMold(modularMold.cupform, core, modularMold.insertPlate));
+                            this.ModularMoldsOutput.Add(new ModularMold(modularMold.Cupform, core, modularMold.InsertPlate));
                         }
                     }
                 }
@@ -273,28 +301,28 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
         /// </summary>
         public void CombineSingleDiscMold()
         {
-            singleMoldDiscOutput = new List<SingleMoldDisc>();
+            this.SingleMoldDiscOutput = new List<SingleMoldDisc>();
 
-            foreach (var singleMoldDisc in this.listSingleMoldDiscs)
+            foreach (var singleMoldDisc in this.ListSingleMoldDiscs)
             {
-                foreach (var coreSingleMold in this.listCoresSingleMold)
+                foreach (var coreSingleMold in this.ListCoresSingleMold)
                 {
                     if (singleMoldDisc.InnerDiameter <= coreSingleMold.InnerDiameter
                         && singleMoldDisc.InnerDiameter <= coreSingleMold.InnerDiameter - 2
-                        && coreSingleMold.OuterDiameter < (singleMoldDisc.HcDiameter - singleMoldDisc.BoltDiameter/2))
+                        && coreSingleMold.OuterDiameter < (singleMoldDisc.HcDiameter - (singleMoldDisc.BoltDiameter / 2)))
                     {
-                        singleMoldDisc.coreSingleMold = coreSingleMold;
-                        singleMoldDiscOutput.Add(singleMoldDisc);
+                        singleMoldDisc.CoreSingleMold = coreSingleMold;
+                        this.SingleMoldDiscOutput.Add(singleMoldDisc);
                     }
                 }
-                singleMoldDiscOutput.Add(singleMoldDisc);
+
+                this.SingleMoldDiscOutput.Add(singleMoldDisc);
             }
         }
 
         public void CombineSingleCupMold()
         {
-            singleMoldCupOutput = new List<SingleMoldCup>();
+            this.SingleMoldCupOutput = new List<SingleMoldCup>();
         }
-
     }
 }

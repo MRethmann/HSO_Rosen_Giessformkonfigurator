@@ -3,11 +3,11 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
 namespace Gießformkonfigurator.WPF.MVVM.Model.Db_products
 {
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public class Product
     {
         [Key]

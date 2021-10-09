@@ -16,6 +16,5 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_products
         public string BaseCup { get; set; }
 
         public decimal InnerDiameter { get; set; }
-
     }
 }

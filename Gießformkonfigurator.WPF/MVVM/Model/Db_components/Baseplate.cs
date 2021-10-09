@@ -27,7 +27,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_components
         public decimal? KonusHeight { get; set; }
 
         /// <summary>
-        /// Konusführung
+        /// Gets or sets a value indicating whether the baseplate has a Konusfuehrung.
         /// </summary>
         public bool HasKonus { get; set; }
 
@@ -36,9 +36,9 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_components
         public decimal? InnerKonusMin { get; set; }
 
         public decimal? InnerKonusAngle { get; set; }
-        
+
         /// <summary>
-        /// Lochführung
+        /// Gets or sets a value indicating whether the baseplate has a Lochfuehrung.
         /// </summary>
         public bool HasHoleguide { get; set; }
 
@@ -48,7 +48,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_components
         public string ToleranceInnerDiameter { get; set; }
 
         /// <summary>
-        /// Intergrierter Kern
+        /// Gets or sets a value indicating whether the baseplate has an integrated Core.
         /// </summary>
         public bool HasCore { get; set; }
 
@@ -72,7 +72,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_components
 
         public override string ToString()
         {
-            return ID.ToString() + ": " + Description;
+            return this.ID.ToString() + ": " + this.Description;
         }
     }
 }

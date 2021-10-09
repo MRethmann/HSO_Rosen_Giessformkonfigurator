@@ -31,7 +31,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_components
 
         public override string ToString()
         {
-            return TypeDescription;
+            return this.TypeDescription;
         }
     }
 }

@@ -24,6 +24,9 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_components
 
         public decimal FillHeightMax { get; set; }
 
+        /// <summary>
+        /// Gets or Sets a value indicating whether the Ring has a Konusfuehrung.
+        /// </summary>
         public bool HasKonus { get; set; }
 
         public decimal? InnerKonusMax { get; set; }
@@ -36,7 +39,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_components
 
         public override string ToString()
         {
-            return ID.ToString() + " " + Description;
+            return this.ID.ToString() + " " + this.Description;
         }
     }
 }

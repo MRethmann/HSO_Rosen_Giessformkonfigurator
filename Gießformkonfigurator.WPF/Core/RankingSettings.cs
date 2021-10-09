@@ -12,7 +12,7 @@ namespace Gießformkonfigurator.WPF.Core
     using System.Data.SqlClient;
     using System.Windows;
 
-    class RankingSettings
+    public class RankingSettings
     {
         public decimal rankingFactorOuterDiameter { get; set; }
 

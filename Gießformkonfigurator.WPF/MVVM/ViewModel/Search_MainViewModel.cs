@@ -182,7 +182,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
 
                 this.searchJob = new SearchJob(product);
                 this.productSearchOutput.Clear();
-                foreach (var compareObject in searchJob.finalOutput)
+                foreach (var compareObject in searchJob.FinalOutput)
                 {
                     this.productSearchOutput.Add(compareObject);
                 }

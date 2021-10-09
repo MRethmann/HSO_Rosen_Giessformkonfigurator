@@ -5,30 +5,27 @@
 //-----------------------------------------------------------------------
 namespace Gießformkonfigurator.WPF.MVVM.Model.Db_molds
 {
-    using Gießformkonfigurator.WPF.Enums;
-    using Gießformkonfigurator.WPF.MVVM.Model.Db_components;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using Gießformkonfigurator.WPF.Enums;
+    using Gießformkonfigurator.WPF.MVVM.Model.Db_components;
 
     [Table("SingleMoldDisc")]
     public partial class SingleMoldDisc : SingleMold
     {
         public SingleMoldDisc()
         {
-            this.moldType = MoldType.SingleMold;
-            this.moldTypeName = "Einteilige Gießform";
-            this.productType = ProductType.Disc;
-            this.productTypeName = "Scheibe";
+            this.MoldType = MoldType.SingleMold;
+            this.MoldTypeName = "Einteilige Gießform";
+            this.ProductType = ProductType.Disc;
+            this.ProductTypeName = "Scheibe";
         }
 
         public SingleMoldDisc(CoreSingleMold coreSingleMold)
         {
-            this.coreSingleMold = coreSingleMold;
-            this.moldType = MoldType.SingleMold;
-            this.productType = ProductType.Disc;
+            this.CoreSingleMold = coreSingleMold;
+            this.MoldType = MoldType.SingleMold;
+            this.ProductType = ProductType.Disc;
         }
-
-
-
     }
 }

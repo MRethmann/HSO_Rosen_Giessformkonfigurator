@@ -43,9 +43,9 @@ namespace Gießformkonfigurator.WPF
 
             foreach (ModularMold mGießform in mGießformenFinal)
             {
-                Console.Write(mGießform.baseplate?.Description + " + ");
-                Console.Write(mGießform.insertPlate?.Description + " + ");
-                Console.Write(mGießform.guideRing?.Description + " + ");
+                Console.Write(mGießform.Baseplate?.Description + " + ");
+                Console.Write(mGießform.InsertPlate?.Description + " + ");
+                Console.Write(mGießform.GuideRing?.Description + " + ");
                 if (mGießform.ListOuterRings.Count > 0)
                 {
                     for (int i = 0; i < mGießform.ListOuterRings.Count; i++)
@@ -54,7 +54,7 @@ namespace Gießformkonfigurator.WPF
                     }
                 }
 
-                Console.WriteLine(mGießform.core?.Description);
+                Console.WriteLine(mGießform.Core?.Description);
             }
 
             Console.Write("Am Ende");

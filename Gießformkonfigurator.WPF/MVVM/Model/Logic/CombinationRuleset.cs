@@ -9,10 +9,14 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
     using System.Linq;
     using Gießformkonfigurator.WPF.MVVM.Model.Db_components;
 
+    /// <summary>
+    /// Contains all CombinationRules.
+    /// </summary>
     public class CombinationRuleset
     {
-        private IEnumerable<CombinationRule> CombinationRules { get; set; }
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CombinationRuleset"/> class.
+        /// </summary>
         public CombinationRuleset()
         {
             // hier müssen alle Regeln registriert werden, damit sie verwendet werden.
@@ -24,10 +28,19 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                     new InsertPlateCoreCombination(),
                     new RingAddition(),
                     new CupformCoreCombination(),
-                    new CoreRingAddition()
+                    new CoreRingAddition(),
                     };
         }
 
+        private IEnumerable<CombinationRule> CombinationRules { get; set; }
+
+        /// <summary>
+        /// Looks within the CombinationRuleSet if any fitting Rule is found.
+        /// The lookup is based on parameters within the method call.
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public bool Combine(Component a, Component b)
         {
             var passendeKombinationen = this.CombinationRules.Where(k => k.Akzeptiert(a.GetType(), b.GetType()));

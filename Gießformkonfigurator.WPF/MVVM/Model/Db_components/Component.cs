@@ -3,12 +3,12 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
 namespace Gießformkonfigurator.WPF.MVVM.Model.Db_components
 {
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public abstract class Component
     {
         [Key]

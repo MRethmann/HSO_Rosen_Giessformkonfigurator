@@ -1,13 +1,13 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="Core.cs" company="PlaceholderCompany">
+// <copyright file="CoreSingleMold.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
 namespace Gießformkonfigurator.WPF.MVVM.Model.Db_components
 {
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     [Table("CoreSingleMold")]
     public partial class CoreSingleMold : Component
     {
@@ -21,7 +21,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_components
 
         public override string ToString()
         {
-            return ID.ToString() + " " + Description;
+            return this.ID.ToString() + " " + this.Description;
         }
     }
 }
