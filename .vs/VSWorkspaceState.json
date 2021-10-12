@@ -1,11 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\Gießformkonfigurator.WPF",
-    "\\Gießformkonfigurator.WPF\\MVVM",
-    "\\Gießformkonfigurator.WPF\\MVVM\\Model",
-    "\\Gießformkonfigurator.WPF\\MVVM\\Model\\Logic"
+    ""
   ],
-  "SelectedNode": "\\Gießformkonfigurator.WPF\\MVVM\\Model\\Logic\\CompareRule.cs",
+  "SelectedNode": "\\Gießformkonfigurator.sln",
   "PreviewInSolutionExplorer": false
 }

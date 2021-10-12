@@ -46,7 +46,7 @@
 
                 <Grid Grid.Column="1" Grid.Row="1">
                     <Border BorderBrush="#144F9B" >
-                        <Image Width="360" Height="140" Source="/Images/rosen.png" x:Name="Admin_Logo" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed"/>
+                        <Image Width="360" Height="140" x:Name="Admin_Logo" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed"/>
                     </Border>
                 </Grid>
 
@@ -58,7 +58,7 @@
                            Foreground="#144F9B" FontSize="60"/>
 
                     <Border BorderBrush="#144F9B">
-                        <Image Width="360" Height="140" Source="/Images/rosen.png" x:Name="Logo" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <Image Width="360" Height="140" x:Name="Logo" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                     </Border>
 
                     <Button Grid.Column="3" Width="40" HorizontalAlignment="Right" Height="40" VerticalAlignment="Bottom" Margin="0, 0, 0, 10" Background="Transparent" BorderThickness="0" Click="Open_ReportIssueView">
