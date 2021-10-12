@@ -49,7 +49,7 @@ namespace Gießformkonfigurator.WPF.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("500")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1200")]
         public double Height {
             get {
                 return ((double)(this["Height"]));
@@ -61,7 +61,7 @@ namespace Gießformkonfigurator.WPF.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("500")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1600")]
         public double Width {
             get {
                 return ((double)(this["Width"]));

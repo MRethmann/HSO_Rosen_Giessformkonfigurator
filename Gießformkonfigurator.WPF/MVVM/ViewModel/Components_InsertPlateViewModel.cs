@@ -15,23 +15,23 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
 
     class Components_InsertPlateViewModel : ObservableObject
     {
-        public InsertPlate insertPlate { get; set; }
+        public InsertPlate InsertPlate { get; set; }
 
-        public ICommand insertIntoDbCmd { get; set; }
+        public ICommand InsertIntoDbCmd { get; set; }
 
         public Components_InsertPlateViewModel()
         {
-            this.insertPlate = new InsertPlate() { HasKonus = true } ;
-            insertIntoDbCmd = new RelayCommand(param => insertIntoDb(), param => validateInput());
+            this.InsertPlate = new InsertPlate() { HasKonus = true } ;
+            InsertIntoDbCmd = new RelayCommand(param => InsertIntoDb(), param => ValidateInput());
         }
 
-        public void insertIntoDb()
+        public void InsertIntoDb()
         {
             using (var db = new GießformDBContext())
             {
                 try
                 {
-                    db.InsertPlates.Add(this.insertPlate);
+                    db.InsertPlates.Add(this.InsertPlate);
                     db.SaveChanges();
                     MessageBox.Show("Einlegeplatte erfolgreich hinzugefügt");
                 }
@@ -43,14 +43,14 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
             }
         }
 
-        public bool validateInput()
+        public bool ValidateInput()
         {
-            if (insertPlate.ID.ToString().Length <= 1
-                || insertPlate.OuterDiameter == 0
-                || insertPlate.Height == 0
-                || insertPlate.OuterDiameter < insertPlate.InnerDiameter
-                || (insertPlate.HasKonus && (((insertPlate.InnerKonusMin ?? 0) == 0) || ((insertPlate.InnerKonusMax ?? 0) == 0) || ((insertPlate.InnerKonusAngle ?? 0) == 0) || ((insertPlate.KonusHeight ?? 0) == 0)))
-                || (insertPlate.HasHoleguide && ((insertPlate.InnerDiameter ?? 0) == 0)))
+            if (InsertPlate.ID.ToString().Length <= 1
+                || InsertPlate.OuterDiameter == 0
+                || InsertPlate.Height == 0
+                || InsertPlate.OuterDiameter < InsertPlate.InnerDiameter
+                || (InsertPlate.HasKonus && (((InsertPlate.InnerKonusMin ?? 0) == 0) || ((InsertPlate.InnerKonusMax ?? 0) == 0) || ((InsertPlate.InnerKonusAngle ?? 0) == 0) || ((InsertPlate.KonusHeight ?? 0) == 0)))
+                || (InsertPlate.HasHoleguide && ((InsertPlate.InnerDiameter ?? 0) == 0)))
             {
                 return false;
             }

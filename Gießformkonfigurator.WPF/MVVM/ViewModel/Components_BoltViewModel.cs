@@ -5,32 +5,33 @@
 //-----------------------------------------------------------------------
 namespace Gießformkonfigurator.WPF.MVVM.ViewModel
 {
-    using Gießformkonfigurator.WPF.Core;
-    using Gießformkonfigurator.WPF.MVVM.Model.Db_components;
-    using Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses;
     using System;
     using System.ComponentModel;
     using System.Windows;
     using System.Windows.Input;
+    using Gießformkonfigurator.WPF.Core;
+    using Gießformkonfigurator.WPF.MVVM.Model.Db_components;
+    using Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses;
+
     class Components_BoltViewModel : ObservableObject
     {
-        public Bolt bolt { get; set; }
+        public Bolt Bolt { get; set; }
 
-        public ICommand insertIntoDbCmd { get; set; }
+        public ICommand InsertIntoDbCmd { get; set; }
 
         public Components_BoltViewModel()
         {
-            this.bolt = new Bolt() { HasThread = true };
-            insertIntoDbCmd = new RelayCommand(param => insertIntoDb(), param => validateInput());
+            this.Bolt = new Bolt() { HasThread = true };
+            InsertIntoDbCmd = new RelayCommand(param => InsertIntoDb(), param => ValidateInput());
         }
 
-        public void insertIntoDb()
+        public void InsertIntoDb()
         {
             using (var db = new GießformDBContext())
             {
                 try
                 {
-                    db.Bolts.Add(this.bolt);
+                    db.Bolts.Add(this.Bolt);
                     db.SaveChanges();
                     MessageBox.Show("Bolzen erfolgreich hinzugefügt");
                 }
@@ -42,13 +43,13 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
             }
         }
 
-        public bool validateInput()
+        public bool ValidateInput()
         {
-            if (bolt.ID.ToString().Length <= 1
-                || ((bolt.OuterDiameter ?? 0) == 0)
-                || bolt.Height == 0
-                || (bolt.HasThread && string.IsNullOrWhiteSpace(bolt.Thread))
-                || bolt.HasGuideBolt && (((bolt.GuideHeight ?? 0) == 0) || ((bolt.GuideOuterDiameter ?? 0) == 0)))
+            if (Bolt.ID.ToString().Length <= 1
+                || ((Bolt.OuterDiameter ?? 0) == 0)
+                || Bolt.Height == 0
+                || (Bolt.HasThread && string.IsNullOrWhiteSpace(Bolt.Thread))
+                || Bolt.HasGuideBolt && (((Bolt.GuideHeight ?? 0) == 0) || ((Bolt.GuideOuterDiameter ?? 0) == 0)))
             {
                 return false;
             }

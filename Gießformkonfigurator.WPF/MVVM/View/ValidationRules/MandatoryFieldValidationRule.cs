@@ -16,7 +16,6 @@ namespace Gießformkonfigurator.WPF.MVVM.View.ValidationRules
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
             ValidationResult result = new ValidationResult(true, null);
-            decimal decimalValue;
 
             if (string.IsNullOrEmpty(value.ToString()))
             {

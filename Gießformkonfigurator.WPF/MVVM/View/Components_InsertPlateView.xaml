@@ -71,7 +71,7 @@
         <TextBlock Text="SAP-Nr." Grid.Row="0" Grid.Column="0"/>
         <TextBox x:Name="ID_TextBox" Grid.Row="0" Grid.Column="1">
             <TextBox.Text>
-                <Binding Path="insertPlate.ID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                <Binding Path="InsertPlate.ID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
                         <validationRules:MandatoryFieldValidationRule/>
                     </Binding.ValidationRules>
@@ -82,7 +82,7 @@
         <TextBlock Text="Bezeichnung" Grid.Row="1" Grid.Column="0"/>
         <TextBox x:Name="Description_TextBox" Grid.Row="1" Grid.Column="1">
             <TextBox.Text>
-                <Binding Path="insertPlate.Description" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                <Binding Path="InsertPlate.Description" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
                         <validationRules:MandatoryFieldValidationRule/>
                     </Binding.ValidationRules>
@@ -93,7 +93,7 @@
         <TextBlock Text="Außendurchmeser" Grid.Row="2" Grid.Column="0"/>
         <TextBox x:Name="OuterDiameter_TextBox" Grid.Row="2" Grid.Column="1">
             <TextBox.Text>
-                <Binding Path="insertPlate.OuterDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                <Binding Path="InsertPlate.OuterDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
                         <validationRules:InputValueRangeValidationRule/>
                     </Binding.ValidationRules>
@@ -104,7 +104,7 @@
         <TextBlock Text="Toleranz Außendurchmesser" Grid.Row="3" Grid.Column="0"/>
         <TextBox x:Name="OuterDiameterTolerance_TextBox" Grid.Row="3" Grid.Column="1">
             <TextBox.Text>
-                <Binding Path="insertPlate.ToleranceOuterDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                <Binding Path="InsertPlate.ToleranceOuterDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
                         <validationRules:MandatoryFieldValidationRule/>
                     </Binding.ValidationRules>
@@ -115,7 +115,7 @@
         <TextBlock Text="Höhe" Grid.Row="4" Grid.Column="0"/>
         <TextBox x:Name="Height_TextBox" Grid.Row="4" Grid.Column="1">
             <TextBox.Text>
-                <Binding Path="insertPlate.Height" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                <Binding Path="InsertPlate.Height" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
                         <validationRules:InputValueRangeValidationRule/>
                     </Binding.ValidationRules>
@@ -126,7 +126,7 @@
         <TextBlock Text="Konus Außen Max." Grid.Row="5" Grid.Column="0"/>
         <TextBox x:Name="OuterKonusMax_TextBox" Grid.Row="5" Grid.Column="1">
             <TextBox.Text>
-                <Binding Path="insertPlate.OuterKonusMax" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue=""> 
+                <Binding Path="InsertPlate.OuterKonusMax" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue=""> 
                     <Binding.ValidationRules>
                         <validationRules:InputValueRangeValidationRule/>
                     </Binding.ValidationRules>
@@ -137,7 +137,7 @@
         <TextBlock Text="Konus Außen Min." Grid.Row="6" Grid.Column="0"/>
         <TextBox x:Name="OuterKonusMin_TextBox" Grid.Row="6" Grid.Column="1">
             <TextBox.Text>
-                <Binding Path="insertPlate.OuterKonusMin" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
+                <Binding Path="InsertPlate.OuterKonusMin" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
                     <Binding.ValidationRules>
                         <validationRules:InputValueRangeValidationRule/>
                     </Binding.ValidationRules>
@@ -148,7 +148,7 @@
         <TextBlock Text="Konus Außen Winkel" Grid.Row="7" Grid.Column="0"/>
         <TextBox x:Name="OuterKonusAngle_TextBox" Grid.Row="7" Grid.Column="1">
             <TextBox.Text>
-                <Binding Path="insertPlate.OuterKonusAngle" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
+                <Binding Path="InsertPlate.OuterKonusAngle" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
                     <Binding.ValidationRules>
                         <validationRules:InputValueRangeValidationRule/>
                     </Binding.ValidationRules>
@@ -159,7 +159,7 @@
         <TextBlock Text="Konus Höhe" Grid.Row="8" Grid.Column="0"/>
         <TextBox x:Name="KonusHeight_TextBox" Grid.Row="8" Grid.Column="1">
             <TextBox.Text>
-                <Binding Path="insertPlate.KonusHeight" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
+                <Binding Path="InsertPlate.KonusHeight" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
                     <Binding.ValidationRules>
                         <validationRules:InputValueRangeValidationRule/>
                     </Binding.ValidationRules>
@@ -167,14 +167,14 @@
             </TextBox.Text>
         </TextBox>
 
-        <RadioButton x:Name="HasHoleGuide" Content="Lochführung" GroupName="LochKernKonus" Grid.Column="3" Grid.Row="0" IsChecked="{Binding insertPlate.HasHoleguide}"/>
-        <RadioButton x:Name="HasCore" Content="Kern" GroupName="LochKernKonus" Grid.Column="3" Grid.RowSpan="2" IsChecked="{Binding insertPlate.HasCore}"/>
-        <RadioButton x:Name="HasKonus" Content="Konusführung" GroupName="LochKernKonus" Grid.Column="3" Grid.Row="1" IsChecked="{Binding insertPlate.HasKonus}"/>
+        <RadioButton x:Name="HasHoleGuide" Content="Lochführung" GroupName="LochKernKonus" Grid.Column="3" Grid.Row="0" IsChecked="{Binding InsertPlate.HasHoleguide}"/>
+        <RadioButton x:Name="HasCore" Content="Kern" GroupName="LochKernKonus" Grid.Column="3" Grid.RowSpan="2" IsChecked="{Binding InsertPlate.HasCore}"/>
+        <RadioButton x:Name="HasKonus" Content="Konusführung" GroupName="LochKernKonus" Grid.Column="3" Grid.Row="1" IsChecked="{Binding InsertPlate.HasKonus}"/>
 
         <TextBlock Text="Konus Innen Max." Grid.Row="2" Grid.Column="3" Visibility="{Binding ElementName=HasKonus, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
         <TextBox x:Name="InnerKonusMax_TextBox" Grid.Row="2" Grid.Column="4" Visibility="{Binding ElementName=HasKonus, Path=IsChecked, Converter={StaticResource BoolToVis}}">
             <TextBox.Text>
-                <Binding Path="insertPlate.InnerKonusMax" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
+                <Binding Path="InsertPlate.InnerKonusMax" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
                     <Binding.ValidationRules>
                         <validationRules:InputValueRangeValidationRule/>
                     </Binding.ValidationRules>
@@ -185,7 +185,7 @@
         <TextBlock Text="Konus Innen Min" Grid.Row="3" Grid.Column="3" Visibility="{Binding ElementName=HasKonus, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
         <TextBox x:Name="InnerKonusMin_TextBox" Grid.Row="3" Grid.Column="4" Visibility="{Binding ElementName=HasKonus, Path=IsChecked, Converter={StaticResource BoolToVis}}">
             <TextBox.Text>
-                <Binding Path="insertPlate.InnerKonusMin" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
+                <Binding Path="InsertPlate.InnerKonusMin" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
                     <Binding.ValidationRules>
                         <validationRules:InputValueRangeValidationRule/>
                     </Binding.ValidationRules>
@@ -196,7 +196,7 @@
         <TextBlock Text="Konus Innen Winkel" Grid.Row="4" Grid.Column="3" Visibility="{Binding ElementName=HasKonus, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
         <TextBox x:Name="InnerKonusAngle_TextBox" Grid.Row="4" Grid.Column="4" Visibility="{Binding ElementName=HasKonus, Path=IsChecked, Converter={StaticResource BoolToVis}}">
             <TextBox.Text>
-                <Binding Path="insertPlate.InnerKonusAngle" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
+                <Binding Path="InsertPlate.InnerKonusAngle" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
                     <Binding.ValidationRules>
                         <validationRules:InputValueRangeValidationRule/>
                     </Binding.ValidationRules>
@@ -207,7 +207,7 @@
         <TextBlock Text="Innendurchmesser" Grid.Row="2" Grid.Column="3" Visibility="{Binding ElementName=HasHoleGuide, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
         <TextBox x:Name="InnerDiameter_TextBox" Grid.Row="2" Grid.Column="4" Visibility="{Binding ElementName=HasHoleGuide, Path=IsChecked, Converter={StaticResource BoolToVis}}">
             <TextBox.Text>
-                <Binding Path="insertPlate.InnerDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
+                <Binding Path="InsertPlate.InnerDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
                     <Binding.ValidationRules>
                         <validationRules:InputValueRangeValidationRule/>
                     </Binding.ValidationRules>
@@ -218,7 +218,7 @@
         <TextBlock Text="Toleranz Innendurchmesser" Grid.Row="3" Grid.Column="3" Visibility="{Binding ElementName=HasHoleGuide, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
         <TextBox x:Name="InnerDiameterTolerance_TextBox" Grid.Row="3" Grid.Column="4" Visibility="{Binding ElementName=HasHoleGuide, Path=IsChecked, Converter={StaticResource BoolToVis}}">
             <TextBox.Text>
-                <Binding Path="insertPlate.ToleranceInnerDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                <Binding Path="InsertPlate.ToleranceInnerDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
 
                     </Binding.ValidationRules>
@@ -263,7 +263,7 @@
             <TextBlock Text="Gewinde"/>
             <TextBox x:Name="A_HoleCircleThread_TextBox" Grid.Column="1">
                 <TextBox.Text>
-                    <Binding Path="insertPlate.Hc1Thread" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                    <Binding Path="InsertPlate.Hc1Thread" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
 
                         </Binding.ValidationRules>
@@ -275,7 +275,7 @@
             <TextBlock Text="Durchmesser" Grid.Row="1"/>
             <TextBox x:Name="A_HoleCircleDiameter_TextBox" Grid.Column="1" Grid.Row="1">
                 <TextBox.Text>
-                    <Binding Path="insertPlate.Hc1Diameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
+                    <Binding Path="InsertPlate.Hc1Diameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
                         <Binding.ValidationRules>
                             <validationRules:InputValueRangeValidationRule/>
                         </Binding.ValidationRules>
@@ -286,7 +286,7 @@
             <TextBlock Text="Bohrungen" Grid.Row="2"/>
             <TextBox x:Name="A_HoleCircleHoles_TextBox" Grid.Column="1" Grid.Row="2">
                 <TextBox.Text>
-                    <Binding Path="insertPlate.Hc1Holes" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
+                    <Binding Path="InsertPlate.Hc1Holes" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
                         <Binding.ValidationRules>
                             <validationRules:InputValueRangeValidationRule/>
                         </Binding.ValidationRules>
@@ -326,7 +326,7 @@
             <TextBlock Text="Gewinde"/>
             <TextBox x:Name="B_HoleCircleThread_TextBox" Grid.Column="1">
                 <TextBox.Text>
-                    <Binding Path="insertPlate.Hc2Thread" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                    <Binding Path="InsertPlate.Hc2Thread" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
 
                         </Binding.ValidationRules>
@@ -337,7 +337,7 @@
             <TextBlock Text="Durchmesser" Grid.Row="1"/>
             <TextBox x:Name="B_HoleCircleDiameter_TextBox" Grid.Column="1" Grid.Row="1">
                 <TextBox.Text>
-                    <Binding Path="insertPlate.Hc2Diameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
+                    <Binding Path="InsertPlate.Hc2Diameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
                         <Binding.ValidationRules>
                             <validationRules:InputValueRangeValidationRule/>
                         </Binding.ValidationRules>
@@ -348,7 +348,7 @@
             <TextBlock Text="Bohrungen" Grid.Row="2"/>
             <TextBox x:Name="B_HoleCircleHoles_TextBox" Grid.Column="1" Grid.Row="2">
                 <TextBox.Text>
-                    <Binding Path="insertPlate.Hc2Holes" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
+                    <Binding Path="InsertPlate.Hc2Holes" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
                         <Binding.ValidationRules>
                             <validationRules:InputValueRangeValidationRule/>
                         </Binding.ValidationRules>
@@ -376,7 +376,7 @@
             <TextBlock Text="Gewinde"/>
             <TextBox x:Name="C_HoleCircleThread_TextBox" Grid.Column="1">
                 <TextBox.Text>
-                    <Binding Path="insertPlate.Hc3Thread" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                    <Binding Path="InsertPlate.Hc3Thread" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
 
                         </Binding.ValidationRules>
@@ -387,7 +387,7 @@
             <TextBlock Text="Durchmesser " Grid.Row="1"/>
             <TextBox x:Name="C_HoleCircleDiameter_TextBox" Grid.Column="1" Grid.Row="1">
                 <TextBox.Text>
-                    <Binding Path="insertPlate.Hc3Diameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
+                    <Binding Path="InsertPlate.Hc3Diameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
                         <Binding.ValidationRules>
                             <validationRules:InputValueRangeValidationRule/>
                         </Binding.ValidationRules>
@@ -398,7 +398,7 @@
             <TextBlock Text="Bohrungen" Grid.Row="2"/>
             <TextBox x:Name="C_HoleCircleHoles_TextBox" Grid.Column="1" Grid.Row="2">
                 <TextBox.Text>
-                    <Binding Path="insertPlate.Hc3Holes" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
+                    <Binding Path="InsertPlate.Hc3Holes" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
                         <Binding.ValidationRules>
                             <validationRules:InputValueRangeValidationRule/>
                         </Binding.ValidationRules>
@@ -407,7 +407,7 @@
             </TextBox>
         </Grid>
 
-        <Button x:Name="Hinzufuegen" Content="Hinzufügen" Command="{Binding insertIntoDbCmd}" Grid.Column="9" Grid.Row="9">
+        <Button x:Name="Hinzufuegen" Content="Hinzufügen" Command="{Binding InsertIntoDbCmd}" Grid.Column="9" Grid.Row="9">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="HorizontalAlignment" Value="Right"/>

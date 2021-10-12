@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="Gießformkonfigurator.WPF.exe" version="1.0.0.16" publicKeyToken="0000000000000000" language="de-DE" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity name="Gießformkonfigurator.WPF.exe" version="1.0.0.18" publicKeyToken="0000000000000000" language="de-DE" processorArchitecture="msil" type="win32" />
   <description asmv2:iconFile="Gießformkonfigurator.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
@@ -91,14 +91,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Gießformkonfigurator.WPF.exe" size="860608">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Gießformkonfigurator.WPF.exe" size="861120">
       <assemblyIdentity name="Gießformkonfigurator.WPF" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>02v5i91oM78NANkA/ZShobL07pxUI4Vl0y4ktz1efa0=</dsig:DigestValue>
+        <dsig:DigestValue>GZQZgRIDwRQiPTDaEJC4/c/Dt5ij4m+A25e/LTNhtAY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -123,13 +123,13 @@
       <dsig:DigestValue>Z3l59KMjeMgFjGsXdnHT+HN7pUs/OkZcOZIH5/E+D+0=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Gießformkonfigurator.WPF.exe.config" size="2507">
+  <file name="Gießformkonfigurator.WPF.exe.config" size="2509">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>WVfSwok/yWV7mZ0wg0P/hUqHAf+uxzxvCfpwHViPmC0=</dsig:DigestValue>
+      <dsig:DigestValue>iFK4F8VRWlvOqVojL84pasS9y5ClLQ3WeaFSMzCaQYk=</dsig:DigestValue>
     </hash>
   </file>
   <file name="log4net.config" size="721">

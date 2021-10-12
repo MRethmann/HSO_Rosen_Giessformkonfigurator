@@ -64,7 +64,7 @@
         <TextBlock Text="SAP-Nr." Grid.Row="0" Grid.Column="0"/>
         <TextBox x:Name="ID_TextBox" Grid.Row="0" Grid.Column="1">
             <TextBox.Text>
-                <Binding Path="ring.ID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                <Binding Path="Ring.ID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
                         <validationRules:MandatoryFieldValidationRule/>
                     </Binding.ValidationRules>
@@ -75,7 +75,7 @@
         <TextBlock Text="Bezeichnung" Grid.Row="1" Grid.Column="0"/>
         <TextBox x:Name="Description_TextBox" Grid.Row="1" Grid.Column="1">
             <TextBox.Text>
-                <Binding Path="ring.Description" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                <Binding Path="Ring.Description" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
 
                     </Binding.ValidationRules>
@@ -86,7 +86,7 @@
         <TextBlock Text="Außendurchmeser" Grid.Row="2" Grid.Column="0"/>
         <TextBox x:Name="OuterDiameter_TextBox" Grid.Row="2" Grid.Column="1">
             <TextBox.Text>
-                <Binding Path="ring.OuterDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                <Binding Path="Ring.OuterDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
                         <validationRules:InputValueRangeValidationRule/>
                     </Binding.ValidationRules>
@@ -97,7 +97,7 @@
         <TextBlock Text="Toleranz Außendurchmesser" Grid.Row="3" Grid.Column="0"/>
         <TextBox x:Name="OuterDiameterTolerance_TextBox" Grid.Row="3" Grid.Column="1">
             <TextBox.Text>
-                <Binding Path="ring.OuterDiameterTolerance" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                <Binding Path="Ring.OuterDiameterTolerance" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
                         <validationRules:MandatoryFieldValidationRule/>
                     </Binding.ValidationRules>
@@ -108,7 +108,7 @@
         <TextBlock Text="Innendurchmesser" Grid.Row="4" Grid.Column="0"/>
         <TextBox x:Name="InnerDiameter_TextBox" Grid.Row="4" Grid.Column="1">
             <TextBox.Text>
-                <Binding Path="ring.InnerDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                <Binding Path="Ring.InnerDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
                         <validationRules:InputValueRangeValidationRule/>
                     </Binding.ValidationRules>
@@ -119,7 +119,7 @@
         <TextBlock Text="Toleranz Innendurchmesser" Grid.Row="5" Grid.Column="0"/>
         <TextBox x:Name="InnerDiameterTolerance_TextBox" Grid.Row="5" Grid.Column="1">
             <TextBox.Text>
-                <Binding Path="ring.InnerDiameterTolerance" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                <Binding Path="Ring.InnerDiameterTolerance" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
                         <validationRules:MandatoryFieldValidationRule/>
                     </Binding.ValidationRules>
@@ -130,7 +130,7 @@
         <TextBlock Text="Höhe" Grid.Row="6" Grid.Column="0"/>
         <TextBox x:Name="Height_TextBox" Grid.Row="6" Grid.Column="1">
             <TextBox.Text>
-                <Binding Path="ring.Height" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                <Binding Path="Ring.Height" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
                         <validationRules:InputValueRangeValidationRule/>
                     </Binding.ValidationRules>
@@ -141,7 +141,7 @@
         <TextBlock Text="Gießhöhe Max." Grid.Row="7" Grid.Column="0"/>
         <TextBox x:Name="FillHeightMax_TextBox" Grid.Row="7" Grid.Column="1">
             <TextBox.Text>
-                <Binding Path="ring.FillHeightMax" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                <Binding Path="Ring.FillHeightMax" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
                         <validationRules:InputValueRangeValidationRule/>
                     </Binding.ValidationRules>
@@ -152,12 +152,12 @@
         <CheckBox x:Name="HasKonus_CheckBox" Content="Konusführung" Grid.Column="3" Grid.Row="0"                  
                   VerticalAlignment="Center" HorizontalAlignment="Left"
                   Foreground="Black" FontSize="15"
-                  IsChecked="{Binding ring.HasKonus}"/>
+                  IsChecked="{Binding Ring.HasKonus}"/>
 
         <TextBlock Text="Konus Max." Grid.Row="1" Grid.Column="3" Visibility="{Binding ElementName=HasKonus_CheckBox, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
         <TextBox x:Name="KonusMax_TextBox" Grid.Row="1" Grid.Column="4" Visibility="{Binding ElementName=HasKonus_CheckBox, Path=IsChecked, Converter={StaticResource BoolToVis}}">
             <TextBox.Text>
-                <Binding Path="ring.InnerKonusMax" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
+                <Binding Path="Ring.InnerKonusMax" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
                     <Binding.ValidationRules>
                         <validationRules:InputValueRangeValidationRule/>
                     </Binding.ValidationRules>
@@ -168,7 +168,7 @@
         <TextBlock Text="Konus Min." Grid.Row="2" Grid.Column="3" Visibility="{Binding ElementName=HasKonus_CheckBox, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
         <TextBox x:Name="KonusMin_TextBox" Grid.Row="2" Grid.Column="4" Visibility="{Binding ElementName=HasKonus_CheckBox, Path=IsChecked, Converter={StaticResource BoolToVis}}">
             <TextBox.Text>
-                <Binding Path="ring.InnerKonusMin" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
+                <Binding Path="Ring.InnerKonusMin" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
                     <Binding.ValidationRules>
                         <validationRules:InputValueRangeValidationRule/>
                     </Binding.ValidationRules>
@@ -179,7 +179,7 @@
         <TextBlock Text="Konus Winkel" Grid.Row="3" Grid.Column="3" Visibility="{Binding ElementName=HasKonus_CheckBox, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
         <TextBox x:Name="KonusAngle_TextBox" Grid.Row="3" Grid.Column="4" Visibility="{Binding ElementName=HasKonus_CheckBox, Path=IsChecked, Converter={StaticResource BoolToVis}}">
             <TextBox.Text>
-                <Binding Path="ring.InnerKonusAngle" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
+                <Binding Path="Ring.InnerKonusAngle" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
                     <Binding.ValidationRules>
                         <validationRules:InputValueRangeValidationRule/>
                     </Binding.ValidationRules>
@@ -190,7 +190,7 @@
         <TextBlock Text="Konus Höhe" Grid.Row="4" Grid.Column="3" Visibility="{Binding ElementName=HasKonus_CheckBox, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
         <TextBox x:Name="KonusHeight_TextBox" Grid.Row="4" Grid.Column="4" Visibility="{Binding ElementName=HasKonus_CheckBox, Path=IsChecked, Converter={StaticResource BoolToVis}}">
             <TextBox.Text>
-                <Binding Path="ring.KonusHeight" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
+                <Binding Path="Ring.KonusHeight" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
                     <Binding.ValidationRules>
                         <validationRules:InputValueRangeValidationRule/>
                     </Binding.ValidationRules>
@@ -198,7 +198,7 @@
             </TextBox.Text>
         </TextBox>
 
-        <Button x:Name="Hinzufuegen" Content="Hinzufügen" Command="{Binding insertIntoDbCmd}" Grid.Column="4" Grid.Row="7">
+        <Button x:Name="Hinzufuegen" Content="Hinzufügen" Command="{Binding InsertIntoDbCmd}" Grid.Column="4" Grid.Row="7">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="HorizontalAlignment" Value="Right"/>

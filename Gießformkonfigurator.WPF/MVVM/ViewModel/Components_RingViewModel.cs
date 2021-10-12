@@ -14,24 +14,23 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
 
     class Components_RingViewModel
     {
-        public Ring ring { get; set; }
+        public Ring Ring { get; set; }
 
-        public ICommand insertIntoDbCmd { get; set; }
-
+        public ICommand InsertIntoDbCmd { get; set; }
 
         public Components_RingViewModel()
         {
-            this.ring = new Ring();
-            insertIntoDbCmd = new RelayCommand(param => insertIntoDb(), param => validateInput());
+            this.Ring = new Ring();
+            InsertIntoDbCmd = new RelayCommand(param => InsertIntoDb(), param => ValidateInput());
         }
 
-        public void insertIntoDb()
+        public void InsertIntoDb()
         {
             using (var db = new GießformDBContext())
             {
                 try
                 {
-                    db.Rings.Add(this.ring);
+                    db.Rings.Add(this.Ring);
                     db.SaveChanges();
                     MessageBox.Show("Ring erfolgreich hinzugefügt");
                 }
@@ -43,15 +42,15 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
             }
         }
 
-        public bool validateInput()
+        public bool ValidateInput()
         {
-            if (ring.ID.ToString().Length <= 1
-                || ring.OuterDiameter == 0
-                || ring.Height == 0
-                || ring.FillHeightMax == 0
-                || ring.InnerDiameter == 0
-                || ring.OuterDiameter < ring.InnerDiameter
-                || (ring.HasKonus && (((ring.InnerKonusMin ?? 0) == 0) || ((ring.InnerKonusMax ?? 0) == 0) || ((ring.InnerKonusAngle ?? 0) == 0) || ((ring.KonusHeight ?? 0) == 0))))
+            if (Ring.ID.ToString().Length <= 1
+                || Ring.OuterDiameter == 0
+                || Ring.Height == 0
+                || Ring.FillHeightMax == 0
+                || Ring.InnerDiameter == 0
+                || Ring.OuterDiameter < Ring.InnerDiameter
+                || (Ring.HasKonus && (((Ring.InnerKonusMin ?? 0) == 0) || ((Ring.InnerKonusMax ?? 0) == 0) || ((Ring.InnerKonusAngle ?? 0) == 0) || ((Ring.KonusHeight ?? 0) == 0))))
             {
                 return false;
             }
