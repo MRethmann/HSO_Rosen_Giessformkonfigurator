@@ -16,17 +16,37 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
         /// <summary>
         /// Initializes a new instance of the <see cref="SearchJob"/> class.
         /// </summary>
-        public SearchJob(Product product)
+        /// <param name="productDisc">Expects Disc Product.</param>
+        public SearchJob(ProductDisc productDisc)
         {
-            this.Product = product;
+            this.ProductDisc = productDisc;
 
-            this.FilterJob = new FilterJob(this.Product);
+            this.FilterJob = new FilterJob(this.ProductDisc);
 
-            this.CombinationJob = new CombinationJob(this.Product, this.FilterJob);
+            this.CombinationJob = new CombinationJob(this.ProductDisc, this.FilterJob);
 
-            this.CompareJob = new CompareJob(this.Product, this.CombinationJob);
+            this.CompareJob = new CompareJob(this.ProductDisc, this.CombinationJob);
 
-            this.RankingJob = new RankingJob(this.Product, this.CompareJob);
+            this.RankingJob = new RankingJob(this.ProductDisc, this.CompareJob);
+
+            this.FinalOutput = new List<CompareObject>(this.RankingJob.RankingJobOutput);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SearchJob"/> class.
+        /// </summary>
+        /// <param name="productCup">Expects Cup Product.</param>
+        public SearchJob(ProductCup productCup)
+        {
+            this.ProductCup = productCup;
+
+            this.FilterJob = new FilterJob(this.ProductCup);
+
+            this.CombinationJob = new CombinationJob(this.ProductCup, this.FilterJob);
+
+            this.CompareJob = new CompareJob(this.ProductCup, this.CombinationJob);
+
+            this.RankingJob = new RankingJob(this.ProductCup, this.CompareJob);
 
             this.FinalOutput = new List<CompareObject>(this.RankingJob.RankingJobOutput);
         }
@@ -39,7 +59,9 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 
         public RankingJob RankingJob { get; set; }
 
-        public Product Product { get; set; } = new Product();
+        public ProductDisc ProductDisc { get; set; } = new ProductDisc();
+
+        public ProductCup ProductCup { get; set; } = new ProductCup();
 
         public List<CompareObject> FinalOutput { get; set; }
     }

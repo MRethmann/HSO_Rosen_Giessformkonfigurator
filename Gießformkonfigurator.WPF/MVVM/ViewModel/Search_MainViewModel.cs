@@ -51,8 +51,8 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
         public bool SearchByProductId { get; set; } = true;
 
         /// <summary>
-        /// Property determines the product type in the GUI via Binding. 
-        /// True = ProductDisc. 
+        /// Gets or Sets the Property that determines the product type in the GUI via Binding.
+        /// True = ProductDisc.
         /// False = ProductCup.
         /// </summary>
         public bool SearchTypeProduct { get; set; } = true;
@@ -79,8 +79,6 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
 
         public string BTC { get; set; }
 
-        public Product Product { get; set; }
-
         public int ProductId { get; set; }
 
         public ICommand SearchCommand { get; set; }
@@ -102,14 +100,15 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                     {
                         using (var db = new GießformDBContext())
                         {
-                            this.Product = new Product();
-                            this.Product = db.ProductDiscs.Find(this.ProductId);
-                            Log.Info($"ProductDisc search via SAP-Nr. started for product: {this.Product}");
+                            this.ProductDisc = new ProductDisc();
+                            this.ProductDisc = db.ProductDiscs.Find(this.ProductId);
+                            this.SearchJob = new SearchJob(this.ProductDisc);
+                            Log.Info($"ProductDisc search via SAP-Nr. started for product: {this.ProductDisc}");
                         }
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Suche fehlgeschlagen. Überprüfe die Db Verbindung!");
+                        MessageBox.Show("Suche fehlgeschlagen. Überprüfe die Db Verbindung!" + ex);
                         Log.Error(ex);
                     }
                 }
@@ -121,9 +120,10 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                     {
                         using (var db = new GießformDBContext())
                         {
-                            this.Product = new Product();
-                            this.Product = db.ProductCups.Find(this.ProductId);
-                            Log.Info($"ProductCup search via SAP-Nr. started for product: {this.Product}");
+                            this.ProductCup = new ProductCup();
+                            this.ProductCup = db.ProductCups.Find(this.ProductId);
+                            this.SearchJob = new SearchJob(this.ProductCup);
+                            Log.Info($"ProductCup search via SAP-Nr. started for product: {this.ProductCup}");
                         }
                     }
                     catch (Exception ex)
@@ -145,12 +145,11 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                     || this.Height == 0
                     || this.OuterDiameter < this.InnerDiameter)
                     {
-                        this.Product = null;
+                        this.ProductDisc = null;
                         MessageBox.Show("Bitte überprüfe die eingegebenen Werte!");
                     }
                     else
                     {
-                        this.Product = new Product();
                         this.ProductDisc = new ProductDisc();
                         this.ProductDisc.OuterDiameter = this.OuterDiameter;
                         this.ProductDisc.InnerDiameter = this.InnerDiameter;
@@ -160,7 +159,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                         this.ProductDisc.HcDiameter = this.HcDiameter != null ? this.HcDiameter : null;
                         this.ProductDisc.BTC = this.BTC != null ? this.BTC : null;
                         this.ProductDisc.FactorPU = this.SelectedFactorPU;
-                        this.Product = this.ProductDisc;
+                        this.SearchJob = new SearchJob(this.ProductDisc);
                         Log.Info($"ProductDisc search started via manual entry for product: {this.ProductDisc.OuterDiameter}, {this.ProductDisc.InnerDiameter}, {this.ProductDisc.Height}, {this.ProductDisc.BTC}, {this.ProductDisc.FactorPU} - (OD, ID, T, BTC, Factor)");
                     }
                 }
@@ -180,16 +179,9 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                 }
             }
 
-            // Create new SearchJob --> start algorithm to search for fitting molds
-            if (this.Product != null)
+            this.ProductSearchOutput.Clear();
+            if (this.SearchJob != null)
             {
-                if (this.Product.FactorPU == null)
-                {
-                    this.Product.FactorPU = this.SelectedFactorPU;
-                }
-
-                this.SearchJob = new SearchJob(this.Product);
-                this.ProductSearchOutput.Clear();
                 foreach (var compareObject in this.SearchJob.FinalOutput)
                 {
                     this.ProductSearchOutput.Add(compareObject);

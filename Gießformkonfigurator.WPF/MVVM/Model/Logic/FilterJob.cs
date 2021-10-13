@@ -24,23 +24,20 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
         /// <summary>
         /// Initializes a new instance of the <see cref="FilterJob"/> class.
         /// </summary>
-        /// <param name="product"></param>
-        public FilterJob(Product product)
+        /// <param name="productDisc">Expects product Disc.</param>
+        public FilterJob(ProductDisc productDisc)
         {
-            if (product.GetType() == typeof(ProductDisc))
-            {
-                this.ProductDisc = new ProductDisc();
-                this.ProductDisc = (ProductDisc)product;
-            }
-            else if (product.GetType() == typeof(ProductCup))
-            {
-                this.ProductCup = new ProductCup();
-                this.ProductCup = (ProductCup)product;
-            }
+            this.ProductDisc = productDisc;
 
-            this.ToleranceSettings = new ToleranceSettings();
+            this.AdjustProductInformation(productDisc);
+            this.GetFilteredDatabase();
+        }
 
-            this.AdjustProductInformation();
+        public FilterJob(ProductCup productCup)
+        {
+            this.ProductCup = productCup;
+
+            this.AdjustProductInformation(productCup);
             this.GetFilteredDatabase();
         }
 
@@ -66,48 +63,68 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 
         public ProductCup ProductCup { get; set; }
 
-        public ToleranceSettings ToleranceSettings { get; set; }
+        public ToleranceSettings ToleranceSettings { get; set; } = new ToleranceSettings();
 
         /// <summary>
+        /// ProductDisc
         /// Transforms boltCircleType key into real dimensions via btc Table in database. Also adjusts product dimensions based on material factor.
         /// </summary>
-        public void AdjustProductInformation()
+        /// <param name="productDisc">Expects product Disc.</param>
+        public void AdjustProductInformation(ProductDisc productDisc)
         {
-            if (this.ProductDisc != null)
+
+            if (!string.IsNullOrWhiteSpace(this.ProductDisc.BTC))
             {
-                if (!string.IsNullOrWhiteSpace(this.ProductDisc.BTC))
+                BoltCircleType boltCircleInformation = new BoltCircleType();
+
+                try
                 {
-                    BoltCircleType boltCircleInformation = new BoltCircleType();
-
-                    try
+                    using (var db = new GießformDBContext())
                     {
-                        using (var db = new GießformDBContext())
-                        {
-                            boltCircleInformation = db.BoltCircleTypes.Find(this.ProductDisc.BTC);
-                        }
+                        boltCircleInformation = db.BoltCircleTypes.Find(this.ProductDisc.BTC);
                     }
-                    catch (Exception ex)
-                    {
-                        Log.Error(ex);
-                    }
-
-                    this.ProductDisc.HcDiameter = boltCircleInformation?.Diameter;
-                    this.ProductDisc.HcHoleDiameter = boltCircleInformation?.HoleDiameter;
-                    this.ProductDisc.HcHoles = boltCircleInformation?.HoleQty;
+                }
+                catch (Exception ex)
+                {
+                    Log.Error(ex);
                 }
 
-                this.ProductDisc.OuterDiameter = Math.Round(this.ProductDisc.OuterDiameter * this.ProductDisc.FactorPU.GetValueOrDefault(1m), 2);
-                this.ProductDisc.InnerDiameter = Math.Round(this.ProductDisc.InnerDiameter * this.ProductDisc.FactorPU.GetValueOrDefault(1m), 2);
-                this.ProductDisc.Height = Math.Round(this.ProductDisc.Height * this.ProductDisc.FactorPU.GetValueOrDefault(1m), 2);
-                this.ProductDisc.HcDiameter = this.ProductDisc?.HcDiameter != null ? Math.Round((decimal)this.ProductDisc?.HcDiameter * this.ProductDisc.FactorPU.GetValueOrDefault(1m), 2) : 0.0m;
-                this.ProductDisc.HcHoleDiameter = this.ProductDisc?.HcHoleDiameter != null ? Math.Round((decimal)this.ProductDisc?.HcHoleDiameter * this.ProductDisc.FactorPU.GetValueOrDefault(1m), 2) : 0.0m;
+                this.ProductDisc.HcDiameter = boltCircleInformation?.Diameter;
+                this.ProductDisc.HcHoleDiameter = boltCircleInformation?.HoleDiameter;
+                this.ProductDisc.HcHoles = boltCircleInformation?.HoleQty;
+            }
+        }
 
-                Log.Info("ProductDisc information with shrink --> OD: " + this.ProductDisc.OuterDiameter + ", ID: " + this.ProductDisc.InnerDiameter + ", Height: " + this.ProductDisc.Height);
-            }
-            else if (this.ProductCup != null)
+        /// <summary>
+        /// ProductCup.
+        /// Transforms boltCircleType key into real dimensions via btc Table in database. Also adjusts product dimensions based on material factor.
+        /// </summary>
+        /// <param name="productCup">Expects product Cup.</param>
+        public void AdjustProductInformation(ProductCup productCup)
+        {
+            if (!string.IsNullOrWhiteSpace(this.ProductCup.BTC))
             {
-                this.ProductCup.InnerDiameter = this.ProductCup.InnerDiameter * this.ProductCup.FactorPU.GetValueOrDefault(1m);
+                BoltCircleType boltCircleInformation = new BoltCircleType();
+
+                try
+                {
+                    using (var db = new GießformDBContext())
+                    {
+                        boltCircleInformation = db.BoltCircleTypes.Find(this.ProductCup.BTC);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Log.Error(ex);
+                }
+
+                // TODO: Add propertys to product cup.
+                // this.ProductCup.HcDiameter = boltCircleInformation?.Diameter;
+                // this.ProductCup.HcHoleDiameter = boltCircleInformation?.HoleDiameter;
+                // this.ProductCup.HcHoles = boltCircleInformation?.HoleQty;
             }
+
+            Log.Info("ProductDisc information with shrink --> OD: " + this.ProductDisc.OuterDiameter + ", ID: " + this.ProductDisc.InnerDiameter + ", Height: " + this.ProductDisc.Height);
         }
 
         /// <summary>
@@ -121,7 +138,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                 {
                     foreach (var baseplate in db.Baseplates)
                     {
-                        if (this.ProductDisc?.OuterDiameter < baseplate.OuterDiameter)
+                        if (this.ProductDisc?.MultiMoldDimensions.OuterDiameter < baseplate.OuterDiameter)
                         {
                             this.ListBaseplates.Add(baseplate);
                             Log.Info($"Added baseplate: {baseplate}");
@@ -222,5 +239,6 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                 }
             }
         }
+
     }
 }
