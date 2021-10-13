@@ -5,36 +5,36 @@
 //-----------------------------------------------------------------------
 namespace Gießformkonfigurator.WPF.MVVM.ViewModel
 {
-    using Gießformkonfigurator.WPF.Core;
-    using Gießformkonfigurator.WPF.MVVM.Model.Db_products;
-    using Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Windows;
     using System.Windows.Input;
+    using Gießformkonfigurator.WPF.Core;
+    using Gießformkonfigurator.WPF.MVVM.Model.Db_products;
+    using Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses;
 
     class Product_DiscViewModel : ObservableObject
     {
-        public List<Decimal?> PUFactors { get; set; } = new List<decimal?>() { 1.017m, 1.0175m, 1.023m, 1.025m };
-
-        public ProductDisc productDisc { get; set; }
-
-        public ICommand insertIntoDbCmd { get; set; }
-
         public Product_DiscViewModel()
         {
-            this.productDisc = new ProductDisc() { FactorPU = 1.017m };
-            insertIntoDbCmd = new RelayCommand(param => insertIntoDb(), param => validateInput());
+            this.ProductDisc = new ProductDisc() { FactorPU = 1.017m };
+            this.InsertIntoDbCmd = new RelayCommand(param => this.InsertIntoDb(), param => this.ValidateInput());
         }
 
-        public void insertIntoDb()
+        public List<decimal?> PUFactors { get; set; } = new List<decimal?>() { 1.017m, 1.0175m, 1.023m, 1.025m };
+
+        public ProductDisc ProductDisc { get; set; }
+
+        public ICommand InsertIntoDbCmd { get; set; }
+
+        public void InsertIntoDb()
         {
             using (var db = new GießformDBContext())
             {
                 try
                 {
-                    db.ProductDiscs.Add(this.productDisc);
+                    db.ProductDiscs.Add(this.ProductDisc);
                     db.SaveChanges();
                     MessageBox.Show("Produkt erfolgreich hinzugefügt");
                 }
@@ -42,17 +42,16 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                 {
                     MessageBox.Show(e + "Fehler beim Hinzufügen.");
                 }
-
             }
         }
 
-        public bool validateInput()
+        public bool ValidateInput()
         {
-            if (productDisc.ID.ToString().Length <= 1
-                || productDisc.OuterDiameter == 0
-                || productDisc.InnerDiameter == 0
-                || productDisc.Height == 0
-                || productDisc.OuterDiameter < productDisc.InnerDiameter)
+            if (this.ProductDisc.ID.ToString().Length <= 1
+                || this.ProductDisc.OuterDiameter == 0
+                || this.ProductDisc.InnerDiameter == 0
+                || this.ProductDisc.Height == 0
+                || this.ProductDisc.OuterDiameter < this.ProductDisc.InnerDiameter)
             {
                 return false;
             }

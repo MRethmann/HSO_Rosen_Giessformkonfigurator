@@ -16,7 +16,6 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
         /// <summary>
         /// Initializes a new instance of the <see cref="SearchJob"/> class.
         /// </summary>
-        /// <param name="product"></param>
         public SearchJob(Product product)
         {
             this.Product = product;

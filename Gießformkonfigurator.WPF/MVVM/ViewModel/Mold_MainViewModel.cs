@@ -7,40 +7,54 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
 {
     using Gießformkonfigurator.WPF.Core;
 
-    class Mold_MainViewModel : ObservableObject
+    /// <summary>
+    /// Main View which consists of CupView and DiscView.
+    /// </summary>
+    public class Mold_MainViewModel : ObservableObject
     {
-        public RelayCommand Mold_DiscViewCmd { get; set; }
-        public RelayCommand Mold_CupViewCmd { get; set; }
-        public Mold_DiscViewModel Mold_DiscViewModel { get; set; }
-        public Mold_CupViewModel Mold_CupViewModel { get; set; }
-
-        private object _currentView_Mold_MainView;
-        public object currentView_Mold_MainView
-        {
-            get { return _currentView_Mold_MainView; }
-            set
-            {
-                _currentView_Mold_MainView = value;
-                OnPropertyChanged();
-            }
-        }
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Mold_MainViewModel"/> class.
+        /// </summary>
         public Mold_MainViewModel()
         {
-            Mold_DiscViewModel = new Mold_DiscViewModel();
-            Mold_CupViewModel = new Mold_CupViewModel();
+            this.Mold_DiscViewModel = new Mold_DiscViewModel();
+            this.Mold_CupViewModel = new Mold_CupViewModel();
 
-            currentView_Mold_MainView = Mold_DiscViewModel;
+            this.CurrentView_Mold_MainView = this.Mold_DiscViewModel;
 
-            Mold_DiscViewCmd = new RelayCommand(o =>
+            this.Mold_DiscViewCmd = new RelayCommand(o =>
             {
-                currentView_Mold_MainView = Mold_DiscViewModel;
+                this.CurrentView_Mold_MainView = this.Mold_DiscViewModel;
             });
 
-            Mold_CupViewCmd = new RelayCommand(o =>
+            this.Mold_CupViewCmd = new RelayCommand(o =>
             {
-                currentView_Mold_MainView = Mold_CupViewModel;
+                this.CurrentView_Mold_MainView = this.Mold_CupViewModel;
             });
+        }
+
+        public RelayCommand Mold_DiscViewCmd { get; set; }
+
+        public RelayCommand Mold_CupViewCmd { get; set; }
+
+        public Mold_DiscViewModel Mold_DiscViewModel { get; set; }
+
+        public Mold_CupViewModel Mold_CupViewModel { get; set; }
+
+        private object _CurrentView_Mold_MainView;
+
+        public object CurrentView_Mold_MainView
+        {
+            get
+            {
+                return this._CurrentView_Mold_MainView; 
+            }
+
+            set
+            {
+                this._CurrentView_Mold_MainView = value;
+                this.OnPropertyChanged();
+            }
         }
     }
 }

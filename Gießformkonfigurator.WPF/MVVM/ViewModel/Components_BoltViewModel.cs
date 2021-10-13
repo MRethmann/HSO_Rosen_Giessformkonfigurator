@@ -15,15 +15,18 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
 
     class Components_BoltViewModel : ObservableObject
     {
-        public Bolt Bolt { get; set; }
-
-        public ICommand InsertIntoDbCmd { get; set; }
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Components_BoltViewModel"/> class.
+        /// </summary>
         public Components_BoltViewModel()
         {
             this.Bolt = new Bolt() { HasThread = true };
-            InsertIntoDbCmd = new RelayCommand(param => InsertIntoDb(), param => ValidateInput());
+            this.InsertIntoDbCmd = new RelayCommand(param => this.InsertIntoDb(), param => this.ValidateInput());
         }
+
+        public Bolt Bolt { get; set; }
+
+        public ICommand InsertIntoDbCmd { get; set; }
 
         public void InsertIntoDb()
         {
@@ -39,17 +42,20 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                 {
                     MessageBox.Show(e + "Fehler beim Hinzufügen");
                 }
-
             }
         }
 
+        /// <summary>
+        /// Impede wrong user input which may result in wrong mold search output. Activates Button if true.
+        /// </summary>
+        /// <returns>True (active Button) if all input data is valid.</returns>
         public bool ValidateInput()
         {
-            if (Bolt.ID.ToString().Length <= 1
-                || ((Bolt.OuterDiameter ?? 0) == 0)
-                || Bolt.Height == 0
-                || (Bolt.HasThread && string.IsNullOrWhiteSpace(Bolt.Thread))
-                || Bolt.HasGuideBolt && (((Bolt.GuideHeight ?? 0) == 0) || ((Bolt.GuideOuterDiameter ?? 0) == 0)))
+            if (this.Bolt.ID.ToString().Length <= 1
+                || ((this.Bolt.OuterDiameter ?? 0) == 0)
+                || this.Bolt.Height == 0
+                || (this.Bolt.HasThread && string.IsNullOrWhiteSpace(this.Bolt.Thread))
+                || this.Bolt.HasGuideBolt && (((this.Bolt.GuideHeight ?? 0) == 0) || ((this.Bolt.GuideOuterDiameter ?? 0) == 0)))
             {
                 return false;
             }

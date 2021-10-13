@@ -3,37 +3,40 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
-using Gießformkonfigurator.WPF.Core;
-using Gießformkonfigurator.WPF.MVVM.Model.Db_products;
-using Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses;
-using System;
-using System.Collections.Generic;
-using System.Windows;
-using System.Windows.Input;
-
 namespace Gießformkonfigurator.WPF.MVVM.ViewModel
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Windows;
+    using System.Windows.Input;
+    using Gießformkonfigurator.WPF.Core;
+    using Gießformkonfigurator.WPF.MVVM.Model.Db_products;
+    using Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses;
+
     class Product_CupViewModel : ObservableObject
     {
-        public List<Decimal?> PUFactors { get; set; } = new List<decimal?>() { 1.017m, 1.0175m, 1.023m, 1.025m };
-
-        public ProductCup productCup { get; set; }
-
-        public ICommand insertIntoDbCmd { get; set; }
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Product_CupViewModel"/> class.
+        /// </summary>
         public Product_CupViewModel()
         {
-            this.productCup = new ProductCup() { FactorPU = 1.017m };
-            insertIntoDbCmd = new RelayCommand(param => insertIntoDb(), param => validateInput());
+            this.ProductCup = new ProductCup() { FactorPU = 1.017m };
+            this.InsertIntoDbCmd = new RelayCommand(param => this.InsertIntoDb(), param => this.ValidateInput());
         }
 
-        public void insertIntoDb()
+        public List<decimal?> PUFactors { get; set; } = new List<decimal?>() { 1.017m, 1.0175m, 1.023m, 1.025m };
+
+        public ProductCup ProductCup { get; set; }
+
+        public ICommand InsertIntoDbCmd { get; set; }
+
+        public void InsertIntoDb()
         {
             using (var db = new GießformDBContext())
             {
                 try
                 {
-                    db.ProductCups.Add(this.productCup);
+                    db.ProductCups.Add(this.ProductCup);
                     db.SaveChanges();
                     MessageBox.Show("Produkt erfolgreich hinzugefügt");
                 }
@@ -41,15 +44,14 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                 {
                     MessageBox.Show(e + "Fehler beim Hinzufügen.");
                 }
-
             }
         }
 
-        public bool validateInput()
+        public bool ValidateInput()
         {
-            if (productCup.ID.ToString().Length <= 1
-                || string.IsNullOrWhiteSpace(productCup.BaseCup)
-                || productCup.InnerDiameter == 0)
+            if (this.ProductCup.ID.ToString().Length <= 1
+                || string.IsNullOrWhiteSpace(this.ProductCup.BaseCup)
+                || this.ProductCup.InnerDiameter == 0)
             {
                 return false;
             }

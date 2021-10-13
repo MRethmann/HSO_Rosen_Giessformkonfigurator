@@ -5,24 +5,27 @@
 //-----------------------------------------------------------------------
 namespace Gießformkonfigurator.WPF.MVVM.ViewModel
 {
-    using Gießformkonfigurator.WPF.Core;
-    using Gießformkonfigurator.WPF.MVVM.Model.Db_components;
-    using Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses;
     using System;
     using System.Windows;
     using System.Windows.Input;
+    using Gießformkonfigurator.WPF.Core;
+    using Gießformkonfigurator.WPF.MVVM.Model.Db_components;
+    using Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses;
 
     class Components_RingViewModel
     {
-        public Ring Ring { get; set; }
-
-        public ICommand InsertIntoDbCmd { get; set; }
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Components_RingViewModel"/> class.
+        /// </summary>
         public Components_RingViewModel()
         {
             this.Ring = new Ring();
-            InsertIntoDbCmd = new RelayCommand(param => InsertIntoDb(), param => ValidateInput());
+            this.InsertIntoDbCmd = new RelayCommand(param => this.InsertIntoDb(), param => this.ValidateInput());
         }
+
+        public Ring Ring { get; set; }
+
+        public ICommand InsertIntoDbCmd { get; set; }
 
         public void InsertIntoDb()
         {
@@ -38,19 +41,22 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                 {
                     MessageBox.Show(e + "Fehler beim Hinzufügen");
                 }
-
             }
         }
 
+        /// <summary>
+        /// Impede wrong user input which may result in wrong mold search output. Activates Button if true.
+        /// </summary>
+        /// <returns>True (active Button) if all input data is valid.</returns>
         public bool ValidateInput()
         {
-            if (Ring.ID.ToString().Length <= 1
-                || Ring.OuterDiameter == 0
-                || Ring.Height == 0
-                || Ring.FillHeightMax == 0
-                || Ring.InnerDiameter == 0
-                || Ring.OuterDiameter < Ring.InnerDiameter
-                || (Ring.HasKonus && (((Ring.InnerKonusMin ?? 0) == 0) || ((Ring.InnerKonusMax ?? 0) == 0) || ((Ring.InnerKonusAngle ?? 0) == 0) || ((Ring.KonusHeight ?? 0) == 0))))
+            if (this.Ring.ID.ToString().Length <= 1
+                || this.Ring.OuterDiameter == 0
+                || this.Ring.Height == 0
+                || this.Ring.FillHeightMax == 0
+                || this.Ring.InnerDiameter == 0
+                || this.Ring.OuterDiameter < this.Ring.InnerDiameter
+                || (this.Ring.HasKonus && (((this.Ring.InnerKonusMin ?? 0) == 0) || ((this.Ring.InnerKonusMax ?? 0) == 0) || ((this.Ring.InnerKonusAngle ?? 0) == 0) || ((this.Ring.KonusHeight ?? 0) == 0))))
             {
                 return false;
             }

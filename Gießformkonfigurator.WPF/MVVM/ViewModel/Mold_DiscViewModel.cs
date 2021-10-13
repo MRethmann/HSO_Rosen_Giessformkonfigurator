@@ -3,34 +3,40 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
-using Gießformkonfigurator.WPF.Core;
-using Gießformkonfigurator.WPF.MVVM.Model.Db_molds;
-using Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses;
-using System;
-using System.Windows;
-using System.Windows.Input;
-
 namespace Gießformkonfigurator.WPF.MVVM.ViewModel
 {
-    class Mold_DiscViewModel
+    using System;
+    using System.Windows;
+    using System.Windows.Input;
+    using Gießformkonfigurator.WPF.Core;
+    using Gießformkonfigurator.WPF.MVVM.Model.Db_molds;
+    using Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses;
+
+    /// <summary>
+    /// Used to add SingleMoldDiscs to database.
+    /// </summary>
+    public class Mold_DiscViewModel
     {
-        public SingleMoldDisc singleMoldDisc { get; set; }
-
-        public ICommand insertIntoDbCmd { get; set; }
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Mold_DiscViewModel"/> class.
+        /// </summary>
         public Mold_DiscViewModel()
         {
-            this.singleMoldDisc = new SingleMoldDisc();
-            insertIntoDbCmd = new RelayCommand(param => insertIntoDb(), param => validateInput());
+            this.SingleMoldDisc = new SingleMoldDisc();
+            this.InsertIntoDbCmd = new RelayCommand(param => InsertIntoDb(), param => ValidateInput());
         }
 
-        public void insertIntoDb()
+        public SingleMoldDisc SingleMoldDisc { get; set; }
+
+        public ICommand InsertIntoDbCmd { get; set; }
+
+        public void InsertIntoDb()
         {
             using (var db = new GießformDBContext())
             {
                 try
                 {
-                    db.SingleMoldDiscs.Add(this.singleMoldDisc);
+                    db.SingleMoldDiscs.Add(this.SingleMoldDisc);
                     db.SaveChanges();
                     MessageBox.Show("Gießform erfolgreich hinzugefügt");
                 }
@@ -42,12 +48,12 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
             }
         }
 
-        public bool validateInput()
+        public bool ValidateInput()
         {
-            if (singleMoldDisc.ID.ToString().Length <= 1
-                || singleMoldDisc.OuterDiameter == 0
-                || singleMoldDisc.InnerDiameter == 0
-                || singleMoldDisc.Height == 0)
+            if (this.SingleMoldDisc.ID.ToString().Length <= 1
+                || this.SingleMoldDisc.OuterDiameter == 0
+                || this.SingleMoldDisc.InnerDiameter == 0
+                || this.SingleMoldDisc.Height == 0)
             {
                 return false;
             }

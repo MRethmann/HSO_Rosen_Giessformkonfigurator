@@ -1,16 +1,21 @@
-﻿using System;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-
+﻿//-----------------------------------------------------------------------
+// <copyright file="ObservableObject.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
 namespace Gießformkonfigurator.WPF.Core
 {
-    class ObservableObject : INotifyPropertyChanged
+    using System;
+    using System.ComponentModel;
+    using System.Runtime.CompilerServices;
+
+    public class ObservableObject : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void OnPropertyChanged([CallerMemberName] string name = null)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
     }
 }

@@ -5,25 +5,28 @@
 //-----------------------------------------------------------------------
 namespace Gießformkonfigurator.WPF.MVVM.ViewModel
 {
-    using Gießformkonfigurator.WPF.Core;
-    using Gießformkonfigurator.WPF.MVVM.Model.Db_components;
-    using Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses;
     using System;
     using System.ComponentModel;
     using System.Windows;
     using System.Windows.Input;
+    using Gießformkonfigurator.WPF.Core;
+    using Gießformkonfigurator.WPF.MVVM.Model.Db_components;
+    using Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses;
 
     class Components_InsertPlateViewModel : ObservableObject
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Components_InsertPlateViewModel"/> class.
+        /// </summary>
+        public Components_InsertPlateViewModel()
+        {
+            this.InsertPlate = new InsertPlate() { HasKonus = true };
+            this.InsertIntoDbCmd = new RelayCommand(param => this.InsertIntoDb(), param => this.ValidateInput());
+        }
+
         public InsertPlate InsertPlate { get; set; }
 
         public ICommand InsertIntoDbCmd { get; set; }
-
-        public Components_InsertPlateViewModel()
-        {
-            this.InsertPlate = new InsertPlate() { HasKonus = true } ;
-            InsertIntoDbCmd = new RelayCommand(param => InsertIntoDb(), param => ValidateInput());
-        }
 
         public void InsertIntoDb()
         {
@@ -39,18 +42,21 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                 {
                     MessageBox.Show(e + "Fehler beim Hinzufügen");
                 }
-
             }
         }
 
+        /// <summary>
+        /// Impede wrong user input which may result in wrong mold search output. Activates Button if true.
+        /// </summary>
+        /// <returns>True (active Button) if all input data is valid.</returns>
         public bool ValidateInput()
         {
-            if (InsertPlate.ID.ToString().Length <= 1
-                || InsertPlate.OuterDiameter == 0
-                || InsertPlate.Height == 0
-                || InsertPlate.OuterDiameter < InsertPlate.InnerDiameter
-                || (InsertPlate.HasKonus && (((InsertPlate.InnerKonusMin ?? 0) == 0) || ((InsertPlate.InnerKonusMax ?? 0) == 0) || ((InsertPlate.InnerKonusAngle ?? 0) == 0) || ((InsertPlate.KonusHeight ?? 0) == 0)))
-                || (InsertPlate.HasHoleguide && ((InsertPlate.InnerDiameter ?? 0) == 0)))
+            if (this.InsertPlate.ID.ToString().Length <= 1
+                || this.InsertPlate.OuterDiameter == 0
+                || this.InsertPlate.Height == 0
+                || this.InsertPlate.OuterDiameter < this.InsertPlate.InnerDiameter
+                || (this.InsertPlate.HasKonus && (((this.InsertPlate.InnerKonusMin ?? 0) == 0) || ((this.InsertPlate.InnerKonusMax ?? 0) == 0) || ((this.InsertPlate.InnerKonusAngle ?? 0) == 0) || ((this.InsertPlate.KonusHeight ?? 0) == 0)))
+                || (this.InsertPlate.HasHoleguide && ((this.InsertPlate.InnerDiameter ?? 0) == 0)))
             {
                 return false;
             }

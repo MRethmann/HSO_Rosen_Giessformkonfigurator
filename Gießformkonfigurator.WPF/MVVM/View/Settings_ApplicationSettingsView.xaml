@@ -29,8 +29,8 @@
             <Button Name="LogFilePathSelector" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" Width="100" Height="30" Margin="10" Content="Choose Filepath" Click="LogFilePathSelector_Click"/>
 
             <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Text="Admin Passwort:" Margin="10" FontSize="18"/>
-            <TextBox Background="AliceBlue" Grid.Row="2" Grid.Column="1" x:Name="AdminPassword" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" Width="Auto" Height="30" Margin="10" FontSize="18" Text="{Binding adminPassword}" />
-            <Button Name="AdminPasswordSetter" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left" Width="100" Height="30" Margin="10" Content="Password ändern" Command="{Binding insertIntoDbCmd}"/>
+            <TextBox Background="AliceBlue" Grid.Row="2" Grid.Column="1" x:Name="AdminPassword" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" Width="Auto" Height="30" Margin="10" FontSize="18" Text="{Binding AdminPassword}" />
+            <Button Name="AdminPasswordSetter" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left" Width="100" Height="30" Margin="10" Content="Password ändern" Command="{Binding InsertIntoDbCmd}"/>
         </Grid>
     </Grid>
 </UserControl>

@@ -5,8 +5,6 @@
 //-----------------------------------------------------------------------
 namespace Gießformkonfigurator.WPF.MVVM.ViewModel
 {
-    using Gießformkonfigurator.WPF.Core;
-    using Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses;
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
@@ -16,67 +14,86 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
     using System.Linq;
     using System.Windows;
     using System.Windows.Input;
+    using Gießformkonfigurator.WPF.Core;
+    using Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses;
 
     class DBManagement_MainViewModel : ObservableObject
     {
-        public string connectionString { get; set; } = ConfigurationManager.ConnectionStrings["GießformDB"].ToString();
-
-        public ObservableCollection<String> dbTableSelection { get; set; }
-
-        public ObservableCollection<String> dbAttributeSelection { get; set; }
-
-        private string _selectedTable;
-        public string selectedTable 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DBManagement_MainViewModel"/> class.
+        /// </summary>
+        public DBManagement_MainViewModel()
         {
-            get { return _selectedTable; }
-            set 
+            this.DbTableSelection = new ObservableCollection<String>();
+            this.DbAttributeSelection = new ObservableCollection<String>();
+            this.GetDbTables();
+            this.SearchCommand = new RelayCommand(param => this.DatabaseQuery(), param => this.ValidateSearch());
+        }
+
+        public string ConnectionString { get; set; } = ConfigurationManager.ConnectionStrings["GießformDB"].ToString();
+
+        public ObservableCollection<string> DbTableSelection { get; set; }
+
+        public ObservableCollection<string> DbAttributeSelection { get; set; }
+
+        private string _SelectedTable;
+
+        public string SelectedTable 
+        {
+            get
             {
-                _selectedTable = value;
-                OnPropertyChanged("selectedTable");
-                this.getTableAttributes();
+                return this._SelectedTable;
+            }
+
+            set
+            {
+                this._SelectedTable = value;
+                this.OnPropertyChanged("selectedTable");
+                this.GetTableAttributes();
             }
         }
 
-        private string _selectedAttribute;
-        public string selectedAttribute
+        private string _SelectedAttribute;
+
+        public string SelectedAttribute
         {
-            get { return _selectedAttribute; }
+            get
+            {
+                return this._SelectedAttribute; 
+            }
+
             set
             {
-                _selectedAttribute = value;
+                this._SelectedAttribute = value;
             }
         }
 
-        private string _attributeValue;
-        public string attributeValue 
+        private string _AttributeValue;
+
+        public string AttributeValue
         {
-            get { return _attributeValue; }
+            get
+            {
+                return this._AttributeValue;
+            }
+
             set
             {
-                _attributeValue = value;
+                this._AttributeValue = value;
             }
         }
 
         public Visibility IsLoading { get; set; } = Visibility.Hidden;
 
-        public ICommand searchCommand { get; set; }
+        public ICommand SearchCommand { get; set; }
 
-        public DBManagement_MainViewModel()
+        public void GetDbTables()
         {
-            this.dbTableSelection = new ObservableCollection<String>();
-            this.dbAttributeSelection = new ObservableCollection<String>();
-            this.getDbTables();
-            searchCommand = new RelayCommand(param => databaseQuery(), param => validateSearch());
-        }
-
-        public void getDbTables()
-        {
-            dbTableSelection.Clear();
-            string connString = this.connectionString;
+            this.DbTableSelection.Clear();
+            string connString = this.ConnectionString;
             using (SqlConnection connection = new SqlConnection(connString))
             {
                 connection.Open();
-                
                 string query = "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME NOT IN ('__MigrationHistory', 'ApplicationSettings')";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -84,21 +101,21 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                     {
                         while (reader.Read())
                         {
-                            this.dbTableSelection.Add(reader["TABLE_NAME"].ToString());
+                            this.DbTableSelection.Add(reader["TABLE_NAME"].ToString());
                         }
                     }
                 }
             }
         }
 
-        public void getTableAttributes()
+        public void GetTableAttributes()
         {
-            dbAttributeSelection.Clear();
-            string connString = this.connectionString;
+            this.DbAttributeSelection.Clear();
+            string connString = this.ConnectionString;
             using (SqlConnection connection = new SqlConnection(connString))
             {
                 connection.Open();
-                string table = this.selectedTable;
+                string table = this.SelectedTable;
                 string query = $"SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{table}'";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -106,23 +123,23 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                     {
                         while (reader.Read())
                         {
-                            this.dbAttributeSelection.Add(reader["COLUMN_NAME"].ToString());
+                            this.DbAttributeSelection.Add(reader["COLUMN_NAME"].ToString());
                         }
                     }
                 }
             }
         }
 
-        public void databaseQuery()
+        public void DatabaseQuery()
         {
-            string connString = this.connectionString;
+            string connString = this.ConnectionString;
 
             using (SqlConnection connection = new SqlConnection(connString))
             {
                 connection.Open();
-                string table = this.selectedTable;
-                string attribute = this.selectedAttribute;
-                string attributeValue = this.attributeValue;
+                string table = this.SelectedTable;
+                string attribute = this.SelectedAttribute;
+                string attributeValue = this.AttributeValue;
                 string query = $"SELECT * FROM {table} WHERE {attribute} = '{attributeValue}'";
                 DataTable dataTable = new DataTable();
                 using (SqlCommand command = new SqlCommand(query, connection))
@@ -133,9 +150,9 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
             }
         }
 
-        public bool validateSearch()
+        public bool ValidateSearch()
         {
-            if (selectedTable == null || selectedAttribute == null)
+            if (this.SelectedTable == null || this.SelectedAttribute == null)
             {
                 return false;
             }

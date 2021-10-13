@@ -31,7 +31,7 @@
                    Grid.Row="0" Grid.Column="0"/>
 
         <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="2">
-            <TextBox Text="{Binding rankingFactorOuterDiameter}" Width="150" Height="40"
+            <TextBox Text="{Binding RankingFactorOuterDiameter}" Width="150" Height="40"
                  VerticalAlignment="Center"
                  VerticalContentAlignment="Center"
                  HorizontalAlignment="Right"
@@ -48,7 +48,7 @@
 
         <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="2">
 
-            <TextBox Text="{Binding rankingFactorInnerDiameter}" Width="150" Height="40"
+            <TextBox Text="{Binding RankingFactorInnerDiameter}" Width="150" Height="40"
                  VerticalAlignment="Center"
                  VerticalContentAlignment="Center"
                  Foreground="Black" FontSize="15">
@@ -64,7 +64,7 @@
 
         <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="2">
 
-            <TextBox Text="{Binding rankingFactorBolts}" Width="150" Height="40"
+            <TextBox Text="{Binding RankingFactorBolts}" Width="150" Height="40"
                  VerticalAlignment="Center"
                  VerticalContentAlignment="Center"
                  Foreground="Black" FontSize="15">
@@ -79,7 +79,7 @@
                 Background="White"
                 FontSize="15"
                 Grid.Column="2" Grid.Row="4"
-                Command="{Binding insertIntoDbCmd}"/>
+                Command="{Binding InsertIntoDbCmd}"/>
 
     </Grid>
 </UserControl>

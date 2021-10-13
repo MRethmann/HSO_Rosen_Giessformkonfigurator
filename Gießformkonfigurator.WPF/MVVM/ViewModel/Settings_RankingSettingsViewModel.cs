@@ -3,42 +3,45 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
-using Gießformkonfigurator.WPF.Core;
-using System;
-using System.Configuration;
-using System.Data;
-using System.Data.SqlClient;
-using System.Globalization;
-using System.Windows;
-using System.Windows.Input;
-
 namespace Gießformkonfigurator.WPF.MVVM.ViewModel
 {
+    using System;
+    using System.Configuration;
+    using System.Data;
+    using System.Data.SqlClient;
+    using System.Globalization;
+    using System.Windows;
+    using System.Windows.Input;
+    using Gießformkonfigurator.WPF.Core;
+
     class Settings_RankingSettingsViewModel : ObservableObject
     {
-        public decimal rankingFactorOuterDiameter { get; set; }
-
-        public decimal rankingFactorInnerDiameter { get; set; }
-
-        public decimal rankingFactorBolts { get; set; }
-
-        public RankingSettings rankingSettings { get; set; }
-
-        public ICommand insertIntoDbCmd { get; set; }
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Settings_RankingSettingsViewModel"/> class.
+        /// </summary>
         public Settings_RankingSettingsViewModel()
         {
-            insertIntoDbCmd = new RelayCommand(param => insertIntoDb(), param => validateData());
-            rankingSettings = new RankingSettings();
-            this.rankingFactorOuterDiameter = rankingSettings.rankingFactorOuterDiameter;
-            this.rankingFactorInnerDiameter = rankingSettings.rankingFactorInnerDiameter;
-            this.rankingFactorBolts = rankingSettings.rankingFactorBolts;
+            this.InsertIntoDbCmd = new RelayCommand(param => this.InsertIntoDb(), param => this.ValidateData());
+            this.RankingSettings = new RankingSettings();
+            this.RankingFactorOuterDiameter = this.RankingSettings.rankingFactorOuterDiameter;
+            this.RankingFactorInnerDiameter = this.RankingSettings.rankingFactorInnerDiameter;
+            this.RankingFactorBolts = this.RankingSettings.rankingFactorBolts;
         }
 
-        public void insertIntoDb()
+        public decimal RankingFactorOuterDiameter { get; set; }
+
+        public decimal RankingFactorInnerDiameter { get; set; }
+
+        public decimal RankingFactorBolts { get; set; }
+
+        public RankingSettings RankingSettings { get; set; }
+
+        public ICommand InsertIntoDbCmd { get; set; }
+
+        public void InsertIntoDb()
         {
             var connString = ConfigurationManager.ConnectionStrings["GießformDB"].ToString();
-            if (checkValue(rankingFactorOuterDiameter, 0, 1) && checkValue(rankingFactorInnerDiameter, 0, 1) && checkValue(rankingFactorBolts, 0, 1))
+            if (this.CheckValue(this.RankingFactorOuterDiameter, 0, 1) && this.CheckValue(this.RankingFactorInnerDiameter, 0, 1) && this.CheckValue(this.RankingFactorBolts, 0, 1))
             {
                 try
                 {
@@ -47,7 +50,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                         connection.Open();
                         NumberFormatInfo nfi = new NumberFormatInfo();
                         nfi.NumberDecimalSeparator = ".";
-                        string query = $"UPDATE dbo.RankingSettings SET rankingFactorOuterDiameter = {this.rankingFactorOuterDiameter.ToString(nfi)}, rankingFactorInnerDiameter = {this.rankingFactorInnerDiameter.ToString(nfi)}, rankingFactorBolts = {this.rankingFactorBolts.ToString(nfi)}";
+                        string query = $"UPDATE dbo.RankingSettings SET rankingFactorOuterDiameter = {this.RankingFactorOuterDiameter.ToString(nfi)}, rankingFactorInnerDiameter = {this.RankingFactorInnerDiameter.ToString(nfi)}, rankingFactorBolts = {this.RankingFactorBolts.ToString(nfi)}";
                         try
                         {
                             using (SqlCommand command = new SqlCommand(query, connection))
@@ -68,24 +71,30 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                 }
             }
             else
+            {
                 MessageBox.Show("Deine Werte liegen außerhalb des erforderlichen Bereichs - bitte prüfen!");
+            }
         }
 
         /// <summary>
         /// Validates if all required fields are filled out and activates the button if true.
         /// </summary>
         /// <returns>True if all required fields are filled.</returns>
-        private bool validateData()
+        private bool ValidateData()
         {
             return true;
         }
 
-        private bool checkValue(decimal current, decimal min, decimal max)
+        private bool CheckValue(decimal current, decimal min, decimal max)
         {
             if (current < min || current > max)
+            {
                 return false;
+            }
             else
+            {
                 return true;
+            }
         }
     }
 }

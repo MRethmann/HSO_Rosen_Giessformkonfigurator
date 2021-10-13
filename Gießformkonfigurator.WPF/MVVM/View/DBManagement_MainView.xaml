@@ -51,7 +51,7 @@
                                Margin="10"
                                FontSize="18"/>
 
-                    <ComboBox Name="selectedTableComboBox" Margin="10" HorizontalAlignment="left" VerticalAlignment="Center" MinWidth="225" FontSize="18" Grid.Column="1" ItemsSource="{Binding dbTableSelection}"  SelectedItem="{Binding selectedTable, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                    <ComboBox Name="selectedTableComboBox" Margin="10" HorizontalAlignment="left" VerticalAlignment="Center" MinWidth="225" FontSize="18" Grid.Column="1" ItemsSource="{Binding DbTableSelection}"  SelectedItem="{Binding SelectedTable, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
                         
                     </ComboBox>
 
@@ -62,7 +62,7 @@
                                FontSize="18"
                                Grid.Row="1"/>
 
-                    <ComboBox Name="selectedAttributeComboBox" Margin="10" HorizontalAlignment="left" VerticalAlignment="Center" MinWidth="225" FontSize="18" Grid.Column="1" Grid.Row="1" ItemsSource="{Binding dbAttributeSelection}" SelectedItem="{Binding selectedAttribute, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, NotifyOnSourceUpdated=True}">
+                    <ComboBox Name="selectedAttributeComboBox" Margin="10" HorizontalAlignment="left" VerticalAlignment="Center" MinWidth="225" FontSize="18" Grid.Column="1" Grid.Row="1" ItemsSource="{Binding DbAttributeSelection}" SelectedItem="{Binding SelectedAttribute, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, NotifyOnSourceUpdated=True}">
 
                     </ComboBox>
 
@@ -95,7 +95,7 @@
                              Foreground="Black" FontSize="15"
                              Margin="10"
                              MinWidth="225"
-                             Text="{Binding attributeValue, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                             Text="{Binding AttributeValue, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
                     
                     <Button x:Name="DBQueryBtn" Content="Suchen"
                             HorizontalAlignment="right" VerticalAlignment="top"

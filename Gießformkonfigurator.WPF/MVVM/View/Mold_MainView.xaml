@@ -37,7 +37,7 @@
         
                      <ContentControl Grid.Row="1" Grid.Column="1"
                             Margin="10"
-                            Content="{Binding currentView_Mold_MainView}"/>
+                            Content="{Binding CurrentView_Mold_MainView}"/>
         
         </Grid>
     </Border>

@@ -8,77 +8,97 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
     using Gießformkonfigurator.WPF.Core;
     using log4net;
 
+    /// <summary>
+    /// Unites all views.
+    /// </summary>
     class MainViewModel : ObservableObject
     {
+        private static readonly ILog Log = LogManager.GetLogger(typeof(MainViewModel));
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MainViewModel"/> class.
+        /// </summary>
+        public MainViewModel()
+        {
+            this.Search_MainViewModel = new Search_MainViewModel();
+            this.Product_MainViewModel = new Product_MainViewModel();
+            this.Mold_MainViewModel = new Mold_MainViewModel();
+            this.Components_MainViewModel = new Components_MainViewModel();
+            this.Settings_MainViewModel = new Settings_MainViewModel();
+            this.DBManagement_MainViewModel = new DBManagement_MainViewModel();
+
+            this.CurrentView = this.Search_MainViewModel;
+            this.Search_MainViewCmd = new RelayCommand(o =>
+            {
+                this.CurrentView = this.Search_MainViewModel;
+            });
+
+            this.Product_MainViewCmd = new RelayCommand(o =>
+            {
+                this.CurrentView = this.Product_MainViewModel;
+            });
+
+            this.Mold_MainViewCmd = new RelayCommand(o =>
+            {
+                this.CurrentView = this.Mold_MainViewModel;
+            });
+
+            this.Components_MainViewCmd = new RelayCommand(o =>
+            {
+                this.CurrentView = this.Components_MainViewModel;
+            });
+
+            this.Settings_MainViewCmd = new RelayCommand(o =>
+            {
+                this.CurrentView = this.Settings_MainViewModel;
+            });
+
+            this.DBManagement_MainViewCmd = new RelayCommand(o =>
+            {
+                this.CurrentView = this.DBManagement_MainViewModel;
+            });
+        }
+
         public RelayCommand Mold_MainViewCmd { get; set; }
+
         public RelayCommand Product_MainViewCmd { get; set; }
+
         public RelayCommand HomeViewCommand { get; set; }
+
         public RelayCommand Search_MainViewCmd { get; set; }
+
         public RelayCommand Components_MainViewCmd { get; set; }
+
         public RelayCommand Settings_MainViewCmd { get; set; }
+
         public RelayCommand DBManagement_MainViewCmd { get; set; }
 
-        private static readonly ILog log = LogManager.GetLogger(typeof(MainViewModel));
-
         public Mold_MainViewModel Mold_MainViewModel { get; set; }
-        public Product_MainViewModel Product_MainViewModel { get; set; }
-        public Search_MainViewModel Search_MainViewModel { get; set; }
-        public Components_MainViewModel Components_MainViewModel { get; set; }
-        public Settings_MainViewModel Settings_MainViewModel { get; set; }
-        public DBManagement_MainViewModel DBManagement_MainViewModel { get; set; }
 
-        private object _currentView;
+        public Product_MainViewModel Product_MainViewModel { get; set; }
+
+        public Search_MainViewModel Search_MainViewModel { get; set; }
+
+        public Components_MainViewModel Components_MainViewModel { get; set; }
+
+        public Settings_MainViewModel Settings_MainViewModel { get; set; }
+
+        public DBManagement_MainViewModel DBManagement_MainViewModel { get; set; }
 
         public object CurrentView
         {
-            get { return _currentView; }
-            set 
-            { 
-                _currentView = value;
-                OnPropertyChanged();
+            get
+            {
+                return _CurrentView;
+            }
+
+            set
+            {
+                this._CurrentView = value;
+                this.OnPropertyChanged();
             }
         }
 
-
-        public MainViewModel()
-        {
-            Search_MainViewModel = new Search_MainViewModel();
-            Product_MainViewModel = new Product_MainViewModel();
-            Mold_MainViewModel = new Mold_MainViewModel();
-            Components_MainViewModel = new Components_MainViewModel();
-            Settings_MainViewModel = new Settings_MainViewModel();
-            DBManagement_MainViewModel = new DBManagement_MainViewModel();
-
-            CurrentView = Search_MainViewModel;
-            Search_MainViewCmd = new RelayCommand(o =>
-            {
-                CurrentView = Search_MainViewModel;
-            });
-
-            Product_MainViewCmd = new RelayCommand(o =>
-            {
-                CurrentView = Product_MainViewModel;
-            });
-
-            Mold_MainViewCmd = new RelayCommand(o =>
-            {
-                CurrentView = Mold_MainViewModel;
-            });
-
-            Components_MainViewCmd = new RelayCommand(o =>
-            {
-                CurrentView = Components_MainViewModel;
-            });
-
-            Settings_MainViewCmd = new RelayCommand(o =>
-            {
-                CurrentView = Settings_MainViewModel;
-            });
-
-            DBManagement_MainViewCmd = new RelayCommand(o =>
-            {
-                CurrentView = DBManagement_MainViewModel;
-            });
-        }
+        private object _CurrentView;
     }
 }

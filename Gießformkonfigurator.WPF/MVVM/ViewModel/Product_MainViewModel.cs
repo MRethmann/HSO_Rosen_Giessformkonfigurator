@@ -5,74 +5,83 @@
 //-----------------------------------------------------------------------
 namespace Gießformkonfigurator.WPF.MVVM.ViewModel
 {
-    using Gießformkonfigurator.WPF.Core;
     using System;
+    using System.Windows;
     using System.Windows.Input;
+    using Gießformkonfigurator.WPF.Core;
     using Gießformkonfigurator.WPF.MVVM.Model.Db_products;
     using Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses;
-    using System.Windows;
 
     class Product_MainViewModel : ObservableObject
     {
-        public string description { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Product_MainViewModel"/> class.
+        /// </summary>
+        public Product_MainViewModel()
+        {
+            this.InsertIntoDbCmd = new RelayCommand(param => this.InsertIntoDb(), param => this.ValidateData());
+            this.Product_DiscViewModel = new Product_DiscViewModel();
+            this.Product_CupViewModel = new Product_CupViewModel();
 
-        public decimal outerDiameter { get; set; }
+            this.CurrentView_Product_MainView = this.Product_DiscViewModel;
 
-        public decimal innerDiameter { get; set; }
+            this.Product_DiscViewCmd = new RelayCommand(o =>
+            {
+                this.CurrentView_Product_MainView = this.Product_DiscViewModel;
+            });
 
-        public decimal height { get; set; }
+            this.Product_CupViewCmd = new RelayCommand(o =>
+            {
+                this.CurrentView_Product_MainView = this.Product_CupViewModel;
+            });
+        }
 
-        public int drillHoles { get; set; }
+        public string Description { get; set; }
 
-        public string material { get; set; }
+        public decimal OuterDiameter { get; set; }
 
-        public ICommand insertIntoDbCmd { get; set; }
+        public decimal InnerDiameter { get; set; }
+
+        public decimal Height { get; set; }
+
+        public int DrillHoles { get; set; }
+
+        public string Material { get; set; }
+
+        public ICommand InsertIntoDbCmd { get; set; }
 
         public RelayCommand Product_DiscViewCmd { get; set; }
+
         public RelayCommand Product_CupViewCmd { get; set; }
 
         public Product_DiscViewModel Product_DiscViewModel { get; set; }
+
         public Product_CupViewModel Product_CupViewModel { get; set; }
 
-        private object _currentView_Product_MainView;
+        private object _CurrentView_Product_MainView;
 
-        public object currentView_Product_MainView
+        public object CurrentView_Product_MainView
         {
-            get { return _currentView_Product_MainView; }
+            get
+            { 
+                return this._CurrentView_Product_MainView;
+            }
+
             set
             {
-                _currentView_Product_MainView = value;
-                OnPropertyChanged();
+                this._CurrentView_Product_MainView = value;
+                this.OnPropertyChanged();
             }
         }
 
-        public Product_MainViewModel()
-        {
-            insertIntoDbCmd = new RelayCommand(param => insertIntoDb(), param => validateData());
-            Product_DiscViewModel = new Product_DiscViewModel();
-            Product_CupViewModel = new Product_CupViewModel();
-
-            currentView_Product_MainView = Product_DiscViewModel;
-
-            Product_DiscViewCmd = new RelayCommand(o =>
-            {
-                currentView_Product_MainView = Product_DiscViewModel;
-            });
-
-            Product_CupViewCmd = new RelayCommand(o =>
-            {
-                currentView_Product_MainView = Product_CupViewModel;
-            });
-        }
-
-        public void insertIntoDb()
+        public void InsertIntoDb()
         {
             using (var db = new GießformDBContext())
             {
                 try
                 {
-                    ProductDisc pd = new ProductDisc() { OuterDiameter = this.outerDiameter, InnerDiameter = this.innerDiameter, Height = this.height, HcHoleDiameter = 0.0m, HcDiameter = 0.0m, HcHoles = 0 };
-                    db.ProductDiscs.Add(pd);
+                    ProductDisc productDisc = new ProductDisc() { OuterDiameter = this.OuterDiameter, InnerDiameter = this.InnerDiameter, Height = this.Height, HcHoleDiameter = 0.0m, HcDiameter = 0.0m, HcHoles = 0 };
+                    db.ProductDiscs.Add(productDisc);
                     db.SaveChanges();
                     MessageBox.Show("Produkt erfolgreich hinzugefügt.");
                 }
@@ -80,16 +89,16 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                 {
                     MessageBox.Show("Fehler beim Hinzufügen." + e);
                 }
-
             }
         }
-        private bool validateData()
+
+        private bool ValidateData()
         {
-            return this.description != null
-                && this.outerDiameter > 0 && this.outerDiameter < 10000
-                && this.innerDiameter > 0 && this.innerDiameter < 10000
-                && this.outerDiameter > this.innerDiameter
-                && this.height > 0 && this.height < 10000;
+            return this.Description != null
+                && this.OuterDiameter > 0 && this.OuterDiameter < 10000
+                && this.InnerDiameter > 0 && this.InnerDiameter < 10000
+                && this.OuterDiameter > this.InnerDiameter
+                && this.Height > 0 && this.Height < 10000;
         }
     }
 }

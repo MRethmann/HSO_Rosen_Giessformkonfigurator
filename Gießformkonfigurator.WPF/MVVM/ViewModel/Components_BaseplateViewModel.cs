@@ -15,17 +15,19 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
 
     class Components_BaseplateViewModel : ObservableObject
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Components_BaseplateViewModel"/> class.
+        /// </summary>
+        public Components_BaseplateViewModel()
+        {
+            this.Baseplate = new Baseplate() { HasKonus = true };
+            this.InsertIntoDbCmd = new RelayCommand(param => this.InsertIntoDb(), param => this.ValidateInput());
+        }
+
         public Baseplate Baseplate { get; set; }
 
         public ICommand InsertIntoDbCmd { get; set; }
 
-        public Components_BaseplateViewModel()
-        {
-            Baseplate = new Baseplate() { HasKonus = true };
-            InsertIntoDbCmd = new RelayCommand(param => InsertIntoDb(), param => ValidateInput());
-        }
-
-        // TODO: Implement some kind of validation that prevents wrong input.
         public void InsertIntoDb()
         {
             using (var db = new GießformDBContext())
@@ -40,29 +42,29 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                 {
                     MessageBox.Show(e + "Fehler beim Hinzufügen");
                 }
-
             }
         }
 
         /// <summary>
-        /// Validates if all required fields are filled out and activates the button if true.
+        /// Impede wrong user input which may result in wrong mold search output. Activates Button if true.
         /// </summary>
-        /// <returns>True if all required fields are filled.</returns>
+        /// <returns>True (active Button) if all input data is valid.</returns>
         public bool ValidateInput()
         {
-            if (Baseplate.ID.ToString().Length <= 1
-                || Baseplate.OuterDiameter == 0
-                || Baseplate.Height == 0
-                || Baseplate.OuterDiameter < Baseplate.InnerDiameter
-                || ((Baseplate.OuterKonusMax ?? 0) == 0)
-                || ((Baseplate.OuterKonusMin ?? 0) == 0)
-                || ((Baseplate.OuterKonusAngle ?? 0) == 0)
-                || ((Baseplate.KonusHeight ?? 0) == 0)
-                || (Baseplate.HasKonus && (((Baseplate.InnerKonusMin ?? 0) == 0) || ((Baseplate.InnerKonusMax ?? 0) == 0) || ((Baseplate.InnerKonusAngle ?? 0) == 0)))
-                || (Baseplate.HasHoleguide && ((Baseplate.InnerDiameter ?? 0) == 0)))
+            if (this.Baseplate.ID.ToString().Length <= 1
+                || this.Baseplate.OuterDiameter == 0
+                || this.Baseplate.Height == 0
+                || this.Baseplate.OuterDiameter < this.Baseplate.InnerDiameter
+                || ((this.Baseplate.OuterKonusMax ?? 0) == 0)
+                || ((this.Baseplate.OuterKonusMin ?? 0) == 0)
+                || ((this.Baseplate.OuterKonusAngle ?? 0) == 0)
+                || ((this.Baseplate.KonusHeight ?? 0) == 0)
+                || (this.Baseplate.HasKonus && (((this.Baseplate.InnerKonusMin ?? 0) == 0) || ((this.Baseplate.InnerKonusMax ?? 0) == 0) || ((this.Baseplate.InnerKonusAngle ?? 0) == 0)))
+                || (this.Baseplate.HasHoleguide && ((this.Baseplate.InnerDiameter ?? 0) == 0)))
             {
                 return false;
             }
+
             return true;
         }
     }

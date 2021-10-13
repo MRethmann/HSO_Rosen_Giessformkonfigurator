@@ -10,20 +10,23 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
     using System.Windows;
     using System.Windows.Input;
     using Gießformkonfigurator.WPF.Core;
-    using Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses;
     using Gießformkonfigurator.WPF.MVVM.Model.Db_components;
+    using Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses;
 
     class Components_CoreViewModel : ObservableObject
     {
-        public Core Core { get; set; }
-
-        public ICommand InsertIntoDbCmd { get; set; }
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Components_CoreViewModel"/> class.
+        /// </summary>
         public Components_CoreViewModel()
         {
             this.Core = new Core() { HasKonus = true };
-            InsertIntoDbCmd = new RelayCommand(param => InsertIntoDb(), param => ValidateInput());
+            this.InsertIntoDbCmd = new RelayCommand(param => this.InsertIntoDb(), param => this.ValidateInput());
         }
+
+        public Core Core { get; set; }
+
+        public ICommand InsertIntoDbCmd { get; set; }
 
         public void InsertIntoDb()
         {
@@ -39,19 +42,22 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                 {
                     MessageBox.Show(e + "Fehler beim Hinzufügen");
                 }
-
             }
         }
 
+        /// <summary>
+        /// Impede wrong user input which may result in wrong mold search output. Activates Button if true.
+        /// </summary>
+        /// <returns>True (active Button) if all input data is valid.</returns>
         public bool ValidateInput()
         {
-            if (Core.ID.ToString().Length <= 1
-                || Core.OuterDiameter == 0
-                || Core.Height == 0
-                || Core.FillHeightMax == 0
-                || (Core.HasKonus && (((Core.OuterKonusMin ?? 0) == 0) || ((Core.OuterKonusMax ?? 0) == 0) || ((Core.OuterKonusAngle ?? 0) == 0) || ((Core.KonusHeight ?? 0) == 0)))
-                || (Core.HasHoleguide && ((Core.AdapterDiameter ?? 0) == 0))
-                || (Core.HasGuideBolt && (((Core.GuideHeight ?? 0) == 0) || ((Core.GuideDiameter ?? 0) == 0))))
+            if (this.Core.ID.ToString().Length <= 1
+                || this.Core.OuterDiameter == 0
+                || this.Core.Height == 0
+                || this.Core.FillHeightMax == 0
+                || (this.Core.HasKonus && (((this.Core.OuterKonusMin ?? 0) == 0) || ((this.Core.OuterKonusMax ?? 0) == 0) || ((this.Core.OuterKonusAngle ?? 0) == 0) || ((this.Core.KonusHeight ?? 0) == 0)))
+                || (this.Core.HasHoleguide && ((this.Core.AdapterDiameter ?? 0) == 0))
+                || (this.Core.HasGuideBolt && (((this.Core.GuideHeight ?? 0) == 0) || ((this.Core.GuideDiameter ?? 0) == 0))))
             {
                 return false;
             }

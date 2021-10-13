@@ -3,9 +3,10 @@ using System.Windows.Input;
 
 namespace Gießformkonfigurator.WPF.Core
 {
-    class RelayCommand : ICommand 
+    public class RelayCommand : ICommand
     {
         private Action<object> _execute { get; set; }
+
         private Func<object, bool> _canExecute { get; set; }
 
         public event EventHandler CanExecuteChanged
@@ -29,6 +30,5 @@ namespace Gießformkonfigurator.WPF.Core
         {
             _execute(parameter);
         }
-
     }
 }

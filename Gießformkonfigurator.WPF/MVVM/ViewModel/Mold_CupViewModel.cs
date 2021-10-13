@@ -3,34 +3,40 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
-using Gießformkonfigurator.WPF.Core;
-using Gießformkonfigurator.WPF.MVVM.Model.Db_molds;
-using Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses;
-using System;
-using System.Windows;
-using System.Windows.Input;
-
 namespace Gießformkonfigurator.WPF.MVVM.ViewModel
 {
-    class Mold_CupViewModel
+    using System;
+    using System.Windows;
+    using System.Windows.Input;
+    using Gießformkonfigurator.WPF.Core;
+    using Gießformkonfigurator.WPF.MVVM.Model.Db_molds;
+    using Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses;
+
+    /// <summary>
+    /// Used to add SingleMoldCups to database.
+    /// </summary>
+    public class Mold_CupViewModel
     {
-        public SingleMoldCup singleMoldCup { get; set; }
-
-        public ICommand insertIntoDbCmd { get; set; }
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Mold_CupViewModel"/> class.
+        /// </summary>
         public Mold_CupViewModel()
         {
-            singleMoldCup = new SingleMoldCup();
-            insertIntoDbCmd = new RelayCommand(param => insertIntoDb(), param => validateInput());
+            this.SingleMoldCup = new SingleMoldCup();
+            this.InsertIntoDbCmd = new RelayCommand(param => InsertIntoDb(), param => ValidateInput());
         }
 
-        public void insertIntoDb()
+        public SingleMoldCup SingleMoldCup { get; set; }
+
+        public ICommand InsertIntoDbCmd { get; set; }
+
+        public void InsertIntoDb()
         {
             using (var db = new GießformDBContext())
             {
                 try
                 {
-                    db.SingleMoldCups.Add(this.singleMoldCup);
+                    db.SingleMoldCups.Add(this.SingleMoldCup);
                     db.SaveChanges();
                     MessageBox.Show("Gießform erfolgreich hinzugefügt");
                 }
@@ -38,16 +44,15 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                 {
                     MessageBox.Show(e + "Fehler beim Hinzufügen");
                 }
-
             }
         }
 
-        public bool validateInput()
+        public bool ValidateInput()
         {
-            if (singleMoldCup.ID.ToString().Length <= 1
-                || singleMoldCup.OuterDiameter == 0
-                || singleMoldCup.InnerDiameter == 0
-                || singleMoldCup.Height == 0)
+            if (this.SingleMoldCup.ID.ToString().Length <= 1
+                || this.SingleMoldCup.OuterDiameter == 0
+                || this.SingleMoldCup.InnerDiameter == 0
+                || this.SingleMoldCup.Height == 0)
             {
                 return false;
             }

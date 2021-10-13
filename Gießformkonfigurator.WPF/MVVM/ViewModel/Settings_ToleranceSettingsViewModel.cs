@@ -3,47 +3,50 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
-using Gießformkonfigurator.WPF.Core;
-using System;
-using System.Configuration;
-using System.Data.SqlClient;
-using System.Globalization;
-using System.Windows;
-using System.Windows.Input;
-
 namespace Gießformkonfigurator.WPF.MVVM.ViewModel
 {
+    using System;
+    using System.Configuration;
+    using System.Data.SqlClient;
+    using System.Globalization;
+    using System.Windows;
+    using System.Windows.Input;
+    using Gießformkonfigurator.WPF.Core;
+
     class Settings_ToleranceSettingsViewModel : ObservableObject
     {
-        public decimal product_OuterDiameter_MAX { get; set; }
-
-        public decimal product_InnerDiameter_MAX { get; set; }
-
-        public decimal product_OuterDiameter_MIN { get; set; }
-
-        public decimal product_InnerDiameter_MIN { get; set; }
-
-        public decimal hc_Diameter { get; set; }
-
-        public decimal bolt_Diameter { get; set; }
-
-        public ToleranceSettings toleranceSettings { get; set; }
-
-        public ICommand insertIntoDbCmd { get; set; }
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Settings_ToleranceSettingsViewModel"/> class.
+        /// </summary>
         public Settings_ToleranceSettingsViewModel()
         {
-            insertIntoDbCmd = new RelayCommand(param => insertIntoDb(), param => validateData());
-            toleranceSettings = new ToleranceSettings();
-            this.product_InnerDiameter_MAX = toleranceSettings.product_InnerDiameter_MAX;
-            this.product_InnerDiameter_MIN = toleranceSettings.product_InnerDiameter_MIN;
-            this.product_OuterDiameter_MAX = toleranceSettings.product_OuterDiameter_MAX;
-            this.product_OuterDiameter_MIN = toleranceSettings.product_OuterDiameter_MIN;
-            this.bolt_Diameter = toleranceSettings.bolt_Diameter;
-            this.hc_Diameter = toleranceSettings.hc_Diameter;
+            this.InsertIntoDbCmd = new RelayCommand(param => this.InsertIntoDb(), param => this.ValidateData());
+            this.ToleranceSettings = new ToleranceSettings();
+            this.Product_InnerDiameter_MAX = this.ToleranceSettings.product_InnerDiameter_MAX;
+            this.Product_InnerDiameter_MIN = this.ToleranceSettings.product_InnerDiameter_MIN;
+            this.Product_OuterDiameter_MAX = this.ToleranceSettings.product_OuterDiameter_MAX;
+            this.Product_OuterDiameter_MIN = this.ToleranceSettings.product_OuterDiameter_MIN;
+            this.Bolt_Diameter = this.ToleranceSettings.bolt_Diameter;
+            this.Hc_Diameter = this.ToleranceSettings.hc_Diameter;
         }
 
-        public void insertIntoDb()
+        public decimal Product_OuterDiameter_MAX { get; set; }
+
+        public decimal Product_InnerDiameter_MAX { get; set; }
+
+        public decimal Product_OuterDiameter_MIN { get; set; }
+
+        public decimal Product_InnerDiameter_MIN { get; set; }
+
+        public decimal Hc_Diameter { get; set; }
+
+        public decimal Bolt_Diameter { get; set; }
+
+        public ToleranceSettings ToleranceSettings { get; set; }
+
+        public ICommand InsertIntoDbCmd { get; set; }
+
+        public void InsertIntoDb()
         {
             var connString = ConfigurationManager.ConnectionStrings["GießformDB"].ToString();
             try
@@ -53,7 +56,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                     connection.Open();
                     NumberFormatInfo nfi = new NumberFormatInfo();
                     nfi.NumberDecimalSeparator = ".";
-                    string query = $"UPDATE dbo.ToleranceSettings SET product_OuterDiameter_MAX = {this.product_OuterDiameter_MAX.ToString(nfi)}, product_InnerDiameter_MAX = {this.product_InnerDiameter_MAX.ToString(nfi)}, product_OuterDiameter_MIN = {this.product_OuterDiameter_MIN.ToString(nfi)}, product_InnerDiameter_MIN = {this.product_InnerDiameter_MIN.ToString(nfi)}, hc_Diameter = {this.hc_Diameter.ToString(nfi)}, bolt_Diameter = {this.bolt_Diameter.ToString(nfi)}";
+                    string query = $"UPDATE dbo.ToleranceSettings SET product_OuterDiameter_MAX = {this.Product_OuterDiameter_MAX.ToString(nfi)}, product_InnerDiameter_MAX = {this.Product_InnerDiameter_MAX.ToString(nfi)}, product_OuterDiameter_MIN = {this.Product_OuterDiameter_MIN.ToString(nfi)}, product_InnerDiameter_MIN = {this.Product_InnerDiameter_MIN.ToString(nfi)}, hc_Diameter = {this.Hc_Diameter.ToString(nfi)}, bolt_Diameter = {this.Bolt_Diameter.ToString(nfi)}";
                     try
                     {
                         using (SqlCommand command = new SqlCommand(query, connection))
@@ -74,15 +77,13 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
             }
         }
 
-
         /// <summary>
         /// Validates if all required fields are filled out and activates the button if true.
         /// </summary>
         /// <returns>True if all required fields are filled.</returns>
-        private bool validateData()
+        private bool ValidateData()
         {
             return true;
         }
     }
 }
-

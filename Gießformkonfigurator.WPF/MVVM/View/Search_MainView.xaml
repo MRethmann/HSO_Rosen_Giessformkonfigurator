@@ -42,12 +42,12 @@
                         </Grid.RowDefinitions>
 
                         <ComboBox x:Name="SearchMethod_ComboBox" Margin="20, 0, 20, 0" Height="Auto" Width="Auto" HorizontalContentAlignment="Center" VerticalContentAlignment="center" HorizontalAlignment="Stretch" VerticalAlignment="Center" FontSize="15">
-                            <ComboBoxItem IsSelected="{Binding searchByProductId}" x:Name="searchByProductId" Content="SAP-Nr."/>
+                            <ComboBoxItem IsSelected="{Binding SearchByProductId}" x:Name="searchByProductId" Content="SAP-Nr."/>
                             <ComboBoxItem x:Name="searchByProductParams" Content="Eingabe der Produktwerte"/>
                         </ComboBox>
 
                         <ComboBox x:Name="FactorPU_ID_ComboBox" 
-                                 SelectedItem="{Binding selectedFactorPU, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DecimalConverter}}"
+                                 SelectedItem="{Binding SelectedFactorPU, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DecimalConverter}}"
                                  Width="auto" Height="Auto"
                                  HorizontalAlignment="Stretch"
                                  HorizontalContentAlignment="Center"
@@ -80,7 +80,7 @@
                                    Foreground="Black" FontSize="18" />
 
                         <TextBox x:Name="ProduktIDTextBox" 
-                                 Text="{Binding productId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}"
+                                 Text="{Binding ProductId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}"
                                  Width="Auto" Height="40"
                                  HorizontalAlignment="Stretch"
                                  VerticalAlignment="Center"
@@ -283,7 +283,7 @@
                                 Foreground="Black"
                                 Background="White"
                                 FontSize="15" 
-                                Command="{Binding searchCommand}">
+                                Command="{Binding SearchCommand}">
                         </Button>
                     </Grid>
                 </Grid>
@@ -1327,7 +1327,7 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <DataGrid Name="combinationJobOutput" AutoGenerateColumns="False" ItemsSource="{Binding productSearchOutput, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"
+                <DataGrid Name="combinationJobOutput" AutoGenerateColumns="False" ItemsSource="{Binding ProductSearchOutput, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"
                               Background="white"
                               BorderThickness="0" BorderBrush="Transparent"
                               HorizontalGridLinesBrush="DarkGray"

@@ -64,7 +64,7 @@
         <TextBlock Text="SAP-Nr." Grid.Row="0" Grid.Column="0"/>
         <TextBox x:Name="ID_TextBox" Grid.Row="0" Grid.Column="1">
             <TextBox.Text>
-                <Binding Path="productCup.ID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                <Binding Path="ProductCup.ID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
                         <validationRules:MandatoryFieldValidationRule/>
                     </Binding.ValidationRules>
@@ -75,7 +75,7 @@
         <TextBlock Text="Bezeichnung" Grid.Row="1" Grid.Column="0"/>
         <TextBox x:Name="Description_TextBox" Grid.Row="1" Grid.Column="1">
             <TextBox.Text>
-                <Binding Path="productCup.Description" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                <Binding Path="ProductCup.Description" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
                         <validationRules:MandatoryFieldValidationRule/>
                     </Binding.ValidationRules>
@@ -86,7 +86,7 @@
         <TextBlock Text="Grund-Cup" Grid.Row="2" Grid.Column="0"/>
         <TextBox x:Name="BaseCup_Textbox" Grid.Row="2" Grid.Column="1">
             <TextBox.Text>
-                <Binding Path="productCup.BaseCup" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                <Binding Path="ProductCup.BaseCup" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
                         <validationRules:MandatoryFieldValidationRule/>
                     </Binding.ValidationRules>
@@ -97,7 +97,7 @@
         <TextBlock Text="Innendurchmesser" Grid.Row="3" Grid.Column="0"/>
         <TextBox x:Name="InnerDiameter_TextBox" Grid.Row="3" Grid.Column="1">
             <TextBox.Text>
-                <Binding Path="productCup.InnerDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                <Binding Path="ProductCup.InnerDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
                         <validationRules:InputValueRangeValidationRule/>
                     </Binding.ValidationRules>
@@ -106,12 +106,12 @@
         </TextBox>       
 
         <TextBlock Text="Faktor PU" Grid.Row="4" Grid.Column="0"/>
-        <ComboBox x:Name="FactorPU_ComboBox" SelectedItem="{Binding productCup.FactorPU, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="4" Grid.Column="1" ItemsSource="{Binding PUFactors}"/>            
+        <ComboBox x:Name="FactorPU_ComboBox" SelectedItem="{Binding ProductCup.FactorPU, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="4" Grid.Column="1" ItemsSource="{Binding PUFactors}"/>            
 
         <TextBlock Text="BTC" Grid.Row="5" Grid.Column="0"/>
         <TextBox x:Name="BTC_Textbox" Grid.Row="5" Grid.Column="1">
             <TextBox.Text>
-                <Binding Path="productCup.BTC" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                <Binding Path="ProductCup.BTC" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
                         
                     </Binding.ValidationRules>
@@ -119,7 +119,7 @@
             </TextBox.Text>
         </TextBox>
 
-        <Button x:Name="Hinzufuegen" Content="Hinzufügen" Command="{Binding insertIntoDbCmd}" Grid.Column="1" Grid.Row="6">
+        <Button x:Name="Hinzufuegen" Content="Hinzufügen" Command="{Binding InsertIntoDbCmd}" Grid.Column="1" Grid.Row="6">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="HorizontalAlignment" Value="Right"/>

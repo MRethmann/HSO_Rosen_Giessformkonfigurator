@@ -53,7 +53,7 @@
         <TextBlock Text="SAP-Nr." Grid.Row="0" Grid.Column="0"/>
         <TextBox x:Name="ID_TextBox" Grid.Row="0" Grid.Column="1">
             <TextBox.Text>
-                <Binding Path="singleMoldCup.ID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                <Binding Path="SingleMoldCup.ID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
                         <validationRules:MandatoryFieldValidationRule/>
                     </Binding.ValidationRules>
@@ -64,7 +64,7 @@
         <TextBlock Text="Bezeichnung" Grid.Row="1" Grid.Column="0"/>
         <TextBox x:Name="Description_TextBox" Grid.Row="1" Grid.Column="1">
             <TextBox.Text>
-                <Binding Path="singleMoldCup.Description" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True" NotifyOnValidationError="True">
+                <Binding Path="SingleMoldCup.Description" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True" NotifyOnValidationError="True">
                     <Binding.ValidationRules>
                         <validationRules:MandatoryFieldValidationRule/>
                     </Binding.ValidationRules>
@@ -75,7 +75,7 @@
         <TextBlock Text="Außendurchmeser" Grid.Row="2" Grid.Column="0"/>
         <TextBox x:Name="OuterDiameter_TextBox" Grid.Row="2" Grid.Column="1">
             <TextBox.Text>
-                <Binding Path="singleMoldCup.OuterDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
+                <Binding Path="SingleMoldCup.OuterDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
                     <Binding.ValidationRules>
                         <validationRules:InputValueRangeValidationRule/>
                     </Binding.ValidationRules>
@@ -86,7 +86,7 @@
         <TextBlock Text="Innendurchmesser" Grid.Row="3" Grid.Column="0"/>
         <TextBox x:Name="InnerDiameter_TextBox" Grid.Row="3" Grid.Column="1">
             <TextBox.Text>
-                <Binding Path="singleMoldCup.InnerDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
+                <Binding Path="SingleMoldCup.InnerDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
                     <Binding.ValidationRules>
                         <validationRules:InputValueRangeValidationRule/>
                     </Binding.ValidationRules>
@@ -97,7 +97,7 @@
         <TextBlock Text="Höhe" Grid.Row="4" Grid.Column="0"/>
         <TextBox x:Name="Height_TextBox" Grid.Row="4" Grid.Column="1">
             <TextBox.Text>
-                <Binding Path="singleMoldCup.Height" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
+                <Binding Path="SingleMoldCup.Height" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
                     <Binding.ValidationRules>
                         <validationRules:InputValueRangeValidationRule/>
                     </Binding.ValidationRules>
@@ -108,7 +108,7 @@
         <TextBlock Text="Anzahl Bohrungen" Grid.Row="0" Grid.Column="4"/>
         <TextBox x:Name="HcHoles_TextBox" Grid.Row="0" Grid.Column="5">
             <TextBox.Text>
-                <Binding Path="singleMoldCup.HcHoles" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
+                <Binding Path="SingleMoldCup.HcHoles" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
                     <Binding.ValidationRules>
                         <validationRules:InputValueRangeValidationRule/>
                     </Binding.ValidationRules>
@@ -119,7 +119,7 @@
         <TextBlock Text="Durchmesser Bolzen" Grid.Row="1" Grid.Column="4"/>
         <TextBox x:Name="BoltDiameter_TextBox" Grid.Row="1" Grid.Column="5">
             <TextBox.Text>
-                <Binding Path="singleMoldCup.BoltDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
+                <Binding Path="SingleMoldCup.BoltDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
                     <Binding.ValidationRules>
                         <validationRules:InputValueRangeValidationRule/>
                     </Binding.ValidationRules>
@@ -130,7 +130,7 @@
         <TextBlock Text="Durchmesser Lochkreis" Grid.Row="2" Grid.Column="4"/>
         <TextBox x:Name="HcDiameter_textbox" Grid.Row="2" Grid.Column="5">
             <TextBox.Text>
-                <Binding Path="singleMoldCup.HcDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
+                <Binding Path="SingleMoldCup.HcDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
                     <Binding.ValidationRules>
                         <validationRules:InputValueRangeValidationRule/>
                     </Binding.ValidationRules>
@@ -138,7 +138,7 @@
             </TextBox.Text>
         </TextBox>
 
-        <Button x:Name="Hinzufuegen" Content="Hinzufügen" Command="{Binding insertIntoDbCmd}" Grid.Row="5" Grid.Column="5">
+        <Button x:Name="Hinzufuegen" Content="Hinzufügen" Command="{Binding InsertIntoDbCmd}" Grid.Row="5" Grid.Column="5">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="HorizontalAlignment" Value="Right"/>
