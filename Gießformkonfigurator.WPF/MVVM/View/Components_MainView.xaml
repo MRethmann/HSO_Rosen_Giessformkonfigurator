@@ -69,7 +69,7 @@
 
             </WrapPanel>
             <ContentControl Grid.Row="1" Margin="10"
-                         Content="{Binding currentView_Components_MainView}"/>
+                         Content="{Binding CurrentView_Components_MainView}"/>
         </Grid>
     </Border>
 </UserControl>

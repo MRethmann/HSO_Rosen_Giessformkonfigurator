@@ -33,7 +33,7 @@ namespace Gießformkonfigurator.WPF
 
         private void Admin_Login_Click(object sender, RoutedEventArgs e)
         {
-            var admin_password = applicationSettings.adminPassword;
+            var admin_password = applicationSettings.AdminPassword;
 
             if (password_box.Password != admin_password)
             {

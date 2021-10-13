@@ -47,7 +47,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
         {
             get
             {
-                return this._CurrentView_Mold_MainView; 
+                return this._CurrentView_Mold_MainView;
             }
 
             set

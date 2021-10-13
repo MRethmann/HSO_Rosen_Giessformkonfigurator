@@ -29,9 +29,9 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
         {
             this.Product = product;
             this.RankingSettings = new RankingSettings();
-            this.FactorOuterDiameter = this.RankingSettings.rankingFactorOuterDiameter;
-            this.FactorInnerDiameter = this.RankingSettings.rankingFactorInnerDiameter;
-            this.FactorBoltDiameter = this.RankingSettings.rankingFactorBolts;
+            this.FactorOuterDiameter = this.RankingSettings.RankingFactorOuterDiameter;
+            this.FactorInnerDiameter = this.RankingSettings.RankingFactorInnerDiameter;
+            this.FactorBoltDiameter = this.RankingSettings.RankingFactorBolts;
             this.RankingJobInput = new List<CompareObject>(compareJob.CompareJobOutput);
             this.ToleranceSettings = new ToleranceSettings();
             this.AddRatingInformation();
@@ -94,8 +94,8 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             foreach (var compareObject in this.RankingJobInput)
             {
                 compareObject.FinalRating = 0;
-                compareObject.FinalRating = this.Compare(45.00m - ((compareObject.DifferenceOuterDiameter > this.ToleranceSettings?.product_OuterDiameter_MAX ? compareObject.DifferenceOuterDiameter : 0) * this.FactorOuterDiameter), 0.00m);
-                compareObject.FinalRating += this.Compare(45.00m - ((compareObject.DifferenceInnerDiameter > this.ToleranceSettings?.product_InnerDiameter_MAX ? compareObject.DifferenceInnerDiameter : 0) * this.FactorInnerDiameter), 0.00m);
+                compareObject.FinalRating = this.Compare(45.00m - ((compareObject.DifferenceOuterDiameter > this.ToleranceSettings?.Product_OuterDiameter_MAX ? compareObject.DifferenceOuterDiameter : 0) * this.FactorOuterDiameter), 0.00m);
+                compareObject.FinalRating += this.Compare(45.00m - ((compareObject.DifferenceInnerDiameter > this.ToleranceSettings?.Product_InnerDiameter_MAX ? compareObject.DifferenceInnerDiameter : 0) * this.FactorInnerDiameter), 0.00m);
 
                 if (compareObject.Mold is ModularMold)
                 {
@@ -301,13 +301,13 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                 compareObject.AlternativeCores.Remove(compareObject.AlternativeCores.Find(x => x.Item1.ID == ((ModularMold)compareObject?.Mold).Core?.ID));
                 compareObject.AlternativeGuideRings.Remove(compareObject.AlternativeGuideRings.Find(x => x.Item1.ID == ((ModularMold)compareObject?.Mold).GuideRing?.ID));
 
-                if (compareObject.DifferenceInnerDiameter > this.ToleranceSettings?.product_InnerDiameter_MAX)
+                if (compareObject.DifferenceInnerDiameter > this.ToleranceSettings?.Product_InnerDiameter_MAX)
                 {
                     string diffInnerDiameter = Math.Round((decimal)compareObject.DifferenceInnerDiameter, 2).ToString();
                     compareObject.PostProcessing.Add($"Innendurchmesser:  {diffInnerDiameter} mm");
                 }
 
-                if (compareObject.DifferenceOuterDiameter > this.ToleranceSettings?.product_OuterDiameter_MAX)
+                if (compareObject.DifferenceOuterDiameter > this.ToleranceSettings?.Product_OuterDiameter_MAX)
                 {
                     string diffOuterDiameter = Math.Round((decimal)compareObject.DifferenceOuterDiameter, 2).ToString();
                     compareObject.PostProcessing.Add($"Außendurchmesser: {diffOuterDiameter} mm");

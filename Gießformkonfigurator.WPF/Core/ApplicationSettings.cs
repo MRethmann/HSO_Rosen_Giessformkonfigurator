@@ -16,19 +16,22 @@ namespace Gießformkonfigurator.WPF.Core
 
     public class ApplicationSettings
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ApplicationSettings"/> class.
+        /// </summary>
         public ApplicationSettings()
         {
-            getCurrentSettingsFromDb();
+            this.GetCurrentSettingsFromDb();
             this.LogFilePath = Settings.Default.LogFilePath;
         }
 
-        public string adminPassword { get; set; }
+        public string AdminPassword { get; set; }
 
         public string LogFilePath { get; set; }
 
         private static readonly ILog log = LogManager.GetLogger(typeof(ToleranceSettings));
 
-        public void getCurrentSettingsFromDb()
+        public void GetCurrentSettingsFromDb()
         {
             string connString = ConfigurationManager.ConnectionStrings["GießformDB"].ToString();
 
@@ -45,7 +48,7 @@ namespace Gießformkonfigurator.WPF.Core
                         {
                             SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
                             dataAdapter.Fill(dataTable);
-                            this.adminPassword = dataTable?.Rows[0]["adminPassword"].ToString();
+                            this.AdminPassword = dataTable?.Rows[0]["adminPassword"].ToString();
                         }
                     }
                     catch (Exception ex)

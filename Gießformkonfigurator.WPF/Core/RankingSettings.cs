@@ -5,29 +5,32 @@
 //-----------------------------------------------------------------------
 namespace Gießformkonfigurator.WPF.Core
 {
-    using log4net;
     using System;
     using System.Configuration;
     using System.Data;
     using System.Data.SqlClient;
     using System.Windows;
+    using log4net;
 
     public class RankingSettings
     {
-        public decimal rankingFactorOuterDiameter { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RankingSettings"/> class.
+        /// </summary>
+        public RankingSettings()
+        {
+            this.GetCurrentSettingsFromDb();
+        }
 
-        public decimal rankingFactorInnerDiameter { get; set; }
+        public decimal RankingFactorOuterDiameter { get; set; }
 
-        public decimal rankingFactorBolts { get; set; }
+        public decimal RankingFactorInnerDiameter { get; set; }
+
+        public decimal RankingFactorBolts { get; set; }
 
         private static readonly ILog log = LogManager.GetLogger(typeof(ToleranceSettings));
 
-        public RankingSettings()
-        {
-            getCurrentSettingsFromDb();
-        }
-
-        public void getCurrentSettingsFromDb()
+        public void GetCurrentSettingsFromDb()
         {
             string connString = ConfigurationManager.ConnectionStrings["GießformDB"].ToString();
 
@@ -44,16 +47,15 @@ namespace Gießformkonfigurator.WPF.Core
                         {
                             SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
                             dataAdapter.Fill(dataTable);
-                            this.rankingFactorOuterDiameter = (Decimal) dataTable.Rows[0]["rankingFactorOuterDiameter"];
-                            this.rankingFactorInnerDiameter = (Decimal) dataTable.Rows[0]["rankingFactorInnerDiameter"];
-                            this.rankingFactorBolts = (Decimal) dataTable.Rows[0]["rankingFactorBolts"];
+                            this.RankingFactorOuterDiameter = (decimal) dataTable.Rows[0]["rankingFactorOuterDiameter"];
+                            this.RankingFactorInnerDiameter = (decimal) dataTable.Rows[0]["rankingFactorInnerDiameter"];
+                            this.RankingFactorBolts = (decimal) dataTable.Rows[0]["rankingFactorBolts"];
                         }
                     }
                     catch (Exception ex)
                     {
                         log.Error(ex);
                     }
-
                 }
             }
             catch (Exception ex)

@@ -21,7 +21,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
         {
             this.InsertIntoDbCmd = new RelayCommand(param => this.InsertIntoDb(), param => this.ValidateData());
             this.ApplicationSettings = new ApplicationSettings();
-            this.AdminPassword = this.ApplicationSettings.adminPassword;
+            this.AdminPassword = this.ApplicationSettings.AdminPassword;
             this.LogFilePath = this.ApplicationSettings.LogFilePath;
         }
 

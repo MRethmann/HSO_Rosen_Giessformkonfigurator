@@ -22,12 +22,12 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
         {
             this.InsertIntoDbCmd = new RelayCommand(param => this.InsertIntoDb(), param => this.ValidateData());
             this.ToleranceSettings = new ToleranceSettings();
-            this.Product_InnerDiameter_MAX = this.ToleranceSettings.product_InnerDiameter_MAX;
-            this.Product_InnerDiameter_MIN = this.ToleranceSettings.product_InnerDiameter_MIN;
-            this.Product_OuterDiameter_MAX = this.ToleranceSettings.product_OuterDiameter_MAX;
-            this.Product_OuterDiameter_MIN = this.ToleranceSettings.product_OuterDiameter_MIN;
-            this.Bolt_Diameter = this.ToleranceSettings.bolt_Diameter;
-            this.Hc_Diameter = this.ToleranceSettings.hc_Diameter;
+            this.Product_InnerDiameter_MAX = this.ToleranceSettings.Product_InnerDiameter_MAX;
+            this.Product_InnerDiameter_MIN = this.ToleranceSettings.Product_InnerDiameter_MIN;
+            this.Product_OuterDiameter_MAX = this.ToleranceSettings.Product_OuterDiameter_MAX;
+            this.Product_OuterDiameter_MIN = this.ToleranceSettings.Product_OuterDiameter_MIN;
+            this.Bolt_Diameter = this.ToleranceSettings.Bolt_Diameter;
+            this.Hc_Diameter = this.ToleranceSettings.Hc_Diameter;
         }
 
         public decimal Product_OuterDiameter_MAX { get; set; }

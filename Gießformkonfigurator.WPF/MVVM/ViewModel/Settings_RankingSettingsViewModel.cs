@@ -23,9 +23,9 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
         {
             this.InsertIntoDbCmd = new RelayCommand(param => this.InsertIntoDb(), param => this.ValidateData());
             this.RankingSettings = new RankingSettings();
-            this.RankingFactorOuterDiameter = this.RankingSettings.rankingFactorOuterDiameter;
-            this.RankingFactorInnerDiameter = this.RankingSettings.rankingFactorInnerDiameter;
-            this.RankingFactorBolts = this.RankingSettings.rankingFactorBolts;
+            this.RankingFactorOuterDiameter = this.RankingSettings.RankingFactorOuterDiameter;
+            this.RankingFactorInnerDiameter = this.RankingSettings.RankingFactorInnerDiameter;
+            this.RankingFactorBolts = this.RankingSettings.RankingFactorBolts;
         }
 
         public decimal RankingFactorOuterDiameter { get; set; }

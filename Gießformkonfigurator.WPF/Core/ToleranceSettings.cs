@@ -5,35 +5,35 @@
 //-----------------------------------------------------------------------
 namespace Gießformkonfigurator.WPF.Core
 {
-    using log4net;
     using System;
     using System.Configuration;
     using System.Data;
     using System.Data.SqlClient;
     using System.Windows;
+    using log4net;
 
     public class ToleranceSettings
     {
-        public decimal product_OuterDiameter_MAX { get; set; }
-
-        public decimal product_InnerDiameter_MAX { get; set; }
-
-        public decimal product_OuterDiameter_MIN { get; set; }
-
-        public decimal product_InnerDiameter_MIN { get; set; }
-
-        public decimal hc_Diameter { get; set; }
-
-        public decimal bolt_Diameter { get; set; }
-
-        private static readonly ILog log = LogManager.GetLogger(typeof(ToleranceSettings));
+        private static readonly ILog Log = LogManager.GetLogger(typeof(ToleranceSettings));
 
         public ToleranceSettings()
         {
-            getCurrentSettingsFromDb();
+            this.GetCurrentSettingsFromDb();
         }
 
-        public void getCurrentSettingsFromDb()
+        public decimal Product_OuterDiameter_MAX { get; set; }
+
+        public decimal Product_InnerDiameter_MAX { get; set; }
+
+        public decimal Product_OuterDiameter_MIN { get; set; }
+
+        public decimal Product_InnerDiameter_MIN { get; set; }
+
+        public decimal Hc_Diameter { get; set; }
+
+        public decimal Bolt_Diameter { get; set; }
+
+        public void GetCurrentSettingsFromDb()
         {
             string connString = ConfigurationManager.ConnectionStrings["GießformDB"].ToString();
 
@@ -50,19 +50,18 @@ namespace Gießformkonfigurator.WPF.Core
                         {
                             SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
                             dataAdapter.Fill(dataTable);
-                            this.product_OuterDiameter_MAX = (Decimal) dataTable?.Rows[0]["product_OuterDiameter_MAX"];
-                            this.product_InnerDiameter_MAX = (Decimal) dataTable?.Rows[0]["product_InnerDiameter_MAX"];
-                            this.product_OuterDiameter_MIN = (Decimal) dataTable?.Rows[0]["product_OuterDiameter_MIN"];
-                            this.product_InnerDiameter_MIN = (Decimal) dataTable?.Rows[0]["product_InnerDiameter_MIN"];
-                            this.hc_Diameter = (Decimal) dataTable?.Rows[0]["hc_Diameter"];
-                            this.bolt_Diameter = (Decimal) dataTable?.Rows[0]["bolt_Diameter"];
+                            this.Product_OuterDiameter_MAX = (decimal) dataTable?.Rows[0]["product_OuterDiameter_MAX"];
+                            this.Product_InnerDiameter_MAX = (decimal) dataTable?.Rows[0]["product_InnerDiameter_MAX"];
+                            this.Product_OuterDiameter_MIN = (decimal) dataTable?.Rows[0]["product_OuterDiameter_MIN"];
+                            this.Product_InnerDiameter_MIN = (decimal) dataTable?.Rows[0]["product_InnerDiameter_MIN"];
+                            this.Hc_Diameter = (decimal) dataTable?.Rows[0]["hc_Diameter"];
+                            this.Bolt_Diameter = (decimal) dataTable?.Rows[0]["bolt_Diameter"];
                         }
                     }
                     catch (Exception ex)
                     {
-                        log.Error(ex);
+                        Log.Error(ex);
                     }
-
                 }
             }
             catch (Exception ex)

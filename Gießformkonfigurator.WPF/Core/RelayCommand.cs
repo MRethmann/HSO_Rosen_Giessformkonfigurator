@@ -1,13 +1,27 @@
-﻿using System;
-using System.Windows.Input;
-
+﻿//-----------------------------------------------------------------------
+// <copyright file="RelayCommand.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
 namespace Gießformkonfigurator.WPF.Core
 {
+    using System;
+    using System.Windows.Input;
+
     public class RelayCommand : ICommand
     {
-        private Action<object> _execute { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RelayCommand"/> class.
+        /// </summary>
+        public RelayCommand(Action<object> execute, Func<object, bool> canExecute = null)
+        {
+            this._Execute = execute;
+            this._CanExecute = canExecute;
+        }
 
-        private Func<object, bool> _canExecute { get; set; }
+        private Action<object> _Execute { get; set; }
+
+        private Func<object, bool> _CanExecute { get; set; }
 
         public event EventHandler CanExecuteChanged
         {
@@ -15,20 +29,14 @@ namespace Gießformkonfigurator.WPF.Core
             remove { CommandManager.RequerySuggested -= value;  }
         }
 
-        public RelayCommand(Action<object> execute, Func<object, bool> canExecute = null)
-        {
-            _execute = execute;
-            _canExecute = canExecute;
-        }
-
         public bool CanExecute(object parameter)
         {
-            return _canExecute == null || _canExecute(parameter);
+            return this._CanExecute == null || this._CanExecute(parameter);
         }
 
         public void Execute(object parameter)
         {
-            _execute(parameter);
+            this._Execute(parameter);
         }
     }
 }
