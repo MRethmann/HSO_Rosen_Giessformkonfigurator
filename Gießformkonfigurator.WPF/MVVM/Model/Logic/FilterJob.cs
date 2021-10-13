@@ -68,6 +68,9 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 
         public ToleranceSettings ToleranceSettings { get; set; }
 
+        /// <summary>
+        /// Transforms boltCircleType key into real dimensions via btc Table in database. Also adjusts product dimensions based on material factor.
+        /// </summary>
         public void AdjustProductInformation()
         {
             if (this.ProductDisc != null)
@@ -91,10 +94,6 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                     this.ProductDisc.HcDiameter = boltCircleInformation?.Diameter;
                     this.ProductDisc.HcHoleDiameter = boltCircleInformation?.HoleDiameter;
                     this.ProductDisc.HcHoles = boltCircleInformation?.HoleQty;
-                }
-
-                if (this.ProductDisc.FactorPU == null)
-                {
                 }
 
                 this.ProductDisc.OuterDiameter = Math.Round(this.ProductDisc.OuterDiameter * this.ProductDisc.FactorPU.GetValueOrDefault(1m), 2);

@@ -45,7 +45,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>..\Gießformkonfigurator_Rules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -73,7 +73,7 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Gießformkonfigurator.ico</ApplicationIcon>
+    <ApplicationIcon>Images\Gießformkonfigurator.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -426,7 +426,6 @@
     <Compile Include="MVVM\View\Search_MainView.xaml.cs">
       <DependentUpon>Search_MainView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -534,7 +533,7 @@
     <Resource Include="Images\Gieformkonfigurator.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Gießformkonfigurator.ico" />
+    <Resource Include="Images\Gießformkonfigurator.ico" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\key.png" />
