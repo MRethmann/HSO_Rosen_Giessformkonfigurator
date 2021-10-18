@@ -14,12 +14,15 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
     using Gießformkonfigurator.WPF.MVVM.Model.Db_components;
     using Gießformkonfigurator.WPF.MVVM.Model.Db_molds;
     using Gießformkonfigurator.WPF.MVVM.Model.Db_products;
+    using log4net;
 
     /// <summary>
     /// Combines modular components to create multi molds.
     /// </summary>
     public class CombinationJob
     {
+        private static readonly ILog Log = LogManager.GetLogger(typeof(CombinationJob));
+
         /// <summary>
         /// Initializes a new instance of the <see cref="CombinationJob"/> class.
         /// </summary>
@@ -37,10 +40,12 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             this.ListCoresSingleMold = new List<CoreSingleMold>(filterJob.ListCoresSingleMold);
             this.ListSingleMoldDiscs = new List<SingleMoldDisc>(filterJob.ListSingleMoldDiscs);
 
-            this.CombinationRuleSet = new CombinationRuleset();
+            Log.Info("CombinationJob: ");
 
             this.CombineModularDiscMold();
             this.CombineSingleDiscMold();
+
+            Log.Info("CombinationJobOutput: " + (this.SingleMoldDiscOutput.Count + this.ModularMoldDiscOutput.Count).ToString());
         }
 
         /// <summary>
@@ -55,15 +60,13 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             this.ListCupforms = new List<Cupform>(filterJob.ListCupforms);
             this.ListSingleMoldCups = new List<SingleMoldCup>(filterJob.ListSingleMoldCups);
 
-            this.CombinationRuleSet = new CombinationRuleset();
+            Log.Info("CombinationJob: ");
 
             this.CombineModularCupMold();
             this.CombineSingleCupMold();
+
+            Log.Info("CombinationJobOutput: " + (this.SingleMoldCupOutput.Count + this.ModularMoldCupOutput.Count).ToString());
         }
-
-        public ProductDisc ProduktDisc { get; set; }
-
-        public ProductCup ProduktCup { get; set; }
 
         public List<Baseplate> ListBaseplates { get; set; } 
 
@@ -100,21 +103,25 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 
         public List<SingleMoldCup> SingleMoldCupOutput { get; set; }
 
+        private ProductDisc ProduktDisc { get; set; }
+
+        private ProductCup ProduktCup { get; set; }
+
         /// <summary>
         /// Gets of Sets the ruleset that is used to combine the components.
         /// </summary>
-        public CombinationRuleset CombinationRuleSet { get; set; }
+        private CombinationRuleset CombinationRuleSet { get; set; } = new CombinationRuleset();
 
         /// <summary>
         /// Speichert den aktuellen Listenindex.
         /// </summary>
-        public int Index { get; set; }
+        private int Index { get; set; }
 
         /// <summary>
         /// Uses the pre filtered database entries (filterJob) to combine components to create modular molds for disc products.
         /// </summary>
         [STAThread]
-        public void CombineModularDiscMold()
+        private void CombineModularDiscMold()
         {
             // Lists, used to temporarely save multi molds while they are prepared for final output.
             // Listen, welche zur Zwischenspeicherung der mehrteiligen Gießformen genutzt werden, bevor sie vervollständigt wurden und ausgegeben werden können.
@@ -264,12 +271,18 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             }
 
             this.ModularMoldDiscOutput = new List<ModularMold>(discMoldsTemp02);
+
+            Log.Info("ModularMoldDiscs: ");
+            foreach (var modularMold in this.ModularMoldDiscOutput)
+            {
+                Log.Info("Grundplatte: " + modularMold.Baseplate?.ID.ToString() + " + Einlegeplatte: " + modularMold.InsertPlate?.ID.ToString() + " + FÜhrungsring: " + modularMold.GuideRing?.ID.ToString() + " + Kern: " + modularMold.Core?.ID.ToString());
+            }
         }
 
         /// <summary>
         /// Uses the pre filtered database entries (filterJob) to combine components to create modular molds for cup products.
         /// </summary>
-        public void CombineModularCupMold()
+        private void CombineModularCupMold()
         {
             List<ModularMold> cupMoldsTemp01 = new List<ModularMold>();
             List<ModularMold> cupMoldsTemp02 = new List<ModularMold>();
@@ -311,13 +324,19 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                 }
             }
 
-            this.ModularMoldDiscOutput = new List<ModularMold>(cupMoldsTemp02);
+            this.ModularMoldCupOutput = new List<ModularMold>(cupMoldsTemp02);
+
+            Log.Info("ModularMoldCups: ");
+            foreach (var modularMold in this.ModularMoldCupOutput)
+            {
+                Log.Info("Cupform: " + modularMold.Cupform?.ID.ToString());
+            }
         }
 
         /// <summary>
         /// Uses the pre filtered database entries (filterJob) to combine singleMoldDisc with optional Cores.
         /// </summary>
-        public void CombineSingleDiscMold()
+        private void CombineSingleDiscMold()
         {
             this.SingleMoldDiscOutput = new List<SingleMoldDisc>();
 
@@ -336,9 +355,15 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 
                 this.SingleMoldDiscOutput.Add(singleMoldDisc);
             }
+
+            Log.Info("SingleMolds: ");
+            foreach (var singleMold in this.SingleMoldDiscOutput)
+            {
+                Log.Info(singleMold.ID.ToString() + " + CoreSingleMold: " + singleMold.CoreSingleMold?.ID.ToString());
+            }
         }
 
-        public void CombineSingleCupMold()
+        private void CombineSingleCupMold()
         {
             this.SingleMoldCupOutput = new List<SingleMoldCup>();
         }

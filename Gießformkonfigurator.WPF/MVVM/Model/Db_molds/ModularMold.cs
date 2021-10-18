@@ -33,6 +33,10 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_molds
         /// <summary>
         /// Initializes a new instance of the <see cref="ModularMold"/> class.
         /// </summary>
+        /// <param name="baseplate">Baseplate.</param>
+        /// <param name="ring">Ring.</param>
+        /// <param name="insertPlate">Insertplate.</param>
+        /// <param name="core">Core.</param>
         public ModularMold(Baseplate baseplate, Ring ring, InsertPlate insertPlate, Core core)
         {
             this.Baseplate = baseplate;
@@ -48,6 +52,9 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_molds
         /// <summary>
         /// Initializes a new instance of the <see cref="ModularMold"/> class.
         /// </summary>
+        /// <param name="cupform">Cupform.</param>
+        /// <param name="core">Core.</param>
+        /// <param name="insertPlate">Insertplate.</param>
         public ModularMold(Cupform cupform, Core core, InsertPlate insertPlate)
         {
             this.Cupform = cupform;
@@ -61,7 +68,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_molds
 
         /*public override string ToString()
         {
-            return this.Grundplatte this.Fuehrungsring, this.Einlegeplatte, this.Innenkern, this.Cupform, this.ListInnerRings[0], this.ListInnerRings[1], this.ListInnerRings[2];
+            return "Grundplatte: " + this.Baseplate?.ID.ToString() + " + Einlegeplatte: " + this.InsertPlate?.ID.ToString() + " + FÜhrungsring: " + this.GuideRing?.ID.ToString() + " + Kern: " + this.Core?.ID.ToString();
         }*/
     }
 }

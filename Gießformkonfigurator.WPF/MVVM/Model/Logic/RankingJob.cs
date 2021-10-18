@@ -42,31 +42,31 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
         }
 
         /// <summary>
-        /// Gets or Sets the input lists from compareJob.
-        /// </summary>
-        public List<CompareObject> RankingJobInput { get; set; }
-
-        /// <summary>
         /// Gets or Sets the output list of rankingJob.
         /// </summary>
         public List<CompareObject> RankingJobOutput { get; set; }
 
         /// <summary>
+        /// Gets or Sets the input lists from compareJob.
+        /// </summary>
+        private List<CompareObject> RankingJobInput { get; set; }
+
+        /// <summary>
         /// Gets or Sets the temp List which is used for the ordering and grouping method.
         /// </summary>
-        public List<CompareObject> FilteredOutput { get; set; } = new List<CompareObject>();
+        private List<CompareObject> FilteredOutput { get; set; } = new List<CompareObject>();
 
-        public RankingSettings RankingSettings { get; set; }
+        private RankingSettings RankingSettings { get; set; }
 
-        public ToleranceSettings ToleranceSettings { get; set; }
+        private ToleranceSettings ToleranceSettings { get; set; }
 
-        public decimal? FactorOuterDiameter { get; set; }
+        private decimal? FactorOuterDiameter { get; set; }
 
-        public decimal? FactorInnerDiameter { get; set; }
+        private decimal? FactorInnerDiameter { get; set; }
 
-        public decimal? FactorBoltDiameter { get; set; }
+        private decimal? FactorBoltDiameter { get; set; }
 
-        public Product Product { get; set; }
+        private Product Product { get; set; }
 
         /// <summary>
         /// Small compare method, that returns the bigger param.
@@ -89,7 +89,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
         /// <summary>
         /// Final Step to rate all molds based on their difference between actual Output after production and prefered Output on paper. Important Values are for example differences in outer and inner diameter and height.
         /// </summary>
-        public void AddRatingInformation()
+        private void AddRatingInformation()
         {
             foreach (var compareObject in this.RankingJobInput)
             {
@@ -153,7 +153,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             this.RankingJobOutput = this.RankingJobOutput != null ? new List<CompareObject>(tempList) : null;
         }
 
-        public void OrderOutputData()
+        private void OrderOutputData()
         {
             List<CompareObject> listModularMolds = new List<CompareObject>();
             List<CompareObject> sortedList = new List<CompareObject>();

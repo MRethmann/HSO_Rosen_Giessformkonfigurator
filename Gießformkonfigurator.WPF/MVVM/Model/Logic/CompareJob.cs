@@ -12,12 +12,15 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
     using Gießformkonfigurator.WPF.MVVM.Model.Db_components;
     using Gießformkonfigurator.WPF.MVVM.Model.Db_molds;
     using Gießformkonfigurator.WPF.MVVM.Model.Db_products;
+    using log4net;
 
     /// <summary>
     /// Compares singleMolds and multiMolds with the given product to see if they are matching.
     /// </summary>
     public class CompareJob
     {
+        private static readonly ILog Log = LogManager.GetLogger(typeof(CompareJob));
+
         /// <summary>
         /// Initializes a new instance of the <see cref="CompareJob"/> class.
         /// </summary>
@@ -30,9 +33,13 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             this.ModularMoldDiscs = new List<ModularMold>(combinationJob.ModularMoldDiscOutput);
             this.SingleMoldDiscs = new List<SingleMoldDisc>(combinationJob.SingleMoldDiscOutput);
             this.Bolts = new List<Bolt>(combinationJob.ListBolts);
+            Log.Info("CompareJob: ");
 
             this.CompareDiscProductModularMold();
             this.CompareDiscProductSingleMold();
+
+            Log.Info("CompareJobOutput: ");
+            Log.Info("Anzahl compareObjects: " + this.CompareJobOutput.Count.ToString());
         }
 
         /// <summary>
@@ -46,32 +53,33 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 
             this.ModularMoldCups = new List<ModularMold>(combinationJob.ModularMoldCupOutput);
             this.SingleMoldCups = new List<SingleMoldCup>(combinationJob.SingleMoldCupOutput);
+            Log.Info("CompareJob: ");
 
             this.CompareCupProductModularMold();
             this.CompareCupProductSingleMold();
         }
 
-        public ProductDisc ProductDisc { get; set; }
-
-        public ProductCup ProductCup { get; set; }
-
-        public List<ModularMold> ModularMoldDiscs { get; set; }
-
-        public List<ModularMold> ModularMoldCups { get; set; }
-
-        public List<SingleMoldDisc> SingleMoldDiscs { get; set; }
-
-        public List<SingleMoldCup> SingleMoldCups { get; set; }
-
-        public List<Bolt> Bolts { get; set; }
-
         public List<CompareObject> CompareJobOutput { get; set; } = new List<CompareObject>();
 
-        public CompareRuleSet CompareRuleSet = new CompareRuleSet();
+        private ProductDisc ProductDisc { get; set; }
 
-        public ToleranceSettings ToleranceSettings { get; set; } = new ToleranceSettings();
+        private ProductCup ProductCup { get; set; }
 
-        public void CompareDiscProductModularMold()
+        private List<ModularMold> ModularMoldDiscs { get; set; }
+
+        private List<ModularMold> ModularMoldCups { get; set; }
+
+        private List<SingleMoldDisc> SingleMoldDiscs { get; set; }
+
+        private List<SingleMoldCup> SingleMoldCups { get; set; }
+
+        private List<Bolt> Bolts { get; set; }
+
+        private CompareRuleSet CompareRuleSet { get; set; } = new CompareRuleSet();
+
+        private ToleranceSettings ToleranceSettings { get; set; } = new ToleranceSettings();
+
+        private void CompareDiscProductModularMold()
         {
             // Contains all CompareObjects without the bolts
             List<CompareObject> compareObjectsTemp01 = new List<CompareObject>();
@@ -81,7 +89,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             {
                 if (this.CompareRuleSet.Compare(this.ProductDisc, modularMold))
                 {
-                    var compareObject = new CompareObject((ProductDisc)this.ProductDisc, (ModularMold) modularMold);
+                    var compareObject = new CompareObject((ProductDisc)this.ProductDisc, (ModularMold)modularMold);
                     if (modularMold.ListCoreRings.Count > 0)
                     {
                         compareObject.DifferenceInnerDiameter = modularMold.ListCoreRings.Min(p => p.Item3);
@@ -131,7 +139,6 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                         compareObject.BoltCirclesBaseplate[3] = true;
                     }
                 }
-
 
                 // InsertPlates
                 if (this.ProductDisc.HcDiameter > 0)
@@ -197,9 +204,9 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             this.CompareJobOutput.AddRange(compareObjectsTemp01);
         }
 
-        public void CompareDiscProductSingleMold()
+        private void CompareDiscProductSingleMold()
         {
-            // Second Step: Compare SingleMolds with Product. Add rating information.
+            // Compare SingleMolds with Product. Add rating information.
             foreach (var singleMoldDisc in this.SingleMoldDiscs)
             {
                 if (singleMoldDisc.CoreSingleMold != null)
@@ -226,14 +233,14 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             }
         }
 
-        public void CompareCupProductModularMold()
+        private void CompareCupProductModularMold()
         {
             CompareRuleSet compareRuleSet = new CompareRuleSet();
 
             // Contains all CompareObjects without any bolts
             List<CompareObject> compareObjectsTemp01 = new List<CompareObject>();
 
-            // First Step: Compare ModularMolds with Product. Add rating Information.
+            // Compare ModularMolds with Product. Add rating Information.
             foreach (var modularMold in this.ModularMoldCups)
             {
                 if (compareRuleSet.Compare(this.ProductCup, modularMold))
@@ -245,7 +252,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             }
         }
 
-        public void CompareCupProductSingleMold()
+        private void CompareCupProductSingleMold()
         {
             throw new NotImplementedException();
         }

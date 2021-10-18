@@ -29,9 +29,19 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
         {
             this.ProductDisc = productDisc;
 
-            this.GetFilteredMultiMoldDiscComponents();
+            Log.Info("FilterJob: ");
 
+            this.GetFilteredMultiMoldDiscComponents();
             this.GetFilteredSingleMoldDiscs();
+
+            Log.Info("FilterJobOutput: ");
+            Log.Info("Anzahl Grundplatten: " + this.ListBaseplates.Count.ToString());
+            Log.Info("Anzahl Ringe: " + this.ListRings.Count.ToString());
+            Log.Info("Anzahl InsertPlates: " + this.ListInsertPlates.Count.ToString());
+            Log.Info("Anzahl Cores: " + this.ListCores.Count.ToString());
+            Log.Info("Anzahl Bolts: " + this.ListBolts.Count.ToString());
+            Log.Info("Anzahl SingleMolds: " + this.ListSingleMoldDiscs.Count.ToString());
+            Log.Info("Anzahl CoreSingleMold: " + this.ListCoresSingleMold.Count.ToString());
         }
 
         /// <summary>
@@ -42,9 +52,13 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
         {
             this.ProductCup = productCup;
 
-            this.GetFilteredMultiMoldCupComponents();
+            Log.Info("FilterJob: ");
 
+            this.GetFilteredMultiMoldCupComponents();
             this.GetFilteredSingleMoldCups();
+
+            Log.Info("FilterJobOutput: ");
+            Log.Info("Anzahl Cupforms: " + this.ListCupforms.Count.ToString());
         }
 
         public List<Baseplate> ListBaseplates { get; set; } = new List<Baseplate>();
@@ -65,16 +79,16 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 
         public List<Cupform> ListCupforms { get; set; } = new List<Cupform>();
 
-        public ProductDisc ProductDisc { get; set; }
+        private ProductDisc ProductDisc { get; set; }
 
-        public ProductCup ProductCup { get; set; }
+        private ProductCup ProductCup { get; set; }
 
-        public ToleranceSettings ToleranceSettings { get; set; } = new ToleranceSettings();
+        private ToleranceSettings ToleranceSettings { get; set; } = new ToleranceSettings();
 
         /// <summary>
         /// Connects to the database context and gets filtered list of all multi mold components.
         /// </summary>
-        public void GetFilteredMultiMoldDiscComponents()
+        private void GetFilteredMultiMoldDiscComponents()
         {
             if (this.ProductDisc != null)
             {
@@ -142,7 +156,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             }
         }
 
-        public void GetFilteredMultiMoldCupComponents()
+        private void GetFilteredMultiMoldCupComponents()
         {
             using (var db = new GießformDBContext())
             {
@@ -165,7 +179,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
         /// <summary>
         /// Connects to the database context and gets filtered list of all singleMolds and singleMoldComponents.
         /// </summary>
-        public void GetFilteredSingleMoldDiscs()
+        private void GetFilteredSingleMoldDiscs()
         {
             using (var db = new GießformDBContext())
             {
@@ -199,7 +213,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             }
         }
 
-        public void GetFilteredSingleMoldCups()
+        private void GetFilteredSingleMoldCups()
         {
             //throw new NotImplementedException();
         }

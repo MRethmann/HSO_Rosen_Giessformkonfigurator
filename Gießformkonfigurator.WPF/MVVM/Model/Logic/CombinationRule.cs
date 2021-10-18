@@ -30,7 +30,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
         /// </summary>
         /// <param name="teilTyp1">Component 1.</param>
         /// <param name="teilTyp2">Component 2.</param>
-        /// <returns></returns>
+        /// <returns>True, if both parameters are valid objects to combine.</returns>
         public virtual bool Akzeptiert(Type teilTyp1, Type teilTyp2)
         {
             if (!teilTyp1.IsSubclassOf(typeof(Component)) || !teilTyp2.IsSubclassOf(typeof(Component)))
@@ -47,7 +47,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
         /// </summary>
         /// <param name="a">Component 1.</param>
         /// <param name="b">Component 2.</param>
-        /// <returns></returns>
+        /// <returns>True, if the combination works.</returns>
         public abstract bool Combine(Component a, Component b);
     }
 
