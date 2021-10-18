@@ -1,5 +1,5 @@
-﻿using Gießformkonfigurator.WPF.MVVM.Model.Db_molds;
-using Gießformkonfigurator.WPF.MVVM.Model.Logic;
+﻿using Giessformkonfigurator.WPF.MVVM.Model.Db_molds;
+using Giessformkonfigurator.WPF.MVVM.Model.Logic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Gießformkonfigurator.WPF.MVVM.View.DataTemplates
+namespace Giessformkonfigurator.WPF.MVVM.View.DataTemplates
 {
     /// <summary>
     /// Not in use. Could be used to avoid binding errors on RowDetails --> Additional Inner/Core Rings

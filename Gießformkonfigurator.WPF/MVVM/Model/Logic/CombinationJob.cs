@@ -3,17 +3,17 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
-namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
+namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
 {
 #pragma warning disable SA1519 // Braces should not be omitted from multi-line child statement
 #pragma warning disable SA1623 // Property summary documentation should match accessors
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Gießformkonfigurator.WPF.Core;
-    using Gießformkonfigurator.WPF.MVVM.Model.Db_components;
-    using Gießformkonfigurator.WPF.MVVM.Model.Db_molds;
-    using Gießformkonfigurator.WPF.MVVM.Model.Db_products;
+    using Giessformkonfigurator.WPF.Core;
+    using Giessformkonfigurator.WPF.MVVM.Model.Db_components;
+    using Giessformkonfigurator.WPF.MVVM.Model.Db_molds;
+    using Giessformkonfigurator.WPF.MVVM.Model.Db_products;
     using log4net;
 
     /// <summary>

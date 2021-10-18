@@ -3,11 +3,11 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
-namespace Gießformkonfigurator.WPF.MVVM.Model.Db_molds
+namespace Giessformkonfigurator.WPF.MVVM.Model.Db_molds
 {
     using System.ComponentModel.DataAnnotations.Schema;
-    using Gießformkonfigurator.WPF.Core;
-    using Gießformkonfigurator.WPF.Enums;
+    using Giessformkonfigurator.WPF.Core;
+    using Giessformkonfigurator.WPF.Enums;
 
     /// <summary>
     /// Superclass of ModularMold and SingleMold.

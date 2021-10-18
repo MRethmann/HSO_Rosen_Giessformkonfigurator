@@ -3,12 +3,12 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
-namespace Gießformkonfigurator.WPF.MVVM.View
+namespace Giessformkonfigurator.WPF.MVVM.View
 {
     using System.Windows;
     using System.Windows.Controls;
-    using Gießformkonfigurator.WPF.MVVM.Model.Logic;
-    using Gießformkonfigurator.WPF.MVVM.ViewModel;
+    using Giessformkonfigurator.WPF.MVVM.Model.Logic;
+    using Giessformkonfigurator.WPF.MVVM.ViewModel;
 
     /// <summary>
     /// Interaktionslogik für AnsichtZwei.xaml

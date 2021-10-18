@@ -3,7 +3,7 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
-namespace Gießformkonfigurator.WPF
+namespace Giessformkonfigurator.WPF
 {
     using System.Windows;
 
@@ -14,7 +14,7 @@ namespace Gießformkonfigurator.WPF
     {
         private void Application_Exit(object sender, ExitEventArgs e)
         {
-            Gießformkonfigurator.WPF.Properties.Settings.Default.Save();
+            Giessformkonfigurator.WPF.Properties.Settings.Default.Save();
         }
     }
 }

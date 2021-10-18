@@ -3,7 +3,7 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
-namespace Gießformkonfigurator.WPF.Core
+namespace Giessformkonfigurator.WPF.Core
 {
     using System;
     using System.Configuration;
@@ -11,7 +11,7 @@ namespace Gießformkonfigurator.WPF.Core
     using System.Data.SqlClient;
     using System.IO;
     using System.Windows;
-    using Gießformkonfigurator.WPF.Properties;
+    using Giessformkonfigurator.WPF.Properties;
     using log4net;
 
     public class ApplicationSettings

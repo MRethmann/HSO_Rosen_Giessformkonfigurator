@@ -3,10 +3,10 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
-namespace Gießformkonfigurator.WPF.MVVM.View
+namespace Giessformkonfigurator.WPF.MVVM.View
 {
-    using Gießformkonfigurator.WPF.MVVM.ViewModel;
-    using Gießformkonfigurator.WPF.Properties;
+    using Giessformkonfigurator.WPF.MVVM.ViewModel;
+    using Giessformkonfigurator.WPF.Properties;
     using System.Configuration;
     using System.IO;
     using System.Windows.Controls;

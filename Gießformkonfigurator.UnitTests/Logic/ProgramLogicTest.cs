@@ -1,8 +1,8 @@
-﻿namespace Gießformkonfigurator.UnitTests.Logic
+﻿namespace Giessformkonfigurator.UnitTests.Logic
 {
-    using Gießformkonfigurator.WPF.MVVM.Model.Db_components;
-    using Gießformkonfigurator.WPF.MVVM.Model.Db_products;
-    using Gießformkonfigurator.WPF.MVVM.Model.Logic;
+    using Giessformkonfigurator.WPF.MVVM.Model.Db_components;
+    using Giessformkonfigurator.WPF.MVVM.Model.Db_products;
+    using Giessformkonfigurator.WPF.MVVM.Model.Logic;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System;
 

@@ -1,10 +1,10 @@
 ﻿
-using Gießformkonfigurator.WPF.MVVM.ViewModel;
+using Giessformkonfigurator.WPF.MVVM.ViewModel;
 using log4net;
 using System.Windows;
 using System.Windows.Input;
 
-namespace Gießformkonfigurator.WPF
+namespace Giessformkonfigurator.WPF
 {
     /// <summary>
     /// Interaktionslogik für ReportIssueView.xaml

@@ -3,7 +3,7 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
-namespace Gießformkonfigurator.WPF.Core
+namespace Giessformkonfigurator.WPF.Core
 {
     using System;
     using System.Windows.Input;

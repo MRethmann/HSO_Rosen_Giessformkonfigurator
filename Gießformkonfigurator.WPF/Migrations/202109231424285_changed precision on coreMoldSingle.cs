@@ -1,4 +1,4 @@
-namespace Gießformkonfigurator.WPF.Migrations
+namespace Giessformkonfigurator.WPF.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;

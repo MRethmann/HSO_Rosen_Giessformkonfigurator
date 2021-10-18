@@ -3,9 +3,9 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
-namespace Gießformkonfigurator.WPF.MVVM.ViewModel
+namespace Giessformkonfigurator.WPF.MVVM.ViewModel
 {
-    using Gießformkonfigurator.WPF.Core;
+    using Giessformkonfigurator.WPF.Core;
 
     class Settings_MainViewModel : ObservableObject
     {

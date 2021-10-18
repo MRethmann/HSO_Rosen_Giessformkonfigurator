@@ -3,12 +3,12 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
-using Gießformkonfigurator.WPF.Enums;
-using Gießformkonfigurator.WPF.MVVM.Model.Db_components;
+using Giessformkonfigurator.WPF.Enums;
+using Giessformkonfigurator.WPF.MVVM.Model.Db_components;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Gießformkonfigurator.WPF.MVVM.Model.Db_molds
+namespace Giessformkonfigurator.WPF.MVVM.Model.Db_molds
 {
     /// <summary>
     /// Derived Class from Mold. Superclass of SingleMoldDisc and SingleMoldCup.

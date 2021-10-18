@@ -1,10 +1,10 @@
 ﻿
-using Gießformkonfigurator.WPF.Properties;
+using Giessformkonfigurator.WPF.Properties;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Windows;
 
-namespace Gießformkonfigurator.WPF
+namespace Giessformkonfigurator.WPF
 {
     /// <summary>
     /// Interaktionslogik für StartWindow.xaml

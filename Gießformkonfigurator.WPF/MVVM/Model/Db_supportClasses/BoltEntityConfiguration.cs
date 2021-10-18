@@ -3,10 +3,10 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
-namespace Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses
+namespace Giessformkonfigurator.WPF.MVVM.Model.Db_supportClasses
 {
     using System.Data.Entity.ModelConfiguration;
-    using Gießformkonfigurator.WPF.MVVM.Model.Db_components;
+    using Giessformkonfigurator.WPF.MVVM.Model.Db_components;
 
     class BoltEntityConfiguration : EntityTypeConfiguration<Bolt>
     {

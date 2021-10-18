@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
 
-namespace Gießformkonfigurator.WPF.MVVM.View.Converter
+namespace Giessformkonfigurator.WPF.MVVM.View.Converter
 {
     public class IsNullConverter : IValueConverter
     {

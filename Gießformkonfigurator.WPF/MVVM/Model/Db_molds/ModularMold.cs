@@ -3,10 +3,10 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
-namespace Gießformkonfigurator.WPF.MVVM.Model.Db_molds
+namespace Giessformkonfigurator.WPF.MVVM.Model.Db_molds
 {
-    using Gießformkonfigurator.WPF.Enums;
-    using Gießformkonfigurator.WPF.MVVM.Model.Db_components;
+    using Giessformkonfigurator.WPF.Enums;
+    using Giessformkonfigurator.WPF.MVVM.Model.Db_components;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;

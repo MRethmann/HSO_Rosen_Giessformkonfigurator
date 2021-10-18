@@ -3,14 +3,14 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
-namespace Gießformkonfigurator.WPF.MVVM.ViewModel
+namespace Giessformkonfigurator.WPF.MVVM.ViewModel
 {
     using System;
     using System.Configuration;
     using System.Data.SqlClient;
     using System.Windows;
     using System.Windows.Input;
-    using Gießformkonfigurator.WPF.Core;
+    using Giessformkonfigurator.WPF.Core;
 
     class Settings_ApplicationSettingsViewModel : ObservableObject
     {

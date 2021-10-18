@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Gießformkonfigurator.WPF.Enums
+namespace Giessformkonfigurator.WPF.Enums
 {
     public enum ProductType { Cup, Disc }
 
