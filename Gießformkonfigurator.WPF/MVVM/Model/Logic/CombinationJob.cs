@@ -23,58 +23,59 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
         /// <summary>
         /// Initializes a new instance of the <see cref="CombinationJob"/> class.
         /// </summary>
-        /// <param name="produktParam">Das ausgewählte Produkt wird übergeben.
-        /// <param name="sapnr">PK in der DB.</param>
-        public CombinationJob(Product product, FilterJob filterJob)
+        /// <param name="productDisc">Expects Disc Product.</param>
+        /// <param name="filterJob">Uses output of filterjob.</param>
+        public CombinationJob(ProductDisc productDisc, FilterJob filterJob)
         {
-            this.ProduktDisc = (ProductDisc)product;
+            this.ProduktDisc = productDisc;
 
             this.ListBaseplates = new List<Baseplate>(filterJob.ListBaseplates);
             this.ListRings = new List<Ring>(filterJob.ListRings);
             this.ListInsertPlates = new List<InsertPlate>(filterJob.ListInsertPlates);
             this.ListCores = new List<Core>(filterJob.ListCores);
             this.ListBolts = new List<Bolt>(filterJob.ListBolts);
-            this.ListCupforms = new List<Cupform>(filterJob.ListCupforms);
             this.ListCoresSingleMold = new List<CoreSingleMold>(filterJob.ListCoresSingleMold);
-            this.ListSingleMoldCups = new List<SingleMoldCup>(filterJob.ListSingleMoldCups);
             this.ListSingleMoldDiscs = new List<SingleMoldDisc>(filterJob.ListSingleMoldDiscs);
 
             this.CombinationRuleSet = new CombinationRuleset();
 
             this.CombineModularDiscMold();
-            this.CombineModularCupMold();
             this.CombineSingleDiscMold();
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CombinationJob"/> class.
+        /// </summary>
+        /// <param name="productCup">Expects Cup Product.</param>
+        /// <param name="filterJob">Uses output of filterjob.</param>
+        public CombinationJob(ProductCup productCup, FilterJob filterJob)
+        {
+            this.ProduktCup = productCup;
+
+            this.ListCupforms = new List<Cupform>(filterJob.ListCupforms);
+            this.ListSingleMoldCups = new List<SingleMoldCup>(filterJob.ListSingleMoldCups);
+
+            this.CombinationRuleSet = new CombinationRuleset();
+
+            this.CombineModularCupMold();
             this.CombineSingleCupMold();
         }
 
-        // Frage: Wie kann man das universell umsetzen?
         public ProductDisc ProduktDisc { get; set; }
 
         public ProductCup ProduktCup { get; set; }
 
-        public List<Baseplate> ListBaseplates { get; set; } = new List<Baseplate>();
+        public List<Baseplate> ListBaseplates { get; set; } 
 
         public List<Ring> ListRings { get; set; } = new List<Ring>();
 
-        public List<InsertPlate> ListInsertPlates { get; set; } = new List<InsertPlate>();
+        public List<InsertPlate> ListInsertPlates { get; set; } 
 
         public List<Core> ListCores { get; set; } = new List<Core>();
 
         public List<Bolt> ListBolts { get; set; } = new List<Bolt>();
 
         public List<Cupform> ListCupforms { get; set; } = new List<Cupform>();
-
-        /// <summary>
-        /// Gets or Sets the final output of the modular mold combination algorithm.
-        /// </summary>
-        public List<ModularMold> ModularMoldsOutput { get; set; }
-
-        /// <summary>
-        /// Gets or Sets the final output of the single mold combination algorithm.
-        /// </summary>
-        public List<SingleMoldDisc> SingleMoldDiscOutput { get; set; }
-
-        public List<SingleMoldCup> SingleMoldCupOutput { get; set; }
 
         /// <summary>
         /// Gets or Sets the list of single mold disc received from the filterJob.
@@ -84,6 +85,20 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
         public List<SingleMoldCup> ListSingleMoldCups { get; set; }
 
         public List<CoreSingleMold> ListCoresSingleMold { get; set; }
+
+        /// <summary>
+        /// Gets or Sets the final output of the modular mold combination algorithm.
+        /// </summary>
+        public List<ModularMold> ModularMoldDiscOutput { get; set; }
+
+        public List<ModularMold> ModularMoldCupOutput { get; set; }
+
+        /// <summary>
+        /// Gets or Sets the final output of the single mold combination algorithm.
+        /// </summary>
+        public List<SingleMoldDisc> SingleMoldDiscOutput { get; set; }
+
+        public List<SingleMoldCup> SingleMoldCupOutput { get; set; }
 
         /// <summary>
         /// Gets of Sets the ruleset that is used to combine the components.
@@ -188,12 +203,12 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                     {
                         if (this.CombinationRuleSet.Combine(mold.GuideRing, ring))
                         {
-                            var differenceOuterDiameter = ring.InnerDiameter - this.ProduktDisc.OuterDiameter;
+                            var differenceOuterDiameter = ring.InnerDiameter - this.ProduktDisc.ModularMoldDimensions.OuterDiameter;
                             mold.ListOuterRings.Add(new Tuple<Ring, Ring, decimal?>(ring, null, differenceOuterDiameter));
                         }
                         else if (this.CombinationRuleSet.Combine(mold.Core, ring))
                         {
-                            var differenceInnerDiameter = this.ProduktDisc.InnerDiameter - ring.OuterDiameter;
+                            var differenceInnerDiameter = this.ProduktDisc.ModularMoldDimensions.InnerDiameter - ring.OuterDiameter;
                             mold.ListCoreRings.Add(new Tuple<Ring, Ring, decimal?>(ring, null, differenceInnerDiameter));
                         }
                     }
@@ -213,7 +228,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                             {
                                 if (this.CombinationRuleSet.Combine(mold.ListCoreRings[i].Item1, ring))
                                 {
-                                    var differenceInnerDiameter = this.ProduktDisc.InnerDiameter - ring.OuterDiameter;
+                                    var differenceInnerDiameter = this.ProduktDisc.ModularMoldDimensions.InnerDiameter - ring.OuterDiameter;
                                     mold.ListCoreRings.Insert(0, new Tuple<Ring, Ring, decimal?>(mold.ListCoreRings[i].Item1, ring, differenceInnerDiameter));
                                 }
                             }
@@ -232,7 +247,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                             {
                                 if (this.CombinationRuleSet.Combine(mold.ListOuterRings[i].Item1, ring))
                                 {
-                                    var differenceOuterDiameter = ring.InnerDiameter - this.ProduktDisc.OuterDiameter;
+                                    var differenceOuterDiameter = ring.InnerDiameter - this.ProduktDisc.ModularMoldDimensions.OuterDiameter;
                                     mold.ListOuterRings.Insert(0, new Tuple<Ring, Ring, decimal?>(mold.ListOuterRings[i].Item1, ring, differenceOuterDiameter));
                                 }
                             }
@@ -248,7 +263,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                 mold.ListOuterRings.OrderBy(o => o.Item3);
             }
 
-            this.ModularMoldsOutput = new List<ModularMold>(discMoldsTemp02);
+            this.ModularMoldDiscOutput = new List<ModularMold>(discMoldsTemp02);
         }
 
         /// <summary>
@@ -257,6 +272,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
         public void CombineModularCupMold()
         {
             List<ModularMold> cupMoldsTemp01 = new List<ModularMold>();
+            List<ModularMold> cupMoldsTemp02 = new List<ModularMold>();
 
             // Combine cupform with insertPlates
             foreach (var cupform in this.ListCupforms)
@@ -280,7 +296,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                     {
                         if (this.CombinationRuleSet.Combine(modularMold.InsertPlate, core))
                         {
-                            this.ModularMoldsOutput.Add(new ModularMold(modularMold.Cupform, core, modularMold.InsertPlate));
+                            cupMoldsTemp02.Add(new ModularMold(modularMold.Cupform, core, modularMold.InsertPlate));
                         }
                     }
 
@@ -289,11 +305,13 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                     {
                         if (this.CombinationRuleSet.Combine(modularMold.Cupform, core))
                         {
-                            this.ModularMoldsOutput.Add(new ModularMold(modularMold.Cupform, core, modularMold.InsertPlate));
+                            cupMoldsTemp02.Add(new ModularMold(modularMold.Cupform, core, modularMold.InsertPlate));
                         }
                     }
                 }
             }
+
+            this.ModularMoldDiscOutput = new List<ModularMold>(cupMoldsTemp02);
         }
 
         /// <summary>

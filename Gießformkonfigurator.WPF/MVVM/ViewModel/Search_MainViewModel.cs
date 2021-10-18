@@ -26,6 +26,8 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
     /// </summary>
     public class Search_MainViewModel : ObservableObject
     {
+        private static readonly ILog Log = LogManager.GetLogger(typeof(Search_MainViewModel));
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Search_MainViewModel"/> class.
         /// </summary>
@@ -34,24 +36,22 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
             this.SearchCommand = new RelayCommand(param => this.FindMatchingMolds(), param => this.ValidateInput());
         }
 
-        private static readonly ILog Log = LogManager.GetLogger(typeof(Search_MainViewModel));
-
         /// <summary>
-        /// Mold Search Output ressource filled by SearchJob.
+        /// Gets Mold Search Output ressource filled by SearchJob.
         /// </summary>
         public ObservableCollection<CompareObject> ProductSearchOutput { get; } = new ObservableCollection<CompareObject>();
 
         public Visibility IsLoading { get; set; } = Visibility.Hidden;
 
         /// <summary>
-        /// Property determines the search method. 
-        /// True = Search via SAP number. 
+        /// Gets or Sets a value indicating whether Property determines the search method.
+        /// True = Search via SAP number.
         /// False = Search by entering product parameters manually.
         /// </summary>
         public bool SearchByProductId { get; set; } = true;
 
         /// <summary>
-        /// Gets or Sets the Property that determines the product type in the GUI via Binding.
+        /// Gets or Sets a value indicating whether the Property that determines the product type in the GUI via Binding.
         /// True = ProductDisc.
         /// False = ProductCup.
         /// </summary>
@@ -73,9 +73,15 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
 
         public decimal? HcHoleDiameter { get; set; }
 
+        /// <summary>
+        /// Gets or Sets the possible PUFactors. Used as comboboxitems in GUI.
+        /// </summary>
         public List<decimal?> PUFactors { get; set; } = new List<decimal?>() { 1.017m, 1.0175m, 1.023m, 1.025m };
 
-        public decimal? SelectedFactorPU { get; set; } = 1.017m;
+        /// <summary>
+        /// Gets or Sets selected factorPu via dropdown in GUI.
+        /// </summary>
+        public decimal SelectedFactorPU { get; set; } = 1.023m;
 
         public string BTC { get; set; }
 
@@ -102,6 +108,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                         {
                             this.ProductDisc = new ProductDisc();
                             this.ProductDisc = db.ProductDiscs.Find(this.ProductId);
+                            this.SetProductDiscPuFactor();
                             this.SearchJob = new SearchJob(this.ProductDisc);
                             Log.Info($"ProductDisc search via SAP-Nr. started for product: {this.ProductDisc}");
                         }
@@ -122,6 +129,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                         {
                             this.ProductCup = new ProductCup();
                             this.ProductCup = db.ProductCups.Find(this.ProductId);
+                            this.SetProductCupPuFactor();
                             this.SearchJob = new SearchJob(this.ProductCup);
                             Log.Info($"ProductCup search via SAP-Nr. started for product: {this.ProductCup}");
                         }
@@ -158,7 +166,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                         this.ProductDisc.HcHoleDiameter = this.HcHoleDiameter != null ? this.HcHoleDiameter : null;
                         this.ProductDisc.HcDiameter = this.HcDiameter != null ? this.HcDiameter : null;
                         this.ProductDisc.BTC = this.BTC != null ? this.BTC : null;
-                        this.ProductDisc.FactorPU = this.SelectedFactorPU;
+                        this.SetProductDiscPuFactor();
                         this.SearchJob = new SearchJob(this.ProductDisc);
                         Log.Info($"ProductDisc search started via manual entry for product: {this.ProductDisc.OuterDiameter}, {this.ProductDisc.InnerDiameter}, {this.ProductDisc.Height}, {this.ProductDisc.BTC}, {this.ProductDisc.FactorPU} - (OD, ID, T, BTC, Factor)");
                     }
@@ -173,8 +181,8 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                     }
                     else
                     {
-                        product = productCup;
                         this.productCup = new ProductCup();
+                        this.SetProductCupDimensions();
                     }*/
                 }
             }
@@ -198,6 +206,30 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
             }
 
             return true;
+        }
+
+        public void SetProductDiscPuFactor()
+        {
+            // TODO: Implement Logic to set the PU factor based on product size.
+            if (this.ProductDisc.FactorPU == 0
+                || this.ProductDisc.FactorPU == null)
+            {
+                this.ProductDisc.FactorPU = 1.017m;
+            }
+
+            this.ProductDisc.MultiMoldFactorPU = this.SelectedFactorPU;
+        }
+
+        public void SetProductCupPuFactor()
+        {
+            // TODO: Implement Logic to set the PU factor based on product size.
+            if (this.ProductCup.FactorPU == 0
+                || this.ProductCup.FactorPU == null)
+            {
+                this.ProductCup.FactorPU = 1.017m;
+            }
+
+            this.ProductCup.MultiMoldFactorPU = this.SelectedFactorPU;
         }
     }
 }

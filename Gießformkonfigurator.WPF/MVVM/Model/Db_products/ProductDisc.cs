@@ -12,28 +12,6 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_products
     [Table("ProductDisc")]
     public class ProductDisc : Product
     {
-        public ProductDisc()
-        {
-        }
-
-        public ProductDisc(decimal multiMoldFactorPu, decimal singleMoldFactorPu)
-            : base(multiMoldFactorPu, singleMoldFactorPu)
-        {
-            this.MultiMoldDimensions = new ProductDisc();
-            this.MultiMoldDimensions.OuterDiameter = Math.Round(this.OuterDiameter * multiMoldFactorPu);
-            this.MultiMoldDimensions.InnerDiameter = Math.Round(this.InnerDiameter * multiMoldFactorPu);
-            this.MultiMoldDimensions.Height = Math.Round(this.Height * multiMoldFactorPu);
-            this.MultiMoldDimensions.HcDiameter = this?.HcDiameter != null ? Math.Round((decimal)this.HcDiameter * multiMoldFactorPu) : 0.0m;
-            this.MultiMoldDimensions.HcHoleDiameter = this?.HcHoleDiameter != null ? Math.Round((decimal)this.HcHoleDiameter * multiMoldFactorPu) : 0.0m;
-
-            this.SingleMoldDimensions = new ProductDisc();
-            this.SingleMoldDimensions.OuterDiameter = Math.Round(this.OuterDiameter * singleMoldFactorPu);
-            this.SingleMoldDimensions.InnerDiameter = Math.Round(this.InnerDiameter * singleMoldFactorPu);
-            this.SingleMoldDimensions.Height = Math.Round(this.Height * singleMoldFactorPu);
-            this.SingleMoldDimensions.HcDiameter = this?.HcDiameter != null ? Math.Round((decimal)this.HcDiameter * singleMoldFactorPu) : 0.0m;
-            this.SingleMoldDimensions.HcHoleDiameter = this?.HcHoleDiameter != null ? Math.Round((decimal)this.HcHoleDiameter * singleMoldFactorPu) : 0.0m;
-        }
-
         public decimal OuterDiameter { get; set; }
 
         public decimal Height { get; set; }
@@ -56,6 +34,32 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_products
         /// Gets or Sets dimension information which is calculated by multiMold pu factor.
         /// </summary>
         [NotMapped]
-        public ProductDisc MultiMoldDimensions { get; set; }
+        public ProductDisc ModularMoldDimensions { get; set; }
+
+        public void AddMultiMoldDimensions(decimal multiMoldFactorPu)
+        {
+            this.ModularMoldDimensions = new ProductDisc();
+            this.ModularMoldDimensions.OuterDiameter = Math.Round(this.OuterDiameter * multiMoldFactorPu, 2);
+            this.ModularMoldDimensions.InnerDiameter = Math.Round(this.InnerDiameter * multiMoldFactorPu, 2);
+            this.ModularMoldDimensions.Height = Math.Round(this.Height * multiMoldFactorPu, 2);
+            this.ModularMoldDimensions.HcDiameter = this?.HcDiameter != null ? Math.Round((decimal)this.HcDiameter * multiMoldFactorPu, 2) : 0.0m;
+            this.ModularMoldDimensions.HcHoleDiameter = this?.HcHoleDiameter != null ? Math.Round((decimal)this.HcHoleDiameter * multiMoldFactorPu, 2) : 0.0m;
+            this.ModularMoldDimensions.HcHoles = this.HcHoles;
+            this.ModularMoldDimensions.BTC = this.BTC;
+            this.ModularMoldDimensions.MultiMoldFactorPU = this.MultiMoldFactorPU;
+        }
+
+        public void AddSingleMoldDimensions(decimal singleMoldFactorPu)
+        {
+            this.SingleMoldDimensions = new ProductDisc();
+            this.SingleMoldDimensions.OuterDiameter = Math.Round(this.OuterDiameter * singleMoldFactorPu, 2);
+            this.SingleMoldDimensions.InnerDiameter = Math.Round(this.InnerDiameter * singleMoldFactorPu, 2);
+            this.SingleMoldDimensions.Height = Math.Round(this.Height * singleMoldFactorPu, 2);
+            this.SingleMoldDimensions.HcDiameter = this?.HcDiameter != null ? Math.Round((decimal)this.HcDiameter * singleMoldFactorPu, 2) : 0.0m;
+            this.SingleMoldDimensions.HcHoleDiameter = this?.HcHoleDiameter != null ? Math.Round((decimal)this.HcHoleDiameter * singleMoldFactorPu, 2) : 0.0m;
+            this.SingleMoldDimensions.HcHoles = this.HcHoles;
+            this.SingleMoldDimensions.BTC = this.BTC;
+            this.SingleMoldDimensions.FactorPU = this.FactorPU;
+        }
     }
 }

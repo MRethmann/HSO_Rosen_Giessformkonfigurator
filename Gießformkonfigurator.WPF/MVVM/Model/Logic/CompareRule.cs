@@ -47,8 +47,8 @@ namespace Gieﬂformkonfigurator.WPF.MVVM.Model.Logic
 
             if (productCup.BTC != null)
             {
-                return productCup.InnerDiameter > modularMold.Core.OuterDiameter
-                    && (productCup.InnerDiameter + 1) < modularMold.Core.OuterDiameter
+                return productCup.ModularMoldDimensions.InnerDiameter > modularMold.Core.OuterDiameter
+                    && (productCup.ModularMoldDimensions.InnerDiameter + 1) < modularMold.Core.OuterDiameter
                     && productCup.BaseCup == modularMold.Cupform.CupType;
             }
             else
@@ -66,13 +66,13 @@ namespace Gieﬂformkonfigurator.WPF.MVVM.Model.Logic
         public override bool Compare(Product a, Mold b)
         {
             object[] compareElements = new object[] { a, b };
-            var product = compareElements.OfType<ProductDisc>().Single();
+            var productDisc = compareElements.OfType<ProductDisc>().Single();
             var modularMold = compareElements.OfType<ModularMold>().Single();
 
-            return product.OuterDiameter <= modularMold.GuideRing.InnerDiameter + this.ToleranceSettings.Product_OuterDiameter_MIN
-                && product.InnerDiameter >= modularMold.Core.OuterDiameter - this.ToleranceSettings.Product_InnerDiameter_MIN
-                && product.Height <= (modularMold.GuideRing.FillHeightMax > 0 ? modularMold.GuideRing.FillHeightMax : modularMold.GuideRing.Height)
-                && product.Height <= (modularMold.Core.FillHeightMax > 0 ? modularMold.Core.FillHeightMax : modularMold.Core.Height);
+            return productDisc.ModularMoldDimensions.OuterDiameter <= modularMold.GuideRing.InnerDiameter + this.ToleranceSettings.Product_OuterDiameter_MIN
+                && productDisc.ModularMoldDimensions.InnerDiameter >= modularMold.Core.OuterDiameter - this.ToleranceSettings.Product_InnerDiameter_MIN
+                && productDisc.ModularMoldDimensions.Height <= (modularMold.GuideRing.FillHeightMax > 0 ? modularMold.GuideRing.FillHeightMax : modularMold.GuideRing.Height)
+                && productDisc.ModularMoldDimensions.Height <= (modularMold.Core.FillHeightMax > 0 ? modularMold.Core.FillHeightMax : modularMold.Core.Height);
         }
     }
 
@@ -87,9 +87,9 @@ namespace Gieﬂformkonfigurator.WPF.MVVM.Model.Logic
             var singleMoldDisc = compareElements.OfType<SingleMoldDisc>().Single();
 
             // General comparison between single Mold and product
-            if (productDisc.OuterDiameter <= singleMoldDisc.OuterDiameter + this.ToleranceSettings.Product_OuterDiameter_MIN
-                && productDisc.InnerDiameter >= singleMoldDisc.InnerDiameter - this.ToleranceSettings.Product_InnerDiameter_MIN
-                && productDisc.Height <= singleMoldDisc.Height)
+            if (productDisc.SingleMoldDimensions.OuterDiameter <= singleMoldDisc.OuterDiameter + this.ToleranceSettings.Product_OuterDiameter_MIN
+                && productDisc.SingleMoldDimensions.InnerDiameter >= singleMoldDisc.InnerDiameter - this.ToleranceSettings.Product_InnerDiameter_MIN
+                && productDisc.SingleMoldDimensions.Height <= singleMoldDisc.Height)
             {
                 // Product and singleMoldDisc have BTC
                 if (!string.IsNullOrWhiteSpace(productDisc.BTC)
@@ -97,8 +97,8 @@ namespace Gieﬂformkonfigurator.WPF.MVVM.Model.Logic
                         && singleMoldDisc.HcHoles != null && singleMoldDisc.HcHoles > 0
                         && singleMoldDisc.BoltDiameter != null && singleMoldDisc.BoltDiameter > 0)
                 {
-                    return (productDisc.HcDiameter == null || productDisc.HcDiameter <= 0 || (productDisc.HcDiameter <= singleMoldDisc.HcDiameter + this.ToleranceSettings.Hc_Diameter && productDisc.HcDiameter >= singleMoldDisc.HcDiameter - this.ToleranceSettings.Hc_Diameter))
-                        && (productDisc.HcHoleDiameter == null || productDisc.HcHoleDiameter <= 0 || (productDisc.HcHoleDiameter >= singleMoldDisc.BoltDiameter - this.ToleranceSettings.Bolt_Diameter && productDisc.HcHoleDiameter <= singleMoldDisc.BoltDiameter + this.ToleranceSettings.Bolt_Diameter))
+                    return (productDisc.HcDiameter == null || productDisc.HcDiameter <= 0 || (productDisc.SingleMoldDimensions.HcDiameter <= singleMoldDisc.HcDiameter + this.ToleranceSettings.Hc_Diameter && productDisc.SingleMoldDimensions.HcDiameter >= singleMoldDisc.HcDiameter - this.ToleranceSettings.Hc_Diameter))
+                        && (productDisc.HcHoleDiameter == null || productDisc.HcHoleDiameter <= 0 || (productDisc.SingleMoldDimensions.HcHoleDiameter >= singleMoldDisc.BoltDiameter - this.ToleranceSettings.Bolt_Diameter && productDisc.SingleMoldDimensions.HcHoleDiameter <= singleMoldDisc.BoltDiameter + this.ToleranceSettings.Bolt_Diameter))
                         && (productDisc.HcHoles == null || productDisc.HcHoles <= 0 || productDisc.HcHoles == singleMoldDisc.HcHoles);
                 }
 

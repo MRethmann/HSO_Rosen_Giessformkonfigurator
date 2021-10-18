@@ -24,7 +24,7 @@ namespace Gießformkonfigurator.UnitTests.Logic
 
 
             // Act
-            filterJob.GetFilteredDatabase();
+            filterJob.GetFilteredMultiMoldDiscComponents();
 
             // Assert
             Assert.IsNotNull(filterJob.listBaseplates);

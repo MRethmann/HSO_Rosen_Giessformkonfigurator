@@ -151,7 +151,7 @@ namespace Gießformkonfigurator.UnitTests.Logic
 
 
             // Act
-            compareJob.CompareDiscProduct();
+            compareJob.CompareDiscProductModularMold();
 
 
             // Assert

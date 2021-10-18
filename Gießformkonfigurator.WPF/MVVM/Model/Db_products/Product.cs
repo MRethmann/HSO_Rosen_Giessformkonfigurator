@@ -10,22 +10,6 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_products
 
     public abstract class Product
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Product"/> class.
-        /// </summary>
-        /// <param name="multiMoldFactorPu">Factor is set via user input.</param>
-        /// <param name="singleMoldFactorPu">Factor is being calculated by product dimension. Larger products use the higher factor.</param>
-        public Product(decimal multiMoldFactorPu, decimal singleMoldFactorPu)
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Product"/> class. Standard constructor.
-        /// </summary>
-        public Product()
-        {
-        }
-
         [Key]
         [Column("ID")]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
@@ -33,7 +17,13 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_products
 
         public string Description { get; set; }
 
+        /// <summary>
+        /// Received from database.
+        /// </summary>
         public decimal? FactorPU { get; set; }
+
+        [NotMapped]
+        public decimal MultiMoldFactorPU { get; set; }
 
         public string BTC { get; set; }
 

@@ -5,25 +5,13 @@
 //-----------------------------------------------------------------------
 namespace Gießformkonfigurator.WPF.MVVM.Model.Db_products
 {
+    using System;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
     [Table("ProductCup")]
     public class ProductCup : Product
     {
-        public ProductCup()
-        {
-        }
-
-        public ProductCup(decimal multiMoldFactorPu, decimal singleMoldFactorPu)
-            : base(multiMoldFactorPu, singleMoldFactorPu)
-        {
-            // TODO: Add dimension information.
-            this.MultiMoldDimensions = new ProductCup();
-
-            this.SingleMoldDimensions = new ProductCup();
-        }
-
         [Column("BaseCup")]
         [StringLength(100)]
         public string BaseCup { get; set; }
@@ -40,6 +28,16 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_products
         /// Used to save dimension information which is calculated by multiMold pu factor.
         /// </summary>
         [NotMapped]
-        public ProductCup MultiMoldDimensions { get; set; }
+        public ProductCup ModularMoldDimensions { get; set; }
+
+        public void AddMultiMoldDimensions(decimal multiMoldFactorPu)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddSingleMoldDimensions(decimal singleMoldFactorPu)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

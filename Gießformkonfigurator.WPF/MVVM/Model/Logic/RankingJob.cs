@@ -23,8 +23,8 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
         /// <summary>
         /// Initializes a new instance of the <see cref="RankingJob"/> class.
         /// </summary>
-        /// <param name="product"></param>
-        /// <param name="compareJob"></param>
+        /// <param name="product">Excepts product of type Cup or Disc.</param>
+        /// <param name="compareJob">Uses compareJob Output data.</param>
         public RankingJob(Product product, CompareJob compareJob)
         {
             this.Product = product;
@@ -37,7 +37,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             this.AddRatingInformation();
             this.OrderOutputData();
 
-            // Updating rating information because there might be a better ring/core which was found
+            // Updating rating information twice because there might be a better ring/core which was found
             this.AddRatingInformation();
         }
 
@@ -71,9 +71,9 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
         /// <summary>
         /// Small compare method, that returns the bigger param.
         /// </summary>
-        /// <param name="var1"></param>
-        /// <param name="var2"></param>
-        /// <returns></returns>
+        /// <param name="var1">Number one.</param>
+        /// <param name="var2">Number two.</param>
+        /// <returns>The greater number.</returns>
         public decimal? Compare(decimal? var1, decimal? var2)
         {
             if (var1 >= var2)
