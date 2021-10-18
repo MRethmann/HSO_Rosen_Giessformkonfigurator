@@ -30,7 +30,7 @@
     <MinimumRequiredVersion>1.0.0.5</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>18</ApplicationRevision>
+    <ApplicationRevision>22</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -294,10 +294,6 @@
     <Compile Include="Migrations\202109231424285_changed precision on coreMoldSingle.Designer.cs">
       <DependentUpon>202109231424285_changed precision on coreMoldSingle.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202109231426019_changed precisison on all attributes of singleMolds.cs" />
-    <Compile Include="Migrations\202109231426019_changed precisison on all attributes of singleMolds.Designer.cs">
-      <DependentUpon>202109231426019_changed precisison on all attributes of singleMolds.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\202109231429416_outerkonus baseplate may be null.cs" />
     <Compile Include="Migrations\202109231429416_outerkonus baseplate may be null.Designer.cs">
       <DependentUpon>202109231429416_outerkonus baseplate may be null.cs</DependentUpon>
@@ -462,9 +458,6 @@
     <EmbeddedResource Include="Migrations\202109231424285_changed precision on coreMoldSingle.resx">
       <DependentUpon>202109231424285_changed precision on coreMoldSingle.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109231426019_changed precisison on all attributes of singleMolds.resx">
-      <DependentUpon>202109231426019_changed precisison on all attributes of singleMolds.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202109231429416_outerkonus baseplate may be null.resx">
       <DependentUpon>202109231429416_outerkonus baseplate may be null.cs</DependentUpon>
     </EmbeddedResource>
@@ -506,9 +499,7 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Fonts\" />

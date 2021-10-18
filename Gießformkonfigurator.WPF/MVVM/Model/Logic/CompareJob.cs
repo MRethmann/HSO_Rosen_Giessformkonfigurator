@@ -33,12 +33,10 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             this.ModularMoldDiscs = new List<ModularMold>(combinationJob.ModularMoldDiscOutput);
             this.SingleMoldDiscs = new List<SingleMoldDisc>(combinationJob.SingleMoldDiscOutput);
             this.Bolts = new List<Bolt>(combinationJob.ListBolts);
-            Log.Info("CompareJob: ");
 
             this.CompareDiscProductModularMold();
             this.CompareDiscProductSingleMold();
 
-            Log.Info("CompareJobOutput: ");
             Log.Info("Anzahl compareObjects: " + this.CompareJobOutput.Count.ToString());
         }
 
@@ -53,7 +51,6 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 
             this.ModularMoldCups = new List<ModularMold>(combinationJob.ModularMoldCupOutput);
             this.SingleMoldCups = new List<SingleMoldCup>(combinationJob.SingleMoldCupOutput);
-            Log.Info("CompareJob: ");
 
             this.CompareCupProductModularMold();
             this.CompareCupProductSingleMold();

@@ -40,8 +40,6 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             this.ListCoresSingleMold = new List<CoreSingleMold>(filterJob.ListCoresSingleMold);
             this.ListSingleMoldDiscs = new List<SingleMoldDisc>(filterJob.ListSingleMoldDiscs);
 
-            Log.Info("CombinationJob: ");
-
             this.CombineModularDiscMold();
             this.CombineSingleDiscMold();
 
@@ -59,8 +57,6 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 
             this.ListCupforms = new List<Cupform>(filterJob.ListCupforms);
             this.ListSingleMoldCups = new List<SingleMoldCup>(filterJob.ListSingleMoldCups);
-
-            Log.Info("CombinationJob: ");
 
             this.CombineModularCupMold();
             this.CombineSingleCupMold();
@@ -272,7 +268,6 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 
             this.ModularMoldDiscOutput = new List<ModularMold>(discMoldsTemp02);
 
-            Log.Info("ModularMoldDiscs: ");
             foreach (var modularMold in this.ModularMoldDiscOutput)
             {
                 Log.Info("Grundplatte: " + modularMold.Baseplate?.ID.ToString() + " + Einlegeplatte: " + modularMold.InsertPlate?.ID.ToString() + " + FÜhrungsring: " + modularMold.GuideRing?.ID.ToString() + " + Kern: " + modularMold.Core?.ID.ToString());
@@ -326,7 +321,6 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
 
             this.ModularMoldCupOutput = new List<ModularMold>(cupMoldsTemp02);
 
-            Log.Info("ModularMoldCups: ");
             foreach (var modularMold in this.ModularMoldCupOutput)
             {
                 Log.Info("Cupform: " + modularMold.Cupform?.ID.ToString());
@@ -356,7 +350,6 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                 this.SingleMoldDiscOutput.Add(singleMoldDisc);
             }
 
-            Log.Info("SingleMolds: ");
             foreach (var singleMold in this.SingleMoldDiscOutput)
             {
                 Log.Info(singleMold.ID.ToString() + " + CoreSingleMold: " + singleMold.CoreSingleMold?.ID.ToString());

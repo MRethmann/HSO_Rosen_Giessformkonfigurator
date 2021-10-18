@@ -29,12 +29,9 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
         {
             this.ProductDisc = productDisc;
 
-            Log.Info("FilterJob: ");
-
             this.GetFilteredMultiMoldDiscComponents();
             this.GetFilteredSingleMoldDiscs();
 
-            Log.Info("FilterJobOutput: ");
             Log.Info("Anzahl Grundplatten: " + this.ListBaseplates.Count.ToString());
             Log.Info("Anzahl Ringe: " + this.ListRings.Count.ToString());
             Log.Info("Anzahl InsertPlates: " + this.ListInsertPlates.Count.ToString());
@@ -52,12 +49,9 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
         {
             this.ProductCup = productCup;
 
-            Log.Info("FilterJob: ");
-
             this.GetFilteredMultiMoldCupComponents();
             this.GetFilteredSingleMoldCups();
 
-            Log.Info("FilterJobOutput: ");
             Log.Info("Anzahl Cupforms: " + this.ListCupforms.Count.ToString());
         }
 
