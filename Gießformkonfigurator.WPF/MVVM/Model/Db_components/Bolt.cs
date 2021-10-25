@@ -15,7 +15,7 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_components
     {
         public decimal Height { get; set; }
 
-        public decimal? OuterDiameter { get; set; }
+        public decimal OuterDiameter { get; set; }
 
         public decimal FillHeightMax { get; set; }
 
@@ -24,6 +24,7 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_components
         /// </summary>
         public bool HasThread { get; set; }
 
+        [StringLength(10)]
         public string Thread { get; set; }
 
         /// <summary>

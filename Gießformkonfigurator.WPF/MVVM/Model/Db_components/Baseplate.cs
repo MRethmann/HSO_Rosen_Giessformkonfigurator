@@ -56,18 +56,21 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_components
 
         public int? Hc1Holes { get; set; }
 
+        [StringLength(10)]
         public string Hc1Thread { get; set; }
 
         public decimal? Hc2Diameter { get; set; }
 
         public int? Hc2Holes { get; set; }
 
+        [StringLength(10)]
         public string Hc2Thread { get; set; }
 
         public decimal? Hc3Diameter { get; set; }
 
         public int? Hc3Holes { get; set; }
 
+        [StringLength(10)]
         public string Hc3Thread { get; set; }
 
         public override string ToString()

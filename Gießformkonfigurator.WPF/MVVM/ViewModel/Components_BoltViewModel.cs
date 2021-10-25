@@ -52,7 +52,7 @@ namespace Giessformkonfigurator.WPF.MVVM.ViewModel
         public bool ValidateInput()
         {
             if (this.Bolt.ID.ToString().Length <= 1
-                || ((this.Bolt.OuterDiameter ?? 0) == 0)
+                || this.Bolt.OuterDiameter == 0
                 || this.Bolt.Height == 0
                 || (this.Bolt.HasThread && string.IsNullOrWhiteSpace(this.Bolt.Thread))
                 || this.Bolt.HasGuideBolt && (((this.Bolt.GuideHeight ?? 0) == 0) || ((this.Bolt.GuideOuterDiameter ?? 0) == 0)))

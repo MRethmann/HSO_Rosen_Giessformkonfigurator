@@ -20,7 +20,7 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_components
 
         public decimal Height { get; set; }
 
-        public decimal? FillHeightMax { get; set; }
+        public decimal FillHeightMax { get; set; }
 
         /// <summary>
         /// Gets or Sets a value indicating whether the core has a Konusfuehrung.
@@ -44,6 +44,7 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_components
 
         public decimal? GuideDiameter { get; set; }
 
+        [StringLength(10)]
         public string ToleranceGuideDiameter { get; set; }
 
         /// <summary>

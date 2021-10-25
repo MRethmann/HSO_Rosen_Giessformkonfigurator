@@ -139,6 +139,10 @@
     <Compile Include="Migrations\202110082039419_changed datatypes of singlemolds.Designer.cs">
       <DependentUpon>202110082039419_changed datatypes of singlemolds.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202110251402167_datatype changes.cs" />
+    <Compile Include="Migrations\202110251402167_datatype changes.Designer.cs">
+      <DependentUpon>202110251402167_datatype changes.cs</DependentUpon>
+    </Compile>
     <Compile Include="MVVM\View\Converter\DecimalConverter.cs" />
     <Compile Include="MVVM\View\Converter\IsNullConverter.cs" />
     <Compile Include="MVVM\View\DataTemplates\AdditionalRingTemplateSelector.cs" />
@@ -482,6 +486,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202110082039419_changed datatypes of singlemolds.resx">
       <DependentUpon>202110082039419_changed datatypes of singlemolds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110251402167_datatype changes.resx">
+      <DependentUpon>202110251402167_datatype changes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

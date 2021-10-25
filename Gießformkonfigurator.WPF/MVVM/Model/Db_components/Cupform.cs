@@ -13,25 +13,24 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_components
     [Table("Cupform")]
     public partial class Cupform : Component
     {
-        [StringLength(20)]
+        [StringLength(10)]
         public string CupType { get; set; }
 
-        public decimal? InnerDiameter { get; set; }
+        [StringLength(10)]
+        public string Size { get; set; }
 
         [StringLength(10)]
-        public string ToleranceInnerDiameter { get; set; }
+        public string BTC { get; set; }
 
-        public decimal? HoleCircle { get; set; }
-
-        /// <summary>
-        /// Gets or Sets a value indicating whether the Cupform has a Fuehrungsstift.
-        /// </summary>
-        public bool HasGuideBolt { get; set; }
+        public bool HasFixedBTC { get; set; }
 
         /// <summary>
         /// Gets or Sets a value indicating whether the Cupform has a Innengewinde.
         /// </summary>
         public bool HasThread { get; set; }
+
+        [StringLength(10)]
+        public string Thread { get; set; }
 
         /// <summary>
         /// Gets or Sets a value indicating whether the Cupform has a Konusfuehrung.
@@ -50,9 +49,14 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_components
         public bool HasHoleguide { get; set; }
 
         /// <summary>
-        /// Gets or Sets a value indicating whether the Cupform has a Innenkern.
+        /// Gets or Sets a value indicating whether the Cupform has a Fuehrungsstift/Core.
         /// </summary>
-        public bool HasCore { get; set; }
+        public bool HasGuideBolt { get; set; }
+
+        public decimal? InnerDiameter { get; set; }
+
+        [StringLength(10)]
+        public string ToleranceInnerDiameter { get; set; }
 
         public override string ToString()
         {

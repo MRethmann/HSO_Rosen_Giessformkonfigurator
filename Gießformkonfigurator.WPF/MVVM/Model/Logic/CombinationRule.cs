@@ -234,10 +234,6 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                 return core.HasGuideBolt == true
                     && cupform.InnerDiameter == core.GuideDiameter;
             }
-            else if (cupform.HasCore)
-            {
-                return false;
-            }
             else if (cupform.HasGuideBolt)
             {
                 return core.HasHoleguide == true

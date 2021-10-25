@@ -13,6 +13,7 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_components
     {
         public decimal OuterDiameter { get; set; }
 
+        [StringLength(10)]
         public string ToleranceOuterDiameter { get; set; }
 
         public decimal InnerDiameter { get; set; }
