@@ -21,12 +21,21 @@ namespace Giessformkonfigurator.WPF.Core
             this.GetCurrentSettingsFromDb();
         }
 
+        /// <summary>
+        /// Gets or sets the threshhold to determine whether the product can be post processed or not. A physically possible post processing needs the product to be atleast 3mm bigger.
+        /// </summary>
         public decimal Product_OuterDiameter_MAX { get; set; }
 
         public decimal Product_InnerDiameter_MAX { get; set; }
 
+        /// <summary>
+        /// Gets or sets the acceptable difference in outerdiameter which would result in a slightly smaller product.
+        /// </summary>
         public decimal Product_OuterDiameter_MIN { get; set; }
 
+        /// <summary>
+        /// Gets or sets the acceptable difference in innerdiameter which would result in a slightly smaller product.
+        /// </summary>
         public decimal Product_InnerDiameter_MIN { get; set; }
 
         public decimal Hc_Diameter { get; set; }

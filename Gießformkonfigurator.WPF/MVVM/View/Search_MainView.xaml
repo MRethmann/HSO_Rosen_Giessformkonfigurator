@@ -15,8 +15,9 @@
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
         <ValidationRules:MandatoryFieldValidationRule x:Key="MandatoryFieldValidation"/>
         <ValidationRules:InputValueRangeValidationRule x:Key="InputValueValidation"/>
-        <Converter:DecimalConverter x:Key="DecimalConverter"/>
+
         <Converter:IsNullConverter x:Key="IsNullConverter"/>
+        <Converter:PostProcessingColorSelector x:Key="PostProcessingColorSelector"/>
     </UserControl.Resources>
 
     <Border BorderThickness="1" BorderBrush="Black" CornerRadius="4">
@@ -24,7 +25,7 @@
         <Grid Grid.Row="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
-                <RowDefinition Height="8*"/>
+                <RowDefinition Height="9*"/>
             </Grid.RowDefinitions>
 
             <Border BorderBrush="Gray" BorderThickness="0, 0, 0, 1" Margin="5">
@@ -41,11 +42,11 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
 
-                        <ComboBox x:Name="SearchMethod_ComboBox" Margin="20, 0, 20, 0" Height="Auto" Width="Auto" HorizontalContentAlignment="Center" VerticalContentAlignment="center" HorizontalAlignment="Stretch" VerticalAlignment="Center" FontSize="15">
-                            <ComboBoxItem IsSelected="{Binding SearchByProductId}" x:Name="searchByProductId" Content="SAP-Nr."/>
-                            <ComboBoxItem x:Name="searchByProductParams" Content="Eingabe der Produktwerte"/>
-                        </ComboBox>
-
+                        <StackPanel Orientation="Vertical" x:Name="SearchMethod_StackPanel" Margin="20, 0, 20, 0" Height="Auto" Width="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.RowSpan="2">
+                            <RadioButton x:Name="searchByProductId" IsChecked="{Binding SearchByProductId}" Content="SAP-Nr." FontSize="15" Margin="2"/>
+                            <RadioButton x:Name="searchByProductParams" Content="Eingabe der Produktwerte" FontSize="15" Margin="2"/>
+                        </StackPanel>
+<!--
                         <ComboBox x:Name="FactorPU_ID_ComboBox" 
                                  SelectedItem="{Binding SelectedFactorPU, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DecimalConverter}}"
                                  Width="auto" Height="Auto"
@@ -57,7 +58,7 @@
                                  Foreground="Black" FontSize="15" Background="White"
                                  ItemsSource="{Binding PUFactors}">
                         </ComboBox>
-
+-->
                         <!-- Not used as of now
                         <ComboBox x:Name="ProductType_ComboBox" Margin="5" Height="Auto" Width="auto" HorizontalContentAlignment="Center" VerticalContentAlignment="center" Grid.Row="1">
                             <ComboBoxItem IsSelected="{Binding searchTypeProduct}" x:Name="productDisc" Content="Disc"/>
@@ -66,7 +67,7 @@
                         -->
                     </Grid>
 
-                    <Grid x:Name="grid_SearchProductID" Grid.Column="1" Visibility="{Binding ElementName=searchByProductId, Path=IsSelected, Converter={StaticResource BoolToVis}}">
+                    <Grid x:Name="grid_SearchProductID" Grid.Column="1" Visibility="{Binding ElementName=searchByProductId, Path=IsChecked, Converter={StaticResource BoolToVis}}">
                         
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="auto"/>
@@ -74,7 +75,7 @@
                         </Grid.ColumnDefinitions>
 
                         <TextBlock x:Name="productIDTextBlock"
-                                   Text="ProduktID:"
+                                   Text="SAP-Nr.: "
                                    HorizontalAlignment="Left" VerticalAlignment="Center"
                                    Margin="10,0,0,0" 
                                    Foreground="Black" FontSize="18" />
@@ -86,10 +87,12 @@
                                  VerticalAlignment="Center"
                                  VerticalContentAlignment="Center"
                                  Margin="5" Grid.Column="1" Grid.Row="0"
-                                 Foreground="Black" FontSize="15" Background="White"/>
+                                 Foreground="Black" FontSize="15" Background="White"
+                                 GotFocus="TextBox_GotFocus"
+                                 PreviewTextInput="NumberValidation"/>
                     </Grid>
 
-                    <Grid x:Name="grid_SearchDiscParameters" Grid.Column="1" Visibility="{Binding ElementName=searchByProductParams, Path=IsSelected, Converter={StaticResource BoolToVis}}">
+                    <Grid x:Name="grid_SearchDiscParameters" Grid.Column="1" Visibility="{Binding ElementName=searchByProductParams, Path=IsChecked, Converter={StaticResource BoolToVis}}">
 
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="auto"/>
@@ -114,13 +117,14 @@
                                    Foreground="Black" FontSize="15" Grid.Column="0"/>
 
                         <TextBox x:Name="outerDiameter_TextBox" 
-                                 Text="{Binding OuterDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"
+                                 Text="{Binding OuterDiameter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                  Width="auto" Height="Auto"
                                  HorizontalAlignment="Stretch"
                                  VerticalAlignment="Center"
                                  VerticalContentAlignment="Center"
-                                 Margin="5" Grid.Column="1"
-                                 Foreground="Black" FontSize="15" Background="White"/>
+                                 Margin="1" Grid.Column="1"
+                                 Foreground="Black" FontSize="15" Background="White"
+                                 GotFocus="TextBox_GotFocus"/>
 
                         <TextBlock x:Name="innerDiameter_TextBlock"
                                    Text="Innendurchmesser"
@@ -129,13 +133,14 @@
                                    Foreground="Black" FontSize="15" Grid.Column="0" Grid.Row="1"/>
 
                         <TextBox x:Name="innerDiameter_TextBox" 
-                                 Text="{Binding InnerDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"
+                                 Text="{Binding InnerDiameter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                  Width="auto" Height="Auto"
                                  HorizontalAlignment="Stretch"
                                  VerticalAlignment="Center"
                                  VerticalContentAlignment="Center"
-                                 Margin="5" Grid.Column="1" Grid.Row="1"
-                                 Foreground="Black" FontSize="15" Background="White"/>
+                                 Margin="1" Grid.Column="1" Grid.Row="1"
+                                 Foreground="Black" FontSize="15" Background="White"
+                                 GotFocus="TextBox_GotFocus"/>
 
                         <TextBlock x:Name="height_TextBlock"
                                    Text="Höhe"
@@ -144,13 +149,14 @@
                                    Foreground="Black" FontSize="15" Grid.Column="2" Grid.Row="0"/>
 
                         <TextBox x:Name="height_TextBox" 
-                                 Text="{Binding Height, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"
+                                 Text="{Binding Height, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                  Width="auto" Height="Auto"
                                  HorizontalAlignment="Stretch"
                                  VerticalAlignment="Center"
                                  VerticalContentAlignment="Center"
-                                 Margin="5" Grid.Column="3" Grid.Row="0"
-                                 Foreground="Black" FontSize="15" Background="White"/>
+                                 Margin="1" Grid.Column="3" Grid.Row="0"
+                                 Foreground="Black" FontSize="15" Background="White"
+                                 GotFocus="TextBox_GotFocus"/>
 
                         <TextBlock x:Name="BTC_TextBlock"
                                    Text="BTC"
@@ -159,12 +165,12 @@
                                    Foreground="Black" FontSize="15" Grid.Column="2" Grid.Row="1"/>
 
                         <TextBox x:Name="BTC_TextBox" 
-                                 Text="{Binding BTC, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"
+                                 Text="{Binding BTC, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                  Width="auto" Height="Auto"
                                  HorizontalAlignment="Stretch"
                                  VerticalAlignment="Center"
                                  VerticalContentAlignment="Center"
-                                 Margin="5" Grid.Column="3" Grid.Row="1"
+                                 Margin="1" Grid.Column="3" Grid.Row="1"
                                  Foreground="Black" FontSize="15" Background="White"/>
 
                         <TextBlock x:Name="HcHoles_TextBlock"
@@ -174,12 +180,12 @@
                                    Foreground="Black" FontSize="15" Grid.Column="4" Grid.Row="1"/>
 
                         <TextBox x:Name="HcHoles_TextBox" 
-                                 Text="{Binding HcHoles, Mode=TwoWay, UpdateSourceTrigger=LostFocus, TargetNullValue=''}"
+                                 Text="{Binding HcHoles, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}"
                                  Width="auto" Height="Auto"
                                  HorizontalAlignment="Stretch"
                                  VerticalAlignment="Center"
                                  VerticalContentAlignment="Center"
-                                 Margin="5" Grid.Column="5" Grid.Row="1"
+                                 Margin="1" Grid.Column="5" Grid.Row="1"
                                  Foreground="Black" FontSize="15" Background="White"/>
 
                         <TextBlock x:Name="HcHolesDiameter_TextBlock"
@@ -189,12 +195,12 @@
                                    Foreground="Black" FontSize="15" Grid.Column="4" Grid.Row="0"/>
 
                         <TextBox x:Name="HcHolesDiameter_TextBox" 
-                                 Text="{Binding HcHoleDiameter, Mode=TwoWay, UpdateSourceTrigger=LostFocus, TargetNullValue=''}"
+                                 Text="{Binding HcHoleDiameter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}"
                                  Width="auto" Height="Auto"
                                  HorizontalAlignment="Stretch"
                                  VerticalAlignment="Center"
                                  VerticalContentAlignment="Center"
-                                 Margin="5" Grid.Column="5" Grid.Row="0" 
+                                 Margin="1" Grid.Column="5" Grid.Row="0" 
                                  Foreground="Black" FontSize="15" Background="White"/>
 
                         <TextBlock x:Name="HcDiameter_TextBlock"
@@ -204,12 +210,12 @@
                                    Foreground="Black" FontSize="15" Grid.Column="6" Grid.Row="0"/>
 
                         <TextBox x:Name="HcDiameter_TextBox" 
-                                 Text="{Binding HcDiameter, Mode=OneWay, UpdateSourceTrigger=LostFocus, TargetNullValue=''}"
+                                 Text="{Binding HcDiameter, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}"
                                  Width="auto" Height="Auto"
                                  HorizontalAlignment="Stretch"
                                  VerticalAlignment="Center"
                                  VerticalContentAlignment="Center"
-                                 Margin="5" Grid.Column="7" Grid.Row="0"
+                                 Margin="1" Grid.Column="7" Grid.Row="0"
                                  Foreground="Black" FontSize="15" Background="White"/>
                     </Grid>
 
@@ -615,9 +621,9 @@
 
                     <DataTemplate x:Key="PostProcessing">
                         <StackPanel>
-                            <TextBlock Margin="5,0,0,0" Text="{Binding PostProcessing[0], TargetNullValue=''}"/>
-                            <TextBlock Margin="5,0,0,0" Text="{Binding PostProcessing[1], TargetNullValue=''}"/>
-                            <TextBlock Margin="5,0,0,0" Text="{Binding PostProcessing[2], TargetNullValue=''}"/>
+                            <TextBlock Margin="5,0,0,0" Text="{Binding PostProcessing[0], TargetNullValue=''}" Foreground="{Binding PostProcessColor, Converter={StaticResource PostProcessingColorSelector}}"/>
+                            <TextBlock Margin="5,0,0,0" Text="{Binding PostProcessing[1], TargetNullValue=''}" Foreground="{Binding PostProcessColor, Converter={StaticResource PostProcessingColorSelector}}"/>
+                            <TextBlock Margin="5,0,0,0" Text="{Binding PostProcessing[2], TargetNullValue=''}" Foreground="{Binding PostProcessColor, Converter={StaticResource PostProcessingColorSelector}}"/>
                         </StackPanel>
                     </DataTemplate>
 

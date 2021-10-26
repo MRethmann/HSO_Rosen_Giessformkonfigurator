@@ -15,7 +15,7 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
     /// <summary>
     /// All CompareRules that are placed within the CombinationRuleSet.
     /// </summary>
-    abstract class CompareRule
+    public abstract class CompareRule
     {
         public ToleranceSettings ToleranceSettings { get; set; } = new ToleranceSettings();
 
@@ -35,7 +35,7 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
         public abstract bool Compare(Product a, Mold b);
     }
 
-    class ProductCupModularMoldCompare : CompareRule
+    public class ProductCupModularMoldCompare : CompareRule
     {
         protected override IEnumerable<Type> Typen => new[] { typeof(ProductCup), typeof(ModularMold) };
 
@@ -59,7 +59,7 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
     }
 
     // Only for ModularMolds
-    class ProductDiscModularMoldCompare : CompareRule
+    public class ProductDiscModularMoldCompare : CompareRule
     {
         protected override IEnumerable<Type> Typen => new[] { typeof(ProductDisc), typeof(ModularMold) };
 
@@ -76,7 +76,7 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
         }
     }
 
-    class ProductDiscSingleMoldCompare : CompareRule
+    public class ProductDiscSingleMoldCompare : CompareRule
     {
         protected override IEnumerable<Type> Typen => new[] { typeof(ProductDisc), typeof(SingleMoldDisc) };
 

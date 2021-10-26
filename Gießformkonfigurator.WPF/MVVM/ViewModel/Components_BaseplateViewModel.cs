@@ -55,10 +55,10 @@ namespace Giessformkonfigurator.WPF.MVVM.ViewModel
                 || this.Baseplate.OuterDiameter == 0
                 || this.Baseplate.Height == 0
                 || this.Baseplate.OuterDiameter < this.Baseplate.InnerDiameter
-                || ((this.Baseplate.OuterKonusMax ?? 0) == 0)
-                || ((this.Baseplate.OuterKonusMin ?? 0) == 0)
-                || ((this.Baseplate.OuterKonusAngle ?? 0) == 0)
-                || ((this.Baseplate.KonusHeight ?? 0) == 0)
+                || this.Baseplate.OuterKonusMax == 0
+                || this.Baseplate.OuterKonusMin == 0
+                || this.Baseplate.OuterKonusAngle == 0
+                || this.Baseplate.KonusHeight == 0
                 || (this.Baseplate.HasKonus && (((this.Baseplate.InnerKonusMin ?? 0) == 0) || ((this.Baseplate.InnerKonusMax ?? 0) == 0) || ((this.Baseplate.InnerKonusAngle ?? 0) == 0)))
                 || (this.Baseplate.HasHoleguide && ((this.Baseplate.InnerDiameter ?? 0) == 0)))
             {

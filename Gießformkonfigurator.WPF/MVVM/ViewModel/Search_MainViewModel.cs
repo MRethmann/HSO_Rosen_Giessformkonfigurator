@@ -76,7 +76,7 @@ namespace Giessformkonfigurator.WPF.MVVM.ViewModel
         /// <summary>
         /// Gets or Sets the possible PUFactors. Used as comboboxitems in GUI.
         /// </summary>
-        public List<decimal?> PUFactors { get; set; } = new List<decimal?>() { 1.017m, 1.0175m, 1.023m, 1.025m };
+        // public List<decimal?> PUFactors { get; set; } = new List<decimal?>() { 1.017m, 1.0175m, 1.023m, 1.025m };
 
         /// <summary>
         /// Gets or Sets selected factorPu via dropdown in GUI.
@@ -86,6 +86,11 @@ namespace Giessformkonfigurator.WPF.MVVM.ViewModel
         public string BTC { get; set; }
 
         public int ProductId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the color for the post processing value. Negative values are marked in red. Used by the Convert "PostProcessingColorSelector".
+        /// </summary>
+        public string PostProcessColor { get; set; } = "Black";
 
         public ICommand SearchCommand { get; set; }
 
@@ -210,7 +215,8 @@ namespace Giessformkonfigurator.WPF.MVVM.ViewModel
 
         public void SetProductDiscPuFactor()
         {
-            // TODO: Implement Logic to set the PU factor based on product size.
+            // TODO: Prüfen, welcher PU-Faktor nun genutzt werden soll. Gedanke mit Andreas war, dass je ein Faktor für Single- und einer für MultiMolds verwendet wird. Hier könnte jeweils der Mittelwert der beiden Faktoren genutzt werden.
+            // Denkbar ist auch, dass der größere Faktor, ab einer bestimmten Größe der Gießform zum Tragen kommt.
             if (this.ProductDisc.FactorPU == 0
                 || this.ProductDisc.FactorPU == null)
             {
@@ -222,7 +228,6 @@ namespace Giessformkonfigurator.WPF.MVVM.ViewModel
 
         public void SetProductCupPuFactor()
         {
-            // TODO: Implement Logic to set the PU factor based on product size.
             if (this.ProductCup.FactorPU == 0
                 || this.ProductCup.FactorPU == null)
             {

@@ -111,7 +111,7 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                         }
                         else
                         {
-                            Log.Info($"Removed baseplate: {ring} by {this.ProductDisc?.ModularMoldDimensions.InnerDiameter - ring.OuterDiameter} / {this.ProductDisc?.ModularMoldDimensions.OuterDiameter - ring.InnerDiameter}");
+                            Log.Info($"Removed ring: {ring} by {this.ProductDisc?.ModularMoldDimensions.InnerDiameter - ring.OuterDiameter} / {this.ProductDisc?.ModularMoldDimensions.OuterDiameter - ring.InnerDiameter}");
                         }
                     }
 

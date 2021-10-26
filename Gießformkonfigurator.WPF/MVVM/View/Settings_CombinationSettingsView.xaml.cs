@@ -1,21 +1,22 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="Settings_RankingSettingsView.xaml.cs" company="PlaceholderCompany">
+// <copyright file="Settings_CompareSettingsView.xaml.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
 namespace Giessformkonfigurator.WPF.MVVM.View
 {
-    using Giessformkonfigurator.WPF.MVVM.ViewModel;
     using System.Windows.Controls;
+    using Giessformkonfigurator.WPF.MVVM.ViewModel;
+
     /// <summary>
-    /// Interaktionslogik für RankingSettingsView.xaml
+    /// Interaktionslogik für Settings_CompareSettingsView.xaml
     /// </summary>
-    public partial class Settings_RankingSettingsView : UserControl
+    public partial class Settings_CombinationSettingsView : UserControl
     {
-        public Settings_RankingSettingsView()
+        public Settings_CombinationSettingsView()
         {
             this.InitializeComponent();
-            this.DataContext = new Settings_RankingSettingsViewModel();
+            this.DataContext = new Settings_CombinationSettingsViewModel();
         }
     }
 }

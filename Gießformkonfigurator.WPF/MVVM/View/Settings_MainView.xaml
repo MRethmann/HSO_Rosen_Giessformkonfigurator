@@ -44,6 +44,14 @@
                          Style="{StaticResource MenuButtonTheme}"
                          Command="{Binding RankingSettingsViewCommand}"/>
 
+                <RadioButton Content="Combination Settings"
+                         Height="50" Width="200"  
+                         HorizontalContentAlignment="Center"
+                         FontSize="20"
+                         Margin="0,0,10,0"
+                         Style="{StaticResource MenuButtonTheme}"
+                         Command="{Binding CombinationSettingsViewCommand}"/>
+                
             </WrapPanel>
             <ContentControl Grid.Row="1" Margin="10"
                             Content="{Binding CurrentViewAdmin}"/>

@@ -7,13 +7,13 @@ namespace Giessformkonfigurator.WPF.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class changedvererbungoncomponents : IMigrationMetadata
+    public sealed partial class InitialMigrationToPROD : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(changedvererbungoncomponents));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialMigrationToPROD));
         
         string IMigrationMetadata.Id
         {
-            get { return "202110041208258_changed vererbung on components"; }
+            get { return "202110261551541_Initial Migration To PROD"; }
         }
         
         string IMigrationMetadata.Source

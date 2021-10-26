@@ -301,15 +301,21 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                 compareObject.AlternativeCores.Remove(compareObject.AlternativeCores.Find(x => x.Item1.ID == ((ModularMold)compareObject?.Mold).Core?.ID));
                 compareObject.AlternativeGuideRings.Remove(compareObject.AlternativeGuideRings.Find(x => x.Item1.ID == ((ModularMold)compareObject?.Mold).GuideRing?.ID));
 
-                if (compareObject.DifferenceInnerDiameter > this.ToleranceSettings?.Product_InnerDiameter_MAX)
+                if ((compareObject.DifferenceInnerDiameter > 0.01m
+                    && compareObject.DifferenceInnerDiameter > this.ToleranceSettings?.Product_InnerDiameter_MAX)
+                    || compareObject.DifferenceInnerDiameter < 0)
                 {
-                    string diffInnerDiameter = Math.Round((decimal)compareObject.DifferenceInnerDiameter, 2).ToString();
+                    decimal decimalDiffInnerDiameter = Math.Round((decimal)compareObject.DifferenceInnerDiameter, 2);
+                    string diffInnerDiameter = string.Format("{0:0.00}", decimalDiffInnerDiameter);
                     compareObject.PostProcessing.Add($"Innendurchmesser:  {diffInnerDiameter} mm");
                 }
 
-                if (compareObject.DifferenceOuterDiameter > this.ToleranceSettings?.Product_OuterDiameter_MAX)
+                if ((compareObject.DifferenceOuterDiameter > 0.01m
+                    && compareObject.DifferenceOuterDiameter >= this.ToleranceSettings?.Product_OuterDiameter_MAX)
+                    || compareObject.DifferenceOuterDiameter < 0)
                 {
-                    string diffOuterDiameter = Math.Round((decimal)compareObject.DifferenceOuterDiameter, 2).ToString();
+                    decimal decimalDiffOuterDiameter = Math.Round((decimal)compareObject.DifferenceOuterDiameter, 2);
+                    string diffOuterDiameter = string.Format("{0:0.00}", decimalDiffOuterDiameter);
                     compareObject.PostProcessing.Add($"Außendurchmesser: {diffOuterDiameter} mm");
                 }
 

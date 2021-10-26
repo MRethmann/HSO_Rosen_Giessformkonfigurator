@@ -9,7 +9,7 @@ namespace Giessformkonfigurator.WPF.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(Giessformkonfigurator.WPF.MVVM.Model.Db_supportClasses.GießformDBContext context)

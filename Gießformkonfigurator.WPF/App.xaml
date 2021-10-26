@@ -84,6 +84,10 @@
                 <view:Settings_RankingSettingsView/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type viewModel:Settings_CombinationSettingsViewModel}">
+                <view:Settings_CombinationSettingsView/>
+            </DataTemplate>
+
             <DataTemplate DataType="{x:Type viewModel:DBManagement_MainViewModel}">
                 <view:DBManagement_MainView/>
             </DataTemplate>

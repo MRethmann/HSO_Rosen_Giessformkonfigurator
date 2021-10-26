@@ -110,45 +110,28 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Core\RankingSettings.cs" />
-    <Compile Include="Core\ApplicationSettings.cs" />
+    <Compile Include="Core\Settings\RankingSettings.cs" />
+    <Compile Include="Core\Settings\ApplicationSettings.cs" />
+    <Compile Include="Core\Settings\CombinationSettings.cs" />
     <Compile Include="loginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202109291213028_holePairAngle Datatype changed.cs" />
-    <Compile Include="Migrations\202109291213028_holePairAngle Datatype changed.Designer.cs">
-      <DependentUpon>202109291213028_holePairAngle Datatype changed.cs</DependentUpon>
+    <Compile Include="Migrations\202110261551541_Initial Migration To PROD.cs" />
+    <Compile Include="Migrations\202110261551541_Initial Migration To PROD.Designer.cs">
+      <DependentUpon>202110261551541_Initial Migration To PROD.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202109301428107_sync.cs" />
-    <Compile Include="Migrations\202109301428107_sync.Designer.cs">
-      <DependentUpon>202109301428107_sync.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202110041047043_changed attributes on products.cs" />
-    <Compile Include="Migrations\202110041047043_changed attributes on products.Designer.cs">
-      <DependentUpon>202110041047043_changed attributes on products.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202110041052168_changed vererbung on singleMolds.cs" />
-    <Compile Include="Migrations\202110041052168_changed vererbung on singleMolds.Designer.cs">
-      <DependentUpon>202110041052168_changed vererbung on singleMolds.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202110041208258_changed vererbung on components.cs" />
-    <Compile Include="Migrations\202110041208258_changed vererbung on components.Designer.cs">
-      <DependentUpon>202110041208258_changed vererbung on components.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202110082039419_changed datatypes of singlemolds.cs" />
-    <Compile Include="Migrations\202110082039419_changed datatypes of singlemolds.Designer.cs">
-      <DependentUpon>202110082039419_changed datatypes of singlemolds.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202110251402167_datatype changes.cs" />
-    <Compile Include="Migrations\202110251402167_datatype changes.Designer.cs">
-      <DependentUpon>202110251402167_datatype changes.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="MVVM\ViewModel\Settings_CombinationSettingsViewModel.cs" />
     <Compile Include="MVVM\View\Converter\DecimalConverter.cs" />
     <Compile Include="MVVM\View\Converter\IsNullConverter.cs" />
+    <Compile Include="MVVM\View\Converter\PostProcessingColorSelector.cs" />
     <Compile Include="MVVM\View\DataTemplates\AdditionalRingTemplateSelector.cs" />
     <Compile Include="MVVM\View\DataTemplates\DetailsTemplateSelector.cs" />
     <Compile Include="MVVM\View\DataTemplates\QuickInfoTemplateSelector.cs" />
     <Compile Include="MVVM\View\DataTemplates\RowDetailsTemplateSelector.cs" />
+    <Compile Include="MVVM\View\Settings_CombinationSettingsView.xaml.cs">
+      <DependentUpon>Settings_CombinationSettingsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ReportIssueWindow.xaml.cs">
       <DependentUpon>ReportIssueWindow.xaml</DependentUpon>
     </Compile>
@@ -168,7 +151,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Core\ToleranceSettings.cs" />
+    <Compile Include="Core\Settings\ToleranceSettings.cs" />
     <Compile Include="Core\ObservableObject.cs" />
     <Compile Include="Core\RelayCommand.cs" />
     <Compile Include="Enums\moldType.cs" />
@@ -196,6 +179,10 @@
     <Page Include="MVVM\View\Components_MainView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\Settings_CombinationSettingsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="MVVM\View\Settings_ToleranceSettingsView.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -271,43 +258,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\202109220934549_Product changes, Added SingleMold Tables.cs" />
-    <Compile Include="Migrations\202109220934549_Product changes, Added SingleMold Tables.Designer.cs">
-      <DependentUpon>202109220934549_Product changes, Added SingleMold Tables.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109220939021_added SingleMoldDisc, SingleMoldCup.cs" />
-    <Compile Include="Migrations\202109220939021_added SingleMoldDisc, SingleMoldCup.Designer.cs">
-      <DependentUpon>202109220939021_added SingleMoldDisc, SingleMoldCup.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109220948322_changed precision of decimal on products factor PU.cs" />
-    <Compile Include="Migrations\202109220948322_changed precision of decimal on products factor PU.Designer.cs">
-      <DependentUpon>202109220948322_changed precision of decimal on products factor PU.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109221220142_changed datatype of HcHoles to int.cs" />
-    <Compile Include="Migrations\202109221220142_changed datatype of HcHoles to int.Designer.cs">
-      <DependentUpon>202109221220142_changed datatype of HcHoles to int.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109221330481_Added CoreSingleMolds Table.cs" />
-    <Compile Include="Migrations\202109221330481_Added CoreSingleMolds Table.Designer.cs">
-      <DependentUpon>202109221330481_Added CoreSingleMolds Table.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109221343189_database changes.cs" />
-    <Compile Include="Migrations\202109221343189_database changes.Designer.cs">
-      <DependentUpon>202109221343189_database changes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109231424285_changed precision on coreMoldSingle.cs" />
-    <Compile Include="Migrations\202109231424285_changed precision on coreMoldSingle.Designer.cs">
-      <DependentUpon>202109231424285_changed precision on coreMoldSingle.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109231429416_outerkonus baseplate may be null.cs" />
-    <Compile Include="Migrations\202109231429416_outerkonus baseplate may be null.Designer.cs">
-      <DependentUpon>202109231429416_outerkonus baseplate may be null.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109231430436_fillHeigh on core may be null.cs" />
-    <Compile Include="Migrations\202109231430436_fillHeigh on core may be null.Designer.cs">
-      <DependentUpon>202109231430436_fillHeigh on core may be null.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MVVM\Model\Db_components\Baseplate.cs" />
     <Compile Include="MVVM\Model\Db_components\Bolt.cs" />
     <Compile Include="MVVM\Model\Db_components\BoltCircleType.cs" />
@@ -441,54 +391,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
-    <EmbeddedResource Include="Migrations\202109220934549_Product changes, Added SingleMold Tables.resx">
-      <DependentUpon>202109220934549_Product changes, Added SingleMold Tables.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109220939021_added SingleMoldDisc, SingleMoldCup.resx">
-      <DependentUpon>202109220939021_added SingleMoldDisc, SingleMoldCup.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109220948322_changed precision of decimal on products factor PU.resx">
-      <DependentUpon>202109220948322_changed precision of decimal on products factor PU.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109221220142_changed datatype of HcHoles to int.resx">
-      <DependentUpon>202109221220142_changed datatype of HcHoles to int.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109221330481_Added CoreSingleMolds Table.resx">
-      <DependentUpon>202109221330481_Added CoreSingleMolds Table.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109221343189_database changes.resx">
-      <DependentUpon>202109221343189_database changes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109231424285_changed precision on coreMoldSingle.resx">
-      <DependentUpon>202109231424285_changed precision on coreMoldSingle.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109231429416_outerkonus baseplate may be null.resx">
-      <DependentUpon>202109231429416_outerkonus baseplate may be null.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109231430436_fillHeigh on core may be null.resx">
-      <DependentUpon>202109231430436_fillHeigh on core may be null.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109291213028_holePairAngle Datatype changed.resx">
-      <DependentUpon>202109291213028_holePairAngle Datatype changed.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109301428107_sync.resx">
-      <DependentUpon>202109301428107_sync.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110041047043_changed attributes on products.resx">
-      <DependentUpon>202110041047043_changed attributes on products.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110041052168_changed vererbung on singleMolds.resx">
-      <DependentUpon>202110041052168_changed vererbung on singleMolds.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110041208258_changed vererbung on components.resx">
-      <DependentUpon>202110041208258_changed vererbung on components.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110082039419_changed datatypes of singlemolds.resx">
-      <DependentUpon>202110082039419_changed datatypes of singlemolds.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110251402167_datatype changes.resx">
-      <DependentUpon>202110251402167_datatype changes.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202110261551541_Initial Migration To PROD.resx">
+      <DependentUpon>202110261551541_Initial Migration To PROD.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -496,6 +400,7 @@
     </EmbeddedResource>
     <Resource Include="Images\Logo_der_Hochschule_Osnabrück.png" />
     <Resource Include="Images\HS-Logo-ohneText.png" />
+    <Resource Include="Images\information-button.png" />
     <Content Include="log4net.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -170,7 +170,6 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                         // Einlegeplatte mit Kern
                         else if (discMoldsTemp01[iTemp].InsertPlate.HasCore == true)
                         {
-                            // TODO: Hier am besten einen "virtuelle" Kern erstellen, der die Maße der Einlegeplatte bekommt.
                             discMoldsTemp02.Add(new ModularMold(discMoldsTemp01[iTemp].Baseplate, discMoldsTemp01[iTemp].GuideRing, discMoldsTemp01[iTemp].InsertPlate, null));
                         }
                     }
@@ -187,7 +186,6 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                         // Grundplatte mit Kern
                         else if (discMoldsTemp01[iTemp].Baseplate.HasCore == true)
                         {
-                            // TODO: Hier am besten einen "virtuelle" Kern erstellen, der die Maße der Grundplatte bekommt.
                             discMoldsTemp02.Add(new ModularMold(discMoldsTemp01[iTemp].Baseplate, discMoldsTemp01[iTemp].GuideRing, null, null));
                         }
                     }
@@ -195,6 +193,7 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
             }
 
             // MultiMolds (Baseplates, GuideRings, InsertPlates, Cores) --> OuterRings + CoreRings
+            // TODO: Es gibt noch keine Logik, um einen Zusatzring zu nutzen, wenn die Grundplatte/Einlegeplatte bereits einen Kern hat.
             this.Index = discMoldsTemp02.Count;
 
             foreach (var mold in discMoldsTemp02)

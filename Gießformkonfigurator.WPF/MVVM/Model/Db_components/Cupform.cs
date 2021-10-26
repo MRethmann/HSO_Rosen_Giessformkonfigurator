@@ -13,7 +13,7 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_components
     [Table("Cupform")]
     public partial class Cupform : Component
     {
-        [StringLength(10)]
+        [StringLength(20)]
         public string CupType { get; set; }
 
         [StringLength(10)]

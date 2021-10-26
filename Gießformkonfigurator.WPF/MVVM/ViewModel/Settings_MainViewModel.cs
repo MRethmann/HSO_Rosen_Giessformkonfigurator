@@ -17,6 +17,7 @@ namespace Giessformkonfigurator.WPF.MVVM.ViewModel
             this.ApplicationSettingsVm = new Settings_ApplicationSettingsViewModel();
             this.ToleranceSettingsVm = new Settings_ToleranceSettingsViewModel();
             this.RankingSettingsVm = new Settings_RankingSettingsViewModel();
+            this.CombinationSettingsVm = new Settings_CombinationSettingsViewModel();
 
             this.CurrentViewAdmin = this.ApplicationSettingsVm;
 
@@ -34,6 +35,11 @@ namespace Giessformkonfigurator.WPF.MVVM.ViewModel
             {
                 this.CurrentViewAdmin = this.RankingSettingsVm;
             });
+
+            this.CombinationSettingsViewCommand = new RelayCommand(o =>
+            {
+                this.CurrentViewAdmin = this.CombinationSettingsVm;
+            });
         }
 
         public RelayCommand ApplicationSettingsViewCommand { get; set; }
@@ -42,19 +48,23 @@ namespace Giessformkonfigurator.WPF.MVVM.ViewModel
 
         public RelayCommand RankingSettingsViewCommand { get; set; }
 
+        public RelayCommand CombinationSettingsViewCommand { get; set; }
+
         public Settings_ApplicationSettingsViewModel ApplicationSettingsVm { get; set; }
 
         public Settings_ToleranceSettingsViewModel ToleranceSettingsVm { get; set; }
 
         public Settings_RankingSettingsViewModel RankingSettingsVm { get; set; }
 
+        public Settings_CombinationSettingsViewModel CombinationSettingsVm { get; set; }
+
         private object _CurrentViewAdmin;
 
         public object CurrentViewAdmin
         {
             get
-            { 
-                return this._CurrentViewAdmin; 
+            {
+                return this._CurrentViewAdmin;
             }
 
             set
