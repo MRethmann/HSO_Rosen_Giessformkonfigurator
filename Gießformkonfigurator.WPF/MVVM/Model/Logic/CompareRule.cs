@@ -90,25 +90,34 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
             if (productDisc.SingleMoldDimensions.OuterDiameter <= singleMoldDisc.OuterDiameter + this.ToleranceSettings.Product_OuterDiameter_MIN
                 && ((singleMoldDisc.CoreSingleMold == null && productDisc.SingleMoldDimensions.InnerDiameter >= singleMoldDisc.InnerDiameter - this.ToleranceSettings.Product_InnerDiameter_MIN)
                 || (singleMoldDisc.CoreSingleMold != null && productDisc.SingleMoldDimensions.InnerDiameter >= singleMoldDisc.CoreSingleMold.OuterDiameter - this.ToleranceSettings.Product_InnerDiameter_MIN))
-                && productDisc.SingleMoldDimensions.Height <= singleMoldDisc.Height)
+                && productDisc.SingleMoldDimensions.Height <= singleMoldDisc.Height + this.ToleranceSettings.Product_Height_MIN)
             {
                 // Product and singleMoldDisc have BTC
-                if (!string.IsNullOrWhiteSpace(productDisc.BTC)
-                        && singleMoldDisc.HcDiameter != null && singleMoldDisc.HcDiameter > 0
-                        && singleMoldDisc.HcHoles != null && singleMoldDisc.HcHoles > 0
-                        && singleMoldDisc.BoltDiameter != null && singleMoldDisc.BoltDiameter > 0)
+                if (!string.IsNullOrWhiteSpace(productDisc.BTC) && !string.IsNullOrWhiteSpace(singleMoldDisc.BTC))
+                        //TODO: Prüfen, ob einfach der BTC als Vergleich genutzt werden darf. Passt das mit dem PU-Faktor?
+
+                    // && singleMoldDisc.HcDiameter != null && singleMoldDisc.HcDiameter > 0
+                        // && singleMoldDisc.HcHoles != null && singleMoldDisc.HcHoles > 0
+                        // && singleMoldDisc.BoltDiameter != null && singleMoldDisc.BoltDiameter > 0)
                 {
-                    return (productDisc.HcDiameter == null || productDisc.HcDiameter <= 0 || (productDisc.SingleMoldDimensions.HcDiameter <= singleMoldDisc.HcDiameter + this.ToleranceSettings.Hc_Diameter && productDisc.SingleMoldDimensions.HcDiameter >= singleMoldDisc.HcDiameter - this.ToleranceSettings.Hc_Diameter))
-                        && (productDisc.HcHoleDiameter == null || productDisc.HcHoleDiameter <= 0 || (productDisc.SingleMoldDimensions.HcHoleDiameter >= singleMoldDisc.BoltDiameter - this.ToleranceSettings.Bolt_Diameter && productDisc.SingleMoldDimensions.HcHoleDiameter <= singleMoldDisc.BoltDiameter + this.ToleranceSettings.Bolt_Diameter))
-                        && (productDisc.HcHoles == null || productDisc.HcHoles <= 0 || productDisc.HcHoles == singleMoldDisc.HcHoles);
+
+                    return productDisc.BTC.Equals(singleMoldDisc.BTC);
+                    // return (productDisc.HcDiameter == null || productDisc.HcDiameter <= 0 || (productDisc.SingleMoldDimensions.HcDiameter <= singleMoldDisc.HcDiameter + this.ToleranceSettings.Hc_Diameter && productDisc.SingleMoldDimensions.HcDiameter >= singleMoldDisc.HcDiameter - this.ToleranceSettings.Hc_Diameter))
+                        // && (productDisc.HcHoleDiameter == null || productDisc.HcHoleDiameter <= 0 || (productDisc.SingleMoldDimensions.HcHoleDiameter >= singleMoldDisc.BoltDiameter - this.ToleranceSettings.Bolt_Diameter && productDisc.SingleMoldDimensions.HcHoleDiameter <= singleMoldDisc.BoltDiameter + this.ToleranceSettings.Bolt_Diameter))
+                       // && (productDisc.HcHoles == null || productDisc.HcHoles <= 0 || productDisc.HcHoles == singleMoldDisc.HcHoles);
                 }
 
                 // Product has no fitting BTC
+                else if (!string.IsNullOrWhiteSpace(singleMoldDisc.BTC) && string.IsNullOrWhiteSpace(productDisc.BTC))
+                {
+                    return false;
+                    /*return singleMoldDisc.HcDiameter == null || singleMoldDisc.HcDiameter <= 0
+                    || singleMoldDisc.HcHoles == null || singleMoldDisc.HcHoles <= 0
+                    || singleMoldDisc.BoltDiameter == null || singleMoldDisc.BoltDiameter <= 0;*/
+                }
                 else
                 {
-                    return singleMoldDisc.HcDiameter == null || singleMoldDisc.HcDiameter <= 0
-                    || singleMoldDisc.HcHoles == null || singleMoldDisc.HcHoles <= 0
-                    || singleMoldDisc.BoltDiameter == null || singleMoldDisc.BoltDiameter <= 0;
+                    return true;
                 }
             }
             else

@@ -195,7 +195,7 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                 {
                     if (this.ProductDisc.SingleMoldDimensions.OuterDiameter <= singleMoldDisc.OuterDiameter + this.ToleranceSettings.Product_OuterDiameter_MIN
                         && this.ProductDisc.SingleMoldDimensions.InnerDiameter >= singleMoldDisc.InnerDiameter - this.ToleranceSettings.Product_InnerDiameter_MIN
-                        && this.ProductDisc.SingleMoldDimensions.Height <= singleMoldDisc.Height)
+                        && this.ProductDisc.SingleMoldDimensions.Height <= singleMoldDisc.Height + this.ToleranceSettings.Product_Height_MIN)
                     {
                         this.ListSingleMoldDiscs.Add(singleMoldDisc);
                         Log.Info($"Added singleMoldDisc: {singleMoldDisc}");

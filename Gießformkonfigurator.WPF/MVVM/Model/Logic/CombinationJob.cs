@@ -103,7 +103,7 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
 
         private ProductCup ProduktCup { get; set; }
 
-        private CombinationSettings CombinationSettings { get; set; }
+        private CombinationSettings CombinationSettings { get; set; } = new CombinationSettings();
 
         /// <summary>
         /// Gets of Sets the ruleset that is used to combine the components.

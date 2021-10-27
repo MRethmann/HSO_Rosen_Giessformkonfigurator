@@ -494,12 +494,12 @@
                                             <RowDefinition Height="auto"/>
                                         </Grid.RowDefinitions>
 
-                                        <TextBlock Text="Außendurchmesser" Foreground="Gray" Margin="5, 0, 0, 0" Grid.Row="1"/>
-                                        <TextBlock  Text="{Binding Mold.OuterDiameter, FallbackValue=-}" Margin="5, 0, 0, 0" Grid.Row="2" >
+                                        <TextBlock Text="CupType" Foreground="Gray" Margin="5, 0, 0, 0" Grid.Row="1"/>
+                                        <TextBlock  Text="{Binding Mold.CupType, FallbackValue=-}" Margin="5, 0, 0, 0" Grid.Row="2" >
                                         </TextBlock>
 
-                                        <TextBlock Text="Innendurchmesser" Foreground="Gray" Margin="5, 0, 0, 0" Grid.Row="3"/>
-                                        <TextBlock  Text="{Binding Mold.InnerDiameter, FallbackValue=-}" Margin="5, 0, 0, 0" Grid.Row="4">
+                                        <TextBlock Text="Größe" Foreground="Gray" Margin="5, 0, 0, 0" Grid.Row="3"/>
+                                        <TextBlock  Text="{Binding Mold.Size, FallbackValue=-}" Margin="5, 0, 0, 0" Grid.Row="4">
                                         </TextBlock>
                                     </Grid>
 
@@ -512,13 +512,13 @@
                                             <RowDefinition Height="auto"/>
                                         </Grid.RowDefinitions>
 
-                                        <TextBlock Text="Höhe" Foreground="Gray" Margin="5, 0, 0, 0" Grid.Row="1"/>
-                                        <TextBlock  Text="{Binding Mold.Height, FallbackValue=-}" Margin="5, 0, 0, 0" Grid.Row="2">
+                                        <TextBlock Text="Innendurchmesser" Foreground="Gray" Margin="5, 0, 0, 0" Grid.Row="1"/>
+                                        <TextBlock  Text="{Binding Mold.InnerDiameter, FallbackValue=-}" Margin="5, 0, 0, 0" Grid.Row="2">
                                         </TextBlock>
 
                                         <TextBlock Text="Lochkreis" Grid.Row="3" Foreground="Gray" Margin="5, 0, 0, 0"/>
 
-                                        <TextBlock  Text="{Binding a, FallbackValue=-}" Margin="5, 0, 0, 0" Grid.Row="4">
+                                        <TextBlock  Text="{Binding BTC, FallbackValue=-}" Margin="5, 0, 0, 0" Grid.Row="4">
                                         </TextBlock>
 
                                     </Grid>
@@ -676,14 +676,10 @@
 
                     <DataTemplate x:Key="PostProcessing">
                         <StackPanel>
-                            <TextBlock Margin="5,0,0,0" Text="{Binding PostProcessing[0], TargetNullValue=''}" Foreground="{Binding PostProcessColor, Converter={StaticResource PostProcessingColorSelector}}"/>
-                            <TextBlock Margin="5,0,0,0" Text="{Binding PostProcessing[1], TargetNullValue=''}" Foreground="{Binding PostProcessColor, Converter={StaticResource PostProcessingColorSelector}}"/>
-                            <TextBlock Margin="5,0,0,0" Text="{Binding PostProcessing[2], TargetNullValue=''}" Foreground="{Binding PostProcessColor, Converter={StaticResource PostProcessingColorSelector}}"/>
+                            <TextBlock Margin="5,0,0,0" Text="{Binding PostProcessing[0], TargetNullValue=''}"/>
+                            <TextBlock Margin="5,0,0,0" Text="{Binding PostProcessing[1], TargetNullValue=''}"/>
+                            <TextBlock Margin="5,0,0,0" Text="{Binding PostProcessing[2], TargetNullValue=''}"/>
                         </StackPanel>
-                    </DataTemplate>
-
-                    <DataTemplate x:Key="InnerRings">
-
                     </DataTemplate>
 
                     <DataTemplate x:Key="QuickInfoMultiMoldDisc">
@@ -700,7 +696,15 @@
 
                     <DataTemplate x:Key="QuickInfoMultiMoldCup">
                         <Grid>
-                            
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Grid.Row="0" Text="{Binding Mold.Cupform.ID}" Margin="6, 2, 2, 2"/>
+                                <TextBlock Grid.Row="1" Text="{Binding Mold.Cupform.Description}" Margin="6, 2, 2, 2"/>
+                            </Grid>
                         </Grid>
                     </DataTemplate>
 
@@ -1272,7 +1276,357 @@
                     </DataTemplate>
 
                     <DataTemplate x:Key="MultiMoldCupDetails">
-                        <TextBlock>MultiMoldCupDetails</TextBlock>
+                        <Grid Margin="10, 0, 20, 20">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Expander Header="Komponenten" Grid.Row="0" FontSize="25">
+                                <Grid Margin="20, 0, 0, 0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+
+                                    <!-- Baseplate Details-->
+                                    <Expander Grid.Row="1" Header="Cupform" Margin="0, 10, 0, 0" FontSize="20">
+                                        <Expander.Style>
+                                            <Style TargetType="Expander">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding SelectedItem.Mold.Cupform.ID, ElementName=combinationJobOutput}" Value="{x:Null}">
+                                                        <Setter Property="IsEnabled" Value="False"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Expander.Style>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="2*"/>
+                                                <ColumnDefinition Width="1*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                            </Grid.RowDefinitions>
+
+                                            <StackPanel Grid.Column="0" Grid.Row="0" Margin="0, 0, 2, 0">
+                                                <TextBlock Text="ID: "/>
+                                                <TextBlock Text="CupType: "/>
+                                                <TextBlock Text="Größe: "/>
+                                                <TextBlock Text="Lochführung: "/>
+                                                <TextBlock Text="Innendurchmesser: "/>
+                                                <TextBlock Text="Toleranz Innendurchmesser: "/>
+                                                <TextBlock Text="Konusführung: "/>
+                                                <TextBlock Text="Konus Innen Max: "/>
+                                                <TextBlock Text="Konus Innen Min: "/>
+                                                <TextBlock Text="Konus Innen Winkel: "/>
+                                                <TextBlock Text="Führungsstift: "/>
+                                                <TextBlock Text="Mit Gewinde: "/>
+                                                <TextBlock Text="Gewinde: "/>
+                                                <TextBlock Text="Lochkreis: "/>
+                                                <TextBlock Text="Fester Lochkreis: "/>
+                                            </StackPanel>
+
+                                            <StackPanel Grid.Column="1" Grid.Row="0" Margin="2, 0, 0, 0">
+                                                <TextBlock x:Name="Baseplate_ID" Text="{Binding SelectedItem.Mold.Cupform.ID, ElementName=combinationJobOutput, TargetNullValue=-}"/>
+                                                <TextBlock Text="{Binding SelectedItem.Mold.Cupform.CupType, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Text="{Binding SelectedItem.Mold.Cupform.Size, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Text="{Binding SelectedItem.Mold.Cupform.HasHoleGuide, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Text="{Binding SelectedItem.Mold.Cupform.InnerDiameter, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Text="{Binding SelectedItem.Mold.Cupform.ToleranceInnerDiameter, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Text="{Binding SelectedItem.Mold.Cupform.HasKonus, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Text="{Binding SelectedItem.Mold.Cupform.InnerKonusMax, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Text="{Binding SelectedItem.Mold.Cupform.InnerKonusMin, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Text="{Binding SelectedItem.Mold.Cupform.InnerKonusAngle, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Text="{Binding SelectedItem.Mold.Cupform.HasGuideBolt, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Text="{Binding SelectedItem.Mold.Cupform.HasThread, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Text="{Binding SelectedItem.Mold.Cupform.Thread, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Text="{Binding SelectedItem.Mold.Cupform.BTC, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Text="{Binding SelectedItem.Mold.Cupform.HasFixedBTC, ElementName=combinationJobOutput}"/>
+                                            </StackPanel>
+                                        </Grid>
+                                    </Expander>
+
+                                    <!-- Insertplate Details -->
+                                    <Expander Grid.Row="2" Header="Einlegeplatte" FontSize="20">
+                                        <Expander.Style>
+                                            <Style TargetType="Expander">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding SelectedItem.Mold.InsertPlate.ID, ElementName=combinationJobOutput}" Value="{x:Null}">
+                                                        <Setter Property="IsEnabled" Value="False"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Expander.Style>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="2*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <StackPanel Grid.Column="0" Grid.Row="0" Margin="0, 0, 2, 0">
+                                                <TextBlock Grid.Row="1" Text="ID: "/>
+                                                <TextBlock Grid.Row="2" Text="Außendurchmesser: "/>
+                                                <TextBlock Grid.Row="3" Text="Toleranz Außendurchmesser: "/>
+                                                <TextBlock Grid.Row="4" Text="Höhe: "/>
+                                                <TextBlock Grid.Row="5" Text="Konus Außen Max: "/>
+                                                <TextBlock Grid.Row="6" Text="Konus Außen Min: "/>
+                                                <TextBlock Grid.Row="7" Text="Konus Außen Winkel: "/>
+                                                <TextBlock Grid.Row="8" Text="Konus Höhe: "/>
+                                                <TextBlock Grid.Row="9" Text="Konusführung: "/>
+                                                <TextBlock Grid.Row="10" Text="Konus Innen Max: "/>
+                                                <TextBlock Grid.Row="11" Text="Konus Innen Min: "/>
+                                                <TextBlock Grid.Row="12" Text="Konus Innen Winkel: "/>
+                                                <TextBlock Grid.Row="13" Text="Lochführung: "/>
+                                                <TextBlock Grid.Row="14" Text="Innendurchmesser: "/>
+                                                <TextBlock Grid.Row="15" Text="Toleranz Innendurchmesser: "/>
+                                                <TextBlock Grid.Row="16" Text="Kern: "/>
+                                                <TextBlock Grid.Row="17" Text="LK1 Durchmesser: "/>
+                                                <TextBlock Grid.Row="18" Text="LK1 Bohrungen: "/>
+                                                <TextBlock Grid.Row="19" Text="LK1 Gewinde: "/>
+                                                <TextBlock Grid.Row="20" Text="LK2 Durchmesser: "/>
+                                                <TextBlock Grid.Row="21" Text="LK2 Bohrungen: "/>
+                                                <TextBlock Grid.Row="22" Text="LK2 Gewinde: "/>
+                                                <TextBlock Grid.Row="23" Text="LK3 Durchmesser: "/>
+                                                <TextBlock Grid.Row="24" Text="LK3 Bohrungen: "/>
+                                                <TextBlock Grid.Row="25" Text="LK3 Gewinde: "/>
+                                            </StackPanel>
+
+                                            <StackPanel Grid.Column="1" Grid.Row="0" Margin="0, 0, 2, 0">
+                                                <TextBlock Grid.Row="1" Text="{Binding SelectedItem.Mold.InsertPlate.ID, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Grid.Row="2" Text="{Binding SelectedItem.Mold.InsertPlate.OuterDiameter, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Grid.Row="3" Text="{Binding SelectedItem.Mold.InsertPlate.ToleranceOuterDiameter, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Grid.Row="4" Text="{Binding SelectedItem.Mold.InsertPlate.Height, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Grid.Row="5" Text="{Binding SelectedItem.Mold.InsertPlate.OuterKonusMax, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Grid.Row="6" Text="{Binding SelectedItem.Mold.InsertPlate.OuterKonusMin, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Grid.Row="7" Text="{Binding SelectedItem.Mold.InsertPlate.OuterKonusAngle, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Grid.Row="8" Text="{Binding SelectedItem.Mold.InsertPlate.KonusHeight, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Grid.Row="9" Text="{Binding SelectedItem.Mold.InsertPlate.HasKonus, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Grid.Row="10" Text="{Binding SelectedItem.Mold.InsertPlate.InnerKonusMax, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Grid.Row="11" Text="{Binding SelectedItem.Mold.InsertPlate.InnerKonusMin, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Grid.Row="12" Text="{Binding SelectedItem.Mold.InsertPlate.InnerKonusAngle, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Grid.Row="13" Text="{Binding SelectedItem.Mold.InsertPlate.HasHoleguide, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Grid.Row="14" Text="{Binding SelectedItem.Mold.InsertPlate.InnerDiameter, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Grid.Row="15" Text="{Binding SelectedItem.Mold.InsertPlate.ToleranceInnerDiameter, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Grid.Row="16" Text="{Binding SelectedItem.Mold.InsertPlate.HasCore, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Grid.Row="17" Text="{Binding SelectedItem.Mold.InsertPlate.Hc1Diameter, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Grid.Row="18" Text="{Binding SelectedItem.Mold.InsertPlate.Hc1Holes, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Grid.Row="19" Text="{Binding SelectedItem.Mold.InsertPlate.Hc1Thread, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Grid.Row="20" Text="{Binding SelectedItem.Mold.InsertPlate.Hc2Diameter, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Grid.Row="21" Text="{Binding SelectedItem.Mold.InsertPlate.Hc2Holes, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Grid.Row="22" Text="{Binding SelectedItem.Mold.InsertPlate.Hc2Thread, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Grid.Row="23" Text="{Binding SelectedItem.Mold.InsertPlate.Hc3Diameter, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Grid.Row="24" Text="{Binding SelectedItem.Mold.InsertPlate.Hc3Holes, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Grid.Row="25" Text="{Binding SelectedItem.Mold.InsertPlate.Hc3Thread, ElementName=combinationJobOutput}"/>
+                                            </StackPanel>
+                                        </Grid>
+                                    </Expander>
+
+                                    <!-- Core Details -->
+                                    <Expander Grid.Row="4" Header="Kern" FontSize="20">
+                                        <Expander.Style>
+                                            <Style TargetType="Expander">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding SelectedItem.Mold.Core.ID, ElementName=combinationJobOutput}" Value="{x:Null}">
+                                                        <Setter Property="IsEnabled" Value="False"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Expander.Style>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="2*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <StackPanel Grid.Column="0" Grid.Row="0" Margin="2, 0, 0, 0">
+                                                <TextBlock Grid.Row="1" Text="ID: "/>
+                                                <TextBlock Grid.Row="2" Text="Außendurchmesser: "/>
+                                                <TextBlock Grid.Row="3" Text="Toleranz Außendurchmesser: "/>
+                                                <TextBlock Grid.Row="4" Text="Höhe: "/>
+                                                <TextBlock Grid.Row="5" Text="Füllhöhe Max: "/>
+                                                <TextBlock Grid.Row="6" Text="Konusführung: "/>
+                                                <TextBlock Grid.Row="7" Text="Konus Außen Max: "/>
+                                                <TextBlock Grid.Row="8" Text="Konus Außen Min: "/>
+                                                <TextBlock Grid.Row="9" Text="Konus Außen Winkel: "/>
+                                                <TextBlock Grid.Row="10" Text="Führungsstift: "/>
+                                                <TextBlock Grid.Row="11" Text="Höhe Führung: "/>
+                                                <TextBlock Grid.Row="12" Text="Durchmesser Führung: "/>
+                                                <TextBlock Grid.Row="13" Text="Toleranz Durchmesser Führung: "/>
+                                                <TextBlock Grid.Row="14" Text="Lochführung: "/>
+                                                <TextBlock Grid.Row="15" Text="Durchmesser Adapter: "/>
+                                            </StackPanel>
+
+                                            <StackPanel Grid.Column="1" Grid.Row="0" Margin="2, 0, 0, 0">
+                                                <TextBlock Grid.Row="1" Text="{Binding SelectedItem.Mold.Core.ID, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Grid.Row="2" Text="{Binding SelectedItem.Mold.Core.OuterDiameter, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Grid.Row="3" Text="{Binding SelectedItem.Mold.Core.ToleranceOuterDiameter, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Grid.Row="4" Text="{Binding SelectedItem.Mold.Core.Height, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Grid.Row="5" Text="{Binding SelectedItem.Mold.Core.FillHeightMax, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Grid.Row="6" Text="{Binding SelectedItem.Mold.Core.HasKonus, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Grid.Row="7" Text="{Binding SelectedItem.Mold.Core.OuterKonusMax, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Grid.Row="8" Text="{Binding SelectedItem.Mold.Core.OuterKonusMin, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Grid.Row="9" Text="{Binding SelectedItem.Mold.Core.OuterKonusAngle, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Grid.Row="10" Text="{Binding SelectedItem.Mold.Core.HasGuideBolt, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Grid.Row="11" Text="{Binding SelectedItem.Mold.Core.GuideHeight, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Grid.Row="12" Text="{Binding SelectedItem.Mold.Core.GuideDiameter, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Grid.Row="13" Text="{Binding SelectedItem.Mold.Core.ToleranceGuideDiameter, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Grid.Row="14" Text="{Binding SelectedItem.Mold.Core.HasHoleguide, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Grid.Row="15" Text="{Binding SelectedItem.Mold.Core.AdapterDiameter, ElementName=combinationJobOutput}"/>
+                                            </StackPanel>
+                                        </Grid>
+                                    </Expander>
+                                </Grid>
+                            </Expander>
+
+                            <!-- Zusatzringe Innen -->
+                            <Expander Header="Zusatzringe Innen" Grid.Row="2" Margin="0, 10, 0, 0" FontSize="25">
+                                <Expander.Style>
+                                    <Style TargetType="Expander">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding SelectedItem.Mold.ListCoreRings[0], ElementName=combinationJobOutput, ValidatesOnExceptions=False}" Value="{x:Null}">
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                                <Setter Property="IsExpanded" Value="False"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                        <Setter Property="IsExpanded" Value="True"/>
+                                    </Style>
+                                </Expander.Style>
+                                <Grid>
+                                    <Grid Margin="20, 10, 20, 0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+
+                                        <DataGrid Grid.Column="0" Grid.Row="1" ItemsSource="{Binding SelectedItem.Mold.ListCoreRings, ElementName=combinationJobOutput}" Height="Auto" FontSize="15" Background="white"
+                                                  Grid.ColumnSpan="2"
+                                                  AutoGenerateColumns="False"
+                                                  BorderThickness="0" BorderBrush="Transparent"
+                                                  HorizontalGridLinesBrush="DarkGray"
+                                                  VerticalGridLinesBrush="DarkGray"
+                                                  GridLinesVisibility="Horizontal"
+                                                  HeadersVisibility="Column"
+                                                  HorizontalAlignment="Stretch"
+                                                  VerticalAlignment="Stretch"
+                                                  IsReadOnly="True"
+                                                  SelectionUnit="FullRow"
+                                                  IsHitTestVisible="False">
+
+                                            <DataGrid.ColumnHeaderStyle>
+                                                <Style TargetType="DataGridColumnHeader">
+                                                    <Setter Property="Background" Value="White"/>
+                                                    <Setter Property="Foreground" Value="Black"/>
+                                                    <Setter Property="Margin" Value="0, 0, 0, 10"/>
+                                                    <Setter Property="FontWeight" Value="Medium"/>
+                                                </Style>
+                                            </DataGrid.ColumnHeaderStyle>
+
+                                            <DataGrid.Columns>
+                                                <DataGridTextColumn Header="Ring 1" Binding="{Binding Item1.ID}" Width="*"/>
+                                                <DataGridTextColumn Header="Ring 2" Binding="{Binding Item2.ID}" Width="*"/>
+                                                <DataGridTextColumn Header="Abweichung" Binding="{Binding Item3}" Width="*"/>
+                                            </DataGrid.Columns>
+
+                                        </DataGrid>
+                                    </Grid>
+                                </Grid>
+                            </Expander>
+
+                            <!-- Alternative Cores -->
+                            <Expander Header="Alternative Innenkerne" Grid.Row="4" Margin="0, 10, 0, 0" FontSize="25">
+                                <Expander.Style>
+                                    <Style TargetType="Expander">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding SelectedItem.AlternativeCores[0], ElementName=combinationJobOutput}" Value="{x:Null}">
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                                <Setter Property="IsExpanded" Value="False"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                        <Setter Property="IsExpanded" Value="True"/>
+                                    </Style>
+                                </Expander.Style>
+                                <Grid>
+                                    <Grid Margin="20, 10, 20, 0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+
+                                        <DataGrid Grid.Column="0" Grid.Row="1" ItemsSource="{Binding SelectedItem.AlternativeCores, ElementName=combinationJobOutput}" Height="Auto" FontSize="15" Background="white"
+                                                  Grid.ColumnSpan="2"
+                                                  AutoGenerateColumns="False"
+                                                  BorderThickness="0" BorderBrush="Transparent"
+                                                  HorizontalGridLinesBrush="DarkGray"
+                                                  VerticalGridLinesBrush="DarkGray"
+                                                  GridLinesVisibility="Horizontal"
+                                                  HeadersVisibility="Column"
+                                                  HorizontalAlignment="Stretch"
+                                                  VerticalAlignment="Stretch"
+                                                  IsReadOnly="True"
+                                                  SelectionUnit="FullRow"
+                                                  IsHitTestVisible="False">
+
+                                            <DataGrid.ColumnHeaderStyle>
+                                                <Style TargetType="DataGridColumnHeader">
+                                                    <Setter Property="Background" Value="White"/>
+                                                    <Setter Property="Foreground" Value="Black"/>
+                                                    <Setter Property="Margin" Value="0, 0, 0, 10"/>
+                                                    <Setter Property="FontWeight" Value="Medium"/>
+                                                </Style>
+                                            </DataGrid.ColumnHeaderStyle>
+
+                                            <DataGrid.Columns>
+                                                <DataGridTextColumn Header="Innenkern" Binding="{Binding Item1.ID}" Width="*"/>
+                                                <DataGridTextColumn Header="Nachbearbeitung" Binding="{Binding Item2}" Width="*"/>
+                                            </DataGrid.Columns>
+
+                                        </DataGrid>
+                                    </Grid>
+                                </Grid>
+                            </Expander>
+                        </Grid>
+                        <DataTemplate.Resources>
+                            <Style TargetType="Expander">
+                                <Setter Property="Foreground" Value="Black"/>
+                                <Setter Property="FontSize" Value="25"/>
+                            </Style>
+
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Foreground" Value="Black"/>
+                                <Setter Property="FontSize" Value="15"/>
+                            </Style>
+                        </DataTemplate.Resources>
                     </DataTemplate>
 
                     <DataTemplate x:Key="SingleMoldDetails">
@@ -1293,7 +1647,7 @@
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
 
-                            <!-- Zusatzringe Innen -->
+                            <!-- Zusatzringe Innen - ggf. nicht notwendig. Prüfen. --> <!--
                             <Expander Header="Zusatzringe Innen" Grid.Row="0" Margin="0, 10, 0, 0" FontSize="25">
                                 <Expander.Style>
                                     <Style TargetType="Expander">
@@ -1347,21 +1701,12 @@
                                                 <DataGridTextColumn Header="Abweichung" Binding="{Binding Item3}" Width="*"/>
                                             </DataGrid.Columns>
 
-                                            <!--
-                                            <Style TargetType="DataGrid">
-                                                <Style.Triggers>
-                                                    <DataTrigger Binding="{Binding SelectedItem.Mold.ListOuterRings, ElementName=combinationJobOutput}" Value="{x:Null}">
-                                                        <Setter Property="IsEnabled" Value="False"/>
-                                                    </DataTrigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                            -->
-
                                         </DataGrid>
                                     </Grid>
                                 </Grid>
                             </Expander>
-
+                            -->
+                            
                         </Grid>
                     </DataTemplate>
 
@@ -1472,6 +1817,16 @@
                                     <Setter Property="Margin" Value=" 0, 10, 0, 0"/>
                                 </Style>
                             </DataGridColumn.HeaderStyle>
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Style.Triggers>
+                                        <Trigger Property="Text" Value="100.00">
+                                            <Setter Property="Foreground" Value="Green"/>
+                                            <Setter Property="FontWeight" Value="Bold"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
                         </DataGridTextColumn>
 
                         <DataGridTemplateColumn Header="Abweichung" Width="*" CellTemplate="{StaticResource PostProcessing}">

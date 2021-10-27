@@ -94,7 +94,7 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                     }
                     else
                     {
-                        compareObject.DifferenceInnerDiameter = (this.ProductDisc.ModularMoldDimensions.InnerDiameter - modularMold.Core.OuterDiameter) > 0 ? this.ProductDisc.ModularMoldDimensions.InnerDiameter - modularMold.Core.OuterDiameter : 0;
+                        compareObject.DifferenceInnerDiameter = this.ProductDisc.ModularMoldDimensions.InnerDiameter - modularMold.Core.OuterDiameter;
                     }
 
                     if (modularMold.ListOuterRings.Count > 0)
@@ -216,35 +216,6 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                         this.CompareJobOutput.Add(compareObject);
                     }
                     else
-                    {
-                        var compareObject = new CompareObject((ProductDisc)this.ProductDisc, (SingleMoldDisc)singleMoldDisc);
-                        compareObject.DifferenceInnerDiameter = this.ProductDisc.SingleMoldDimensions.InnerDiameter - singleMoldDisc.InnerDiameter;
-                        compareObject.DifferenceOuterDiameter = singleMoldDisc.OuterDiameter - this.ProductDisc.SingleMoldDimensions.OuterDiameter;
-                        this.CompareJobOutput.Add(compareObject);
-                    }
-                }
-            }
-        }
-
-        private void CompareDiscProductSingleMold2()
-        {
-            // Compare SingleMolds with Product. Add rating information.
-            foreach (var singleMoldDisc in this.SingleMoldDiscs)
-            {
-                if (singleMoldDisc.CoreSingleMold != null)
-                {
-                    if (this.CompareRuleSet.Compare(this.ProductDisc, singleMoldDisc)
-                        && singleMoldDisc.CoreSingleMold?.OuterDiameter <= this.ProductDisc.InnerDiameter)
-                    {
-                        var compareObject = new CompareObject((ProductDisc)this.ProductDisc, (SingleMoldDisc)singleMoldDisc);
-                        compareObject.DifferenceInnerDiameter = this.ProductDisc.SingleMoldDimensions.InnerDiameter - singleMoldDisc.CoreSingleMold.OuterDiameter;
-                        compareObject.DifferenceOuterDiameter = singleMoldDisc.OuterDiameter - this.ProductDisc.SingleMoldDimensions.OuterDiameter;
-                        this.CompareJobOutput.Add(compareObject);
-                    }
-                }
-                else
-                {
-                    if (this.CompareRuleSet.Compare(this.ProductDisc, singleMoldDisc))
                     {
                         var compareObject = new CompareObject((ProductDisc)this.ProductDisc, (SingleMoldDisc)singleMoldDisc);
                         compareObject.DifferenceInnerDiameter = this.ProductDisc.SingleMoldDimensions.InnerDiameter - singleMoldDisc.InnerDiameter;

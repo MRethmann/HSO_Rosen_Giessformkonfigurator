@@ -38,6 +38,10 @@ namespace Giessformkonfigurator.WPF.Core
         /// </summary>
         public decimal Product_InnerDiameter_MIN { get; set; }
 
+        public decimal Product_Height_MAX { get; set; }
+
+        public decimal Product_Height_MIN { get; set; }
+
         public decimal Hc_Diameter { get; set; }
 
         public decimal Bolt_Diameter { get; set; }
@@ -63,6 +67,8 @@ namespace Giessformkonfigurator.WPF.Core
                             this.Product_InnerDiameter_MAX = (decimal) dataTable?.Rows[0]["product_InnerDiameter_MAX"];
                             this.Product_OuterDiameter_MIN = (decimal) dataTable?.Rows[0]["product_OuterDiameter_MIN"];
                             this.Product_InnerDiameter_MIN = (decimal) dataTable?.Rows[0]["product_InnerDiameter_MIN"];
+                            this.Product_Height_MAX = (decimal)dataTable?.Rows[0]["Product_Height_MAX"];
+                            this.Product_Height_MIN = (decimal)dataTable?.Rows[0]["Product_Height_MIN"];
                             this.Hc_Diameter = (decimal) dataTable?.Rows[0]["hc_Diameter"];
                             this.Bolt_Diameter = (decimal) dataTable?.Rows[0]["bolt_Diameter"];
                         }

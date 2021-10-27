@@ -21,6 +21,15 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_products
         public decimal? FactorPU { get; set; }
 
         [NotMapped]
+        public decimal? HcDiameter { get; set; }
+
+        [NotMapped]
+        public int? HcHoles { get; set; }
+
+        [NotMapped]
+        public decimal? HcHoleDiameter { get; set; }
+
+        [NotMapped]
         public decimal MultiMoldFactorPU { get; set; }
 
         [StringLength(10)]

@@ -100,7 +100,7 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                 if (compareObject.Mold is ModularMold)
                 {
                     if ((compareObject.Product is ProductCup
-                        && !string.IsNullOrWhiteSpace(((ProductDisc)this.Product).BTC))
+                        && !string.IsNullOrWhiteSpace(((ProductCup)this.Product).BTC))
                         || (compareObject.Product is ProductDisc
                         && !string.IsNullOrWhiteSpace(((ProductDisc)this.Product).BTC)))
                     {
@@ -134,10 +134,11 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                         // Used while adding post processing information. Means that no BTC needs to be added to the product.
                         compareObject.DifferenceBoltDiameter = 0;
                     }
-                    else if (!string.IsNullOrWhiteSpace(this.Product.BTC)
-                        && (((SingleMoldDisc)compareObject.Mold).HcDiameter != null && ((SingleMoldDisc)compareObject.Mold).HcDiameter > 0)
-                        && (((SingleMoldDisc)compareObject.Mold).HcHoles != null && ((SingleMoldDisc)compareObject.Mold).HcHoles > 0)
-                        && (((SingleMoldDisc)compareObject.Mold).BoltDiameter != null && ((SingleMoldDisc)compareObject.Mold).BoltDiameter > 0))
+                    else if (!string.IsNullOrWhiteSpace(this.Product.BTC))
+                        //TODO: Prüfen ob notwendig.
+                        //&& (((SingleMoldDisc)compareObject.Mold).HcDiameter != null && ((SingleMoldDisc)compareObject.Mold).HcDiameter > 0)
+                        //&& (((SingleMoldDisc)compareObject.Mold).HcHoles != null && ((SingleMoldDisc)compareObject.Mold).HcHoles > 0)
+                        //&& (((SingleMoldDisc)compareObject.Mold).BoltDiameter != null && ((SingleMoldDisc)compareObject.Mold).BoltDiameter > 0))
                     {
                         compareObject.FinalRating += 10.00m;
 
@@ -301,18 +302,18 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                 compareObject.AlternativeCores.Remove(compareObject.AlternativeCores.Find(x => x.Item1.ID == ((ModularMold)compareObject?.Mold).Core?.ID));
                 compareObject.AlternativeGuideRings.Remove(compareObject.AlternativeGuideRings.Find(x => x.Item1.ID == ((ModularMold)compareObject?.Mold).GuideRing?.ID));
 
-                if ((compareObject.DifferenceInnerDiameter > 0.01m
+                if ((compareObject.DifferenceInnerDiameter > 0.1m
                     && compareObject.DifferenceInnerDiameter > this.ToleranceSettings?.Product_InnerDiameter_MAX)
-                    || compareObject.DifferenceInnerDiameter < 0)
+                    || compareObject.DifferenceInnerDiameter < -0.1m)
                 {
                     decimal decimalDiffInnerDiameter = Math.Round((decimal)compareObject.DifferenceInnerDiameter, 2);
                     string diffInnerDiameter = string.Format("{0:0.00}", decimalDiffInnerDiameter);
                     compareObject.PostProcessing.Add($"Innendurchmesser:  {diffInnerDiameter} mm");
                 }
 
-                if ((compareObject.DifferenceOuterDiameter > 0.01m
+                if ((compareObject.DifferenceOuterDiameter > 0.1m
                     && compareObject.DifferenceOuterDiameter >= this.ToleranceSettings?.Product_OuterDiameter_MAX)
-                    || compareObject.DifferenceOuterDiameter < 0)
+                    || compareObject.DifferenceOuterDiameter < -0.1m)
                 {
                     decimal decimalDiffOuterDiameter = Math.Round((decimal)compareObject.DifferenceOuterDiameter, 2);
                     string diffOuterDiameter = string.Format("{0:0.00}", decimalDiffOuterDiameter);

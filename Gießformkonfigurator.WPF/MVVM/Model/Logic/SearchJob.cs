@@ -79,6 +79,7 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
         {
             if (!string.IsNullOrWhiteSpace(this.ProductDisc.BTC))
             {
+                this.ProductDisc.BTC = this.ProductDisc.BTC.Trim();
                 BoltCircleType boltCircleInformation = new BoltCircleType();
 
                 try
@@ -104,15 +105,16 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
 
         public void AdjustProductInformation(ProductCup productCup)
         {
-            if (!string.IsNullOrWhiteSpace(this.ProductDisc.BTC))
+            if (!string.IsNullOrWhiteSpace(this.ProductCup.BTC))
             {
+                this.ProductCup.BTC = this.ProductCup.BTC.Trim();
                 BoltCircleType boltCircleInformation = new BoltCircleType();
 
                 try
                 {
                     using (var db = new GießformDBContext())
                     {
-                        boltCircleInformation = db.BoltCircleTypes.Find(this.ProductDisc.BTC);
+                        boltCircleInformation = db.BoltCircleTypes.Find(this.ProductCup.BTC);
                     }
                 }
                 catch (Exception ex)
@@ -120,15 +122,13 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                     Log.Error(ex);
                 }
 
-                /*
-                this.ProductDisc.HcDiameter = boltCircleInformation?.Diameter;
-                this.ProductDisc.HcHoleDiameter = boltCircleInformation?.HoleDiameter;
-                this.ProductDisc.HcHoles = boltCircleInformation?.HoleQty;
-                */
+                this.ProductCup.HcDiameter = boltCircleInformation?.Diameter;
+                this.ProductCup.HcHoleDiameter = boltCircleInformation?.HoleDiameter;
+                this.ProductCup.HcHoles = boltCircleInformation?.HoleQty;
             }
 
-            // this.ProductCup.AddMultiMoldDimensions(this.ProductCup.MultiMoldFactorPU);
-            // this.ProductCup.AddSingleMoldDimensions((decimal)this.ProductCup.FactorPU);
+            this.ProductCup.AddMultiMoldDimensions(this.ProductCup.MultiMoldFactorPU);
+            this.ProductCup.AddSingleMoldDimensions((decimal)this.ProductCup.FactorPU);
         }
     }
 }

@@ -18,12 +18,6 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_products
 
         public decimal InnerDiameter { get; set; }
 
-        public decimal? HcDiameter { get; set; }
-
-        public int? HcHoles { get; set; }
-
-        public decimal? HcHoleDiameter { get; set; }
-
         /// <summary>
         /// Gets or Sets dimension information which is calculated by singleMold pu factor.
         /// </summary>
@@ -42,11 +36,15 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_products
             this.ModularMoldDimensions.OuterDiameter = Math.Round(this.OuterDiameter * multiMoldFactorPu, 2);
             this.ModularMoldDimensions.InnerDiameter = Math.Round(this.InnerDiameter * multiMoldFactorPu, 2);
             this.ModularMoldDimensions.Height = Math.Round(this.Height * multiMoldFactorPu, 2);
-            this.ModularMoldDimensions.HcDiameter = this?.HcDiameter != null ? Math.Round((decimal)this.HcDiameter * multiMoldFactorPu, 2) : 0.0m;
-            this.ModularMoldDimensions.HcHoleDiameter = this?.HcHoleDiameter != null ? Math.Round((decimal)this.HcHoleDiameter * multiMoldFactorPu, 2) : 0.0m;
-            this.ModularMoldDimensions.HcHoles = this.HcHoles;
-            this.ModularMoldDimensions.BTC = this.BTC;
             this.ModularMoldDimensions.MultiMoldFactorPU = this.MultiMoldFactorPU;
+
+            if (!string.IsNullOrWhiteSpace(this.BTC))
+            {
+                this.ModularMoldDimensions.HcDiameter = Math.Round((decimal)this.HcDiameter * multiMoldFactorPu, 2);
+                this.ModularMoldDimensions.HcHoleDiameter = Math.Round((decimal)this.HcHoleDiameter * multiMoldFactorPu, 2);
+                this.ModularMoldDimensions.HcHoles = this.HcHoles;
+                this.ModularMoldDimensions.BTC = this.BTC;
+            }
         }
 
         public void AddSingleMoldDimensions(decimal singleMoldFactorPu)
@@ -55,11 +53,15 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_products
             this.SingleMoldDimensions.OuterDiameter = Math.Round(this.OuterDiameter * singleMoldFactorPu, 2);
             this.SingleMoldDimensions.InnerDiameter = Math.Round(this.InnerDiameter * singleMoldFactorPu, 2);
             this.SingleMoldDimensions.Height = Math.Round(this.Height * singleMoldFactorPu, 2);
-            this.SingleMoldDimensions.HcDiameter = this?.HcDiameter != null ? Math.Round((decimal)this.HcDiameter * singleMoldFactorPu, 2) : 0.0m;
-            this.SingleMoldDimensions.HcHoleDiameter = this?.HcHoleDiameter != null ? Math.Round((decimal)this.HcHoleDiameter * singleMoldFactorPu, 2) : 0.0m;
-            this.SingleMoldDimensions.HcHoles = this.HcHoles;
-            this.SingleMoldDimensions.BTC = this.BTC;
             this.SingleMoldDimensions.FactorPU = this.FactorPU;
+
+            if (!string.IsNullOrWhiteSpace(this.BTC))
+            {
+                this.SingleMoldDimensions.HcDiameter = Math.Round((decimal)this.HcDiameter * singleMoldFactorPu, 2);
+                this.SingleMoldDimensions.HcHoleDiameter = Math.Round((decimal)this.HcHoleDiameter * singleMoldFactorPu, 2);
+                this.SingleMoldDimensions.HcHoles = this.HcHoles;
+                this.SingleMoldDimensions.BTC = this.BTC;
+            }
         }
     }
 }
