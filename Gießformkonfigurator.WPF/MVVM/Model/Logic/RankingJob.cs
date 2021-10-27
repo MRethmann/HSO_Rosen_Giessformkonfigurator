@@ -135,9 +135,9 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                         compareObject.DifferenceBoltDiameter = 0;
                     }
                     else if (!string.IsNullOrWhiteSpace(this.Product.BTC)
-                        && (((SingleMold)compareObject.Mold).HcDiameter != null && ((SingleMold)compareObject.Mold).HcDiameter > 0)
-                        && (((SingleMold)compareObject.Mold).HcHoles != null && ((SingleMold)compareObject.Mold).HcHoles > 0)
-                        && (((SingleMold)compareObject.Mold).BoltDiameter != null && ((SingleMold)compareObject.Mold).BoltDiameter > 0))
+                        && (((SingleMoldDisc)compareObject.Mold).HcDiameter != null && ((SingleMoldDisc)compareObject.Mold).HcDiameter > 0)
+                        && (((SingleMoldDisc)compareObject.Mold).HcHoles != null && ((SingleMoldDisc)compareObject.Mold).HcHoles > 0)
+                        && (((SingleMoldDisc)compareObject.Mold).BoltDiameter != null && ((SingleMoldDisc)compareObject.Mold).BoltDiameter > 0))
                     {
                         compareObject.FinalRating += 10.00m;
 

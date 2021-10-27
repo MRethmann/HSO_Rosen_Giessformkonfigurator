@@ -279,8 +279,8 @@
                                    Foreground="Black" FontSize="15" Grid.Column="0"/>
 
                         <TextBox x:Name="Cupform_TextBox" 
-                                 Text="{Binding CupForm, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                 Width="auto" Height="Auto"
+                                 Text="{Binding CupType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                 Width="Auto" Height="Auto"
                                  HorizontalAlignment="Stretch"
                                  VerticalAlignment="Center"
                                  VerticalContentAlignment="Center"
@@ -306,15 +306,14 @@
                                  Foreground="Black" FontSize="15" Background="White"
                                  GotFocus="TextBox_GotFocus"/>
 
-                        <!--
-                        <TextBlock x:Name="height_TextBlock"
-                                   Text="Höhe"
+                        <TextBlock x:Name="CupSize_TextBlock"
+                                   Text="Größe in Zoll"
                                    HorizontalAlignment="Left" VerticalAlignment="Center"
                                    Margin="10,0,0,0" 
                                    Foreground="Black" FontSize="15" Grid.Column="2" Grid.Row="0"/>
 
-                        <TextBox x:Name="height_TextBox" 
-                                 Text="{Binding Height, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        <TextBox x:Name="CupSize_TextBox" 
+                                 Text="{Binding CupSize, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                  Width="auto" Height="Auto"
                                  HorizontalAlignment="Stretch"
                                  VerticalAlignment="Center"
@@ -322,7 +321,6 @@
                                  Margin="1" Grid.Column="3" Grid.Row="0"
                                  Foreground="Black" FontSize="15" Background="White"
                                  GotFocus="TextBox_GotFocus"/>
-                        -->
                         
                         <TextBlock x:Name="BTC_Cup_TextBlock"
                                    Text="BTC"
@@ -338,54 +336,6 @@
                                  VerticalContentAlignment="Center"
                                  Margin="1" Grid.Column="3" Grid.Row="1"
                                  Foreground="Black" FontSize="15" Background="White"/>
-
-                        <!-- Check if needed
-                        
-                        <TextBlock x:Name="HcHoles_TextBlock"
-                                   Text="Anzahl Bohrungen"
-                                   HorizontalAlignment="Left" VerticalAlignment="Center"
-                                   Margin="10,0,0,0" 
-                                   Foreground="Black" FontSize="15" Grid.Column="4" Grid.Row="1"/>
-
-                        <TextBox x:Name="HcHoles_TextBox" 
-                                 Text="{Binding HcHoles, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}"
-                                 Width="auto" Height="Auto"
-                                 HorizontalAlignment="Stretch"
-                                 VerticalAlignment="Center"
-                                 VerticalContentAlignment="Center"
-                                 Margin="1" Grid.Column="5" Grid.Row="1"
-                                 Foreground="Black" FontSize="15" Background="White"/>
-
-                        <TextBlock x:Name="HcHolesDiameter_TextBlock"
-                                   Text="Lochdurchmesser"
-                                   HorizontalAlignment="Left" VerticalAlignment="Center"
-                                   Margin="10,0,0,0" 
-                                   Foreground="Black" FontSize="15" Grid.Column="4" Grid.Row="0"/>
-
-                        <TextBox x:Name="HcHolesDiameter_TextBox" 
-                                 Text="{Binding HcHoleDiameter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}"
-                                 Width="auto" Height="Auto"
-                                 HorizontalAlignment="Stretch"
-                                 VerticalAlignment="Center"
-                                 VerticalContentAlignment="Center"
-                                 Margin="1" Grid.Column="5" Grid.Row="0" 
-                                 Foreground="Black" FontSize="15" Background="White"/>
-
-                        <TextBlock x:Name="HcDiameter_TextBlock"
-                                   Text="Durchmesser Lochkreis"
-                                   HorizontalAlignment="Left" VerticalAlignment="Center"
-                                   Margin="10,0,0,0" 
-                                   Foreground="Black" FontSize="15" Grid.Column="6" Grid.Row="0"/>
-
-                        <TextBox x:Name="HcDiameter_TextBox" 
-                                 Text="{Binding HcDiameter, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}"
-                                 Width="auto" Height="Auto"
-                                 HorizontalAlignment="Stretch"
-                                 VerticalAlignment="Center"
-                                 VerticalContentAlignment="Center"
-                                 Margin="1" Grid.Column="7" Grid.Row="0"
-                                 Foreground="Black" FontSize="15" Background="White"/>
-                        -->
 
                     </Grid>
 

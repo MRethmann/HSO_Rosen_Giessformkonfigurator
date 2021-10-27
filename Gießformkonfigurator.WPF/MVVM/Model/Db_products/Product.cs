@@ -18,9 +18,6 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_products
         [StringLength(100)]
         public string Description { get; set; }
 
-        /// <summary>
-        /// Received from database.
-        /// </summary>
         public decimal? FactorPU { get; set; }
 
         [NotMapped]

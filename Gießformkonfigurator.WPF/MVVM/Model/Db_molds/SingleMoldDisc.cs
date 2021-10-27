@@ -27,5 +27,9 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_molds
             this.MoldType = MoldType.SingleMold;
             this.ProductType = ProductType.Disc;
         }
+
+        public decimal Height { get; set; }
+
+        public decimal OuterDiameter { get; set; }
     }
 }

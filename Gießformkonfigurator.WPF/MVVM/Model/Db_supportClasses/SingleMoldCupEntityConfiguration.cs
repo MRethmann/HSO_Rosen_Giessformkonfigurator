@@ -16,20 +16,17 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_supportClasses
             this.Property(e => e.Description)
                 .IsUnicode(false);
 
-            this.Property(e => e.OuterDiameter)
-                .HasPrecision(10, 4);
-
-            this.Property(e => e.Height)
-                .HasPrecision(10, 4);
-
             this.Property(e => e.InnerDiameter)
                 .HasPrecision(10, 4);
 
-            this.Property(e => e.HcDiameter)
-                .HasPrecision(10, 4);
+            this.Property(e => e.BTC)
+                .IsUnicode(false);
 
-            this.Property(e => e.BoltDiameter)
-                .HasPrecision(10, 4);
+            this.Property(e => e.CupType)
+                .IsUnicode(false);
+
+            this.Property(e => e.Size)
+                .HasPrecision(10, 2);
         }
     }
 

@@ -131,6 +131,22 @@
     <Compile Include="Migrations\202110270931524_ChangesToDatatypes_V2.Designer.cs">
       <DependentUpon>202110270931524_ChangesToDatatypes_V2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202110271122599_ChangesToDatatypes_V3.cs" />
+    <Compile Include="Migrations\202110271122599_ChangesToDatatypes_V3.Designer.cs">
+      <DependentUpon>202110271122599_ChangesToDatatypes_V3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110271156593_AddedSizeToSingleMoldCup.cs" />
+    <Compile Include="Migrations\202110271156593_AddedSizeToSingleMoldCup.Designer.cs">
+      <DependentUpon>202110271156593_AddedSizeToSingleMoldCup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110271529098_AddedHcAttributesToSingleMoldCup.cs" />
+    <Compile Include="Migrations\202110271529098_AddedHcAttributesToSingleMoldCup.Designer.cs">
+      <DependentUpon>202110271529098_AddedHcAttributesToSingleMoldCup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110271532384_HcAttributesNotMapped.cs" />
+    <Compile Include="Migrations\202110271532384_HcAttributesNotMapped.Designer.cs">
+      <DependentUpon>202110271532384_HcAttributesNotMapped.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MVVM\ViewModel\Settings_CombinationSettingsViewModel.cs" />
     <Compile Include="MVVM\View\Converter\DecimalConverter.cs" />
@@ -410,6 +426,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202110270931524_ChangesToDatatypes_V2.resx">
       <DependentUpon>202110270931524_ChangesToDatatypes_V2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110271122599_ChangesToDatatypes_V3.resx">
+      <DependentUpon>202110271122599_ChangesToDatatypes_V3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110271156593_AddedSizeToSingleMoldCup.resx">
+      <DependentUpon>202110271156593_AddedSizeToSingleMoldCup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110271529098_AddedHcAttributesToSingleMoldCup.resx">
+      <DependentUpon>202110271529098_AddedHcAttributesToSingleMoldCup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110271532384_HcAttributesNotMapped.resx">
+      <DependentUpon>202110271532384_HcAttributesNotMapped.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

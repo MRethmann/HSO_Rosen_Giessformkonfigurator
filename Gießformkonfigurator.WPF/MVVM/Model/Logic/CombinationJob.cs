@@ -103,6 +103,8 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
 
         private ProductCup ProduktCup { get; set; }
 
+        private CombinationSettings CombinationSettings { get; set; }
+
         /// <summary>
         /// Gets of Sets the ruleset that is used to combine the components.
         /// </summary>
@@ -337,9 +339,9 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
             {
                 foreach (var coreSingleMold in this.ListCoresSingleMold)
                 {
-                    if (singleMoldDisc.InnerDiameter <= coreSingleMold.InnerDiameter
-                        && singleMoldDisc.InnerDiameter <= coreSingleMold.InnerDiameter - 2
-                        && coreSingleMold.OuterDiameter < (singleMoldDisc.HcDiameter - (singleMoldDisc.BoltDiameter / 2)))
+                    if (coreSingleMold.InnerDiameter >= singleMoldDisc.InnerDiameter + this.CombinationSettings.Tolerance_Flat_MIN
+                    && coreSingleMold.InnerDiameter <= singleMoldDisc.InnerDiameter + this.CombinationSettings.Tolerance_Flat_MAX
+                    && coreSingleMold.OuterDiameter < (singleMoldDisc.HcDiameter - (singleMoldDisc.BoltDiameter / 2)))
                     {
                         singleMoldDisc.CoreSingleMold = coreSingleMold;
                         this.SingleMoldDiscOutput.Add(singleMoldDisc);
@@ -358,6 +360,27 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
         private void CombineSingleCupMold()
         {
             this.SingleMoldCupOutput = new List<SingleMoldCup>();
+
+            foreach (var singleMoldCup in this.ListSingleMoldCups)
+            {
+                foreach (var coreSingleMold in this.ListCoresSingleMold)
+                {
+                    if (coreSingleMold.InnerDiameter >= singleMoldCup.InnerDiameter + this.CombinationSettings.Tolerance_Flat_MIN
+                    && coreSingleMold.InnerDiameter <= singleMoldCup.InnerDiameter + this.CombinationSettings.Tolerance_Flat_MAX
+                    && coreSingleMold.OuterDiameter < (singleMoldCup.HcDiameter - (singleMoldCup.BoltDiameter / 2)))
+                    {
+                        singleMoldCup.CoreSingleMold = coreSingleMold;
+                        this.SingleMoldCupOutput.Add(singleMoldCup);
+                    }
+                }
+
+                this.SingleMoldCupOutput.Add(singleMoldCup);
+            }
+
+            foreach (var singleMold in this.SingleMoldCupOutput)
+            {
+                Log.Info(singleMold.ID.ToString() + " + CoreSingleMold: " + singleMold.CoreSingleMold?.ID.ToString());
+            }
         }
     }
 }

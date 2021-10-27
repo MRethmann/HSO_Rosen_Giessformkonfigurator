@@ -206,6 +206,31 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
             // Compare SingleMolds with Product. Add rating information.
             foreach (var singleMoldDisc in this.SingleMoldDiscs)
             {
+                if (this.CompareRuleSet.Compare(this.ProductDisc, singleMoldDisc))
+                {
+                    if (singleMoldDisc.CoreSingleMold != null)
+                    {
+                        var compareObject = new CompareObject((ProductDisc)this.ProductDisc, (SingleMoldDisc)singleMoldDisc);
+                        compareObject.DifferenceInnerDiameter = this.ProductDisc.SingleMoldDimensions.InnerDiameter - singleMoldDisc.CoreSingleMold.OuterDiameter;
+                        compareObject.DifferenceOuterDiameter = singleMoldDisc.OuterDiameter - this.ProductDisc.SingleMoldDimensions.OuterDiameter;
+                        this.CompareJobOutput.Add(compareObject);
+                    }
+                    else
+                    {
+                        var compareObject = new CompareObject((ProductDisc)this.ProductDisc, (SingleMoldDisc)singleMoldDisc);
+                        compareObject.DifferenceInnerDiameter = this.ProductDisc.SingleMoldDimensions.InnerDiameter - singleMoldDisc.InnerDiameter;
+                        compareObject.DifferenceOuterDiameter = singleMoldDisc.OuterDiameter - this.ProductDisc.SingleMoldDimensions.OuterDiameter;
+                        this.CompareJobOutput.Add(compareObject);
+                    }
+                }
+            }
+        }
+
+        private void CompareDiscProductSingleMold2()
+        {
+            // Compare SingleMolds with Product. Add rating information.
+            foreach (var singleMoldDisc in this.SingleMoldDiscs)
+            {
                 if (singleMoldDisc.CoreSingleMold != null)
                 {
                     if (this.CompareRuleSet.Compare(this.ProductDisc, singleMoldDisc)
@@ -242,7 +267,7 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
             {
                 if (compareRuleSet.Compare(this.ProductCup, modularMold))
                 {
-                    var compareObject = new CompareObject((ProductCup)this.ProductCup, (ModularMold) modularMold);
+                    var compareObject = new CompareObject(this.ProductCup, modularMold);
                     compareObject.DifferenceInnerDiameter = this.ProductCup.ModularMoldDimensions.InnerDiameter - modularMold.Core.OuterDiameter;
                     compareObjectsTemp01.Add(compareObject);
                 }

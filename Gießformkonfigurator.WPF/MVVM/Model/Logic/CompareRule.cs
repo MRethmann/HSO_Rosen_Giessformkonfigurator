@@ -88,7 +88,8 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
 
             // General comparison between single Mold and product
             if (productDisc.SingleMoldDimensions.OuterDiameter <= singleMoldDisc.OuterDiameter + this.ToleranceSettings.Product_OuterDiameter_MIN
-                && productDisc.SingleMoldDimensions.InnerDiameter >= singleMoldDisc.InnerDiameter - this.ToleranceSettings.Product_InnerDiameter_MIN
+                && ((singleMoldDisc.CoreSingleMold == null && productDisc.SingleMoldDimensions.InnerDiameter >= singleMoldDisc.InnerDiameter - this.ToleranceSettings.Product_InnerDiameter_MIN)
+                || (singleMoldDisc.CoreSingleMold != null && productDisc.SingleMoldDimensions.InnerDiameter >= singleMoldDisc.CoreSingleMold.OuterDiameter - this.ToleranceSettings.Product_InnerDiameter_MIN))
                 && productDisc.SingleMoldDimensions.Height <= singleMoldDisc.Height)
             {
                 // Product and singleMoldDisc have BTC
@@ -108,6 +109,46 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                     return singleMoldDisc.HcDiameter == null || singleMoldDisc.HcDiameter <= 0
                     || singleMoldDisc.HcHoles == null || singleMoldDisc.HcHoles <= 0
                     || singleMoldDisc.BoltDiameter == null || singleMoldDisc.BoltDiameter <= 0;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
+
+    public class ProductCupSingleMoldCompare : CompareRule
+    {
+        protected override IEnumerable<Type> Typen => new[] { typeof(ProductCup), typeof(SingleMoldCup) };
+
+        public override bool Compare(Product a, Mold b)
+        {
+            object[] compareElements = new object[] { a, b };
+            var productCup = compareElements.OfType<ProductCup>().Single();
+            var singleMoldCup = compareElements.OfType<SingleMoldCup>().Single();
+
+            if (productCup.CupType.Equals(singleMoldCup.CupType)
+                && productCup.Size == singleMoldCup.Size
+                && ((singleMoldCup.CoreSingleMold == null && productCup.SingleMoldDimensions.InnerDiameter >= singleMoldCup.InnerDiameter - this.ToleranceSettings.Product_InnerDiameter_MIN)
+                || (singleMoldCup.CoreSingleMold != null && productCup.SingleMoldDimensions.InnerDiameter >= singleMoldCup.CoreSingleMold.OuterDiameter - this.ToleranceSettings.Product_InnerDiameter_MIN)))
+            {
+                // Product and singleMold have BTC
+                if (!string.IsNullOrWhiteSpace(productCup.BTC) && !string.IsNullOrWhiteSpace(singleMoldCup.BTC))
+                {
+                    return singleMoldCup.BTC.Equals(productCup.BTC);
+                }
+
+                // SingleMold has BTC but product does not.
+                else if (!string.IsNullOrWhiteSpace(singleMoldCup.BTC) && string.IsNullOrWhiteSpace(productCup.BTC))
+                {
+                    return false;
+                }
+
+                // Product has BTC but singleMold does not.
+                else
+                {
+                    return true;
                 }
             }
             else

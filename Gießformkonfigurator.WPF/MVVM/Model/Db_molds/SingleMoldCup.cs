@@ -29,5 +29,9 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_molds
             this.ProductType = ProductType.Cup;
             this.ProductTypeName = "Cup";
         }
+
+        public string CupType { get; set; }
+
+        public decimal Size { get; set; }
     }
 }

@@ -46,9 +46,6 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
         public abstract bool Combine(Component a, Component b);
     }
 
-    /// <summary>
-    /// No Documentation necessary.
-    /// </summary>
     public class BaseplateCoreCombination : CombinationRule
     {
         protected override IEnumerable<Type> Typen => new[] { typeof(Baseplate), typeof(Core) };
@@ -246,4 +243,16 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
             }
         }
     }
+
+    public class CupformInsertPlateCombination : CombinationRule
+    {
+        protected override IEnumerable<Type> Typen => throw new NotImplementedException();
+
+        public override bool Combine(Component a, Component b)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+
 }

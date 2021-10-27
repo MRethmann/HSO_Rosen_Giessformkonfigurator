@@ -20,13 +20,13 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_products
         public decimal InnerDiameter { get; set; }
 
         /// <summary>
-        /// Used to save dimension information which is calculated by singleMold pu factor.
+        /// Gets or Sets dimension information which is calculated by singleMold pu factor.
         /// </summary>
         [NotMapped]
         public ProductCup SingleMoldDimensions { get; set; }
 
         /// <summary>
-        /// Used to save dimension information which is calculated by multiMold pu factor.
+        /// Gets or Sets dimension information which is calculated by multiMold pu factor.
         /// </summary>
         [NotMapped]
         public ProductCup ModularMoldDimensions { get; set; }

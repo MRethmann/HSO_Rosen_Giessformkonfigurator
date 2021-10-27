@@ -77,7 +77,9 @@ namespace Giessformkonfigurator.WPF.MVVM.ViewModel
 
         public int ProductId { get; set; }
 
-        public string CupForm { get; set; }
+        public string CupType { get; set; }
+
+        public decimal CupSize { get; set; }
 
         public List<string> CupFormTypes { get; set; } = new List<string>() { "U", "L", "UH", "TL", "H", "L Radaufbau", "DD", "M" };
 
@@ -176,21 +178,32 @@ namespace Giessformkonfigurator.WPF.MVVM.ViewModel
                         this.ProductDisc.BTC = this.BTC != null ? this.BTC : null;
                         this.SetProductDiscPuFactor();
                         this.SearchJob = new SearchJob(this.ProductDisc);
-                        Log.Info($"ProductDisc search started via manual entry for product: {this.ProductDisc.OuterDiameter}, {this.ProductDisc.InnerDiameter}, {this.ProductDisc.Height}, {this.ProductDisc.BTC}, {this.ProductDisc.FactorPU} - (OD, ID, T, BTC, Factor)");
+                        Log.Info($"ProductDisc search started via manual entry for product: {this.ProductDisc.OuterDiameter}, {this.ProductDisc.InnerDiameter}, {this.ProductDisc.Height}, {this.ProductDisc.BTC} - (OD, ID, T, BTC)");
                     }
                 }
 
                 // Product Cup
                 else
                 {
-                    /*if ()
+                    if (this.CupType == null
+                        || this.CupFormTypes.Contains($"{this.CupType}") == false
+                        || this.CupSize == 0
+                        || this.InnerDiameter == 0)
                     {
+                        this.ProductCup = null;
                         MessageBox.Show("Die eingegebenen Werte sind unvollständig oder fehlerhaft.");
                     }
                     else
                     {
-                        this.productCup = new ProductCup();
-                    }*/
+                        this.ProductCup = new ProductCup();
+                        this.ProductCup.InnerDiameter = this.InnerDiameter;
+                        this.ProductCup.CupType = this.CupType;
+                        this.ProductCup.Size = this.CupSize;
+                        this.ProductCup.BTC = this.BTC != null ? this.BTC : null;
+                        this.SetProductCupPuFactor();
+                        this.SearchJob = new SearchJob(this.ProductCup);
+                        Log.Info($"ProductDisc search started via manual entry for product: {this.ProductCup.Size}, {this.ProductCup.CupType}, {this.ProductCup.InnerDiameter}, {this.ProductCup.BTC} - (Size, CupType, ID, BTC)");
+                    }
                 }
             }
 
@@ -207,7 +220,8 @@ namespace Giessformkonfigurator.WPF.MVVM.ViewModel
         public bool ValidateInput()
         {
             if ((this.SearchByProductId == true && this.ProductId == 0)
-                || (this.SearchByProductId == false && (this.OuterDiameter == 0 || this.InnerDiameter == 0 || this.Height == 0)))
+                || (this.SearchByProductId == false && this.SearchTypeProduct == true && (this.OuterDiameter == 0 || this.InnerDiameter == 0 || this.Height == 0))
+                || ((this.SearchByProductId == false && this.SearchTypeProduct == false) && (this.CupSize == 0 || this.CupType == null || this.InnerDiameter == 0)))
             {
                 return false;
             }

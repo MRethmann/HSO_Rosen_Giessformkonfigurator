@@ -28,6 +28,13 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
         public FilterJob(ProductDisc productDisc)
         {
             this.ProductDisc = productDisc;
+            this.ListBaseplates = new List<Baseplate>();
+            this.ListRings = new List<Ring>();
+            this.ListInsertPlates = new List<InsertPlate>();
+            this.ListCores = new List<Core>();
+            this.ListBolts = new List<Bolt>();
+            this.ListSingleMoldDiscs = new List<SingleMoldDisc>();
+            this.ListCoresSingleMold = new List<CoreSingleMold>();
 
             this.GetFilteredMultiMoldDiscComponents();
             this.GetFilteredSingleMoldDiscs();
@@ -48,6 +55,13 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
         public FilterJob(ProductCup productCup)
         {
             this.ProductCup = productCup;
+            this.ListRings = new List<Ring>();
+            this.ListInsertPlates = new List<InsertPlate>();
+            this.ListCores = new List<Core>();
+            this.ListBolts = new List<Bolt>();
+            this.ListSingleMoldCups = new List<SingleMoldCup>();
+            this.ListCoresSingleMold = new List<CoreSingleMold>();
+            this.ListCupforms = new List<Cupform>();
 
             this.GetFilteredMultiMoldCupComponents();
             this.GetFilteredSingleMoldCups();
@@ -55,23 +69,23 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
             Log.Info("Anzahl Cupforms: " + this.ListCupforms.Count.ToString());
         }
 
-        public List<Baseplate> ListBaseplates { get; set; } = new List<Baseplate>();
+        public List<Baseplate> ListBaseplates { get; set; }
 
-        public List<Ring> ListRings { get; set; } = new List<Ring>();
+        public List<Ring> ListRings { get; set; }
 
-        public List<InsertPlate> ListInsertPlates { get; set; } = new List<InsertPlate>();
+        public List<InsertPlate> ListInsertPlates { get; set; }
 
-        public List<Core> ListCores { get; set; } = new List<Core>();
+        public List<Core> ListCores { get; set; }
 
-        public List<Bolt> ListBolts { get; set; } = new List<Bolt>();
+        public List<Bolt> ListBolts { get; set; }
 
-        public List<SingleMoldDisc> ListSingleMoldDiscs { get; set; } = new List<SingleMoldDisc>();
+        public List<SingleMoldDisc> ListSingleMoldDiscs { get; set; }
 
-        public List<SingleMoldCup> ListSingleMoldCups { get; set; } = new List<SingleMoldCup>();
+        public List<SingleMoldCup> ListSingleMoldCups { get; set; }
 
-        public List<CoreSingleMold> ListCoresSingleMold { get; set; } = new List<CoreSingleMold>();
+        public List<CoreSingleMold> ListCoresSingleMold { get; set; }
 
-        public List<Cupform> ListCupforms { get; set; } = new List<Cupform>();
+        public List<Cupform> ListCupforms { get; set; }
 
         private ProductDisc ProductDisc { get; set; }
 
