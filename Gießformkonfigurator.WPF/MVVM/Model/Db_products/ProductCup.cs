@@ -12,9 +12,10 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_products
     [Table("ProductCup")]
     public class ProductCup : Product
     {
-        [Column("BaseCup")]
-        [StringLength(100)]
-        public string BaseCup { get; set; }
+        [StringLength(20)]
+        public string CupType { get; set; }
+
+        public decimal Size { get; set; }
 
         public decimal InnerDiameter { get; set; }
 

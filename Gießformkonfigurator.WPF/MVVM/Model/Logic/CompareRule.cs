@@ -49,7 +49,7 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
             {
                 return productCup.ModularMoldDimensions.InnerDiameter > modularMold.Core.OuterDiameter
                     && (productCup.ModularMoldDimensions.InnerDiameter + 1) < modularMold.Core.OuterDiameter
-                    && productCup.BaseCup == modularMold.Cupform.CupType;
+                    && productCup.CupType == modularMold.Cupform.CupType;
             }
             else
             {

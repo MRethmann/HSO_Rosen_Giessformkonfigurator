@@ -15,6 +15,7 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_products
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID { get; set; }
 
+        [StringLength(100)]
         public string Description { get; set; }
 
         /// <summary>
@@ -25,6 +26,7 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_products
         [NotMapped]
         public decimal MultiMoldFactorPU { get; set; }
 
+        [StringLength(10)]
         public string BTC { get; set; }
 
         public override string ToString()

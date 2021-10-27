@@ -50,7 +50,7 @@ namespace Giessformkonfigurator.WPF.MVVM.ViewModel
         public bool ValidateInput()
         {
             if (this.ProductCup.ID.ToString().Length <= 1
-                || string.IsNullOrWhiteSpace(this.ProductCup.BaseCup)
+                || string.IsNullOrWhiteSpace(this.ProductCup.CupType)
                 || this.ProductCup.InnerDiameter == 0)
             {
                 return false;

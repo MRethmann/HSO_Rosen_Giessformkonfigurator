@@ -157,14 +157,14 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                 foreach (var cupform in db.Cupforms)
                 {
                     if (cupform.InnerDiameter <= this.ProductCup?.ModularMoldDimensions?.InnerDiameter
-                        && cupform?.CupType == this.ProductCup?.BaseCup)
+                        && cupform?.CupType == this.ProductCup?.CupType)
                     {
                         this.ListCupforms.Add(cupform);
                         Log.Info($"Added cupform: {cupform}");
                     }
                     else
                     {
-                        Log.Info($"Removed cupform: {cupform} by {cupform?.InnerDiameter - this.ProductCup?.InnerDiameter} / {cupform?.CupType} != {this.ProductCup?.BaseCup}");
+                        Log.Info($"Removed cupform: {cupform} by {cupform?.InnerDiameter - this.ProductCup?.InnerDiameter} / {cupform?.CupType} != {this.ProductCup?.CupType}");
                     }
                 }
             }

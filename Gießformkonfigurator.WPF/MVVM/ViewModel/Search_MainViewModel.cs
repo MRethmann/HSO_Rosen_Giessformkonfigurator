@@ -67,30 +67,19 @@ namespace Giessformkonfigurator.WPF.MVVM.ViewModel
 
         public decimal Height { get; set; }
 
-        public decimal? HcDiameter { get; set; }
+        // public decimal? HcDiameter { get; set; }
 
-        public int? HcHoles { get; set; }
+        // public int? HcHoles { get; set; }
 
-        public decimal? HcHoleDiameter { get; set; }
-
-        /// <summary>
-        /// Gets or Sets the possible PUFactors. Used as comboboxitems in GUI.
-        /// </summary>
-        // public List<decimal?> PUFactors { get; set; } = new List<decimal?>() { 1.017m, 1.0175m, 1.023m, 1.025m };
-
-        /// <summary>
-        /// Gets or Sets selected factorPu via dropdown in GUI.
-        /// </summary>
-        public decimal SelectedFactorPU { get; set; } = 1.023m;
+        // public decimal? HcHoleDiameter { get; set; }
 
         public string BTC { get; set; }
 
         public int ProductId { get; set; }
 
-        /// <summary>
-        /// Gets or sets the color for the post processing value. Negative values are marked in red. Used by the Convert "PostProcessingColorSelector".
-        /// </summary>
-        public string PostProcessColor { get; set; } = "Black";
+        public string CupForm { get; set; }
+
+        public List<string> CupFormTypes { get; set; } = new List<string>() { "U", "L", "UH", "TL", "H", "L Radaufbau", "DD", "M" };
 
         public ICommand SearchCommand { get; set; }
 
@@ -111,16 +100,23 @@ namespace Giessformkonfigurator.WPF.MVVM.ViewModel
                     {
                         using (var db = new GießformDBContext())
                         {
-                            this.ProductDisc = new ProductDisc();
                             this.ProductDisc = db.ProductDiscs.Find(this.ProductId);
-                            this.SetProductDiscPuFactor();
-                            this.SearchJob = new SearchJob(this.ProductDisc);
-                            Log.Info($"ProductDisc search via SAP-Nr. started for product: {this.ProductDisc}");
+
+                            if (this.ProductDisc != null)
+                            {
+                                this.SetProductDiscPuFactor();
+                                this.SearchJob = new SearchJob(this.ProductDisc);
+                                Log.Info($"ProductDisc search via SAP-Nr. started for product: {this.ProductDisc}");
+                            }
+                            else
+                            {
+                                MessageBox.Show($"Das Produkt mit der SAP-Nr. {this.ProductId} konnte nicht gefunden werden.");
+                            }
                         }
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Suche fehlgeschlagen. Überprüfe die Db Verbindung!" + ex);
+                        MessageBox.Show("Die Verbindung zur Datenbank konnte nicht hergestellt werden.");
                         Log.Error(ex);
                     }
                 }
@@ -132,16 +128,23 @@ namespace Giessformkonfigurator.WPF.MVVM.ViewModel
                     {
                         using (var db = new GießformDBContext())
                         {
-                            this.ProductCup = new ProductCup();
                             this.ProductCup = db.ProductCups.Find(this.ProductId);
-                            this.SetProductCupPuFactor();
-                            this.SearchJob = new SearchJob(this.ProductCup);
-                            Log.Info($"ProductCup search via SAP-Nr. started for product: {this.ProductCup}");
+
+                            if (this.ProductCup != null)
+                            {
+                                this.SetProductCupPuFactor();
+                                this.SearchJob = new SearchJob(this.ProductCup);
+                                Log.Info($"ProductCup search via SAP-Nr. started for product: {this.ProductCup}");
+                            }
+                            else
+                            {
+                                MessageBox.Show($"Das Produkt mit der SAP-Nr. {this.ProductId} konnte nicht gefunden werden.");
+                            }
                         }
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Suche fehlgeschlagen. Überprüfe die Db Verbindung!");
+                        MessageBox.Show("Die Verbindung zur Datenbank konnte nicht hergestellt werden.");
                         Log.Error(ex);
                     }
                 }
@@ -159,7 +162,7 @@ namespace Giessformkonfigurator.WPF.MVVM.ViewModel
                     || this.OuterDiameter < this.InnerDiameter)
                     {
                         this.ProductDisc = null;
-                        MessageBox.Show("Bitte überprüfe die eingegebenen Werte!");
+                        MessageBox.Show("Die eingegebenen Werte sind unvollständig oder fehlerhaft.");
                     }
                     else
                     {
@@ -167,9 +170,9 @@ namespace Giessformkonfigurator.WPF.MVVM.ViewModel
                         this.ProductDisc.OuterDiameter = this.OuterDiameter;
                         this.ProductDisc.InnerDiameter = this.InnerDiameter;
                         this.ProductDisc.Height = this.Height;
-                        this.ProductDisc.HcHoles = this.HcHoles != null ? this.HcHoles : null;
-                        this.ProductDisc.HcHoleDiameter = this.HcHoleDiameter != null ? this.HcHoleDiameter : null;
-                        this.ProductDisc.HcDiameter = this.HcDiameter != null ? this.HcDiameter : null;
+                        // this.ProductDisc.HcHoles = this.HcHoles != null ? this.HcHoles : null;
+                        // this.ProductDisc.HcHoleDiameter = this.HcHoleDiameter != null ? this.HcHoleDiameter : null;
+                        // this.ProductDisc.HcDiameter = this.HcDiameter != null ? this.HcDiameter : null;
                         this.ProductDisc.BTC = this.BTC != null ? this.BTC : null;
                         this.SetProductDiscPuFactor();
                         this.SearchJob = new SearchJob(this.ProductDisc);
@@ -182,12 +185,11 @@ namespace Giessformkonfigurator.WPF.MVVM.ViewModel
                 {
                     /*if ()
                     {
-                        MessageBox.Show("Bitte alle Werte ausfüllen!");
+                        MessageBox.Show("Die eingegebenen Werte sind unvollständig oder fehlerhaft.");
                     }
                     else
                     {
                         this.productCup = new ProductCup();
-                        this.SetProductCupDimensions();
                     }*/
                 }
             }
@@ -217,24 +219,14 @@ namespace Giessformkonfigurator.WPF.MVVM.ViewModel
         {
             // TODO: Prüfen, welcher PU-Faktor nun genutzt werden soll. Gedanke mit Andreas war, dass je ein Faktor für Single- und einer für MultiMolds verwendet wird. Hier könnte jeweils der Mittelwert der beiden Faktoren genutzt werden.
             // Denkbar ist auch, dass der größere Faktor, ab einer bestimmten Größe der Gießform zum Tragen kommt.
-            if (this.ProductDisc.FactorPU == 0
-                || this.ProductDisc.FactorPU == null)
-            {
-                this.ProductDisc.FactorPU = 1.017m;
-            }
-
-            this.ProductDisc.MultiMoldFactorPU = this.SelectedFactorPU;
+            this.ProductDisc.FactorPU = 1.017m;
+            this.ProductDisc.MultiMoldFactorPU = 1.023m;
         }
 
         public void SetProductCupPuFactor()
         {
-            if (this.ProductCup.FactorPU == 0
-                || this.ProductCup.FactorPU == null)
-            {
-                this.ProductCup.FactorPU = 1.017m;
-            }
-
-            this.ProductCup.MultiMoldFactorPU = this.SelectedFactorPU;
+            this.ProductCup.FactorPU = 1.017m;
+            this.ProductCup.MultiMoldFactorPU = 1.023m;
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_supportClasses
             .IsUnicode(false);
 
             this.Property(e => e.Size)
-            .IsUnicode(false);
+            .HasPrecision(10, 2);
 
             this.Property(e => e.CupType)
             .IsUnicode(false);

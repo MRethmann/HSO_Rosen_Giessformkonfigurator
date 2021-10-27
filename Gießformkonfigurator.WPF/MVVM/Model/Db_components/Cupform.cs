@@ -16,8 +16,7 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_components
         [StringLength(20)]
         public string CupType { get; set; }
 
-        [StringLength(10)]
-        public string Size { get; set; }
+        public decimal Size { get; set; }
 
         [StringLength(10)]
         public string BTC { get; set; }

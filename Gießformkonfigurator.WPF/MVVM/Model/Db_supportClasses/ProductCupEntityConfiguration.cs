@@ -15,7 +15,7 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_supportClasses
             this.Property(e => e.Description)
                 .IsUnicode(false);
 
-            this.Property(e => e.BaseCup)
+            this.Property(e => e.CupType)
                 .IsUnicode(false);
 
             this.Property(e => e.InnerDiameter)
@@ -24,8 +24,10 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_supportClasses
             this.Property(e => e.FactorPU)
                 .HasPrecision(10, 5);
 
+            this.Property(e => e.Size)
+                .HasPrecision(10, 2);
+
             this.Property(e => e.BTC)
-                .IsFixedLength()
                 .IsUnicode(false);
         }
     }
