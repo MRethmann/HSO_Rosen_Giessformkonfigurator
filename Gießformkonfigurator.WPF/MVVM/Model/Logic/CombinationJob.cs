@@ -263,8 +263,10 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
             // Order lists of coreRings and outerRings by rating.
             foreach (var mold in discMoldsTemp02)
             {
-                mold.ListCoreRings.OrderBy(o => o.Item3);
-                mold.ListOuterRings.OrderBy(o => o.Item3);
+                var listCoreRings = mold.ListCoreRings.OrderBy(o => o.Item3);
+                mold.ListCoreRings = new List<Tuple<Ring, Ring, decimal?>>(listCoreRings);
+                var listOuterRings = mold.ListOuterRings.OrderBy(o => o.Item3);
+                mold.ListOuterRings = new List<Tuple<Ring, Ring, decimal?>>(listOuterRings);
             }
 
             this.ModularMoldDiscOutput = new List<ModularMold>(discMoldsTemp02);
