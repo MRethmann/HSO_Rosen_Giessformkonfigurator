@@ -103,7 +103,7 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
             }
 
             // Insertplate has outer konus which needs to match inner konus of baseplate (more likely)
-            else if (baseplate.HasKonus && insertPlate.OuterKonusMax != 0)
+            else if (baseplate.HasKonus)
             {
                 return baseplate.InnerKonusMax + this.CombinationSettings.Tolerance_Konus_MAX >= insertPlate.OuterKonusMax
                     && baseplate.InnerKonusMax - this.CombinationSettings.Tolerance_Konus_MIN <= insertPlate.OuterKonusMax
@@ -246,13 +246,27 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
 
     public class CupformInsertPlateCombination : CombinationRule
     {
-        protected override IEnumerable<Type> Typen => throw new NotImplementedException();
+        protected override IEnumerable<Type> Typen => new[] { typeof(Cupform), typeof(InsertPlate) };
 
         public override bool Combine(Component a, Component b)
         {
-            throw new NotImplementedException();
+            var components = new[] { a, b };
+            var cupform = components.OfType<Cupform>().Single();
+            var insertPlate = components.OfType<InsertPlate>().Single();
+
+            if (cupform.HasKonus)
+            {
+                // Konus Height missing in database.
+                return cupform.InnerKonusMax + this.CombinationSettings.Tolerance_Konus_MAX >= insertPlate.OuterKonusMax
+                    && cupform.InnerKonusMax - this.CombinationSettings.Tolerance_Konus_MIN <= insertPlate.OuterKonusMax
+                    && cupform.InnerKonusMin + this.CombinationSettings.Tolerance_Konus_MAX >= insertPlate.OuterKonusMin
+                    && cupform.InnerKonusMin - this.CombinationSettings.Tolerance_Konus_MIN <= insertPlate.OuterKonusMin
+                    && cupform.InnerKonusAngle == insertPlate.OuterKonusAngle;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
-
-
 }

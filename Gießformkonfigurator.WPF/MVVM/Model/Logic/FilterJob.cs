@@ -104,28 +104,28 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                 {
                     foreach (var baseplate in db.Baseplates)
                     {
-                        if (this.ProductDisc?.ModularMoldDimensions.OuterDiameter < baseplate.OuterDiameter)
+                        if (this.ProductDisc.ModularMoldDimensions.OuterDiameter < baseplate.OuterDiameter)
                         {
                             this.ListBaseplates.Add(baseplate);
                             Log.Info($"Added baseplate: {baseplate}");
                         }
                         else
                         {
-                            Log.Info($"Removed baseplate: {baseplate} by {this.ProductDisc?.ModularMoldDimensions.OuterDiameter - baseplate.OuterDiameter}");
+                            Log.Info($"Removed baseplate: {baseplate} by {this.ProductDisc.ModularMoldDimensions.OuterDiameter - baseplate.OuterDiameter}");
                         }
                     }
 
                     foreach (var ring in db.Rings)
                     {
-                        if (this.ProductDisc?.ModularMoldDimensions.InnerDiameter >= ring.OuterDiameter - this.ToleranceSettings.Product_InnerDiameter_MIN
-                            || this.ProductDisc?.ModularMoldDimensions.OuterDiameter <= ring.InnerDiameter + this.ToleranceSettings.Product_OuterDiameter_MIN)
+                        if (this.ProductDisc.ModularMoldDimensions.InnerDiameter >= ring.OuterDiameter - this.ToleranceSettings.Product_InnerDiameter_MIN
+                            || this.ProductDisc.ModularMoldDimensions.OuterDiameter <= ring.InnerDiameter + this.ToleranceSettings.Product_OuterDiameter_MIN)
                         {
                             this.ListRings.Add(ring);
                             Log.Info($"Added ring: {ring}");
                         }
                         else
                         {
-                            Log.Info($"Removed ring: {ring} by {this.ProductDisc?.ModularMoldDimensions.InnerDiameter - ring.OuterDiameter} / {this.ProductDisc?.ModularMoldDimensions.OuterDiameter - ring.InnerDiameter}");
+                            Log.Info($"Removed ring: {ring} by {this.ProductDisc.ModularMoldDimensions.InnerDiameter - ring.OuterDiameter} / {this.ProductDisc.ModularMoldDimensions.OuterDiameter - ring.InnerDiameter}");
                         }
                     }
 
@@ -138,27 +138,27 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                     foreach (var core in db.Cores)
                     {
                         // TODO: Nochmal prüfen ob die Toleranz hier richtig angewendet ist.
-                        if (this.ProductDisc?.ModularMoldDimensions.InnerDiameter >= core.OuterDiameter - this.ToleranceSettings.Product_InnerDiameter_MIN)
+                        if (this.ProductDisc.ModularMoldDimensions.InnerDiameter >= core.OuterDiameter - this.ToleranceSettings.Product_InnerDiameter_MIN)
                         {
                             this.ListCores.Add(core);
                             Log.Info($"Added core: {core}");
                         }
                         else
                         {
-                            Log.Info($"Removed core: {core} by {this.ProductDisc?.ModularMoldDimensions.InnerDiameter - core.OuterDiameter}");
+                            Log.Info($"Removed core: {core} by {this.ProductDisc.ModularMoldDimensions.InnerDiameter - core.OuterDiameter}");
                         }
                     }
 
                     foreach (var bolt in db.Bolts)
                     {
-                        if (bolt.OuterDiameter <= this.ProductDisc?.ModularMoldDimensions.HcHoleDiameter + this.ToleranceSettings.Bolt_Diameter)
+                        if (bolt.OuterDiameter <= this.ProductDisc.ModularMoldDimensions.HcHoleDiameter + this.ToleranceSettings.Bolt_Diameter)
                         {
                             this.ListBolts.Add(bolt);
                             Log.Info($"Added bolt: {bolt}");
                         }
                         else
                         {
-                            Log.Info($"Removed bolt: {bolt} by {bolt.OuterDiameter - this.ProductDisc?.ModularMoldDimensions.HcHoleDiameter}");
+                            Log.Info($"Removed bolt: {bolt} by {bolt.OuterDiameter - this.ProductDisc.ModularMoldDimensions.HcHoleDiameter}");
                         }
                     }
                 }
@@ -171,8 +171,8 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
             {
                 foreach (var cupform in db.Cupforms)
                 {
-                    if (cupform.InnerDiameter <= this.ProductCup?.ModularMoldDimensions?.InnerDiameter
-                        && cupform?.CupType == this.ProductCup?.CupType)
+                    if (this.ProductCup.ModularMoldDimensions.InnerDiameter >= cupform.InnerDiameter - this.ToleranceSettings.Product_InnerDiameter_MIN
+                        && cupform.CupType.Equals(this.ProductCup.CupType))
                     {
                         this.ListCupforms.Add(cupform);
                         Log.Info($"Added cupform: {cupform}");
@@ -181,6 +181,56 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                     {
                         Log.Info($"Removed cupform: {cupform} by {cupform?.InnerDiameter - this.ProductCup?.InnerDiameter} / {cupform?.CupType} != {this.ProductCup?.CupType}");
                     }
+                }
+
+                foreach (var ring in db.Rings)
+                {
+                    if (this.ProductCup.ModularMoldDimensions.InnerDiameter >= ring.OuterDiameter - this.ToleranceSettings.Product_InnerDiameter_MIN)
+                    {
+                        this.ListRings.Add(ring);
+                        Log.Info($"Added ring: {ring}");
+                    }
+                    else
+                    {
+                        Log.Info($"Removed ring: {ring}");
+                    }
+                }
+
+                // no filter for insertplates
+                foreach (var insertPlate in db.InsertPlates)
+                {
+                    this.ListInsertPlates.Add(insertPlate);
+                }
+
+                foreach (var core in db.Cores)
+                {
+                    // TODO: Nochmal prüfen ob die Toleranz hier richtig angewendet ist.
+                    if (this.ProductCup.ModularMoldDimensions.InnerDiameter >= core.OuterDiameter - this.ToleranceSettings.Product_InnerDiameter_MIN)
+                    {
+                        this.ListCores.Add(core);
+                        Log.Info($"Added core: {core}");
+                    }
+                    else
+                    {
+                        Log.Info($"Removed core: {core} by {this.ProductCup.ModularMoldDimensions.InnerDiameter - core.OuterDiameter}");
+                    }
+                }
+
+                foreach (var bolt in db.Bolts)
+                {
+                    this.ListBolts.Add(bolt);
+
+                    // Filter für Bolzen wird voraussichtlich nicht benötigt.
+                    //
+                    /*if (bolt.OuterDiameter <= this.ProductCup.ModularMoldDimensions.HcHoleDiameter + this.ToleranceSettings.Bolt_Diameter)
+                    {
+                        this.ListBolts.Add(bolt);
+                        Log.Info($"Added bolt: {bolt}");
+                    }
+                    else
+                    {
+                        Log.Info($"Removed bolt: {bolt} by {bolt.OuterDiameter - this.ProductCup.ModularMoldDimensions.HcHoleDiameter}");
+                    }*/
                 }
             }
         }
@@ -224,7 +274,36 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
 
         private void GetFilteredSingleMoldCups()
         {
-            //throw new NotImplementedException();
+            using (var db = new GießformDBContext())
+            {
+                foreach (var singleMoldCup in db.SingleMoldCups)
+                {
+                    if (this.ProductCup.CupType.Equals(singleMoldCup.CupType)
+                        && this.ProductCup.Size == singleMoldCup.Size
+                        && singleMoldCup.CoreSingleMold == null && this.ProductCup.SingleMoldDimensions.InnerDiameter >= singleMoldCup.InnerDiameter - this.ToleranceSettings.Product_InnerDiameter_MIN)
+                    {
+                        this.ListSingleMoldCups.Add(singleMoldCup);
+                        Log.Info($"Added singleMoldDisc: {singleMoldCup}");
+                    }
+                    else
+                    {
+                        Log.Info($"Removed singleMoldDisc: {singleMoldCup}");
+                    }
+                }
+
+                foreach (var coreSingleMold in db.CoreSingleMolds)
+                {
+                    if (this.ProductCup.SingleMoldDimensions.InnerDiameter >= coreSingleMold.OuterDiameter - this.ToleranceSettings.Product_InnerDiameter_MIN)
+                    {
+                        this.ListCoresSingleMold.Add(coreSingleMold);
+                        Log.Info($"Added coreSingleMold: {coreSingleMold}");
+                    }
+                    else
+                    {
+                        Log.Info($"Removed coreSingleMold: {coreSingleMold}");
+                    }
+                }
+            }
         }
     }
 }

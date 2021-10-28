@@ -55,8 +55,13 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
         {
             this.ProduktCup = productCup;
 
+            this.ListRings = new List<Ring>(filterJob.ListRings);
+            this.ListInsertPlates = new List<InsertPlate>(filterJob.ListInsertPlates);
+            this.ListCores = new List<Core>(filterJob.ListCores);
+            this.ListBolts = new List<Bolt>(filterJob.ListBolts);
             this.ListCupforms = new List<Cupform>(filterJob.ListCupforms);
             this.ListSingleMoldCups = new List<SingleMoldCup>(filterJob.ListSingleMoldCups);
+            this.ListCoresSingleMold = new List<CoreSingleMold>(filterJob.ListCoresSingleMold);
 
             this.CombineModularCupMold();
             this.CombineSingleCupMold();
@@ -64,17 +69,17 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
             Log.Info("CombinationJobOutput: " + (this.SingleMoldCupOutput.Count + this.ModularMoldCupOutput.Count).ToString());
         }
 
-        public List<Baseplate> ListBaseplates { get; set; } 
+        public List<Baseplate> ListBaseplates { get; set; }
 
-        public List<Ring> ListRings { get; set; } = new List<Ring>();
+        public List<Ring> ListRings { get; set; }
 
-        public List<InsertPlate> ListInsertPlates { get; set; } 
+        public List<InsertPlate> ListInsertPlates { get; set; }
 
-        public List<Core> ListCores { get; set; } = new List<Core>();
+        public List<Core> ListCores { get; set; }
 
-        public List<Bolt> ListBolts { get; set; } = new List<Bolt>();
+        public List<Bolt> ListBolts { get; set; }
 
-        public List<Cupform> ListCupforms { get; set; } = new List<Cupform>();
+        public List<Cupform> ListCupforms { get; set; }
 
         /// <summary>
         /// Gets or Sets the list of single mold disc received from the filterJob.
@@ -294,6 +299,10 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                     {
                         cupMoldsTemp01.Add(new ModularMold(cupform, null, insertPlate));
                     }
+                    else
+                    {
+                        cupMoldsTemp01.Add(new ModularMold(cupform, null, null));
+                    }
                 }
             }
 
@@ -309,6 +318,10 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                         {
                             cupMoldsTemp02.Add(new ModularMold(modularMold.Cupform, core, modularMold.InsertPlate));
                         }
+                        else if (modularMold.InsertPlate.HasCore)
+                        {
+                            cupMoldsTemp02.Add(new ModularMold(modularMold.Cupform, null, modularMold.InsertPlate));
+                        }
                     }
 
                     // Case that cupform has no insertPlate --> compare cupform directly with core
@@ -316,7 +329,13 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                     {
                         if (this.CombinationRuleSet.Combine(modularMold.Cupform, core))
                         {
-                            cupMoldsTemp02.Add(new ModularMold(modularMold.Cupform, core, modularMold.InsertPlate));
+                            cupMoldsTemp02.Add(new ModularMold(modularMold.Cupform, core, null));
+                        }
+
+                        // If cupform and core do not match, check if the cupform has a GuideBolt and add it anyways --> Guidebolt works as a core.
+                        else if (modularMold.Cupform.HasGuideBolt)
+                        {
+                            cupMoldsTemp02.Add(new ModularMold(modularMold.Cupform, null, null));
                         }
                     }
                 }
@@ -342,11 +361,14 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                 foreach (var coreSingleMold in this.ListCoresSingleMold)
                 {
                     if (coreSingleMold.InnerDiameter >= singleMoldDisc.InnerDiameter + this.CombinationSettings.Tolerance_Flat_MIN
-                    && coreSingleMold.InnerDiameter <= singleMoldDisc.InnerDiameter + this.CombinationSettings.Tolerance_Flat_MAX
-                    && coreSingleMold.OuterDiameter < (singleMoldDisc.HcDiameter - (singleMoldDisc.BoltDiameter / 2)))
+                    && coreSingleMold.InnerDiameter <= singleMoldDisc.InnerDiameter + this.CombinationSettings.Tolerance_Flat_MAX)
                     {
-                        singleMoldDisc.CoreSingleMold = coreSingleMold;
-                        this.SingleMoldDiscOutput.Add(singleMoldDisc);
+                        if ((!string.IsNullOrWhiteSpace(singleMoldDisc.BTC) && coreSingleMold.OuterDiameter < (singleMoldDisc.HcDiameter - (singleMoldDisc.BoltDiameter / 2)))
+                            || string.IsNullOrWhiteSpace(singleMoldDisc.BTC))
+                        {
+                            singleMoldDisc.CoreSingleMold = coreSingleMold;
+                            this.SingleMoldDiscOutput.Add(singleMoldDisc);
+                        }
                     }
                 }
 
@@ -368,11 +390,14 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                 foreach (var coreSingleMold in this.ListCoresSingleMold)
                 {
                     if (coreSingleMold.InnerDiameter >= singleMoldCup.InnerDiameter + this.CombinationSettings.Tolerance_Flat_MIN
-                    && coreSingleMold.InnerDiameter <= singleMoldCup.InnerDiameter + this.CombinationSettings.Tolerance_Flat_MAX
-                    && coreSingleMold.OuterDiameter < (singleMoldCup.HcDiameter - (singleMoldCup.BoltDiameter / 2)))
+                    && coreSingleMold.InnerDiameter <= singleMoldCup.InnerDiameter + this.CombinationSettings.Tolerance_Flat_MAX)
                     {
-                        singleMoldCup.CoreSingleMold = coreSingleMold;
-                        this.SingleMoldCupOutput.Add(singleMoldCup);
+                        if ((!string.IsNullOrWhiteSpace(singleMoldCup.BTC) && coreSingleMold.OuterDiameter < (singleMoldCup.HcDiameter - (singleMoldCup.BoltDiameter / 2)))
+                            || string.IsNullOrWhiteSpace(singleMoldCup.BTC))
+                        {
+                            singleMoldCup.CoreSingleMold = coreSingleMold;
+                            this.SingleMoldCupOutput.Add(singleMoldCup);
+                        }
                     }
                 }
 

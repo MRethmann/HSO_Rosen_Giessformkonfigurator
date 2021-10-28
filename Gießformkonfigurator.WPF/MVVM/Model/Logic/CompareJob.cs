@@ -76,6 +76,12 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
 
         private ToleranceSettings ToleranceSettings { get; set; } = new ToleranceSettings();
 
+        /// <summary>
+        /// Compares ProductDiscs with modularMolds.
+        /// 1. General comparison to check if product and mold would fit. Also notes differences.
+        /// 2. Comparison to determine if BTCs would fit and notes down which ones.
+        /// 3. Gets fitting bolts for the used BTCs.
+        /// </summary>
         private void CompareDiscProductModularMold()
         {
             // Contains all CompareObjects without the bolts
@@ -210,14 +216,14 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                 {
                     if (singleMoldDisc.CoreSingleMold != null)
                     {
-                        var compareObject = new CompareObject((ProductDisc)this.ProductDisc, (SingleMoldDisc)singleMoldDisc);
+                        var compareObject = new CompareObject(this.ProductDisc, singleMoldDisc);
                         compareObject.DifferenceInnerDiameter = this.ProductDisc.SingleMoldDimensions.InnerDiameter - singleMoldDisc.CoreSingleMold.OuterDiameter;
                         compareObject.DifferenceOuterDiameter = singleMoldDisc.OuterDiameter - this.ProductDisc.SingleMoldDimensions.OuterDiameter;
                         this.CompareJobOutput.Add(compareObject);
                     }
                     else
                     {
-                        var compareObject = new CompareObject((ProductDisc)this.ProductDisc, (SingleMoldDisc)singleMoldDisc);
+                        var compareObject = new CompareObject(this.ProductDisc, singleMoldDisc);
                         compareObject.DifferenceInnerDiameter = this.ProductDisc.SingleMoldDimensions.InnerDiameter - singleMoldDisc.InnerDiameter;
                         compareObject.DifferenceOuterDiameter = singleMoldDisc.OuterDiameter - this.ProductDisc.SingleMoldDimensions.OuterDiameter;
                         this.CompareJobOutput.Add(compareObject);
@@ -226,6 +232,10 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
             }
         }
 
+        /// <summary>
+        /// 
+        /// TODO: Add logic to compare BTCs from insertPlates.
+        /// </summary>
         private void CompareCupProductModularMold()
         {
             CompareRuleSet compareRuleSet = new CompareRuleSet();
@@ -239,15 +249,34 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                 if (compareRuleSet.Compare(this.ProductCup, modularMold))
                 {
                     var compareObject = new CompareObject(this.ProductCup, modularMold);
-                    compareObject.DifferenceInnerDiameter = this.ProductCup.ModularMoldDimensions.InnerDiameter - modularMold.Core.OuterDiameter;
+                    compareObject.DifferenceInnerDiameter = modularMold.Core != null ? this.ProductCup.ModularMoldDimensions.InnerDiameter - modularMold.Core.OuterDiameter : this.ProductCup.ModularMoldDimensions.InnerDiameter - modularMold.Cupform.InnerDiameter;
                     compareObjectsTemp01.Add(compareObject);
                 }
             }
+
+            // TODO: Add logic for BTC and bolts.
         }
 
         private void CompareCupProductSingleMold()
         {
-            throw new NotImplementedException();
+            foreach (var singleMoldCup in this.SingleMoldCups)
+            {
+                if (this.CompareRuleSet.Compare(this.ProductCup, singleMoldCup))
+                {
+                    if (singleMoldCup.CoreSingleMold != null)
+                    {
+                        var compareObject = new CompareObject(this.ProductCup, singleMoldCup);
+                        compareObject.DifferenceInnerDiameter = this.ProductDisc.SingleMoldDimensions.InnerDiameter - singleMoldCup.CoreSingleMold.OuterDiameter;
+                        this.CompareJobOutput.Add(compareObject);
+                    }
+                    else
+                    {
+                        var compareObject = new CompareObject(this.ProductCup, singleMoldCup);
+                        compareObject.DifferenceInnerDiameter = this.ProductDisc.SingleMoldDimensions.InnerDiameter - singleMoldCup.InnerDiameter;
+                        this.CompareJobOutput.Add(compareObject);
+                    }
+                }
+            }
         }
     }
 }

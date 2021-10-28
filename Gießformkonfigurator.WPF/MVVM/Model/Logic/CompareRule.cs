@@ -35,6 +35,10 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
         public abstract bool Compare(Product a, Mold b);
     }
 
+    /// <summary>
+    /// Checks if the basic variant of modular mold cup (cupform, core) fits the product.
+    /// TODO: Change logic so the comparison uses the best coreRing/outerRing as compare parameter.
+    /// </summary>
     public class ProductCupModularMoldCompare : CompareRule
     {
         protected override IEnumerable<Type> Typen => new[] { typeof(ProductCup), typeof(ModularMold) };
@@ -45,20 +49,60 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
             var productCup = compareElements.OfType<ProductCup>().Single();
             var modularMold = compareElements.OfType<ModularMold>().Single();
 
-            if (productCup.BTC != null)
+            // Product = BTC -- Cupform = BTC
+            if (!string.IsNullOrWhiteSpace(productCup.BTC) && !string.IsNullOrWhiteSpace(modularMold.Cupform.BTC))
             {
-                return productCup.ModularMoldDimensions.InnerDiameter > modularMold.Core.OuterDiameter
-                    && (productCup.ModularMoldDimensions.InnerDiameter + 1) < modularMold.Core.OuterDiameter
-                    && productCup.CupType == modularMold.Cupform.CupType;
+                if (productCup.BTC.Equals(modularMold.Cupform.BTC) == false && modularMold.Cupform.HasFixedBTC)
+                {
+                    return false;
+                }
+                else
+                {
+                    if (modularMold.Core == null)
+                    {
+                        return productCup.ModularMoldDimensions.InnerDiameter >= modularMold.Cupform.InnerDiameter - this.ToleranceSettings.Product_InnerDiameter_MIN
+                        && productCup.CupType.Equals(modularMold.Cupform.CupType)
+                        && productCup.Size == modularMold.Cupform.Size;
+                    }
+                    else
+                    {
+                        return productCup.ModularMoldDimensions.InnerDiameter >= modularMold.Core.OuterDiameter - this.ToleranceSettings.Product_InnerDiameter_MIN
+                        && productCup.CupType.Equals(modularMold.Cupform.CupType)
+                        && productCup.Size == modularMold.Cupform.Size;
+                    }
+                }
             }
-            else
+
+            // Product = No BTC -- Cupform = Fixed BTC
+            else if (string.IsNullOrWhiteSpace(productCup.BTC) && modularMold.Cupform.HasFixedBTC)
             {
                 return false;
+            }
+
+            // Product = No BTC -- Cupform = No BTC
+            else
+            {
+                if (modularMold.Core == null)
+                {
+                    return productCup.ModularMoldDimensions.InnerDiameter >= modularMold.Cupform.InnerDiameter - this.ToleranceSettings.Product_InnerDiameter_MIN
+                    && productCup.CupType.Equals(modularMold.Cupform.CupType)
+                    && productCup.Size == modularMold.Cupform.Size;
+                }
+                else
+                {
+                    return productCup.ModularMoldDimensions.InnerDiameter >= modularMold.Core.OuterDiameter - this.ToleranceSettings.Product_InnerDiameter_MIN
+                    && productCup.CupType.Equals(modularMold.Cupform.CupType)
+                    && productCup.Size == modularMold.Cupform.Size;
+                }
             }
         }
     }
 
-    // Only for ModularMolds
+    /// <summary>
+    /// Checks if the basic variant of modular mold disc (baseplate, ring, core) fits the product.
+    /// Probably a logical mistake in this algorithm. The comparison always checks for core dimensions, even when coreRings or outerRings are used.
+    /// TODO: Change logic so the comparison in line 82/83 uses the best coreRing/outerRing as compare parameter.
+    /// </summary>
     public class ProductDiscModularMoldCompare : CompareRule
     {
         protected override IEnumerable<Type> Typen => new[] { typeof(ProductDisc), typeof(ModularMold) };
