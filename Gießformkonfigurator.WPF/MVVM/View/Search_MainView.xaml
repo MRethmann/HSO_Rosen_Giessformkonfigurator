@@ -24,8 +24,8 @@
 
         <Grid Grid.Row="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="9*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="12*"/>
             </Grid.RowDefinitions>
 
             <Border BorderBrush="Gray" BorderThickness="0, 0, 0, 1" Margin="5">
@@ -47,13 +47,13 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Orientation="Vertical" Grid.Column="0" Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <RadioButton x:Name="searchByProductId" IsChecked="{Binding SearchByProductId}" Content="SAP-Nr." FontSize="15" Margin="4"/>
-                            <RadioButton x:Name="searchByProductParams" Content="Eingabe der Produktwerte" FontSize="15" Margin="4"/>
+                            <RadioButton x:Name="searchByProductId" IsChecked="{Binding SearchByProductId}" Content="SAP-Nr." FontSize="15" Margin="0, 0, 0, 2"/>
+                            <RadioButton x:Name="searchByProductParams" Content="Eingabe der Produktwerte" FontSize="15" Margin="0, 2, 0, 0"/>
                         </StackPanel>
 
                         <StackPanel Orientation="Vertical" Grid.Column="1" Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <RadioButton x:Name="searchProductDisc" IsChecked="{Binding SearchTypeProduct}" Content="ProductDisc" FontSize="15" Margin="4"/>
-                            <RadioButton x:Name="searchProductCup" Content="ProductCup" FontSize="15" Margin="4"/>
+                            <RadioButton x:Name="searchProductDisc" IsChecked="{Binding SearchTypeProduct}" Content="ProductDisc" FontSize="15" Margin="0, 0, 0, 2"/>
+                            <RadioButton x:Name="searchProductCup" Content="ProductCup" FontSize="15" Margin="0, 2, 0, 0"/>
                         </StackPanel>
                     </Grid>
 
@@ -85,7 +85,7 @@
 
                         <TextBox x:Name="ProduktIDTextBox" 
                                  Text="{Binding ProductId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=''}"
-                                 Width="Auto" Height="40"
+                                 Width="Auto" Height="30"
                                  HorizontalAlignment="Stretch"
                                  VerticalAlignment="Center"
                                  VerticalContentAlignment="Center"
@@ -341,7 +341,8 @@
 
                     <Button x:Name="ProduktID" Content="Suchen" Grid.Column="2"
                                 HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                                Margin="10" 
+                                Margin="10"
+                                MaxHeight="50"
                                 Foreground="Black"
                                 Background="White"
                                 FontSize="15" 

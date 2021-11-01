@@ -49,10 +49,21 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
             var productCup = compareElements.OfType<ProductCup>().Single();
             var modularMold = compareElements.OfType<ModularMold>().Single();
 
-            // Product = BTC -- Cupform = BTC
-            if (!string.IsNullOrWhiteSpace(productCup.BTC) && !string.IsNullOrWhiteSpace(modularMold.Cupform.BTC))
+            var btcList = new List<string>()
             {
-                if (productCup.BTC.Equals(modularMold.Cupform.BTC) == false && modularMold.Cupform.HasFixedBTC)
+                modularMold.Cupform.BTC1,
+                modularMold.Cupform.BTC2,
+                modularMold.Cupform.BTC3,
+            };
+
+            // Product.BTC = TRUE -- Cupform.BTC = TRUE
+            if (!string.IsNullOrWhiteSpace(productCup.BTC)
+                && (!string.IsNullOrWhiteSpace(modularMold.Cupform.BTC1)
+                || !string.IsNullOrWhiteSpace(modularMold.Cupform.BTC2)
+                || !string.IsNullOrWhiteSpace(modularMold.Cupform.BTC3)))
+            {
+                // Cupform has no fitting BTC.
+                if (btcList.Contains(productCup.BTC) == false && modularMold.Cupform.HasFixedBTC)
                 {
                     return false;
                 }
@@ -73,13 +84,13 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                 }
             }
 
-            // Product = No BTC -- Cupform = Fixed BTC
+            // Product.BTC = FALSE -- Cupform.FixedBTC = TRUE
             else if (string.IsNullOrWhiteSpace(productCup.BTC) && modularMold.Cupform.HasFixedBTC)
             {
                 return false;
             }
 
-            // Product = No BTC -- Cupform = No BTC
+            // Product.BTC = FALSE -- Cupform.BTC = FALSE
             else
             {
                 if (modularMold.Core == null)

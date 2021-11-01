@@ -56,6 +56,11 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
         /// </summary>
         public decimal? DifferenceBoltDiameter { get; set; }
 
+        /// <summary>
+        /// Gets or Sets a value indicating whether the mold has a fitting BTC for the product or not.
+        /// </summary>
+        public bool HasFittingBTC { get; set; }
+
         public List<string> PostProcessing { get; set; } = new List<string>();
 
         /// <summary>

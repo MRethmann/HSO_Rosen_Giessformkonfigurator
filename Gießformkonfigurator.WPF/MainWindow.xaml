@@ -33,13 +33,13 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="15"/>
                 <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="15"/>
-            </Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="15"/>
+                </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="15"/>
-                <RowDefinition Height="100"/>
+                <RowDefinition Height="70"/>
                 <RowDefinition/>
                 <RowDefinition Height="15"/>
             </Grid.RowDefinitions>
@@ -54,11 +54,11 @@
                     
                     <TextBlock Text="Gießformkonfigurator"
                            FontWeight="Medium" 
-                           HorizontalAlignment="Center"
-                           Foreground="#144F9B" FontSize="60"/>
+                           HorizontalAlignment="Center" VerticalAlignment="Center"
+                           Foreground="#144F9B" FontSize="40"/>
 
                     <Border BorderBrush="#144F9B">
-                        <Image Width="360" Height="140" Source="/images/rosen.png" x:Name="Logo" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <Image Width="360" Height="100" Source="/images/rosen.png" x:Name="Logo" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                     </Border>
 
                     <Button Grid.Column="3" Width="40" HorizontalAlignment="Right" Height="40" VerticalAlignment="Bottom" Margin="0, 0, 0, 10" Background="Transparent" BorderThickness="0" Click="Open_ReportIssueView">

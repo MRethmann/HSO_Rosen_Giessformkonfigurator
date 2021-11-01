@@ -151,6 +151,10 @@
     <Compile Include="Migrations\202110271628448_RemovedHcAttributesFromDatabase.Designer.cs">
       <DependentUpon>202110271628448_RemovedHcAttributesFromDatabase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202111011351090_AddedBTCToCupform.cs" />
+    <Compile Include="Migrations\202111011351090_AddedBTCToCupform.Designer.cs">
+      <DependentUpon>202111011351090_AddedBTCToCupform.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MVVM\ViewModel\Settings_CombinationSettingsViewModel.cs" />
     <Compile Include="MVVM\View\Converter\DecimalConverter.cs" />
@@ -445,6 +449,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202110271628448_RemovedHcAttributesFromDatabase.resx">
       <DependentUpon>202110271628448_RemovedHcAttributesFromDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111011351090_AddedBTCToCupform.resx">
+      <DependentUpon>202111011351090_AddedBTCToCupform.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -19,7 +19,22 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_components
         public decimal Size { get; set; }
 
         [StringLength(10)]
-        public string BTC { get; set; }
+        public string BTC1 { get; set; }
+
+        [StringLength(10)]
+        public string BTC1Thread { get; set; }
+
+        [StringLength(10)]
+        public string BTC2 { get; set; }
+
+        [StringLength(10)]
+        public string BTC2Thread { get; set; }
+
+        [StringLength(10)]
+        public string BTC3 { get; set; }
+
+        [StringLength(10)]
+        public string BTC3Thread { get; set; }
 
         public bool HasFixedBTC { get; set; }
 

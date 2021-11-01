@@ -29,6 +29,8 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                     new RingAddition(),
                     new CupformCoreCombination(),
                     new CoreRingAddition(),
+                    new CupformRingCombination(),
+                    new CupformInsertPlateCombination(),
                     };
         }
 

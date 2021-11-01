@@ -341,6 +341,61 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                 }
             }
 
+            foreach (var mold in cupMoldsTemp02)
+            {
+                foreach (var ring in this.ListRings)
+                {
+                    // Case 1: Mold has modular Core.
+                    if (mold.Core != null)
+                    {
+                        if (ring.InnerDiameter > mold.Core.OuterDiameter - 2)
+                        {
+                            if (this.CombinationRuleSet.Combine(mold.Core, ring))
+                            {
+                                var differenceInnerDiameter = this.ProduktCup.ModularMoldDimensions.InnerDiameter - ring.OuterDiameter;
+                                mold.ListCoreRings.Add(new Tuple<Ring, Ring, decimal?>(ring, null, differenceInnerDiameter));
+                            }
+                        }
+                    }
+
+                    // Case 2: Cupform has fixed Core/GuideBolt.
+                    else
+                    {
+                        if (mold.Cupform.HasGuideBolt
+                        && ring.InnerDiameter > mold.Cupform.InnerDiameter - 2)
+                        {
+                            if (this.CombinationRuleSet.Combine(mold.Cupform, ring))
+                            {
+                                var differenceInnerDiameter = this.ProduktCup.ModularMoldDimensions.InnerDiameter - ring.OuterDiameter;
+                                mold.ListCoreRings.Add(new Tuple<Ring, Ring, decimal?>(ring, null, differenceInnerDiameter));
+                            }
+                        }
+                    }
+                }
+            }
+
+            foreach (var mold in cupMoldsTemp02)
+            {
+                var counter01 = mold.ListCoreRings.Count;
+                for (int i = 0; i < counter01; i++)
+                {
+                    foreach (var ring in this.ListRings)
+                    {
+                        if (ring.InnerDiameter + 1 > mold.Core.OuterDiameter)
+                        {
+                            if (ring.OuterDiameter > mold.Core.OuterDiameter)
+                            {
+                                if (this.CombinationRuleSet.Combine(mold.ListCoreRings[i].Item1, ring))
+                                {
+                                    var differenceInnerDiameter = this.ProduktCup.ModularMoldDimensions.InnerDiameter - ring.OuterDiameter;
+                                    mold.ListCoreRings.Insert(0, new Tuple<Ring, Ring, decimal?>(mold.ListCoreRings[i].Item1, ring, differenceInnerDiameter));
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
             this.ModularMoldCupOutput = new List<ModularMold>(cupMoldsTemp02);
 
             foreach (var modularMold in this.ModularMoldCupOutput)

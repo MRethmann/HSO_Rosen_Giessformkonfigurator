@@ -81,6 +81,10 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
 
         private Product Product { get; set; }
 
+        private ProductCup ProductCup { get; set; }
+
+        private ProductDisc ProductDisc { get; set; }
+
         /// <summary>
         /// Small compare method, that returns the bigger param.
         /// </summary>
@@ -172,57 +176,18 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
             foreach (var compareObject in this.RankingJobInput)
             {
                 compareObject.FinalRating = 0;
-                compareObject.FinalRating = this.Compare(45.00m - ((compareObject.DifferenceOuterDiameter > this.ToleranceSettings?.Product_OuterDiameter_MAX ? compareObject.DifferenceOuterDiameter : 0) * this.FactorOuterDiameter), 0.00m);
-                compareObject.FinalRating += this.Compare(45.00m - ((compareObject.DifferenceInnerDiameter > this.ToleranceSettings?.Product_InnerDiameter_MAX ? compareObject.DifferenceInnerDiameter : 0) * this.FactorInnerDiameter), 0.00m);
+                compareObject.FinalRating += this.Compare(75.00m - ((compareObject.DifferenceInnerDiameter > this.ToleranceSettings?.Product_InnerDiameter_MAX ? compareObject.DifferenceInnerDiameter : 0) * this.FactorInnerDiameter), 0.00m);
 
-                if (compareObject.Mold is ModularMold)
+                // Mold has a fitting BTC for the product.
+                if (!string.IsNullOrWhiteSpace(this.ProductCup.BTC) && compareObject.HasFittingBTC)
                 {
-                    if ((compareObject.Product is ProductCup
-                        && !string.IsNullOrWhiteSpace(((ProductCup)this.Product).BTC))
-                        || (compareObject.Product is ProductDisc
-                        && !string.IsNullOrWhiteSpace(((ProductDisc)this.Product).BTC)))
-                    {
-                        for (int i = 1; i < 3; i++)
-                        {
-                            if (compareObject.BoltCirclesBaseplate[i] == true)
-                            {
-                                var minDifference = compareObject.Bolts.Min(p => p.Item2);
-                                compareObject.FinalRating += 10.00m;
-                                compareObject.DifferenceBoltDiameter = minDifference;
-                            }
-                            else if (compareObject.BoltCirclesInsertPlate[i] == true)
-                            {
-                                var minDifference = compareObject.Bolts.Min(p => p.Item2);
-                                compareObject.FinalRating += 10.00m;
-                                compareObject.DifferenceBoltDiameter = minDifference;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        compareObject.FinalRating += 10.00m;
-                    }
+                    compareObject.FinalRating += 25.00m;
                 }
-                else if (compareObject.Mold is SingleMold)
+
+                // Mold has no fitting BTC for the product --> BTC needs to be added in post processing.
+                else
                 {
-                    if (string.IsNullOrWhiteSpace(this.Product.BTC))
-                    {
-                        compareObject.FinalRating += 10.00m;
-
-                        // Used while adding post processing information. Means that no BTC needs to be added to the product.
-                        compareObject.DifferenceBoltDiameter = 0;
-                    }
-                    else if (!string.IsNullOrWhiteSpace(this.Product.BTC))
-                    //TODO: Prüfen ob notwendig.
-                    //&& (((SingleMoldDisc)compareObject.Mold).HcDiameter != null && ((SingleMoldDisc)compareObject.Mold).HcDiameter > 0)
-                    //&& (((SingleMoldDisc)compareObject.Mold).HcHoles != null && ((SingleMoldDisc)compareObject.Mold).HcHoles > 0)
-                    //&& (((SingleMoldDisc)compareObject.Mold).BoltDiameter != null && ((SingleMoldDisc)compareObject.Mold).BoltDiameter > 0))
-                    {
-                        compareObject.FinalRating += 10.00m;
-
-                        // Used while adding post processing information. Means that no BTC needs to be added to the product.
-                        compareObject.DifferenceBoltDiameter = 0;
-                    }
+                    compareObject.PostProcessing.Add($"Lochkreis einarbeiten: {this.ProductCup.BTC}");
                 }
 
                 compareObject.FinalRating = Math.Round((decimal)compareObject.FinalRating, 2);
@@ -578,7 +543,7 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                 if (compareObject.DifferenceBoltDiameter == null && !string.IsNullOrWhiteSpace(((ProductDisc)this.Product).BTC))
                 {
                     string btc = ((ProductDisc)this.Product).BTC.ToString();
-                    compareObject.PostProcessing.Add($"Lochkreis einarbeiten: {btc}");
+                    
                 }
             }
 

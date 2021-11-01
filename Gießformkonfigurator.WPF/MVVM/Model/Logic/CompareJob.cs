@@ -182,6 +182,8 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                                 && bolt.OuterDiameter >= this.ProductDisc.ModularMoldDimensions.HcHoleDiameter - this.ToleranceSettings.Bolt_Diameter
                                 && bolt.Thread == ((ModularMold)compareObject.Mold).Baseplate.GetType().GetProperty(propGewinde).GetValue(((ModularMold)compareObject.Mold).Baseplate).ToString())
                             {
+                                // Difference bolt diameter not in use.
+                                // TODO: DifferenceBoltDiameter entfernen.
                                 compareObject.Bolts.Add(new System.Tuple<Bolt, decimal?>(bolt, this.ProductDisc.HcHoleDiameter - bolt.OuterDiameter));
                             }
                         }
@@ -197,6 +199,7 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                                 && bolt.OuterDiameter >= this.ProductDisc.ModularMoldDimensions.HcHoleDiameter - this.ToleranceSettings.Bolt_Diameter
                                 && bolt.Thread == ((ModularMold)compareObject.Mold).InsertPlate.GetType().GetProperty(propGewinde).GetValue(((ModularMold)compareObject.Mold).InsertPlate).ToString())
                             {
+                                // Difference bolt diameter not in use.
                                 compareObject.Bolts.Add(new System.Tuple<Bolt, decimal?>(bolt, this.ProductDisc.HcHoleDiameter - bolt.OuterDiameter));
                             }
                         }
@@ -254,7 +257,44 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                 }
             }
 
-            // TODO: Add logic for BTC and bolts.
+            // Compare ModularMolds with HoleCircle and add fitting bolts.
+            foreach (var compareObject in compareObjectsTemp01)
+            {
+                // Baseplates
+                if (this.ProductCup.BTC != null)
+                {
+                    var cupformBTCList = new List<Tuple<string, string>>()
+                    { new Tuple<string, string>(((ModularMold)compareObject.Mold).Cupform.BTC1, ((ModularMold)compareObject.Mold).Cupform.BTC1Thread),
+                      new Tuple<string, string>(((ModularMold)compareObject.Mold).Cupform.BTC2, ((ModularMold)compareObject.Mold).Cupform.BTC2Thread),
+                      new Tuple<string, string>(((ModularMold)compareObject.Mold).Cupform.BTC3, ((ModularMold)compareObject.Mold).Cupform.BTC3Thread),
+                    };
+
+                    // var insertPlateBTCList = new List<string>() { ((ModularMold)compareObject.Mold).InsertPlate.BTC}
+                    string btcThread;
+                    for (int i = 1; i < 4; i++)
+                    {
+                        if (cupformBTCList[i].Item1.Equals(this.ProductCup.BTC))
+                        {
+                            btcThread = cupformBTCList[i].Item2;
+                            compareObject.HasFittingBTC = true;
+
+                            foreach (var bolt in this.Bolts)
+                            {
+                                if (bolt.OuterDiameter <= this.ProductCup.ModularMoldDimensions.HcHoleDiameter + this.ToleranceSettings.Bolt_Diameter
+                                    && bolt.OuterDiameter >= this.ProductCup.ModularMoldDimensions.HcHoleDiameter - this.ToleranceSettings.Bolt_Diameter
+                                    && bolt.Thread == btcThread)
+                                {
+                                    compareObject.Bolts.Add(new System.Tuple<Bolt, decimal?>(bolt, 0.0m));
+                                }
+                            }
+                        }
+                    }
+
+                    // TODO: Add BTC and Bolt logic for insertplates.
+                }
+            }
+
+            this.CompareJobOutput.AddRange(compareObjectsTemp01);
         }
 
         private void CompareCupProductSingleMold()
@@ -267,12 +307,22 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                     {
                         var compareObject = new CompareObject(this.ProductCup, singleMoldCup);
                         compareObject.DifferenceInnerDiameter = this.ProductDisc.SingleMoldDimensions.InnerDiameter - singleMoldCup.CoreSingleMold.OuterDiameter;
+                        if (singleMoldCup.BTC == null && this.ProductCup.BTC != null)
+                        {
+                            compareObject.HasFittingBTC = false;
+                        }
+
                         this.CompareJobOutput.Add(compareObject);
                     }
                     else
                     {
                         var compareObject = new CompareObject(this.ProductCup, singleMoldCup);
                         compareObject.DifferenceInnerDiameter = this.ProductDisc.SingleMoldDimensions.InnerDiameter - singleMoldCup.InnerDiameter;
+                        if (singleMoldCup.BTC == null && this.ProductCup.BTC != null)
+                        {
+                            compareObject.HasFittingBTC = false;
+                        }
+
                         this.CompareJobOutput.Add(compareObject);
                     }
                 }

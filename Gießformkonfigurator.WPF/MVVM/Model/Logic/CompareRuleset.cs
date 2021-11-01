@@ -24,6 +24,7 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
             this.CompareRules = new CompareRule[]
                     {
                     new ProductCupModularMoldCompare(),
+                    new ProductCupSingleMoldCompare(),
                     new ProductDiscModularMoldCompare(),
                     new ProductDiscSingleMoldCompare(),
                     };

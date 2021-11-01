@@ -269,4 +269,22 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
             }
         }
     }
+
+    /// <summary>
+    /// Used to combine a Cupform with a fixed core and a core Ring.
+    /// </summary>
+    public class CupformRingCombination : CombinationRule
+    {
+        protected override IEnumerable<Type> Typen => new[] { typeof(Cupform), typeof(Ring) };
+
+        public override bool Combine(Component a, Component b)
+        {
+            var components = new[] { a, b };
+            var cupform = components.OfType<Cupform>().Single();
+            var additionRing = components.OfType<Ring>().Single();
+
+            return additionRing.InnerDiameter >= cupform.InnerDiameter + this.CombinationSettings.Tolerance_Flat_MIN
+                && additionRing.InnerDiameter <= cupform.InnerDiameter + this.CombinationSettings.Tolerance_Flat_MAX;
+        }
+    }
 }
