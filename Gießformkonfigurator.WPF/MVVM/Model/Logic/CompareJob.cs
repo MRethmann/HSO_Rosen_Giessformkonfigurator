@@ -271,9 +271,10 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
 
                     // var insertPlateBTCList = new List<string>() { ((ModularMold)compareObject.Mold).InsertPlate.BTC}
                     string btcThread;
-                    for (int i = 1; i < 4; i++)
+                    for (int i = 0; i < 3; i++)
                     {
-                        if (cupformBTCList[i].Item1.Equals(this.ProductCup.BTC))
+                        if (cupformBTCList[i].Item1 != null
+                            && cupformBTCList[i].Item1.Equals(this.ProductCup.BTC))
                         {
                             btcThread = cupformBTCList[i].Item2;
                             compareObject.HasFittingBTC = true;
