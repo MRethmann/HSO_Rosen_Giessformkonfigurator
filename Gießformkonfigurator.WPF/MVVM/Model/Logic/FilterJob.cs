@@ -172,7 +172,8 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                 foreach (var cupform in db.Cupforms)
                 {
                     if (this.ProductCup.ModularMoldDimensions.InnerDiameter >= cupform.InnerDiameter - this.ToleranceSettings.Product_InnerDiameter_MIN
-                        && cupform.CupType.Equals(this.ProductCup.CupType))
+                        && cupform.CupType.Equals(this.ProductCup.CupType)
+                        && cupform.Size == this.ProductCup.Size)
                     {
                         this.ListCupforms.Add(cupform);
                         Log.Info($"Added cupform: {cupform}");

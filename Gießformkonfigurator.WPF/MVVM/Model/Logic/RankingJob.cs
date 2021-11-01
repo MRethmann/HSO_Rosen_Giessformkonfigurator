@@ -31,7 +31,6 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
             this.RankingSettings = new RankingSettings();
             this.FactorOuterDiameter = this.RankingSettings.RankingFactorOuterDiameter;
             this.FactorInnerDiameter = this.RankingSettings.RankingFactorInnerDiameter;
-            this.FactorBoltDiameter = this.RankingSettings.RankingFactorBolts;
             this.RankingJobInput = new List<CompareObject>(compareJob.CompareJobOutput);
             this.ToleranceSettings = new ToleranceSettings();
             this.AddRatingInformationDiscs();
@@ -43,11 +42,10 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
 
         public RankingJob(ProductCup productCup, CompareJob compareJob)
         {
-            this.Product = productCup;
+            this.ProductCup = productCup;
             this.RankingSettings = new RankingSettings();
             this.FactorOuterDiameter = this.RankingSettings.RankingFactorOuterDiameter;
             this.FactorInnerDiameter = this.RankingSettings.RankingFactorInnerDiameter;
-            this.FactorBoltDiameter = this.RankingSettings.RankingFactorBolts;
             this.RankingJobInput = new List<CompareObject>(compareJob.CompareJobOutput);
             this.ToleranceSettings = new ToleranceSettings();
             this.AddRatingInformationCups();
@@ -76,8 +74,6 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
         private decimal? FactorOuterDiameter { get; set; }
 
         private decimal? FactorInnerDiameter { get; set; }
-
-        private decimal? FactorBoltDiameter { get; set; }
 
         private Product Product { get; set; }
 
@@ -179,13 +175,15 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                 compareObject.FinalRating += this.Compare(75.00m - ((compareObject.DifferenceInnerDiameter > this.ToleranceSettings?.Product_InnerDiameter_MAX ? compareObject.DifferenceInnerDiameter : 0) * this.FactorInnerDiameter), 0.00m);
 
                 // Mold has a fitting BTC for the product.
-                if (!string.IsNullOrWhiteSpace(this.ProductCup.BTC) && compareObject.HasFittingBTC)
+                if ((!string.IsNullOrWhiteSpace(this.ProductCup.BTC)
+                    && compareObject.HasFittingBTC)
+                    || string.IsNullOrWhiteSpace(this.ProductCup.BTC))
                 {
                     compareObject.FinalRating += 25.00m;
                 }
 
                 // Mold has no fitting BTC for the product --> BTC needs to be added in post processing.
-                else
+                else if (!string.IsNullOrWhiteSpace(this.ProductCup.BTC) && compareObject.HasFittingBTC == false)
                 {
                     compareObject.PostProcessing.Add($"Lochkreis einarbeiten: {this.ProductCup.BTC}");
                 }
@@ -393,29 +391,23 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
             }
 
             // Grouped by baseplates
-            var groupedByBaseplate = listModularMolds.GroupBy(x => ((ModularMold)x.Mold).Baseplate.ID).Select(grp => grp.ToList()).ToList();
+            var groupedByCupform = listModularMolds.GroupBy(x => ((ModularMold)x.Mold).Cupform.ID).Select(grp => grp.ToList()).ToList();
 
             // Grouped by insertplates
-            foreach (List<CompareObject> list01 in groupedByBaseplate)
+            foreach (List<CompareObject> list01 in groupedByCupform)
             {
                 var groupedByInsertplate = list01.GroupBy(x => ((ModularMold)x.Mold).InsertPlate?.ID).Select(grp => grp.ToList()).ToList();
 
-                // Grouped by Guide Rings
+                // Grouped by Cores
                 foreach (List<CompareObject> list02 in groupedByInsertplate)
                 {
-                    var groupedByGuideRing = list02.GroupBy(x => ((ModularMold)x.Mold).GuideRing.ID).Select(grp => grp.ToList()).ToList();
+                    var groupedByCore = list02.GroupBy(x => ((ModularMold)x.Mold).Core?.ID).Select(grp => grp.ToList()).ToList();
 
-                    // Grouped by Cores
-                    foreach (List<CompareObject> list03 in groupedByGuideRing)
+                    // Sorted by final rating and ordered
+                    foreach (List<CompareObject> list03 in groupedByCore)
                     {
-                        var groupedByCore = list03.GroupBy(x => ((ModularMold)x.Mold).Core.ID).Select(grp => grp.ToList()).ToList();
-
-                        // Sorted by final rating and ordered
-                        foreach (List<CompareObject> list04 in groupedByCore)
-                        {
-                            var orderedList = list04.OrderBy(x => x.FinalRating);
-                            sortedList.AddRange(orderedList);
-                        }
+                        var orderedList = list03.OrderBy(x => x.FinalRating);
+                        sortedList.AddRange(orderedList);
                     }
                 }
             }
@@ -430,14 +422,12 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                 {
                     nextObject = compareObject;
 
-                    // Case: Different baseplate or insertPlates
+                    // Case: Different Cupform or insertPlates
                     if (currentObject == null
-                        || ((ModularMold)nextObject.Mold).Baseplate.ID != ((ModularMold)currentObject.Mold).Baseplate.ID
+                        || ((ModularMold)nextObject.Mold).Cupform.ID != ((ModularMold)currentObject.Mold).Cupform.ID
                         || ((ModularMold)nextObject.Mold).InsertPlate?.ID != ((ModularMold)currentObject.Mold).InsertPlate?.ID
                         || ((ModularMold)nextObject.Mold).ListCoreRings?.FirstOrDefault()?.Item1 != ((ModularMold)currentObject.Mold).ListCoreRings?.FirstOrDefault()?.Item1
-                        || ((ModularMold)nextObject.Mold).ListCoreRings?.FirstOrDefault()?.Item2 != ((ModularMold)currentObject.Mold).ListCoreRings?.FirstOrDefault()?.Item2
-                        || ((ModularMold)nextObject.Mold).ListOuterRings?.FirstOrDefault()?.Item1 != ((ModularMold)currentObject.Mold).ListOuterRings?.FirstOrDefault()?.Item1
-                        || ((ModularMold)nextObject.Mold).ListOuterRings?.FirstOrDefault()?.Item2 != ((ModularMold)currentObject.Mold).ListOuterRings?.FirstOrDefault()?.Item2)
+                        || ((ModularMold)nextObject.Mold).ListCoreRings?.FirstOrDefault()?.Item2 != ((ModularMold)currentObject.Mold).ListCoreRings?.FirstOrDefault()?.Item2)
                     {
                         if (currentObject != null)
                         {
@@ -447,27 +437,18 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                         currentObject = nextObject;
                     }
 
-                    // Case: Baseplates and insertPlate are identical but core and guideRing are different
-                    else if ((((ModularMold)nextObject.Mold).Baseplate.ID == ((ModularMold)currentObject.Mold).Baseplate.ID
+                    // Case: Cupform and insertPlate are identical but core and guideRing are different
+                    else if ((((ModularMold)nextObject.Mold).Cupform.ID == ((ModularMold)currentObject.Mold).Cupform.ID
                         && ((ModularMold)nextObject.Mold).InsertPlate?.ID == ((ModularMold)currentObject.Mold).InsertPlate?.ID
-                        && ((ModularMold)nextObject.Mold).ListCoreRings.Count > 0 && ((ModularMold)nextObject.Mold).ListOuterRings.Count > 0)
+                        && ((ModularMold)nextObject.Mold).ListCoreRings.Count > 0)
                         || (((ModularMold)nextObject.Mold).ListCoreRings.FirstOrDefault()?.Item1 == ((ModularMold)currentObject.Mold).ListCoreRings.FirstOrDefault()?.Item1
-                        && ((ModularMold)nextObject.Mold).ListCoreRings.FirstOrDefault()?.Item2 == ((ModularMold)currentObject.Mold).ListCoreRings.FirstOrDefault()?.Item2
-                        && ((ModularMold)nextObject.Mold).ListOuterRings.FirstOrDefault()?.Item1 == ((ModularMold)currentObject.Mold).ListOuterRings.FirstOrDefault()?.Item1
-                        && ((ModularMold)nextObject.Mold).ListOuterRings.FirstOrDefault()?.Item2 == ((ModularMold)currentObject.Mold).ListOuterRings.FirstOrDefault()?.Item2))
+                        && ((ModularMold)nextObject.Mold).ListCoreRings.FirstOrDefault()?.Item2 == ((ModularMold)currentObject.Mold).ListCoreRings.FirstOrDefault()?.Item2))
                     {
                         if (!currentObject.AlternativeCores.Any(c => c.Item1 == ((ModularMold)nextObject.Mold).Core))
                         {
                             var core = ((ModularMold)nextObject.Mold).Core;
                             var diffToProduct = Math.Round((decimal)nextObject.DifferenceInnerDiameter, 2);
                             currentObject.AlternativeCores.Add(new Tuple<Core, decimal>(core, diffToProduct));
-                        }
-
-                        if (!currentObject.AlternativeGuideRings.Any(c => c.Item1 == ((ModularMold)nextObject.Mold).GuideRing))
-                        {
-                            var guideRing = ((ModularMold)nextObject.Mold).GuideRing;
-                            var diffToProduct = Math.Round((decimal)nextObject.DifferenceOuterDiameter, 2);
-                            currentObject.AlternativeGuideRings.Add(new Tuple<Ring, decimal>(guideRing, diffToProduct));
                         }
                     }
 
@@ -496,10 +477,8 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
             foreach (var compareObject in this.FilteredOutput)
             {
                 var sortedListCores = compareObject.AlternativeCores.OrderBy(x => x.Item2);
-                var sortedListGuideRings = compareObject.AlternativeGuideRings.OrderBy(x => x.Item2);
 
                 compareObject.AlternativeCores = new List<Tuple<Core, decimal>>(sortedListCores);
-                compareObject.AlternativeGuideRings = new List<Tuple<Ring, decimal>>(sortedListGuideRings);
 
                 if (compareObject.AlternativeCores.Count > 0)
                 {
@@ -507,20 +486,9 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                     {
                         ((ModularMold)compareObject.Mold).Core = compareObject.AlternativeCores.First().Item1;
                         compareObject.DifferenceInnerDiameter = compareObject.AlternativeCores.First().Item2;
+                        compareObject.AlternativeCores.Remove(compareObject.AlternativeCores.Find(x => x.Item1.ID == ((ModularMold)compareObject?.Mold).Core?.ID));
                     }
                 }
-
-                if (compareObject.AlternativeGuideRings.Count > 0)
-                {
-                    if (compareObject.AlternativeGuideRings.First().Item2 < compareObject.DifferenceOuterDiameter)
-                    {
-                        ((ModularMold)compareObject.Mold).GuideRing = compareObject.AlternativeGuideRings.First().Item1;
-                        compareObject.DifferenceOuterDiameter = compareObject.AlternativeGuideRings.First().Item2;
-                    }
-                }
-
-                compareObject.AlternativeCores.Remove(compareObject.AlternativeCores.Find(x => x.Item1.ID == ((ModularMold)compareObject?.Mold).Core?.ID));
-                compareObject.AlternativeGuideRings.Remove(compareObject.AlternativeGuideRings.Find(x => x.Item1.ID == ((ModularMold)compareObject?.Mold).GuideRing?.ID));
 
                 if ((compareObject.DifferenceInnerDiameter > 0.1m
                     && compareObject.DifferenceInnerDiameter > this.ToleranceSettings?.Product_InnerDiameter_MAX)
@@ -529,21 +497,6 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                     decimal decimalDiffInnerDiameter = Math.Round((decimal)compareObject.DifferenceInnerDiameter, 2);
                     string diffInnerDiameter = string.Format("{0:0.00}", decimalDiffInnerDiameter);
                     compareObject.PostProcessing.Add($"Innendurchmesser:  {diffInnerDiameter} mm");
-                }
-
-                if ((compareObject.DifferenceOuterDiameter > 0.1m
-                    && compareObject.DifferenceOuterDiameter >= this.ToleranceSettings?.Product_OuterDiameter_MAX)
-                    || compareObject.DifferenceOuterDiameter < -0.1m)
-                {
-                    decimal decimalDiffOuterDiameter = Math.Round((decimal)compareObject.DifferenceOuterDiameter, 2);
-                    string diffOuterDiameter = string.Format("{0:0.00}", decimalDiffOuterDiameter);
-                    compareObject.PostProcessing.Add($"Außendurchmesser: {diffOuterDiameter} mm");
-                }
-
-                if (compareObject.DifferenceBoltDiameter == null && !string.IsNullOrWhiteSpace(((ProductDisc)this.Product).BTC))
-                {
-                    string btc = ((ProductDisc)this.Product).BTC.ToString();
-                    
                 }
             }
 

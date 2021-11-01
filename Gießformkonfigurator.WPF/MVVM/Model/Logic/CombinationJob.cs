@@ -299,11 +299,9 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                     {
                         cupMoldsTemp01.Add(new ModularMold(cupform, null, insertPlate));
                     }
-                    else
-                    {
-                        cupMoldsTemp01.Add(new ModularMold(cupform, null, null));
-                    }
                 }
+
+                cupMoldsTemp01.Add(new ModularMold(cupform, null, null));
             }
 
             // Combine cupform with cores
@@ -331,13 +329,13 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                         {
                             cupMoldsTemp02.Add(new ModularMold(modularMold.Cupform, core, null));
                         }
-
-                        // If cupform and core do not match, check if the cupform has a GuideBolt and add it anyways --> Guidebolt works as a core.
-                        else if (modularMold.Cupform.HasGuideBolt)
-                        {
-                            cupMoldsTemp02.Add(new ModularMold(modularMold.Cupform, null, null));
-                        }
                     }
+                }
+
+                // If cupform and core do not match, check if the cupform has a GuideBolt and add it anyways --> Guidebolt works as a core.
+                if (modularMold.Cupform.HasGuideBolt)
+                {
+                    cupMoldsTemp02.Add(new ModularMold(modularMold.Cupform, null, null));
                 }
             }
 
