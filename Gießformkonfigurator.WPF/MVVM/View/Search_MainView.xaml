@@ -568,9 +568,9 @@
                                         </Grid.RowDefinitions>
 
                                         <TextBlock Text="Grundplatte" Foreground="Gray" Margin="5, 0, 0, 0" Grid.Row="0"/>
-                                        <TextBlock Text="{Binding Mold.Baseplate.ID, FallbackValue=-}" Margin="5, 0, 0, 0" Grid.Row="1" Foreground="Black"/>
+                                        <TextBlock Text="{Binding Mold.Baseplate.ID, FallbackValue=-, TargetNullValue=-}" Margin="5, 0, 0, 0" Grid.Row="1" Foreground="Black"/>
                                         <TextBlock Text="Einlegeplatte" Grid.Row="3" Foreground="Gray" Margin="5, 0, 0, 0"/>
-                                        <TextBlock Text="{Binding Mold.InsertPlate.ID, FallbackValue=-}" Margin="5, 0, 0, 0" Grid.Row="4" Foreground="Black"/>
+                                        <TextBlock Text="{Binding Mold.InsertPlate.ID, FallbackValue=-, TargetNullValue=-}" Margin="5, 0, 0, 0" Grid.Row="4" Foreground="Black"/>
                                     </Grid>
 
                                     <Grid Grid.Column="1" Margin="0, 2, 2, 2">
@@ -582,10 +582,10 @@
                                             <RowDefinition Height="auto"/>
                                         </Grid.RowDefinitions>
 
-                                        <TextBlock Text="InnenKern" Foreground="Gray" Margin="5, 0, 0, 0" Grid.Row="0"/>
-                                        <TextBlock  Text="{Binding Mold.Core.ID, FallbackValue=-}" Margin="5, 0, 0, 0" Grid.Row="1" Foreground="Black"/>
+                                        <TextBlock Text="Innenkern" Foreground="Gray" Margin="5, 0, 0, 0" Grid.Row="0"/>
+                                        <TextBlock  Text="{Binding Mold.Core.ID, FallbackValue=-, TargetNullValue=-}" Margin="5, 0, 0, 0" Grid.Row="1" Foreground="Black"/>
                                         <TextBlock Text="Führungsring" Foreground="Gray" Margin="5, 0, 0, 0" Grid.Row="3"/>
-                                        <TextBlock  Text="{Binding Mold.GuideRing.ID, FallbackValue=-}" Margin="5, 0, 0, 0" Grid.Row="4" Foreground="Black"/>
+                                        <TextBlock  Text="{Binding Mold.GuideRing.ID, FallbackValue=-, TargetNullValue=-}" Margin="5, 0, 0, 0" Grid.Row="4" Foreground="Black"/>
                                     </Grid>
 
                                     <Grid Grid.Column="2" Margin="0, 2, 2, 2">
@@ -672,7 +672,121 @@
                     </DataTemplate>
 
                     <DataTemplate x:Key="MultiMoldCupTemplate">
-                        <TextBlock>Insert MultiMoldCupTemplate here!</TextBlock>
+                        <Border BorderBrush="DarkGray" BorderThickness="1.5, 0, 1.5, 1.5">
+                            <Grid Background="WhiteSmoke">
+                                <Grid Grid.Column="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid Grid.Column="0" Margin="0, 2, 2, 2">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="10"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <TextBlock Text="Cupform" Foreground="Gray" Margin="5, 0, 0, 0" Grid.Row="0"/>
+                                        <TextBlock Text="{Binding Mold.Cupform.ID, FallbackValue=-, TargetNullValue=-}" Margin="5, 0, 0, 0" Grid.Row="1" Foreground="Black"/>
+                                        <TextBlock Text="Einlegeplatte" Grid.Row="3" Foreground="Gray" Margin="5, 0, 0, 0"/>
+                                        <TextBlock Text="{Binding Mold.InsertPlate.ID, FallbackValue=-, TargetNullValue=-}" Margin="5, 0, 0, 0" Grid.Row="4" Foreground="Black"/>
+                                    </Grid>
+
+                                    <Grid Grid.Column="1" Margin="0, 2, 2, 2">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="10"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <TextBlock Text="Innenkern" Foreground="Gray" Margin="5, 0, 0, 0" Grid.Row="0"/>
+                                        <TextBlock  Text="{Binding Mold.Core.ID, FallbackValue=-, TargetNullValue=-}" Margin="5, 0, 0, 0" Grid.Row="1" Foreground="Black"/>
+                                    </Grid>
+
+                                    <Grid Grid.Column="2" Margin="0, 2, 2, 2">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+                                        
+                                        <TextBlock Text="Kernring" Grid.Column="0" Grid.Row="1" Foreground="Gray"/>
+                                        <TextBlock Text="{Binding Mold.ListCoreRings[0].Item1.ID, FallbackValue='', TargetNullValue='', ValidatesOnExceptions=False}" Grid.Column="1" Grid.Row="2" Foreground="Black"/>
+                                        <TextBlock Text="{Binding Mold.ListCoreRings[0].Item2.ID, FallbackValue='', TargetNullValue='', ValidatesOnExceptions=False}" Grid.Column="1" Grid.Row="3" Foreground="Black"/>
+
+                                    </Grid>
+
+                                    <Grid Grid.Column="3" Margin="4, 2, 4, 2">
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+
+                                        </Grid.RowDefinitions>
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="3*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <TextBlock Text="Bolzen" Foreground="Gray" Grid.Row="0" Margin="5, 0, 0, 0"/>
+
+                                        <DataGrid ItemsSource="{Binding Bolts}" 
+                                                  AutoGenerateColumns="False" 
+                                                  IsReadOnly="True" 
+                                                  Focusable="False"
+                                                  Grid.ColumnSpan="4"
+                                                  Grid.Row="1" 
+                                                  Margin="5, 0, 0, 0" 
+                                                  BorderThickness="0" 
+                                                  BorderBrush="Transparent"
+                                                  GridLinesVisibility="None"
+                                                  HeadersVisibility="Column"
+                                                  HorizontalAlignment="Stretch"
+                                                  VerticalAlignment="Stretch"
+                                                  SelectionUnit="FullRow"
+                                                  IsHitTestVisible="False"
+                                                  Background="WhiteSmoke">
+
+                                            <DataGrid.RowStyle>
+                                                <Style TargetType="DataGridRow">
+                                                    <Setter Property="Background" Value="WhiteSmoke"/>
+                                                </Style>
+                                            </DataGrid.RowStyle>
+
+                                            <DataGrid.ColumnHeaderStyle>
+                                                <Style TargetType="DataGridColumnHeader">
+                                                    <Setter Property="Background" Value="WhiteSmoke"/>
+                                                    <Setter Property="Foreground" Value="Black"/>
+                                                    <Setter Property="Margin" Value="0, 0, 0, 10"/>
+                                                </Style>
+                                            </DataGrid.ColumnHeaderStyle>
+
+                                            <DataGrid.Columns>
+                                                <DataGridTextColumn Binding="{Binding Item1.ID, FallbackValue=-}" Header="ID" Width="*"/>
+                                                <DataGridTextColumn Binding="{Binding Item1.Description, FallbackValue=-}" Header="Beschreibung" Width="3*"/>
+                                            </DataGrid.Columns>
+
+                                        </DataGrid>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        </Border>
                     </DataTemplate>
 
                     <DataTemplate x:Key="PostProcessing">
@@ -1308,7 +1422,7 @@
                                         <RowDefinition/>
                                     </Grid.RowDefinitions>
 
-                                    <!-- Baseplate Details-->
+                                    <!-- Cupform Details-->
                                     <Expander Grid.Row="1" Header="Cupform" Margin="0, 10, 0, 0" FontSize="20">
                                         <Expander.Style>
                                             <Style TargetType="Expander">
@@ -1344,7 +1458,12 @@
                                                 <TextBlock Text="Führungsstift: "/>
                                                 <TextBlock Text="Mit Gewinde: "/>
                                                 <TextBlock Text="Gewinde: "/>
-                                                <TextBlock Text="Lochkreis: "/>
+                                                <TextBlock Text="Lochkreis 1: "/>
+                                                <TextBlock Text="Lochkreis 1 Gewinde: "/>
+                                                <TextBlock Text="Lochkreis 2: "/>
+                                                <TextBlock Text="Lochkreis 2 Gewinde: "/>
+                                                <TextBlock Text="Lochkreis 3: "/>
+                                                <TextBlock Text="Lochkreis 3 Gewinde: "/>
                                                 <TextBlock Text="Fester Lochkreis: "/>
                                             </StackPanel>
 
@@ -1362,7 +1481,12 @@
                                                 <TextBlock Text="{Binding SelectedItem.Mold.Cupform.HasGuideBolt, ElementName=combinationJobOutput}"/>
                                                 <TextBlock Text="{Binding SelectedItem.Mold.Cupform.HasThread, ElementName=combinationJobOutput}"/>
                                                 <TextBlock Text="{Binding SelectedItem.Mold.Cupform.Thread, ElementName=combinationJobOutput}"/>
-                                                <TextBlock Text="{Binding SelectedItem.Mold.Cupform.BTC, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Text="{Binding SelectedItem.Mold.Cupform.BTC1, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Text="{Binding SelectedItem.Mold.Cupform.BTC1Thread, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Text="{Binding SelectedItem.Mold.Cupform.BTC2, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Text="{Binding SelectedItem.Mold.Cupform.BTC2Thread, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Text="{Binding SelectedItem.Mold.Cupform.BTC3, ElementName=combinationJobOutput}"/>
+                                                <TextBlock Text="{Binding SelectedItem.Mold.Cupform.BTC3Thread, ElementName=combinationJobOutput}"/>
                                                 <TextBlock Text="{Binding SelectedItem.Mold.Cupform.HasFixedBTC, ElementName=combinationJobOutput}"/>
                                             </StackPanel>
                                         </Grid>

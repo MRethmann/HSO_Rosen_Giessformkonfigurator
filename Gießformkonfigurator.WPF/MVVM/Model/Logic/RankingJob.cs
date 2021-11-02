@@ -444,7 +444,7 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                         || (((ModularMold)nextObject.Mold).ListCoreRings.FirstOrDefault()?.Item1 == ((ModularMold)currentObject.Mold).ListCoreRings.FirstOrDefault()?.Item1
                         && ((ModularMold)nextObject.Mold).ListCoreRings.FirstOrDefault()?.Item2 == ((ModularMold)currentObject.Mold).ListCoreRings.FirstOrDefault()?.Item2))
                     {
-                        if (!currentObject.AlternativeCores.Any(c => c.Item1 == ((ModularMold)nextObject.Mold).Core))
+                        if (((ModularMold)nextObject.Mold).Core != null && !currentObject.AlternativeCores.Any(c => c.Item1 == ((ModularMold)nextObject.Mold).Core))
                         {
                             var core = ((ModularMold)nextObject.Mold).Core;
                             var diffToProduct = Math.Round((decimal)nextObject.DifferenceInnerDiameter, 2);
