@@ -8,6 +8,7 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_products
     using System;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using System.Windows;
 
     [Table("ProductDisc")]
     public class ProductDisc : Product

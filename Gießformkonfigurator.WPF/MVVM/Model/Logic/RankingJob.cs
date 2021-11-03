@@ -147,7 +147,7 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                         // Used while adding post processing information. Means that no BTC needs to be added to the product.
                         compareObject.DifferenceBoltDiameter = 0;
                     }
-                    else if (!string.IsNullOrWhiteSpace(this.Product.BTC))
+                    else if (!string.IsNullOrWhiteSpace(this.Product.BTC) && compareObject.Mold.HasFittingBTC)
                         //TODO: Prüfen ob notwendig.
                         //&& (((SingleMoldDisc)compareObject.Mold).HcDiameter != null && ((SingleMoldDisc)compareObject.Mold).HcDiameter > 0)
                         //&& (((SingleMoldDisc)compareObject.Mold).HcHoles != null && ((SingleMoldDisc)compareObject.Mold).HcHoles > 0)
@@ -176,14 +176,14 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
 
                 // Mold has a fitting BTC for the product.
                 if ((!string.IsNullOrWhiteSpace(this.ProductCup.BTC)
-                    && compareObject.HasFittingBTC)
+                    && compareObject.Mold.HasFittingBTC)
                     || string.IsNullOrWhiteSpace(this.ProductCup.BTC))
                 {
                     compareObject.FinalRating += 25.00m;
                 }
 
                 // Mold has no fitting BTC for the product --> BTC needs to be added in post processing.
-                else if (!string.IsNullOrWhiteSpace(this.ProductCup.BTC) && compareObject.HasFittingBTC == false)
+                else if (!string.IsNullOrWhiteSpace(this.ProductCup.BTC) && compareObject.Mold.HasFittingBTC == false)
                 {
                     compareObject.PostProcessing.Add($"Lochkreis einarbeiten: {this.ProductCup.BTC}");
                 }

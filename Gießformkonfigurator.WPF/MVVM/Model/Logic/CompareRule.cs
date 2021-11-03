@@ -155,8 +155,15 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                         // && singleMoldDisc.HcHoles != null && singleMoldDisc.HcHoles > 0
                         // && singleMoldDisc.BoltDiameter != null && singleMoldDisc.BoltDiameter > 0)
                 {
-
-                    return productDisc.BTC.Equals(singleMoldDisc.BTC);
+                    if (productDisc.BTC.Equals(singleMoldDisc.BTC))
+                    {
+                        singleMoldDisc.HasFittingBTC = true;
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
                     // return (productDisc.HcDiameter == null || productDisc.HcDiameter <= 0 || (productDisc.SingleMoldDimensions.HcDiameter <= singleMoldDisc.HcDiameter + this.ToleranceSettings.Hc_Diameter && productDisc.SingleMoldDimensions.HcDiameter >= singleMoldDisc.HcDiameter - this.ToleranceSettings.Hc_Diameter))
                         // && (productDisc.HcHoleDiameter == null || productDisc.HcHoleDiameter <= 0 || (productDisc.SingleMoldDimensions.HcHoleDiameter >= singleMoldDisc.BoltDiameter - this.ToleranceSettings.Bolt_Diameter && productDisc.SingleMoldDimensions.HcHoleDiameter <= singleMoldDisc.BoltDiameter + this.ToleranceSettings.Bolt_Diameter))
                        // && (productDisc.HcHoles == null || productDisc.HcHoles <= 0 || productDisc.HcHoles == singleMoldDisc.HcHoles);
@@ -200,7 +207,15 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                 // Product and singleMold have BTC
                 if (!string.IsNullOrWhiteSpace(productCup.BTC) && !string.IsNullOrWhiteSpace(singleMoldCup.BTC))
                 {
-                    return singleMoldCup.BTC.Equals(productCup.BTC);
+                    if (singleMoldCup.BTC.Equals(productCup.BTC))
+                    {
+                        singleMoldCup.HasFittingBTC = true;
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
                 }
 
                 // SingleMold has BTC but product does not.

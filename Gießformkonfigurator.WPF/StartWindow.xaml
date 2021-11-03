@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:Giessformkonfigurator.WPF"
         mc:Ignorable="d"
         Title="Gießformkonfigurator" Height="600" Width="600" 
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        KeyDown="Enter_KeyDown">
     <Grid>
         <Grid>
             <Grid.RowDefinitions>

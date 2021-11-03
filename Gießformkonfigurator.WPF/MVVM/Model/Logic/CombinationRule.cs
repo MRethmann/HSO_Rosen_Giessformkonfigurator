@@ -59,9 +59,9 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
             if (baseplate.HasKonus && core.HasKonus)
             {
                 return baseplate.InnerKonusMax + this.CombinationSettings.Tolerance_Konus_MAX >= core.OuterKonusMax
-                    && baseplate.InnerKonusMax - this.CombinationSettings.Tolerance_Konus_MIN <= core.OuterKonusMax
+                    && baseplate.InnerKonusMax + this.CombinationSettings.Tolerance_Konus_MIN <= core.OuterKonusMax
                     && baseplate.InnerKonusMin + this.CombinationSettings.Tolerance_Konus_MAX >= core.OuterKonusMin
-                    && baseplate.InnerKonusMin - this.CombinationSettings.Tolerance_Konus_MIN <= core.OuterKonusMin
+                    && baseplate.InnerKonusMin + this.CombinationSettings.Tolerance_Konus_MIN <= core.OuterKonusMin
                     && baseplate.InnerKonusAngle == core.OuterKonusAngle;
 
                 // TODO: Höhe des Konus wird aktuell nicht abgefragt und muss ergänzt werden. Hier müsste ggf. ein neuer Toleranzwert gewählt werden.
@@ -106,9 +106,9 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
             else if (baseplate.HasKonus)
             {
                 return baseplate.InnerKonusMax + this.CombinationSettings.Tolerance_Konus_MAX >= insertPlate.OuterKonusMax
-                    && baseplate.InnerKonusMax - this.CombinationSettings.Tolerance_Konus_MIN <= insertPlate.OuterKonusMax
+                    && baseplate.InnerKonusMax + this.CombinationSettings.Tolerance_Konus_MIN <= insertPlate.OuterKonusMax
                     && baseplate.InnerKonusMin + this.CombinationSettings.Tolerance_Konus_MAX >= insertPlate.OuterKonusMin
-                    && baseplate.InnerKonusMin - this.CombinationSettings.Tolerance_Konus_MIN <= insertPlate.OuterKonusMin
+                    && baseplate.InnerKonusMin + this.CombinationSettings.Tolerance_Konus_MIN <= insertPlate.OuterKonusMin
                     && baseplate.InnerKonusAngle == insertPlate.OuterKonusAngle;
             }
             else
@@ -130,9 +130,9 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
 
             return ring.HasKonus
                 && ring.InnerKonusMax + this.CombinationSettings.Tolerance_Konus_MAX >= baseplate.OuterKonusMax
-                && ring.InnerKonusMax - this.CombinationSettings.Tolerance_Konus_MIN <= baseplate.OuterKonusMax
+                && ring.InnerKonusMax + this.CombinationSettings.Tolerance_Konus_MIN <= baseplate.OuterKonusMax
                 && ring.InnerKonusMin + this.CombinationSettings.Tolerance_Konus_MAX >= baseplate.OuterKonusMin
-                && ring.InnerKonusMin - this.CombinationSettings.Tolerance_Konus_MIN <= baseplate.OuterKonusMin
+                && ring.InnerKonusMin + this.CombinationSettings.Tolerance_Konus_MIN <= baseplate.OuterKonusMin
                 && ring.InnerKonusAngle == baseplate.OuterKonusAngle;
                 // && ring.KonusHeight <= baseplate.KonusHeight;
         }
@@ -152,9 +152,9 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
             {
                 return core.HasKonus == true
                     && insertPlate.InnerKonusMax + this.CombinationSettings.Tolerance_Konus_MAX >= core.OuterKonusMax
-                    && insertPlate.InnerKonusMax - this.CombinationSettings.Tolerance_Konus_MIN <= core.OuterKonusMax
+                    && insertPlate.InnerKonusMax + this.CombinationSettings.Tolerance_Konus_MIN <= core.OuterKonusMax
                     && insertPlate.InnerKonusMin + this.CombinationSettings.Tolerance_Konus_MAX >= core.OuterKonusMin
-                    && insertPlate.InnerKonusMin - this.CombinationSettings.Tolerance_Konus_MIN <= core.OuterKonusMin
+                    && insertPlate.InnerKonusMin + this.CombinationSettings.Tolerance_Konus_MIN <= core.OuterKonusMin
                     && insertPlate.InnerKonusAngle == core.OuterKonusAngle;
             }
             else if (insertPlate.HasHoleguide && core.HasGuideBolt)
@@ -216,9 +216,9 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
             {
                 return core.HasKonus == true
                     && cupform.InnerKonusMax + this.CombinationSettings.Tolerance_Konus_MAX >= core.OuterKonusMax
-                    && cupform.InnerKonusMax - this.CombinationSettings.Tolerance_Konus_MIN <= core.OuterKonusMax
+                    && cupform.InnerKonusMax + this.CombinationSettings.Tolerance_Konus_MIN <= core.OuterKonusMax
                     && cupform.InnerKonusMin + this.CombinationSettings.Tolerance_Konus_MAX >= core.OuterKonusMin
-                    && cupform.InnerKonusMin - this.CombinationSettings.Tolerance_Konus_MIN <= core.OuterKonusMin
+                    && cupform.InnerKonusMin + this.CombinationSettings.Tolerance_Konus_MIN <= core.OuterKonusMin
                     && cupform.InnerKonusAngle == core.OuterKonusAngle;
             }
             else if (cupform.HasHoleguide && core.HasGuideBolt)
@@ -258,9 +258,9 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
             {
                 // Konus Height missing in database.
                 return cupform.InnerKonusMax + this.CombinationSettings.Tolerance_Konus_MAX >= insertPlate.OuterKonusMax
-                    && cupform.InnerKonusMax - this.CombinationSettings.Tolerance_Konus_MIN <= insertPlate.OuterKonusMax
+                    && cupform.InnerKonusMax + this.CombinationSettings.Tolerance_Konus_MIN <= insertPlate.OuterKonusMax
                     && cupform.InnerKonusMin + this.CombinationSettings.Tolerance_Konus_MAX >= insertPlate.OuterKonusMin
-                    && cupform.InnerKonusMin - this.CombinationSettings.Tolerance_Konus_MIN <= insertPlate.OuterKonusMin
+                    && cupform.InnerKonusMin + this.CombinationSettings.Tolerance_Konus_MIN <= insertPlate.OuterKonusMin
                     && cupform.InnerKonusAngle == insertPlate.OuterKonusAngle;
             }
             else

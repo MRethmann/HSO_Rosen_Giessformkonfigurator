@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:Giessformkonfigurator.WPF"
         mc:Ignorable="d"
         Title="Admin Login" Height="400" Width="380"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        KeyDown="Enter_KeyDown"
+        Loaded="Window_Loaded">
     
     
     <Grid Background="WhiteSmoke">

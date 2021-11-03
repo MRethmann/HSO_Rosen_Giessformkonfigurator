@@ -46,7 +46,7 @@
 
                 <Grid Grid.Column="1" Grid.Row="1">
                     <Border BorderBrush="#144F9B" >
-                        <Image Width="360" Height="140" Source="/images/rosen.png" x:Name="Admin_Logo" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed"/>
+                        <Image Width="360" Height="100" Source="/images/rosen.png" x:Name="Admin_Logo" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed"/>
                     </Border>
                 </Grid>
 

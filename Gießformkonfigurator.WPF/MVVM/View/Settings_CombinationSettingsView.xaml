@@ -64,12 +64,14 @@
                         Bestimmt die Toleranzen für die Kombination von Komponenten, die einen Konus besitzen (z.B. Führungsringe, Kerne mit Konus oder Einlegeplatten).
                         <LineBreak/>
                         <LineBreak/>
-                        Die MIN-Toleranz soll primär Datenwerte abfangen, die mechanisch keinen Sinn ergeben.
+                        Die MIN-Toleranz ist der Abstand, welcher mindestens gegeben sein muss, damit die Komponenten kombiniert werden können.
                         <LineBreak/>
                         <LineBreak/>
-                        Beispiel: Es gibt Datensätze bei denen der Konus des Rings minimal größer war, als der Konus der Grundplatte.
+                        Beispiel: Ein Innenkonus mit einem Außendurchmesser von 50mm passt nicht in einen Außenkonus mit Innendurchmesser 50mm.
                         <LineBreak/>
-                        In der Theorie wäre so eine Kombination nicht möglich. Da die Praxis jedoch das Gegenteil bewiesen hat, werden solche Fälle über die Toleranz geregelt.
+                        Der Innerdurchmesser des äußeren Rings muss minimal kleiner sein, was durch diese Toleranz bestimmt wird.
+                        <LineBreak/>
+                        NEGATIVE WERTE fangen leichte Datenabweichungen ab.
                         </TextBlock>
                     </ToolTip>
                 </Image.ToolTip>
@@ -130,6 +132,8 @@
                         Beispiel: Ein Ring mit einem Außendurchmesser von 50mm passt nicht in einen Ring mit Innendurchmesser 50mm. 
                         <LineBreak/>
                         Der Innerdurchmesser des äußeren Rings muss minimal kleiner sein, was durch diese Toleranz bestimmt wird.
+                        <LineBreak/>
+                        NEGATIVE WERTE fangen leichte Datenabweichungen ab.
                         </TextBlock>
                     </ToolTip>
                 </Image.ToolTip>

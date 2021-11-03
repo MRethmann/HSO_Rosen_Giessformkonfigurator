@@ -37,5 +37,11 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_molds
         /// </summary>
         [NotMapped]
         public string ProductTypeName { get; set; }
+
+        /// <summary>
+        /// Gets or Sets a value indicating whether the mold has a fitting BTC for the product or not.
+        /// </summary>
+        [NotMapped]
+        public bool HasFittingBTC { get; set; } = false;
     }
 }

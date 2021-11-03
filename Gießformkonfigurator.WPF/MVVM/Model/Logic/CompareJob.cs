@@ -128,18 +128,21 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                             && this.ProductDisc.HcHoles == ((ModularMold)compareObject.Mold).Baseplate.Hc1Holes)
                     {
                         compareObject.BoltCirclesBaseplate[1] = true;
+                        compareObject.Mold.HasFittingBTC = true;
                     }
                     else if (this.ProductDisc.ModularMoldDimensions.HcDiameter <= ((ModularMold)compareObject.Mold).Baseplate.Hc2Diameter + this.ToleranceSettings?.Hc_Diameter
                             && this.ProductDisc.ModularMoldDimensions.HcDiameter >= ((ModularMold)compareObject.Mold).Baseplate.Hc1Diameter - this.ToleranceSettings?.Hc_Diameter
                             && this.ProductDisc.HcHoles == ((ModularMold)compareObject.Mold).Baseplate.Hc2Holes)
                     {
                         compareObject.BoltCirclesBaseplate[2] = true;
+                        compareObject.Mold.HasFittingBTC = true;
                     }
                     else if (this.ProductDisc.ModularMoldDimensions.HcDiameter <= ((ModularMold)compareObject.Mold).Baseplate.Hc3Diameter + this.ToleranceSettings?.Hc_Diameter
                             && this.ProductDisc.ModularMoldDimensions.HcDiameter >= ((ModularMold)compareObject.Mold).Baseplate.Hc1Diameter - this.ToleranceSettings?.Hc_Diameter
                             && this.ProductDisc.HcHoles == ((ModularMold)compareObject.Mold).Baseplate.Hc3Holes)
                     {
                         compareObject.BoltCirclesBaseplate[3] = true;
+                        compareObject.Mold.HasFittingBTC = true;
                     }
                 }
 
@@ -151,18 +154,21 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                             && this.ProductDisc.HcHoles == ((ModularMold)compareObject.Mold).InsertPlate?.Hc1Holes)
                     {
                         compareObject.BoltCirclesInsertPlate[1] = true;
+                        compareObject.Mold.HasFittingBTC = true;
                     }
                     else if (this.ProductDisc.ModularMoldDimensions.HcDiameter <= ((ModularMold)compareObject.Mold).InsertPlate?.Hc2Diameter + this.ToleranceSettings?.Hc_Diameter
                             && this.ProductDisc.ModularMoldDimensions.HcDiameter >= ((ModularMold)compareObject.Mold).InsertPlate?.Hc2Diameter - this.ToleranceSettings?.Hc_Diameter
                             && this.ProductDisc.HcHoles == ((ModularMold)compareObject.Mold).InsertPlate?.Hc2Holes)
                     {
                         compareObject.BoltCirclesInsertPlate[2] = true;
+                        compareObject.Mold.HasFittingBTC = true;
                     }
                     else if (this.ProductDisc.ModularMoldDimensions.HcDiameter <= ((ModularMold)compareObject.Mold).InsertPlate?.Hc3Diameter + this.ToleranceSettings?.Hc_Diameter
                             && this.ProductDisc.ModularMoldDimensions.HcDiameter >= ((ModularMold)compareObject.Mold).InsertPlate?.Hc3Diameter - this.ToleranceSettings?.Hc_Diameter
                             && this.ProductDisc.HcHoles == ((ModularMold)compareObject.Mold).InsertPlate?.Hc3Holes)
                     {
                         compareObject.BoltCirclesInsertPlate[3] = true;
+                        compareObject.Mold.HasFittingBTC = true;
                     }
                 }
             }
@@ -217,20 +223,19 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
             {
                 if (this.CompareRuleSet.Compare(this.ProductDisc, singleMoldDisc))
                 {
+                    var compareObject = new CompareObject(this.ProductDisc, singleMoldDisc);
                     if (singleMoldDisc.CoreSingleMold != null)
                     {
-                        var compareObject = new CompareObject(this.ProductDisc, singleMoldDisc);
                         compareObject.DifferenceInnerDiameter = this.ProductDisc.SingleMoldDimensions.InnerDiameter - singleMoldDisc.CoreSingleMold.OuterDiameter;
                         compareObject.DifferenceOuterDiameter = singleMoldDisc.OuterDiameter - this.ProductDisc.SingleMoldDimensions.OuterDiameter;
-                        this.CompareJobOutput.Add(compareObject);
                     }
                     else
                     {
-                        var compareObject = new CompareObject(this.ProductDisc, singleMoldDisc);
                         compareObject.DifferenceInnerDiameter = this.ProductDisc.SingleMoldDimensions.InnerDiameter - singleMoldDisc.InnerDiameter;
                         compareObject.DifferenceOuterDiameter = singleMoldDisc.OuterDiameter - this.ProductDisc.SingleMoldDimensions.OuterDiameter;
-                        this.CompareJobOutput.Add(compareObject);
                     }
+
+                    this.CompareJobOutput.Add(compareObject);
                 }
             }
         }
@@ -277,7 +282,7 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                             && cupformBTCList[i].Item1.Equals(this.ProductCup.BTC))
                         {
                             btcThread = cupformBTCList[i].Item2;
-                            compareObject.HasFittingBTC = true;
+                            compareObject.Mold.HasFittingBTC = true;
 
                             foreach (var bolt in this.Bolts)
                             {
@@ -304,28 +309,17 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
             {
                 if (this.CompareRuleSet.Compare(this.ProductCup, singleMoldCup))
                 {
+                    var compareObject = new CompareObject(this.ProductCup, singleMoldCup);
                     if (singleMoldCup.CoreSingleMold != null)
                     {
-                        var compareObject = new CompareObject(this.ProductCup, singleMoldCup);
-                        compareObject.DifferenceInnerDiameter = this.ProductDisc.SingleMoldDimensions.InnerDiameter - singleMoldCup.CoreSingleMold.OuterDiameter;
-                        if (singleMoldCup.BTC == null && this.ProductCup.BTC != null)
-                        {
-                            compareObject.HasFittingBTC = false;
-                        }
-
-                        this.CompareJobOutput.Add(compareObject);
+                        compareObject.DifferenceInnerDiameter = this.ProductCup.SingleMoldDimensions.InnerDiameter - singleMoldCup.CoreSingleMold.OuterDiameter;
                     }
                     else
                     {
-                        var compareObject = new CompareObject(this.ProductCup, singleMoldCup);
-                        compareObject.DifferenceInnerDiameter = this.ProductDisc.SingleMoldDimensions.InnerDiameter - singleMoldCup.InnerDiameter;
-                        if (singleMoldCup.BTC == null && this.ProductCup.BTC != null)
-                        {
-                            compareObject.HasFittingBTC = false;
-                        }
-
-                        this.CompareJobOutput.Add(compareObject);
+                        compareObject.DifferenceInnerDiameter = this.ProductCup.SingleMoldDimensions.InnerDiameter - singleMoldCup.InnerDiameter;
                     }
+
+                    this.CompareJobOutput.Add(compareObject);
                 }
             }
         }

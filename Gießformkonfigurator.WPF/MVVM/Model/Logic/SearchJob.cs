@@ -7,6 +7,7 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
 {
     using System;
     using System.Collections.Generic;
+    using System.Windows;
     using Giessformkonfigurator.WPF.MVVM.Model.Db_components;
     using Giessformkonfigurator.WPF.MVVM.Model.Db_products;
     using Giessformkonfigurator.WPF.MVVM.Model.Db_supportClasses;
@@ -87,6 +88,12 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                     using (var db = new GießformDBContext())
                     {
                         boltCircleInformation = db.BoltCircleTypes.Find(this.ProductDisc.BTC);
+
+                        if (boltCircleInformation == null)
+                        {
+                            MessageBox.Show($"Es konnten keine Informationen zum Lochkreis {this.ProductDisc.BTC} in der Datenbank gefunden werden." + Environment.NewLine + "Die Suche wird ohne Lochkreis durchgeführt.");
+                            this.ProductDisc.BTC = null;
+                        }
                     }
                 }
                 catch (Exception ex)
@@ -115,6 +122,12 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                     using (var db = new GießformDBContext())
                     {
                         boltCircleInformation = db.BoltCircleTypes.Find(this.ProductCup.BTC);
+
+                        if (boltCircleInformation == null)
+                        {
+                            MessageBox.Show($"Es konnten keine Informationen zum Lochkreis {this.ProductCup.BTC} in der Datenbank gefunden werden." + Environment.NewLine + "Die Suche wird ohne Lochkreis durchgeführt.");
+                            this.ProductCup.BTC = null;
+                        }
                     }
                 }
                 catch (Exception ex)

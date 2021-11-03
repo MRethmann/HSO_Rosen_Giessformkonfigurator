@@ -92,6 +92,10 @@ namespace Giessformkonfigurator.WPF.MVVM.ViewModel
         /// </summary>
         public void FindMatchingMolds()
         {
+            this.SearchJob = null;
+            this.ProductDisc = null;
+            this.ProductCup = null;
+
             // Search by SAP-Nr.
             if (this.SearchByProductId)
             {
@@ -118,7 +122,7 @@ namespace Giessformkonfigurator.WPF.MVVM.ViewModel
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Die Verbindung zur Datenbank konnte nicht hergestellt werden.");
+                        MessageBox.Show("Es ist ein Problem aufgetreten. Bitte wenden Sie sich an den Systemadministrator." + Environment.NewLine + Environment.NewLine + ex);
                         Log.Error(ex);
                     }
                 }
@@ -146,7 +150,7 @@ namespace Giessformkonfigurator.WPF.MVVM.ViewModel
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Die Verbindung zur Datenbank konnte nicht hergestellt werden.");
+                        MessageBox.Show("Es ist ein Problem aufgetreten. Bitte wenden Sie sich an den Systemadministrator." + Environment.NewLine + Environment.NewLine + ex);
                         Log.Error(ex);
                     }
                 }
