@@ -418,7 +418,7 @@
                                         <RowDefinition Height="auto"/>
                                     </Grid.RowDefinitions>
 
-                                    <TextBlock Text="Kern" Foreground="Gray" Margin="5, 0, 0, 0" Grid.Row="0"/>
+                                    <TextBlock Text="Zusatzring" Foreground="Gray" Margin="5, 0, 0, 0" Grid.Row="0"/>
                                     <TextBlock Text="{Binding Mold.CoreSingleMold.ID, FallbackValue=-, TargetNullValue=-}" Margin="5, 0, 0, 0" Grid.Row="1" Foreground="Black"/>
 
                                 </Grid>
@@ -533,7 +533,7 @@
                                             <RowDefinition Height="auto"/>
                                         </Grid.RowDefinitions>
 
-                                        <TextBlock Text="Innenkern" Foreground="Gray" Margin="5, 0, 0, 0" Grid.Row="1"/>
+                                        <TextBlock Text="Zusatzring" Foreground="Gray" Margin="5, 0, 0, 0" Grid.Row="1"/>
                                         <TextBlock  Text="{Binding Mold.CoreSingleMold.ID, FallbackValue=-}" Margin="5, 0, 0, 0" Grid.Row="2">
                                             <TextBlock.Style>
                                                 <Style TargetType="TextBlock">
@@ -634,11 +634,11 @@
                                                   Focusable="False"
                                                   Grid.ColumnSpan="4"
                                                   Grid.Row="1" 
-                                                  Margin="5, 0, 0, 0" 
+                                                  Margin="3, 0, 0, 0" 
                                                   BorderThickness="0" 
                                                   BorderBrush="Transparent"
                                                   GridLinesVisibility="None"
-                                                  HeadersVisibility="Column"
+                                                  HeadersVisibility="None"
                                                   HorizontalAlignment="Stretch"
                                                   VerticalAlignment="Stretch"
                                                   SelectionUnit="FullRow"
@@ -752,11 +752,11 @@
                                                   Focusable="False"
                                                   Grid.ColumnSpan="4"
                                                   Grid.Row="1" 
-                                                  Margin="5, 0, 0, 0" 
+                                                  Margin="3, 0, 0, 0" 
                                                   BorderThickness="0" 
                                                   BorderBrush="Transparent"
                                                   GridLinesVisibility="None"
-                                                  HeadersVisibility="Column"
+                                                  HeadersVisibility="None"
                                                   HorizontalAlignment="Stretch"
                                                   VerticalAlignment="Stretch"
                                                   SelectionUnit="FullRow"
@@ -1772,12 +1772,12 @@
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
 
-                            <!-- Zusatzringe Innen - ggf. nicht notwendig. Prüfen. --> <!--
-                            <Expander Header="Zusatzringe Innen" Grid.Row="0" Margin="0, 10, 0, 0" FontSize="25">
+                            <!-- Zusatzringe Innen - ggf. nicht notwendig. Prüfen. -->
+                            <Expander Header="Zusatzring Innen" Grid.Row="0" Margin="0, 10, 0, 0" FontSize="25">
                                 <Expander.Style>
                                     <Style TargetType="Expander">
                                         <Style.Triggers>
-                                            <DataTrigger Binding="{Binding SelectedItem.Mold.ListCoreRings[0], ElementName=combinationJobOutput}" Value="{x:Null}">
+                                            <DataTrigger Binding="{Binding SelectedItem.Mold.CoreSingleMold, ElementName=combinationJobOutput}" Value="{x:Null}">
                                                 <Setter Property="IsEnabled" Value="False"/>
                                                 <Setter Property="IsExpanded" Value="False"/>
                                             </DataTrigger>
@@ -1785,52 +1785,43 @@
                                         <Setter Property="IsExpanded" Value="True"/>
                                     </Style>
                                 </Expander.Style>
-                                <Grid>
-                                    <Grid Margin="20, 10, 20, 0">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
+                                
+                                <Grid Margin="20, 10, 0, 0">
+                                    <Grid.Resources>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="FontSize" Value="20"/>
+                                        </Style>
+                                    </Grid.Resources>
+                                    
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
 
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition/>
-                                            <RowDefinition/>
-                                        </Grid.RowDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
 
-                                        <DataGrid Grid.Column="0" Grid.Row="1" ItemsSource="{Binding SelectedItem.Mold.ListCoreRings, ElementName=combinationJobOutput}" Height="Auto" FontSize="15" Background="white"
-                                                  Grid.ColumnSpan="2"
-                                                  AutoGenerateColumns="False"
-                                                  BorderThickness="0" BorderBrush="Transparent"
-                                                  HorizontalGridLinesBrush="DarkGray"
-                                                  VerticalGridLinesBrush="DarkGray"
-                                                  GridLinesVisibility="Horizontal"
-                                                  HeadersVisibility="Column"
-                                                  HorizontalAlignment="Stretch"
-                                                  VerticalAlignment="Stretch"
-                                                  IsReadOnly="True"
-                                                  SelectionUnit="FullRow"
-                                                  IsHitTestVisible="False">
+                                    <StackPanel Grid.Column="0" Grid.Row="0" Margin="0, 0, 2, 0">
+                                        <TextBlock Text="ID: "/>
+                                        <TextBlock Text="Beschreibung: "/>
+                                        <TextBlock Text="Außendurchmesser: "/>
+                                        <TextBlock Text="Innendurchmesser: "/>
+                                        <TextBlock Text="Höhe: "/>
+                                    </StackPanel>
 
-                                            <DataGrid.ColumnHeaderStyle>
-                                                <Style TargetType="DataGridColumnHeader">
-                                                    <Setter Property="Background" Value="White"/>
-                                                    <Setter Property="Foreground" Value="Black"/>
-                                                    <Setter Property="Margin" Value="0, 0, 0, 10"/>
-                                                    <Setter Property="FontWeight" Value="Medium"/>
-                                                </Style>
-                                            </DataGrid.ColumnHeaderStyle>
-
-                                            <DataGrid.Columns>
-                                                <DataGridTextColumn Header="Ring 1" Binding="{Binding Item1.ID}" Width="*"/>
-                                                <DataGridTextColumn Header="Ring 2" Binding="{Binding Item2.ID}" Width="*"/>
-                                                <DataGridTextColumn Header="Abweichung" Binding="{Binding Item3}" Width="*"/>
-                                            </DataGrid.Columns>
-
-                                        </DataGrid>
-                                    </Grid>
+                                    <StackPanel Grid.Column="1" Grid.Row="0" Margin="2, 0, 0, 0">
+                                        <TextBlock x:Name="Baseplate_ID" Text="{Binding SelectedItem.Mold.CoreSingleMold.ID, ElementName=combinationJobOutput, TargetNullValue=-}"/>
+                                        <TextBlock Text="{Binding SelectedItem.Mold.CoreSingleMold.Description, ElementName=combinationJobOutput}"/>
+                                        <TextBlock Text="{Binding SelectedItem.Mold.CoreSingleMold.OuterDiameter, ElementName=combinationJobOutput}"/>
+                                        <TextBlock Text="{Binding SelectedItem.Mold.CoreSingleMold.InnerDiameter, ElementName=combinationJobOutput}"/>
+                                        <TextBlock Text="{Binding SelectedItem.Mold.CoreSingleMold.Height, ElementName=combinationJobOutput}"/>
+                                    </StackPanel>
                                 </Grid>
+                            
                             </Expander>
-                            -->
+                            
                             
                         </Grid>
                     </DataTemplate>
@@ -1986,7 +1977,7 @@
                         </Grid.RowDefinitions>
 
                         <Border>
-                            <TextBlock Text="Details" FontSize="30" HorizontalAlignment="Left" Margin="10, 10, 0, 0" Grid.Row="0"/>
+                            <TextBlock Text="Details" FontSize="30" HorizontalAlignment="Left" Margin="10, 5, 0, 0" Grid.Row="0"/>
                         </Border>
                         <ContentControl Content="{Binding SelectedItem, ElementName=combinationJobOutput}"  ContentTemplateSelector="{StaticResource DetailsTemplateSelector}" Grid.Row="2"/>
                     </Grid>

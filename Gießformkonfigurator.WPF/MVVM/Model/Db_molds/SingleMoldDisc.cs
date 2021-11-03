@@ -5,6 +5,7 @@
 //-----------------------------------------------------------------------
 namespace Giessformkonfigurator.WPF.MVVM.Model.Db_molds
 {
+    using System;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using Giessformkonfigurator.WPF.Enums;
@@ -31,5 +32,10 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_molds
         public decimal Height { get; set; }
 
         public decimal OuterDiameter { get; set; }
+
+        public SingleMoldDisc Clone()
+        {
+            return (SingleMoldDisc) this.MemberwiseClone();
+        }
     }
 }

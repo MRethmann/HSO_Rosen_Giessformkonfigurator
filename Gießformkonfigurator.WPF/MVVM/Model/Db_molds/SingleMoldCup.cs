@@ -33,5 +33,10 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_molds
         public string CupType { get; set; }
 
         public decimal Size { get; set; }
+
+        public SingleMoldCup Clone()
+        {
+            return (SingleMoldCup) this.MemberwiseClone();
+        }
     }
 }

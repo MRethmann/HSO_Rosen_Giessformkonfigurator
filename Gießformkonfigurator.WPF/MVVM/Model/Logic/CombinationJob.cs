@@ -419,8 +419,9 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                         if ((!string.IsNullOrWhiteSpace(singleMoldDisc.BTC) && coreSingleMold.OuterDiameter < (singleMoldDisc.HcDiameter - (singleMoldDisc.BoltDiameter / 2)))
                             || string.IsNullOrWhiteSpace(singleMoldDisc.BTC))
                         {
-                            singleMoldDisc.CoreSingleMold = coreSingleMold;
-                            this.SingleMoldDiscOutput.Add(singleMoldDisc);
+                            var newSingleMoldDisc = singleMoldDisc.Clone();
+                            newSingleMoldDisc.CoreSingleMold = coreSingleMold;
+                            this.SingleMoldDiscOutput.Add(newSingleMoldDisc);
                         }
                     }
                 }
@@ -448,8 +449,9 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                         if ((!string.IsNullOrWhiteSpace(singleMoldCup.BTC) && coreSingleMold.OuterDiameter < (singleMoldCup.HcDiameter - (singleMoldCup.BoltDiameter / 2)))
                             || string.IsNullOrWhiteSpace(singleMoldCup.BTC))
                         {
-                            singleMoldCup.CoreSingleMold = coreSingleMold;
-                            this.SingleMoldCupOutput.Add(singleMoldCup);
+                            var newSingleMoldCup = singleMoldCup.Clone();
+                            newSingleMoldCup.CoreSingleMold = coreSingleMold;
+                            this.SingleMoldCupOutput.Add(newSingleMoldCup);
                         }
                     }
                 }
