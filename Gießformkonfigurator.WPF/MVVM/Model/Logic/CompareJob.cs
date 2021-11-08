@@ -213,7 +213,13 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                 }
             }
 
-            this.CompareJobOutput.AddRange(compareObjectsTemp01);
+            // Check if the most outer Ring has the correct height for the product.
+            foreach (var compareObject in compareObjectsTemp01)
+            {
+
+            }
+
+            //this.CompareJobOutput.AddRange(compareObjectsTemp01);
         }
 
         private void CompareDiscProductSingleMold()
@@ -241,7 +247,6 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
         }
 
         /// <summary>
-        /// 
         /// TODO: Add logic to compare BTCs from insertPlates.
         /// </summary>
         private void CompareCupProductModularMold()

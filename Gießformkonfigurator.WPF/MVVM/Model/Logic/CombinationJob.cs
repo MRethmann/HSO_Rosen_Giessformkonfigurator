@@ -205,7 +205,7 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
 
             foreach (var mold in discMoldsTemp02)
             {
-                foreach (var ring in this.ListRings)
+                foreach (var ring in this.ListRings.Where(x => x.HasKonus == false))
                 {
                     // Alle Ringe entfernen, die potentiell außerhalb des Guide Rings liegen könnten
                     if (ring.OuterDiameter < mold.GuideRing.InnerDiameter + 1)
@@ -229,7 +229,7 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                 var counter01 = mold.ListCoreRings.Count;
                 for (int i = 0; i < counter01; i++)
                 {
-                    foreach (var ring in this.ListRings)
+                    foreach (var ring in this.ListRings.Where(x => x.HasKonus == false))
                     {
                         if (ring.InnerDiameter + 1 > mold.Core.OuterDiameter)
                         {
@@ -248,7 +248,7 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                 var counter02 = mold.ListOuterRings.Count;
                 for (int i = 0; i < counter02; i++)
                 {
-                    foreach (var ring in this.ListRings)
+                    foreach (var ring in this.ListRings.Where(x => x.HasKonus == false))
                     {
                         if (ring.OuterDiameter < mold.GuideRing.InnerDiameter + 1)
                         {
@@ -278,7 +278,7 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
 
             foreach (var modularMold in this.ModularMoldDiscOutput)
             {
-                Log.Info("Grundplatte: " + modularMold.Baseplate?.ID.ToString() + " + Einlegeplatte: " + modularMold.InsertPlate?.ID.ToString() + " + FÜhrungsring: " + modularMold.GuideRing?.ID.ToString() + " + Kern: " + modularMold.Core?.ID.ToString());
+                Log.Info("Grundplatte: " + modularMold.Baseplate?.ID.ToString() + " + Einlegeplatte: " + modularMold.InsertPlate?.ID.ToString() + " + Führungsring: " + modularMold.GuideRing?.ID.ToString() + " + Kern: " + modularMold.Core?.ID.ToString());
             }
         }
 
