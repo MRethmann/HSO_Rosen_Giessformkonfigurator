@@ -213,13 +213,14 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                 }
             }
 
+            /*
             // Check if the most outer Ring has the correct height for the product.
             foreach (var compareObject in compareObjectsTemp01)
             {
 
-            }
+            }*/
 
-            //this.CompareJobOutput.AddRange(compareObjectsTemp01);
+            this.CompareJobOutput.AddRange(compareObjectsTemp01);
         }
 
         private void CompareDiscProductSingleMold()

@@ -341,7 +341,7 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
 
             foreach (var mold in cupMoldsTemp02)
             {
-                foreach (var ring in this.ListRings)
+                foreach (var ring in this.ListRings.Where(x => x.HasKonus == false))
                 {
                     // Case 1: Mold has modular Core.
                     if (mold.Core != null)
@@ -377,7 +377,7 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                 var counter01 = mold.ListCoreRings.Count;
                 for (int i = 0; i < counter01; i++)
                 {
-                    foreach (var ring in this.ListRings)
+                    foreach (var ring in this.ListRings.Where(x => x.HasKonus == false))
                     {
                         if (ring.InnerDiameter + 1 > mold.Core.OuterDiameter)
                         {

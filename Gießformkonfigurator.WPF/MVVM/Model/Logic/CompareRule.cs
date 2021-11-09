@@ -11,6 +11,7 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
     using Giessformkonfigurator.WPF.Core;
     using Giessformkonfigurator.WPF.MVVM.Model.Db_molds;
     using Giessformkonfigurator.WPF.MVVM.Model.Db_products;
+    using Giessformkonfigurator.WPF.MVVM.Model.Db_components;
 
     /// <summary>
     /// All CompareRules that are placed within the CombinationRuleSet.
@@ -124,10 +125,87 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
             var productDisc = compareElements.OfType<ProductDisc>().Single();
             var modularMold = compareElements.OfType<ModularMold>().Single();
 
-            return productDisc.ModularMoldDimensions.OuterDiameter <= modularMold.GuideRing.InnerDiameter + this.ToleranceSettings.Product_OuterDiameter_MIN
+            bool validOuterDiameter = false;
+            bool validInnerDiameter = false;
+
+            // Delete all Addition Rings Entrys that do not match the height. Only the ring that determines the product size counts. Rings used as placeholders do not have any height requirement.
+            if (modularMold.ListOuterRings.Count > 0)
+            {
+                var indexList = new List<Tuple<Ring, Ring, decimal?>>(modularMold.ListOuterRings);
+                foreach (var item in indexList)
+                {
+                    if (item.Item2 != null
+                        && productDisc.ModularMoldDimensions.Height >= item.Item2.FillHeightMax + this.ToleranceSettings.Product_Height_MIN)
+                    {
+                        modularMold.ListOuterRings.Remove(item);
+                    }
+                    else if (item.Item2 == null
+                        && productDisc.ModularMoldDimensions.Height >= item.Item1.FillHeightMax + this.ToleranceSettings.Product_Height_MIN)
+                    {
+                        modularMold.ListOuterRings.Remove(item);
+                    }
+                }
+            }
+
+            if (modularMold.ListCoreRings.Count > 0)
+            {
+                var indexList = new List<Tuple<Ring, Ring, decimal?>>(modularMold.ListCoreRings);
+                foreach (var item in indexList)
+                {
+                    if (item.Item2 != null
+                        && productDisc.ModularMoldDimensions.Height >= item.Item2.FillHeightMax + this.ToleranceSettings.Product_Height_MIN)
+                    {
+                        modularMold.ListCoreRings.Remove(item);
+                    }
+                    else if (item.Item2 == null
+                        && productDisc.ModularMoldDimensions.Height >= item.Item1.FillHeightMax + this.ToleranceSettings.Product_Height_MIN)
+                    {
+                        modularMold.ListCoreRings.Remove(item);
+                    }
+                }
+            }
+
+            // Check if there are still additional rings. If not check if the guideRing and cores fillheight matches the product.
+            if (modularMold.ListOuterRings.Count > 0)
+            {
+                validOuterDiameter = true;
+            }
+            else
+            {
+                if (productDisc.ModularMoldDimensions.Height <= modularMold.GuideRing.FillHeightMax + this.ToleranceSettings.Product_Height_MIN)
+                {
+                    validOuterDiameter = true;
+                }
+            }
+
+            if (modularMold.ListCoreRings.Count > 0)
+            {
+                validInnerDiameter = true;
+            }
+            else
+            {
+                if (productDisc.ModularMoldDimensions.Height <= modularMold.Core.FillHeightMax + this.ToleranceSettings.Product_Height_MIN)
+                {
+                    validInnerDiameter = true;
+                }
+            }
+
+            if (validOuterDiameter
+                && validInnerDiameter
+                && productDisc.ModularMoldDimensions.OuterDiameter <= modularMold.GuideRing.InnerDiameter + this.ToleranceSettings.Product_OuterDiameter_MIN
+                && productDisc.ModularMoldDimensions.InnerDiameter >= modularMold.Core.OuterDiameter - this.ToleranceSettings.Product_InnerDiameter_MIN)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+            /*return productDisc.ModularMoldDimensions.OuterDiameter <= modularMold.GuideRing.InnerDiameter + this.ToleranceSettings.Product_OuterDiameter_MIN
                 && productDisc.ModularMoldDimensions.InnerDiameter >= modularMold.Core.OuterDiameter - this.ToleranceSettings.Product_InnerDiameter_MIN
                 && productDisc.ModularMoldDimensions.Height <= (modularMold.GuideRing.FillHeightMax > 0 ? modularMold.GuideRing.FillHeightMax + this.ToleranceSettings.Product_Height_MIN : modularMold.GuideRing.Height + this.ToleranceSettings.Product_Height_MIN)
-                && productDisc.ModularMoldDimensions.Height <= (modularMold.Core.FillHeightMax > 0 ? modularMold.Core.FillHeightMax + this.ToleranceSettings.Product_Height_MIN : modularMold.Core.Height + this.ToleranceSettings.Product_Height_MIN);
+                && productDisc.ModularMoldDimensions.Height <= (modularMold.Core.FillHeightMax > 0 ? modularMold.Core.FillHeightMax + this.ToleranceSettings.Product_Height_MIN : modularMold.Core.Height + this.ToleranceSettings.Product_Height_MIN);*/
         }
     }
 
