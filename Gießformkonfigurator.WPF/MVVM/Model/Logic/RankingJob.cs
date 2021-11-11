@@ -23,11 +23,11 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
         /// <summary>
         /// Initializes a new instance of the <see cref="RankingJob"/> class.
         /// </summary>
-        /// <param name="product">Excepts product of type Cup or Disc.</param>
+        /// <param name="productDisc">Excepts product of type Disc.</param>
         /// <param name="compareJob">Uses compareJob Output data.</param>
-        public RankingJob(Product product, CompareJob compareJob)
+        public RankingJob(ProductDisc productDisc, CompareJob compareJob)
         {
-            this.Product = product;
+            this.ProductDisc = productDisc;
             this.RankingSettings = new RankingSettings();
             this.FactorOuterDiameter = this.RankingSettings.RankingFactorOuterDiameter;
             this.FactorInnerDiameter = this.RankingSettings.RankingFactorInnerDiameter;
@@ -75,8 +75,6 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
 
         private decimal? FactorInnerDiameter { get; set; }
 
-        private Product Product { get; set; }
-
         private ProductCup ProductCup { get; set; }
 
         private ProductDisc ProductDisc { get; set; }
@@ -110,56 +108,23 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                 compareObject.FinalRating = this.Compare(45.00m - ((compareObject.DifferenceOuterDiameter > this.ToleranceSettings?.Product_OuterDiameter_MAX ? compareObject.DifferenceOuterDiameter : 0) * this.FactorOuterDiameter), 0.00m);
                 compareObject.FinalRating += this.Compare(45.00m - ((compareObject.DifferenceInnerDiameter > this.ToleranceSettings?.Product_InnerDiameter_MAX ? compareObject.DifferenceInnerDiameter : 0) * this.FactorInnerDiameter), 0.00m);
 
-                if (compareObject.Mold is ModularMold)
+                // TODO: High Priority - Check if edited ranking algorithm works.
+                // Mold has a fitting BTC for the product.
+                if ((!string.IsNullOrWhiteSpace(this.ProductDisc.BTC)
+                    && compareObject.Mold.HasFittingBTC)
+                    || string.IsNullOrWhiteSpace(this.ProductDisc.BTC))
                 {
-                    if ((compareObject.Product is ProductCup
-                        && !string.IsNullOrWhiteSpace(((ProductCup)this.Product).BTC))
-                        || (compareObject.Product is ProductDisc
-                        && !string.IsNullOrWhiteSpace(((ProductDisc)this.Product).BTC)))
-                    {
-                        for (int i = 1; i < 3; i++)
-                        {
-                            if (compareObject.BoltCirclesBaseplate[i] == true)
-                            {
-                                var minDifference = compareObject.Bolts.Min(p => p.Item2);
-                                compareObject.FinalRating += 10.00m;
-                                compareObject.DifferenceBoltDiameter = minDifference;
-                            }
-                            else if (compareObject.BoltCirclesInsertPlate[i] == true)
-                            {
-                                var minDifference = compareObject.Bolts.Min(p => p.Item2);
-                                compareObject.FinalRating += 10.00m;
-                                compareObject.DifferenceBoltDiameter = minDifference;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        compareObject.FinalRating += 10.00m;
-                    }
-                }
-                else if (compareObject.Mold is SingleMold)
-                {
-                    if (string.IsNullOrWhiteSpace(this.Product.BTC))
-                    {
-                        compareObject.FinalRating += 10.00m;
-
-                        // Used while adding post processing information. Means that no BTC needs to be added to the product.
-                        compareObject.DifferenceBoltDiameter = 0;
-                    }
-                    else if (!string.IsNullOrWhiteSpace(this.Product.BTC) && compareObject.Mold.HasFittingBTC)
-                        //TODO: Prüfen ob notwendig.
-                        //&& (((SingleMoldDisc)compareObject.Mold).HcDiameter != null && ((SingleMoldDisc)compareObject.Mold).HcDiameter > 0)
-                        //&& (((SingleMoldDisc)compareObject.Mold).HcHoles != null && ((SingleMoldDisc)compareObject.Mold).HcHoles > 0)
-                        //&& (((SingleMoldDisc)compareObject.Mold).BoltDiameter != null && ((SingleMoldDisc)compareObject.Mold).BoltDiameter > 0))
-                    {
-                        compareObject.FinalRating += 10.00m;
-
-                        // Used while adding post processing information. Means that no BTC needs to be added to the product.
-                        compareObject.DifferenceBoltDiameter = 0;
-                    }
+                    compareObject.FinalRating += 10.00m;
                 }
 
+                // Mold has no fitting BTC for the product --> BTC needs to be added in post processing.
+                else if (!string.IsNullOrWhiteSpace(this.ProductDisc.BTC)
+                    && compareObject.Mold.HasFittingBTC == false)
+                {
+                    compareObject.PostProcessing.Add($"Lochkreis einarbeiten: {this.ProductDisc.BTC}");
+                }
+
+                compareObject.PostProcessing = compareObject.PostProcessing.Distinct().ToList();
                 compareObject.FinalRating = Math.Round((decimal)compareObject.FinalRating, 2);
             }
 
@@ -359,12 +324,6 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                     decimal decimalDiffOuterDiameter = Math.Round((decimal)compareObject.DifferenceOuterDiameter, 2);
                     string diffOuterDiameter = string.Format("{0:0.00}", decimalDiffOuterDiameter);
                     compareObject.PostProcessing.Add($"Außendurchmesser: {diffOuterDiameter} mm");
-                }
-
-                if (compareObject.DifferenceBoltDiameter == null && !string.IsNullOrWhiteSpace(((ProductDisc)this.Product).BTC))
-                {
-                    string btc = ((ProductDisc)this.Product).BTC.ToString();
-                    compareObject.PostProcessing.Add($"Lochkreis einarbeiten: {btc}");
                 }
             }
 

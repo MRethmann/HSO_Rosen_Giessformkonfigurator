@@ -112,8 +112,6 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
 
     /// <summary>
     /// Checks if the basic variant of modular mold disc (baseplate, ring, core) fits the product.
-    /// Probably a logical mistake in this algorithm. The comparison always checks for core dimensions, even when coreRings or outerRings are used.
-    /// TODO: Change logic so the comparison in line 82/83 uses the best coreRing/outerRing as compare parameter.
     /// </summary>
     public class ProductDiscModularMoldCompare : CompareRule
     {

@@ -76,6 +76,8 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
         /// <summary>
         /// Gets or Sets the bolts which are useable for the boltCircle. The tuple contains the bolt and its deviation to the product holes.
         /// </summary>
-        public List<Tuple<Bolt, decimal?>> Bolts { get; set; } = new List<Tuple<Bolt, decimal?>>();
+        //public List<Tuple<Bolt, decimal?>> Bolts { get; set; } = new List<Tuple<Bolt, decimal?>>();
+
+        public List<Bolt> Bolts { get; set; } = new List<Bolt>();
     }
 }

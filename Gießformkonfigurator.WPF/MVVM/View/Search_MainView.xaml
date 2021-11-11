@@ -612,8 +612,8 @@
                                             </DataGrid.ColumnHeaderStyle>
                                             
                                             <DataGrid.Columns>
-                                                <DataGridTextColumn Binding="{Binding Item1.ID, FallbackValue=-}" Header="ID" Width="*"/>
-                                                <DataGridTextColumn Binding="{Binding Item1.Description, FallbackValue=-}" Header="Beschreibung" Width="3*"/>
+                                                <DataGridTextColumn Binding="{Binding ID, FallbackValue=-}" Header="ID" Width="*"/>
+                                                <DataGridTextColumn Binding="{Binding Description, FallbackValue=-}" Header="Beschreibung" Width="3*"/>
                                             </DataGrid.Columns>
                                             
                                         </DataGrid>
@@ -730,8 +730,8 @@
                                             </DataGrid.ColumnHeaderStyle>
 
                                             <DataGrid.Columns>
-                                                <DataGridTextColumn Binding="{Binding Item1.ID, FallbackValue=-}" Header="ID" Width="*"/>
-                                                <DataGridTextColumn Binding="{Binding Item1.Description, FallbackValue=-}" Header="Beschreibung" Width="3*"/>
+                                                <DataGridTextColumn Binding="{Binding ID, FallbackValue=-}" Header="ID" Width="*"/>
+                                                <DataGridTextColumn Binding="{Binding Description, FallbackValue=-}" Header="Beschreibung" Width="3*"/>
                                             </DataGrid.Columns>
 
                                         </DataGrid>

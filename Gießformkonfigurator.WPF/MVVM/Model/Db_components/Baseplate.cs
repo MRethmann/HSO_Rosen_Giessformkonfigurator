@@ -52,6 +52,8 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_components
         /// </summary>
         public bool HasCore { get; set; }
 
+        public bool HasOuterEdge { get; set; }
+
         public decimal? Hc1Diameter { get; set; }
 
         public int? Hc1Holes { get; set; }

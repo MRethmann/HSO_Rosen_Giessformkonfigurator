@@ -190,7 +190,8 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                             {
                                 // Difference bolt diameter not in use.
                                 // TODO: DifferenceBoltDiameter entfernen.
-                                compareObject.Bolts.Add(new System.Tuple<Bolt, decimal?>(bolt, this.ProductDisc.HcHoleDiameter - bolt.OuterDiameter));
+                                //compareObject.Bolts.Add(new System.Tuple<Bolt, decimal?>(bolt, this.ProductDisc.HcHoleDiameter - bolt.OuterDiameter));
+                                compareObject.Bolts.Add(bolt);
                             }
                         }
                     }
@@ -206,7 +207,8 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                                 && bolt.Thread == ((ModularMold)compareObject.Mold).InsertPlate.GetType().GetProperty(propGewinde).GetValue(((ModularMold)compareObject.Mold).InsertPlate).ToString())
                             {
                                 // Difference bolt diameter not in use.
-                                compareObject.Bolts.Add(new System.Tuple<Bolt, decimal?>(bolt, this.ProductDisc.HcHoleDiameter - bolt.OuterDiameter));
+                                //compareObject.Bolts.Add(new System.Tuple<Bolt, decimal?>(bolt, this.ProductDisc.HcHoleDiameter - bolt.OuterDiameter));
+                                compareObject.Bolts.Add(bolt);
                             }
                         }
                     }
@@ -296,7 +298,8 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                                     && bolt.OuterDiameter >= this.ProductCup.ModularMoldDimensions.HcHoleDiameter - this.ToleranceSettings.Bolt_Diameter
                                     && bolt.Thread == btcThread)
                                 {
-                                    compareObject.Bolts.Add(new System.Tuple<Bolt, decimal?>(bolt, 0.0m));
+                                    //compareObject.Bolts.Add(new System.Tuple<Bolt, decimal?>(bolt, 0.0m));
+                                    compareObject.Bolts.Add(bolt);
                                 }
                             }
                         }

@@ -200,7 +200,7 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
             }
 
             // MultiMolds (Baseplates, GuideRings, InsertPlates, Cores) --> OuterRings + CoreRings
-            // TODO: Es gibt noch keine Logik, um einen Zusatzring zu nutzen, wenn die Grundplatte/Einlegeplatte bereits einen Kern hat.
+            // TODO: Low Priority -  Es gibt noch keine Logik, um einen Zusatzring zu nutzen, wenn die Grundplatte/Einlegeplatte bereits einen Kern hat. Aktuell gibt es keine Komponenten, die diese Logik nutzen würden.
             this.Index = discMoldsTemp02.Count;
 
             foreach (var mold in discMoldsTemp02)

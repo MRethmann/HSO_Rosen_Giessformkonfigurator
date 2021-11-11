@@ -137,7 +137,6 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
 
                     foreach (var core in db.Cores)
                     {
-                        // TODO: Nochmal prüfen ob die Toleranz hier richtig angewendet ist.
                         if (this.ProductDisc.ModularMoldDimensions.InnerDiameter >= core.OuterDiameter - this.ToleranceSettings.Product_InnerDiameter_MIN)
                         {
                             this.ListCores.Add(core);
@@ -205,7 +204,6 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
 
                 foreach (var core in db.Cores)
                 {
-                    // TODO: Nochmal prüfen ob die Toleranz hier richtig angewendet ist.
                     if (this.ProductCup.ModularMoldDimensions.InnerDiameter >= core.OuterDiameter - this.ToleranceSettings.Product_InnerDiameter_MIN)
                     {
                         this.ListCores.Add(core);
