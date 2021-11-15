@@ -60,7 +60,7 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_components
         /// <summary>
         /// Gets or Sets a value indicating whether the Cupform has a Lochfuehrung.
         /// </summary>
-        public bool HasHoleguide { get; set; }
+        //public bool HasHoleguide { get; set; }
 
         /// <summary>
         /// Gets or Sets a value indicating whether the Cupform has a Fuehrungsstift/Core.

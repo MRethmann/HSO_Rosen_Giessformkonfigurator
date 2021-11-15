@@ -163,6 +163,10 @@
     <Compile Include="Migrations\202111151112273_RemovedTolerancesFromComponentTables.Designer.cs">
       <DependentUpon>202111151112273_RemovedTolerancesFromComponentTables.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202111151222065_RemovedMultipleAttributes.cs" />
+    <Compile Include="Migrations\202111151222065_RemovedMultipleAttributes.Designer.cs">
+      <DependentUpon>202111151222065_RemovedMultipleAttributes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MVVM\ViewModel\Settings_CombinationSettingsViewModel.cs" />
     <Compile Include="MVVM\View\Converter\DecimalConverter.cs" />
@@ -466,6 +470,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202111151112273_RemovedTolerancesFromComponentTables.resx">
       <DependentUpon>202111151112273_RemovedTolerancesFromComponentTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111151222065_RemovedMultipleAttributes.resx">
+      <DependentUpon>202111151222065_RemovedMultipleAttributes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

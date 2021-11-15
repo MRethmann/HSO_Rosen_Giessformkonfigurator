@@ -56,8 +56,7 @@ namespace Giessformkonfigurator.WPF.MVVM.ViewModel
                 || this.Core.Height == 0
                 || this.Core.FillHeightMax == 0
                 || (this.Core.HasKonus && (((this.Core.OuterKonusMin ?? 0) == 0) || ((this.Core.OuterKonusMax ?? 0) == 0) || ((this.Core.OuterKonusAngle ?? 0) == 0) || ((this.Core.KonusHeight ?? 0) == 0)))
-                || (this.Core.HasHoleguide && ((this.Core.AdapterDiameter ?? 0) == 0))
-                || (this.Core.HasGuideBolt && (((this.Core.GuideHeight ?? 0) == 0) || ((this.Core.GuideDiameter ?? 0) == 0))))
+                || (this.Core.HasHoleguide && ((this.Core.AdapterDiameter ?? 0) == 0)))
             {
                 return false;
             }

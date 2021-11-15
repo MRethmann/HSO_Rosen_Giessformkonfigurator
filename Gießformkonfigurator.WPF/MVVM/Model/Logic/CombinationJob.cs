@@ -185,15 +185,9 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                     else if (discMoldsTemp01[iTemp].InsertPlate == null)
                     {
                         // Grundplatten mit Konusfuehrung und Lochfuehrung
-                        if ((discMoldsTemp01[iTemp].Baseplate.HasKonus == true || discMoldsTemp01[iTemp].Baseplate.HasHoleguide == true) && this.CombinationRuleSet.Combine(discMoldsTemp01[iTemp].Baseplate, this.ListCores[iKerne]))
+                        if (discMoldsTemp01[iTemp].Baseplate.HasKonus == true && this.CombinationRuleSet.Combine(discMoldsTemp01[iTemp].Baseplate, this.ListCores[iKerne]))
                         {
                             discMoldsTemp02.Add(new ModularMold(discMoldsTemp01[iTemp].Baseplate, discMoldsTemp01[iTemp].GuideRing, null, this.ListCores[iKerne]));
-                        }
-
-                        // Grundplatte mit Kern
-                        else if (discMoldsTemp01[iTemp].Baseplate.HasCore == true)
-                        {
-                            discMoldsTemp02.Add(new ModularMold(discMoldsTemp01[iTemp].Baseplate, discMoldsTemp01[iTemp].GuideRing, null, null));
                         }
                     }
                 }

@@ -235,16 +235,14 @@ namespace Giessformkonfigurator.WPF.MVVM.ViewModel
 
         public void SetProductDiscPuFactor()
         {
-            // TODO: Prüfen, welcher PU-Faktor nun genutzt werden soll. Gedanke mit Andreas war, dass je ein Faktor für Single- und einer für MultiMolds verwendet wird. Hier könnte jeweils der Mittelwert der beiden Faktoren genutzt werden.
-            // Denkbar ist auch, dass der größere Faktor, ab einer bestimmten Größe der Gießform zum Tragen kommt.
-            this.ProductDisc.FactorPU = 1.017m;
-            this.ProductDisc.MultiMoldFactorPU = 1.023m;
+            this.ProductDisc.FactorPU = 1.01725m;
+            this.ProductDisc.MultiMoldFactorPU = 1.024m;
         }
 
         public void SetProductCupPuFactor()
         {
-            this.ProductCup.FactorPU = 1.017m;
-            this.ProductCup.MultiMoldFactorPU = 1.023m;
+            this.ProductCup.FactorPU = 1.01725m;
+            this.ProductCup.MultiMoldFactorPU = 1.024m;
         }
     }
 }

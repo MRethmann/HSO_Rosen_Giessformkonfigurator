@@ -40,14 +40,14 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_components
         /// <summary>
         /// Gets or sets a value indicating whether the baseplate has a Lochfuehrung.
         /// </summary>
-        public bool HasHoleguide { get; set; }
+        //public bool HasHoleguide { get; set; }
 
-        public decimal? InnerDiameter { get; set; }
+        //public decimal? InnerDiameter { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether the baseplate has an integrated Core.
         /// </summary>
-        public bool HasCore { get; set; }
+        //public bool HasCore { get; set; }
 
         public bool HasOuterEdge { get; set; }
 

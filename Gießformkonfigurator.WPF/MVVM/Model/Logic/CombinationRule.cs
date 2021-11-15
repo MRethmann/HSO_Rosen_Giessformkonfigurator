@@ -56,25 +56,23 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
             var baseplate = components.OfType<Baseplate>().Single();
             var core = components.OfType<Core>().Single();
 
-            if (baseplate.HasKonus && core.HasKonus)
+            // Normal Konus which has a degree somwhere below 90. Seperate comparison because different tolerances are used.
+            // KonusHeight is intentionally not used. Discussed and decided with Andreas Schmidt.
+            if (baseplate.HasKonus && core.HasKonus && baseplate.InnerKonusAngle != 90)
             {
                 return baseplate.InnerKonusMax + this.CombinationSettings.Tolerance_Konus_MAX >= core.OuterKonusMax
                     && baseplate.InnerKonusMax + this.CombinationSettings.Tolerance_Konus_MIN <= core.OuterKonusMax
                     && baseplate.InnerKonusMin + this.CombinationSettings.Tolerance_Konus_MAX >= core.OuterKonusMin
                     && baseplate.InnerKonusMin + this.CombinationSettings.Tolerance_Konus_MIN <= core.OuterKonusMin
                     && baseplate.InnerKonusAngle == core.OuterKonusAngle;
-
-                // TODO: Low Priority - Höhe des Konus wird aktuell nicht abgefragt und muss ergänzt werden. Hier müsste ggf. ein neuer Toleranzwert gewählt werden.
             }
 
-            // Grundplatte mit Lochführung akzeptiert einen Kern mit Fuehrungsstift
-            else if (baseplate.HasKonus && core.HasGuideBolt)
+            // 90 Degree Konus which was formerly being handled by the GuideBolt attribute. Different logic than normal konus because different tolerances are used.
+            else if (baseplate.HasKonus && core.HasKonus && baseplate.InnerKonusAngle == 90)
             {
-                return baseplate.InnerDiameter - this.CombinationSettings.Tolerance_Flat_MIN >= core.GuideDiameter
-                    && baseplate.InnerDiameter - this.CombinationSettings.Tolerance_Flat_MAX <= core.GuideDiameter;
-
-                // TODO: High Priority -  Höhe des GuideBolt muss ergänzt werden (Baseplate, Insertplate). Die Ausgabe der Gießformen leidet allerdings darunter. Daten prüfen.
-                // && baseplate.Height > core.GuideHeight;
+                return baseplate.InnerKonusMax - this.CombinationSettings.Tolerance_Flat_MIN >= core.OuterKonusMax
+                    && baseplate.InnerKonusMax - this.CombinationSettings.Tolerance_Flat_MAX <= core.OuterKonusMax
+                    && baseplate.InnerKonusAngle == core.OuterKonusAngle;
             }
             else
             {
@@ -93,17 +91,8 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
             var baseplate = components.OfType<Baseplate>().Single();
             var insertPlate = components.OfType<InsertPlate>().Single();
 
-            // Insertplate has no outer konus and therefore will be placed loose inside the baseplate. OuterKonus is used as workaround to show if insertPlate has OuterKonus.
-            if (baseplate.HasHoleguide && (insertPlate.OuterKonusMax == 0 || insertPlate.OuterKonusMax == null))
-            {
-                // TODO: Low Priority -  Einlegeplatten können "lose" in die Grundplatte gelegt werden. Ausnahmefall der ggf. ergänzt werden kann.
-                /*return baseplate.InnerDiameter > insertPlate.OuterDiameter
-                    && (baseplate.InnerDiameter - 1) <= insertPlate.OuterDiameter;*/
-                return false;
-            }
-
             // Insertplate has outer konus which needs to match inner konus of baseplate (more likely)
-            else if (baseplate.HasKonus)
+            if (baseplate.HasKonus)
             {
                 return baseplate.InnerKonusMax + this.CombinationSettings.Tolerance_Konus_MAX >= insertPlate.OuterKonusMax
                     && baseplate.InnerKonusMax + this.CombinationSettings.Tolerance_Konus_MIN <= insertPlate.OuterKonusMax
@@ -138,7 +127,6 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
             }
             else if (ring.HasKonus == false && baseplate.HasOuterEdge)
             {
-                // TODO: High Priority - Test baseplates with OuterEdge
                 return baseplate.OuterKonusAngle == 90
                     && baseplate.OuterKonusMin - this.CombinationSettings.Tolerance_Flat_MIN >= ring.OuterDiameter
                     && baseplate.OuterKonusMin - this.CombinationSettings.Tolerance_Flat_MAX <= ring.OuterDiameter;
@@ -161,7 +149,7 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
             var insertPlate = components.OfType<InsertPlate>().Single();
             var core = components.OfType<Core>().Single();
 
-            if (insertPlate.HasKonus)
+            if (insertPlate.HasKonus && core.HasKonus && insertPlate.InnerKonusAngle != 90)
             {
                 return core.HasKonus == true
                     && insertPlate.InnerKonusMax + this.CombinationSettings.Tolerance_Konus_MAX >= core.OuterKonusMax
@@ -170,11 +158,11 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                     && insertPlate.InnerKonusMin + this.CombinationSettings.Tolerance_Konus_MIN <= core.OuterKonusMin
                     && insertPlate.InnerKonusAngle == core.OuterKonusAngle;
             }
-            else if (insertPlate.HasHoleguide && core.HasGuideBolt)
+            else if (insertPlate.HasKonus && core.HasKonus && insertPlate.InnerKonusAngle == 90)
             {
-                return insertPlate.InnerDiameter - this.CombinationSettings.Tolerance_Flat_MIN >= core.GuideDiameter
-                    && insertPlate.InnerDiameter - this.CombinationSettings.Tolerance_Flat_MAX <= core.GuideDiameter;
-                    //&& insertPlate.Height >= core.GuideHeight;
+                return insertPlate.InnerKonusMax - this.CombinationSettings.Tolerance_Flat_MIN >= core.OuterKonusMax
+                    && insertPlate.InnerKonusMax - this.CombinationSettings.Tolerance_Flat_MAX <= core.OuterKonusMax
+                    && insertPlate.InnerKonusAngle == core.OuterKonusAngle;
             }
             else
             {
@@ -225,20 +213,20 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
             var cupform = components.OfType<Cupform>().Single();
             var core = components.OfType<Core>().Single();
 
-            if (cupform.HasKonus)
+            if (cupform.HasKonus && core.HasKonus && cupform.InnerKonusAngle != 90)
             {
-                return core.HasKonus == true
-                    && cupform.InnerKonusMax + this.CombinationSettings.Tolerance_Konus_MAX >= core.OuterKonusMax
+                return cupform.InnerKonusMax + this.CombinationSettings.Tolerance_Konus_MAX >= core.OuterKonusMax
                     && cupform.InnerKonusMax + this.CombinationSettings.Tolerance_Konus_MIN <= core.OuterKonusMax
                     && cupform.InnerKonusMin + this.CombinationSettings.Tolerance_Konus_MAX >= core.OuterKonusMin
                     && cupform.InnerKonusMin + this.CombinationSettings.Tolerance_Konus_MIN <= core.OuterKonusMin
                     && cupform.InnerKonusAngle == core.OuterKonusAngle;
             }
-            else if (cupform.HasHoleguide && core.HasGuideBolt)
+            else if (cupform.HasKonus && core.HasKonus && cupform.InnerKonusAngle == 90)
             {
                 // Checking for Height is not relevant for cupforms.
-                return cupform.InnerDiameter - this.CombinationSettings.Tolerance_Flat_MIN >= core.GuideDiameter
-                    && cupform.InnerDiameter - this.CombinationSettings.Tolerance_Flat_MAX <= core.GuideDiameter;
+                return cupform.InnerKonusMax - this.CombinationSettings.Tolerance_Flat_MIN >= core.OuterKonusMax
+                    && cupform.InnerKonusMax - this.CombinationSettings.Tolerance_Flat_MAX <= core.OuterKonusMax
+                    && cupform.InnerKonusAngle == core.OuterKonusAngle;
             }
             else if (cupform.HasGuideBolt && core.HasHoleguide)
             {
@@ -247,7 +235,6 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
             }
             else if (cupform.HasThread)
             {
-                // TODO: Low Priority - Kerne mit Gewinde zur Cupform Kombination hinzufügen. Bisher noch keine Datensätze dazu.
                 return false;
             }
             else

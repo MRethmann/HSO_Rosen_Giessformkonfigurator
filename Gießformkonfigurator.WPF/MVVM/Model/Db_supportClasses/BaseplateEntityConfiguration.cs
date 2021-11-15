@@ -42,9 +42,6 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_supportClasses
             this.Property(e => e.InnerKonusAngle)
                 .HasPrecision(5, 2);
 
-            this.Property(e => e.InnerDiameter)
-                .HasPrecision(10, 2);
-
             this.Property(e => e.Hc1Diameter)
                 .HasPrecision(10, 2);
 

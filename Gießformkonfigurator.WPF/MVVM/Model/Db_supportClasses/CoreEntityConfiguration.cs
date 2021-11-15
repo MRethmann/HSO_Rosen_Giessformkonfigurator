@@ -36,12 +36,6 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_supportClasses
             this.Property(e => e.KonusHeight)
                 .HasPrecision(10, 2);
 
-            this.Property(e => e.GuideHeight)
-                .HasPrecision(10, 2);
-
-            this.Property(e => e.GuideDiameter)
-                .HasPrecision(10, 2);
-
             this.Property(e => e.AdapterDiameter)
                 .HasPrecision(10, 2);
         }
