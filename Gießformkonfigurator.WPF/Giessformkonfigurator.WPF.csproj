@@ -159,6 +159,10 @@
     <Compile Include="Migrations\202111101020064_AddedBaseplateOuterEdge.Designer.cs">
       <DependentUpon>202111101020064_AddedBaseplateOuterEdge.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202111151112273_RemovedTolerancesFromComponentTables.cs" />
+    <Compile Include="Migrations\202111151112273_RemovedTolerancesFromComponentTables.Designer.cs">
+      <DependentUpon>202111151112273_RemovedTolerancesFromComponentTables.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MVVM\ViewModel\Settings_CombinationSettingsViewModel.cs" />
     <Compile Include="MVVM\View\Converter\DecimalConverter.cs" />
@@ -459,6 +463,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202111101020064_AddedBaseplateOuterEdge.resx">
       <DependentUpon>202111101020064_AddedBaseplateOuterEdge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111151112273_RemovedTolerancesFromComponentTables.resx">
+      <DependentUpon>202111151112273_RemovedTolerancesFromComponentTables.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

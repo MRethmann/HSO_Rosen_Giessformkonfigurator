@@ -69,9 +69,6 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_components
 
         public decimal? InnerDiameter { get; set; }
 
-        [StringLength(10)]
-        public string ToleranceInnerDiameter { get; set; }
-
         public override string ToString()
         {
             return this.ID.ToString() + " " + this.Description;

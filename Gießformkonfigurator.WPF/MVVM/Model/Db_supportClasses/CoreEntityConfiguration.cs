@@ -18,9 +18,6 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_supportClasses
             this.Property(e => e.OuterDiameter)
                 .HasPrecision(10, 2);
 
-            this.Property(e => e.ToleranceOuterDiameter)
-                .IsUnicode(false);
-
             this.Property(e => e.Height)
                 .HasPrecision(10, 2);
 
@@ -44,9 +41,6 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_supportClasses
 
             this.Property(e => e.GuideDiameter)
                 .HasPrecision(10, 2);
-
-            this.Property(e => e.ToleranceGuideDiameter)
-                .IsUnicode(false);
 
             this.Property(e => e.AdapterDiameter)
                 .HasPrecision(10, 2);

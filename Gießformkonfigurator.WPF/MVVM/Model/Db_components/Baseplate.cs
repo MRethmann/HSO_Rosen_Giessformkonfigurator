@@ -44,9 +44,6 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_components
 
         public decimal? InnerDiameter { get; set; }
 
-        [StringLength(10)]
-        public string ToleranceInnerDiameter { get; set; }
-
         /// <summary>
         /// Gets or sets a value indicating whether the baseplate has an integrated Core.
         /// </summary>

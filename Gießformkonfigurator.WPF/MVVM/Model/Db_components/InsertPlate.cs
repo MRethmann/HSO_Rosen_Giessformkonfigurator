@@ -15,9 +15,6 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_components
     {
         public decimal OuterDiameter { get; set; }
 
-        [StringLength(10)]
-        public string ToleranceOuterDiameter { get; set; }
-
         public decimal Height { get; set; }
 
         public decimal? OuterKonusMax { get; set; }
@@ -45,9 +42,6 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_components
         public bool HasHoleguide { get; set; }
 
         public decimal? InnerDiameter { get; set; }
-
-        [StringLength(10)]
-        public string ToleranceInnerDiameter { get; set; }
 
         /// <summary>
         /// Gets or Sets a value indicating whether the InsertPlate has a Core.

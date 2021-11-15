@@ -15,9 +15,6 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_components
     {
         public decimal OuterDiameter { get; set; }
 
-        [StringLength(10)]
-        public string ToleranceOuterDiameter { get; set; }
-
         public decimal Height { get; set; }
 
         public decimal FillHeightMax { get; set; }
@@ -43,9 +40,6 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_components
         public decimal? GuideHeight { get; set; }
 
         public decimal? GuideDiameter { get; set; }
-
-        [StringLength(10)]
-        public string ToleranceGuideDiameter { get; set; }
 
         /// <summary>
         /// Gets or Sets a value indicating whether the core has a Lochfuehrung.

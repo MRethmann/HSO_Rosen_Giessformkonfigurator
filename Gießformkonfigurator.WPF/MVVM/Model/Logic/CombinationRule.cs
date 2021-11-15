@@ -68,7 +68,7 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
             }
 
             // Grundplatte mit Lochführung akzeptiert einen Kern mit Fuehrungsstift
-            else if (baseplate.HasHoleguide && core.HasGuideBolt)
+            else if (baseplate.HasKonus && core.HasGuideBolt)
             {
                 return baseplate.InnerDiameter - this.CombinationSettings.Tolerance_Flat_MIN >= core.GuideDiameter
                     && baseplate.InnerDiameter - this.CombinationSettings.Tolerance_Flat_MAX <= core.GuideDiameter;
@@ -140,8 +140,8 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
             {
                 // TODO: High Priority - Test baseplates with OuterEdge
                 return baseplate.OuterKonusAngle == 90
-                    && baseplate.OuterKonusMax - this.CombinationSettings.Tolerance_Flat_MIN >= ring.OuterDiameter
-                    && baseplate.OuterKonusMax - this.CombinationSettings.Tolerance_Flat_MAX <= ring.OuterDiameter;
+                    && baseplate.OuterKonusMin - this.CombinationSettings.Tolerance_Flat_MIN >= ring.OuterDiameter
+                    && baseplate.OuterKonusMin - this.CombinationSettings.Tolerance_Flat_MAX <= ring.OuterDiameter;
             }
             else
             {
