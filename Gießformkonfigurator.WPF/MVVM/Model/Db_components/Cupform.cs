@@ -57,15 +57,12 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_components
 
         public decimal? InnerKonusAngle { get; set; }
 
-        /// <summary>
-        /// Gets or Sets a value indicating whether the Cupform has a Lochfuehrung.
-        /// </summary>
-        //public bool HasHoleguide { get; set; }
+        public decimal? InnerKonusHeight { get; set; }
 
         /// <summary>
         /// Gets or Sets a value indicating whether the Cupform has a Fuehrungsstift/Core.
         /// </summary>
-        public bool HasGuideBolt { get; set; }
+        public bool HasCore { get; set; }
 
         public decimal? InnerDiameter { get; set; }
 

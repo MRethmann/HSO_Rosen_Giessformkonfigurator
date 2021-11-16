@@ -24,6 +24,18 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_supportClasses
             this.Property(e => e.InnerDiameter)
             .HasPrecision(10, 2);
 
+            this.Property(e => e.InnerKonusMax)
+            .HasPrecision(10, 2);
+
+            this.Property(e => e.InnerKonusMin)
+            .HasPrecision(10, 2);
+
+            this.Property(e => e.InnerKonusAngle)
+            .HasPrecision(5, 2);
+
+            this.Property(e => e.InnerKonusHeight)
+            .HasPrecision(10, 2);
+
             this.Property(e => e.BTC1)
             .IsUnicode(false);
 

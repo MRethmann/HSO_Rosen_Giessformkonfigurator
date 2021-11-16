@@ -54,9 +54,7 @@ namespace Giessformkonfigurator.WPF.MVVM.ViewModel
             if (this.InsertPlate.ID.ToString().Length <= 1
                 || this.InsertPlate.OuterDiameter == 0
                 || this.InsertPlate.Height == 0
-                || this.InsertPlate.OuterDiameter < this.InsertPlate.InnerDiameter
-                || (this.InsertPlate.HasKonus && (((this.InsertPlate.InnerKonusMin ?? 0) == 0) || ((this.InsertPlate.InnerKonusMax ?? 0) == 0) || ((this.InsertPlate.InnerKonusAngle ?? 0) == 0) || ((this.InsertPlate.KonusHeight ?? 0) == 0)))
-                || (this.InsertPlate.HasHoleguide && ((this.InsertPlate.InnerDiameter ?? 0) == 0)))
+                || (this.InsertPlate.HasKonus && (((this.InsertPlate.InnerKonusMin ?? 0) == 0) || ((this.InsertPlate.InnerKonusMax ?? 0) == 0) || ((this.InsertPlate.InnerKonusAngle ?? 0) == 0) || ((this.InsertPlate.OuterKonusHeight ?? 0) == 0))))
             {
                 return false;
             }

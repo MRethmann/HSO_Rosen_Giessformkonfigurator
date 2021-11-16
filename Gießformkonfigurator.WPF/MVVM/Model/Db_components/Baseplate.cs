@@ -37,19 +37,19 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_components
 
         public decimal? InnerKonusAngle { get; set; }
 
-        /// <summary>
-        /// Gets or sets a value indicating whether the baseplate has a Lochfuehrung.
-        /// </summary>
-        //public bool HasHoleguide { get; set; }
-
-        //public decimal? InnerDiameter { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether the baseplate has an integrated Core.
-        /// </summary>
-        //public bool HasCore { get; set; }
-
         public bool HasOuterEdge { get; set; }
+
+        public string BTC1 { get; set; }
+
+        public string BTC1Thread { get; set; }
+
+        public string BTC2 { get; set; }
+
+        public string BTC2Thread { get; set; }
+
+        public string BTC3 { get; set; }
+
+        public string BTC3Thread { get; set; }
 
         public decimal? Hc1Diameter { get; set; }
 

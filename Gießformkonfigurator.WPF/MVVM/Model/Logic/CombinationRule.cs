@@ -228,7 +228,7 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                     && cupform.InnerKonusMax - this.CombinationSettings.Tolerance_Flat_MAX <= core.OuterKonusMax
                     && cupform.InnerKonusAngle == core.OuterKonusAngle;
             }
-            else if (cupform.HasGuideBolt && core.HasHoleguide)
+            else if (cupform.HasCore && core.HasHoleguide)
             {
                 return core.AdapterDiameter - this.CombinationSettings.Tolerance_Flat_MIN >= cupform.InnerDiameter
                     && core.AdapterDiameter - this.CombinationSettings.Tolerance_Flat_MAX <= cupform.InnerDiameter;
