@@ -57,6 +57,8 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_components
 
         public decimal? InnerKonusAngle { get; set; }
 
+        public decimal? InnerKonusHeight { get; set; }
+
         /// <summary>
         /// Gets or Sets a value indicating whether the Cupform has a Fuehrungsstift/Core.
         /// </summary>

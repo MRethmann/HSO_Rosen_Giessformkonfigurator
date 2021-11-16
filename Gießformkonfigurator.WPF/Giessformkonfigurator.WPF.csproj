@@ -180,6 +180,10 @@
     <Compile Include="Migrations\202111161100485_KonusHeightChanges.Designer.cs">
       <DependentUpon>202111161100485_KonusHeightChanges.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202111161201428_KonusAttributesOnCupform.cs" />
+    <Compile Include="Migrations\202111161201428_KonusAttributesOnCupform.Designer.cs">
+      <DependentUpon>202111161201428_KonusAttributesOnCupform.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MVVM\ViewModel\Settings_CombinationSettingsViewModel.cs" />
     <Compile Include="MVVM\View\Converter\DecimalConverter.cs" />
@@ -495,6 +499,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202111161100485_KonusHeightChanges.resx">
       <DependentUpon>202111161100485_KonusHeightChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111161201428_KonusAttributesOnCupform.resx">
+      <DependentUpon>202111161201428_KonusAttributesOnCupform.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
