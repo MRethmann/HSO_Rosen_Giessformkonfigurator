@@ -33,15 +33,6 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_components
         public decimal? KonusHeight { get; set; }
 
         /// <summary>
-        /// Gets or Sets a value indicating whether the core has a Fuehrungsstift.
-        /// </summary>
-        //public bool HasGuideBolt { get; set; }
-
-        //public decimal? GuideHeight { get; set; }
-
-        //public decimal? GuideDiameter { get; set; }
-
-        /// <summary>
         /// Gets or Sets a value indicating whether the core has a Lochfuehrung.
         /// </summary>
         public bool HasHoleguide { get; set; }

@@ -169,7 +169,7 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                     if (discMoldsTemp01[iTemp].InsertPlate != null)
                     {
                         // Einlegeplatten mit Konusfuehrung und Lochfuehrung
-                        if ((discMoldsTemp01[iTemp].InsertPlate.HasKonus || discMoldsTemp01[iTemp].InsertPlate.HasHoleguide) && this.CombinationRuleSet.Combine(discMoldsTemp01[iTemp].InsertPlate, this.ListCores[iKerne]))
+                        if (discMoldsTemp01[iTemp].InsertPlate.HasKonus && this.CombinationRuleSet.Combine(discMoldsTemp01[iTemp].InsertPlate, this.ListCores[iKerne]))
                         {
                             discMoldsTemp02.Add(new ModularMold(discMoldsTemp01[iTemp].Baseplate, discMoldsTemp01[iTemp].GuideRing, discMoldsTemp01[iTemp].InsertPlate, this.ListCores[iKerne]));
                         }
@@ -327,7 +327,7 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                 }
 
                 // If cupform and core do not match, check if the cupform has a GuideBolt and add it anyways --> Guidebolt works as a core.
-                if (modularMold.Cupform.HasGuideBolt)
+                if (modularMold.Cupform.HasCore)
                 {
                     cupMoldsTemp02.Add(new ModularMold(modularMold.Cupform, null, null));
                 }
@@ -353,7 +353,7 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
                     // Case 2: Cupform has fixed Core/GuideBolt.
                     else
                     {
-                        if (mold.Cupform.HasGuideBolt
+                        if (mold.Cupform.HasCore
                         && ring.InnerDiameter > mold.Cupform.InnerDiameter - 2)
                         {
                             if (this.CombinationRuleSet.Combine(mold.Cupform, ring))

@@ -51,6 +51,24 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_supportClasses
             this.Property(e => e.Hc3Diameter)
                 .HasPrecision(10, 2);
 
+            this.Property(e => e.BTC1)
+                .IsUnicode(false);
+
+            this.Property(e => e.BTC2)
+                .IsUnicode(false);
+
+            this.Property(e => e.BTC3)
+                .IsUnicode(false);
+
+            this.Property(e => e.BTC1Thread)
+                .IsUnicode(false);
+
+            this.Property(e => e.BTC2Thread)
+                .IsUnicode(false);
+
+            this.Property(e => e.BTC3Thread)
+                .IsUnicode(false);
+
         }
     }
 
