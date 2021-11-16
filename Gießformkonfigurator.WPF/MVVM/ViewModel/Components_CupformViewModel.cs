@@ -3,7 +3,7 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
-namespace Gießformkonfigurator.WPF.MVVM.ViewModel
+namespace Giessformkonfigurator.WPF.MVVM.ViewModel
 {
     class Components_CupformViewModel
     {

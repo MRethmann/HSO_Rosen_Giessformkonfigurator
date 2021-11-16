@@ -3,17 +3,17 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
-namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
+namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
-    using Gießformkonfigurator.WPF.Core;
-    using Gießformkonfigurator.WPF.MVVM.Model.Db_components;
-    using Gießformkonfigurator.WPF.MVVM.Model.Db_molds;
-    using Gießformkonfigurator.WPF.MVVM.Model.Db_products;
+    using Giessformkonfigurator.WPF.Core;
+    using Giessformkonfigurator.WPF.MVVM.Model.Db_components;
+    using Giessformkonfigurator.WPF.MVVM.Model.Db_molds;
+    using Giessformkonfigurator.WPF.MVVM.Model.Db_products;
 
     /// <summary>
     /// Takes all modularMolds and singleMolds that fit the product and add rating information used for the grouping and display in the GUI.
@@ -23,28 +23,34 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
         /// <summary>
         /// Initializes a new instance of the <see cref="RankingJob"/> class.
         /// </summary>
-        /// <param name="product"></param>
-        /// <param name="compareJob"></param>
-        public RankingJob(Product product, CompareJob compareJob)
+        /// <param name="productDisc">Excepts product of type Disc.</param>
+        /// <param name="compareJob">Uses compareJob Output data.</param>
+        public RankingJob(ProductDisc productDisc, CompareJob compareJob)
         {
-            this.Product = product;
+            this.ProductDisc = productDisc;
             this.RankingSettings = new RankingSettings();
             this.FactorOuterDiameter = this.RankingSettings.RankingFactorOuterDiameter;
             this.FactorInnerDiameter = this.RankingSettings.RankingFactorInnerDiameter;
-            this.FactorBoltDiameter = this.RankingSettings.RankingFactorBolts;
             this.RankingJobInput = new List<CompareObject>(compareJob.CompareJobOutput);
             this.ToleranceSettings = new ToleranceSettings();
-            this.AddRatingInformation();
-            this.OrderOutputData();
+            this.AddRatingInformationDiscs();
+            this.OrderOutputDataDiscs();
 
-            // Updating rating information because there might be a better ring/core which was found
-            this.AddRatingInformation();
+            // Updating rating information twice because there might be a better ring/core which was found
+            this.AddRatingInformationDiscs();
         }
 
-        /// <summary>
-        /// Gets or Sets the input lists from compareJob.
-        /// </summary>
-        public List<CompareObject> RankingJobInput { get; set; }
+        public RankingJob(ProductCup productCup, CompareJob compareJob)
+        {
+            this.ProductCup = productCup;
+            this.RankingSettings = new RankingSettings();
+            this.FactorOuterDiameter = this.RankingSettings.RankingFactorOuterDiameter;
+            this.FactorInnerDiameter = this.RankingSettings.RankingFactorInnerDiameter;
+            this.RankingJobInput = new List<CompareObject>(compareJob.CompareJobOutput);
+            this.ToleranceSettings = new ToleranceSettings();
+            this.AddRatingInformationCups();
+            this.OrderOutputDataCups();
+        }
 
         /// <summary>
         /// Gets or Sets the output list of rankingJob.
@@ -52,28 +58,33 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
         public List<CompareObject> RankingJobOutput { get; set; }
 
         /// <summary>
+        /// Gets or Sets the input lists from compareJob.
+        /// </summary>
+        private List<CompareObject> RankingJobInput { get; set; }
+
+        /// <summary>
         /// Gets or Sets the temp List which is used for the ordering and grouping method.
         /// </summary>
-        public List<CompareObject> FilteredOutput { get; set; } = new List<CompareObject>();
+        private List<CompareObject> FilteredOutput { get; set; } = new List<CompareObject>();
 
-        public RankingSettings RankingSettings { get; set; }
+        private RankingSettings RankingSettings { get; set; }
 
-        public ToleranceSettings ToleranceSettings { get; set; }
+        private ToleranceSettings ToleranceSettings { get; set; }
 
-        public decimal? FactorOuterDiameter { get; set; }
+        private decimal? FactorOuterDiameter { get; set; }
 
-        public decimal? FactorInnerDiameter { get; set; }
+        private decimal? FactorInnerDiameter { get; set; }
 
-        public decimal? FactorBoltDiameter { get; set; }
+        private ProductCup ProductCup { get; set; }
 
-        public Product Product { get; set; }
+        private ProductDisc ProductDisc { get; set; }
 
         /// <summary>
         /// Small compare method, that returns the bigger param.
         /// </summary>
-        /// <param name="var1"></param>
-        /// <param name="var2"></param>
-        /// <returns></returns>
+        /// <param name="var1">Number one.</param>
+        /// <param name="var2">Number two.</param>
+        /// <returns>The greater number.</returns>
         public decimal? Compare(decimal? var1, decimal? var2)
         {
             if (var1 >= var2)
@@ -89,7 +100,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
         /// <summary>
         /// Final Step to rate all molds based on their difference between actual Output after production and prefered Output on paper. Important Values are for example differences in outer and inner diameter and height.
         /// </summary>
-        public void AddRatingInformation()
+        private void AddRatingInformationDiscs()
         {
             foreach (var compareObject in this.RankingJobInput)
             {
@@ -97,53 +108,49 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                 compareObject.FinalRating = this.Compare(45.00m - ((compareObject.DifferenceOuterDiameter > this.ToleranceSettings?.Product_OuterDiameter_MAX ? compareObject.DifferenceOuterDiameter : 0) * this.FactorOuterDiameter), 0.00m);
                 compareObject.FinalRating += this.Compare(45.00m - ((compareObject.DifferenceInnerDiameter > this.ToleranceSettings?.Product_InnerDiameter_MAX ? compareObject.DifferenceInnerDiameter : 0) * this.FactorInnerDiameter), 0.00m);
 
-                if (compareObject.Mold is ModularMold)
+                // TODO: High Priority - Check if edited ranking algorithm works.
+                // Mold has a fitting BTC for the product.
+                if ((!string.IsNullOrWhiteSpace(this.ProductDisc.BTC)
+                    && compareObject.Mold.HasFittingBTC)
+                    || string.IsNullOrWhiteSpace(this.ProductDisc.BTC))
                 {
-                    if ((compareObject.Product is ProductCup
-                        && !string.IsNullOrWhiteSpace(((ProductDisc)this.Product).BTC))
-                        || (compareObject.Product is ProductDisc
-                        && !string.IsNullOrWhiteSpace(((ProductDisc)this.Product).BTC)))
-                    {
-                        for (int i = 1; i < 3; i++)
-                        {
-                            if (compareObject.BoltCirclesBaseplate[i] == true)
-                            {
-                                var minDifference = compareObject.Bolts.Min(p => p.Item2);
-                                compareObject.FinalRating += 10.00m;
-                                compareObject.DifferenceBoltDiameter = minDifference;
-                            }
-                            else if (compareObject.BoltCirclesInsertPlate[i] == true)
-                            {
-                                var minDifference = compareObject.Bolts.Min(p => p.Item2);
-                                compareObject.FinalRating += 10.00m;
-                                compareObject.DifferenceBoltDiameter = minDifference;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        compareObject.FinalRating += 10.00m;
-                    }
+                    compareObject.FinalRating += 10.00m;
                 }
-                else if (compareObject.Mold is SingleMold)
+
+                // Mold has no fitting BTC for the product --> BTC needs to be added in post processing.
+                else if (!string.IsNullOrWhiteSpace(this.ProductDisc.BTC)
+                    && compareObject.Mold.HasFittingBTC == false)
                 {
-                    if (string.IsNullOrWhiteSpace(this.Product.BTC))
-                    {
-                        compareObject.FinalRating += 10.00m;
+                    compareObject.PostProcessing.Add($"Lochkreis einarbeiten: {this.ProductDisc.BTC}");
+                }
 
-                        // Used while adding post processing information. Means that no BTC needs to be added to the product.
-                        compareObject.DifferenceBoltDiameter = 0;
-                    }
-                    else if (!string.IsNullOrWhiteSpace(this.Product.BTC)
-                        && (((SingleMold)compareObject.Mold).HcDiameter != null && ((SingleMold)compareObject.Mold).HcDiameter > 0)
-                        && (((SingleMold)compareObject.Mold).HcHoles != null && ((SingleMold)compareObject.Mold).HcHoles > 0)
-                        && (((SingleMold)compareObject.Mold).BoltDiameter != null && ((SingleMold)compareObject.Mold).BoltDiameter > 0))
-                    {
-                        compareObject.FinalRating += 10.00m;
+                compareObject.PostProcessing = compareObject.PostProcessing.Distinct().ToList();
+                compareObject.FinalRating = Math.Round((decimal)compareObject.FinalRating, 2);
+            }
 
-                        // Used while adding post processing information. Means that no BTC needs to be added to the product.
-                        compareObject.DifferenceBoltDiameter = 0;
-                    }
+            var tempList = this.RankingJobOutput?.OrderByDescending(x => x.FinalRating);
+            this.RankingJobOutput = this.RankingJobOutput != null ? new List<CompareObject>(tempList) : null;
+        }
+
+        private void AddRatingInformationCups()
+        {
+            foreach (var compareObject in this.RankingJobInput)
+            {
+                compareObject.FinalRating = 0;
+                compareObject.FinalRating += this.Compare(75.00m - ((compareObject.DifferenceInnerDiameter > this.ToleranceSettings?.Product_InnerDiameter_MAX ? compareObject.DifferenceInnerDiameter : 0) * this.FactorInnerDiameter), 0.00m);
+
+                // Mold has a fitting BTC for the product.
+                if ((!string.IsNullOrWhiteSpace(this.ProductCup.BTC)
+                    && compareObject.Mold.HasFittingBTC)
+                    || string.IsNullOrWhiteSpace(this.ProductCup.BTC))
+                {
+                    compareObject.FinalRating += 25.00m;
+                }
+
+                // Mold has no fitting BTC for the product --> BTC needs to be added in post processing.
+                else if (!string.IsNullOrWhiteSpace(this.ProductCup.BTC) && compareObject.Mold.HasFittingBTC == false)
+                {
+                    compareObject.PostProcessing.Add($"Lochkreis einarbeiten: {this.ProductCup.BTC}");
                 }
 
                 compareObject.FinalRating = Math.Round((decimal)compareObject.FinalRating, 2);
@@ -153,7 +160,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             this.RankingJobOutput = this.RankingJobOutput != null ? new List<CompareObject>(tempList) : null;
         }
 
-        public void OrderOutputData()
+        private void OrderOutputDataDiscs()
         {
             List<CompareObject> listModularMolds = new List<CompareObject>();
             List<CompareObject> sortedList = new List<CompareObject>();
@@ -182,12 +189,12 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                 // Grouped by Guide Rings
                 foreach (List<CompareObject> list02 in groupedByInsertplate)
                 {
-                    var groupedByGuideRing = list02.GroupBy(x => ((ModularMold)x.Mold).GuideRing?.ID).Select(grp => grp.ToList()).ToList();
+                    var groupedByGuideRing = list02.GroupBy(x => ((ModularMold)x.Mold).GuideRing.ID).Select(grp => grp.ToList()).ToList();
 
                     // Grouped by Cores
                     foreach (List<CompareObject> list03 in groupedByGuideRing)
                     {
-                        var groupedByCore = list03.GroupBy(x => ((ModularMold)x.Mold).Core?.ID).Select(grp => grp.ToList()).ToList();
+                        var groupedByCore = list03.GroupBy(x => ((ModularMold)x.Mold).Core.ID).Select(grp => grp.ToList()).ToList();
 
                         // Sorted by final rating and ordered
                         foreach (List<CompareObject> list04 in groupedByCore)
@@ -301,22 +308,154 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
                 compareObject.AlternativeCores.Remove(compareObject.AlternativeCores.Find(x => x.Item1.ID == ((ModularMold)compareObject?.Mold).Core?.ID));
                 compareObject.AlternativeGuideRings.Remove(compareObject.AlternativeGuideRings.Find(x => x.Item1.ID == ((ModularMold)compareObject?.Mold).GuideRing?.ID));
 
-                if (compareObject.DifferenceInnerDiameter > this.ToleranceSettings?.Product_InnerDiameter_MAX)
+                if ((compareObject.DifferenceInnerDiameter > 0.1m
+                    && compareObject.DifferenceInnerDiameter > this.ToleranceSettings?.Product_InnerDiameter_MAX)
+                    || compareObject.DifferenceInnerDiameter < -0.1m)
                 {
-                    string diffInnerDiameter = Math.Round((decimal)compareObject.DifferenceInnerDiameter, 2).ToString();
+                    decimal decimalDiffInnerDiameter = Math.Round((decimal)compareObject.DifferenceInnerDiameter, 2);
+                    string diffInnerDiameter = string.Format("{0:0.00}", decimalDiffInnerDiameter);
                     compareObject.PostProcessing.Add($"Innendurchmesser:  {diffInnerDiameter} mm");
                 }
 
-                if (compareObject.DifferenceOuterDiameter > this.ToleranceSettings?.Product_OuterDiameter_MAX)
+                if ((compareObject.DifferenceOuterDiameter > 0.1m
+                    && compareObject.DifferenceOuterDiameter >= this.ToleranceSettings?.Product_OuterDiameter_MAX)
+                    || compareObject.DifferenceOuterDiameter < -0.1m)
                 {
-                    string diffOuterDiameter = Math.Round((decimal)compareObject.DifferenceOuterDiameter, 2).ToString();
+                    decimal decimalDiffOuterDiameter = Math.Round((decimal)compareObject.DifferenceOuterDiameter, 2);
+                    string diffOuterDiameter = string.Format("{0:0.00}", decimalDiffOuterDiameter);
                     compareObject.PostProcessing.Add($"Außendurchmesser: {diffOuterDiameter} mm");
                 }
+            }
 
-                if (compareObject.DifferenceBoltDiameter == null && !string.IsNullOrWhiteSpace(((ProductDisc)this.Product).BTC))
+            var listOrdered = this.FilteredOutput.OrderByDescending(x => x.FinalRating);
+            this.RankingJobOutput = new List<CompareObject>(listOrdered);
+        }
+
+        private void OrderOutputDataCups()
+        {
+            List<CompareObject> listModularMolds = new List<CompareObject>();
+            List<CompareObject> sortedList = new List<CompareObject>();
+
+            // Create list with only modular molds
+            foreach (CompareObject compareObject in this.RankingJobInput)
+            {
+                if (compareObject.Mold is ModularMold)
                 {
-                    string btc = ((ProductDisc)this.Product).BTC.ToString();
-                    compareObject.PostProcessing.Add($"Lochkreis einarbeiten: {btc}");
+                    listModularMolds.Add(compareObject);
+                }
+                else
+                {
+                    this.FilteredOutput.Add(compareObject);
+                }
+            }
+
+            // Grouped by baseplates
+            var groupedByCupform = listModularMolds.GroupBy(x => ((ModularMold)x.Mold).Cupform.ID).Select(grp => grp.ToList()).ToList();
+
+            // Grouped by insertplates
+            foreach (List<CompareObject> list01 in groupedByCupform)
+            {
+                var groupedByInsertplate = list01.GroupBy(x => ((ModularMold)x.Mold).InsertPlate?.ID).Select(grp => grp.ToList()).ToList();
+
+                // Grouped by Cores
+                foreach (List<CompareObject> list02 in groupedByInsertplate)
+                {
+                    var groupedByCore = list02.GroupBy(x => ((ModularMold)x.Mold).Core?.ID).Select(grp => grp.ToList()).ToList();
+
+                    // Sorted by final rating and ordered
+                    foreach (List<CompareObject> list03 in groupedByCore)
+                    {
+                        var orderedList = list03.OrderBy(x => x.FinalRating);
+                        sortedList.AddRange(orderedList);
+                    }
+                }
+            }
+
+            // Algorithm to combine CompareObjects with identical baseplates into one object to reduce table entries on output
+            CompareObject nextObject;
+            CompareObject currentObject = null;
+
+            foreach (CompareObject compareObject in sortedList)
+            {
+                if (compareObject.Mold is ModularMold)
+                {
+                    nextObject = compareObject;
+
+                    // Case: Different Cupform or insertPlates
+                    if (currentObject == null
+                        || ((ModularMold)nextObject.Mold).Cupform.ID != ((ModularMold)currentObject.Mold).Cupform.ID
+                        || ((ModularMold)nextObject.Mold).InsertPlate?.ID != ((ModularMold)currentObject.Mold).InsertPlate?.ID
+                        || ((ModularMold)nextObject.Mold).ListCoreRings?.FirstOrDefault()?.Item1 != ((ModularMold)currentObject.Mold).ListCoreRings?.FirstOrDefault()?.Item1
+                        || ((ModularMold)nextObject.Mold).ListCoreRings?.FirstOrDefault()?.Item2 != ((ModularMold)currentObject.Mold).ListCoreRings?.FirstOrDefault()?.Item2)
+                    {
+                        if (currentObject != null)
+                        {
+                            this.FilteredOutput.Add(currentObject);
+                        }
+
+                        currentObject = nextObject;
+                    }
+
+                    // Case: Cupform and insertPlate are identical but core and guideRing are different
+                    else if ((((ModularMold)nextObject.Mold).Cupform.ID == ((ModularMold)currentObject.Mold).Cupform.ID
+                        && ((ModularMold)nextObject.Mold).InsertPlate?.ID == ((ModularMold)currentObject.Mold).InsertPlate?.ID
+                        && ((ModularMold)nextObject.Mold).ListCoreRings.Count > 0)
+                        || (((ModularMold)nextObject.Mold).ListCoreRings.FirstOrDefault()?.Item1 == ((ModularMold)currentObject.Mold).ListCoreRings.FirstOrDefault()?.Item1
+                        && ((ModularMold)nextObject.Mold).ListCoreRings.FirstOrDefault()?.Item2 == ((ModularMold)currentObject.Mold).ListCoreRings.FirstOrDefault()?.Item2))
+                    {
+                        if (((ModularMold)nextObject.Mold).Core != null && !currentObject.AlternativeCores.Any(c => c.Item1 == ((ModularMold)nextObject.Mold).Core))
+                        {
+                            var core = ((ModularMold)nextObject.Mold).Core;
+                            var diffToProduct = Math.Round((decimal)nextObject.DifferenceInnerDiameter, 2);
+                            currentObject.AlternativeCores.Add(new Tuple<Core, decimal>(core, diffToProduct));
+                        }
+                    }
+
+                    // Case: There are additional core- or outerings involved --> combination gets seperate table entry
+                    else
+                    {
+                        if (currentObject != null)
+                        {
+                            this.FilteredOutput.Add(currentObject);
+                        }
+                    }
+                }
+                else
+                {
+                    this.FilteredOutput.Add(compareObject);
+                }
+            }
+
+            // Last object will be added after algorithm is finished
+            if (currentObject != null)
+            {
+                this.FilteredOutput.Add(currentObject);
+            }
+
+            // Order Lists of alternative Components
+            foreach (var compareObject in this.FilteredOutput)
+            {
+                var sortedListCores = compareObject.AlternativeCores.OrderBy(x => x.Item2);
+
+                compareObject.AlternativeCores = new List<Tuple<Core, decimal>>(sortedListCores);
+
+                if (compareObject.AlternativeCores.Count > 0)
+                {
+                    if (compareObject.AlternativeCores.First().Item2 < compareObject.DifferenceInnerDiameter)
+                    {
+                        ((ModularMold)compareObject.Mold).Core = compareObject.AlternativeCores.First().Item1;
+                        compareObject.DifferenceInnerDiameter = compareObject.AlternativeCores.First().Item2;
+                        compareObject.AlternativeCores.Remove(compareObject.AlternativeCores.Find(x => x.Item1.ID == ((ModularMold)compareObject?.Mold).Core?.ID));
+                    }
+                }
+
+                if ((compareObject.DifferenceInnerDiameter > 0.1m
+                    && compareObject.DifferenceInnerDiameter > this.ToleranceSettings?.Product_InnerDiameter_MAX)
+                    || compareObject.DifferenceInnerDiameter < -0.1m)
+                {
+                    decimal decimalDiffInnerDiameter = Math.Round((decimal)compareObject.DifferenceInnerDiameter, 2);
+                    string diffInnerDiameter = string.Format("{0:0.00}", decimalDiffInnerDiameter);
+                    compareObject.PostProcessing.Add($"Innendurchmesser:  {diffInnerDiameter} mm");
                 }
             }
 

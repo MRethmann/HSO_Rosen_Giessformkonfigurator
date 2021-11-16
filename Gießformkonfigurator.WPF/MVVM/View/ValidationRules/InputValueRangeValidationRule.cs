@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
-namespace Gießformkonfigurator.WPF.MVVM.View.ValidationRules
+namespace Giessformkonfigurator.WPF.MVVM.View.ValidationRules
 {
     /// <summary>
     /// ValidationRule to check if the Input Value is positive and not greater than 100.000. This rule should avoid input mistakes.

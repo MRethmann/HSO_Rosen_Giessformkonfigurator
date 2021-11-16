@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Gießformkonfigurator.WPF.Properties {
+namespace Giessformkonfigurator.WPF.Properties {
     using System;
     
     

@@ -3,7 +3,7 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
-namespace Gießformkonfigurator.WPF.MVVM.ViewModel
+namespace Giessformkonfigurator.WPF.MVVM.ViewModel
 {
     using System;
     using System.Configuration;
@@ -11,7 +11,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
     using System.Globalization;
     using System.Windows;
     using System.Windows.Input;
-    using Gießformkonfigurator.WPF.Core;
+    using Giessformkonfigurator.WPF.Core;
 
     class Settings_ToleranceSettingsViewModel : ObservableObject
     {
@@ -38,6 +38,10 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
 
         public decimal Product_InnerDiameter_MIN { get; set; }
 
+        public decimal Product_Height_MAX { get; set; }
+
+        public decimal Product_Height_MIN { get; set; }
+
         public decimal Hc_Diameter { get; set; }
 
         public decimal Bolt_Diameter { get; set; }
@@ -56,6 +60,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                     connection.Open();
                     NumberFormatInfo nfi = new NumberFormatInfo();
                     nfi.NumberDecimalSeparator = ".";
+                    // TODO: Height toleranzen hinzufügen
                     string query = $"UPDATE dbo.ToleranceSettings SET product_OuterDiameter_MAX = {this.Product_OuterDiameter_MAX.ToString(nfi)}, product_InnerDiameter_MAX = {this.Product_InnerDiameter_MAX.ToString(nfi)}, product_OuterDiameter_MIN = {this.Product_OuterDiameter_MIN.ToString(nfi)}, product_InnerDiameter_MIN = {this.Product_InnerDiameter_MIN.ToString(nfi)}, hc_Diameter = {this.Hc_Diameter.ToString(nfi)}, bolt_Diameter = {this.Bolt_Diameter.ToString(nfi)}";
                     try
                     {

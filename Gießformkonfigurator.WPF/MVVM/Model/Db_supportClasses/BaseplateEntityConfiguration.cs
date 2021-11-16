@@ -3,10 +3,10 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
-namespace Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses
+namespace Giessformkonfigurator.WPF.MVVM.Model.Db_supportClasses
 {
     using System.Data.Entity.ModelConfiguration;
-    using Gießformkonfigurator.WPF.MVVM.Model.Db_components;
+    using Giessformkonfigurator.WPF.MVVM.Model.Db_components;
 
     class BaseplateEntityConfiguration : EntityTypeConfiguration<Baseplate>
     {
@@ -41,12 +41,6 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses
 
             this.Property(e => e.InnerKonusAngle)
                 .HasPrecision(5, 2);
-
-            this.Property(e => e.InnerDiameter)
-                .HasPrecision(10, 2);
-
-            this.Property(e => e.ToleranceInnerDiameter)
-                .IsUnicode(false);
 
             this.Property(e => e.Hc1Diameter)
                 .HasPrecision(10, 2);

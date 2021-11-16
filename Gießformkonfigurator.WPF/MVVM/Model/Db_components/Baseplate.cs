@@ -5,7 +5,7 @@
 //-----------------------------------------------------------------------
 #pragma warning disable SA1600 // Elements should be documented
 #pragma warning disable SA1601 // Partial elements should be documented
-namespace Gießformkonfigurator.WPF.MVVM.Model.Db_components
+namespace Giessformkonfigurator.WPF.MVVM.Model.Db_components
 {
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
@@ -18,13 +18,13 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_components
 
         public decimal Height { get; set; }
 
-        public decimal? OuterKonusMax { get; set; }
+        public decimal OuterKonusMax { get; set; }
 
-        public decimal? OuterKonusMin { get; set; }
+        public decimal OuterKonusMin { get; set; }
 
-        public decimal? OuterKonusAngle { get; set; }
+        public decimal OuterKonusAngle { get; set; }
 
-        public decimal? KonusHeight { get; set; }
+        public decimal KonusHeight { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether the baseplate has a Konusfuehrung.
@@ -40,34 +40,36 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_components
         /// <summary>
         /// Gets or sets a value indicating whether the baseplate has a Lochfuehrung.
         /// </summary>
-        public bool HasHoleguide { get; set; }
+        //public bool HasHoleguide { get; set; }
 
-        public decimal? InnerDiameter { get; set; }
-
-        [StringLength(10)]
-        public string ToleranceInnerDiameter { get; set; }
+        //public decimal? InnerDiameter { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether the baseplate has an integrated Core.
         /// </summary>
-        public bool HasCore { get; set; }
+        //public bool HasCore { get; set; }
+
+        public bool HasOuterEdge { get; set; }
 
         public decimal? Hc1Diameter { get; set; }
 
         public int? Hc1Holes { get; set; }
 
+        [StringLength(10)]
         public string Hc1Thread { get; set; }
 
         public decimal? Hc2Diameter { get; set; }
 
         public int? Hc2Holes { get; set; }
 
+        [StringLength(10)]
         public string Hc2Thread { get; set; }
 
         public decimal? Hc3Diameter { get; set; }
 
         public int? Hc3Holes { get; set; }
 
+        [StringLength(10)]
         public string Hc3Thread { get; set; }
 
         public override string ToString()

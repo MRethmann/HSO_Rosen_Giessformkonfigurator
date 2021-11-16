@@ -1,10 +1,10 @@
-﻿<Window x:Class="Gießformkonfigurator.WPF.MainWindow"
+﻿<Window x:Class="Giessformkonfigurator.WPF.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Gießformkonfigurator.WPF"
-        xmlns:viewModel="clr-namespace:Gießformkonfigurator.WPF.MVVM.ViewModel"
+        xmlns:local="clr-namespace:Giessformkonfigurator.WPF"
+        xmlns:viewModel="clr-namespace:Giessformkonfigurator.WPF.MVVM.ViewModel"
         mc:Ignorable="d"
         Background="WhiteSmoke"
         Loaded="Window_Loaded"
@@ -33,20 +33,20 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="15"/>
                 <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="15"/>
-            </Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="15"/>
+                </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="15"/>
-                <RowDefinition Height="100"/>
+                <RowDefinition Height="70"/>
                 <RowDefinition/>
                 <RowDefinition Height="15"/>
             </Grid.RowDefinitions>
 
                 <Grid Grid.Column="1" Grid.Row="1">
                     <Border BorderBrush="#144F9B" >
-                        <Image Width="360" Height="140" Source="/images/rosen.png" x:Name="Admin_Logo" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed"/>
+                        <Image Width="360" Height="100" Source="/images/rosen.png" x:Name="Admin_Logo" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed"/>
                     </Border>
                 </Grid>
 
@@ -54,11 +54,11 @@
                     
                     <TextBlock Text="Gießformkonfigurator"
                            FontWeight="Medium" 
-                           HorizontalAlignment="Center"
-                           Foreground="#144F9B" FontSize="60"/>
+                           HorizontalAlignment="Center" VerticalAlignment="Center"
+                           Foreground="#144F9B" FontSize="40"/>
 
                     <Border BorderBrush="#144F9B">
-                        <Image Width="360" Height="140" Source="/images/rosen.png" x:Name="Logo" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <Image Width="360" Height="100" Source="/images/rosen.png" x:Name="Logo" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                     </Border>
 
                     <Button Grid.Column="3" Width="40" HorizontalAlignment="Right" Height="40" VerticalAlignment="Bottom" Margin="0, 0, 0, 10" Background="Transparent" BorderThickness="0" Click="Open_ReportIssueView">

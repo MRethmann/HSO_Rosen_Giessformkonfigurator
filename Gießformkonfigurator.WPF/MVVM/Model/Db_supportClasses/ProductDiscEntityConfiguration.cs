@@ -3,10 +3,10 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
-namespace Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses
+namespace Giessformkonfigurator.WPF.MVVM.Model.Db_supportClasses
 {
     using System.Data.Entity.ModelConfiguration;
-    using Gießformkonfigurator.WPF.MVVM.Model.Db_products;
+    using Giessformkonfigurator.WPF.MVVM.Model.Db_products;
 
     class ProductDiscEntityConfiguration : EntityTypeConfiguration<ProductDisc>
     {
@@ -25,13 +25,9 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses
                 .HasPrecision(10, 5);
 
             this.Property(e => e.BTC)
-                .IsFixedLength()
                 .IsUnicode(false);
 
             this.Property(e => e.InnerDiameter)
-                .HasPrecision(10, 2);
-
-            this.Property(e => e.HcHoleDiameter)
                 .HasPrecision(10, 2);
         }
     }

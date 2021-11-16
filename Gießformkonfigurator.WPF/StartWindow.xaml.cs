@@ -1,10 +1,11 @@
 ﻿
-using Gießformkonfigurator.WPF.Properties;
+using Giessformkonfigurator.WPF.Properties;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Windows;
+using System.Windows.Input;
 
-namespace Gießformkonfigurator.WPF
+namespace Giessformkonfigurator.WPF
 {
     /// <summary>
     /// Interaktionslogik für StartWindow.xaml
@@ -36,5 +37,14 @@ namespace Gießformkonfigurator.WPF
             mainWindow.Show();
         }
 
+        private void Enter_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                mainWindow = new MainWindow();
+                mainWindow.startWindow = this;
+                mainWindow.Show();
+            }
+        }
     }
 }

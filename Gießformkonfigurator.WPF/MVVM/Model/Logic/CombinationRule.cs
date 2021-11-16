@@ -3,25 +3,20 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
-namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
+namespace Giessformkonfigurator.WPF.MVVM.Model.Logic
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Gießformkonfigurator.WPF.Core;
-    using Gießformkonfigurator.WPF.MVVM.Model.Db_components;
+    using Giessformkonfigurator.WPF.Core;
+    using Giessformkonfigurator.WPF.MVVM.Model.Db_components;
 
     /// <summary>
     /// All CombinationRules that are placed within the CombinationRuleSet.
     /// </summary>
     public abstract class CombinationRule
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CombinationRule"/> class.
-        /// </summary>
-        public CombinationRule()
-        {
-        }
+        public CombinationSettings CombinationSettings { get; set; } = new CombinationSettings();
 
         protected abstract IEnumerable<Type> Typen { get; }
 
@@ -30,7 +25,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
         /// </summary>
         /// <param name="teilTyp1">Component 1.</param>
         /// <param name="teilTyp2">Component 2.</param>
-        /// <returns></returns>
+        /// <returns>True, if both parameters are valid objects to combine.</returns>
         public virtual bool Akzeptiert(Type teilTyp1, Type teilTyp2)
         {
             if (!teilTyp1.IsSubclassOf(typeof(Component)) || !teilTyp2.IsSubclassOf(typeof(Component)))
@@ -47,14 +42,11 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
         /// </summary>
         /// <param name="a">Component 1.</param>
         /// <param name="b">Component 2.</param>
-        /// <returns></returns>
+        /// <returns>True, if the combination works.</returns>
         public abstract bool Combine(Component a, Component b);
     }
 
-    /// <summary>
-    /// No Documentation necessary.
-    /// </summary>
-    class BaseplateCoreCombination : CombinationRule
+    public class BaseplateCoreCombination : CombinationRule
     {
         protected override IEnumerable<Type> Typen => new[] { typeof(Baseplate), typeof(Core) };
 
@@ -64,28 +56,23 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             var baseplate = components.OfType<Baseplate>().Single();
             var core = components.OfType<Core>().Single();
 
-            if (baseplate.HasKonus && core.HasKonus)
+            // Normal Konus which has a degree somwhere below 90. Seperate comparison because different tolerances are used.
+            // KonusHeight is intentionally not used. Discussed and decided with Andreas Schmidt.
+            if (baseplate.HasKonus && core.HasKonus && baseplate.InnerKonusAngle != 90)
             {
-                // TODO: Change area of matching to variable which can be changed in application settings
-                return baseplate.InnerKonusMax > core.OuterKonusMax
-                        && (baseplate.InnerKonusMax - 2) <= core.OuterKonusMax
-                        && baseplate.InnerKonusMin > core.OuterKonusMin
-                        && (baseplate.InnerKonusMin - 2) <= core.OuterKonusMin
-                        && baseplate.InnerKonusAngle == core.OuterKonusAngle;
+                return baseplate.InnerKonusMax + this.CombinationSettings.Tolerance_Konus_MAX >= core.OuterKonusMax
+                    && baseplate.InnerKonusMax + this.CombinationSettings.Tolerance_Konus_MIN <= core.OuterKonusMax
+                    && baseplate.InnerKonusMin + this.CombinationSettings.Tolerance_Konus_MAX >= core.OuterKonusMin
+                    && baseplate.InnerKonusMin + this.CombinationSettings.Tolerance_Konus_MIN <= core.OuterKonusMin
+                    && baseplate.InnerKonusAngle == core.OuterKonusAngle;
             }
 
-            // Grundplatte mit Lochführung akzeptiert einen Kern mit Fuehrungsstift
-            else if (baseplate.HasHoleguide && core.HasGuideBolt)
+            // 90 Degree Konus which was formerly being handled by the GuideBolt attribute. Different logic than normal konus because different tolerances are used.
+            else if (baseplate.HasKonus && core.HasKonus && baseplate.InnerKonusAngle == 90)
             {
-                // TODO: Genaue Abweichung zwischen Innendurchmesser und Fuehrungsdurchmesser festlegen.
-                return baseplate.InnerDiameter >= core.GuideDiameter
-                    && (baseplate.InnerDiameter - 2) <= core.GuideDiameter;
-            }
-
-            // TODO: Abklären, ob dieser Fall zustande kommen könnte.
-            else if (baseplate.HasHoleguide && core.HasHoleguide)
-            {
-                return false;
+                return baseplate.InnerKonusMax - this.CombinationSettings.Tolerance_Flat_MIN >= core.OuterKonusMax
+                    && baseplate.InnerKonusMax - this.CombinationSettings.Tolerance_Flat_MAX <= core.OuterKonusMax
+                    && baseplate.InnerKonusAngle == core.OuterKonusAngle;
             }
             else
             {
@@ -94,7 +81,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
         }
     }
 
-    class BaseplateInsertPlateCombination : CombinationRule
+    public class BaseplateInsertPlateCombination : CombinationRule
     {
         protected override IEnumerable<Type> Typen => new[] { typeof(Baseplate), typeof(InsertPlate) };
 
@@ -104,20 +91,13 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             var baseplate = components.OfType<Baseplate>().Single();
             var insertPlate = components.OfType<InsertPlate>().Single();
 
-            // Insertplate has no outer konus and therefore will be placed loose inside the baseplate. OuterKonus is used as workaround to show if insertPlate has OuterKonus.
-            if (baseplate.HasHoleguide && (insertPlate.OuterKonusMax == 0 || insertPlate.OuterKonusMax == null))
-            {
-                return baseplate.InnerDiameter > insertPlate.OuterDiameter
-                    && (baseplate.InnerDiameter - 1) <= insertPlate.OuterDiameter;
-            }
-
             // Insertplate has outer konus which needs to match inner konus of baseplate (more likely)
-            else if (baseplate.HasKonus && insertPlate.OuterKonusMax != 0)
+            if (baseplate.HasKonus)
             {
-                return baseplate.InnerKonusMax > insertPlate.OuterKonusMax
-                    && (baseplate.InnerKonusMax - 1) <= insertPlate.OuterKonusMax
-                    && baseplate.InnerKonusMin > insertPlate.OuterKonusMin
-                    && (baseplate.InnerKonusMin - 1) <= insertPlate.OuterKonusMin
+                return baseplate.InnerKonusMax + this.CombinationSettings.Tolerance_Konus_MAX >= insertPlate.OuterKonusMax
+                    && baseplate.InnerKonusMax + this.CombinationSettings.Tolerance_Konus_MIN <= insertPlate.OuterKonusMax
+                    && baseplate.InnerKonusMin + this.CombinationSettings.Tolerance_Konus_MAX >= insertPlate.OuterKonusMin
+                    && baseplate.InnerKonusMin + this.CombinationSettings.Tolerance_Konus_MIN <= insertPlate.OuterKonusMin
                     && baseplate.InnerKonusAngle == insertPlate.OuterKonusAngle;
             }
             else
@@ -127,7 +107,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
         }
     }
 
-    class BaseplateRingCombination : CombinationRule
+    public class BaseplateRingCombination : CombinationRule
     {
         protected override IEnumerable<Type> Typen => new[] { typeof(Baseplate), typeof(Ring) };
 
@@ -137,16 +117,29 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             var baseplate = components.OfType<Baseplate>().Single();
             var ring = components.OfType<Ring>().Single();
 
-            return ring.HasKonus
-                     && ring.InnerKonusMin > baseplate.OuterKonusMin
-                     && ring.InnerKonusMin < baseplate.OuterKonusMax
-                     && ring.InnerKonusAngle == baseplate.OuterKonusAngle
-                     && ring.KonusHeight < baseplate.KonusHeight
-                     && ring.InnerKonusMax < baseplate.OuterKonusMax;
+            if (ring.HasKonus && baseplate.HasOuterEdge == false)
+            {
+                return ring.InnerKonusMax + this.CombinationSettings.Tolerance_Konus_MAX >= baseplate.OuterKonusMax
+                    && ring.InnerKonusMax + this.CombinationSettings.Tolerance_Konus_MIN <= baseplate.OuterKonusMax
+                    && ring.InnerKonusMin + this.CombinationSettings.Tolerance_Konus_MAX >= baseplate.OuterKonusMin
+                    && ring.InnerKonusMin + this.CombinationSettings.Tolerance_Konus_MIN <= baseplate.OuterKonusMin
+                    && ring.InnerKonusAngle == baseplate.OuterKonusAngle;
+            }
+            else if (ring.HasKonus == false && baseplate.HasOuterEdge)
+            {
+                return baseplate.OuterKonusAngle == 90
+                    && baseplate.OuterKonusMin - this.CombinationSettings.Tolerance_Flat_MIN >= ring.OuterDiameter
+                    && baseplate.OuterKonusMin - this.CombinationSettings.Tolerance_Flat_MAX <= ring.OuterDiameter;
+            }
+            else
+            {
+                return false;
+            }
+
         }
     }
 
-    class InsertPlateCoreCombination : CombinationRule
+    public class InsertPlateCoreCombination : CombinationRule
     {
         protected override IEnumerable<Type> Typen => new[] { typeof(InsertPlate), typeof(Core) };
 
@@ -156,20 +149,20 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             var insertPlate = components.OfType<InsertPlate>().Single();
             var core = components.OfType<Core>().Single();
 
-            if (insertPlate.HasKonus)
+            if (insertPlate.HasKonus && core.HasKonus && insertPlate.InnerKonusAngle != 90)
             {
                 return core.HasKonus == true
-                            && insertPlate.InnerKonusMax > core.OuterKonusMax
-                            && (insertPlate.InnerKonusMax - 1) <= core.OuterKonusMax
-                            && insertPlate.InnerKonusMin > core.OuterKonusMin
-                            && (insertPlate.InnerKonusMin - 1) <= core.OuterKonusMin
-                            && insertPlate.InnerKonusAngle == core.OuterKonusAngle;
+                    && insertPlate.InnerKonusMax + this.CombinationSettings.Tolerance_Konus_MAX >= core.OuterKonusMax
+                    && insertPlate.InnerKonusMax + this.CombinationSettings.Tolerance_Konus_MIN <= core.OuterKonusMax
+                    && insertPlate.InnerKonusMin + this.CombinationSettings.Tolerance_Konus_MAX >= core.OuterKonusMin
+                    && insertPlate.InnerKonusMin + this.CombinationSettings.Tolerance_Konus_MIN <= core.OuterKonusMin
+                    && insertPlate.InnerKonusAngle == core.OuterKonusAngle;
             }
-            else if (insertPlate.HasHoleguide)
+            else if (insertPlate.HasKonus && core.HasKonus && insertPlate.InnerKonusAngle == 90)
             {
-                return core.HasGuideBolt == true
-                    && insertPlate.InnerDiameter == core.GuideDiameter
-                    && insertPlate.Height >= (core.GuideHeight != null ? core.GuideHeight : 0);
+                return insertPlate.InnerKonusMax - this.CombinationSettings.Tolerance_Flat_MIN >= core.OuterKonusMax
+                    && insertPlate.InnerKonusMax - this.CombinationSettings.Tolerance_Flat_MAX <= core.OuterKonusMax
+                    && insertPlate.InnerKonusAngle == core.OuterKonusAngle;
             }
             else
             {
@@ -178,7 +171,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
         }
     }
 
-    class RingAddition : CombinationRule
+    public class RingAddition : CombinationRule
     {
         protected override IEnumerable<Type> Typen => new[] { typeof(Ring), typeof(Ring) };
 
@@ -188,14 +181,14 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             var baseRing = components.OfType<Ring>().ElementAt(0);
             var additionRing = components.OfType<Ring>().ElementAt(1);
 
-            return (additionRing.OuterDiameter <= baseRing.InnerDiameter - 0.1m
-                && additionRing.OuterDiameter >= baseRing.InnerDiameter - 2m)
-                || (additionRing.InnerDiameter >= baseRing.OuterDiameter
-                && additionRing.InnerDiameter - 2 < baseRing.OuterDiameter);
+            return (additionRing.OuterDiameter <= baseRing.InnerDiameter - this.CombinationSettings.Tolerance_Flat_MIN
+                && additionRing.OuterDiameter >= baseRing.InnerDiameter - this.CombinationSettings.Tolerance_Flat_MAX)
+                || (additionRing.InnerDiameter >= baseRing.OuterDiameter + this.CombinationSettings.Tolerance_Flat_MIN
+                && additionRing.InnerDiameter <= baseRing.OuterDiameter + this.CombinationSettings.Tolerance_Flat_MAX);
         }
     }
 
-    class CoreRingAddition : CombinationRule
+    public class CoreRingAddition : CombinationRule
     {
         protected override IEnumerable<Type> Typen => new[] { typeof(Core), typeof(Ring) };
 
@@ -205,12 +198,12 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             var core = (Core) a;
             var additionRing = (Ring) b;
 
-            return additionRing.InnerDiameter >= core.OuterDiameter
-                && additionRing.InnerDiameter - 2 < core.OuterDiameter;
+            return additionRing.InnerDiameter >= core.OuterDiameter + this.CombinationSettings.Tolerance_Flat_MIN
+                && additionRing.InnerDiameter <= core.OuterDiameter + this.CombinationSettings.Tolerance_Flat_MAX;
         }
     }
 
-    class CupformCoreCombination : CombinationRule
+    public class CupformCoreCombination : CombinationRule
     {
         protected override IEnumerable<Type> Typen => new[] { typeof(Cupform), typeof(Core) };
 
@@ -220,28 +213,25 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             var cupform = components.OfType<Cupform>().Single();
             var core = components.OfType<Core>().Single();
 
-            if (cupform.HasKonus)
+            if (cupform.HasKonus && core.HasKonus && cupform.InnerKonusAngle != 90)
             {
-                return core.HasKonus == true
-                            && cupform.InnerKonusMax > core.OuterKonusMax
-                            && (cupform.InnerKonusMax - 1) <= core.OuterKonusMax
-                            && cupform.InnerKonusMin > core.OuterKonusMin
-                            && (cupform.InnerKonusMin - 1) <= core.OuterKonusMin
-                            && cupform.InnerKonusAngle == core.OuterKonusAngle;
+                return cupform.InnerKonusMax + this.CombinationSettings.Tolerance_Konus_MAX >= core.OuterKonusMax
+                    && cupform.InnerKonusMax + this.CombinationSettings.Tolerance_Konus_MIN <= core.OuterKonusMax
+                    && cupform.InnerKonusMin + this.CombinationSettings.Tolerance_Konus_MAX >= core.OuterKonusMin
+                    && cupform.InnerKonusMin + this.CombinationSettings.Tolerance_Konus_MIN <= core.OuterKonusMin
+                    && cupform.InnerKonusAngle == core.OuterKonusAngle;
             }
-            else if (cupform.HasHoleguide)
+            else if (cupform.HasKonus && core.HasKonus && cupform.InnerKonusAngle == 90)
             {
-                return core.HasGuideBolt == true
-                    && cupform.InnerDiameter == core.GuideDiameter;
+                // Checking for Height is not relevant for cupforms.
+                return cupform.InnerKonusMax - this.CombinationSettings.Tolerance_Flat_MIN >= core.OuterKonusMax
+                    && cupform.InnerKonusMax - this.CombinationSettings.Tolerance_Flat_MAX <= core.OuterKonusMax
+                    && cupform.InnerKonusAngle == core.OuterKonusAngle;
             }
-            else if (cupform.HasCore)
+            else if (cupform.HasGuideBolt && core.HasHoleguide)
             {
-                return false;
-            }
-            else if (cupform.HasGuideBolt)
-            {
-                return core.HasHoleguide == true
-                    && core.OuterDiameter == cupform.InnerDiameter;
+                return core.AdapterDiameter - this.CombinationSettings.Tolerance_Flat_MIN >= cupform.InnerDiameter
+                    && core.AdapterDiameter - this.CombinationSettings.Tolerance_Flat_MAX <= cupform.InnerDiameter;
             }
             else if (cupform.HasThread)
             {
@@ -251,6 +241,50 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Logic
             {
                 return false;
             }
+        }
+    }
+
+    public class CupformInsertPlateCombination : CombinationRule
+    {
+        protected override IEnumerable<Type> Typen => new[] { typeof(Cupform), typeof(InsertPlate) };
+
+        public override bool Combine(Component a, Component b)
+        {
+            var components = new[] { a, b };
+            var cupform = components.OfType<Cupform>().Single();
+            var insertPlate = components.OfType<InsertPlate>().Single();
+
+            if (cupform.HasKonus)
+            {
+                // Konus Height missing in database.
+                return cupform.InnerKonusMax + this.CombinationSettings.Tolerance_Konus_MAX >= insertPlate.OuterKonusMax
+                    && cupform.InnerKonusMax + this.CombinationSettings.Tolerance_Konus_MIN <= insertPlate.OuterKonusMax
+                    && cupform.InnerKonusMin + this.CombinationSettings.Tolerance_Konus_MAX >= insertPlate.OuterKonusMin
+                    && cupform.InnerKonusMin + this.CombinationSettings.Tolerance_Konus_MIN <= insertPlate.OuterKonusMin
+                    && cupform.InnerKonusAngle == insertPlate.OuterKonusAngle;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Used to combine a Cupform with a fixed core and a core Ring.
+    /// </summary>
+    public class CupformRingCombination : CombinationRule
+    {
+        protected override IEnumerable<Type> Typen => new[] { typeof(Cupform), typeof(Ring) };
+
+        public override bool Combine(Component a, Component b)
+        {
+            var components = new[] { a, b };
+            var cupform = components.OfType<Cupform>().Single();
+            var additionRing = components.OfType<Ring>().Single();
+
+            return additionRing.InnerDiameter >= cupform.InnerDiameter + this.CombinationSettings.Tolerance_Flat_MIN
+                && additionRing.InnerDiameter <= cupform.InnerDiameter + this.CombinationSettings.Tolerance_Flat_MAX;
         }
     }
 }

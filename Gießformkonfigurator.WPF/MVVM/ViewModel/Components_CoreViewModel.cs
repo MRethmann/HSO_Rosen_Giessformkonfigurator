@@ -3,15 +3,15 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
-namespace Gießformkonfigurator.WPF.MVVM.ViewModel
+namespace Giessformkonfigurator.WPF.MVVM.ViewModel
 {
     using System;
     using System.ComponentModel;
     using System.Windows;
     using System.Windows.Input;
-    using Gießformkonfigurator.WPF.Core;
-    using Gießformkonfigurator.WPF.MVVM.Model.Db_components;
-    using Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses;
+    using Giessformkonfigurator.WPF.Core;
+    using Giessformkonfigurator.WPF.MVVM.Model.Db_components;
+    using Giessformkonfigurator.WPF.MVVM.Model.Db_supportClasses;
 
     class Components_CoreViewModel : ObservableObject
     {
@@ -56,8 +56,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                 || this.Core.Height == 0
                 || this.Core.FillHeightMax == 0
                 || (this.Core.HasKonus && (((this.Core.OuterKonusMin ?? 0) == 0) || ((this.Core.OuterKonusMax ?? 0) == 0) || ((this.Core.OuterKonusAngle ?? 0) == 0) || ((this.Core.KonusHeight ?? 0) == 0)))
-                || (this.Core.HasHoleguide && ((this.Core.AdapterDiameter ?? 0) == 0))
-                || (this.Core.HasGuideBolt && (((this.Core.GuideHeight ?? 0) == 0) || ((this.Core.GuideDiameter ?? 0) == 0))))
+                || (this.Core.HasHoleguide && ((this.Core.AdapterDiameter ?? 0) == 0)))
             {
                 return false;
             }

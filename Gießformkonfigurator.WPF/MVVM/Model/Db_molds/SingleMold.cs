@@ -3,13 +3,13 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
-using Gießformkonfigurator.WPF.Enums;
-using Gießformkonfigurator.WPF.MVVM.Model.Db_components;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace Gießformkonfigurator.WPF.MVVM.Model.Db_molds
+namespace Giessformkonfigurator.WPF.MVVM.Model.Db_molds
 {
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using Giessformkonfigurator.WPF.Enums;
+    using Giessformkonfigurator.WPF.MVVM.Model.Db_components;
+
     /// <summary>
     /// Derived Class from Mold. Superclass of SingleMoldDisc and SingleMoldCup.
     /// </summary>
@@ -26,19 +26,21 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_molds
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID { get; set; }
 
-        [StringLength(255)]
+        [StringLength(100)]
         public string Description { get; set; }
-
-        public decimal OuterDiameter { get; set; }
 
         public decimal InnerDiameter { get; set; }
 
-        public decimal Height { get; set; }
+        [StringLength(10)]
+        public string BTC { get; set; }
 
+        [NotMapped]
         public decimal? HcDiameter { get; set; }
 
+        [NotMapped]
         public decimal? BoltDiameter { get; set; }
 
+        [NotMapped]
         public int? HcHoles { get; set; }
 
         /// <summary>

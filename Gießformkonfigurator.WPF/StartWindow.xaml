@@ -1,12 +1,13 @@
-﻿<Window x:Class="Gießformkonfigurator.WPF.StartWindow"
+﻿<Window x:Class="Giessformkonfigurator.WPF.StartWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Gießformkonfigurator.WPF"
+        xmlns:local="clr-namespace:Giessformkonfigurator.WPF"
         mc:Ignorable="d"
         Title="Gießformkonfigurator" Height="600" Width="600" 
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        KeyDown="Enter_KeyDown">
     <Grid>
         <Grid>
             <Grid.RowDefinitions>

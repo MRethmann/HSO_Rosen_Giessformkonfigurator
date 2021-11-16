@@ -3,14 +3,14 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
-namespace Gießformkonfigurator.WPF.MVVM.ViewModel
+namespace Giessformkonfigurator.WPF.MVVM.ViewModel
 {
     using System;
     using System.Windows;
     using System.Windows.Input;
-    using Gießformkonfigurator.WPF.Core;
-    using Gießformkonfigurator.WPF.MVVM.Model.Db_molds;
-    using Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses;
+    using Giessformkonfigurator.WPF.Core;
+    using Giessformkonfigurator.WPF.MVVM.Model.Db_molds;
+    using Giessformkonfigurator.WPF.MVVM.Model.Db_supportClasses;
 
     /// <summary>
     /// Used to add SingleMoldCups to database.
@@ -23,7 +23,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
         public Mold_CupViewModel()
         {
             this.SingleMoldCup = new SingleMoldCup();
-            this.InsertIntoDbCmd = new RelayCommand(param => InsertIntoDb(), param => ValidateInput());
+            this.InsertIntoDbCmd = new RelayCommand(param => this.InsertIntoDb(), param => this.ValidateInput());
         }
 
         public SingleMoldCup SingleMoldCup { get; set; }
@@ -50,9 +50,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
         public bool ValidateInput()
         {
             if (this.SingleMoldCup.ID.ToString().Length <= 1
-                || this.SingleMoldCup.OuterDiameter == 0
-                || this.SingleMoldCup.InnerDiameter == 0
-                || this.SingleMoldCup.Height == 0)
+                || this.SingleMoldCup.InnerDiameter == 0)
             {
                 return false;
             }

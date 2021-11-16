@@ -3,7 +3,7 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
-namespace Gießformkonfigurator.WPF.MVVM.Model.Db_components
+namespace Giessformkonfigurator.WPF.MVVM.Model.Db_components
 {
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
@@ -13,12 +13,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_components
     {
         public decimal OuterDiameter { get; set; }
 
-        public string ToleranceOuterDiameter { get; set; }
-
         public decimal InnerDiameter { get; set; }
-
-        [StringLength(10)]
-        public string ToleranceInnerDiameter { get; set; }
 
         public decimal Height { get; set; }
 

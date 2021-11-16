@@ -1,11 +1,11 @@
-﻿using Gießformkonfigurator.WPF.MVVM.Model.Db_components;
-using Gießformkonfigurator.WPF.MVVM.Model.Db_molds;
-using Gießformkonfigurator.WPF.MVVM.Model.Db_products;
-using Gießformkonfigurator.WPF.MVVM.Model.Logic;
+﻿using Giessformkonfigurator.WPF.MVVM.Model.Db_components;
+using Giessformkonfigurator.WPF.MVVM.Model.Db_molds;
+using Giessformkonfigurator.WPF.MVVM.Model.Db_products;
+using Giessformkonfigurator.WPF.MVVM.Model.Logic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
-namespace Gießformkonfigurator.UnitTests.Logic
+namespace Giessformkonfigurator.UnitTests.Logic
 {
     [TestClass]
     public class CombinationJobTest

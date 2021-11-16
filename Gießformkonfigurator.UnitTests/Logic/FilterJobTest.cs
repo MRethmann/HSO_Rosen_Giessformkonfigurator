@@ -1,9 +1,9 @@
-﻿using Gießformkonfigurator.WPF.MVVM.Model.Db_products;
-using Gießformkonfigurator.WPF.MVVM.Model.Logic;
+﻿using Giessformkonfigurator.WPF.MVVM.Model.Db_products;
+using Giessformkonfigurator.WPF.MVVM.Model.Logic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
-namespace Gießformkonfigurator.UnitTests.Logic
+namespace Giessformkonfigurator.UnitTests.Logic
 {
     [TestClass]
     public class FilterJobTest
@@ -24,7 +24,7 @@ namespace Gießformkonfigurator.UnitTests.Logic
 
 
             // Act
-            filterJob.GetFilteredDatabase();
+            filterJob.GetFilteredMultiMoldDiscComponents();
 
             // Assert
             Assert.IsNotNull(filterJob.listBaseplates);

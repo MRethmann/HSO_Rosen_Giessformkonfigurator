@@ -3,10 +3,10 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
-namespace Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses
+namespace Giessformkonfigurator.WPF.MVVM.Model.Db_supportClasses
 {
     using System.Data.Entity.ModelConfiguration;
-    using Gießformkonfigurator.WPF.MVVM.Model.Db_products;
+    using Giessformkonfigurator.WPF.MVVM.Model.Db_products;
 
     class ProductCupEntityConfiguration : EntityTypeConfiguration<ProductCup>
     {
@@ -15,7 +15,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses
             this.Property(e => e.Description)
                 .IsUnicode(false);
 
-            this.Property(e => e.BaseCup)
+            this.Property(e => e.CupType)
                 .IsUnicode(false);
 
             this.Property(e => e.InnerDiameter)
@@ -24,8 +24,10 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses
             this.Property(e => e.FactorPU)
                 .HasPrecision(10, 5);
 
+            this.Property(e => e.Size)
+                .HasPrecision(10, 2);
+
             this.Property(e => e.BTC)
-                .IsFixedLength()
                 .IsUnicode(false);
         }
     }

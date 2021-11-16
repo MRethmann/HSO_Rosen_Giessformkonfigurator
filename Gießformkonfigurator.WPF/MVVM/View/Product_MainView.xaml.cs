@@ -3,7 +3,7 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
-namespace Gießformkonfigurator.WPF.MVVM.View
+namespace Giessformkonfigurator.WPF.MVVM.View
 {
     using System.Windows.Controls;
     /// <summary>

@@ -1,8 +1,8 @@
-﻿using Gießformkonfigurator.WPF.MVVM.Model.Logic;
+﻿using Giessformkonfigurator.WPF.MVVM.Model.Logic;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Gießformkonfigurator.WPF.MVVM.View.DataTemplates
+namespace Giessformkonfigurator.WPF.MVVM.View.DataTemplates
 {
     class RowDetailsTemplateSelector : DataTemplateSelector
     {

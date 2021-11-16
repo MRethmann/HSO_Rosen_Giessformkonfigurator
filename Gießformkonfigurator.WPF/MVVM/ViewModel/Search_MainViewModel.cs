@@ -3,7 +3,7 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
-namespace Gießformkonfigurator.WPF.MVVM.ViewModel
+namespace Giessformkonfigurator.WPF.MVVM.ViewModel
 {
     using System;
     using System.Collections.Generic;
@@ -13,12 +13,12 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
-    using Gießformkonfigurator.WPF.Core;
-    using Gießformkonfigurator.WPF.MVVM.Model.Db_components;
-    using Gießformkonfigurator.WPF.MVVM.Model.Db_molds;
-    using Gießformkonfigurator.WPF.MVVM.Model.Db_products;
-    using Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses;
-    using Gießformkonfigurator.WPF.MVVM.Model.Logic;
+    using Giessformkonfigurator.WPF.Core;
+    using Giessformkonfigurator.WPF.MVVM.Model.Db_components;
+    using Giessformkonfigurator.WPF.MVVM.Model.Db_molds;
+    using Giessformkonfigurator.WPF.MVVM.Model.Db_products;
+    using Giessformkonfigurator.WPF.MVVM.Model.Db_supportClasses;
+    using Giessformkonfigurator.WPF.MVVM.Model.Logic;
     using log4net;
 
     /// <summary>
@@ -26,6 +26,8 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
     /// </summary>
     public class Search_MainViewModel : ObservableObject
     {
+        private static readonly ILog Log = LogManager.GetLogger(typeof(Search_MainViewModel));
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Search_MainViewModel"/> class.
         /// </summary>
@@ -34,25 +36,23 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
             this.SearchCommand = new RelayCommand(param => this.FindMatchingMolds(), param => this.ValidateInput());
         }
 
-        private static readonly ILog Log = LogManager.GetLogger(typeof(Search_MainViewModel));
-
         /// <summary>
-        /// Mold Search Output ressource filled by SearchJob.
+        /// Gets Mold Search Output ressource filled by SearchJob.
         /// </summary>
         public ObservableCollection<CompareObject> ProductSearchOutput { get; } = new ObservableCollection<CompareObject>();
 
         public Visibility IsLoading { get; set; } = Visibility.Hidden;
 
         /// <summary>
-        /// Property determines the search method. 
-        /// True = Search via SAP number. 
+        /// Gets or Sets a value indicating whether Property determines the search method.
+        /// True = Search via SAP number.
         /// False = Search by entering product parameters manually.
         /// </summary>
         public bool SearchByProductId { get; set; } = true;
 
         /// <summary>
-        /// Property determines the product type in the GUI via Binding. 
-        /// True = ProductDisc. 
+        /// Gets or Sets a value indicating whether the Property that determines the product type in the GUI via Binding.
+        /// True = ProductDisc.
         /// False = ProductCup.
         /// </summary>
         public bool SearchTypeProduct { get; set; } = true;
@@ -67,21 +67,21 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
 
         public decimal Height { get; set; }
 
-        public decimal? HcDiameter { get; set; }
+        // public decimal? HcDiameter { get; set; }
 
-        public int? HcHoles { get; set; }
+        // public int? HcHoles { get; set; }
 
-        public decimal? HcHoleDiameter { get; set; }
-
-        public List<decimal?> PUFactors { get; set; } = new List<decimal?>() { 1.017m, 1.0175m, 1.023m, 1.025m };
-
-        public decimal? SelectedFactorPU { get; set; } = 1.017m;
+        // public decimal? HcHoleDiameter { get; set; }
 
         public string BTC { get; set; }
 
-        public Product Product { get; set; }
-
         public int ProductId { get; set; }
+
+        public string CupType { get; set; }
+
+        public decimal CupSize { get; set; }
+
+        public List<string> CupFormTypes { get; set; } = new List<string>() { "U", "L", "UH", "TL", "H", "L Radaufbau", "DD", "M" };
 
         public ICommand SearchCommand { get; set; }
 
@@ -92,6 +92,10 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
         /// </summary>
         public void FindMatchingMolds()
         {
+            this.SearchJob = null;
+            this.ProductDisc = null;
+            this.ProductCup = null;
+
             // Search by SAP-Nr.
             if (this.SearchByProductId)
             {
@@ -102,14 +106,23 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                     {
                         using (var db = new GießformDBContext())
                         {
-                            this.Product = new Product();
-                            this.Product = db.ProductDiscs.Find(this.ProductId);
-                            Log.Info($"ProductDisc search via SAP-Nr. started for product: {this.Product}");
+                            this.ProductDisc = db.ProductDiscs.Find(this.ProductId);
+
+                            if (this.ProductDisc != null)
+                            {
+                                this.SetProductDiscPuFactor();
+                                this.SearchJob = new SearchJob(this.ProductDisc);
+                                Log.Info($"ProductDisc search via SAP-Nr. started for product: {this.ProductDisc}");
+                            }
+                            else
+                            {
+                                MessageBox.Show($"Das Produkt mit der SAP-Nr. {this.ProductId} konnte nicht gefunden werden.");
+                            }
                         }
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Suche fehlgeschlagen. Überprüfe die Db Verbindung!");
+                        MessageBox.Show("Es ist ein Problem aufgetreten. Bitte wenden Sie sich an den Systemadministrator." + Environment.NewLine + Environment.NewLine + ex);
                         Log.Error(ex);
                     }
                 }
@@ -121,14 +134,23 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                     {
                         using (var db = new GießformDBContext())
                         {
-                            this.Product = new Product();
-                            this.Product = db.ProductCups.Find(this.ProductId);
-                            Log.Info($"ProductCup search via SAP-Nr. started for product: {this.Product}");
+                            this.ProductCup = db.ProductCups.Find(this.ProductId);
+
+                            if (this.ProductCup != null)
+                            {
+                                this.SetProductCupPuFactor();
+                                this.SearchJob = new SearchJob(this.ProductCup);
+                                Log.Info($"ProductCup search via SAP-Nr. started for product: {this.ProductCup}");
+                            }
+                            else
+                            {
+                                MessageBox.Show($"Das Produkt mit der SAP-Nr. {this.ProductId} konnte nicht gefunden werden.");
+                            }
                         }
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Suche fehlgeschlagen. Überprüfe die Db Verbindung!");
+                        MessageBox.Show("Es ist ein Problem aufgetreten. Bitte wenden Sie sich an den Systemadministrator." + Environment.NewLine + Environment.NewLine + ex);
                         Log.Error(ex);
                     }
                 }
@@ -145,51 +167,53 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
                     || this.Height == 0
                     || this.OuterDiameter < this.InnerDiameter)
                     {
-                        this.Product = null;
-                        MessageBox.Show("Bitte überprüfe die eingegebenen Werte!");
+                        this.ProductDisc = null;
+                        MessageBox.Show("Die eingegebenen Werte sind unvollständig oder fehlerhaft.");
                     }
                     else
                     {
-                        this.Product = new Product();
                         this.ProductDisc = new ProductDisc();
                         this.ProductDisc.OuterDiameter = this.OuterDiameter;
                         this.ProductDisc.InnerDiameter = this.InnerDiameter;
                         this.ProductDisc.Height = this.Height;
-                        this.ProductDisc.HcHoles = this.HcHoles != null ? this.HcHoles : null;
-                        this.ProductDisc.HcHoleDiameter = this.HcHoleDiameter != null ? this.HcHoleDiameter : null;
-                        this.ProductDisc.HcDiameter = this.HcDiameter != null ? this.HcDiameter : null;
+                        // this.ProductDisc.HcHoles = this.HcHoles != null ? this.HcHoles : null;
+                        // this.ProductDisc.HcHoleDiameter = this.HcHoleDiameter != null ? this.HcHoleDiameter : null;
+                        // this.ProductDisc.HcDiameter = this.HcDiameter != null ? this.HcDiameter : null;
                         this.ProductDisc.BTC = this.BTC != null ? this.BTC : null;
-                        this.ProductDisc.FactorPU = this.SelectedFactorPU;
-                        this.Product = this.ProductDisc;
-                        Log.Info($"ProductDisc search started via manual entry for product: {this.ProductDisc.OuterDiameter}, {this.ProductDisc.InnerDiameter}, {this.ProductDisc.Height}, {this.ProductDisc.BTC}, {this.ProductDisc.FactorPU} - (OD, ID, T, BTC, Factor)");
+                        this.SetProductDiscPuFactor();
+                        this.SearchJob = new SearchJob(this.ProductDisc);
+                        Log.Info($"ProductDisc search started via manual entry for product: {this.ProductDisc.OuterDiameter}, {this.ProductDisc.InnerDiameter}, {this.ProductDisc.Height}, {this.ProductDisc.BTC} - (OD, ID, T, BTC)");
                     }
                 }
 
                 // Product Cup
                 else
                 {
-                    /*if ()
+                    if (this.CupType == null
+                        || this.CupFormTypes.Contains($"{this.CupType}") == false
+                        || this.CupSize == 0
+                        || this.InnerDiameter == 0)
                     {
-                        MessageBox.Show("Bitte alle Werte ausfüllen!");
+                        this.ProductCup = null;
+                        MessageBox.Show("Die eingegebenen Werte sind unvollständig oder fehlerhaft.");
                     }
                     else
                     {
-                        product = productCup;
-                        this.productCup = new ProductCup();
-                    }*/
+                        this.ProductCup = new ProductCup();
+                        this.ProductCup.InnerDiameter = this.InnerDiameter;
+                        this.ProductCup.CupType = this.CupType;
+                        this.ProductCup.Size = this.CupSize;
+                        this.ProductCup.BTC = this.BTC != null ? this.BTC : null;
+                        this.SetProductCupPuFactor();
+                        this.SearchJob = new SearchJob(this.ProductCup);
+                        Log.Info($"ProductDisc search started via manual entry for product: {this.ProductCup.Size}, {this.ProductCup.CupType}, {this.ProductCup.InnerDiameter}, {this.ProductCup.BTC} - (Size, CupType, ID, BTC)");
+                    }
                 }
             }
 
-            // Create new SearchJob --> start algorithm to search for fitting molds
-            if (this.Product != null)
+            this.ProductSearchOutput.Clear();
+            if (this.SearchJob != null)
             {
-                if (this.Product.FactorPU == null)
-                {
-                    this.Product.FactorPU = this.SelectedFactorPU;
-                }
-
-                this.SearchJob = new SearchJob(this.Product);
-                this.ProductSearchOutput.Clear();
                 foreach (var compareObject in this.SearchJob.FinalOutput)
                 {
                     this.ProductSearchOutput.Add(compareObject);
@@ -200,12 +224,25 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
         public bool ValidateInput()
         {
             if ((this.SearchByProductId == true && this.ProductId == 0)
-                || (this.SearchByProductId == false && (this.OuterDiameter == 0 || this.InnerDiameter == 0 || this.Height == 0)))
+                || (this.SearchByProductId == false && this.SearchTypeProduct == true && (this.OuterDiameter == 0 || this.InnerDiameter == 0 || this.Height == 0))
+                || ((this.SearchByProductId == false && this.SearchTypeProduct == false) && (this.CupSize == 0 || this.CupType == null || this.InnerDiameter == 0)))
             {
                 return false;
             }
 
             return true;
+        }
+
+        public void SetProductDiscPuFactor()
+        {
+            this.ProductDisc.FactorPU = 1.01725m;
+            this.ProductDisc.MultiMoldFactorPU = 1.024m;
+        }
+
+        public void SetProductCupPuFactor()
+        {
+            this.ProductCup.FactorPU = 1.01725m;
+            this.ProductCup.MultiMoldFactorPU = 1.024m;
         }
     }
 }

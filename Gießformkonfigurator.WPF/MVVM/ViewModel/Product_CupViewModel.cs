@@ -3,15 +3,15 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
-namespace Gießformkonfigurator.WPF.MVVM.ViewModel
+namespace Giessformkonfigurator.WPF.MVVM.ViewModel
 {
     using System;
     using System.Collections.Generic;
     using System.Windows;
     using System.Windows.Input;
-    using Gießformkonfigurator.WPF.Core;
-    using Gießformkonfigurator.WPF.MVVM.Model.Db_products;
-    using Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses;
+    using Giessformkonfigurator.WPF.Core;
+    using Giessformkonfigurator.WPF.MVVM.Model.Db_products;
+    using Giessformkonfigurator.WPF.MVVM.Model.Db_supportClasses;
 
     class Product_CupViewModel : ObservableObject
     {
@@ -50,7 +50,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
         public bool ValidateInput()
         {
             if (this.ProductCup.ID.ToString().Length <= 1
-                || string.IsNullOrWhiteSpace(this.ProductCup.BaseCup)
+                || string.IsNullOrWhiteSpace(this.ProductCup.CupType)
                 || this.ProductCup.InnerDiameter == 0)
             {
                 return false;

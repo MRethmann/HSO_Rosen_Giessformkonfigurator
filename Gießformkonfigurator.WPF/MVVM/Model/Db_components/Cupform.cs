@@ -5,7 +5,7 @@
 //-----------------------------------------------------------------------
 #pragma warning disable SA1600 // Elements should be documented
 #pragma warning disable SA1601 // Partial elements should be documented
-namespace Gießformkonfigurator.WPF.MVVM.Model.Db_components
+namespace Giessformkonfigurator.WPF.MVVM.Model.Db_components
 {
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
@@ -16,22 +16,35 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_components
         [StringLength(20)]
         public string CupType { get; set; }
 
-        public decimal? InnerDiameter { get; set; }
+        public decimal Size { get; set; }
 
         [StringLength(10)]
-        public string ToleranceInnerDiameter { get; set; }
+        public string BTC1 { get; set; }
 
-        public decimal? HoleCircle { get; set; }
+        [StringLength(10)]
+        public string BTC1Thread { get; set; }
 
-        /// <summary>
-        /// Gets or Sets a value indicating whether the Cupform has a Fuehrungsstift.
-        /// </summary>
-        public bool HasGuideBolt { get; set; }
+        [StringLength(10)]
+        public string BTC2 { get; set; }
+
+        [StringLength(10)]
+        public string BTC2Thread { get; set; }
+
+        [StringLength(10)]
+        public string BTC3 { get; set; }
+
+        [StringLength(10)]
+        public string BTC3Thread { get; set; }
+
+        public bool HasFixedBTC { get; set; }
 
         /// <summary>
         /// Gets or Sets a value indicating whether the Cupform has a Innengewinde.
         /// </summary>
         public bool HasThread { get; set; }
+
+        [StringLength(10)]
+        public string Thread { get; set; }
 
         /// <summary>
         /// Gets or Sets a value indicating whether the Cupform has a Konusfuehrung.
@@ -47,12 +60,14 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_components
         /// <summary>
         /// Gets or Sets a value indicating whether the Cupform has a Lochfuehrung.
         /// </summary>
-        public bool HasHoleguide { get; set; }
+        //public bool HasHoleguide { get; set; }
 
         /// <summary>
-        /// Gets or Sets a value indicating whether the Cupform has a Innenkern.
+        /// Gets or Sets a value indicating whether the Cupform has a Fuehrungsstift/Core.
         /// </summary>
-        public bool HasCore { get; set; }
+        public bool HasGuideBolt { get; set; }
+
+        public decimal? InnerDiameter { get; set; }
 
         public override string ToString()
         {

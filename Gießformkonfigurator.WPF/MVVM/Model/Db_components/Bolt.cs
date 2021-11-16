@@ -5,7 +5,7 @@
 //-----------------------------------------------------------------------
 #pragma warning disable SA1600 // Elements should be documented
 #pragma warning disable SA1601 // Partial elements should be documented
-namespace Gießformkonfigurator.WPF.MVVM.Model.Db_components
+namespace Giessformkonfigurator.WPF.MVVM.Model.Db_components
 {
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
@@ -15,7 +15,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_components
     {
         public decimal Height { get; set; }
 
-        public decimal? OuterDiameter { get; set; }
+        public decimal OuterDiameter { get; set; }
 
         public decimal FillHeightMax { get; set; }
 
@@ -24,6 +24,7 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_components
         /// </summary>
         public bool HasThread { get; set; }
 
+        [StringLength(10)]
         public string Thread { get; set; }
 
         /// <summary>

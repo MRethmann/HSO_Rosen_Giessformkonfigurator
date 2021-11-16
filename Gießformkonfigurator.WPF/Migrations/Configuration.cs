@@ -1,18 +1,18 @@
-namespace Gießformkonfigurator.WPF.Migrations
+namespace Giessformkonfigurator.WPF.Migrations
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses.GießformDBContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Giessformkonfigurator.WPF.MVVM.Model.Db_supportClasses.GießformDBContext>
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses.GießformDBContext context)
+        protected override void Seed(Giessformkonfigurator.WPF.MVVM.Model.Db_supportClasses.GießformDBContext context)
         {
             //  This method will be called after migrating to the latest version.
 

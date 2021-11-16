@@ -1,4 +1,4 @@
-﻿using Gießformkonfigurator.WPF.MVVM.Model.Logic;
+﻿using Giessformkonfigurator.WPF.MVVM.Model.Logic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Gießformkonfigurator.WPF.MVVM.View.DataTemplates
+namespace Giessformkonfigurator.WPF.MVVM.View.DataTemplates
 {
     class QuickInfoTemplateSelector : DataTemplateSelector
     {

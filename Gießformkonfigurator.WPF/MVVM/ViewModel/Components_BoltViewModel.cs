@@ -3,15 +3,15 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
-namespace Gießformkonfigurator.WPF.MVVM.ViewModel
+namespace Giessformkonfigurator.WPF.MVVM.ViewModel
 {
     using System;
     using System.ComponentModel;
     using System.Windows;
     using System.Windows.Input;
-    using Gießformkonfigurator.WPF.Core;
-    using Gießformkonfigurator.WPF.MVVM.Model.Db_components;
-    using Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses;
+    using Giessformkonfigurator.WPF.Core;
+    using Giessformkonfigurator.WPF.MVVM.Model.Db_components;
+    using Giessformkonfigurator.WPF.MVVM.Model.Db_supportClasses;
 
     class Components_BoltViewModel : ObservableObject
     {
@@ -52,7 +52,7 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
         public bool ValidateInput()
         {
             if (this.Bolt.ID.ToString().Length <= 1
-                || ((this.Bolt.OuterDiameter ?? 0) == 0)
+                || this.Bolt.OuterDiameter == 0
                 || this.Bolt.Height == 0
                 || (this.Bolt.HasThread && string.IsNullOrWhiteSpace(this.Bolt.Thread))
                 || this.Bolt.HasGuideBolt && (((this.Bolt.GuideHeight ?? 0) == 0) || ((this.Bolt.GuideOuterDiameter ?? 0) == 0)))

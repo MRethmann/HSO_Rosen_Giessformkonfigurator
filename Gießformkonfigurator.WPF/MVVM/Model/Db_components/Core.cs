@@ -5,7 +5,7 @@
 //-----------------------------------------------------------------------
 #pragma warning disable SA1600 // Elements should be documented
 #pragma warning disable SA1601 // Partial elements should be documented
-namespace Gießformkonfigurator.WPF.MVVM.Model.Db_components
+namespace Giessformkonfigurator.WPF.MVVM.Model.Db_components
 {
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
@@ -15,12 +15,9 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_components
     {
         public decimal OuterDiameter { get; set; }
 
-        [StringLength(10)]
-        public string ToleranceOuterDiameter { get; set; }
-
         public decimal Height { get; set; }
 
-        public decimal? FillHeightMax { get; set; }
+        public decimal FillHeightMax { get; set; }
 
         /// <summary>
         /// Gets or Sets a value indicating whether the core has a Konusfuehrung.
@@ -38,13 +35,11 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_components
         /// <summary>
         /// Gets or Sets a value indicating whether the core has a Fuehrungsstift.
         /// </summary>
-        public bool HasGuideBolt { get; set; }
+        //public bool HasGuideBolt { get; set; }
 
-        public decimal? GuideHeight { get; set; }
+        //public decimal? GuideHeight { get; set; }
 
-        public decimal? GuideDiameter { get; set; }
-
-        public string ToleranceGuideDiameter { get; set; }
+        //public decimal? GuideDiameter { get; set; }
 
         /// <summary>
         /// Gets or Sets a value indicating whether the core has a Lochfuehrung.

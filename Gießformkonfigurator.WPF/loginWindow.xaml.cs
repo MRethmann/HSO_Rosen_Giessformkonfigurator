@@ -1,4 +1,4 @@
-﻿using Gießformkonfigurator.WPF.Core;
+﻿using Giessformkonfigurator.WPF.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Gießformkonfigurator.WPF
+namespace Giessformkonfigurator.WPF
 {
     /// <summary>
     /// Interaktionslogik für loginWindow.xaml
@@ -50,6 +50,35 @@ namespace Gießformkonfigurator.WPF
                 mainWindow.AdminLogoutButton.IsEnabled = true;
                 this.Close();
             }
+        }
+
+        private void Enter_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                var admin_password = applicationSettings.AdminPassword;
+
+                if (password_box.Password != admin_password)
+                {
+                    MessageBox.Show("Geben sie das richtige Passwort ein");
+                    password_box.Password = "";
+                }
+                else
+                {
+                    password_box.Password = "";
+                    mainWindow.Admin_Grid.Visibility = Visibility.Visible;
+                    mainWindow.Admin_Logo.Visibility = Visibility.Visible;
+                    mainWindow.Logo.Visibility = Visibility.Collapsed;
+                    mainWindow.AdminLoginButton.IsEnabled = false;
+                    mainWindow.AdminLogoutButton.IsEnabled = true;
+                    this.Close();
+                }
+            }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            password_box.Focus();
         }
     }
 }

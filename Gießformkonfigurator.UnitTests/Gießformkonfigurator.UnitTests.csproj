@@ -70,9 +70,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Gießformkonfigurator.WPF\Gießformkonfigurator.WPF.csproj">
+    <ProjectReference Include="..\Gießformkonfigurator.WPF\Giessformkonfigurator.WPF.csproj">
       <Project>{5674d79b-26a3-45b5-9cfc-b79795235897}</Project>
-      <Name>Gießformkonfigurator.WPF</Name>
+      <Name>Giessformkonfigurator.WPF</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

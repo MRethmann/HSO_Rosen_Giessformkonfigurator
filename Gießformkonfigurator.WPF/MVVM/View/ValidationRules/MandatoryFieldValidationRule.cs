@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
-namespace Gießformkonfigurator.WPF.MVVM.View.ValidationRules
+namespace Giessformkonfigurator.WPF.MVVM.View.ValidationRules
 {
     /// <summary>
     /// Validation Rule for string values which are required fields.

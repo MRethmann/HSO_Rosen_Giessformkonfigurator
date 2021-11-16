@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gießformkonfigurator.UnitTests", "Gießformkonfigurator.UnitTests\Gießformkonfigurator.UnitTests.csproj", "{51C51B6A-44FA-467A-B1DC-F919CC31F698}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gießformkonfigurator.WPF", "Gießformkonfigurator.WPF\Gießformkonfigurator.WPF.csproj", "{5674D79B-26A3-45B5-9CFC-B79795235897}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Giessformkonfigurator.WPF", "Gießformkonfigurator.WPF\Giessformkonfigurator.WPF.csproj", "{5674D79B-26A3-45B5-9CFC-B79795235897}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

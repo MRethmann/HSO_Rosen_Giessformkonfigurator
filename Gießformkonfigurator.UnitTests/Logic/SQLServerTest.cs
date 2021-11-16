@@ -1,4 +1,4 @@
-﻿using Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses;
+﻿using Giessformkonfigurator.WPF.MVVM.Model.Db_supportClasses;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Gießformkonfigurator.UnitTests
+namespace Giessformkonfigurator.UnitTests
 {
     
         [TestCategory("Integration")]

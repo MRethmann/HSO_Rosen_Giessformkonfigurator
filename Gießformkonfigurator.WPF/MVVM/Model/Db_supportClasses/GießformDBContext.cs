@@ -3,12 +3,12 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
-namespace Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses
+namespace Giessformkonfigurator.WPF.MVVM.Model.Db_supportClasses
 {
     using System.Data.Entity;
-    using Gießformkonfigurator.WPF.MVVM.Model.Db_components;
-    using Gießformkonfigurator.WPF.MVVM.Model.Db_molds;
-    using Gießformkonfigurator.WPF.MVVM.Model.Db_products;
+    using Giessformkonfigurator.WPF.MVVM.Model.Db_components;
+    using Giessformkonfigurator.WPF.MVVM.Model.Db_molds;
+    using Giessformkonfigurator.WPF.MVVM.Model.Db_products;
 
     /// <summary>
     /// Implementiert die Klasse DbContext. Konfiguration der DB Grundstruktur.

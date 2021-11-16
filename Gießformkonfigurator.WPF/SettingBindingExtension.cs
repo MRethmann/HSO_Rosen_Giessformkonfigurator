@@ -1,6 +1,6 @@
 ﻿using System.Windows.Data;
 
-namespace Gießformkonfigurator.WPF
+namespace Giessformkonfigurator.WPF
 {
     public class SettingBindingExtension : Binding
     {
@@ -17,7 +17,7 @@ namespace Gießformkonfigurator.WPF
 
         private void Initialize()
         {
-            this.Source = Gießformkonfigurator.WPF.Properties.Settings.Default;
+            this.Source = Giessformkonfigurator.WPF.Properties.Settings.Default;
             this.Mode = BindingMode.TwoWay;
         }
     }

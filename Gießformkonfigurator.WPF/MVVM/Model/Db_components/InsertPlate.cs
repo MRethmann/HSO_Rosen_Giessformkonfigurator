@@ -5,7 +5,7 @@
 //-----------------------------------------------------------------------
 #pragma warning disable SA1600 // Elements should be documented
 #pragma warning disable SA1601 // Partial elements should be documented
-namespace Gießformkonfigurator.WPF.MVVM.Model.Db_components
+namespace Giessformkonfigurator.WPF.MVVM.Model.Db_components
 {
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
@@ -14,9 +14,6 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_components
     public partial class InsertPlate : Component
     {
         public decimal OuterDiameter { get; set; }
-
-        [StringLength(5)]
-        public string ToleranceOuterDiameter { get; set; }
 
         public decimal Height { get; set; }
 
@@ -46,9 +43,6 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_components
 
         public decimal? InnerDiameter { get; set; }
 
-        [StringLength(5)]
-        public string ToleranceInnerDiameter { get; set; }
-
         /// <summary>
         /// Gets or Sets a value indicating whether the InsertPlate has a Core.
         /// </summary>
@@ -58,18 +52,21 @@ namespace Gießformkonfigurator.WPF.MVVM.Model.Db_components
 
         public int? Hc1Holes { get; set; }
 
+        [StringLength(10)]
         public string Hc1Thread { get; set; }
 
         public decimal? Hc2Diameter { get; set; }
 
         public int? Hc2Holes { get; set; }
 
+        [StringLength(10)]
         public string Hc2Thread { get; set; }
 
         public decimal? Hc3Diameter { get; set; }
 
         public int? Hc3Holes { get; set; }
 
+        [StringLength(10)]
         public string Hc3Thread { get; set; }
 
         public override string ToString()

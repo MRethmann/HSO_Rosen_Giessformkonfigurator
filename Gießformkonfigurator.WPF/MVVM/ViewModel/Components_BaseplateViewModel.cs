@@ -3,15 +3,15 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
-namespace Gießformkonfigurator.WPF.MVVM.ViewModel
+namespace Giessformkonfigurator.WPF.MVVM.ViewModel
 {
     using System;
     using System.ComponentModel;
     using System.Windows;
     using System.Windows.Input;
-    using Gießformkonfigurator.WPF.Core;
-    using Gießformkonfigurator.WPF.MVVM.Model.Db_components;
-    using Gießformkonfigurator.WPF.MVVM.Model.Db_supportClasses;
+    using Giessformkonfigurator.WPF.Core;
+    using Giessformkonfigurator.WPF.MVVM.Model.Db_components;
+    using Giessformkonfigurator.WPF.MVVM.Model.Db_supportClasses;
 
     class Components_BaseplateViewModel : ObservableObject
     {
@@ -54,13 +54,11 @@ namespace Gießformkonfigurator.WPF.MVVM.ViewModel
             if (this.Baseplate.ID.ToString().Length <= 1
                 || this.Baseplate.OuterDiameter == 0
                 || this.Baseplate.Height == 0
-                || this.Baseplate.OuterDiameter < this.Baseplate.InnerDiameter
-                || ((this.Baseplate.OuterKonusMax ?? 0) == 0)
-                || ((this.Baseplate.OuterKonusMin ?? 0) == 0)
-                || ((this.Baseplate.OuterKonusAngle ?? 0) == 0)
-                || ((this.Baseplate.KonusHeight ?? 0) == 0)
-                || (this.Baseplate.HasKonus && (((this.Baseplate.InnerKonusMin ?? 0) == 0) || ((this.Baseplate.InnerKonusMax ?? 0) == 0) || ((this.Baseplate.InnerKonusAngle ?? 0) == 0)))
-                || (this.Baseplate.HasHoleguide && ((this.Baseplate.InnerDiameter ?? 0) == 0)))
+                || this.Baseplate.OuterKonusMax == 0
+                || this.Baseplate.OuterKonusMin == 0
+                || this.Baseplate.OuterKonusAngle == 0
+                || this.Baseplate.KonusHeight == 0
+                || (this.Baseplate.HasKonus && (((this.Baseplate.InnerKonusMin ?? 0) == 0) || ((this.Baseplate.InnerKonusMax ?? 0) == 0) || ((this.Baseplate.InnerKonusAngle ?? 0) == 0))))
             {
                 return false;
             }

@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Data;
-
-namespace Gießformkonfigurator.WPF.MVVM.View.Converter
+﻿namespace Giessformkonfigurator.WPF.MVVM.View.Converter
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Windows.Data;
+
     public class DecimalConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
