@@ -12,220 +12,428 @@
     
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
-        <Style x:Key="errorToolTip" TargetType="Control">
-            <Style.Triggers>
-                <Trigger Property="Validation.HasError" Value="True">
-                    <Setter Property="ToolTip" 
-                        Value="{
-                            Binding RelativeSource={x:Static RelativeSource.Self}, 
-                            Path=(Validation.Errors)/ErrorContent}"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-        <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource errorToolTip}"/>
     </UserControl.Resources>
-    
-    <Grid HorizontalAlignment="Center">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="100"/>
-            <ColumnDefinition Width="140"/>
-            <ColumnDefinition Width="200"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="65"/>
-            <RowDefinition Height="65"/>
-            <RowDefinition Height="65"/>
-            <RowDefinition Height="65"/>
-            <RowDefinition Height="65"/>
-            <RowDefinition Height="65"/>
-            <RowDefinition Height="65"/>
-        </Grid.RowDefinitions>
-        <Grid.Resources>
-            <Style TargetType="TextBox">
-                <Setter Property="Width" Value="200"/>
-                <Setter Property="Height" Value="40"/>
-                <Setter Property="VerticalAlignment" Value="Center"/>
-                <Setter Property="HorizontalAlignment" Value="Left"/>
-                <Setter Property="Foreground" Value="Black"/>
-                <Setter Property="VerticalContentAlignment" Value="Center"/>
-                <Setter Property="FontSize" Value="15"/>
-            </Style>
-            <Style TargetType="TextBlock">
-                <Setter Property="HorizontalAlignment" Value="Left"/>
-                <Setter Property="VerticalAlignment" Value="Center"/>
-                <Setter Property="Foreground" Value="Black"/>
-                <Setter Property="FontSize" Value="15"/>
-                <Setter Property="Margin" Value="0,0,10,0"/>
-            </Style>
-            <Style TargetType="RadioButton">
-                <Setter Property="Width" Value="150"/>
-                <Setter Property="Height" Value="30"/>
-                <Setter Property="VerticalAlignment" Value="Center"/>
-                <Setter Property="HorizontalAlignment" Value="Left"/>
-                <Setter Property="Margin" Value="0,0,0,0"/>
-                <Setter Property="Foreground" Value="Black"/>
-                <Setter Property="FontSize" Value="15"/>
-                <Setter Property="VerticalContentAlignment" Value="Center"/>
-            </Style>
-        </Grid.Resources>
 
-        <TextBlock Text="SAP-Nr." Grid.Row="0" Grid.Column="0"/>
-        <TextBox x:Name="ID_TextBox" Grid.Row="0" Grid.Column="1">
-            <TextBox.Text>
-                <Binding Path="Cupform.ID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
-                    <Binding.ValidationRules>
-                        <validationRules:MandatoryFieldValidationRule/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="10">
+        <Grid HorizontalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="200"/>
+            </Grid.ColumnDefinitions>
 
-        <TextBlock Text="Bezeichnung" Grid.Row="1" Grid.Column="0"/>
-        <TextBox x:Name="Description_TextBox" Grid.Row="1" Grid.Column="1">
-            <TextBox.Text>
-            <Binding Path="Cupform.Description" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
-                <Binding.ValidationRules>
-                        <validationRules:MandatoryFieldValidationRule/>
-                    </Binding.ValidationRules>
-            </Binding>
-            </TextBox.Text>
-        </TextBox>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="65"/>
+            </Grid.RowDefinitions>
 
-        <TextBlock Text="Cup-Typ" Grid.Row="2" Grid.Column="0"/>
-        <TextBox x:Name="CupType_TextBox" Grid.Row="2" Grid.Column="1">
-            <TextBox.Text>
-                <Binding Path="Cupform.cup_typ" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
-                    <Binding.ValidationRules>
-                        <validationRules:MandatoryFieldValidationRule/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
-
-        <TextBlock Text="Innendurchmesser" Grid.Row="3" Grid.Column="0"/>
-        <TextBox x:Name="InnerDiameter_TextBox" Grid.Row="3" Grid.Column="1">
-            <TextBox.Text>
-                <Binding Path="Cupform.InnerDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
-                    <Binding.ValidationRules>
-                        <validationRules:InputValueRangeValidationRule/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
-
-        <TextBlock Text="Innendurchmesser Toleranz" Grid.Row="4" Grid.Column="0"/>
-        <TextBox x:Name="ToleranceInnerDiameter_TextBox" Grid.Row="4" Grid.Column="1">
-            <TextBox.Text>
-                <Binding Path="Cupform.ToleranceInnerDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
-                    <Binding.ValidationRules>
-
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
-
-        <TextBlock Text="Lochkreis" Grid.Row="5" Grid.Column="0"/>
-        <TextBox x:Name="HoleCircle_TextBox" Grid.Row="5" Grid.Column="1">
-            <TextBox.Text>
-                <Binding Path="Cupform.holecircle" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
-                    <Binding.ValidationRules>
-                        
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
-
-        <CheckBox x:Name="fuehrungsstift_CheckBox" Content="Führungsstift"
-                  Grid.Column="3"
-                  VerticalAlignment="Center"
-                  Foreground="Black" FontSize="15"/>
-
-        <CheckBox x:Name="innengewinde_CheckBox" Content="Innengewinde"
-                  Grid.Column="3" Grid.Row="0" Grid.RowSpan="2" 
-                  VerticalAlignment="Center"
-                  Foreground="Black" FontSize="15"/>
-
-        <CheckBox x:Name="HasKonus_CheckBox" Content="Konusführung"
-                  Grid.Column="3" Grid.Row="1"
-                  VerticalAlignment="Center"
-                  Foreground="Black" FontSize="15"/>
-
-        <CheckBox x:Name="lochfuehrung_CheckBox" Content="Lochführung"
-                  Grid.Column="3" Grid.Row="1" Grid.RowSpan="2"
-                  VerticalAlignment="Center"
-                  Foreground="Black" FontSize="15"/>
-
-        <CheckBox x:Name="innenkern_CheckBox" Content="Innenkern"
-                  Grid.Column="3" Grid.Row="2"
-                  VerticalAlignment="Center"
-                  Foreground="Black" FontSize="15"/>
-
-        <TextBlock Text="Konus Innen Max" Grid.Row="3" Grid.Column="3" Visibility="{Binding ElementName=HasKonus_CheckBox, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
-        <TextBox x:Name="KonusInsideMax_TextBox" Grid.Row="3" Grid.Column="4" Visibility="{Binding ElementName=HasKonus_CheckBox, Path=IsChecked, Converter={StaticResource BoolToVis}}"> 
-            <TextBox.Text>
-                <Binding Path="Cupform.KonusInsideMax" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
-                    <Binding.ValidationRules>
-                        <validationRules:InputValueRangeValidationRule/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
-
-        <TextBlock Text="Konus Innen Min" Grid.Row="4" Grid.Column="3" Visibility="{Binding ElementName=HasKonus_CheckBox, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
-        <TextBox x:Name="KonusInsideMin_TextBox" Grid.Row="4" Grid.Column="4" Visibility="{Binding ElementName=HasKonus_CheckBox, Path=IsChecked, Converter={StaticResource BoolToVis}}">
-            <TextBox.Text>
-                <Binding Path="Cupform.KonusInsidemin" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
-                    <Binding.ValidationRules>
-                        <validationRules:InputValueRangeValidationRule/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-
-        </TextBox>
-
-        <TextBlock Text="Konus Innen Winkel" Grid.Row="5" Grid.Column="3" Visibility="{Binding ElementName=HasKonus_CheckBox, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
-        <TextBox x:Name="KonusInsideAngel_TextBox" Grid.Row="5" Grid.Column="4" Visibility="{Binding ElementName=HasKonus_CheckBox, Path=IsChecked, Converter={StaticResource BoolToVis}}">
-            <TextBox.Text>
-                <Binding Path="Cupform.KonusInsideAngel" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
-                    <Binding.ValidationRules>
-                        <validationRules:InputValueRangeValidationRule/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-                 
-        </TextBox>
-
-        <Button x:Name="Hinzufuegen" Content="Hinzufügen" Command="{Binding insertIntoDbCmd}" Grid.Column="4" Grid.Row="6">
-            <Button.Style>
-                <Style TargetType="Button">
-                    <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Grid.Resources>
+                <Style TargetType="TextBox">
+                    <Setter Property="Width" Value="200"/>
+                    <Setter Property="Height" Value="40"/>
                     <Setter Property="VerticalAlignment" Value="Center"/>
-                    <Setter Property="Width" Value="150"/>
-                    <Setter Property="Height" Value="50"/>
+                    <Setter Property="HorizontalAlignment" Value="Left"/>
                     <Setter Property="Foreground" Value="Black"/>
-                    <Setter Property="Background" Value="White"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
                     <Setter Property="FontSize" Value="15"/>
-                    <Setter Property="IsEnabled" Value="False"/>
-                    <Style.Triggers>
-                        <MultiDataTrigger>
-                            <MultiDataTrigger.Conditions>
-                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=ID_TextBox}" Value="False"/>
-                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=Description_TextBox}" Value="False"/>
-                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=CupType_TextBox}" Value="False"/>
-                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=InnerDiameter_TextBox}" Value="False"/>
-                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=ToleranceInnerDiameter_TextBox}" Value="False"/>
-                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=HoleCircle_TextBox}" Value="False"/>
-                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=KonusInsideMax_TextBox}" Value="False"/>
-                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=KonusInsideMin_TextBox}" Value="False"/>
-                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=KonusInsideAngel_TextBox}" Value="False"/> 
-                            </MultiDataTrigger.Conditions>
-                            <Setter Property="IsEnabled" Value="True"/>
-                        </MultiDataTrigger>
-                    </Style.Triggers>
                 </Style>
-            </Button.Style>
-        </Button>
-    </Grid>
+
+                <Style TargetType="TextBlock">
+                    <Setter Property="HorizontalAlignment" Value="Left"/>
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="FontSize" Value="15"/>
+                    <Setter Property="Margin" Value="0,0,10,0"/>
+                </Style>
+
+                <Style TargetType="RadioButton">
+                    <Setter Property="Width" Value="150"/>
+                    <Setter Property="Height" Value="30"/>
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="HorizontalAlignment" Value="Left"/>
+                    <Setter Property="Margin" Value="0,0,0,0"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="FontSize" Value="15"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                </Style>
+            </Grid.Resources>
+
+            <TextBlock Text="Basisattribute" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontSize="20" FontWeight="Bold"/>
+
+            <TextBlock Text="SAP-Nr." Grid.Row="1" Grid.Column="0"/>
+            <TextBox x:Name="ID_TextBox" Grid.Row="1" Grid.Column="1">
+                <TextBox.Text>
+                    <Binding Path="Cupform.ID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <validationRules:MandatoryFieldValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBlock Text="Bezeichnung" Grid.Row="2" Grid.Column="0"/>
+            <TextBox x:Name="Description_TextBox" Grid.Row="2" Grid.Column="1" >
+                <TextBox.Text>
+                    <Binding Path="Cupform.Description" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBlock Text="Cup Typ" Grid.Row="3" Grid.Column="0"/>
+            <TextBox x:Name="CupType_TextBox" Grid.Row="3" Grid.Column="1">
+                <TextBox.Text>
+                    <Binding Path="Cupform.CupType" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <validationRules:InputValueRangeValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBlock Text="Größe" Grid.Row="4" Grid.Column="0"/>
+            <TextBox x:Name="Size_TextBox" Grid.Row="4" Grid.Column="1">
+                <TextBox.Text>
+                    <Binding Path="Cupform.Size" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <validationRules:InputValueRangeValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBlock Text="Innendurchmesser" Grid.Row="5" Grid.Column="0"/>
+            <TextBox x:Name="InnerDiameter_TextBox" Grid.Row="5" Grid.Column="1">
+                <TextBox.Text>
+                    <Binding Path="Cupform.InnerDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
+                        <Binding.ValidationRules>
+                            <validationRules:InputValueRangeValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBlock Text="Typenattribute" Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="2" FontSize="20" FontWeight="Bold"/>
+            
+            <!-- Konusführung -->
+            <RadioButton x:Name="HasKonus" Content="Konusführung" GroupName="TypeAttributes" Grid.Column="3" Grid.Row="1" IsChecked="{Binding Cupform.HasKonus}"/>
+
+            <TextBlock Text="Konus Innen Max." Grid.Row="3" Grid.Column="3" Visibility="{Binding ElementName=HasKonus, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
+            <TextBox x:Name="InnerKonusMax_TextBox" Grid.Row="3" Grid.Column="4" Visibility="{Binding ElementName=HasKonus, Path=IsChecked, Converter={StaticResource BoolToVis}}">
+                <TextBox.Text>
+                    <Binding Path="Cupform.InnerKonusMax" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
+                        <Binding.ValidationRules>
+                            <validationRules:InputValueRangeValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBlock Text="Konus Innen Min" Grid.Row="4" Grid.Column="3" Visibility="{Binding ElementName=HasKonus, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
+            <TextBox x:Name="InnerKonusMin_TextBox" Grid.Row="4" Grid.Column="4" Visibility="{Binding ElementName=HasKonus, Path=IsChecked, Converter={StaticResource BoolToVis}}">
+                <TextBox.Text>
+                    <Binding Path="Cupform.InnerKonusMin" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
+                        <Binding.ValidationRules>
+                            <validationRules:InputValueRangeValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBlock Text="Konus Innen Winkel" Grid.Row="5" Grid.Column="3" Visibility="{Binding ElementName=HasKonus, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
+            <TextBox x:Name="InnerKonusAngle_TextBox" Grid.Row="5" Grid.Column="4" Visibility="{Binding ElementName=HasKonus, Path=IsChecked, Converter={StaticResource BoolToVis}}">
+                <TextBox.Text>
+                    <Binding Path="Cupform.InnerKonusAngle" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
+                        <Binding.ValidationRules>
+                            <validationRules:InputValueRangeValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBlock Text="Konus Innen Höhe" Grid.Row="6" Grid.Column="3" Visibility="{Binding ElementName=HasKonus, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
+            <TextBox x:Name="InnerKonusHeight_TextBox" Grid.Row="6" Grid.Column="4" Visibility="{Binding ElementName=HasKonus, Path=IsChecked, Converter={StaticResource BoolToVis}}">
+                <TextBox.Text>
+                    <Binding Path="Cupform.InnerKonusHeight" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
+                        <Binding.ValidationRules>
+                            <validationRules:InputValueRangeValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <!-- Kern -->
+            <RadioButton x:Name="HasCore" Content="Kern" GroupName="TypeAttributes" Grid.Column="3" Grid.Row="1" Grid.RowSpan="2" IsChecked="{Binding Cupform.HasCore}"/>
+
+            <!-- Gewinde -->
+            <RadioButton x:Name="HasThread" Content="Gewinde" GroupName="TypeAttributes" Grid.Column="3" Grid.Row="2" IsChecked="{Binding Cupform.HasThread}"/>
+
+            <TextBlock Text="Gewinde" Grid.Row="3" Grid.Column="3" Visibility="{Binding ElementName=HasThread, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
+            <TextBox x:Name="Thread_TextBox" Grid.Row="3" Grid.Column="4" Visibility="{Binding ElementName=HasThread, Path=IsChecked, Converter={StaticResource BoolToVis}}">
+                <TextBox.Text>
+                    <Binding Path="Cupform.Thread" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
+                        <Binding.ValidationRules>
+                            <validationRules:InputValueRangeValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBlock Text="Lochkreise" Grid.Row="0" Grid.Column="6" Grid.ColumnSpan="2" FontSize="20" FontWeight="Bold"/>
+            <TextBlock Text="Anzahl:" Grid.Column="6" Grid.Row="1"/>
+            <ComboBox Grid.Row="1" Grid.Column="7" HorizontalAlignment="Stretch" VerticalAlignment="Center" x:Name="HoleCircles">
+                <ComboBoxItem Content="0" IsSelected="True"/>
+                <ComboBoxItem Content="1"/>
+                <ComboBoxItem Content="2"/>
+                <ComboBoxItem Content="3"/>
+            </ComboBox>
+
+            <TextBlock Text="Fester Lochkreis" Grid.Row="2" Grid.Column="6"/>
+            <CheckBox Grid.Row="2" Grid.Column="7" VerticalAlignment="Center" IsChecked="{Binding Cupform.HasFixedBTC}" />
+
+            <!-- BTC 1 Formular -->
+            <Grid Grid.Column="7" Grid.Row="3" Grid.RowSpan="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.Style>
+                    <Style TargetType="Grid">
+                        <Setter Property="Visibility" Value="Hidden"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Text, ElementName=HoleCircles}" Value="1">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Text, ElementName=HoleCircles}" Value="2">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Text, ElementName=HoleCircles}" Value="3">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+
+                <TextBox x:Name="A_HoleCircle_TextBox" Grid.Row="0">
+                    <TextBox.Text>
+                        <Binding Path="Cupform.BTC1" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <TextBox x:Name="A_HoleCircleThread_TextBox" Grid.Row="1">
+                    <TextBox.Text>
+                        <Binding Path="Cupform.BTC1Thread" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
+                            <Binding.ValidationRules>
+                                <validationRules:InputValueRangeValidationRule/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+            </Grid>
+
+            <Grid Grid.Row="3" Grid.Column="6" Grid.RowSpan="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.Style>
+                    <Style TargetType="Grid">
+                        <Setter Property="Visibility" Value="Hidden"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Text, ElementName=HoleCircles}" Value="1">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Text, ElementName=HoleCircles}" Value="2">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Text, ElementName=HoleCircles}" Value="3">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+
+                <TextBlock Text="BTC 1" Grid.Row="0"/>
+                <TextBlock Text="Gewinde" Grid.Row="1"/>
+            </Grid>
+
+            <!-- BTC 2 Formular -->
+            <Grid Grid.Column="7" Grid.Row="5" Grid.RowSpan="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.Style>
+                    <Style TargetType="Grid">
+                        <Setter Property="Visibility" Value="Hidden"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Text, ElementName=HoleCircles}" Value="2">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Text, ElementName=HoleCircles}" Value="3">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+
+                <TextBox x:Name="B_HoleCircle_TextBox" Grid.Row="0">
+                    <TextBox.Text>
+                        <Binding Path="Cupform.BTC2" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <TextBox x:Name="B_HoleCircleThread_TextBox" Grid.Row="1">
+                    <TextBox.Text>
+                        <Binding Path="Cupform.BTC2Thread" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
+                            <Binding.ValidationRules>
+                                <validationRules:InputValueRangeValidationRule/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+            </Grid>
+
+            <Grid Grid.Row="5" Grid.Column="6" Grid.RowSpan="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.Style>
+                    <Style TargetType="Grid">
+                        <Setter Property="Visibility" Value="Hidden"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Text, ElementName=HoleCircles}" Value="2">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Text, ElementName=HoleCircles}" Value="3">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+
+                <TextBlock Text="BTC 2" Grid.Row="0"/>
+                <TextBlock Text="Gewinde" Grid.Row="1"/>
+            </Grid>
+
+            <!-- BTC 3 Formular -->
+            <Grid Grid.Column="7" Grid.Row="7" Grid.RowSpan="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.Style>
+                    <Style TargetType="Grid">
+                        <Setter Property="Visibility" Value="Hidden"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Text, ElementName=HoleCircles}" Value="3">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+
+                <TextBox x:Name="C_HoleCircle_TextBox" Grid.Row="0">
+                    <TextBox.Text>
+                        <Binding Path="Cupform.BTC3" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <TextBox x:Name="C_HoleCircleThread_TextBox" Grid.Row="1">
+                    <TextBox.Text>
+                        <Binding Path="Cupform.BTC3Thread" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
+                            <Binding.ValidationRules>
+                                <validationRules:InputValueRangeValidationRule/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+            </Grid>
+
+            <Grid Grid.Row="7" Grid.Column="6" Grid.RowSpan="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.Style>
+                    <Style TargetType="Grid">
+                        <Setter Property="Visibility" Value="Hidden"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Text, ElementName=HoleCircles}" Value="3">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+
+                <TextBlock Text="BTC 3" Grid.Row="0"/>
+                <TextBlock Text="Gewinde" Grid.Row="1"/>
+            </Grid>
+
+
+            <Button x:Name="Hinzufuegen" Content="Hinzufügen" Command="{Binding InsertIntoDbCmd}" Grid.Column="9" Grid.Row="10">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="HorizontalAlignment" Value="Right"/>
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                        <Setter Property="Width" Value="150"/>
+                        <Setter Property="Height" Value="50"/>
+                        <Setter Property="Foreground" Value="Black"/>
+                        <Setter Property="Background" Value="White"/>
+                        <Setter Property="FontSize" Value="15"/>
+                        <Setter Property="IsEnabled" Value="False"/>
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=ID_TextBox}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=Description_TextBox}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=CupType_TextBox}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=Size_TextBox}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=InnerDiameter_TextBox}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=InnerKonusHeight_TextBox}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=InnerKonusMax_TextBox}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=InnerKonusMin_TextBox}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=InnerKonusAngle_TextBox}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=A_HoleCircleThread_TextBox}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=A_HoleCircle_TextBox}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=B_HoleCircleThread_TextBox}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=B_HoleCircle_TextBox}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=C_HoleCircleThread_TextBox}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=C_HoleCircle_TextBox}" Value="False"/>
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="IsEnabled" Value="True"/>
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+        </Grid>
+    </ScrollViewer>
 </UserControl>

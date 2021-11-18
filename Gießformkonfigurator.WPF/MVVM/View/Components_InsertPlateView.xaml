@@ -8,448 +8,448 @@
              mc:Ignorable="d" 
              d:DesignHeight="1200" d:DesignWidth="1600"
              Background="White">
-    
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
     </UserControl.Resources>
-    
-    <Grid HorizontalAlignment="Center">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="100"/>
-            <ColumnDefinition Width="190"/>
-            <ColumnDefinition Width="200"/>
-            <ColumnDefinition Width="100"/>
-            <ColumnDefinition Width="100"/>
-            <ColumnDefinition Width="50"/>
-            <ColumnDefinition Width="110"/>
-            <ColumnDefinition Width="200"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="65"/>
-            <RowDefinition Height="65"/>
-            <RowDefinition Height="65"/>
-            <RowDefinition Height="65"/>
-            <RowDefinition Height="65"/>
-            <RowDefinition Height="65"/>
-            <RowDefinition Height="65"/>
-            <RowDefinition Height="65"/>
-            <RowDefinition Height="65"/>
-            <RowDefinition Height="65"/>
-        </Grid.RowDefinitions>
 
-        <Grid.Resources>
-            <Style TargetType="TextBox">
-                <Setter Property="Width" Value="200"/>
-                <Setter Property="Height" Value="40"/>
-                <Setter Property="VerticalAlignment" Value="Center"/>
-                <Setter Property="HorizontalAlignment" Value="Left"/>
-                <Setter Property="Foreground" Value="Black"/>
-                <Setter Property="VerticalContentAlignment" Value="Center"/>
-                <Setter Property="FontSize" Value="15"/>
-            </Style>
-            <Style TargetType="TextBlock">
-                <Setter Property="HorizontalAlignment" Value="Left"/>
-                <Setter Property="VerticalAlignment" Value="Center"/>
-                <Setter Property="Foreground" Value="Black"/>
-                <Setter Property="FontSize" Value="15"/>
-                <Setter Property="Margin" Value="0,0,10,0"/>
-            </Style>
-            <Style TargetType="RadioButton">
-                <Setter Property="Width" Value="150"/>
-                <Setter Property="Height" Value="30"/>
-                <Setter Property="VerticalAlignment" Value="Center"/>
-                <Setter Property="HorizontalAlignment" Value="Left"/>
-                <Setter Property="Margin" Value="0,0,0,0"/>
-                <Setter Property="Foreground" Value="Black"/>
-                <Setter Property="FontSize" Value="15"/>
-                <Setter Property="VerticalContentAlignment" Value="Center"/>
-            </Style>
-        </Grid.Resources>
-
-        <TextBlock Text="SAP-Nr." Grid.Row="0" Grid.Column="0"/>
-        <TextBox x:Name="ID_TextBox" Grid.Row="0" Grid.Column="1">
-            <TextBox.Text>
-                <Binding Path="InsertPlate.ID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
-                    <Binding.ValidationRules>
-                        <validationRules:MandatoryFieldValidationRule/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
-
-        <TextBlock Text="Bezeichnung" Grid.Row="1" Grid.Column="0"/>
-        <TextBox x:Name="Description_TextBox" Grid.Row="1" Grid.Column="1">
-            <TextBox.Text>
-                <Binding Path="InsertPlate.Description" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
-                    <Binding.ValidationRules>
-                        <validationRules:MandatoryFieldValidationRule/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
-
-        <TextBlock Text="Außendurchmeser" Grid.Row="2" Grid.Column="0"/>
-        <TextBox x:Name="OuterDiameter_TextBox" Grid.Row="2" Grid.Column="1">
-            <TextBox.Text>
-                <Binding Path="InsertPlate.OuterDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
-                    <Binding.ValidationRules>
-                        <validationRules:InputValueRangeValidationRule/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
-
-        <TextBlock Text="Toleranz Außendurchmesser" Grid.Row="3" Grid.Column="0"/>
-        <TextBox x:Name="OuterDiameterTolerance_TextBox" Grid.Row="3" Grid.Column="1">
-            <TextBox.Text>
-                <Binding Path="InsertPlate.ToleranceOuterDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
-                    <Binding.ValidationRules>
-                        <validationRules:MandatoryFieldValidationRule/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
-
-        <TextBlock Text="Höhe" Grid.Row="4" Grid.Column="0"/>
-        <TextBox x:Name="Height_TextBox" Grid.Row="4" Grid.Column="1">
-            <TextBox.Text>
-                <Binding Path="InsertPlate.Height" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
-                    <Binding.ValidationRules>
-                        <validationRules:InputValueRangeValidationRule/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
-
-        <TextBlock Text="Konus Außen Max." Grid.Row="5" Grid.Column="0"/>
-        <TextBox x:Name="OuterKonusMax_TextBox" Grid.Row="5" Grid.Column="1">
-            <TextBox.Text>
-                <Binding Path="InsertPlate.OuterKonusMax" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue=""> 
-                    <Binding.ValidationRules>
-                        <validationRules:InputValueRangeValidationRule/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
-
-        <TextBlock Text="Konus Außen Min." Grid.Row="6" Grid.Column="0"/>
-        <TextBox x:Name="OuterKonusMin_TextBox" Grid.Row="6" Grid.Column="1">
-            <TextBox.Text>
-                <Binding Path="InsertPlate.OuterKonusMin" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
-                    <Binding.ValidationRules>
-                        <validationRules:InputValueRangeValidationRule/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
-
-        <TextBlock Text="Konus Außen Winkel" Grid.Row="7" Grid.Column="0"/>
-        <TextBox x:Name="OuterKonusAngle_TextBox" Grid.Row="7" Grid.Column="1">
-            <TextBox.Text>
-                <Binding Path="InsertPlate.OuterKonusAngle" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
-                    <Binding.ValidationRules>
-                        <validationRules:InputValueRangeValidationRule/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
-
-        <TextBlock Text="Konus Höhe" Grid.Row="8" Grid.Column="0"/>
-        <TextBox x:Name="KonusHeight_TextBox" Grid.Row="8" Grid.Column="1">
-            <TextBox.Text>
-                <Binding Path="InsertPlate.KonusHeight" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
-                    <Binding.ValidationRules>
-                        <validationRules:InputValueRangeValidationRule/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
-
-        <RadioButton x:Name="HasHoleGuide" Content="Lochführung" GroupName="LochKernKonus" Grid.Column="3" Grid.Row="0" IsChecked="{Binding InsertPlate.HasHoleguide}"/>
-        <RadioButton x:Name="HasCore" Content="Kern" GroupName="LochKernKonus" Grid.Column="3" Grid.RowSpan="2" IsChecked="{Binding InsertPlate.HasCore}"/>
-        <RadioButton x:Name="HasKonus" Content="Konusführung" GroupName="LochKernKonus" Grid.Column="3" Grid.Row="1" IsChecked="{Binding InsertPlate.HasKonus}"/>
-
-        <TextBlock Text="Konus Innen Max." Grid.Row="2" Grid.Column="3" Visibility="{Binding ElementName=HasKonus, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
-        <TextBox x:Name="InnerKonusMax_TextBox" Grid.Row="2" Grid.Column="4" Visibility="{Binding ElementName=HasKonus, Path=IsChecked, Converter={StaticResource BoolToVis}}">
-            <TextBox.Text>
-                <Binding Path="InsertPlate.InnerKonusMax" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
-                    <Binding.ValidationRules>
-                        <validationRules:InputValueRangeValidationRule/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
-
-        <TextBlock Text="Konus Innen Min" Grid.Row="3" Grid.Column="3" Visibility="{Binding ElementName=HasKonus, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
-        <TextBox x:Name="InnerKonusMin_TextBox" Grid.Row="3" Grid.Column="4" Visibility="{Binding ElementName=HasKonus, Path=IsChecked, Converter={StaticResource BoolToVis}}">
-            <TextBox.Text>
-                <Binding Path="InsertPlate.InnerKonusMin" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
-                    <Binding.ValidationRules>
-                        <validationRules:InputValueRangeValidationRule/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
-
-        <TextBlock Text="Konus Innen Winkel" Grid.Row="4" Grid.Column="3" Visibility="{Binding ElementName=HasKonus, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
-        <TextBox x:Name="InnerKonusAngle_TextBox" Grid.Row="4" Grid.Column="4" Visibility="{Binding ElementName=HasKonus, Path=IsChecked, Converter={StaticResource BoolToVis}}">
-            <TextBox.Text>
-                <Binding Path="InsertPlate.InnerKonusAngle" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
-                    <Binding.ValidationRules>
-                        <validationRules:InputValueRangeValidationRule/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
-
-        <TextBlock Text="Innendurchmesser" Grid.Row="2" Grid.Column="3" Visibility="{Binding ElementName=HasHoleGuide, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
-        <TextBox x:Name="InnerDiameter_TextBox" Grid.Row="2" Grid.Column="4" Visibility="{Binding ElementName=HasHoleGuide, Path=IsChecked, Converter={StaticResource BoolToVis}}">
-            <TextBox.Text>
-                <Binding Path="InsertPlate.InnerDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
-                    <Binding.ValidationRules>
-                        <validationRules:InputValueRangeValidationRule/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
-
-        <TextBlock Text="Toleranz Innendurchmesser" Grid.Row="3" Grid.Column="3" Visibility="{Binding ElementName=HasHoleGuide, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
-        <TextBox x:Name="InnerDiameterTolerance_TextBox" Grid.Row="3" Grid.Column="4" Visibility="{Binding ElementName=HasHoleGuide, Path=IsChecked, Converter={StaticResource BoolToVis}}">
-            <TextBox.Text>
-                <Binding Path="InsertPlate.ToleranceInnerDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
-                    <Binding.ValidationRules>
-
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
-
-        <TextBlock Text="Anzahl Lochkreise" Grid.Column="6" Grid.ColumnSpan="2"/>
-        <RadioButton x:Name="WithoutHoleCircle" Content="0" GroupName="HoleCircle" Grid.Column="6" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="2" IsChecked="True"/>
-        <RadioButton x:Name="OneHoleCircle" Content="1" GroupName="HoleCircle" Grid.Column="6" Grid.Row="1" Grid.ColumnSpan="2"/>
-        <RadioButton x:Name="TwoHoleCircles" Content="2" GroupName="HoleCircle" Grid.Column="6" Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
-        <RadioButton x:Name="ThreeHoleCircles" Content="3" GroupName="HoleCircle" Grid.Column="6" Grid.Row="2" Grid.ColumnSpan="2"/>
-
-        <Grid Grid.Column="8" Grid.Row="0"
-              Grid.ColumnSpan="2" Grid.RowSpan="3">
-            <Grid.Style>
-                <Style TargetType="Grid">
-                    <Setter Property="Visibility" Value="Hidden"/>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding IsChecked, ElementName=OneHoleCircle}" Value="True">
-                            <Setter Property="Visibility" Value="Visible"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding IsChecked, ElementName=TwoHoleCircles}" Value="True">
-                            <Setter Property="Visibility" Value="Visible"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding IsChecked, ElementName=ThreeHoleCircles}" Value="True">
-                            <Setter Property="Visibility" Value="Visible"/>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </Grid.Style>
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="10">
+        <Grid HorizontalAlignment="Center">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="110"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="200"/>
             </Grid.ColumnDefinitions>
+
             <Grid.RowDefinitions>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="65"/>
                 <RowDefinition Height="65"/>
                 <RowDefinition Height="65"/>
                 <RowDefinition Height="65"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Text="Gewinde"/>
-            <TextBox x:Name="A_HoleCircleThread_TextBox" Grid.Column="1">
-                <TextBox.Text>
-                    <Binding Path="InsertPlate.Hc1Thread" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
-                        <Binding.ValidationRules>
-
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox.Text>
-            </TextBox>
-
-
-            <TextBlock Text="Durchmesser" Grid.Row="1"/>
-            <TextBox x:Name="A_HoleCircleDiameter_TextBox" Grid.Column="1" Grid.Row="1">
-                <TextBox.Text>
-                    <Binding Path="InsertPlate.Hc1Diameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
-                        <Binding.ValidationRules>
-                            <validationRules:InputValueRangeValidationRule/>
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox.Text>
-            </TextBox>
-
-            <TextBlock Text="Bohrungen" Grid.Row="2"/>
-            <TextBox x:Name="A_HoleCircleHoles_TextBox" Grid.Column="1" Grid.Row="2">
-                <TextBox.Text>
-                    <Binding Path="InsertPlate.Hc1Holes" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
-                        <Binding.ValidationRules>
-                            <validationRules:InputValueRangeValidationRule/>
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox.Text>
-            </TextBox>
-        </Grid>
-
-        <Grid Grid.Column="8" Grid.Row="3"
-              Grid.ColumnSpan="2" Grid.RowSpan="3">
-            <Grid.Style>
-                <Style TargetType="Grid">
-                    <Setter Property="Visibility" Value="Hidden"/>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding IsChecked, ElementName=TwoHoleCircles}" Value="True">
-                            <Setter Property="Visibility" Value="Visible"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding IsChecked, ElementName=ThreeHoleCircles}" Value="True">
-                            <Setter Property="Visibility" Value="Visible"/>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </Grid.Style>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="110"/>
-                <ColumnDefinition Width="200"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="65"/>
-                <RowDefinition Height="65"/>
-                <RowDefinition Height="65"/>
-            </Grid.RowDefinitions>
-
-            <Border BorderThickness="0,1,0,0" BorderBrush="Black" Grid.ColumnSpan="2"
-                    Margin="0,0,0,1" VerticalAlignment="Top"/>
-
-            <TextBlock Text="Gewinde"/>
-            <TextBox x:Name="B_HoleCircleThread_TextBox" Grid.Column="1">
-                <TextBox.Text>
-                    <Binding Path="InsertPlate.Hc2Thread" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
-                        <Binding.ValidationRules>
-
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox.Text>
-            </TextBox>
-
-            <TextBlock Text="Durchmesser" Grid.Row="1"/>
-            <TextBox x:Name="B_HoleCircleDiameter_TextBox" Grid.Column="1" Grid.Row="1">
-                <TextBox.Text>
-                    <Binding Path="InsertPlate.Hc2Diameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
-                        <Binding.ValidationRules>
-                            <validationRules:InputValueRangeValidationRule/>
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox.Text>
-            </TextBox>
-
-            <TextBlock Text="Bohrungen" Grid.Row="2"/>
-            <TextBox x:Name="B_HoleCircleHoles_TextBox" Grid.Column="1" Grid.Row="2">
-                <TextBox.Text>
-                    <Binding Path="InsertPlate.Hc2Holes" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
-                        <Binding.ValidationRules>
-                            <validationRules:InputValueRangeValidationRule/>
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox.Text>
-            </TextBox>
-        </Grid>
-
-        <Grid Grid.Column="8" Grid.Row="6"
-              Grid.ColumnSpan="2" Grid.RowSpan="3"
-              Visibility="{Binding ElementName=ThreeHoleCircles, Path=IsChecked, Converter={StaticResource BoolToVis}}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="110"/>
-                <ColumnDefinition Width="200"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="65"/>
-                <RowDefinition Height="65"/>
-                <RowDefinition Height="65"/>
-            </Grid.RowDefinitions>
-
-            <Border BorderThickness="0,1,0,0" BorderBrush="Black" Grid.ColumnSpan="2"
-                    Margin="0,0,0,1" VerticalAlignment="Top"/>
-
-            <TextBlock Text="Gewinde"/>
-            <TextBox x:Name="C_HoleCircleThread_TextBox" Grid.Column="1">
-                <TextBox.Text>
-                    <Binding Path="InsertPlate.Hc3Thread" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
-                        <Binding.ValidationRules>
-
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox.Text>
-            </TextBox>
-
-            <TextBlock Text="Durchmesser " Grid.Row="1"/>
-            <TextBox x:Name="C_HoleCircleDiameter_TextBox" Grid.Column="1" Grid.Row="1">
-                <TextBox.Text>
-                    <Binding Path="InsertPlate.Hc3Diameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
-                        <Binding.ValidationRules>
-                            <validationRules:InputValueRangeValidationRule/>
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox.Text>
-            </TextBox>
-
-            <TextBlock Text="Bohrungen" Grid.Row="2"/>
-            <TextBox x:Name="C_HoleCircleHoles_TextBox" Grid.Column="1" Grid.Row="2">
-                <TextBox.Text>
-                    <Binding Path="InsertPlate.Hc3Holes" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
-                        <Binding.ValidationRules>
-                            <validationRules:InputValueRangeValidationRule/>
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox.Text>
-            </TextBox>
-        </Grid>
-
-        <Button x:Name="Hinzufuegen" Content="Hinzufügen" Command="{Binding InsertIntoDbCmd}" Grid.Column="9" Grid.Row="9">
-            <Button.Style>
-                <Style TargetType="Button">
-                    <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Grid.Resources>
+                <Style TargetType="TextBox">
+                    <Setter Property="Width" Value="200"/>
+                    <Setter Property="Height" Value="40"/>
                     <Setter Property="VerticalAlignment" Value="Center"/>
-                    <Setter Property="Width" Value="150"/>
-                    <Setter Property="Height" Value="50"/>
+                    <Setter Property="HorizontalAlignment" Value="Left"/>
                     <Setter Property="Foreground" Value="Black"/>
-                    <Setter Property="Background" Value="White"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
                     <Setter Property="FontSize" Value="15"/>
-                    <Setter Property="IsEnabled" Value="False"/>
-                    <Style.Triggers>
-                        <MultiDataTrigger>
-                            <MultiDataTrigger.Conditions>
-                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=ID_TextBox}" Value="False"/>
-                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=Description_TextBox}" Value="False"/>
-                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=OuterDiameter_TextBox}" Value="False"/>
-                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=OuterDiameterTolerance_TextBox}" Value="False"/>
-                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=Height_TextBox}" Value="False"/>
-                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=OuterKonusMax_TextBox}" Value="False"/>
-                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=OuterKonusMin_TextBox}" Value="False"/>
-                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=OuterKonusAngle_TextBox}" Value="False"/>
-                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=KonusHeight_TextBox}" Value="False"/>
-                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=InnerKonusMax_TextBox}" Value="False"/>
-                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=InnerKonusMin_TextBox}" Value="False"/>
-                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=InnerKonusAngle_TextBox}" Value="False"/>
-                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=InnerDiameter_TextBox}" Value="False"/>
-                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=InnerDiameterTolerance_TextBox}" Value="False"/>
-                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=A_HoleCircleThread_TextBox}" Value="False"/>
-                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=A_HoleCircleDiameter_TextBox}" Value="False"/>
-                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=A_HoleCircleHoles_TextBox}" Value="False"/>
-                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=B_HoleCircleThread_TextBox}" Value="False"/>
-                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=B_HoleCircleDiameter_TextBox}" Value="False"/>
-                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=B_HoleCircleHoles_TextBox}" Value="False"/>
-                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=C_HoleCircleThread_TextBox}" Value="False"/>
-                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=C_HoleCircleDiameter_TextBox}" Value="False"/>
-                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=C_HoleCircleHoles_TextBox}" Value="False"/>
-                            </MultiDataTrigger.Conditions>
-                            <Setter Property="IsEnabled" Value="True"/>
-                        </MultiDataTrigger>
-                    </Style.Triggers>
                 </Style>
-            </Button.Style>
-        </Button>
-    </Grid>
+
+                <Style TargetType="TextBlock">
+                    <Setter Property="HorizontalAlignment" Value="Left"/>
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="FontSize" Value="15"/>
+                    <Setter Property="Margin" Value="0,0,10,0"/>
+                </Style>
+
+                <Style TargetType="RadioButton">
+                    <Setter Property="Width" Value="150"/>
+                    <Setter Property="Height" Value="30"/>
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="HorizontalAlignment" Value="Left"/>
+                    <Setter Property="Margin" Value="0,0,0,0"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="FontSize" Value="15"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                </Style>
+            </Grid.Resources>
+
+            <TextBlock Text="Basisattribute" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontSize="20" FontWeight="Bold"/>
+
+            <TextBlock Text="SAP-Nr." Grid.Row="1" Grid.Column="0"/>
+            <TextBox x:Name="ID_TextBox" Grid.Row="1" Grid.Column="1">
+                <TextBox.Text>
+                    <Binding Path="InsertPlate.ID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <validationRules:MandatoryFieldValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBlock Text="Bezeichnung" Grid.Row="2" Grid.Column="0"/>
+            <TextBox x:Name="Description_TextBox" Grid.Row="2" Grid.Column="1" >
+                <TextBox.Text>
+                    <Binding Path="InsertPlate.Description" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBlock Text="Außendurchmeser" Grid.Row="3" Grid.Column="0"/>
+            <TextBox x:Name="OuterDiameter_TextBox" Grid.Row="3" Grid.Column="1">
+                <TextBox.Text>
+                    <Binding Path="InsertPlate.OuterDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <validationRules:InputValueRangeValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBlock Text="Höhe" Grid.Row="4" Grid.Column="0"/>
+            <TextBox x:Name="Height_TextBox" Grid.Row="4" Grid.Column="1">
+                <TextBox.Text>
+                    <Binding Path="InsertPlate.Height" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <validationRules:InputValueRangeValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBlock Text="Konus Außen Max." Grid.Row="5" Grid.Column="0"/>
+            <TextBox x:Name="OuterKonusMax_TextBox" Grid.Row="5" Grid.Column="1">
+                <TextBox.Text>
+                    <Binding Path="InsertPlate.OuterKonusMax" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
+                        <Binding.ValidationRules>
+                            <validationRules:InputValueRangeValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBlock Text="Konus Außen Min." Grid.Row="6" Grid.Column="0"/>
+            <TextBox x:Name="OuterKonusMin_TextBox" Grid.Row="6" Grid.Column="1">
+                <TextBox.Text>
+                    <Binding Path="InsertPlate.OuterKonusMin" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
+                        <Binding.ValidationRules>
+                            <validationRules:InputValueRangeValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBlock Text="Konus Außen Winkel" Grid.Row="7" Grid.Column="0"/>
+            <TextBox x:Name="OuterKonusAngle_TextBox" Grid.Row="7" Grid.Column="1">
+                <TextBox.Text>
+                    <Binding Path="InsertPlate.OuterKonusAngle" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
+                        <Binding.ValidationRules>
+                            <validationRules:InputValueRangeValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            
+            <TextBlock Text="Konus Höhe" Grid.Row="8" Grid.Column="0"/>
+            <TextBox x:Name="KonusHeight_TextBox" Grid.Row="8" Grid.Column="1">
+                <TextBox.Text>
+                    <Binding Path="InsertPlate.OuterKonusHeight" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
+                        <Binding.ValidationRules>
+                            <validationRules:InputValueRangeValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBlock Text="Typenattribute" Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="2" FontSize="20" FontWeight="Bold"/>
+
+            <!--Konusführung -->
+            <RadioButton x:Name="HasKonus" Content="Konusführung" GroupName="TypeAttributes" Grid.Column="3" Grid.Row="1" IsChecked="{Binding InsertPlate.HasKonus}"/>
+
+            <TextBlock Text="Konus Innen Max." Grid.Row="3" Grid.Column="3" Visibility="{Binding ElementName=HasKonus, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
+            <TextBox x:Name="InnerKonusMax_TextBox" Grid.Row="3" Grid.Column="4" Visibility="{Binding ElementName=HasKonus, Path=IsChecked, Converter={StaticResource BoolToVis}}">
+                <TextBox.Text>
+                    <Binding Path="InsertPlate.InnerKonusMax" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
+                        <Binding.ValidationRules>
+                            <validationRules:InputValueRangeValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBlock Text="Konus Innen Min" Grid.Row="4" Grid.Column="3" Visibility="{Binding ElementName=HasKonus, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
+            <TextBox x:Name="InnerKonusMin_TextBox" Grid.Row="4" Grid.Column="4" Visibility="{Binding ElementName=HasKonus, Path=IsChecked, Converter={StaticResource BoolToVis}}">
+                <TextBox.Text>
+                    <Binding Path="InsertPlate.InnerKonusMin" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
+                        <Binding.ValidationRules>
+                            <validationRules:InputValueRangeValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBlock Text="Konus Innen Winkel" Grid.Row="5" Grid.Column="3" Visibility="{Binding ElementName=HasKonus, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
+            <TextBox x:Name="InnerKonusAngle_TextBox" Grid.Row="5" Grid.Column="4" Visibility="{Binding ElementName=HasKonus, Path=IsChecked, Converter={StaticResource BoolToVis}}">
+                <TextBox.Text>
+                    <Binding Path="InsertPlate.InnerKonusAngle" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
+                        <Binding.ValidationRules>
+                            <validationRules:InputValueRangeValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBlock Text="Konus Innen Höhe" Grid.Row="6" Grid.Column="3" Visibility="{Binding ElementName=HasKonus, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
+            <TextBox x:Name="InnerKonusHeight_TextBox" Grid.Row="6" Grid.Column="4" Visibility="{Binding ElementName=HasKonus, Path=IsChecked, Converter={StaticResource BoolToVis}}">
+                <TextBox.Text>
+                    <Binding Path="InsertPlate.InnerKonusHeight" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
+                        <Binding.ValidationRules>
+                            <validationRules:InputValueRangeValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <!--Kern -->
+            <RadioButton x:Name="HasCore" Content="Kern" GroupName="TypeAttributes" Grid.Column="3" Grid.Row="1" Grid.RowSpan="2" IsChecked="{Binding InsertPlate.HasCore}"/>
+
+            <TextBlock Text="Lochkreise" Grid.Row="0" Grid.Column="6" Grid.ColumnSpan="2" FontSize="20" FontWeight="Bold"/>
+            <TextBlock Text="Anzahl:" Grid.Column="6" Grid.Row="1"/>
+            <ComboBox Grid.Row="1" Grid.Column="7" HorizontalAlignment="Stretch" VerticalAlignment="Center" x:Name="HoleCircles">
+                <ComboBoxItem Content="0" IsSelected="True"/>
+                <ComboBoxItem Content="1"/>
+                <ComboBoxItem Content="2"/>
+                <ComboBoxItem Content="3"/>
+            </ComboBox>
+
+            <!-- BTC 1 Formular -->
+            <Grid Grid.Column="7" Grid.Row="2" Grid.RowSpan="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.Style>
+                    <Style TargetType="Grid">
+                        <Setter Property="Visibility" Value="Hidden"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Text, ElementName=HoleCircles}" Value="1">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Text, ElementName=HoleCircles}" Value="2">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Text, ElementName=HoleCircles}" Value="3">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+
+                <TextBox x:Name="A_HoleCircle_TextBox" Grid.Row="0">
+                    <TextBox.Text>
+                        <Binding Path="InsertPlate.BTC1" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <TextBox x:Name="A_HoleCircleThread_TextBox" Grid.Row="1">
+                    <TextBox.Text>
+                        <Binding Path="InsertPlate.BTC1Thread" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
+                            <Binding.ValidationRules>
+                                <validationRules:InputValueRangeValidationRule/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+            </Grid>
+
+            <Grid Grid.Row="2" Grid.Column="6" Grid.RowSpan="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.Style>
+                    <Style TargetType="Grid">
+                        <Setter Property="Visibility" Value="Hidden"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Text, ElementName=HoleCircles}" Value="1">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Text, ElementName=HoleCircles}" Value="2">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Text, ElementName=HoleCircles}" Value="3">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+
+                <TextBlock Text="BTC 1" Grid.Row="0"/>
+                <TextBlock Text="Gewinde" Grid.Row="1"/>
+            </Grid>
+
+            <!-- BTC 2 Formular -->
+            <Grid Grid.Column="7" Grid.Row="4" Grid.RowSpan="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.Style>
+                    <Style TargetType="Grid">
+                        <Setter Property="Visibility" Value="Hidden"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Text, ElementName=HoleCircles}" Value="2">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Text, ElementName=HoleCircles}" Value="3">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+
+                <TextBox x:Name="B_HoleCircle_TextBox" Grid.Row="0">
+                    <TextBox.Text>
+                        <Binding Path="InsertPlate.BTC2" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <TextBox x:Name="B_HoleCircleThread_TextBox" Grid.Row="1">
+                    <TextBox.Text>
+                        <Binding Path="InsertPlate.BTC2Thread" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
+                            <Binding.ValidationRules>
+                                <validationRules:InputValueRangeValidationRule/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+            </Grid>
+
+            <Grid Grid.Row="4" Grid.Column="6" Grid.RowSpan="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.Style>
+                    <Style TargetType="Grid">
+                        <Setter Property="Visibility" Value="Hidden"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Text, ElementName=HoleCircles}" Value="2">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Text, ElementName=HoleCircles}" Value="3">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+
+                <TextBlock Text="BTC 2" Grid.Row="0"/>
+                <TextBlock Text="Gewinde" Grid.Row="1"/>
+            </Grid>
+
+            <!-- BTC 3 Formular -->
+            <Grid Grid.Column="7" Grid.Row="6" Grid.RowSpan="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.Style>
+                    <Style TargetType="Grid">
+                        <Setter Property="Visibility" Value="Hidden"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Text, ElementName=HoleCircles}" Value="3">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+
+                <TextBox x:Name="C_HoleCircle_TextBox" Grid.Row="0">
+                    <TextBox.Text>
+                        <Binding Path="InsertPlate.BTC3" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <TextBox x:Name="C_HoleCircleThread_TextBox" Grid.Row="1">
+                    <TextBox.Text>
+                        <Binding Path="InsertPlate.BTC3Thread" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
+                            <Binding.ValidationRules>
+                                <validationRules:InputValueRangeValidationRule/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+            </Grid>
+
+            <Grid Grid.Row="6" Grid.Column="6" Grid.RowSpan="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.Style>
+                    <Style TargetType="Grid">
+                        <Setter Property="Visibility" Value="Hidden"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Text, ElementName=HoleCircles}" Value="3">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+
+                <TextBlock Text="BTC 3" Grid.Row="0"/>
+                <TextBlock Text="Gewinde" Grid.Row="1"/>
+            </Grid>
+
+
+            <Button x:Name="Hinzufuegen" Content="Hinzufügen" Command="{Binding InsertIntoDbCmd}" Grid.Column="9" Grid.Row="9">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="HorizontalAlignment" Value="Right"/>
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                        <Setter Property="Width" Value="150"/>
+                        <Setter Property="Height" Value="50"/>
+                        <Setter Property="Foreground" Value="Black"/>
+                        <Setter Property="Background" Value="White"/>
+                        <Setter Property="FontSize" Value="15"/>
+                        <Setter Property="IsEnabled" Value="False"/>
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=ID_TextBox}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=Description_TextBox}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=OuterDiameter_TextBox}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=Height_TextBox}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=OuterKonusMax_TextBox}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=OuterKonusMin_TextBox}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=OuterKonusAngle_TextBox}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=KonusHeight_TextBox}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=InnerKonusMax_TextBox}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=InnerKonusMin_TextBox}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=InnerKonusAngle_TextBox}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=InnerKonusHeight_TextBox}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=A_HoleCircleThread_TextBox}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=A_HoleCircle_TextBox}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=B_HoleCircleThread_TextBox}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=B_HoleCircle_TextBox}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=C_HoleCircleThread_TextBox}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=C_HoleCircle_TextBox}" Value="False"/>
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="IsEnabled" Value="True"/>
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+        </Grid>
+    </ScrollViewer>
 </UserControl>

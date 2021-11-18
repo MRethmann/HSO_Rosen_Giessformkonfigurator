@@ -32,7 +32,7 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_molds
         public decimal InnerDiameter { get; set; }
 
         [StringLength(10)]
-        public string BTC { get; set; }
+        public string BTC { get; set; } = null;
 
         [NotMapped]
         public decimal? HcDiameter { get; set; }
