@@ -8,190 +8,190 @@
              mc:Ignorable="d" 
              d:DesignHeight="1200" d:DesignWidth="1600"
              Background="White">
-    
+
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
-        <Style x:Key="errorToolTip" TargetType="Control">
-            <Style.Triggers>
-                <Trigger Property="Validation.HasError" Value="True">
-                    <Setter Property="ToolTip" 
-                        Value="{
-                            Binding RelativeSource={x:Static RelativeSource.Self}, 
-                            Path=(Validation.Errors)/ErrorContent}"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-        <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource errorToolTip}"/>
     </UserControl.Resources>
-    
-    <Grid HorizontalAlignment="Center">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="100"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="125"/>
-            <ColumnDefinition Width="200"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="65"/>
-            <RowDefinition Height="65"/>
-            <RowDefinition Height="65"/>
-            <RowDefinition Height="65"/>
-            <RowDefinition Height="65"/>
-            <RowDefinition Height="65"/>
-            <RowDefinition Height="65"/>
-        </Grid.RowDefinitions>
 
-        <Grid.Resources>
-            <Style TargetType="TextBox">
-                <Setter Property="Width" Value="200"/>
-                <Setter Property="Height" Value="40"/>
-                <Setter Property="VerticalAlignment" Value="Center"/>
-                <Setter Property="HorizontalAlignment" Value="Left"/>
-                <Setter Property="Foreground" Value="Black"/>
-                <Setter Property="VerticalContentAlignment" Value="Center"/>
-                <Setter Property="FontSize" Value="15"/>
-            </Style>
-            <Style TargetType="TextBlock">
-                <Setter Property="HorizontalAlignment" Value="Left"/>
-                <Setter Property="VerticalAlignment" Value="Center"/>
-                <Setter Property="Foreground" Value="Black"/>
-                <Setter Property="FontSize" Value="15"/>
-                <Setter Property="Margin" Value="0,0,10,0"/>
-            </Style>
-            <Style TargetType="RadioButton">
-                <Setter Property="Width" Value="150"/>
-                <Setter Property="Height" Value="30"/>
-                <Setter Property="VerticalAlignment" Value="Center"/>
-                <Setter Property="HorizontalAlignment" Value="Left"/>
-                <Setter Property="Margin" Value="0,0,0,0"/>
-                <Setter Property="Foreground" Value="Black"/>
-                <Setter Property="FontSize" Value="15"/>
-                <Setter Property="VerticalContentAlignment" Value="Center"/>
-            </Style>
-        </Grid.Resources>
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="10">
+        <Grid HorizontalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="200"/>
+            </Grid.ColumnDefinitions>
 
-        <TextBlock Text="SAP-Nr." Grid.Row="0" Grid.Column="0"/>
-        <TextBox x:Name="ID_TextBox" Grid.Row="0" Grid.Column="1"
->            <TextBox.Text>
-                <Binding Path="Bolt.ID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
-                    <Binding.ValidationRules>
-                        <validationRules:MandatoryFieldValidationRule/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="65"/>
+            </Grid.RowDefinitions>
 
-        <TextBlock Text="Bezeichnung" Grid.Row="1" Grid.Column="0"/>
-        <TextBox x:Name="Description_TextBox" Grid.Row="1" Grid.Column="1">
-            <TextBox.Text>
-                <Binding Path="Bolt.Description" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
-                    <Binding.ValidationRules>
-
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
-
-        <TextBlock Text="Höhe" Grid.Row="2" Grid.Column="0"/>
-        <TextBox x:Name="height_TextBox" Grid.Row="2" Grid.Column="1">
-            <TextBox.Text>
-                <Binding Path="Bolt.Height" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
-                    <Binding.ValidationRules>
-                        <validationRules:InputValueRangeValidationRule/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
-
-        <TextBlock Text="Außendurchmesser" Grid.Row="3" Grid.Column="0"/> 
-        <TextBox x:Name="OuterDiameter_Textbox" Grid.Row="3" Grid.Column="1">
-            <TextBox.Text>
-                <Binding Path="Bolt.OuterDiameter" Mode="TwoWay" TargetNullValue="">
-                    <Binding.ValidationRules>
-                        <validationRules:InputValueRangeValidationRule/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
-
-        <TextBlock Text="Gießhöhe Max" Grid.Row="4" Grid.Column="0"/>
-        <TextBox x:Name="FillHeight_max_TextBox" Grid.Row="4" Grid.Column="1">
-            <TextBox.Text>
-                <Binding Path="Bolt.FillHeightMax" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
-                    <Binding.ValidationRules>
-                        <validationRules:InputValueRangeValidationRule/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
-
-        <TextBlock Text="Höhe Führung" Grid.Row="5" Grid.Column="0"/> 
-        <TextBox x:Name="GuideHeight_TextBox" Grid.Row="5" Grid.Column="1">
-            <TextBox.Text>
-                <Binding Path="Bolt.GuideHeight" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
-                    <Binding.ValidationRules>
-                        <validationRules:InputValueRangeValidationRule/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
-
-        <TextBlock Text="Außendurchmesser Führung" Grid.Row="6" Grid.Column="0"/> 
-        <TextBox x:Name="GuideOuterDiameter_TextBox" Grid.Row="6" Grid.Column="1">
-            <TextBox.Text>
-                <Binding Path="Bolt.GuideOuterDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
-                    <Binding.ValidationRules>
-                        <validationRules:InputValueRangeValidationRule/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
-
-        <RadioButton x:Name="guide_pin" Content="Führungsstift" GroupName="boltType" Grid.Column="3" Grid.RowSpan="2" IsChecked="{Binding Bolt.HasGuideBolt}"/>
-        <RadioButton x:Name="gewinde" GroupName="boltType" Content="Gewinde" Grid.Column="3" Grid.Row="1" IsChecked="{Binding Bolt.HasThread}"/>
-
-        <TextBlock Text="Gewinde" Grid.Column="4" Grid.Row="1" Visibility="{Binding ElementName=gewinde, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
-        <TextBox x:Name="Thread_TextBox" Grid.Row="1" Grid.Column="5" Visibility="{Binding ElementName=gewinde, Path=IsChecked, Converter={StaticResource BoolToVis}}">
-            <TextBox.Text>
-                <Binding Path="Bolt.Thread" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
-                    <Binding.ValidationRules>
-
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
-        
- 
-        <Button x:Name="Hinzufuegen" Content="Hinzufügen" Command="{Binding InsertIntoDbCmd}" Grid.Column="5" Grid.Row="6">
-            <Button.Style>
-                <Style TargetType="Button">
-                    <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Grid.Resources>
+                <Style TargetType="TextBox">
+                    <Setter Property="Width" Value="200"/>
+                    <Setter Property="Height" Value="40"/>
                     <Setter Property="VerticalAlignment" Value="Center"/>
-                    <Setter Property="Width" Value="150"/>
-                    <Setter Property="Height" Value="50"/>
+                    <Setter Property="HorizontalAlignment" Value="Left"/>
                     <Setter Property="Foreground" Value="Black"/>
-                    <Setter Property="Background" Value="White"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
                     <Setter Property="FontSize" Value="15"/>
-                    <Setter Property="IsEnabled" Value="False"/>
-                    <Style.Triggers>
-                        <MultiDataTrigger>
-                            <MultiDataTrigger.Conditions>
-                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=ID_TextBox}" Value="False"/>
-                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=Description_TextBox}" Value="False"/>
-                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=height_TextBox}" Value="False"/>
-                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=OuterDiameter_Textbox}" Value="False"/>
-                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=FillHeight_max_TextBox}" Value="False"/>
-                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=GuideHeight_TextBox}" Value="False"/>
-                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=GuideOuterDiameter_TextBox}" Value="False"/>
-                            </MultiDataTrigger.Conditions>
-                            <Setter Property="IsEnabled" Value="True"/>
-                        </MultiDataTrigger>
-                    </Style.Triggers>
                 </Style>
-            </Button.Style>
-        </Button>
-    </Grid>
+
+                <Style TargetType="TextBlock">
+                    <Setter Property="HorizontalAlignment" Value="Left"/>
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="FontSize" Value="15"/>
+                    <Setter Property="Margin" Value="0,0,10,0"/>
+                </Style>
+
+                <Style TargetType="RadioButton">
+                    <Setter Property="Width" Value="150"/>
+                    <Setter Property="Height" Value="30"/>
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="HorizontalAlignment" Value="Left"/>
+                    <Setter Property="Margin" Value="0,0,0,0"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="FontSize" Value="15"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                </Style>
+            </Grid.Resources>
+
+            <TextBlock Text="Basisattribute" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontSize="20" FontWeight="Bold"/>
+
+            <TextBlock Text="SAP-Nr." Grid.Row="1" Grid.Column="0"/>
+            <TextBox x:Name="ID_TextBox" Grid.Row="1" Grid.Column="1">
+                <TextBox.Text>
+                    <Binding Path="Bolt.ID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <validationRules:MandatoryFieldValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBlock Text="Bezeichnung" Grid.Row="2" Grid.Column="0"/>
+            <TextBox x:Name="Description_TextBox" Grid.Row="2" Grid.Column="1" >
+                <TextBox.Text>
+                    <Binding Path="Bolt.Description" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBlock Text="Außendurchmeser" Grid.Row="3" Grid.Column="0"/>
+            <TextBox x:Name="OuterDiameter_TextBox" Grid.Row="3" Grid.Column="1">
+                <TextBox.Text>
+                    <Binding Path="Bolt.OuterDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <validationRules:InputValueRangeValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBlock Text="Höhe" Grid.Row="4" Grid.Column="0"/>
+            <TextBox x:Name="Height_TextBox" Grid.Row="4" Grid.Column="1">
+                <TextBox.Text>
+                    <Binding Path="Bolt.Height" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <validationRules:InputValueRangeValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBlock Text="Füllhöhe Max." Grid.Row="5" Grid.Column="0"/>
+            <TextBox x:Name="FillHeightMax_TextBox" Grid.Row="5" Grid.Column="1">
+                <TextBox.Text>
+                    <Binding Path="Bolt.FillHeightMax" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
+                        <Binding.ValidationRules>
+                            <validationRules:InputValueRangeValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBlock Text="Typenattribute" Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="2" FontSize="20" FontWeight="Bold"/>
+            <RadioButton x:Name="HasThread" Content="Gewinde" GroupName="TypeAttributes" Grid.Column="3" Grid.Row="1" IsChecked="{Binding Bolt.HasThread}"/>
+
+            <TextBlock Text="Gewinde" Grid.Row="3" Grid.Column="3" Visibility="{Binding ElementName=HasThread, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
+            <TextBox x:Name="Thread_TextBox" Grid.Row="3" Grid.Column="4" Visibility="{Binding ElementName=HasThread, Path=IsChecked, Converter={StaticResource BoolToVis}}">
+                <TextBox.Text>
+                    <Binding Path="Bolt.Thread" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
+                        <Binding.ValidationRules>
+                            <validationRules:InputValueRangeValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <RadioButton x:Name="HasGuideBolt" Content="Führungsstift" GroupName="TypeAttributes" Grid.Column="3" Grid.Row="1" Grid.RowSpan="2" IsChecked="{Binding Bolt.HasGuideBolt}"/>
+
+            <TextBlock Text="Ø-Führung" Grid.Row="3" Grid.Column="3" Visibility="{Binding ElementName=HasGuideBolt, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
+            <TextBox x:Name="GuideOuterDiameter_TextBox" Grid.Row="3" Grid.Column="4" Visibility="{Binding ElementName=HasGuideBolt, Path=IsChecked, Converter={StaticResource BoolToVis}}">
+                <TextBox.Text>
+                    <Binding Path="Bolt.GuideOuterDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
+                        <Binding.ValidationRules>
+                            <validationRules:InputValueRangeValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBlock Text="Höhe Führung" Grid.Row="4" Grid.Column="3" Visibility="{Binding ElementName=HasGuideBolt, Path=IsChecked, Converter={StaticResource BoolToVis}}"/>
+            <TextBox x:Name="GuideHeight_TextBox" Grid.Row="4" Grid.Column="4" Visibility="{Binding ElementName=HasGuideBolt, Path=IsChecked, Converter={StaticResource BoolToVis}}">
+                <TextBox.Text>
+                    <Binding Path="Bolt.GuideHeight" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="">
+                        <Binding.ValidationRules>
+                            <validationRules:InputValueRangeValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <Button x:Name="Hinzufuegen" Content="Hinzufügen" Command="{Binding InsertIntoDbCmd}" Grid.Column="9" Grid.Row="7">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="HorizontalAlignment" Value="Right"/>
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                        <Setter Property="Width" Value="150"/>
+                        <Setter Property="Height" Value="50"/>
+                        <Setter Property="Foreground" Value="Black"/>
+                        <Setter Property="Background" Value="White"/>
+                        <Setter Property="FontSize" Value="15"/>
+                        <Setter Property="IsEnabled" Value="False"/>
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=ID_TextBox}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=Description_TextBox}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=OuterDiameter_TextBox}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=Height_TextBox}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=FillHeightMax_TextBox}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=Thread_TextBox}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=GuideOuterDiameter_TextBox}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=GuideHeight_TextBox}" Value="False"/>
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="IsEnabled" Value="True"/>
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+        </Grid>
+    </ScrollViewer>
 </UserControl>

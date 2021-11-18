@@ -34,6 +34,17 @@ namespace Giessformkonfigurator.WPF.MVVM.ViewModel
             {
                 try
                 {
+                    /*if (this.Core.HasKonus)
+                    {
+                        this.Core.AdapterDiameter = null;
+                    }
+                    else if (this.Core.HasHoleguide)
+                    {
+                        this.Core.OuterKonusMax = null;
+                        this.Core.OuterKonusMin = null;
+                        this.Core.OuterKonusAngle = null;
+                    }*/
+
                     db.Cores.Add(this.Core);
                     db.SaveChanges();
                     MessageBox.Show("Kern erfolgreich hinzugefügt");

@@ -1,0 +1,462 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5674D79B-26A3-45B5-9CFC-B79795235897}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Giessformkonfigurator.WPF</RootNamespace>
+    <AssemblyName>Giessformkonfigurator.WPF</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <PublishUrl>ftp://192.168.0.32/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>false</MapFileExtensions>
+    <InstallUrl>http://192.168.0.32/</InstallUrl>
+    <TargetCulture>de-DE</TargetCulture>
+    <ProductName>Gießformkonfigurator</ProductName>
+    <MinimumRequiredVersion>1.0.0.5</MinimumRequiredVersion>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>publish.htm</WebPage>
+    <ApplicationRevision>35</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>..\Gießformkonfigurator_Rules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\Giessformkonfigurator.WPF.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Giessformkonfigurator.WPF.App</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>C4B988F4AF92E4FF25CF6047E524CBEA60F45A0F</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>Gießformkonfigurator.WPF_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Images\Gießformkonfigurator.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Core\Settings\RankingSettings.cs" />
+    <Compile Include="Core\Settings\ApplicationSettings.cs" />
+    <Compile Include="Core\Settings\CombinationSettings.cs" />
+    <Compile Include="loginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110261551541_Initial Migration To PROD.cs" />
+    <Compile Include="Migrations\202110261551541_Initial Migration To PROD.Designer.cs">
+      <DependentUpon>202110261551541_Initial Migration To PROD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110270929035_ChangesToDatatypes.cs" />
+    <Compile Include="Migrations\202110270929035_ChangesToDatatypes.Designer.cs">
+      <DependentUpon>202110270929035_ChangesToDatatypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110270931524_ChangesToDatatypes_V2.cs" />
+    <Compile Include="Migrations\202110270931524_ChangesToDatatypes_V2.Designer.cs">
+      <DependentUpon>202110270931524_ChangesToDatatypes_V2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110271122599_ChangesToDatatypes_V3.cs" />
+    <Compile Include="Migrations\202110271122599_ChangesToDatatypes_V3.Designer.cs">
+      <DependentUpon>202110271122599_ChangesToDatatypes_V3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110271156593_AddedSizeToSingleMoldCup.cs" />
+    <Compile Include="Migrations\202110271156593_AddedSizeToSingleMoldCup.Designer.cs">
+      <DependentUpon>202110271156593_AddedSizeToSingleMoldCup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110271529098_AddedHcAttributesToSingleMoldCup.cs" />
+    <Compile Include="Migrations\202110271529098_AddedHcAttributesToSingleMoldCup.Designer.cs">
+      <DependentUpon>202110271529098_AddedHcAttributesToSingleMoldCup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110271532384_HcAttributesNotMapped.cs" />
+    <Compile Include="Migrations\202110271532384_HcAttributesNotMapped.Designer.cs">
+      <DependentUpon>202110271532384_HcAttributesNotMapped.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110271628448_RemovedHcAttributesFromDatabase.cs" />
+    <Compile Include="Migrations\202110271628448_RemovedHcAttributesFromDatabase.Designer.cs">
+      <DependentUpon>202110271628448_RemovedHcAttributesFromDatabase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202111011351090_AddedBTCToCupform.cs" />
+    <Compile Include="Migrations\202111011351090_AddedBTCToCupform.Designer.cs">
+      <DependentUpon>202111011351090_AddedBTCToCupform.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202111101020064_AddedBaseplateOuterEdge.cs" />
+    <Compile Include="Migrations\202111101020064_AddedBaseplateOuterEdge.Designer.cs">
+      <DependentUpon>202111101020064_AddedBaseplateOuterEdge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202111151112273_RemovedTolerancesFromComponentTables.cs" />
+    <Compile Include="Migrations\202111151112273_RemovedTolerancesFromComponentTables.Designer.cs">
+      <DependentUpon>202111151112273_RemovedTolerancesFromComponentTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202111151222065_RemovedMultipleAttributes.cs" />
+    <Compile Include="Migrations\202111151222065_RemovedMultipleAttributes.Designer.cs">
+      <DependentUpon>202111151222065_RemovedMultipleAttributes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202111161033500_InsertPlateHasCore.cs" />
+    <Compile Include="Migrations\202111161033500_InsertPlateHasCore.Designer.cs">
+      <DependentUpon>202111161033500_InsertPlateHasCore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202111161045304_AttributeChanges.cs" />
+    <Compile Include="Migrations\202111161045304_AttributeChanges.Designer.cs">
+      <DependentUpon>202111161045304_AttributeChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202111161059041_Outer\InnerKonusHeightInsertPlate.cs" />
+    <Compile Include="Migrations\202111161100485_KonusHeightChanges.cs" />
+    <Compile Include="Migrations\202111161100485_KonusHeightChanges.Designer.cs">
+      <DependentUpon>202111161100485_KonusHeightChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202111161201428_KonusAttributesOnCupform.cs" />
+    <Compile Include="Migrations\202111161201428_KonusAttributesOnCupform.Designer.cs">
+      <DependentUpon>202111161201428_KonusAttributesOnCupform.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="MVVM\ViewModel\Settings_CombinationSettingsViewModel.cs" />
+    <Compile Include="MVVM\View\Converter\DecimalConverter.cs" />
+    <Compile Include="MVVM\View\Converter\IsNullConverter.cs" />
+    <Compile Include="MVVM\View\Converter\PostProcessingColorSelector.cs" />
+    <Compile Include="MVVM\View\DataTemplates\AdditionalRingTemplateSelector.cs" />
+    <Compile Include="MVVM\View\DataTemplates\DetailsTemplateSelector.cs" />
+    <Compile Include="MVVM\View\DataTemplates\QuickInfoTemplateSelector.cs" />
+    <Compile Include="MVVM\View\DataTemplates\RowDetailsTemplateSelector.cs" />
+    <Compile Include="MVVM\View\Settings_CombinationSettingsView.xaml.cs">
+      <DependentUpon>Settings_CombinationSettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ReportIssueWindow.xaml.cs">
+      <DependentUpon>ReportIssueWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SettingBindingExtension.cs" />
+    <Compile Include="StartWindow.xaml.cs">
+      <DependentUpon>StartWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Core\Settings\ToleranceSettings.cs" />
+    <Compile Include="Core\ObservableObject.cs" />
+    <Compile Include="Core\RelayCommand.cs" />
+    <Compile Include="Enums\moldType.cs" />
+    <Compile Include="Enums\productType.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MVVM\Model\Db_components\Baseplate.cs" />
+    <Compile Include="MVVM\Model\Db_components\Bolt.cs" />
+    <Compile Include="MVVM\Model\Db_components\BoltCircleType.cs" />
+    <Compile Include="MVVM\Model\Db_components\Component.cs" />
+    <Compile Include="MVVM\Model\Db_components\Core.cs" />
+    <Compile Include="MVVM\Model\Db_components\CoreSingleMold.cs" />
+    <Compile Include="MVVM\Model\Db_components\Cupform.cs" />
+    <Compile Include="MVVM\Model\Db_components\InsertPlate.cs" />
+    <Compile Include="MVVM\Model\Db_components\Ring.cs" />
+    <Compile Include="MVVM\Model\Db_molds\ModularMold.cs" />
+    <Compile Include="MVVM\Model\Db_molds\Mold.cs" />
+    <Compile Include="MVVM\Model\Db_molds\SingleMold.cs" />
+    <Compile Include="MVVM\Model\Db_molds\SingleMoldCup.cs" />
+    <Compile Include="MVVM\Model\Db_molds\SingleMoldDisc.cs" />
+    <Compile Include="MVVM\Model\Db_products\Product.cs" />
+    <Compile Include="MVVM\Model\Db_products\ProductCup.cs" />
+    <Compile Include="MVVM\Model\Db_products\ProductDisc.cs" />
+    <Compile Include="MVVM\Model\Db_supportClasses\CoreSingleMoldEntityConfiguration.cs" />
+    <Compile Include="MVVM\Model\Db_supportClasses\SingleMoldDiscEntityConfiguration.cs" />
+    <Compile Include="MVVM\Model\Db_supportClasses\SingleMoldCupEntityConfiguration.cs" />
+    <Compile Include="MVVM\Model\Db_supportClasses\BaseplateEntityConfiguration.cs" />
+    <Compile Include="MVVM\Model\Db_supportClasses\BoltCircleTypeEntityConfiguration.cs" />
+    <Compile Include="MVVM\Model\Db_supportClasses\BoltEntityConfiguration.cs" />
+    <Compile Include="MVVM\Model\Db_supportClasses\CoreEntityConfiguration.cs" />
+    <Compile Include="MVVM\Model\Db_supportClasses\CupformEntityConfiguration.cs" />
+    <Compile Include="MVVM\Model\Db_supportClasses\GießformDBContext.cs" />
+    <Compile Include="MVVM\Model\Db_supportClasses\InsertPlateEntityConfiguration.cs" />
+    <Compile Include="MVVM\Model\Db_supportClasses\ProductCupEntityConfiguration.cs" />
+    <Compile Include="MVVM\Model\Db_supportClasses\ProductDiscEntityConfiguration.cs" />
+    <Compile Include="MVVM\Model\Db_supportClasses\RingEntityConfiguration.cs" />
+    <Compile Include="MVVM\Model\Logic\CombinationJob.cs" />
+    <Compile Include="MVVM\Model\Logic\CombinationRule.cs" />
+    <Compile Include="MVVM\Model\Logic\CombinationRuleset.cs" />
+    <Compile Include="MVVM\Model\Logic\CompareJob.cs" />
+    <Compile Include="MVVM\Model\Logic\CompareObject.cs" />
+    <Compile Include="MVVM\Model\Logic\CompareRule.cs" />
+    <Compile Include="MVVM\Model\Logic\CompareRuleset.cs" />
+    <Compile Include="MVVM\Model\Logic\FilterJob.cs" />
+    <Compile Include="MVVM\Model\Logic\RankingJob.cs" />
+    <Compile Include="MVVM\Model\Logic\SearchJob.cs" />
+    <Compile Include="MVVM\ViewModel\Components_CupformViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\Components_MainViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\DBManagement_MainViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\Mold_CupViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\Components_InsertPlateViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\Mold_MainViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\Components_RingViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\Components_BaseplateViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\Product_CupViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\Product_DiscViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\Product_MainViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\Components_CoreViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\Mold_DiscViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\Components_BoltViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\Search_MainViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\MainViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\Settings_ApplicationSettingsViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\Settings_ToleranceSettingsViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\Settings_MainViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\Settings_RankingSettingsViewModel.cs" />
+    <Compile Include="MVVM\View\ValidationRules\InputValueRangeValidationRule.cs" />
+    <Compile Include="MVVM\View\ValidationRules\MandatoryFieldValidationRule.cs" />
+    <Compile Include="MVVM\View\DBManagement_MainView.xaml.cs">
+      <DependentUpon>DBManagement_MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\Mold_CupView.xaml.cs">
+      <DependentUpon>Mold_CupView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\Settings_MainView.xaml.cs">
+      <DependentUpon>Settings_MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\Settings_ApplicationSettingsView.xaml.cs">
+      <DependentUpon>Settings_ApplicationSettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\Components_MainView.xaml.cs">
+      <DependentUpon>Components_MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\Settings_ToleranceSettingsView.xaml.cs">
+      <DependentUpon>Settings_ToleranceSettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\Components_CupformView.xaml.cs">
+      <DependentUpon>Components_CupformView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\Components_InsertPlateView.xaml.cs">
+      <DependentUpon>Components_InsertPlateView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\Mold_MainView.xaml.cs">
+      <DependentUpon>Mold_MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\Product_CupView.xaml.cs">
+      <DependentUpon>Product_CupView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\Product_DiscView.xaml.cs">
+      <DependentUpon>Product_DiscView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\Settings_RankingSettingsView.xaml.cs">
+      <DependentUpon>Settings_RankingSettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\Components_RingView.xaml.cs">
+      <DependentUpon>Components_RingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\Components_BaseplateView.xaml.cs">
+      <DependentUpon>Components_BaseplateView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\Product_MainView.xaml.cs">
+      <DependentUpon>Product_MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\Components_CoreView.xaml.cs">
+      <DependentUpon>Components_CoreView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\Mold_DiscView.xaml.cs">
+      <DependentUpon>Mold_DiscView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\Components_BoltView.xaml.cs">
+      <DependentUpon>Components_BoltView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\Search_MainView.xaml.cs">
+      <DependentUpon>Search_MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <EmbeddedResource Include="Migrations\202110261551541_Initial Migration To PROD.resx">
+      <DependentUpon>202110261551541_Initial Migration To PROD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110270929035_ChangesToDatatypes.resx">
+      <DependentUpon>202110270929035_ChangesToDatatypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110270931524_ChangesToDatatypes_V2.resx">
+      <DependentUpon>202110270931524_ChangesToDatatypes_V2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110271122599_ChangesToDatatypes_V3.resx">
+      <DependentUpon>202110271122599_ChangesToDatatypes_V3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110271156593_AddedSizeToSingleMoldCup.resx">
+      <DependentUpon>202110271156593_AddedSizeToSingleMoldCup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110271529098_AddedHcAttributesToSingleMoldCup.resx">
+      <DependentUpon>202110271529098_AddedHcAttributesToSingleMoldCup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110271532384_HcAttributesNotMapped.resx">
+      <DependentUpon>202110271532384_HcAttributesNotMapped.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110271628448_RemovedHcAttributesFromDatabase.resx">
+      <DependentUpon>202110271628448_RemovedHcAttributesFromDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111011351090_AddedBTCToCupform.resx">
+      <DependentUpon>202111011351090_AddedBTCToCupform.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111101020064_AddedBaseplateOuterEdge.resx">
+      <DependentUpon>202111101020064_AddedBaseplateOuterEdge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111151112273_RemovedTolerancesFromComponentTables.resx">
+      <DependentUpon>202111151112273_RemovedTolerancesFromComponentTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111151222065_RemovedMultipleAttributes.resx">
+      <DependentUpon>202111151222065_RemovedMultipleAttributes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111161033500_InsertPlateHasCore.resx">
+      <DependentUpon>202111161033500_InsertPlateHasCore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111161045304_AttributeChanges.resx">
+      <DependentUpon>202111161045304_AttributeChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111161100485_KonusHeightChanges.resx">
+      <DependentUpon>202111161100485_KonusHeightChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111161201428_KonusAttributesOnCupform.resx">
+      <DependentUpon>202111161201428_KonusAttributesOnCupform.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Content Include="log4net.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Fonts\" />
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 und x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
+    <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ReferencePath Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll" />
+    <ReferencePath Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll" />
+    <ReferencePath Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\packages\log4net.2.0.12\lib\net45\log4net.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\Microsoft.CSharp.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\mscorlib.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\PresentationCore.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\PresentationFramework.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.ComponentModel.DataAnnotations.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Configuration.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Core.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Data.DataSetExtensions.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Data.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Net.Http.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Web.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Windows.Forms.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Xaml.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Xml.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Xml.Linq.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\WindowsBase.dll" />
+    <ReferencePath Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\packages\WPFTextBoxAutoComplete.1.0.5\lib\net40\WPFTextBoxAutoComplete.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\LoginWindow.g.cs" />
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MainWindow.g.cs" />
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\DBManagement_MainView.g.cs" />
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Mold_CupView.g.cs" />
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Settings_MainView.g.cs" />
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Settings_ApplicationSettingsView.g.cs" />
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Components_MainView.g.cs" />
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Settings_CombinationSettingsView.g.cs" />
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Settings_ToleranceSettingsView.g.cs" />
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Components_CupformView.g.cs" />
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Components_InsertPlateView.g.cs" />
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Mold_MainView.g.cs" />
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Product_CupView.g.cs" />
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Product_DiscView.g.cs" />
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Settings_RankingSettingsView.g.cs" />
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Components_RingView.g.cs" />
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Components_BaseplateView.g.cs" />
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Product_MainView.g.cs" />
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Components_CoreView.g.cs" />
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Mold_DiscView.g.cs" />
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Components_BoltView.g.cs" />
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Search_MainView.g.cs" />
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\ReportIssueWindow.g.cs" />
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\StartWindow.g.cs" />
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\App.g.cs" />
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\Giessformkonfigurator.WPF_Content.g.cs" />
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\GeneratedInternalTypeHelper.g.cs" />
+  </ItemGroup>
+</Project>
