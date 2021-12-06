@@ -79,16 +79,9 @@
                                      IsChecked="True"
                                      Command="{Binding Search_MainViewCmd}" />
 
-                        <Border Margin="0, 30, 0, 30"></Border>
+                            <Border Margin="0, 30, 0, 30"></Border>
 
-                        <RadioButton Content="Produkt"
-                                     x:Name="create_product"
-                                     Height="50" 
-                                     FontSize="20"
-                                     Style="{StaticResource MenuButtonTheme}"
-                                     Command="{Binding Product_MainViewCmd}" />
-
-                        <RadioButton Content="Einteilige Gießform"
+                            <RadioButton Content="Einteilige Gießform"
                                      x:Name="create_one_piece_mold"
                                      Height="50"
                                      FontSize="20"

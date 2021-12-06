@@ -16,18 +16,6 @@
                 <view:Search_MainView/>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type viewModel:Product_MainViewModel}">
-                <view:Product_MainView/>
-            </DataTemplate>
-
-            <DataTemplate DataType="{x:Type viewModel:Product_DiscViewModel}">
-                <view:Product_DiscView/>
-            </DataTemplate>
-
-            <DataTemplate DataType="{x:Type viewModel:Product_CupViewModel}">
-                <view:Product_CupView/>
-            </DataTemplate>
-
             <DataTemplate DataType="{x:Type viewModel:Mold_MainViewModel}">
                 <view:Mold_MainView/>
             </DataTemplate>

@@ -63,7 +63,7 @@
                              Height="50" Width="200"
                              HorizontalAlignment="Center"
                              FontSize="20"
-                             Margin="0,0,10,0" Visibility="Collapsed"
+                             Margin="0,0,10,0"
                              Style="{StaticResource MenuButtonTheme}"
                              Command="{Binding Components_CupformViewCmd}"/>
 

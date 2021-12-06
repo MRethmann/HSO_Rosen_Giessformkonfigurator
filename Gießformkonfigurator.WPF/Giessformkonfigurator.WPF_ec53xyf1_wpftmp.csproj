@@ -77,42 +77,8 @@
     <ApplicationIcon>Images\Gießformkonfigurator.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
-    <Reference Include="log4net, Version=2.0.12.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <HintPath>..\packages\log4net.2.0.12\lib\net45\log4net.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xaml">
-      <RequiredTargetFramework>4.0</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="WindowsBase" />
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
-    <Reference Include="WPFTextBoxAutoComplete, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\WPFTextBoxAutoComplete.1.0.5\lib\net40\WPFTextBoxAutoComplete.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
     <Compile Include="Core\Settings\RankingSettings.cs" />
     <Compile Include="Core\Settings\ApplicationSettings.cs" />
     <Compile Include="Core\Settings\CombinationSettings.cs" />
@@ -203,14 +169,6 @@
     <Compile Include="StartWindow.xaml.cs">
       <DependentUpon>StartWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="LoginWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -224,90 +182,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="MVVM\View\DBManagement_MainView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MVVM\View\Mold_CupView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="MVVM\View\Settings_MainView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="MVVM\View\Settings_ApplicationSettingsView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="MVVM\View\Components_MainView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MVVM\View\Settings_CombinationSettingsView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="MVVM\View\Settings_ToleranceSettingsView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="MVVM\View\Components_CupformView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MVVM\View\Components_InsertPlateView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MVVM\View\Mold_MainView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MVVM\View\Settings_RankingSettingsView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="MVVM\View\Components_RingView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MVVM\View\Components_BaseplateView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MVVM\View\Components_CoreView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MVVM\View\Mold_DiscView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MVVM\View\Components_BoltView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MVVM\View\Search_MainView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="ReportIssueWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="StartWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Theme\MenuButtonTheme.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Theme\TextboxTheme.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MVVM\Model\Db_components\Baseplate.cs" />
@@ -358,6 +232,9 @@
     <Compile Include="MVVM\ViewModel\Mold_MainViewModel.cs" />
     <Compile Include="MVVM\ViewModel\Components_RingViewModel.cs" />
     <Compile Include="MVVM\ViewModel\Components_BaseplateViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\Product_CupViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\Product_DiscViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\Product_MainViewModel.cs" />
     <Compile Include="MVVM\ViewModel\Components_CoreViewModel.cs" />
     <Compile Include="MVVM\ViewModel\Mold_DiscViewModel.cs" />
     <Compile Include="MVVM\ViewModel\Components_BoltViewModel.cs" />
@@ -396,6 +273,12 @@
     <Compile Include="MVVM\View\Mold_MainView.xaml.cs">
       <DependentUpon>Mold_MainView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MVVM\View\Product_CupView.xaml.cs">
+      <DependentUpon>Product_CupView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\Product_DiscView.xaml.cs">
+      <DependentUpon>Product_DiscView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MVVM\View\Settings_RankingSettingsView.xaml.cs">
       <DependentUpon>Settings_RankingSettingsView.xaml</DependentUpon>
     </Compile>
@@ -404,6 +287,9 @@
     </Compile>
     <Compile Include="MVVM\View\Components_BaseplateView.xaml.cs">
       <DependentUpon>Components_BaseplateView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\Product_MainView.xaml.cs">
+      <DependentUpon>Product_MainView.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\View\Components_CoreView.xaml.cs">
       <DependentUpon>Components_CoreView.xaml</DependentUpon>
@@ -483,18 +369,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Resource Include="Images\Logo_der_Hochschule_Osnabrück.png" />
-    <Resource Include="Images\HS-Logo-ohneText.png" />
-    <Resource Include="Images\information-button.png" />
     <Content Include="log4net.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="packages.config" />
-    <Resource Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -503,7 +381,6 @@
     <Folder Include="Fonts\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\rosen.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
@@ -518,20 +395,68 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\exclamation-mark.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Gieformkonfigurator.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Gießformkonfigurator.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\key.png" />
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ReferencePath Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll" />
+    <ReferencePath Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll" />
+    <ReferencePath Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\packages\log4net.2.0.12\lib\net45\log4net.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\Microsoft.CSharp.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\mscorlib.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\PresentationCore.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\PresentationFramework.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.ComponentModel.DataAnnotations.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Configuration.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Core.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Data.DataSetExtensions.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Data.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Net.Http.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Web.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Windows.Forms.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Xaml.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Xml.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Xml.Linq.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\WindowsBase.dll" />
+    <ReferencePath Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\packages\WPFTextBoxAutoComplete.1.0.5\lib\net40\WPFTextBoxAutoComplete.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\LoginWindow.g.cs" />
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MainWindow.g.cs" />
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\DBManagement_MainView.g.cs" />
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Mold_CupView.g.cs" />
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Settings_MainView.g.cs" />
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Settings_ApplicationSettingsView.g.cs" />
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Components_MainView.g.cs" />
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Settings_CombinationSettingsView.g.cs" />
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Settings_ToleranceSettingsView.g.cs" />
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Components_CupformView.g.cs" />
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Components_InsertPlateView.g.cs" />
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Mold_MainView.g.cs" />
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Product_CupView.g.cs" />
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Product_DiscView.g.cs" />
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Settings_RankingSettingsView.g.cs" />
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Components_RingView.g.cs" />
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Components_BaseplateView.g.cs" />
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Product_MainView.g.cs" />
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Components_CoreView.g.cs" />
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Mold_DiscView.g.cs" />
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Components_BoltView.g.cs" />
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\MVVM\View\Search_MainView.g.cs" />
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\ReportIssueWindow.g.cs" />
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\StartWindow.g.cs" />
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\App.g.cs" />
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\Giessformkonfigurator.WPF_Content.g.cs" />
+    <Compile Include="C:\Users\rethm\OneDrive - Hochschule Osnabrück\VisualStudio\HSO_Rosen_Giessformkonfigurator\Gießformkonfigurator.WPF\obj\Debug\GeneratedInternalTypeHelper.g.cs" />
+  </ItemGroup>
 </Project>

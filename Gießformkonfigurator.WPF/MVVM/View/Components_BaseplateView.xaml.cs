@@ -5,18 +5,18 @@
 //-----------------------------------------------------------------------
 namespace Giessformkonfigurator.WPF.MVVM.View
 {
-    using Giessformkonfigurator.WPF.MVVM.ViewModel;
     using System.Windows.Controls;
+    using Giessformkonfigurator.WPF.MVVM.ViewModel;
+
     /// <summary>
-    /// Interaktionslogik für GrundplatteHinzufuegenView.xaml
+    /// Interaktionslogik für GrundplatteHinzufuegenView.xaml.
     /// </summary>
     public partial class Components_BaseplateView : UserControl
     {
         public Components_BaseplateView()
         {
-            InitializeComponent();
-            DataContext = new Components_BaseplateViewModel();
+            this.InitializeComponent();
+            this.DataContext = new Components_BaseplateViewModel();
         }
     }
 }
-
