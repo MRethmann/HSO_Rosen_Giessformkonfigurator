@@ -19,10 +19,7 @@
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="200"/>
                 <ColumnDefinition Width="50"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="200"/>
-                <ColumnDefinition Width="50"/>
-                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="152"/>
                 <ColumnDefinition Width="200"/>
             </Grid.ColumnDefinitions>
 
@@ -94,7 +91,7 @@
                 </TextBox.Text>
             </TextBox>
 
-            <TextBlock Text="Außendurchmeser" Grid.Row="3" Grid.Column="0"/>
+            <TextBlock Text="Außendurchmeser " Grid.Row="3" Grid.Column="0"/>
             <TextBox x:Name="OuterDiameter_TextBox" Grid.Row="3" Grid.Column="1">
                 <TextBox.Text>
                     <Binding Path="Ring.OuterDiameter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
@@ -188,7 +185,7 @@
                 </TextBox.Text>
             </TextBox>
 
-            <Button x:Name="Hinzufuegen" Content="Hinzufügen" Command="{Binding InsertIntoDbCmd}" Grid.Column="9" Grid.Row="9">
+            <Button x:Name="Hinzufuegen" Content="Hinzufügen" Command="{Binding InsertIntoDbCmd}" Grid.Column="9" Grid.Row="8">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="HorizontalAlignment" Value="Right"/>

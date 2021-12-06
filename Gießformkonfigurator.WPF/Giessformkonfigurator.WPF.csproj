@@ -264,14 +264,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MVVM\View\Product_CupView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="MVVM\View\Product_DiscView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="MVVM\View\Settings_RankingSettingsView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -281,10 +273,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MVVM\View\Components_BaseplateView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MVVM\View\Product_MainView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -370,9 +358,6 @@
     <Compile Include="MVVM\ViewModel\Mold_MainViewModel.cs" />
     <Compile Include="MVVM\ViewModel\Components_RingViewModel.cs" />
     <Compile Include="MVVM\ViewModel\Components_BaseplateViewModel.cs" />
-    <Compile Include="MVVM\ViewModel\Product_CupViewModel.cs" />
-    <Compile Include="MVVM\ViewModel\Product_DiscViewModel.cs" />
-    <Compile Include="MVVM\ViewModel\Product_MainViewModel.cs" />
     <Compile Include="MVVM\ViewModel\Components_CoreViewModel.cs" />
     <Compile Include="MVVM\ViewModel\Mold_DiscViewModel.cs" />
     <Compile Include="MVVM\ViewModel\Components_BoltViewModel.cs" />
@@ -411,12 +396,6 @@
     <Compile Include="MVVM\View\Mold_MainView.xaml.cs">
       <DependentUpon>Mold_MainView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\View\Product_CupView.xaml.cs">
-      <DependentUpon>Product_CupView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MVVM\View\Product_DiscView.xaml.cs">
-      <DependentUpon>Product_DiscView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="MVVM\View\Settings_RankingSettingsView.xaml.cs">
       <DependentUpon>Settings_RankingSettingsView.xaml</DependentUpon>
     </Compile>
@@ -425,9 +404,6 @@
     </Compile>
     <Compile Include="MVVM\View\Components_BaseplateView.xaml.cs">
       <DependentUpon>Components_BaseplateView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MVVM\View\Product_MainView.xaml.cs">
-      <DependentUpon>Product_MainView.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\View\Components_CoreView.xaml.cs">
       <DependentUpon>Components_CoreView.xaml</DependentUpon>

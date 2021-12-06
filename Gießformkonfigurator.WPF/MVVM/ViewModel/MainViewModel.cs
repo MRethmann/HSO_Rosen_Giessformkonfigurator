@@ -21,7 +21,6 @@ namespace Giessformkonfigurator.WPF.MVVM.ViewModel
         public MainViewModel()
         {
             this.Search_MainViewModel = new Search_MainViewModel();
-            this.Product_MainViewModel = new Product_MainViewModel();
             this.Mold_MainViewModel = new Mold_MainViewModel();
             this.Components_MainViewModel = new Components_MainViewModel();
             this.Settings_MainViewModel = new Settings_MainViewModel();
@@ -31,11 +30,6 @@ namespace Giessformkonfigurator.WPF.MVVM.ViewModel
             this.Search_MainViewCmd = new RelayCommand(o =>
             {
                 this.CurrentView = this.Search_MainViewModel;
-            });
-
-            this.Product_MainViewCmd = new RelayCommand(o =>
-            {
-                this.CurrentView = this.Product_MainViewModel;
             });
 
             this.Mold_MainViewCmd = new RelayCommand(o =>
@@ -74,8 +68,6 @@ namespace Giessformkonfigurator.WPF.MVVM.ViewModel
         public RelayCommand DBManagement_MainViewCmd { get; set; }
 
         public Mold_MainViewModel Mold_MainViewModel { get; set; }
-
-        public Product_MainViewModel Product_MainViewModel { get; set; }
 
         public Search_MainViewModel Search_MainViewModel { get; set; }
 
