@@ -6,13 +6,9 @@
 namespace Giessformkonfigurator.WPF.MVVM.Model.Db_products
 {
     using System;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
 
-    [Table("ProductCup")]
     public class ProductCup : Product
     {
-        [StringLength(20)]
         public string CupType { get; set; }
 
         public decimal Size { get; set; }
@@ -22,13 +18,11 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_products
         /// <summary>
         /// Gets or Sets dimension information which is calculated by singleMold pu factor.
         /// </summary>
-        [NotMapped]
         public ProductCup SingleMoldDimensions { get; set; }
 
         /// <summary>
         /// Gets or Sets dimension information which is calculated by multiMold pu factor.
         /// </summary>
-        [NotMapped]
         public ProductCup ModularMoldDimensions { get; set; }
 
         public void AddMultiMoldDimensions(decimal multiMoldFactorPu)

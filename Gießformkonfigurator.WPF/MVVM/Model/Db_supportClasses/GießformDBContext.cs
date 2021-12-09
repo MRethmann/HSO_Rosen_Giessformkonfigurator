@@ -33,10 +33,6 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_supportClasses
 
         public virtual DbSet<Core> Cores { get; set; }
 
-        public virtual DbSet<ProductCup> ProductCups { get; set; }
-
-        public virtual DbSet<ProductDisc> ProductDiscs { get; set; }
-
         public virtual DbSet<Ring> Rings { get; set; }
 
         public virtual DbSet<Cupform> Cupforms { get; set; }
@@ -64,10 +60,6 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_supportClasses
             modelBuilder.Configurations.Add(new CoreEntityConfiguration());
 
             modelBuilder.Configurations.Add(new CoreSingleMoldEntityConfiguration());
-
-            modelBuilder.Configurations.Add(new ProductCupEntityConfiguration());
-
-            modelBuilder.Configurations.Add(new ProductDiscEntityConfiguration());
 
             modelBuilder.Configurations.Add(new RingEntityConfiguration());
 

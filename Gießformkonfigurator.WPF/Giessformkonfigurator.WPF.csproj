@@ -337,8 +337,6 @@
     <Compile Include="MVVM\Model\Db_supportClasses\CupformEntityConfiguration.cs" />
     <Compile Include="MVVM\Model\Db_supportClasses\GießformDBContext.cs" />
     <Compile Include="MVVM\Model\Db_supportClasses\InsertPlateEntityConfiguration.cs" />
-    <Compile Include="MVVM\Model\Db_supportClasses\ProductCupEntityConfiguration.cs" />
-    <Compile Include="MVVM\Model\Db_supportClasses\ProductDiscEntityConfiguration.cs" />
     <Compile Include="MVVM\Model\Db_supportClasses\RingEntityConfiguration.cs" />
     <Compile Include="MVVM\Model\Logic\CombinationJob.cs" />
     <Compile Include="MVVM\Model\Logic\CombinationRule.cs" />

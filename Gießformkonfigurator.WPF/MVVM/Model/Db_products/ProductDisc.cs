@@ -6,11 +6,7 @@
 namespace Giessformkonfigurator.WPF.MVVM.Model.Db_products
 {
     using System;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Windows;
 
-    [Table("ProductDisc")]
     public class ProductDisc : Product
     {
         public decimal OuterDiameter { get; set; }
@@ -22,13 +18,11 @@ namespace Giessformkonfigurator.WPF.MVVM.Model.Db_products
         /// <summary>
         /// Gets or Sets dimension information which is calculated by singleMold pu factor.
         /// </summary>
-        [NotMapped]
         public ProductDisc SingleMoldDimensions { get; set; }
 
         /// <summary>
         /// Gets or Sets dimension information which is calculated by multiMold pu factor.
         /// </summary>
-        [NotMapped]
         public ProductDisc ModularMoldDimensions { get; set; }
 
         public void AddMultiMoldDimensions(decimal multiMoldFactorPu)
